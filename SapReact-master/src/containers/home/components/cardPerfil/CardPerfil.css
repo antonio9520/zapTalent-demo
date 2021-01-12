@@ -1,0 +1,122 @@
+.container-perfilhome {
+  /* background-color: #4284c3; */
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  /* z-index: 9; */
+}
+
+.overlay-perfil-home::after {
+  content: "";
+  position: absolute;
+  background-color: #187ce2d5;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  /* z-index: 1; */
+}
+.overlay-perfil-home::before {
+  content: "";
+  position: absolute;
+  background-image: url("../../../../resources/images/brand/User-header-background.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  /* z-index: 1; */
+}
+
+.cont-center-card-home {
+  display: flex;
+  flex: 2;
+  /* background-color: green; */
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+.cont-center-card-home p:nth-child(1) {
+  font-size: 24px;
+  margin: 0;
+}
+.cont-center-card-home p:nth-child(2) {
+  font-size: 24px;
+  margin: 0;
+}
+.cont-center-card-home p:nth-child(3) {
+  font-size: 12px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.btn-comenzar-perfil-home {
+  background-color: var(--white) !important;
+  height: 50px !important;
+  width: 150px !important;
+  border-radius: 5px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  justify-content: center !important;
+}
+.btn-comenzar-perfil-home p {
+  margin: 0;
+  color: var(--blue-primary);
+}
+.cont-btn-complete-perfil-home {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+.cont-img-card-perfil-home {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  max-width: 200px;
+  z-index: 1;
+}
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .container-perfilhome {
+    flex-direction: column;
+  }
+  .cont-center-card-home {
+    display: flex;
+    flex: 2;
+    /* background-color: green; */
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    padding: 0 10px;
+  }
+
+  .cont-btn-complete-perfil-home {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+  }
+  .cont-img-card-perfil-home {
+    justify-content: inherit;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

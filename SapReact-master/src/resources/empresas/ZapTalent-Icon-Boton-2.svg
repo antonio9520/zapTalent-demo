@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-ZapTalent-Icon-Boton-2">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="ZapTalent-Icon-Boton-2" clip-path="url(#clip-ZapTalent-Icon-Boton-2)">
+    <g id="_804082" data-name="804082" transform="translate(22.841 23)">
+      <g id="Grupo_2001" data-name="Grupo 2001" transform="translate(0.159)">
+        <g id="Grupo_2000" data-name="Grupo 2000">
+          <path id="Trazado_623" data-name="Trazado 623" d="M150.518,51.023H137.762V33.165a2.551,2.551,0,0,0-2.551-2.551h-7.653V2.551A2.551,2.551,0,0,0,125.007,0H28.063a2.551,2.551,0,0,0-2.551,2.551V30.614H17.858a2.551,2.551,0,0,0-2.551,2.551V51.023H2.551A2.551,2.551,0,0,0,0,53.574v71.432a2.551,2.551,0,0,0,2.551,2.551h22.96v22.96a2.551,2.551,0,0,0,2.551,2.551h96.944a2.551,2.551,0,0,0,2.551-2.551v-22.96h22.96a2.551,2.551,0,0,0,2.551-2.551V53.574A2.551,2.551,0,0,0,150.518,51.023Zm-22.96-15.307h5.1V51.023h-5.1ZM30.614,5.1h91.842V51.023H30.614Zm-10.2,30.614h5.1V51.023h-5.1Zm5.1,76.535H22.96V104.6h2.551Zm96.944,35.716H30.614V104.6h91.842Zm25.512-25.512H127.558v-5.1h5.1a2.551,2.551,0,0,0,2.551-2.551V102.046A2.551,2.551,0,0,0,132.66,99.5H20.409a2.551,2.551,0,0,0-2.551,2.551V114.8a2.551,2.551,0,0,0,2.551,2.551h5.1v5.1H5.1V56.125H147.967Zm-20.409-10.2V104.6h2.551v7.653Z" fill="#fff" stroke="#fff" stroke-width="0.5"/>
+        </g>
+      </g>
+      <g id="Grupo_2003" data-name="Grupo 2003" transform="translate(59.01 112.169)">
+        <g id="Grupo_2002" data-name="Grupo 2002" transform="translate(0 0)">
+          <rect id="Rectángulo_627" data-name="Rectángulo 627" width="52.989" height="7.436" fill="#fff" stroke="#fff" stroke-width="0.5"/>
+        </g>
+      </g>
+      <g id="Grupo_2005" data-name="Grupo 2005" transform="translate(37.637 127.042)">
+        <g id="Grupo_2004" data-name="Grupo 2004" transform="translate(0 0)">
+          <rect id="Rectángulo_628" data-name="Rectángulo 628" width="74.363" height="7.436" fill="#fff" stroke="#fff" stroke-width="0.5"/>
+        </g>
+      </g>
+      <g id="Grupo_2007" data-name="Grupo 2007" transform="translate(37.637 134.479)">
+        <g id="Grupo_2006" data-name="Grupo 2006" transform="translate(0 0)">
+          <rect id="Rectángulo_629" data-name="Rectángulo 629" width="59.491" transform="translate(0 0)" fill="#fff" stroke="#fff" stroke-width="0.5"/>
+        </g>
+      </g>
+      <g id="Grupo_2009" data-name="Grupo 2009" transform="translate(37.637 112.169)">
+        <g id="Grupo_2008" data-name="Grupo 2008" transform="translate(0 0)">
+          <rect id="Rectángulo_630" data-name="Rectángulo 630" width="12.473" height="7.436" fill="#fff" stroke="#fff" stroke-width="0.5"/>
+        </g>
+      </g>
+      <g id="Grupo_2035" data-name="Grupo 2035" transform="translate(14.644 61.228)">
+        <g id="Grupo_2011" data-name="Grupo 2011">
+          <g id="Grupo_2010" data-name="Grupo 2010">
+            <path id="Trazado_624" data-name="Trazado 624" d="M54.96,192H34.551A2.551,2.551,0,0,0,32,194.551v10.2a2.551,2.551,0,0,0,2.551,2.551H54.96a2.551,2.551,0,0,0,2.551-2.551v-10.2A2.551,2.551,0,0,0,54.96,192Zm-2.551,10.2H37.1v-5.1H52.409Z" transform="translate(-32 -192)" fill="#fff" stroke="#fff" stroke-width="0.5"/>
+          </g>
+        </g>
+        <g id="Grupo_2034" data-name="Grupo 2034" transform="translate(81.403 7.552)">
+          <g id="Grupo_2013" data-name="Grupo 2013" transform="translate(0 0)">
+            <g id="Grupo_2012" data-name="Grupo 2012" transform="translate(0 0)">
+              <rect id="Rectángulo_631" data-name="Rectángulo 631" width="29.745" fill="#fff" stroke="#fff" stroke-width="3"/>
+            </g>
+          </g>
+          <g id="Grupo_2015" data-name="Grupo 2015" transform="translate(43.388 0)">
+            <g id="Grupo_2014" data-name="Grupo 2014" transform="translate(0 0)">
+              <rect id="Rectángulo_632" data-name="Rectángulo 632" fill="#fff" stroke="#fff" stroke-width="3"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

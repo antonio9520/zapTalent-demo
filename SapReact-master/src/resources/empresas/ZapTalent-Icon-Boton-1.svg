@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-ZapTalent-Icon-Boton-1">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="ZapTalent-Icon-Boton-1" clip-path="url(#clip-ZapTalent-Icon-Boton-1)">
+    <g id="_875100" data-name="875100" transform="translate(38.011 33.088)">
+      <g id="Grupo_1831" data-name="Grupo 1831" transform="translate(0)">
+        <g id="Grupo_1830" data-name="Grupo 1830" transform="translate(0)">
+          <path id="Trazado_611" data-name="Trazado 611" d="M126.185,0a4.744,4.744,0,0,0-4.744,4.744V22.075A61.557,61.557,0,0,0,17.067,66.42a4.744,4.744,0,1,0,9.488,0,52.187,52.187,0,0,1,90.682-35.226L96.22,38.2a4.75,4.75,0,0,0,3,9.014l28.466-9.488a4.745,4.745,0,0,0,3.245-4.516V4.744A4.745,4.745,0,0,0,126.185,0Z" transform="translate(-17.067)" fill="#fff" stroke="#8f8e97" stroke-width="0.5"/>
+        </g>
+      </g>
+      <g id="Grupo_1833" data-name="Grupo 1833" transform="translate(9.488 61.676)">
+        <g id="Grupo_1832" data-name="Grupo 1832" transform="translate(0)">
+          <path id="Trazado_612" data-name="Trazado 612" d="M160.317,221.867a4.744,4.744,0,0,0-4.744,4.744A52.187,52.187,0,0,1,64.89,261.838l21.017-7.007a4.75,4.75,0,0,0-3-9.014L54.443,255.3a4.745,4.745,0,0,0-3.245,4.516v28.466a4.744,4.744,0,0,0,9.489,0V270.956A61.557,61.557,0,0,0,165.06,226.611,4.743,4.743,0,0,0,160.317,221.867Z" transform="translate(-51.198 -221.867)" fill="#fff" stroke="#8f8e97" stroke-width="0.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

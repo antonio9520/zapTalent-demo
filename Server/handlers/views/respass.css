@@ -1,0 +1,82 @@
+body {
+  background-color: rgb(247, 247, 247);
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(211, 210, 210, 0.788) 5px 6px 5px 6px;
+  border-radius: 10px;
+  width: 100%;
+}
+div0 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h3 {
+  color: rgb(35, 86, 255);
+  display: flex;
+  margin-left: 50%;
+  margin-right: 50%;
+  margin-bottom: 0.5%;
+  margin-top: 3%;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 25px;
+}
+div1 {
+    align-items: center !important;
+  box-shadow: whitesmoke !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px !important;
+  width: 60% ! ;
+  box-shadow: rgba(243, 243, 243, 0.788) 2px 3px 2px 2px;
+  border-radius: 10px;
+  margin-left: 50%;
+  margin-bottom: 0.5%;
+}
+div2{
+    align-items: center   !important;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: 50%;
+  margin-bottom: 0.5%;
+}
+p {
+  align-items: center !important;
+  color: grey !important;
+  display: flex;
+  justify-content: center !important;
+  margin-left: 50%;
+  margin-bottom: 0.5%;
+}
+p3 {
+  align-items: center !important;
+  color: grey !important;
+  display: flex;
+  justify-content: center !important;
+  margin-left: 65%;
+  margin-bottom: 0.5%;
+}
+p2 {
+    align-items: center;
+  color: grey;
+  font-weight: 800;
+}
+button {
+    align-items: center !important;
+  margin-left: 250px;
+  background-color: rgb(49, 97, 255);
+  margin: 10px;
+  font-size: 14px;
+  color: whitesmoke;
+  border-radius: 5px;
+  height: 35px;
+  border: transparent;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    margin-left: 50%;
+    margin-bottom: 0.5%;
+}

@@ -1,0 +1,94 @@
+.cont-section-five {
+  background-image: url("../../../../../resources/cover/ZAPTalent-Section-SAP-Modules.png");
+  background-size: cover;
+  width: 100%;
+  padding: 120px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sub-section-five {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-section-five h1 {
+  color: var(--white);
+  font-weight: 200;
+}
+
+.p1-section-five {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.cont-mod-section-five {
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.cont-mod-section-five div {
+  background-color: var(--white);
+  max-width: 170px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont-mod-section-five p {
+  color: var(--blue-primary);
+  margin: 0;
+  font-weight: 500;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+  .sub-section-five {
+   padding: 0 40px;
+  }
+  .cont-mod-section-five {
+  flex-wrap: wrap;
+  
+  }
+  .cont-mod-section-five div {
+   margin: 10px;
+  }
+}
+
+/*  Smartphones in landscape mode */
+
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+  .sub-section-five {
+    padding: 0 30px;
+   }
+   .cont-mod-section-five {
+   flex-wrap: wrap;
+   
+   }
+   .cont-mod-section-five div {
+    margin: 10px;
+   }
+}
+
+/*  Smartphones in portrait mode  */
+
+@media only screen and (max-width: 420px) {
+  .sub-section-five {
+    padding: 0 20px;
+   }
+   .cont-mod-section-five {
+   flex-wrap: wrap;
+   
+   }
+   .cont-mod-section-five div {
+    margin: 10px;
+   }
+}
+

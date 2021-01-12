@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150" height="150" viewBox="0 0 150 150">
+  <defs>
+    <clipPath id="clip-icon-postulaciones-10">
+      <rect width="150" height="150"/>
+    </clipPath>
+  </defs>
+  <g id="icon-postulaciones-10" clip-path="url(#clip-icon-postulaciones-10)">
+    <g id="Grupo_4" data-name="Grupo 4" transform="translate(18 14)">
+      <path id="Trazado_582" data-name="Trazado 582" d="M710.318,124.659a6.153,6.153,0,0,0-8.405,0L650.725,172.75a6.125,6.125,0,0,0,8.406,8.91l47.016-44.173,47.016,44.173a6.117,6.117,0,0,0,8.658-.316,6.106,6.106,0,0,0-.253-8.657Z" transform="translate(-648.795 -123)" fill="#1e6fdd" stroke="#fff" stroke-width="4"/>
+      <path id="Trazado_583" data-name="Trazado 583" d="M732.4,192.109a10.083,10.083,0,0,0-13.839,0l-31.344,29.448A10.236,10.236,0,0,0,684,228.951V271.8a10.141,10.141,0,0,0,10.111,10.111H756.8A10.141,10.141,0,0,0,766.906,271.8V228.951a10,10,0,0,0-3.222-7.394Zm-2.464,77.539h-8.974V248.415h8.974Zm24.708,0H742.2V244.56a8.333,8.333,0,0,0-8.341-8.341H717.11a8.333,8.333,0,0,0-8.342,8.341v25.088H696.256V229.9l29.2-27.426,29.2,27.426Z" transform="translate(-668.1 -159.393)" fill="#1e6fdd" stroke="#fff" stroke-width="4"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,228 @@
+.cont-card-adn {
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  width: 450px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  height: 30%;
+  background-color: var(--white);
+}
+
+.cont-mod-adn {
+  background: var(--degradado-blue);
+  width: 90px;
+  height: 90px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.name-submod-large {
+  /* Starting position */
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  /* Apply animation to this element */
+  -moz-animation: scroll-left 7s linear infinite;
+  -webkit-animation: scroll-left 7s linear infinite;
+  animation: scroll-left 7s linear infinite;
+}
+.cont-mod-adn p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.p1-card-adn {
+  color: var(--blue-primary);
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 2px 0;
+}
+
+.cont-adn-submod {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f8fb;
+  margin: 0 10px 10px 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+  width: 410px;
+}
+
+.top-adn-submod {
+  display: flex;
+  /* background-color: skyblue; */
+  padding-bottom: 10px;
+}
+
+.name-adn-submod {
+  width: 55px;
+  height: 55px;
+  background: var(--degradado-blue);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.name-adn-submod p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.p1-adn-submodulo {
+  margin: 0;
+  margin-top: 10px;
+  color: var(--blue-primary);
+  font-weight: 600;
+  max-width: 300px;
+}
+.p1-card-adn-desc {
+  color: var(--blue-primary);
+  margin: 0;
+  font-size: 28px;
+  font-weight: 200;
+  max-width: 250px;
+  margin-top: 10px;
+  text-align: center;
+}
+.cont-nivel-adn-submodulo {
+  padding: 8px 15px;
+  background-color: #4bacef;
+  display: inline-flex;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.cont-nivel-adn-submodulo p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.p2-adn-submodulo {
+  color: #4bc1f4;
+  margin: 0;
+  margin-left: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.p3-adn-submodulo {
+  color: var(--gray-text);
+  font-size: 12px;
+  font-style: italic;
+  margin: 10px;
+  padding-right: 10px;
+  max-height: 50px;
+  overflow: auto;
+}
+.cont-cards-mod-submod {
+  overflow: auto;
+  max-height: 390px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding-top: 5px;
+}
+
+.cont-btns-card-adn {
+  width: 100%;
+  position: relative;
+  padding: 25px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.one {
+  background-color: var(--blue-primary) !important;
+}
+
+.two {
+  background-color: var(--blue-primary) !important;
+  margin-left: 5px !important;
+}
+.btns-card-adn {
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  color: var(--white) !important;
+  padding: 7px !important;
+}
+.p4-card-adn {
+  color: #4bacef;
+  font-weight: 500;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.p5-card-adn {
+  color: var(--gray-text);
+  font-size: 12px;
+  text-align: center;
+  padding: 0 20px;
+  margin: 0;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .cont-card-adn {
+    width: 48%;
+    min-width: 350px;
+  }
+  .cont-adn-submod {
+    width: 96%;
+  }
+  .cont-cards-mod-submod {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: lawngreen; */
+    margin-right: 0;
+  }
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-card-adn {
+    width: 98%;
+    max-width: 450px;
+    padding-right: 0;
+  }
+  .cont-adn-submod {
+    width: 90%;
+    /* max-width: 450px; */
+  }
+  .cont-cards-mod-submod {
+    width: 100%;
+    margin-right: 0;
+    /* background-color: lightcoral; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: lawngreen; */
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

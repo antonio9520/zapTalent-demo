@@ -1,0 +1,335 @@
+.cont-card-job-b {
+  background-color: var(--white);
+  min-height: 200px;
+  height: 30%;
+  width: 100%;
+  margin: 5px;
+  max-width: 450px;
+  min-width: 300px;
+  border-radius: 5px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  padding: 20px 20px 50px 20px;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+.cont-card-job-b-actual {
+  background: var(--degradado-blue);
+  min-height: 200px;
+  height: 30%;
+  width: 100%;
+  margin: 5px;
+  max-width: 450px;
+  min-width: 300px;
+  border-radius: 5px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  padding: 20px 20px 50px 20px;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+.cont-card-job-b p {
+  margin: 0;
+}
+
+.cont-img-card-job-b {
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  /* box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2); */
+  border: 1px solid var(--gris-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+}
+
+.cont-img-card-job-b img {
+  width: 100%;
+}
+
+.icon-suitcase {
+  width: 20px;
+  color: var(--blue-primary);
+}
+
+.sub-right-job-b {
+  /* background-color: saddlebrown; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.sub-right-job-b1 {
+  display: flex;
+  /* background-color: seagreen; */
+  align-items: center;
+}
+
+.sub-right-job-b1-2 {
+  display: flex;
+  /* background-color: seagreen; */
+  margin-left: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sub-right-job-b2 {
+  display: flex;
+  margin-top: 5px;
+}
+
+.p1-job-b {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--blue-primary);
+  margin: 0;
+  margin-top: 5px !important;
+
+}
+
+.p2-job-b {
+  color: var(--blue-primary);
+  margin: 0;
+  font-size: 28px;
+  font-weight: 200;
+  max-width: 250px;
+  margin-top: 5px !important;
+  text-align: center;
+}
+
+.p3-job-b {
+  margin: 5px 0;
+  color: var(--blue-primary);
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.p4-job-b {
+  margin-top: 3px !important;
+  
+  color: var(--blue-primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.p5-job-b {
+  font-size: 12px;
+  padding-top: 5px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: var(--blue-primary);
+}
+
+.cont-icon-btns-job-b {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  /* background-color: sienna; */
+  width: 85px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-btn-job-b {
+  background-color: var(--light-blue) !important;
+  color: var(--white) !important;
+  padding: 7px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.icon-btn-job-b2 {
+  background-color: var(--light-blue) !important;
+  color: var(--white) !important;
+  padding: 7px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.sub-right-job-b-2 {
+  /* background-color: skyblue; */
+  padding: 10px;
+  padding-top: 20px;
+  width: 100%;
+}
+.cont-pc-pa {
+  display: flex;
+}
+.item-1-job-b {
+  flex: 1;
+}
+.item-2-job-b {
+  flex: 1;
+  margin-left: 5px;
+}
+.item-1-job-b div {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
+.item-2-job-b div {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.p6-job-b {
+  font-size: 12px;
+  color: var(--light-blue);
+  font-weight: 600;
+  margin: 5px 0 !important;
+}
+
+.p7-job-b {
+  font-size: 12px;
+  color: var(--gray-text);
+}
+.p7-job-b2 {
+  font-size: 12px;
+  color: var(--gray-text);
+  font-style: italic;
+  max-height: 80px;
+  overflow: auto;
+  padding-right: 10px;
+}
+.p8-job-b {
+  color: var(--blue-primary);
+  font-size: 12px;
+  padding-left: 5px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.icon-ref-card-job {
+  color: #cbcbcf;
+  width: 20px !important;
+  /* margin-bottom: -10px!important; */
+}
+.item-1-job-b-2 div {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.item-1-job-b-2 {
+  padding-top: 20px;
+}
+
+.margin-top-job {
+  margin-top: 20px;
+}
+.anima-div-job {
+  height: 20px;
+  width: 140px;
+  margin-left: 10px ;
+  overflow: hidden;
+  position: relative;
+}
+.short-text-job {
+  padding-left: 5px;
+  margin-top: 3px !important;
+  color: var(--blue-primary);
+  font-size: 13px;
+  font-weight: 500;
+}
+.anima-div-job p {
+  margin-top: 3px !important;
+  color: var(--blue-primary);
+  font-size: 13px;
+  font-weight: 500;
+
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  margin: 0;
+  /* Starting position */
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  /* Apply animation to this element */
+  -moz-animation: scroll-left 15s linear infinite;
+  -webkit-animation: scroll-left 15s linear infinite;
+  animation: scroll-left 15s linear infinite;
+}
+
+
+
+/* Move it (define the animation) */
+@-moz-keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes scroll-left {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+@keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(100%); /* Browser bug fix */
+    -webkit-transform: translateX(100%); /* Browser bug fix */
+    transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%); /* Browser bug fix */
+    -webkit-transform: translateX(-100%); /* Browser bug fix */
+    transform: translateX(-100%);
+  }
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+}
+
+@media only screen and (max-width: 410px) {
+  .cont-pc-pa {
+    flex-direction: column;
+  }
+  .item-2-job-b {
+    margin-left: 0;
+  }
+  .sub-right-job-b2 {
+    display: flex;
+    flex-direction: column;
+    /* background-color: brown; */
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .sub-right-job-b1-2 {
+    margin-left: 0;
+  }
+  .anima-div-job {
+    height: 20px;
+    width: 230px;
+    overflow: hidden;
+    position: relative;
+    /* background-color: cadetblue; */
+  }
+}

@@ -1,0 +1,118 @@
+.cont-card-init {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-init-estudios {
+  height: 500px;
+  width: 850px;
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  overflow: hidden;
+}
+
+.left-card-init-estudios {
+  /* background-color: rosybrown; */
+  flex: 1.5;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.left-card-init-estudios-A1 {
+  background-image: url("../../resources/images/SAPEstu/bg-first-estudios-man.webp");
+  background-size: cover;
+}
+.left-card-init-estudios-A2 {
+  background-image: url("../../resources/images/SAPEstu/bg-first-estudios-woman.webp");
+  background-size: cover;
+}
+.left-card-init-estudios-B1 {
+  background-image: url("../../resources/images/Sapmicert/bg-first-certificados-man.webp");
+  background-size: cover;
+}
+.left-card-init-estudios-B2 {
+  background-image: url("../../resources/images/Sapmicert/bg-first-certificados-woman.webp");
+  background-size: cover;
+}
+.left-card-init-estudios-C1 {
+  background-image: url("../../resources/images/SAPTADN/bg-first-adnsap-man.webp");
+  background-size: cover;
+}
+.left-card-init-estudios-C2 {
+  background-image: url("../../resources/images/SAPTADN/bg-first-adnsap-woman.webp");
+  background-size: cover;
+}
+.left-card-init-estudios-D1 {
+  background-image: url("../../resources/images/SapMitrabajos/bg-first-trabajos-man.webp");
+  background-size: cover;
+}
+.left-card-init-estudios-D2 {
+  background-image: url("../../resources/images/SapMitrabajos/bg-first-trabajos-woman.webp");
+  background-size: cover;
+}
+.right-card-init-estudios {
+  /* background-color: royalblue; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.logo-card-init-estudios {
+  width: 90px;
+  margin-left: 30px;
+}
+.right-card-init-estudios-1 {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.p1-card-init-estudios {
+  font-size: 32px;
+  width: 280px;
+  color: var(--blue-primary);
+  font-weight: 200;
+  margin: 0;
+  margin-left: 30px;
+  margin-bottom: 15px;
+ width: 200px;
+}
+.p2-card-init-estudios {
+  font-size: 14px;
+  width: 220px;
+  color: var(--gray-text);
+  /* font-weight: 500; */
+  margin: 0;
+  margin-left: 30px;
+  margin-bottom: 25px;
+}
+.right-card-init-estudios-2 {
+  /* background-color: seagreen; */
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.btn-cardinit-estudios {
+  background-color: var(--blue-primary) !important;
+  width: 130px !important;
+  height: 50px !important;
+  border-radius: 5px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: 30px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+.btn-cardinit-estudios p {
+  margin: 0;
+  font-size: 14px;
+}

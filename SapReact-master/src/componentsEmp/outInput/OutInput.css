@@ -1,0 +1,98 @@
+.contCustomInput{
+  position: relative;
+  background-color: darkorchid;
+  /* height: 100%; */
+  width: 100%;
+}
+.contCustomInputError{
+  width: 100%;
+  background-color: #FEB0A9;
+  min-height: 45px;
+  position: relative;
+ 
+}
+.errorinput {
+  background-color: #fff3f2 !important;
+}
+.form-control-login {
+  max-height: 50px !important;
+  /* height: 45px !important;  */
+  background-color: #f3f8fe !important;
+}
+.form-control-small {
+  max-height: 35px !important;
+
+}
+.input-label-login {
+  font-family: "Roboto" !important;
+  font-size: 12px !important;
+}
+.text-field-login {
+  /* max-height: 45px !important; */
+  font-size: 12px !important;
+}
+
+.helper-text-error-inact {
+  background-color: #fff3f2;
+  font-size: 10px !important;
+  border: 1px solid#FEB0A9;
+  width: 100%;
+  margin: 0 !important;
+  border-top: none;
+  margin-top: -33px !important;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 20px;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 15px;
+  /* z-index: -1; */
+  transition: 0.5s all ease-in-out;
+  position: absolute;
+  bottom: 0;
+  color: red;
+}
+.helper-text-error {
+  background-color: #fff3f2;
+  font-size: 10px !important;
+  border: 1px solid#FEB0A9;
+  width: 100%;
+  margin: 0 !important;
+  border-top: none;
+  margin-top: -2px !important;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 18px;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 15px;
+  transition: 0.5s all ease-in-out;
+  /* z-index: -1; */
+  position: absolute;
+  bottom: -6px;
+  color: red !important;
+  
+}
+.helperlogin{
+  background-color: #fff3f2;
+  font-size: 10px !important;
+  border: 1px solid#FEB0A9;
+  width: 100%;
+  margin: 0 !important;
+  border-top: none;
+  margin-top: -2px !important;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 18px;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 15px;
+  transition: 0.5s all ease-in-out;
+  /* z-index: -1; */
+  position: absolute;
+  bottom: -18px;
+  color: red !important;
+}
+/* .formcontrol-error{
+    background-color:#fff3f2 !important;
+} */

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-ZapTalent-Icon-Boton-3">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="ZapTalent-Icon-Boton-3" clip-path="url(#clip-ZapTalent-Icon-Boton-3)">
+    <g id="_3142921" data-name="3142921" transform="translate(21.791 21.453)">
+      <path id="Trazado_619" data-name="Trazado 619" d="M156.9,0H73.327L52.248,21.079v.616H21.079L0,42.773V156.9H104.649V135.2H156.9ZM76.375,9.953V24.128H62.2ZM24.127,31.647V45.822H9.953ZM95.456,147.7H9.193V55.015H33.32V30.888H52.248v33.32H22.421V73.4H52.248v9.193H22.421v9.193H52.248v9.193H22.421v9.193H52.248V135.2H95.456ZM147.7,126.009H61.441V33.321H85.568V9.193H147.7Z" transform="translate(0)" fill="#fff" stroke="#8f8e97" stroke-width="0.5"/>
+      <path id="Trazado_620" data-name="Trazado 620" d="M243.667,138.734h59.807v9.193H243.667Z" transform="translate(-168.998 -96.22)" fill="#fff" stroke="#8f8e97" stroke-width="0.5"/>
+      <path id="Trazado_621" data-name="Trazado 621" d="M243.667,198.734h59.807v9.193H243.667Z" transform="translate(-168.998 -137.834)" fill="#fff" stroke="#8f8e97" stroke-width="0.5"/>
+      <path id="Trazado_622" data-name="Trazado 622" d="M243.667,258.734h59.807v9.193H243.667Z" transform="translate(-168.998 -179.448)" fill="#fff" stroke="#8f8e97" stroke-width="0.5"/>
+    </g>
+  </g>
+</svg>

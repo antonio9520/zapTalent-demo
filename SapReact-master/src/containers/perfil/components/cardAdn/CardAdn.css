@@ -1,0 +1,111 @@
+.cont-adn-perfil {
+  background: var(--degradado-blue);
+  border-radius: 5px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  padding-bottom: 100px;
+  position: relative;
+  
+
+}
+.cont-modulo-perfil {
+  position: relative;
+}
+.btn-edit-modulo-perfil {
+  position: absolute !important;
+  right: 5px;
+  background-color: var(--white) !important;
+  color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.p1-mod-perfil {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.p2-mod-perfil {
+  margin: 8px 0;
+  font-size: 38px;
+  font-weight: 200;
+}
+.p3-mod-perfil {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.p4-mod-perfil {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+}
+.p5-mod-perfil {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+.p6-mod-perfil {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.cont-summ-mod-perfil {
+  display: flex;
+  flex-direction: column;
+}
+
+.nivel-submod-perfil-b {
+  background-color: var(--light-blue);
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 15px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
+  margin-top: 10px;
+}
+
+.icon-expand-perfil {
+  color: white;
+}
+
+.cont-arrow-btns-perfil {
+  /* background-color: tomato; */
+  display: flex;
+  justify-content: space-between;
+  width: 105px;
+  right: 20px;
+  bottom: 20px;
+  position: absolute;
+}
+
+.btn-arrow-perfil {
+  background-color: white !important;
+  color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+}
+.btn-arrow-perfil-inact {
+  background-color: rgba(255, 255, 255, 0.349) !important;
+  color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.acordion-active {
+  background-color: var(--light-blue) !important;
+}
+
+.btn-ver-cert-perfil {
+  background-color: var(--light-blue) !important;
+  width: 130px !important;
+  margin-top: 30px !important;
+  border-radius: 5px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-ver-cert-perfil p {
+  margin: 5px 0;
+  font-size: 14px;
+}

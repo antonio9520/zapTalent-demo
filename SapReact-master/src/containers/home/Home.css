@@ -1,0 +1,244 @@
+.conteiner-home {
+  /* background-color: brown; */
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 75px;
+  /* min-height: 850px; */
+}
+.cont-home-big {
+  /* min-height: 130vh; */
+  padding-bottom: 30px;
+  min-height: 135vh;
+}
+.cont-header-home {
+  /* background-color: cadetblue; */
+  height: 65px;
+  padding: 5px;
+}
+
+.cont-card-perfil-home {
+  /* background-color: chocolate; */
+  height: 20%;
+  padding: 5px;
+}
+
+.cont-cards-home {
+  height: 130px;
+  /* background-color: cornflowerblue; */
+}
+
+.cont-table-home-jobs {
+  height: 56%;
+  /* height: 500px; */
+  /* background-color: darkblue; */
+  padding: 5px;
+}
+
+.cont-card-left-home {
+  padding: 5px;
+  height: 500px;
+}
+
+.cont-card-right-home {
+  padding: 5px;
+  /* height: 56%; */
+  /* padding-bottom: 30px; */
+  /* background-color: darkgoldenrod; */
+}
+
+.sub-cont-cards-home {
+  /* background-color: darkgoldenrod; */
+  height: 100%;
+}
+
+.items-cards-home {
+  padding: 5px;
+}
+.adns-home-xs {
+  
+  /* background-color: lightsalmon; */
+}
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+  .cont-home-big {
+    /* min-height: 100%; */
+    /* background-color: rgb(105, 72, 29); */
+  }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+  .conteiner-home {
+    /* background-color: brown; */
+    height: 100%;
+
+    /* min-height: 850px; */
+    padding-bottom: 30px;
+  }
+  .cont-home-big {
+    /* min-height: 1920px; */
+    /* background-color: brown; */
+  }
+  .cont-header-home {
+    /* background-color: cadetblue; */
+    height: 70px;
+    padding: 5px 10px 5px 10px;
+  }
+  .cont-card-perfil-home {
+    /* background-color: chocolate; */
+    height: 180px;
+    padding: 5px 10px 5px 10px;
+  }
+  .cont-card-left-home {
+    padding: 5px 5px 5px 10px;
+    /* height: 530px; */
+    height: 100%;
+    padding-top: 30px;
+    /* background-color: aquamarine; */
+  }
+  .cont-cards-home {
+    height: 300px;
+    padding: 0 5px 0 5px;
+    /* background-color: cornflowerblue; */
+  }
+  .cont-card-right-home {
+    padding: 5px 10px 5px 5px;
+    /* height: 530px; */
+    /* background-color: darkgoldenrod; */
+    padding-top: 30px;
+  }
+  .cont-table-home-jobs {
+    height: 530px;
+    /* background-color: darkblue; */
+    padding: 30px 5px 5px 5px;
+  }
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .conteiner-home {
+    /* background-color: brown; */
+    height: 100%;
+
+    min-height: 850px;
+    padding-bottom: 60px;
+  }
+  .cont-home-big {
+    /* min-height: 1900px; */
+    /* background-color: brown; */
+  }
+  .cont-header-home {
+    /* background-color: cadetblue; */
+    height: 70px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  .cont-card-perfil-home {
+    /* background-color: chocolate; */
+    height: 180px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  .cont-cards-home {
+    height: 300px;
+    /* background-color: cornflowerblue; */
+    padding: 5px;
+  }
+
+  .cont-table-home-jobs {
+    height: 530px;
+    /* background-color: darkblue; */
+    padding: 30px 5px 5px 5px;
+  }
+
+  .cont-card-left-home {
+    padding: 30px 5px 5px 10px;
+    height: 100%;
+  }
+
+  .cont-card-right-home {
+    padding: 30px 10px 5px 5px;
+    /* height: 530px; */
+    /* background-color: darkgoldenrod; */
+  }
+
+  .sub-cont-cards-home {
+    /* background-color: darkgoldenrod; */
+    height: 100%;
+  }
+
+  .items-cards-home {
+    padding: 5px;
+  }
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .conteiner-home {
+    /* background-color: brown; */
+    height: 100%;
+    width: 100%;
+    padding-top: 75px;
+    min-height: 850px;
+    padding-bottom: 70px;
+  }
+  .cont-home-big {
+    min-height: 2950px;
+    /* background-color: brown; */
+  }
+  .cont-header-home {
+    /* background-color: cadetblue; */
+    height: 100px;
+    padding: 5px;
+  }
+
+  .cont-card-perfil-home {
+    /* background-color: chocolate; */
+    height: 420px;
+    padding: 5px;
+  }
+
+  .cont-cards-home {
+    height: 600px;
+    /* background-color: cornflowerblue; */
+  }
+
+  .cont-table-home-jobs {
+    height: 500px;
+    /* background-color: darkblue; */
+    padding: 5px;
+  }
+
+  .cont-card-left-home {
+    padding: 5px;
+
+    height: 500px;
+  }
+  .adns-home-xs {
+    min-height: 500px;
+    height: inherit;
+  }
+
+  .cont-card-right-home {
+    padding: 5px;
+    /* min-height: 500px; */
+    height: 500px;
+    /* background-color: darkgoldenrod; */
+  }
+  .trabajos-home-xs {
+    min-height: 500px;
+    height: inherit;
+  }
+  .sub-cont-cards-home {
+    /* background-color: darkgoldenrod; */
+    height: 100%;
+  }
+
+  .items-cards-home {
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

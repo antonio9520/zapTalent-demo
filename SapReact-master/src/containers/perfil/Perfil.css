@@ -1,0 +1,448 @@
+.cont-perfil {
+  width: 100%;
+  max-width: 1200px;
+}
+.cont-perfil-big {
+  /* background-color: white; */
+  height: 107vh;
+}
+
+/* Grid MUI */
+.conteiner-mu-perfil {
+  /* background-color: white; */
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 1000px;
+  width: 100%;
+  padding-top: 75px;
+  overflow: visible;
+}
+
+.item-header-mu-perfil {
+  height: 8%;
+  padding: 10px 10px 5px 10px;
+  display: flex;
+  align-items: center;
+  /* background-color: rosybrown; */
+}
+
+.item-left-mui-perfil {
+  height: 92%;
+  /* background-color: saddlebrown; */
+}
+
+.item-right-mui-perfil {
+  height: 92%;
+  /* background-color: seagreen; */
+}
+
+.item-right-1-mui-perfil {
+  height: 50%;
+  padding: 5px 10px 5px 5px;
+  /* border: 1px solid red; */
+}
+
+.item-right-12-mui-prtfil {
+  height: 50%;
+  padding: 5px 10px 10px 5px;
+  /* background-color: springgreen; */
+}
+
+.sub-container-mui-perfil {
+  height: 100%;
+  /* background-color: blue; */
+}
+
+.sub-item-left-mui-left {
+  height: 80%;
+  padding: 5px 5px 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border-radius: 1px solid black; */
+}
+
+.sub-item-right-mui-perfil {
+  height: 80%;
+  padding: 5px;
+  /* background-color: brown; */
+}
+
+.sub-item-bottom-mui-perfil {
+  height: 20%;
+  padding: 5px 5px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: burlywood; */
+}
+.item-right-ss-mui-perfil {
+  height: 100%;
+  /* background-color: rgb(87, 95, 79); */
+}
+.item-right-1-mui-perfil-2 {
+  height: 100%;
+  /* max-height: 600px; */
+  padding: 5px 10px 5px 5px;
+  /* background-color: lightcoral; */
+}
+.item-right-1-mui-perfil-null {
+  padding: 5px 10px 5px 5px;
+  height: 50%;
+  /* background-color: lightsalmon; */
+}
+.item-right-1-mui-perfil-null-2 {
+  padding: 5px 10px 5px 5px;
+  height: 500px;
+}
+.btn-cv-perfil-fb {
+  position: absolute !important;
+  right: 10px;
+  bottom: 40px;
+  background-color: var(--blue-primary) !important;
+}
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+  
+
+  .conteiner-mu-perfil {
+    /* max-width: 900px; */
+    height: 100%;
+    max-height: inherit;
+    width: 100%;
+    padding-top: 55px;
+    padding-bottom: 50px;
+    overflow: visible;
+    /* background-color: coral; */
+  }
+  .cont-perfil-big {
+    height: 100%;
+    /* background-color: cornflowerblue; */
+    /* padding-bottom: 150px; */
+  }
+  .item-header-mu-perfil {
+    height: 80px;
+    padding: 10px 10px 5px 10px;
+    display: flex;
+    align-items: center;
+  }
+  /* cardperfil */
+  .item-left-mui-perfil {
+    height: 810px;
+    /* background-color: rgb(226, 103, 14); */
+  }
+  /* card  */
+  .item-right-mui-perfil {
+    height: 100%;
+    /* background-color: seagreen;  */
+  }
+  .cont-perfil {
+    width: 100%;
+    max-width: 1200px;
+  }
+  .item-right-1-mui-perfil-2 {
+    max-height: inherit;
+  }
+  /* cards  */
+  .item-right-1-mui-perfil {
+    height: 100%;
+    padding: 5px 5px 5px 10px;
+    /* border: 1px solid rgb(75, 15, 15);  */
+  }
+  .item-right-1-mui-perfil-null {
+    padding: 5px 5px 5px 10px;
+    height: 500px;
+    /* background-color: lightcoral; */
+  }
+  .item-right-1-mui-perfil-null-2 {
+    padding: 5px;
+    height: 500px;
+    /* background-color: lawngreen; */
+  }
+  .sub-item-bottom-mui-perfil {
+    padding: 5px 10px 5px 10px;
+
+    /* background-color: burlywood; */
+  }
+  .sub-item-right-mui-perfil {
+    height: 80%;
+    /* padding: 0px 0px 5px 10px; */
+    /* background-color: brown; */
+  }
+  .item-right-12-mui-prtfil {
+    height: 500px;
+    padding: 5px 10px 5px 5px;
+    /* background-color: lawngreen; */
+  }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+  .conteiner-mu-perfil {
+    max-width: 900px;
+    height: 100%;
+    max-height: inherit;
+    width: 100%;
+    padding-top: 55px;
+    padding-bottom: 50px;
+    overflow: visible;
+    /* background-color: coral; */
+  }
+  .cont-perfil-big {
+    height: 100%;
+    /* background-color: cornflowerblue; */
+    /* padding-bottom: 150px; */
+  }
+  .item-header-mu-perfil {
+    height: 80px;
+    padding: 10px 10px 5px 10px;
+    display: flex;
+    align-items: center;
+  }
+  /* cardperfil */
+  .item-left-mui-perfil {
+    height: 810px;
+    /* background-color: rgb(226, 103, 14); */
+  }
+  /* card  */
+  .item-right-mui-perfil {
+    height: 100%;
+    /* background-color: seagreen;  */
+  }
+  .cont-perfil {
+    width: 100%;
+    max-width: 1200px;
+  }
+  .item-right-1-mui-perfil-2 {
+    max-height: inherit;
+  }
+  /* cards  */
+  .item-right-1-mui-perfil {
+    height: 100%;
+    padding: 5px 5px 5px 10px;
+    /* border: 1px solid rgb(75, 15, 15);  */
+  }
+  .item-right-1-mui-perfil-null {
+    padding: 5px 5px 5px 10px;
+    height: 500px;
+    /* background-color: lightcoral; */
+  }
+  .item-right-1-mui-perfil-null-2 {
+    padding: 5px;
+    height: 500px;
+    /* background-color: lawngreen; */
+  }
+  .sub-item-bottom-mui-perfil {
+    padding: 5px 10px 5px 10px;
+
+    /* background-color: burlywood; */
+  }
+  .sub-item-right-mui-perfil {
+    height: 80%;
+    /* padding: 0px 0px 5px 10px; */
+    /* background-color: brown; */
+  }
+  .item-right-12-mui-prtfil {
+    height: 500px;
+    padding: 5px 10px 5px 5px;
+    /* background-color: lawngreen; */
+  }
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .conteiner-mu-perfil {
+    /* background-color: white; */
+    height: inherit;
+    width: 100%;
+    padding-top: 65px;
+    padding-bottom: 60px;
+    overflow: visible;
+    max-height: 5000px;
+  }
+  .cont-perfil-big {
+    height: inherit;
+    padding-bottom: 45px;
+    width: 100%;
+    /* background-color: maroon; */
+  }
+  .cont-perfil {
+    /* height: 1470px; */
+  }
+  .item-right-mui-perfil {
+    height: 100%;
+  }
+
+  .item-right-1-mui-perfil {
+    height: 100%;
+    padding: 5px 10px 5px 5px;
+    /* background-color: mediumaquamarine; */
+  }
+
+  .item-right-12-mui-prtfil {
+    height: 100%;
+    padding: 5px 10px 5px 5px;
+    /* background-color: rgb(32, 145, 145); */
+  }
+  .item-header-mu-perfil {
+    height: 80px;
+    padding: 10px 10px 5px 10px;
+    display: flex;
+    align-items: center;
+  }
+  /* cardperfil */
+  .item-left-mui-perfil {
+    height: 810px;
+  }
+  /* card */
+  .item-right-mui-perfil {
+    padding-bottom: 30px;
+    height: 100%;
+    /* background-color: lightblue; */
+  }
+  .cont-perfil {
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  /* cards */
+  .item-right-1-mui-perfil {
+    height: 100%;
+    padding: 5px 5px 5px 10px;
+    /* background-color: lightcoral; */
+  }
+  .item-right-1-mui-perfil-null {
+    padding: 5px 5px 5px 10px;
+    height: 500px;
+    /* background-color: lightcoral; */
+  }
+  .item-right-1-mui-perfil-null-2 {
+    padding: 5px 10px 5px 5px;
+    height: 500px;
+    /* background-color: lawngreen; */
+  }
+  .sub-item-bottom-mui-perfil {
+    padding: 5px 10px 5px 10px;
+
+    /* background-color: burlywood; */
+  }
+  .sub-item-right-mui-perfil {
+    height: 80%;
+    padding: 0px 10px 5px 5px;
+    /* background-color: brown; */
+  }
+  .item-right-12-mui-prtfil {
+    height: 500px;
+    padding: 5px 10px 5px 5px;
+    /* background-color: lawngreen; */
+  }
+  .btn-cv-perfil-fb {
+    right: 2px;
+    bottom: inherit;
+    top: 120px;
+  }
+  .item-right-1-mui-perfil-2 {
+    max-height: inherit;
+  }
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  /* new style */
+  .conteiner-mu-perfil {
+    /* background-color: rgb(141, 37, 37); */
+    height: inherit;
+    width: 100vw;
+
+    padding-top: 65px;
+    padding-bottom: 50px;
+    overflow: auto;
+
+    max-height: 5000px;
+    padding: 65px 50px 50px 50px;
+  }
+  .cont-perfil-big {
+    height: 100%;
+    width: 100%;
+    /* max-width: 99vw; */
+    margin: 0;
+    padding-bottom: 60px;
+    /* background-color: lawngreen; */
+  }
+  .cont-perfil {
+    /* background-color: lawngreen; */
+  }
+  .item-right-mui-perfil {
+    height: 100%;
+    background-color: khaki;
+    padding: 0;
+  }
+
+  .item-right-1-mui-perfil {
+    height: 100%;
+    padding: 5px;
+    /* background-color: rgb(139, 189, 223); */
+  }
+
+  .item-header-mu-perfil {
+    height: 80px;
+    padding: 5px;
+  }
+  /* cardperfil */
+  .item-left-mui-perfil {
+    height: 100%;
+    /* background-color: lightseagreen; */
+  }
+  .sub-item-left-mui-left {
+    /* background-color: lime; */
+    height: 600px;
+    padding: 5px;
+  }
+
+  /* cards */
+
+  .item-right-1-mui-perfil-2 {
+    height: 100%;
+    padding: 5px 5px 30px 5px;
+  }
+  /* bottom */
+  .sub-item-bottom-mui-perfil {
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: burlywood; */
+  }
+  .sub-item-right-mui-perfil {
+    height: 100%;
+    padding: 5px;
+    /* background-color: brown; */
+  }
+
+  .item-right-1-mui-perfil-null {
+    padding: 5px;
+    height: 500px;
+  }
+  .item-right-1-mui-perfil-null-2 {
+    padding: 5px 5px 30px 5px;
+    height: 500px;
+  }
+  .item-right-12-mui-prtfil {
+    height: 500px;
+    padding: 5px 5px 30px 5px;
+    /* background-color: lawngreen; */
+  }
+  .btn-cv-perfil-fb {
+    /* right: -2px; */
+    bottom: inherit;
+    top: 120px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .conteiner-mu-perfil {
+    padding: 65px 5px 50px 5px;
+  }
+}

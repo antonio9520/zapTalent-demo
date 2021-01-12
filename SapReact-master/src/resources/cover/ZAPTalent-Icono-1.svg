@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88" height="88" viewBox="0 0 88 88">
+  <defs>
+    <clipPath id="clip-ZAPTalent-Icono-1">
+      <rect width="88" height="88"/>
+    </clipPath>
+  </defs>
+  <g id="ZAPTalent-Icono-1" clip-path="url(#clip-ZAPTalent-Icono-1)">
+    <g id="_861164" data-name="861164" transform="translate(1 -5)">
+      <g id="Grupo_64" data-name="Grupo 64" transform="translate(0 0)">
+        <g id="Grupo_63" data-name="Grupo 63">
+          <path id="Trazado_113" data-name="Trazado 113" d="M101.1,40.072a1.533,1.533,0,0,0-1.521-.018L95.357,42.4,94.187,7.49A1.533,1.533,0,0,0,92.654,6H81.923A1.533,1.533,0,0,0,80.39,7.49L78.961,51.512l-4.7,2.606V41.393a1.533,1.533,0,0,0-2.277-1.34L46.662,54.118V41.393a1.533,1.533,0,0,0-2.277-1.34L16.79,55.384a1.533,1.533,0,0,0-.79,1.34V90.452a1.533,1.533,0,0,0,1.533,1.533H100.32a1.533,1.533,0,0,0,1.533-1.533V41.393A1.533,1.533,0,0,0,101.1,40.072ZM83.413,9.066h7.751l.089,3.066H83.325ZM83.237,15.2h8.1l1,28.876-10.261,5.7ZM57.393,88.919h-9.2V81.254h9.2Zm12.265,0h-9.2V81.254h9.2Zm29.129,0H72.724v-9.2a1.533,1.533,0,0,0-1.533-1.533H46.662a1.533,1.533,0,0,0-1.533,1.533v9.2H19.066V57.627L43.6,44V56.724a1.533,1.533,0,0,0,2.277,1.34L71.191,44V56.724a1.533,1.533,0,0,0,2.277,1.34l14.459-8.032L94.647,46.3,98.787,44Z" transform="translate(-16 0)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Grupo_66" data-name="Grupo 66" transform="translate(7.665 61.323)">
+        <g id="Grupo_65" data-name="Grupo 65">
+          <path id="Trazado_114" data-name="Trazado 114" d="M69.8,320H57.533A1.533,1.533,0,0,0,56,321.533v6.132a1.533,1.533,0,0,0,1.533,1.533H69.8a1.533,1.533,0,0,0,1.533-1.533v-6.132A1.533,1.533,0,0,0,69.8,320Zm-1.533,6.132h-9.2v-3.066h9.2Z" transform="translate(-56 -320)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Grupo_68" data-name="Grupo 68" transform="translate(35.261 61.323)">
+        <g id="Grupo_67" data-name="Grupo 67">
+          <path id="Trazado_115" data-name="Trazado 115" d="M213.8,320H201.533A1.533,1.533,0,0,0,200,321.533v6.132a1.533,1.533,0,0,0,1.533,1.533H213.8a1.533,1.533,0,0,0,1.533-1.533v-6.132A1.533,1.533,0,0,0,213.8,320Zm-1.533,6.132h-9.2v-3.066h9.2Z" transform="translate(-200 -320)" fill="#fff"/>
+        </g>
+      </g>
+      <g id="Grupo_70" data-name="Grupo 70" transform="translate(62.856 61.323)">
+        <g id="Grupo_69" data-name="Grupo 69">
+          <path id="Trazado_116" data-name="Trazado 116" d="M357.8,320H345.533A1.533,1.533,0,0,0,344,321.533v6.132a1.533,1.533,0,0,0,1.533,1.533H357.8a1.533,1.533,0,0,0,1.533-1.533v-6.132A1.533,1.533,0,0,0,357.8,320Zm-1.533,6.132h-9.2v-3.066h9.2Z" transform="translate(-344 -320)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

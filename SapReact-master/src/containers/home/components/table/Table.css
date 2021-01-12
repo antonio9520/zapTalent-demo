@@ -1,0 +1,90 @@
+.cont-table {
+  /* background-color: var(--white); */
+  height: 100%;
+  border-radius: 5px;
+  /* box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2); */
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.cont-top-table-home {
+  /* background-color: tomato; */
+  flex: 1;
+  display: flex;
+  padding: 5px;
+}
+
+.cont-center-table-home {
+  /* background-color: teal; */
+  flex: 6;
+  overflow: auto;
+  padding: 5px 10px;
+}
+
+.cont-card-job-table {
+  padding: 5px;
+}
+
+.titulo-table-home {
+  /* background-color: blueviolet; */
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.titulo-table-home p {
+  color: var(--blue-primary);
+  margin: 0;
+  width: 200px;
+  font-weight: 500;
+}
+.cont-search-table-home {
+  /* background-color: chocolate; */
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+  .cont-top-table-home {
+    /* background-color: tomato; */
+    flex: 1;
+    display: flex;
+    padding: 5px;
+  }
+  .titulo-table-home {
+    /* background-color: blueviolet; */
+    padding-left: 15px;
+  }
+  .titulo-table-home p {
+    font-size: 18px;
+
+    width: inherit;
+  }
+  .cont-search-table-home {
+    /* background-color: chocolate; */
+    padding-right: 15px;
+    justify-content: flex-end;
+  }
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-card-job-table {
+    padding: 5px;
+    /* background-color: lightcoral; */
+    min-width: 600px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

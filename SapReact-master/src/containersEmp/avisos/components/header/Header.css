@@ -1,0 +1,37 @@
+.header-avisos-emp {
+  display: flex;
+  background-color: var(--white);
+  border-radius: 5px;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 60px;
+  padding: 0 30px 0 30px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.left-header-avisos-emp {
+  /* background-color: cadetblue; */
+  display: flex;
+  align-items: center;
+}
+.left-header-avisos-emp p {
+  margin: 0;
+  font-size: 20px;
+  color: var(--blue-primary);
+}
+.right-header-avisos-emp {
+  /* background-color: chocolate; */
+  display: flex;
+
+  align-items: center;
+}
+
+.right-header-avisos-emp p {
+  margin: 0;
+}
+
+.btn-add-avisos-empresas {
+  background-color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  color: var(--white) !important;
+}

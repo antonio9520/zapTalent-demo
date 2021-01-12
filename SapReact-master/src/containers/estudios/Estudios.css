@@ -1,0 +1,54 @@
+.conteiner-cards-estudio {
+  width: 100%;
+  /* min-height: 100vh; */
+  /* background-color: aquamarine; */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 40px 20px 5px;
+}
+
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+ 
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .conteiner-cards-estudio {
+    /* background-color: lightcoral; */
+    padding-right: 0 ;
+    justify-content: space-evenly;
+    padding-bottom: 80px;
+  }
+  .icon-btn-add-trabajos {
+    top: 90px;
+    right: 2%;
+  }
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .conteiner-cards-estudio {
+    /* background-color: lightcoral; */
+    padding-right: 0 ;
+    justify-content: space-evenly;
+    padding-bottom: 80px;
+  }
+  .icon-btn-add-trabajos {
+    top: 90px;
+    
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+}
+

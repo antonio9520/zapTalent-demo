@@ -1,0 +1,12 @@
+export const HOME = "/home";
+export const OFERTAS = "/ofertas-laborales";
+export const ESTUDIOS = "/estudios";
+export const CERTIFICACIONES = "/certificaciones";
+export const SAP_ADN = "/sap-adn";
+export const TRABAJOS = "/trabajos";
+export const LOGIN = "/login-register";
+export const PERFIL = "/perfil";
+export const COVER = "/inicio";
+export const LOGIN_FAKE = "/";
+export const EMPRESAS = "/empresas"
+export const RESTABLECER = "/restablecer/:token"

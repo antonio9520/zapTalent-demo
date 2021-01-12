@@ -1,0 +1,19 @@
+.cont-search-bar {
+    background-color: var(--blue-extralight);
+    width: 100%;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid var(--blue-primary);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    max-width: 400px;
+  }
+  
+  .cont-search-bar input {
+    background-color: transparent;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    width: 80%;
+  }

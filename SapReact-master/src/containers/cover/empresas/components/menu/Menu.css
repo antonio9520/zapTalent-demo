@@ -1,0 +1,136 @@
+.menu-emp {
+  background-color: var(--white);
+  margin: 0;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  padding: 0 120px;
+  align-items: center;
+  box-shadow: 1px 0 5px 1px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.icon-menu-responsive {
+  display: none !important;
+}
+.menu-cover {
+  display: flex;
+  margin: 0;
+  list-style: none;
+}
+
+.menu-cover li {
+  margin: 0 10px;
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+}
+.p-menu {
+  margin: 0;
+  font-size: 14px;
+  color: var(--blue-primary);
+}
+
+.menu-emp img {
+  /* background-color: salmon; */
+  height: 60px;
+}
+
+.btn-empresas-menu {
+  background-color: #ffb100 !important;
+  border-radius: 50px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  margin: 0 !important;
+  justify-content: center !important;
+}
+
+.p-menu-empresas {
+  margin: 0;
+  font-size: 14px;
+  color: var(--white);
+}
+/*RESPONSIVO*/
+.menu-cover-res {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+  /* border: 1px solid rgb(50, 30, 124); */
+}
+.menu-cover-res li {
+  margin: 20px 20px 0 20px;
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+}
+.cont-img-drawer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 30px 10px 30px;
+}
+.img-drawer {
+  width: 150px;
+}
+.p-menu-res {
+  margin: 0;
+  font-size: 16px;
+  color: var(--blue-primary);
+}
+/*LapTop*/
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+}
+
+/*  Tablets in portrait mode, large display smartphones landscape mode */
+
+@media only screen and (max-width: 1023px) {
+  .menu-cover {
+    display: none;
+  }
+  .cont-menu-cover {
+    background-color: var(--white);
+    margin: 0;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    padding: 0 20px;
+    align-items: center;
+    box-shadow: 1px 0 5px 1px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+  .icon-menu-responsive {
+    display: flex !important;
+    color: var(--blue-primary) !important;
+  }
+  .p-menu-empresas {
+    margin: 0;
+    font-size: 16px;
+    color: var(--white);
+  }
+  .btn-empresas-menu {
+    background-color: #ffb100 !important;
+    border-radius: 50px !important;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    margin: 30px 20px 20px 20px !important;
+    justify-content: center !important;
+    position: absolute !important;
+    bottom: 0;
+    width: 175px !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+}
+
+/*  Smartphones in landscape mode */
+
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+}
+
+/*  Smartphones in portrait mode  */
+
+@media only screen and (max-width: 420px) {
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-Icon-user-direccion">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="Icon-user-direccion" clip-path="url(#clip-Icon-user-direccion)">
+    <g id="Grupo_2" data-name="Grupo 2" transform="translate(17 5)">
+      <g id="Grupo_1405" data-name="Grupo 1405" transform="translate(0 0)">
+        <path id="Trazado_519" data-name="Trazado 519" d="M81.3,0A33.255,33.255,0,0,0,48.08,33.218c0,6.03,2.7,12.515,2.818,12.789a53.57,53.57,0,0,0,3.84,7.181L77.513,87.7a4.332,4.332,0,0,0,7.57,0L107.86,53.187a53.346,53.346,0,0,0,3.84-7.181c.113-.272,2.816-6.757,2.816-12.789A33.255,33.255,0,0,0,81.3,0Zm26.8,44.49a49.087,49.087,0,0,1-3.5,6.546L81.819,85.547c-.449.682-.592.682-1.041,0L58,51.036a49.107,49.107,0,0,1-3.5-6.548c-.033-.08-2.513-6.05-2.513-11.271a29.31,29.31,0,0,1,58.62,0C110.607,38.447,108.122,44.432,108.1,44.49Z" transform="translate(-48.08)" fill="#9a99a1" stroke="#fff" stroke-width="0.2"/>
+        <g id="Grupo_1403" data-name="Grupo 1403" transform="translate(13.868 13.792)">
+          <ellipse id="Elipse_106" data-name="Elipse 106" cx="1.769" cy="1.769" rx="1.769" ry="1.769" transform="translate(18.579 15.925)" fill="#9a99a1" stroke="#fff" stroke-width="0.2"/>
+          <path id="Trazado_520" data-name="Trazado 520" d="M115.291,98.388h26.541a1.77,1.77,0,0,0,1.769-1.769V79.991l2.387,2.047a1.77,1.77,0,0,0,2.3-2.687L129.713,63.426a1.769,1.769,0,0,0-2.3,0L108.831,79.351a1.77,1.77,0,0,0,2.3,2.687l2.387-2.047V96.619a1.769,1.769,0,0,0,1.769,1.769Zm1.769-21.43,11.5-9.858,11.5,9.858V94.85h-9.732V87.772a1.769,1.769,0,0,0-3.539,0V94.85H117.06Z" transform="translate(-108.213 -63)" fill="#9a99a1" stroke="#fff" stroke-width="0.2"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

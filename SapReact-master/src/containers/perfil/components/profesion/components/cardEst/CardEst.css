@@ -1,0 +1,61 @@
+.card-est-perfil-pro {
+  background-color: white;
+  box-shadow: 8px 5px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding: 20px 20px;
+  margin: 0 0 10px 0;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+.card-est-perfil-pro-active {
+  background: var(--degradado-blue);
+  box-shadow: 8px 5px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding: 20px 20px;
+  margin: 0 0 10px 0;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+.p1-card-est-perfil-pro {
+  color: var(--gray-text);
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.p1-card-est-perfil-pro-active {
+  color: var(--white);
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+
+.p2-card-est-perfil-pro {
+  color: var(--blue-primary);
+  margin: 0;
+  margin: 10px 0;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+.p2-card-est-perfil-pro-active {
+  color: var(--white);
+  margin: 0;
+  margin: 10px 0;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+.cont-exp-card-est-pro {
+  background-color: var(--light-blue);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
+}
+
+.cont-exp-card-est-pro p {
+  margin: 0;
+  font-size: 12px;
+}
+

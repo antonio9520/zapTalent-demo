@@ -1,0 +1,83 @@
+.cont-reg-d {
+  background-color: var(--white);
+  border-radius: 5px;
+  height: 500px;
+  width: 500px;
+  padding: 20px;
+
+  padding: 40px 80px;
+  display: flex;
+  flex-direction: column;
+  /* background-color: burlywood; */
+}
+
+.cont-reg-d div:nth-child(1) {
+  
+  display: flex;
+  justify-content: center;
+  flex: 1.5;
+  /* background-color: aquamarine; */
+}
+.logo-login-re-email{
+  /* width: 150px; */
+  height: 80px;
+ 
+}
+.cont-reg-d div:nth-child(2) {
+ 
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  align-items: center;
+/* background-color: blueviolet; */
+}
+.cont-reg-d div:nth-child(3) {
+  
+  display: flex;
+  text-align: center;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: brown; */
+}
+.cont-reg-d div:nth-child(3) p:nth-child(1) {
+ 
+  display: flex;
+  text-align: center;
+  /* flex: 1; */
+  color: var(--gray-text);
+  margin: 0;
+  font-size: 12px;
+}
+.cont-reg-d div:nth-child(3) p:nth-child(2) {
+  
+  display: flex;
+  text-align: center;
+  /* flex: 1; */
+  color: var(--gray-text);
+  margin: 0;
+  font-size: 12px;
+}
+
+.reg-bottom-d2 {
+  /* background-color: rgb(32, 46, 170); */
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-end;
+  /* align-items: center; */
+}
+
+.btn-rut-reg-d2 {
+    background-color: var(--blue-primary) !important;
+    max-width: 120px !important;
+    height: 40px !important;
+    border-radius: 5px !important;
+    justify-content: center !important;
+}
+
+.btn-rut-reg-d2 p {
+ 
+  font-size: 12px;
+}

@@ -1,0 +1,51 @@
+.cont-rrss-perfil {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 30px 100px 30px;
+  width: 98%;
+  max-width: 450px;
+  position: relative;
+}
+
+.cont-rrss-perfil h1 {
+  font-weight: 200;
+  color: var(--blue-primary);
+  font-size: 28px;
+}
+.input-adorment-perfil-rrss p{
+  font-size: 12px !important;
+  margin-bottom: 4px;
+}
+.cont-input-rrss-perfil {
+  /* background-color: seagreen; */
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 30px;
+}
+.icon-modal-rrss-perfil {
+  color: var(--light-blue);
+  margin-right: 10px;
+}
+
+.cont-btn-rrss-perfil {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  bottom: 20px;
+  /* background-color: seagreen; */
+  right: 0;
+  padding: 0 30px;
+}
+
+.btn-delete-rrss-perfil {
+  background-color: var(--error) !important;
+  color: var(--white) !important;
+  width: 30px;
+  height: 30px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.2);
+}

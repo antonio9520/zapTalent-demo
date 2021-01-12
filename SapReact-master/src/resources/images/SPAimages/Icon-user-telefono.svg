@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <clipPath id="clip-Icon-user-telefono">
+      <rect width="100" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="Icon-user-telefono" clip-path="url(#clip-Icon-user-telefono)">
+    <g id="Grupo_1" data-name="Grupo 1" transform="translate(25 6)">
+      <path id="Trazado_394" data-name="Trazado 394" d="M155.053,0H116.182a5.255,5.255,0,0,0-5.249,5.249v76.62a5.255,5.255,0,0,0,5.249,5.249h38.869a5.255,5.255,0,0,0,5.249-5.247V5.249A5.255,5.255,0,0,0,155.053,0Zm-30,2.9h21.122v1.2a1.1,1.1,0,0,1-1.1,1.1H126.158a1.1,1.1,0,0,1-1.1-1.1Zm30,81.31H116.182a2.347,2.347,0,0,1-2.345-2.344V5.249A2.347,2.347,0,0,1,116.182,2.9h5.97v1.2a4.009,4.009,0,0,0,4,4h18.919a4.01,4.01,0,0,0,4.006-4V2.9h5.97A2.348,2.348,0,0,1,157.4,5.249V17h0V66.343h0V81.869h0A2.347,2.347,0,0,1,155.053,84.214Z" transform="translate(-110.933)" fill="#9a99a1"/>
+      <path id="Trazado_395" data-name="Trazado 395" d="M187.784,448.6H156.876a1.7,1.7,0,1,0,0,3.4h30.908a1.7,1.7,0,1,0,0-3.4Z" transform="translate(-147.646 -372.268)" fill="#9a99a1"/>
+    </g>
+  </g>
+</svg>

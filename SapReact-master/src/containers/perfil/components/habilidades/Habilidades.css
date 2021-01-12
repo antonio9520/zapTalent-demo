@@ -1,0 +1,117 @@
+.cont-hab-perfil {
+  flex: 1;
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+}
+
+.left-hab-perfil {
+  flex: 3;
+  /* background-color: royalblue; */
+  background-image: url("../../../../resources/images/brand/SAPTalent-card-habilities-man-newmobile.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.left-hab-perfil-f {
+  flex: 3;
+  /* background-color: royalblue; */
+  background-image: url("../../../../resources/images/brand/SAPTalent-card-habilities-woman-new.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.overlay-hab-perfil {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 59%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+.center-hab-perfil {
+  flex: 2;
+  /* background-color: salmon; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+}
+
+.center-hab-perfil p {
+  margin: 0;
+  font-size: 20px;
+  color: var(--gray-text);
+}
+
+.right-hab-perfil {
+  flex: 1;
+  /* background-color: rgb(53, 35, 19); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overlay-hab-perfil-xs {
+  display: none;
+}
+
+.btn-edit-hab-perfil {
+  background-color: var(--blue-primary) !important;
+  color: var(--white) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-hab-perfil {
+    background-image: url("../../../../resources/images/brand/SAPTalent-card-habilities-man-newmobile.png");
+    height: 150px;
+    background-size: cover;
+    position: relative;
+  }
+  .left-hab-perfil {
+    flex: 3;
+    /* background-color: royalblue; */
+    background-image: none;
+    display: none;
+  }
+
+  .overlay-hab-perfil-xs {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.555);
+    width: 100%;
+    height: 100%;
+    display: inherit;
+  }
+  .center-hab-perfil p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(95, 95, 95);
+    z-index: 9;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

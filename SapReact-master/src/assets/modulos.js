@@ -1,0 +1,227 @@
+export const modulos = [
+  {
+    modulo: "FI",
+    desc: "Finanzas",
+    submodulos: [
+      { submodulo: "GL", desc: "Contabilidad general" },
+      { submodulo: "AP", desc: "Cuentas por pagar" },
+      { submodulo: "AR", desc: "Cuentas por cobrar" },
+      { submodulo: "AM", desc: "Administración de activos" },
+      { submodulo: "CA", desc: "Administración de contratos" },
+      { submodulo: "BL", desc: "Contabilidad bancaria" },
+      { submodulo: "TAX", desc: "Impuestos" },
+      { submodulo: "AA", desc: "Contabilidad de activos fijos" },
+      { submodulo: "SL", desc: "Contabilidad financiera especial" },
+      { submodulo: "FM", desc: "Gestión presupuestaria" },
+      { submodulo: "TM", desc: "Gestión de viajes" },
+      { submodulo: "TR", desc: "Tesorería" },
+      { submodulo: "LA", desc: "Contabilidad de arrendamiento" },
+    ],
+  },
+  {
+    modulo: "CO",
+    desc: "Gestión de costes",
+    submodulos: [
+      { submodulo: "CCA", desc: "Contabilidad por centros de costos" },
+      { submodulo: "CEL", desc: "Contabilidad de elementos de costos" },
+      { submodulo: "PC", desc: "Control de costes del producto" },
+      { submodulo: "PA", desc: "Cuenta de resultado" },
+      { submodulo: "OPA", desc: "Ordenes internas" },
+      { submodulo: "ABC", desc: "Costos basados en actividades" },
+      { submodulo: "OM", desc: "Control de gastos generales" },
+      { submodulo: "EC", desc: "Contabilidad de centros de beneficios" },
+    ],
+  },
+  {
+    modulo: "SD",
+    desc: "Ventas y distribución",
+    submodulos: [
+      {
+        submodulo: "BF",
+        desc:
+          "Determinación de precio y condiciones, Costes adicionales, Gestión de créditos y riesgos, Clasificación de materiales, Determinación de mensajes",
+      },
+      { submodulo: "MD", desc: "Datos maestros" },
+      {
+        submodulo: "SLS",
+        desc:
+          "Gestión de Ventas, Planes de entregas para proveedores y gestión de servicios al cliente, Comercio Exterior / Aduanas, Facturación, Intercambio electrónico de datos / Interfase IDOC",
+      },
+      { submodulo: "LE-SHP", desc: "Gestión de expediciones" },
+      { submodulo: "TRA", desc: "Transportes" },
+      { submodulo: "FTT", desc: "Comercio exterior" },
+      { submodulo: "BIL", desc: "Facturación" },
+      { submodulo: "CAS", desc: "Soporte de ventas" },
+      { submodulo: "EDI", desc: "Intercambio electronico de datos" },
+      { submodulo: "IS", desc: "Sistema de información" },
+    ],
+  },
+  {
+    modulo: "HCM",
+    desc: "Gestión de recursos humanos",
+    submodulos: [
+      { submodulo: "PA", desc: "Administración de personal" },
+      { submodulo: "EMP", desc: "Datos maestros del personal" },
+      { submodulo: "PD", desc: "Desarrollo del personal" },
+      { submodulo: "PY", desc: "Nomina" },
+      { submodulo: "CM", desc: "Gestión de compensación" },
+      { submodulo: "PCP", desc: "Planificación de costo del personal" },
+      { submodulo: "EDD", desc: "Evaluación de desempeño" },
+      { submodulo: "TEM", desc: "Gestión de capacitación y eventos" },
+      { submodulo: "E-R", desc: "Reclutamiento" },
+      { submodulo: "ESS", desc: "Autoservicio información a empleados" },
+      { submodulo: "MSS", desc: "Autoservicio información a gerencia" },
+      { submodulo: "TRV", desc: "Gastos de viajes" },
+      { submodulo: "OM", desc: "Gestión de la organización" },
+      { submodulo: "BN", desc: "Beneficios" },
+      { submodulo: "EHS", desc: "Higiene y seguridad ambiental" },
+      { submodulo: "TIM", desc: "Gestión de tiempos" },
+      { submodulo: "IS", desc: "Sistema de información" },
+    ],
+  },
+  {
+    modulo: "MM",
+    desc: "Gestión de materiales",
+    submodulos: [
+      { submodulo: "CBP", desc: "Planificación de nesesidades sobre consumos" },
+      { submodulo: "PUR", desc: "Gestión de compras" },
+      { submodulo: "IM", desc: "Gestión del inventario e inventario" },
+      { submodulo: "IV", desc: "Verificación de facturas de logística" },
+      { submodulo: "SRV", desc: "Gestión de servicios externos" },
+      { submodulo: "EDI", desc: "Intercambio electronico de datos" },
+      { submodulo: "MRP", desc: "Planificación de necesidades de material" },
+      { submodulo: "IS", desc: "Sistema de información" },
+    ],
+  },
+  {
+    modulo: "PP",
+    desc: "Control y planificación de la producción",
+    submodulos: [
+      { submodulo: "REM", desc: "Fabricación repetitiva" },
+      { submodulo: "KAB", desc: "Kanban" },
+      { submodulo: "PM", desc: "Control de planta" },
+      { submodulo: "PI", desc: "Industria de procesos" },
+      { submodulo: "QM", desc: "Gestión de calidad" },
+      { submodulo: "E&HS", desc: "Gestión del medio ambiente" },
+      {
+        submodulo: "BD",
+        desc: "Datos basicos(Centro de trabajo-Hojas de ruta)",
+      },
+      { submodulo: "SOP", desc: "Gestión de la demanda" },
+      { submodulo: "MP", desc: "Plan maestro" },
+      { submodulo: "CRP", desc: "Plan de capacidades" },
+      { submodulo: "MPR", desc: "Planificación de nesesidades de material" },
+      { submodulo: "SFC", desc: "Ordenes de fabricación" },
+      { submodulo: "IS", desc: "Sistema de información" },
+    ],
+  },
+  {
+    modulo: "QM",
+    desc: "Gestión de calidad",
+    submodulos: [
+      { submodulo: "PT", desc: "Planificación de la calidad" },
+      { submodulo: "IM", desc: "Inspección de calidad" },
+      { submodulo: "QC", desc: "Control de calidad" },
+      { submodulo: "CA", desc: "Certificación de calidad" },
+      { submodulo: "QN", desc: "Notificaciones de calidad" },
+      { submodulo: "IT", desc: "Gestión de instrumentos de inspección" },
+      { submodulo: "PT", desc: "RP-Controles en logistica" },
+      { submodulo: "CR", desc: "Funciones generales" },
+      { submodulo: "IF", desc: "Interfaces" },
+    ],
+  },
+  {
+    modulo: "PM",
+    desc: "Mantenimiento del centro",
+    submodulos: [
+      { submodulo: "EQM", desc: "Objetos técnicos" },
+      { submodulo: "WOC", desc: "Procesos de mantenimiento" },
+      { submodulo: "PRM", desc: "Mantenimiento preventivo" },
+      { submodulo: "IS", desc: "Sistema de información" },
+      { submodulo: "WCM", desc: "Gestión del lugar de trabajo" },
+    ],
+  },
+  {
+    modulo: "CS",
+    desc: "Servicios al cliente",
+    submodulos: [
+      { submodulo: "IB", desc: "Gestión de objetos de servicios" },
+      {
+        submodulo: "MCB",
+        desc:
+          "Planificación de presupuesto para mantenimiento y servicio al cliente",
+      },
+    ],
+  },
+  {
+    modulo: "BI",
+    desc: "Bussiness Intelligence",
+    submodulos: [{ submodulo: "BI", desc: "Bussiness Intelligence" }],
+  },
+  {
+    modulo: "APO",
+    desc: "Demand Planning",
+    submodulos: [{ submodulo: "APO", desc: "Demand Planning" }],
+  },
+  {
+    modulo: "BPC",
+    desc: "Planificación y Consolidación",
+    submodulos: [{ submodulo: "BPC", desc: "Planificación y consolidación" }],
+  },
+  {
+    modulo: "PI",
+    desc: "Proceso de Integración",
+    submodulos: [{ submodulo: "PI", desc: "Proceso de integración" }],
+  },
+  {
+    modulo: "HANA",
+    desc: "HANA",
+    submodulos: [{ submodulo: "HANA", desc: "HANA" }],
+  },
+  {
+    modulo: "BASIS",
+    desc: "Administración de Servidores y Bases de Datos",
+    submodulos: [
+      {
+        submodulo: "BASIS",
+        desc: "Administración de servidores y bases de datos",
+      },
+    ],
+  },
+  {
+    modulo: "BW",
+    desc: "Bussiness wareHouse",
+    submodulos: [{ submodulo: "BW", desc: "Bussiness WareHouse" }],
+  },
+  {
+    modulo: "FIORI",
+    desc: "Desarrollo para Dispositivos Moviles",
+    submodulos: [
+      { submodulo: "FIORI", desc: "Desarrollo para dispositivos moviles" },
+    ],
+  },
+  {
+    modulo: "ABAP",
+    desc: "Programación SAP",
+    submodulos: [{ submodulo: "ABAP", desc: "Programación SAP" }],
+  },
+  {
+    modulo: "CRM",
+    desc: "Gestión de Clientes",
+    submodulos: [{ submodulo: "CRM", desc: "Gestión para clientes" }],
+  },
+  {
+    modulo: "NETWEAVER",
+    desc: "Diseño de Portales para Empresas",
+    submodulos: [
+      { submodulo: "NETWEAVER", desc: "Diseño de portales para empresas" },
+    ],
+  },
+  {
+    modulo: "SUCCESS FACTORS",
+    desc: "Desarrollo de Personas",
+    submodulos: [
+      { submodulo: "SUCCESS FACTORS", desc: "Desarrollo de personas" },
+    ],
+  },
+];

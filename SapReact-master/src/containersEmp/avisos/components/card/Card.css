@@ -1,0 +1,149 @@
+.card-avisos-empresas {
+  background-color: var(--white);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+  width: 49.5%;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 20px;
+  margin-top: 10px;
+  min-width: 570px;
+}
+.top-card-avisos-emp {
+  display: flex;
+  justify-content: space-between;
+}
+.fechas-card-avisos-emp {
+  /* background-color: cornflowerblue; */
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.fechas-card-avisos-emp p {
+  margin: 0 40px 0 10px;
+  font-size: 12px;
+  color: var(--gray-text);
+}
+
+.icon-calendar-avisos-emp {
+  color: var(--blue-primary) !important;
+}
+
+.left-card-avisos-emp .p1 {
+  color: var(--blue-primary);
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+.left-card-avisos-emp .p2 {
+  color: var(--blue-primary);
+  margin: 0;
+  margin-top: 5px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.left-card-avisos-emp .p3 {
+  color: var(--gray-text);
+  margin: 0;
+  font-size: 18px;
+  margin-top: 5px;
+}
+.anos-exp-card-avisos-emp {
+  background-color: #37cbba;
+  display: inline-block;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 3px;
+}
+.anos-exp-card-avisos-emp p {
+  margin: 0;
+  font-size: 12px;
+}
+.direccion-card-avisos-emp {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.direccion-card-avisos-emp p {
+  color: var(--gray-text);
+  font-size: 12px;
+  margin: 0;
+  margin-left: 10px;
+}
+.right-card-avisos-emp {
+  display: flex;
+  /* background-color: burlywood; */
+  align-items: center;
+  width: 200px;
+}
+.sub-right-avisos-emp {
+  display: flex;
+  width: 100%;
+}
+
+.sub-right-avisos-emp div:nth-child(1) {
+  border-right: 1px solid #e2e2e2;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+.sub-right-avisos-emp div:nth-child(2) {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.sub-right-avisos-emp .p1 {
+  color: var(--blue-primary);
+  font-weight: 600;
+  margin: 0;
+}
+.sub-right-avisos-emp .p2 {
+  color: var(--gray-text);
+  font-weight: 200;
+  font-size: 45px;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.bottom-card-avisos-emp {
+  /* background-color: cadetblue; */
+  border-top: 1px solid #ced1e9;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+.right-bottom-avisos-emp{
+  display: flex;
+  align-items: center;
+}
+.right-bottom-avisos-emp .p1 {
+  color: var(--gray-text);
+}
+.estado-card-avisos-emp {
+  background-color: var(--blue-primary);
+  padding: 5px 20px;
+  margin-left: 10px;
+  border-radius: 3px;
+}
+.estado-card-avisos-emp p {
+  margin: 0;
+  font-size: 14px;
+}
+.btns-cards-avisos-emp {
+  background-color: #8f8e97 !important;
+  color: #fff !important;
+  margin-left: 10px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  width: 40px;
+  height: 40px;
+}
+.left-bottom-avisos-emp {
+  padding-right: 20px;
+  /* background-color: cadetblue; */
+}

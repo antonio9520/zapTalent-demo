@@ -1,0 +1,6 @@
+.cont-section-one{
+    height: 90vh;
+    max-height: 700px;
+    background-image: url("../../../../../resources/cover/ZAPTalent-Section-Main.png");
+    background-size: cover;
+}

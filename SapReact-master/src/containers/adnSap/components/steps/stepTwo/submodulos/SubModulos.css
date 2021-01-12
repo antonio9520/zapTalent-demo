@@ -1,0 +1,47 @@
+.cont-loading-adn {
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-select-adn-two {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.726);
+  /* z-index: -1; */
+}
+
+.select-adn-two {
+  position: absolute;
+  /* border: 1px solid black; */
+
+  width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.overlay-adn-active {
+  opacity: 0.1 !important;
+  /* cursor: auto !important; */
+
+  z-index: -1;
+}
+.cont-select-overlay-adn {
+  width: 210px;
+  min-width: 210px;
+  margin-bottom: 20px;
+}
+.btn-overlay-adn-two {
+  background-color: var(--blue-primary) !important;
+  width: 40px;
+  height: 40px;
+  box-shadow: 1px 1px 5px 1px rgba(151, 151, 151, 0.1);
+  margin-left: 15px !important;
+}
+
+.btn-overlay-adn-two p {
+  font-size: 14px;
+}

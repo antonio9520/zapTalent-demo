@@ -1,0 +1,168 @@
+.cont-four-adn-editar-edit {
+  background-color: #414141;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  min-width: 400px;
+  min-height: 400px;
+  /* height: 98%; */
+  max-height: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+  overflow: auto;
+  transition: 0.5s all ease-in-out !important;
+}
+.cont-four-adn-formeditar-edit {
+  background-color: var(--white);
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  min-width: 400px;
+  min-height: 400px;
+  /* height: 98%; */
+  max-height: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+  /* overflow: auto; */
+  transition: 0.5s all ease-in-out !important;
+}
+
+.sub-form-editar-adn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* background-color: brown; */
+}
+.btn-add-submod-editar-adn {
+  background-color: var(--blue-primary) !important;
+  color: var(--white) !important;
+  width: 35px;
+  height: 35px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+.cont-top-adn-four-edit {
+  margin-top: 30px;
+}
+
+.cont-edit-mod {
+  position: absolute;
+  right: 40px;
+  top: 100px;
+}
+.cont-cards-s-modulos-four-edit {
+  max-height: 280px;
+  /* margin-bottom: 100px; */
+  width: 100%;
+  /* height: 100%; */
+  margin-top: 20px;
+
+  padding: 0 10px 10px 10px;
+  overflow: auto;
+  position: relative;
+  /* background-color: lightgreen; */
+}
+.cont-btn-adn-formedit {
+  /* background-color: blue; */
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cont-btn-añadir-submod {
+  /* background-color: blue; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont-edit-mod div {
+  display: flex;
+  flex-direction: column;
+  /* background-color: rosybrown; */
+  height: 75px;
+  justify-content: space-between;
+}
+
+.btn-edit-mod-formedit {
+  background-color: var(--blue-primary) !important;
+  color: white !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  width: 35px;
+  height: 35px;
+}
+
+.btn-cancel-mod-formedit {
+  background-color: var(--error) !important;
+  color: white !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  width: 35px;
+  height: 35px;
+}
+.btn-check-mod-formedit {
+  background-color: var(--green) !important;
+  color: white !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  width: 35px;
+  height: 35px;
+}
+
+.cont-id-editar-adn {
+  display: flex;
+  justify-content: center;
+}
+
+.cont-id-editar-adn input {
+  border: none;
+  outline: none;
+  color: var(--blue-primary);
+  font-weight: 500 !important;
+  margin-left: 10px;
+  border-radius: 5px;
+  /* text-transform: uppercase; */
+}
+
+.icon-close-edit-mod {
+  color: rgb(122, 122, 122);
+}
+
+.text-area-edit-obs-mod {
+  width: 100%;
+  font-family: "Roboto";
+  font-style: italic;
+  color: var(--gray-text);
+  height: 50px;
+  text-align: center;
+  font-size: 12px;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  cursor: default;
+  background-color: transparent;
+  transition: 0.5s all ease-in-out;
+}
+
+.text-area-edit-obs-mod-ac {
+  width: 100%;
+  font-family: "Roboto";
+  font-style: italic;
+  color: var(--gray-text);
+  height: 50px;
+  text-align: center;
+  font-size: 12px;
+  resize: none;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  transition: 0.5s all ease-in-out;
+}

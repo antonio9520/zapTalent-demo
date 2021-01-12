@@ -1,0 +1,132 @@
+.cont-section-two {
+  display: flex;
+  padding-top: 75px;
+  position: relative;
+  z-index: 9;
+  justify-content: center;
+}
+.sub-section-two{
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  /* background-color: royalblue; */
+}
+.left-section-two {
+  /* background-color: sandybrown; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.left-section-two img {
+  width: 280px;
+}
+.left-section-two h1 {
+  color: var(--blue-primary);
+
+}
+.left-section-two p {
+  color: var(--gray-text);
+  max-width: 300px;
+  margin: 20px 0 0 0px;
+  font-size: 12px;
+
+}
+.cont-h1-sectionTwo {
+  margin-top: 30px;
+}
+.right-section-two img {
+  width: 400px;
+
+}
+
+.right-section-two {
+  /* background-color: salmon; */
+  flex: 1;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .sub-section-two{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+   
+    align-items: center;
+  }
+  .right-section-two img {
+    width: 400px;
+  margin-top: 40px;
+  }
+  .left-section-two h1 {
+    color: var(--blue-primary);
+    text-align: center;
+  }
+  .left-section-two p {
+    color: var(--gray-text);
+    max-width: 300px;
+    margin: 20px 0 0 0px;
+    font-size: 12px;
+  text-align: center;
+  }
+}
+
+/*  Smartphones in landscape mode */
+
+@media only screen and (min-width: 421px) and (max-width: 767px) {
+  .sub-section-two{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+   
+    align-items: center;
+  }
+  .right-section-two img {
+    width: 400px;
+  margin-top: 40px;
+  }
+  .left-section-two h1 {
+    color: var(--blue-primary);
+    text-align: center;
+  }
+  .left-section-two p {
+    color: var(--gray-text);
+    max-width: 300px;
+    margin: 20px 0 0 0px;
+    font-size: 12px;
+  text-align: center;
+  }
+}
+
+/*  Smartphones in portrait mode  */
+
+@media only screen and (max-width: 420px) {
+  .sub-section-two{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+   
+    align-items: center;
+  }
+  .right-section-two img {
+    width: 300px;
+  margin-top: 40px;
+  }
+  .left-section-two h1 {
+    color: var(--blue-primary);
+    text-align: center;
+  }
+  .left-section-two p {
+    color: var(--gray-text);
+    max-width: 300px;
+    margin: 20px 0 0 0px;
+    font-size: 12px;
+  text-align: center;
+  }
+}

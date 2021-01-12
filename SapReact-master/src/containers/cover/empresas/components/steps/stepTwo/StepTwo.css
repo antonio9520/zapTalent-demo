@@ -1,0 +1,30 @@
+.cont-step-two-emp {
+  display: flex;
+  justify-content: center;
+}
+
+.sub-step-two-emp {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.sub-step-two-emp h1 {
+  color: var(--blue-primary);
+  font-weight: 200;
+}
+
+.step-two-logos-emp{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.step-two-logos-emp img{
+    width: 110px;
+    margin: 20px;
+}

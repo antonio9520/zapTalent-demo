@@ -1,0 +1,105 @@
+.cont-hab-chips {
+  background-color: var(--white);
+  padding: 50px 60px;
+  border-radius: 5px;
+  width: 95%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.title-hab-chips {
+  color: var(--blue-primary);
+  font-size: 24px;
+  margin: 0;
+  text-align: center;
+  max-width: 300px;
+}
+
+.cont-chips-hab {
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: thistle; */
+  max-height: 200px;
+  overflow: auto;
+  margin-bottom: 50px;
+  margin-top: 40px;
+}
+
+.cont-btn-hab-chips {
+  /* background-color: thistle; */
+  width: 100%;
+  display: flex;
+  padding-top: 40px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.btn-chips-hab {
+  background-color: var(--blue-primary) !important;
+  padding: 10px 20px !important;
+  justify-content: center !important;
+  width: 100px !important;
+  border-radius: 5px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-chips-hab p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.icon-btn-input-adr-hab {
+  background-color: var(--green) !important;
+  color: white !important;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px !important;
+}
+
+.icon-btn-close-chips {
+  position: absolute !important;
+  right: 5px;
+  top: 5px;
+}
+
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-hab-chips {
+    background-color: var(--white);
+    padding: 7% 3%;
+    border-radius: 5px;
+    width: 95%;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .icon-btn-close-chips {
+    position: absolute !important;
+    right: -5px;
+    top: -5px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

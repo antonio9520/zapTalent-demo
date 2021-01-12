@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88" height="88" viewBox="0 0 88 88">
+  <defs>
+    <clipPath id="clip-ZAPTalent-Icono-8">
+      <rect width="88" height="88"/>
+    </clipPath>
+  </defs>
+  <g id="ZAPTalent-Icono-8" clip-path="url(#clip-ZAPTalent-Icono-8)">
+    <g id="Grupo_283" data-name="Grupo 283" transform="translate(-1228.165 -7130.094)">
+      <g id="Grupo_113" data-name="Grupo 113" transform="translate(1239.165 7150.094)">
+        <path id="Trazado_162" data-name="Trazado 162" d="M697.135,18.035A2.036,2.036,0,0,0,695.1,16H634.036A2.036,2.036,0,0,0,632,18.035V62.816a2.036,2.036,0,0,0,2.036,2.035H695.1a2.036,2.036,0,0,0,2.036-2.035Zm-4.071,42.745H636.071V20.071h56.994Z" transform="translate(-632 -16)" stroke="#fff" stroke-width="0.5"/>
+        <path id="Trazado_163" data-name="Trazado 163" d="M695.007,70.08l-9.542,9.541a1.59,1.59,0,0,0,0,2.249l9.542,9.542,2.248-2.249-8.417-8.417,8.417-8.417Z" transform="translate(-671.515 -56.32)" stroke="#fff" stroke-width="0.5"/>
+        <path id="Trazado_164" data-name="Trazado 164" d="M789.08,70.08l-2.248,2.248,8.417,8.417-8.417,8.417,2.248,2.249,9.542-9.542a1.59,1.59,0,0,0,0-2.249Z" transform="translate(-747.437 -56.32)" stroke="#fff" stroke-width="0.5"/>
+        <rect id="Rectángulo_71" data-name="Rectángulo 71" width="30.173" height="3.179" transform="translate(26.284 38.233) rotate(-71.547)" stroke="#fff" stroke-width="0.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

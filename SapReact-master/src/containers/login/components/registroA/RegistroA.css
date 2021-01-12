@@ -1,0 +1,130 @@
+.cont-reg-A {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 40px 90px 40px 90px;
+  margin: 5px;
+  width: 95%;
+  max-width: 450px;
+  max-height: 95%;
+  overflow: auto;
+  position: relative;
+}
+
+.top-reg-A {
+  /* background-color: chocolate; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 2;
+ 
+}
+
+.top-reg-A div {
+  /* background-color: darkcyan; */
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.p-top-reg-a {
+  font-size: 14px;
+  margin: 0 0 20px 0;
+  width: 200px;
+  text-align: center;
+  color: var(--gray-text);
+  /* padding-bottom: 20px; */
+  /* background-color: red; */
+}
+.logo-login-re {
+  width: 100px;
+  /* background-color: #3f51b5; */
+}
+.center-reg-A {
+  /* background-color: darkblue; */
+  display: flex;
+  flex-direction: column;
+  flex: 17;
+  justify-content: space-between;
+}
+.center-reg-A .center-1 {
+  /* border: 1px solid red; */
+
+  display: flex;
+  /* display: flex; */
+  height: 55px;
+  align-items: center;
+}
+
+.center-reg-A select {
+  height: 40px;
+  padding-left: 10px;
+  width: 100%;
+  outline: none;
+  background-color: var(--blue-extralight);
+  border-radius: 5px;
+  border: 1px solid var(--light-blue-3);
+}
+
+.bottom-reg-A {
+  /* background-color: crimson; */
+  display: flex;
+  flex: 1.5;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+
+.btn-rut-reg-a {
+  background-color: var(--blue-primary) !important;
+  width: 100px !important;
+  height: 40px;
+  border-radius: 5px !important;
+  justify-content: center !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-rut-reg-a p {
+  font-size: 12px;
+}
+
+.input-mask-custom {
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #bfc3c7;
+  padding-left: 15px;
+  background-color: #f3f8fe;
+  outline: none;
+}
+.input-mask-custom:focus {
+  border: 2px solid #3f51b5;
+}
+.input-mask-custom:hover {
+  border: 1px solid black;
+}
+.cont-phone-reg-a {
+  width: 100%;
+  background-color: #3f51b5;
+  position: relative;
+}
+.cont-phone-reg-a-error {
+  width: 100%;
+  background-color: #3f51b5;
+  position: relative;
+  min-height: 45px;
+}
+
+.btn-close-registro{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+@media only screen and (max-width: 425px) {
+  .cont-reg-A {
+    padding: 40px 20px 40px 20px;
+  }
+}

@@ -1,0 +1,64 @@
+.cont-modal-eliminar {
+  width: 550px;
+  height: 300px;
+  border-radius: 5px;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.top-modal-eliminar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+.top-modal-eliminar img {
+  width: 80px;
+}
+
+.top-modal-eliminar p {
+  color: var(--gray-text);
+  text-align: center;
+  font-size: 18px;
+  max-width: 200px;
+}
+.bottom-modal-eliminar {
+  flex: 1;
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.btn-borrar-modal-eliminar {
+  background-color: var(--blue-primary) !important;
+  width: 100px !important;
+  height: 40px !important;
+  border-radius: 5px !important;
+  justify-content: center !important;
+}
+.btn-borrar-modal-eliminar p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.btn-cancelar-modal-eliminar {
+  background-color: var(--white) !important;
+  width: 100px !important;
+  height: 40px;
+  border-radius: 5px !important;
+  justify-content: center !important;
+  border: 2px solid #F1F2F3 !important;
+}
+
+.btn-cancelar-modal-eliminar p {
+  color: var(--gray-text);
+  font-size: 14px;
+}

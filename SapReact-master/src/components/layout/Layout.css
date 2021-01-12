@@ -1,0 +1,52 @@
+.contenedor-main {
+  margin-left: 250px;
+  min-height: 100vh;
+  display: flex;
+  transition: 0.5s all ease-in-out;
+  /* background: var(--main-bg); */
+}
+
+.contenedor-main-mini {
+  margin-left: 80px;
+  min-height: 100vh;
+  display: flex;
+  transition: 0.5s all ease-in-out;
+  /* background: var(--main-bg); */
+}
+
+.contenedor-main main {
+  width: 100%;
+  height: 100%;
+}
+
+.contenedor-main-mini main {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 959px) {
+  .contenedor-main {
+    margin: 0;
+    /* background: inherit; */
+    /* background-color: lawngreen; */
+   
+  }
+  .contenedor-main-mini {
+    margin: 0;
+    /* background: inherit; */
+    /* background-color: rgb(252, 101, 0); */
+  
+  }
+  /* .contenedor-main {
+    background: var(--white);
+  }
+
+  .contenedor-main-mini {
+    background: var(--white);
+  } */
+}
+
+.li-active.icon-sidebar {
+  color: white !important;
+}
+

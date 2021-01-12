@@ -1,0 +1,270 @@
+.cont-card-a {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.2);
+ /* max-height: 110px; */
+}
+
+.card-a-degradado {
+  background: var(--degradado-blue);
+}
+
+.card-a-white {
+  background-color: var(--white);
+}
+
+.titulo-card-a-d {
+  margin: 0;
+  font-size: 14px;
+}
+
+.titulo-card-a-w {
+  font-size: 14px;
+  margin: 0;
+  color: var(--gray-texto);
+}
+.desc-card-a-d {
+  margin: 0;
+  font-size: 47px;
+  font-weight: 300;
+}
+
+.desc-card-a-w {
+  margin: 0;
+  font-size: 47px;
+  font-weight: 300;
+  color: var(--green);
+}
+.cont-img-card-a {
+  padding-right: 10%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cont-img-card-a img {
+  width: 80px;
+  height: 80px;
+}
+/**************************************************/
+
+.graph-card-a {
+  /* background-color: red; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-right: 10%;
+}
+.graph-card-a div {
+  /* border: 1px solid black; */
+  width: 5%;
+  position: relative;
+}
+
+.graph-card-a div:nth-child(1) div {
+  background-color: var(--gray-blue);
+  height: 7%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.graph-card-a div:nth-child(2) div {
+  background-color: var(--gray-blue);
+  height: 14%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(3) div {
+  background-color: var(--gray-blue);
+  height: 21%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(4) div {
+  background-color: var(--gray-blue);
+  height: 28%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(5) div {
+  background-color: var(--gray-blue);
+  height: 35%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(6) div {
+  background-color: var(--gray-blue);
+  height: 42%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(7) div {
+  background-color: var(--gray-blue);
+  height: 49%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(8) div {
+  background-color: var(--gray-blue);
+  height: 56%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(9) div {
+  background-color: var(--gray-blue);
+  height: 63%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(10) div {
+  background-color: var(--gray-blue);
+  height: 70%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(11) div {
+  background-color: var(--gray-blue);
+  height: 77%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(12) div {
+  background-color: var(--gray-blue);
+  height: 84%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a div:nth-child(13) div {
+  background-color: var(--gray-blue);
+  height: 91%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+/*******************************************/
+.graph-card-a-green {
+  /* background-color: red; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-right: 10%;
+}
+.graph-card-a-green div {
+  /* border: 1px solid black; */
+  width: 5%;
+  position: relative;
+}
+
+.graph-card-a-green div:nth-child(1) div {
+  background-color: var(--green);
+  height: 7%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.graph-card-a-green div:nth-child(2) div {
+  background-color: var(--green);
+  height: 14%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(3) div {
+  background-color: var(--green);
+  height: 21%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(4) div {
+  background-color: var(--green);
+  height: 28%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(5) div {
+  background-color: var(--green);
+  height: 35%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(6) div {
+  background-color: var(--green);
+  height: 42%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(7) div {
+  background-color: var(--green);
+  height: 49%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(8) div {
+  background-color: var(--green);
+  height: 56%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(9) div {
+  background-color: var(--green);
+  height: 63%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(10) div {
+  background-color: var(--green);
+  height: 70%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(11) div {
+  background-color: var(--green);
+  height: 77%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(12) div {
+  background-color: var(--green);
+  height: 84%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.graph-card-a-green div:nth-child(13) div {
+  background-color: var(--green);
+  height: 91%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}

@@ -1,0 +1,103 @@
+.cont-card-job {
+  background-color: var(--white);
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  cursor: pointer;
+}
+
+.cont-card-job p {
+  margin: 0;
+}
+
+.sub-div-cardjob-1 {
+  /* background-color: royalblue; */
+  flex: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.img-card-job {
+  width: 40px;
+  height: 40px;
+  background-color: var(--white);
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  background-image: url("../../../../resources/images/Entel-logo.png");
+  background-size: cover;
+}
+.sub-div-cardjob-2 {
+  /* background-color: rgb(65, 225, 113); */
+  flex: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.sub-div-cardjob-2 p {
+  font-size: 13px;
+  color: var(--blue-primary);
+}
+.sub-div-cardjob-3 {
+  /* background-color: rgb(129, 68, 27); */
+  flex: 1.4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.sub-div-cardjob-3 p {
+  font-size: 11px;
+  color: var(--gray-text);
+}
+.sub-div-cardjob-4 {
+  /* background-color: rgb(11, 141, 80); */
+  flex: 1.4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.sub-div-cardjob-4 p {
+  font-size: 11px;
+  color: var(--gray-text);
+}
+.sub-div-cardjob-5 {
+  /* background-color: rgb(225, 65, 118); */
+  flex: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.sub-div-cardjob-5 p {
+  font-size: 11px;
+  color: var(--gray-text);
+}
+.sub-div-cardjob-6 {
+  /* background-color: rgb(70, 13, 13); */
+  flex: 1.4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.sub-div-cardjob-6 p {
+  font-size: 11px;
+  color: var(--gray-text);
+}
+.sub-div-cardjob-7 {
+  /* background-color: rgb(32, 121, 87); */
+  flex: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+.sub-div-cardjob-7 p {
+  font-size: 11px;
+  color: var(--gray-text);
+}

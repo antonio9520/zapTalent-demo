@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150" height="150" viewBox="0 0 150 150">
+  <defs>
+    <clipPath id="clip-icon-postulaciones-9">
+      <rect width="150" height="150"/>
+    </clipPath>
+  </defs>
+  <g id="icon-postulaciones-9" clip-path="url(#clip-icon-postulaciones-9)">
+    <g id="_929568" data-name="929568" transform="translate(30.746 16.385)">
+      <g id="Grupo_1554" data-name="Grupo 1554" transform="translate(0 0)">
+        <g id="Grupo_1553" data-name="Grupo 1553">
+          <path id="Trazado_579" data-name="Trazado 579" d="M148.2,30.752a43.746,43.746,0,0,0-28.363-28.6,44.964,44.964,0,0,0-58.87,42.753,44.331,44.331,0,0,0,8.922,26.8l35.786,45.648,35.742-45.589.045-.058C150.2,60.064,152.656,45.135,148.2,30.752Zm-12.22,36.8-30.305,38.659L75.374,67.555a37.509,37.509,0,0,1-7.524-22.647A38.09,38.09,0,0,1,117.807,8.725a36.78,36.78,0,0,1,23.827,24.06A38.4,38.4,0,0,1,135.984,67.555Z" transform="translate(-60.971 0)" fill="#1e6fdd"/>
+        </g>
+      </g>
+      <g id="Grupo_1556" data-name="Grupo 1556" transform="translate(20.635 20.834)">
+        <g id="Grupo_1555" data-name="Grupo 1555">
+          <path id="Trazado_580" data-name="Trazado 580" d="M175.067,90.895a24.073,24.073,0,1,0,24.073,24.073A24.1,24.1,0,0,0,175.067,90.895Zm0,41.269a17.2,17.2,0,1,1,17.2-17.2A17.215,17.215,0,0,1,175.067,132.164Z" transform="translate(-150.994 -90.895)" fill="#1e6fdd"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

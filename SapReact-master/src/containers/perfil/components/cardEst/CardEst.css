@@ -1,0 +1,36 @@
+.card-est-perfil {
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding: 20px 20px;
+  margin: 0 0 10px 0;
+}
+
+.p1-card-est-perfil {
+  color: var(--gray-text);
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.p2-card-est-perfil {
+  color: var(--blue-primary);
+  margin: 0;
+  margin: 10px 0;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+.cont-exp-card-est {
+  background-color: var(--light-blue);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
+}
+
+.cont-exp-card-est p {
+  margin: 0;
+  font-size: 12px;
+}

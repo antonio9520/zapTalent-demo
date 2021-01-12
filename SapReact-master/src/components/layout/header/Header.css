@@ -1,0 +1,158 @@
+.container-header {
+  display: flex;
+  background: var(--degradado-blue);
+  height: 55px;
+  position: fixed;
+  flex-direction: row;
+  width: 100%;
+  top: 0;
+  overflow: hidden;
+  z-index: 99;
+  box-shadow: 0 0.5px 10px 1px rgb(58, 58, 58);
+}
+.header-left {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding-left: 15px;
+}
+.logo-principal {
+  width: 160px;
+}
+.btn-open-sidebar {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 35px;
+}
+.btn-header-right {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 15px;
+  transform: rotate(180deg);
+}
+
+.icon-bars {
+  width: 25px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.icon-bars div:nth-child(1) {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition: 0.5 all ease-in-out;
+}
+.icon-bars:hover div:nth-child(1) {
+  animation: 0.5s btn-animation-one ease-in-out;
+  height: 2px;
+  background-color: white;
+  transition: 0.5 all ease-in-out;
+}
+.icon-bars div:nth-child(2) {
+  width: 70%;
+  height: 2px;
+  background-color: white;
+  transition: 0.5 all ease-in-out;
+}
+.icon-bars:hover div:nth-child(2) {
+  animation: 0.5s btn-animation-two ease-in-out;
+  height: 2px;
+  background-color: white;
+  transition: 0.5 all ease-in-out;
+}
+.icon-bars div:nth-child(3) {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition: 0.5 all ease-in-out;
+}
+.icon-bars:hover div:nth-child(3) {
+  animation: 0.5s btn-animation-one ease-in-out;
+  height: 2px;
+  background-color: white;
+  transition: 0.5 all ease-in-out;
+}
+.icon-bars div:nth-child(4) {
+  width: 70%;
+  height: 2px;
+  background-color: white;
+  transition: 0.5 all ease-in-out;
+}
+.icon-bars:hover div:nth-child(4) {
+  animation: 0.5s btn-animation-two ease-in-out;
+  height: 2px;
+  background-color: white;
+  transition: 0.5 all ease-in-out;
+}
+
+@keyframes btn-animation-one {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes btn-animation-two {
+  0% {
+    width: 70%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+
+.header-right {
+  display: flex;
+  flex: 1;
+  padding-right: 15px;
+  flex-direction: row-reverse;
+}
+
+.logo-user {
+  width: 55px;
+}
+
+.logo-user-db {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.cont-logo-user {
+  width: 55px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-mail {
+  color: white;
+}
+.cont-icon {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* .badge-mail {
+  background-color: #4bacef;
+} */
+
+@media (max-width: 959px) {
+  .btn-open-sidebar {
+    display: none;
+  }
+}

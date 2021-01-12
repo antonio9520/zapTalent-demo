@@ -1,0 +1,138 @@
+.cont-step-one-emp {
+  height: 90vh;
+  max-height: 800px;
+  background-image: url("../../../../../../resources/img/bg-welcome.webp");
+  background-size: cover;
+}
+.over-emp-step-one {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.sub-step-one-emp {
+  width: 1000px;
+  height: 100%;
+  /* background-color: lightcoral; */
+  display: flex;
+}
+
+.left-step-one-emp {
+  flex: 1;
+  /* background-color: lightgreen; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 30px 30px;
+}
+
+.right-step-one-emp {
+  flex: 1;
+  /* background-color: lightsalmon; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 30px;
+}
+
+.circle-step-one-emp {
+  width: 300px;
+  height: 300px;
+  background-color: var(--blue-primary);
+  opacity: 0.3;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  left: -150px;
+}
+.line-step-one-emp {
+  width: 200px;
+  height: 5px;
+  background-color: white;
+  z-index: 9;
+  margin-top: 10px;
+}
+.left-step-one-emp h1 {
+  color: white;
+  max-width: 400px;
+  font-size: 40px;
+  font-weight: 500;
+  z-index: 9;
+}
+
+.left-step-one-emp p {
+  color: white;
+  max-width: 400px;
+  font-size: 20px;
+  font-weight: 200;
+  z-index: 9;
+}
+
+.card-step-one-emp {
+  width: 350px;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-step-one-emp img {
+  width: 150px;
+  margin-top: -50px;
+}
+
+.p1-step-one-emp {
+  color: var(--gray-text);
+  font-size: 14px;
+  font-weight: 600;
+  margin: 50px 0 0 0;
+}
+.p2-step-one-emp {
+  color: var(--gray-text);
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px 0 50px 0;
+}
+
+.btn-step-one-emp {
+  background-color: var(--blue-primary) !important;
+  width: 300px !important;
+  border-radius: 5px !important;
+  justify-content: center !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-step-one-emp p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.p3-step-one-emp {
+  color: var(--gray-text) !important;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  margin: 50px 0 0 0 !important;
+}
+
+.p4-step-one-emp {
+  color: var(--gray-text) !important;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 10px 0 !important;
+}
+
+.p5-step-one-emp {
+  color: var(--blue-primary) !important;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}

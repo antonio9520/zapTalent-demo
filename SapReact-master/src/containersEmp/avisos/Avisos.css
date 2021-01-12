@@ -1,0 +1,21 @@
+.cont-avisos-emp {
+  padding-top: 75px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* background-color: aqua; */
+  max-width: 1400px;
+}
+
+.cont-header-avisos-emp {
+  /* background-color: blue; */
+}
+.cont-pagination-avisos-emp {
+  margin-top: 10px;
+}
+.cont-cards-avisos-emp {
+  /* background-color: brown; */
+ 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

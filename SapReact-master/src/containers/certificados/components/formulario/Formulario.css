@@ -1,0 +1,124 @@
+.cont-form-cert {
+  width: 500px;
+  height: 550px;
+  background-color: var(--white);
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  /* padding-bottom: 30px; */
+}
+.cont-btn-close-cert {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.top-form-cert {
+  flex: 1;
+  /* background-color: rosybrown; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top-form-cert p {
+  margin: 0;
+  color: var(--blue-primary);
+  font-weight: 500;
+  font-size: 20px;
+}
+.center-form-cert {
+  flex: 6;
+  /* background-color: royalblue; */
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.item-center-cert-date {
+  /* border: 1px solid black; */
+  flex: 1;
+  display: flex;
+}
+.cont-date-left-cert {
+  flex: 1;
+  padding-right: 5px;
+}
+.cont-date-right-cert {
+  flex: 1;
+  padding-left: 5px;
+}
+.item-center-cert {
+  /* border: 1px solid black; */
+  flex: 1;
+}
+.item-center-cert-upload {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bottom-form-cert {
+  flex: 1.5;
+  /* background-color: salmon; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 30px;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .cont-form-cert {
+    overflow: auto;
+    height: 98%;
+    max-height: 550px; 
+  }
+  .center-form-cert{
+    min-height: 330px;
+  }
+  .bottom-form-cert {
+    min-height: 80px;
+  }
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-form-cert {
+    width: 96%;
+    overflow: auto;
+    height: 98%;
+    max-height: 550px;
+  }
+  .center-form-cert {
+    min-height: 450px;
+  }
+  .center-form-cert{
+    min-height: 330px;
+  }
+  .bottom-form-cert {
+    min-height: 80px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .cont-form-cert {
+  }
+  .center-form-cert {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .bottom-form-cert {
+    min-height: 80px;
+  }
+}

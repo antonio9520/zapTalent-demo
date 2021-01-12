@@ -1,0 +1,98 @@
+.top-edit-perfil-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 30px;
+}
+
+.top-edit-perfil-2 p {
+  color: var(--blue-primary);
+
+  font-weight: 500;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.icon-btn-edit-perfil {
+  background-color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  color: white !important;
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.icon-btn-edit-perfil-inact {
+  background-color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  color: white !important;
+  width: 35px !important;
+  height: 35px !important;
+  opacity: 0.5;
+}
+
+.form-edit-perfil {
+  padding: 20px 30px 0 30px;
+}
+.item-edit-perfil {
+  display: flex;
+  align-items: flex-end;
+  height: 45px;
+}
+
+.item-edit-perfil-pass {
+  display: flex;
+  align-items: flex-end;
+  height: 45px;
+  margin-top: 15px;
+}
+
+.icon-form-edit-perfil {
+  margin-right: 10px;
+  color: #e2e2e2;
+}
+.cont-btn-edit-perfil {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+}
+
+.cont-add-phone {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cont-add-phone p {
+  color: var(--gray-text);
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.btn-add-phone-perfil {
+  background-color: var(--blue-primary) !important;
+  width: 20px !important;
+  height: 20px !important;
+  color: white !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.input-mask-phone-perfil{
+  outline: none;
+  border: none;
+  margin-bottom: 5px;
+  /* background-color: aquamarine; */
+  width: 100%;
+  /* margin-left: 10px; */
+}
+
+.cont-phone-edit-perfil{
+  /* background-color: aquamarine; */
+  margin: 0;
+}
+

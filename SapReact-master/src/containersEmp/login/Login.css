@@ -1,0 +1,121 @@
+.conteiner-login-emp {
+  background-image: url("../../resources/empresas/ZAPTalent-Background.png");
+  min-height: 100vh;
+  width: 100%;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.cont-login-emp img {
+  width: 120px;
+}
+.cont-input-login-emp {
+  /* background-color: royalblue; */
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  justify-content: space-between;
+  min-height: 150px;
+  /* padding-bottom: 5px; */
+}
+.cont-card-login-emp {
+  width: 95%;
+  max-width: 700px;
+  height: 60%;
+  max-height: 500px;
+  /* background-color: var(--white); */
+  background-color: aqua;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex: 1;
+  opacity: 0;
+  animation: animationLogin 2s ease-in-out forwards;
+  margin-top: 10px;
+  /* overflow: hidden; */
+}
+
+.left-card-login-emp {
+  flex: 2.5;
+  display: flex;
+  border: 2px solid #9ec9e0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 10px;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: brown;
+}
+
+.right-card-login-emp {
+  background-image: url("../../resources/empresas/ZAPTalent-Login-EmpresaModal.png");
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  flex: 1.7;
+  flex-direction: column;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* border: 2px solid #4f6470; */
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.right-card-login-emp h1 {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+.right-card-login-emp p {
+  text-align: center;
+  font-size: 12px;
+}
+
+.cont-left-item-emp {
+  background-color: aqua;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.btn-cancelar-login-emp {
+  background-color: var(--orange) !important;
+  justify-content: center !important;
+  max-width: 110px !important;
+  max-height: 45px !important;
+  height: 45px;
+  border-radius: 5px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2) !important;
+}
+.btn-cancelar-login-emp p {
+  margin: 0 !important;
+  font-size: 12px;
+}
+.btn-recuperar-login-emp {
+  background-color: #1074ba !important;
+  width: 120px !important;
+  border-radius: 5px !important;
+  height: 45px !important;
+  justify-content: center !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn-recuperar-login-emp p {
+  color: var(--white) !important;
+  font-size: 12px !important;
+  margin: 0;
+}
+@media (max-width: 700px) {
+  .right-card-login-emp {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 0;
+    min-height: 500px;
+  }
+}

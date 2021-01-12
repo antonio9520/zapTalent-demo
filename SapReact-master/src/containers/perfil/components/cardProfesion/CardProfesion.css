@@ -1,0 +1,57 @@
+.card-est-perfil-card-pro {
+  background: var(--degradado-blue);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding: 20px 20px;
+  margin: 5px 0 10px 0;
+  position: relative;
+}
+
+.p1-card-est-perfil-card-pro {
+  color: var(--white);
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.p2-card-est-perfil-card-pro {
+  color: var(--white);
+  margin: 0;
+  margin: 10px 0;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+.cont-exp-card-est-card-pro {
+  background-color: var(--light-blue);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
+}
+
+.cont-exp-card-est-card-pro p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.cont-btn-card-profesion {
+  /* background-color: salmon; */
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.icon-btn-card-profesion {
+  background-color: var(--white) !important;
+  width: 40px;
+  height: 40px;
+  color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.2);
+  /* color: var(--blue-primary) !important; */
+}
