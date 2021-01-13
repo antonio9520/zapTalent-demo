@@ -9,6 +9,8 @@ import CardInit from "./cardInit/CardInit";
 import ModalEliminar from "./modalEliminar/ModalEliminar";
 import Spinner from "./spinner/Spinner";
 import Tooltip from "./tooltip/Tooltip";
+import IconButton from "./iconButton/IconButton";
+import Button from "./button/Button";
 
 export {
   Layout,
@@ -22,4 +24,6 @@ export {
   ModalEliminar,
   Spinner,
   Tooltip,
+  IconButton,
+  Button,
 };

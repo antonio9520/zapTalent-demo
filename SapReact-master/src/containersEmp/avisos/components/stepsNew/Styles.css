@@ -1,0 +1,14 @@
+.form-editar-avisos-emp {
+  background-color: var(--white);
+  width: 96%;
+  max-width: 600px;
+  border-radius: 5px;
+  padding: 30px 40px;
+  position: relative;
+}
+
+.cont-btns-form-emp {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

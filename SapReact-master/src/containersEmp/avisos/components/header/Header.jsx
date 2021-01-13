@@ -1,9 +1,9 @@
 import React from "react";
 import "./Header.css";
-import { withStyles, Tabs, Tab, IconButton } from "@material-ui/core";
+import { withStyles, Tabs, Tab } from "@material-ui/core";
 import { SearchBar } from "../../../../componentsEmp";
 import { Add } from "@material-ui/icons";
-import { Tooltip } from "../../../../components";
+import { Tooltip, IconButton } from "../../../../components";
 
 const AntTabs = withStyles({
   root: {
@@ -37,7 +37,7 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Header = () => {
+const Header = ({ setOpenModal }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -58,7 +58,7 @@ const Header = () => {
           <AntTab label="Caducados" />
         </AntTabs>
         <Tooltip title="Nuevo Aviso">
-          <IconButton className="btn-add-avisos-empresas">
+          <IconButton bg="primary" onClick={() => setOpenModal(true)}>
             <Add />
           </IconButton>
         </Tooltip>

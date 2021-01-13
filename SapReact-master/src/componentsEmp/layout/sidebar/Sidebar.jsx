@@ -61,7 +61,7 @@ const Sidebar = (props) => {
             // onClick={() => setActive("perfil")}
           >
             <Tooltip title="Perfil" placement="right">
-              <Link
+              <div
                 // to="/perfil"
                 className={`link  ${
                   open ? "link-header-mini" : "link-header-sidebar"
@@ -99,7 +99,7 @@ const Sidebar = (props) => {
                     <p>{profesion}</p>
                   </>
                 ) : null}
-              </Link>
+              </div>
             </Tooltip>
           </ListItem>
 

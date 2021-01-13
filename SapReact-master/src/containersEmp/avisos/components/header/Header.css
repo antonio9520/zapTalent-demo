@@ -30,8 +30,4 @@
   margin: 0;
 }
 
-.btn-add-avisos-empresas {
-  background-color: var(--blue-primary) !important;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-  color: var(--white) !important;
-}
+
