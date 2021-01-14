@@ -306,7 +306,7 @@ const Formulario = (props) => {
             <MenuItem className="custom-menu-item" value="item3">
               item3
             </MenuItem>
-          </CustomSelectB>
+          </CustomSelectB> 
         </div>
         <div className="campo-date-form-estudio">
           <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>

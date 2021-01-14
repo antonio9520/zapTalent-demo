@@ -267,21 +267,7 @@ const Formulario = (props) => {
           </CustomSelectB>
         </div>
         <div className="item-form-trabajo">
-          {/* <CustomSelectB
-            label="Cargo"
-            onChange={(e) => {
-              setCargoError(false);
-              setCargo(e.target.value);
-            }}
-            name="cargo"
-            value={cargo}
-            error={cargoError}
-            helperText="Cargo no puede estar vacio"
-          >
-            <MenuItem value="item1">item1</MenuItem>
-            <MenuItem value="item2">item2</MenuItem>
-            <MenuItem value="item3">item3</MenuItem>
-          </CustomSelectB> */}
+     
           <CustomInput
             label="Cargo"
             onChange={(e) => {

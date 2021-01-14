@@ -89,7 +89,6 @@
   color: var(--blue-primary);
   margin: 0;
   margin-top: 5px !important;
-
 }
 
 .p2-job-b {
@@ -113,7 +112,7 @@
 
 .p4-job-b {
   margin-top: 3px !important;
-  
+
   color: var(--blue-primary);
   font-size: 14px;
   font-weight: 500;
@@ -227,7 +226,7 @@
 .anima-div-job {
   height: 20px;
   width: 140px;
-  margin-left: 10px ;
+  margin-left: 10px;
   overflow: hidden;
   position: relative;
 }
@@ -257,8 +256,6 @@
   -webkit-animation: scroll-left 15s linear infinite;
   animation: scroll-left 15s linear infinite;
 }
-
-
 
 /* Move it (define the animation) */
 @-moz-keyframes scroll-left {

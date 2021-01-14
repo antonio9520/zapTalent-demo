@@ -44,13 +44,20 @@
 }
 
 label,
-p,
 h2,
 h3,
 h4,
 h5,
 h6 {
   color: var(--white);
+  font-family: "Roboto";
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+p {
+  /* color: var(--white); */
   font-family: "Roboto";
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -72,6 +79,7 @@ h1 {
   -ms-user-select: none;
   user-select: none;
 }
+
 body {
   padding: 0;
   margin: 0;

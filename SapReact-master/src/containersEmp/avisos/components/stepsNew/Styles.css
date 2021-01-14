@@ -1,14 +1,128 @@
-.form-editar-avisos-emp {
+.container-nuevo-aviso-emp {
   background-color: var(--white);
   width: 96%;
   max-width: 600px;
   border-radius: 5px;
-  padding: 30px 40px;
   position: relative;
 }
-
+/*One*/
+.form-nuevo-aviso-emp {
+  padding: 40px 60px;
+}
 .cont-btns-form-emp {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-nuevo-aviso-emp h1 {
+  font-weight: 200;
+  color: var(--gray-text);
+  margin-bottom: 40px;
+}
+
+.cont-icon-close-formulario {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.icon-close {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.container-inputs-form-emp {
+  margin-top: 5px;
+}
+
+.campo-date-form-avisos-emp {
+  display: flex;
+}
+
+.div-tipo-consultor {
+  color: white;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  height: 25px;
+  transition: 0.5s all ease-in-out;
+}
+.div-tipo-consultor-active {
+  color: white;
+  border-radius: 3px;
+  padding: 10px 20px;
+  margin-left: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
+  transition: 0.5s all ease-in-out;
+}
+
+.div-tipo-consultor p {
+  margin: 0;
+  font-size: 12px;
+}
+.div-tipo-consultor-active p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.cont-tipo-consultor-form-emp {
+  color: var(--gray-text);
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
+/**two*/
+.add-mod-form-avisos-adn-emp {
+  display: flex;
+
+  align-items: center;
+  margin-top: 20px;
+}
+.add-mod-form-avisos-adn-emp p {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 14px;
+  color: var(--gray-text);
+}
+
+.cont-adns-form-avisos-emp {
+  /* background-color: lightcoral; */
+  max-height: 360px;
+  overflow: auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 0 5px 5px 5px;
+}
+
+.form-nuevo-aviso-emp .p1 {
+  margin: 0;
+  color: var(--blue-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/*Three*/
+.btn-yes-no-active {
+  background-color: var(--blue-primary);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 30px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+
+.btn-yes-no {
+  background-color: var(--white);
+  color: var(--blue-primary);
+  border: 1px solid var(--blue-primary);
+  border-radius: 3px;
+  padding: 5px 30px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
 }

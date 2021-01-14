@@ -1,23 +1,213 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react"; 
 import "./Styles.css";
 import { Button } from "../../../../components";
+import { LinearProgress, MenuItem } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { CustomInput, CustomSelectB, IconButton } from "../../../../components";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import esLocale from "date-fns/locale/es";
+import DateFnsUtils from "@date-io/date-fns";
 
 const StepOne = forwardRef(({ setStep, ref }) => {
+  //data
+  const [titulo, setTitulo] = useState("");
+  const [profesion, setProfesion] = useState("");
+  const [area, setArea] = useState("");
+  const [fechaInicio, setFechaInicio] = useState(null);
+  const [fechaTermino, setFechaTermino] = useState(null);
+  const [tipoConsultor, setTipoConsultor] = useState("Training");
+  //errores
+  const [tituloError, setTituloError] = useState(false);
+  const [profesionError, setProfesionError] = useState(false);
+  const [areaError, setAreaError] = useState(false);
+  const [fechaInicioError, setFechaInicioError] = useState(false);
+  const [fechaTerminoError, setFechaTerminoError] = useState(false);
+
+  const loading = false;
+
   return (
-    <div className="form-editar-avisos-emp" ref={ref}>
-      <h1>One</h1>
-      <div className="cont-btns-form-emp">
-        <Button variant="contained" color="primary">
-          Cancelar
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setStep("two")}
+    <div className="container-nuevo-aviso-emp" ref={ref}>
+      <div className="form-nuevo-aviso-emp">
+        <h1>Crea tu nuevo aviso</h1>
+        <div className="container-inputs-form-emp">
+          <CustomInput
+            label="Título de aviso"
+            helpertext="no puede estar vacio"
+            error={tituloError}
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
+          />
+        </div>
+        <div className="container-inputs-form-emp">
+          <CustomSelectB
+            label="Profesión"
+            helpertext="no puede estar vacio"
+            error={profesionError}
+            value={profesion}
+            onChange={(e) => setProfesion(e.target.value)}
+          >
+            <MenuItem className="custom-menu-item" value="item1">
+              item1
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="item2">
+              item2
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="item3">
+              item3
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="item4">
+              item4
+            </MenuItem>
+          </CustomSelectB>
+        </div>
+        <div className="container-inputs-form-emp">
+          <CustomSelectB
+            label="Área empresa"
+            helpertext="no puede estar vacio"
+            error={areaError}
+            value={area}
+            onChange={(e) => setArea(e.target.value)}
+          >
+            <MenuItem className="custom-menu-item" value="item1">
+              item1
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="item2">
+              item2
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="item3">
+              item3
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="item4">
+              item4
+            </MenuItem>
+          </CustomSelectB>
+        </div>
+
+        <div
+          className="campo-date-form-avisos-emp"
+          style={{ marginTop: "5px" }}
         >
-          Siguiente
-        </Button>
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
+            <div className="date-left-estudio">
+              <KeyboardDatePicker
+                error={fechaInicioError}
+                fullWidth
+                size="small"
+                label="Inicio"
+                // helperText={
+                // diainicioError ? "Fecha inicio no puede estar vacio" : null
+                // }
+                format="dd/MM/yyyy"
+                value={fechaInicio}
+                // maxDate={new Date()}
+                onChange={(newValue) => setFechaInicio(newValue)}
+                InputProps={{
+                  className: "input-date-picker-inicio",
+                  readOnly: true,
+                }}
+                className="date-picker-inicio"
+                InputLabelProps={{ className: "input-label-date-form" }}
+              />
+            </div>
+            <div className="date-right-estudio">
+              <KeyboardDatePicker
+                error={fechaTerminoError}
+                size="small"
+                fullWidth
+                label="Término"
+                format="dd/MM/yyyy"
+                // helperText={diafinError ? fechamsg : null}
+                value={fechaTermino}
+                // maxDate={new Date()}
+                onChange={(newValue) => setFechaTermino(newValue)}
+                InputProps={{
+                  className: "input-date-picker-inicio",
+                  readOnly: true,
+                }}
+                className="date-picker-inicio"
+                InputLabelProps={{ className: "input-label-date-form" }}
+              />
+            </div>
+          </MuiPickersUtilsProvider>
+        </div>
+        <div className="cont-tipo-consultor-form-emp">
+          <p>Tipo de Consultor</p>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div
+              className={
+                tipoConsultor === "Training"
+                  ? "div-tipo-consultor-active"
+                  : "div-tipo-consultor"
+              }
+              style={{ backgroundColor: "#BCBCBC" }}
+              onClick={() => setTipoConsultor("Training")}
+            >
+              <p>Training</p>
+            </div>
+            <div
+              className={
+                tipoConsultor === "Junior"
+                  ? "div-tipo-consultor-active"
+                  : "div-tipo-consultor"
+              }
+              style={{ backgroundColor: "#909090" }}
+              onClick={() => setTipoConsultor("Junior")}
+            >
+              <p>Junior</p>
+            </div>
+            <div
+              className={
+                tipoConsultor === "Semi Senior"
+                  ? "div-tipo-consultor-active"
+                  : "div-tipo-consultor"
+              }
+              style={{ backgroundColor: "#4BC1F4" }}
+              onClick={() => setTipoConsultor("Semi Senior")}
+            >
+              <p>Semi Senior</p>
+            </div>
+            <div
+              className={
+                tipoConsultor === "Senior"
+                  ? "div-tipo-consultor-active"
+                  : "div-tipo-consultor"
+              }
+              style={{ backgroundColor: "#1D72DE" }}
+              onClick={() => setTipoConsultor("Senior")}
+            >
+              <p>Senior</p>
+            </div>
+          </div>
+        </div>
+        <div className="cont-btns-form-emp">
+          <Button variant="contained" color="primary">
+            Cancelar
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setStep("two")}
+          >
+            Siguiente
+          </Button>
+        </div>
       </div>
+      <div className="cont-icon-close-formulario">
+        <IconButton bg="close" size="small" color="close">
+          <Close className="icon-close" />
+        </IconButton>
+      </div>
+      {loading ? (
+        <>
+          <div className="overlay-loading"></div>
+          <div className="linear-progres-global">
+            <LinearProgress className="progres-editar-perfil" />
+          </div>
+        </>
+      ) : null}
     </div>
   );
 });

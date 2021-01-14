@@ -11,15 +11,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 const CustomModal = (props) => {
   const classes = useStyles();
-  const { setOpenModal, openModal, setHidden, adns } = props;
-  const [step, setStep] = useState("one");
-  const [arrayModules, setArrayModules] = useState([]);
+  const { setOpenModal, openModal } = props;
+  const [step, setStep] = useState("four");
 
   const closeModal = () => {
     setOpenModal(false);
     setTimeout(() => {
       setStep("one");
-      setArrayModules([]);
     }, 300);
   };
   return (
@@ -38,7 +36,7 @@ const CustomModal = (props) => {
     >
       <Fade in={openModal}>
         {step === "one" ? (
-          <StepOne setStep={setStep} closeModal={closeModal} adns={adns} />
+          <StepOne setStep={setStep} closeModal={closeModal} />
         ) : step === "two" ? (
           <StepTwo setStep={setStep} closeModal={closeModal} />
         ) : step === "three" ? (

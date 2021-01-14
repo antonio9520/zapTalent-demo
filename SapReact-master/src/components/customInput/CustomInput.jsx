@@ -8,14 +8,8 @@ import {
 import "./CustomInput.css";
 
 export default function CustomInput(props) {
-  const { helpertext, error, label, funcError } = props;
+  const { helpertext, error, label } = props;
 
-  // const handleChange = (e) => {
-  //   if (error) {
-  //     funcError(false);
-  //   }
-  //   onChange(e.target.value);
-  // };
   return (
     <FormControl fullWidth size="small" error={error}>
       <InputLabel
@@ -25,12 +19,10 @@ export default function CustomInput(props) {
         {label}
       </InputLabel>
       <Input
+        {...props}
         id="component-helper"
-        // defaultValue={defaultValue ? defaultValue : null}
         className="input-custom-input"
         aria-describedby="component-helper-text"
-        // onChange={(e) => handleChange(e)}
-        {...props}
       />
       {error ? (
         <FormHelperText className="helper-text-custom-input">

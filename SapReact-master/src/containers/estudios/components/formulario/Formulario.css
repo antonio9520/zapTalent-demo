@@ -35,9 +35,11 @@
 .campo-date-form-estudio {
   display: flex;
 }
+
 .date-left-estudio {
   flex: 1;
   padding-right: 5px;
+  
 }
 .date-right-estudio {
   flex: 1;
