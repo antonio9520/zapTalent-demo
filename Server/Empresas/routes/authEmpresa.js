@@ -9,5 +9,5 @@ const AuthEmp = require("../middleware/AuthEmp");
 router.post("/", authController.autenticarUsuario);
 
 router.get("/", AuthEmp, authController.usuarioAutenticado);
- 
+
 module.exports = router;

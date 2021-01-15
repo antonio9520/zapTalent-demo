@@ -95,6 +95,7 @@
   margin-top: 20px;
   margin-bottom: 40px;
   padding: 0 5px 5px 5px;
+  scroll-behavior: smooth;
 }
 
 .form-nuevo-aviso-emp .p1 {

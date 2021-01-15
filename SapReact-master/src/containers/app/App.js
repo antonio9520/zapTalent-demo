@@ -23,44 +23,44 @@ function App() {
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <Switch>
-            <Route exact path={COVER} component={Cover} />
-            <Route exact path={RESTABLECER} component={Login} />
-            <Route exact path={EMPRESAS} component={Empresas} />
-            <Route exact path={LOGIN_FAKE} component={LoginFake} />
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Switch>
+              <Route exact path={COVER} component={Cover} />
+              <Route exact path={RESTABLECER} component={Login} />
+              <Route exact path={EMPRESAS} component={Empresas} />
+              <Route exact path={LOGIN_FAKE} component={LoginFake} />
 
-            {/**Usuario**/}
-            <Privada
-              exact
-              path={[
-                "/auth",
-                "/home",
-                "/ofertas-laborales",
-                "/estudios",
-                "/certificaciones",
-                "/sap-adn",
-                "/trabajos",
-                "/perfil",
-              ]}
-            />
-            <Route exact path="/login" component={Login} />
-            {/**Empresas**/}
-            <PrivadaEmp
-              exact
-              path={[
-                "/auth-emp",
-                "/empresas/home",
-                "/empresas/eco-sap",
-                "/empresas/avisos",
-                "/empresas/publicar-aviso",
-              ]}
-            />
-            <Route exact path="/login-empresas" component={LoginEmp} />
-          </Switch>
-        </Router>
-      </ThemeProvider>
+              {/**Usuario**/}
+              <Privada
+                exact
+                path={[
+                  "/auth",
+                  "/home",
+                  "/ofertas-laborales",
+                  "/estudios",
+                  "/certificaciones",
+                  "/sap-adn",
+                  "/trabajos",
+                  "/perfil",
+                ]}
+              />
+              <Route exact path="/login" component={Login} />
+              {/**Empresas**/}
+              <PrivadaEmp
+                exact
+                path={[
+                  "/auth-emp",
+                  "/empresas/home",
+                  "/empresas/eco-sap",
+                  "/empresas/avisos",
+                  "/empresas/publicar-aviso",
+                ]}
+              />
+              <Route exact path="/login-empresas" component={LoginEmp} />
+            </Switch>
+          </Router>
+        </ThemeProvider>
     </Provider>
   );
 }

@@ -7,6 +7,7 @@ import adnReducer from "./adnReducer";
 import alertReducer from "./alertReducer";
 //EMPRESA
 import authEmpReducer from "./reducers-emp/authReducer";
+import avisoReducers from "./reducers-emp/avisosReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
   adn: adnReducer,
   alert: alertReducer,
   authEmp: authEmpReducer,
+  aviso: avisoReducers,
 });

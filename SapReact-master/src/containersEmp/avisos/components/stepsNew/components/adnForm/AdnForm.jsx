@@ -7,11 +7,12 @@ import { ArrowBackIos, ArrowForwardIos, Close } from "@material-ui/icons";
 import { modulos } from "../../../../../../assets/modulos";
 import SwipeableViews from "react-swipeable-views";
 
-const AdnForm = () => {
+const AdnForm = ({ setAdns, adns, data, errores2 }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [loading, setLoading] = useState(true);
   const [modulo, setModulo] = useState(null);
-  const [active] = useState("");
+  const [error, setError] = useState(false);
+  const [initDefault, setInitDefault] = useState(true);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -21,32 +22,72 @@ const AdnForm = () => {
   };
   let arraySubModulos = [];
   const longitudPedazos = 5;
-  if (modulo) {
-    let submodulos = modulos.find((item) => item.modulo === modulo);
+  if (data.modulo !== "") {
+    let submodulos = modulos.find((item) => item.modulo === data.modulo);
 
     for (let i = 0; i < submodulos.submodulos.length; i += longitudPedazos) {
       let trozo = submodulos.submodulos.slice(i, i + longitudPedazos);
       arraySubModulos.push(trozo);
     }
   }
+  const deleteModulo = () => {
+    if (adns.length > 1) {
+      const result = adns.filter((item) => item.id !== data.id);
+      setAdns(result);
+    }
+  };
+
+  const addModulo = (e) => {
+    setModulo(e);
+    adns.map((item) => {
+      if (item.id === data.id) {
+        item.modulo = e;
+        item.submodulos = [];
+      }
+    });
+  };
 
   useEffect(() => {
     setLoading(true);
     setActiveStep(0);
     setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 200);
   }, [modulo]);
 
+  useEffect(() => {
+    console.log(errores2);
+    if (initDefault === false) {
+      if (errores2.length > 0) {
+        const valor = errores2.filter((item) => item === data.id);
+        console.log(valor);
+        console.log("entro useEffect");
+        if (valor.length > 0) {
+          setError(true);
+        } else {
+          setError(false);
+        }
+      }
+    }
+    setInitDefault(false);
+  }, [errores2]);
+  console.log(adns);
+  // console.log(data);
   return (
-    <div className="adn-form-avisos-emp">
+    <div
+      className="adn-form-avisos-emp"
+      style={{
+        border: error ? "1px solid #f44336" : null,
+        backgroundColor: error ? "#f4433605" : null,
+      }}
+    >
       <div className="container-inputs-form-emp">
         <CustomSelectB
           label="Módulo"
           helpertext="no puede estar vacio"
           // error={profesionError}
-          // value={profesion}
-          onChange={(e) => setModulo(e.target.value)}
+          value={data.modulo}
+          onChange={(e) => addModulo(e.target.value)}
         >
           {modulos.map((item, index) => (
             <MenuItem
@@ -65,15 +106,15 @@ const AdnForm = () => {
             <Loader
               type="Oval"
               color="#00BFFF"
-              height={30}
-              width={30}
+              height={35}
+              width={35}
               visible={loading}
               //  timeout={3000} //3 secs
             />
           </div>
         ) : (
           <div className="stepper-submod-form-emp">
-            {modulo === null ? (
+            {data.modulo === "" ? (
               <p className="p2">Selecciona un modulo</p>
             ) : (
               <>
@@ -91,7 +132,13 @@ const AdnForm = () => {
                       {arraySubModulos.map((item, index) => (
                         <div key={index} className="cont-SwipeableViews-emp">
                           {item.map((item, index) => (
-                            <Submodulos key={index} data={item} />
+                            <Submodulos
+                              key={index}
+                              data={item}
+                              setAdns={setAdns}
+                              adns={adns}
+                              id={data.id}
+                            />
                           ))}
                         </div>
                       ))}
@@ -121,8 +168,8 @@ const AdnForm = () => {
         )}
       </>
       <div style={{ position: "absolute", right: "5px", top: "5px" }}>
-        <IconButton size="small">
-          <Close className="icon-close"/>
+        <IconButton size="small" onClick={deleteModulo}>
+          <Close className="icon-close" />
         </IconButton>
       </div>
     </div>
@@ -131,15 +178,53 @@ const AdnForm = () => {
 
 export default AdnForm;
 
-const Submodulos = ({ data }) => {
+const Submodulos = ({ data, id, setAdns, adns }) => {
   const [active, setActive] = useState(false);
+
+  const handleClick = () => {
+    setActive(!active);
+    if (active) {
+      adns.map((it) => {
+        if (it.id === id) {
+          const filtro = it.submodulos.filter(
+            (i) => i.submodulo !== data.submodulo
+          );
+          it.submodulos = [];
+          filtro.map((item) => {
+            it.submodulos.push(item);
+          });
+        }
+      });
+    } else {
+      adns.map((it) => {
+        if (it.id === id) {
+          it.submodulos.push({
+            submodulo: data.submodulo,
+          });
+        }
+      });
+    }
+    console.log(adns);
+  };
+  useEffect(() => {
+    adns.map((it) => {
+      if (it.id === id) {
+        it.submodulos.map((ite) => {
+          if (ite.submodulo === data.submodulo) {
+            setActive(true);
+          }
+        });
+      }
+    });
+  }, []);
+  // console.log(adns);
   return (
     <Tooltip title={data.desc}>
       <div
         className={
           active ? "cont-submod-avisos-emp" : "cont-submod-avisos-emp-inact"
         }
-        onClick={() => setActive(!active)}
+        onClick={handleClick}
       >
         <p
           className={

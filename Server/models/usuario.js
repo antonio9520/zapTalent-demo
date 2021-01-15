@@ -82,15 +82,16 @@ const UsuariosSchema = mongoose.Schema({
     },
   ],
   activo: {
-    type: Number,
-    default: 0,
+type: Number,
+defaultValue: 0
   },
   cvURL: {
     type: String,
   },
   token: {
-    type: String,
-  },
+    type: String
+  }
+  ,
   expiracion: {
     type: Date,
   },
@@ -108,6 +109,8 @@ UsuariosSchema.methods.setImgUrl = function setImgUrl(filename) {
 UsuariosSchema.methods.setCvUrl = function setCvUrl(filename) {
   const { host, port } = appConfig;
   this.cvURL = `https://zaptalent.azurewebsites.net/public/cv/${filename}`;
+  
 };
 
 module.exports = mongoose.model("Usuario", UsuariosSchema);
+

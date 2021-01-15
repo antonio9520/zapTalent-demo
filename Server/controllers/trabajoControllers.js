@@ -3,7 +3,6 @@ const Trabajo = require("../models/trabajos");
 //GUARDAR
 exports.crearTrabajo = async (req, res) => {
   try {
-    console.log(req.body);
     //Crear nuevo Trabajo
     trabajo = new Trabajo(req.body);
     //guardar trabajo

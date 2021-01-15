@@ -15,10 +15,30 @@ import {
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
 
-const Stepthree = forwardRef(({ setStep, ref }) => {
+const Stepthree = forwardRef((props, ref) => {
+  const {
+    setStep,
+    jornadaLaboral,
+    setJornadaLaboral,
+    tipoContrato,
+    setTipoContrato,
+    cantidadVacantes,
+    setCantidadVacantes,
+    fechaContratacion,
+    setFechaContratacion,
+    pais,
+    setPais,
+    ciudad,
+    setCiudad,
+    region,
+    setRegion,
+    dispViajar,
+    setDispViajar,
+    dispResidencia,
+    setDispResidencia,
+  } = props;
+
   const loading = false;
-  const [dispViajar, setDispViajar] = useState("Si");
-  const [cambioRes, setCambioRes] = useState("No");
 
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
@@ -88,7 +108,7 @@ const Stepthree = forwardRef(({ setStep, ref }) => {
                   // error={fechaInicioError}
                   fullWidth
                   size="small"
-                  label="Inicio"
+                  label="Fecha de contratación"
                   // helperText={
                   // diainicioError ? "Fecha inicio no puede estar vacio" : null
                   // }
@@ -184,20 +204,16 @@ const Stepthree = forwardRef(({ setStep, ref }) => {
             <p className="p1">Disponibilidad para Viajar</p>
             <div style={{ display: "flex", marginTop: "20px" }}>
               <button
-                className={
-                  dispViajar === "Si" ? "btn-yes-no-active" : "btn-yes-no"
-                }
-                onClick={() => setDispViajar("Si")}
+                className={dispViajar ? "btn-yes-no-active" : "btn-yes-no"}
+                onClick={() => setDispViajar(true)}
               >
                 Si
               </button>
 
               <button
-                className={
-                  dispViajar === "No" ? "btn-yes-no-active" : "btn-yes-no"
-                }
+                className={!dispViajar ? "btn-yes-no-active" : "btn-yes-no"}
                 style={{ marginLeft: "10px" }}
-                onClick={() => setDispViajar("No")}
+                onClick={() => setDispViajar(false)}
               >
                 No
               </button>
@@ -207,20 +223,16 @@ const Stepthree = forwardRef(({ setStep, ref }) => {
             <p className="p1">Disponibilidad cambio de Residencia</p>
             <div style={{ display: "flex", marginTop: "20px" }}>
               <button
-                className={
-                  cambioRes === "Si" ? "btn-yes-no-active" : "btn-yes-no"
-                }
-                onClick={() => setCambioRes("Si")}
+                className={dispResidencia ? "btn-yes-no-active" : "btn-yes-no"}
+                onClick={() => setDispResidencia(true)}
               >
                 Si
               </button>
 
               <button
-                className={
-                  cambioRes === "No" ? "btn-yes-no-active" : "btn-yes-no"
-                }
+                className={!dispResidencia ? "btn-yes-no-active" : "btn-yes-no"}
                 style={{ marginLeft: "10px" }}
-                onClick={() => setCambioRes("No")}
+                onClick={() => setDispResidencia(false)}
               >
                 No
               </button>

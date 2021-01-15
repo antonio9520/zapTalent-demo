@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./HabChips.css";
 import {
   Chip,
-  makeStyles,
+  makeStyles, 
   InputAdornment,
   IconButton,
   ListItem,

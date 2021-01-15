@@ -1,18 +1,26 @@
 import React, { forwardRef, useState } from "react";
 import "./Styles.css";
-import {
-  Button,
-  IconButton,
-  CustomInput,
-  CustomSelectB,
-} from "../../../../components";
+import { Button, IconButton, CustomSelectB } from "../../../../components";
 import { LinearProgress, TextField, MenuItem } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import NumberFormat from "react-number-format";
+import { agregarAvisoAction } from "../../../../redux/actions/actions-emp/avisosAction";
+import { useDispatch } from "react-redux";
 
-const StepFour = forwardRef(({ setStep, ref }) => {
+const StepFour = forwardRef((props, ref) => {
+  const {
+    setStep,
+    renta,
+    setRenta,
+    beneficios,
+    setBeneficios,
+    descripcion,
+    setDescripcion,
+    estado,
+    setEstado,
+  } = props;
   const loading = false;
-  const [estado, setEstado] = useState("Activo");
+
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">

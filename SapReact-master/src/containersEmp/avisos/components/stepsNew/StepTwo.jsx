@@ -1,17 +1,50 @@
 import React, { forwardRef, useState } from "react";
 import "./Styles.css";
 import { Button, IconButton } from "../../../../components";
-import { LinearProgress, MenuItem } from "@material-ui/core";
+import { LinearProgress } from "@material-ui/core";
 import { Close, Add } from "@material-ui/icons";
 import AdnForm from "./components/adnForm/AdnForm";
+import shortid from "shortid";
 
-const StepTwo = forwardRef(({ setStep, ref }) => {
-  const [_array, setArray] = useState(["1"]);
-
-  const loading = false;
+const StepTwo = forwardRef((props, ref) => {
+  const { setStep, adns, setAdns, selectModulo, setSelectModulo } = props;
+  const [loading, setLoading] = useState(false);
+  const [errores, setErrores] = useState([]);
+  const [errores2, setErrores2] = useState([]);
 
   const addModulo = () => {
-    setArray([..._array, "1"]);
+    const container = document.getElementById("cont-adns-form-avisos-emp");
+
+    setAdns([...adns, { id: shortid.generate(), modulo: "", submodulos: [] }]);
+    setTimeout(() => {
+      container.scrollTop = "12000";
+    }, 100);
+  };
+  // console.log(adns);
+  const validation = async () => {
+    setLoading(true);
+    setErrores([]);
+    await mapearDatos();
+
+    setTimeout(() => {
+      nextStep();
+      setLoading(false);
+    }, 500);
+  };
+  const mapearDatos = () => {
+    adns.map((item) => {
+      if (item.modulo === "") {
+        errores.push(item.id);
+      } else if (item.submodulos.length === 0) {
+        errores.push(item.id);
+      }
+    });
+    setErrores2(errores);
+  };
+  const nextStep = () => {
+    if (errores.length === 0) {
+      setStep("three");
+    }
   };
 
   return (
@@ -19,9 +52,20 @@ const StepTwo = forwardRef(({ setStep, ref }) => {
       <div className="form-nuevo-aviso-emp">
         <h1>¿Qué perfil ADN SAP?</h1>
         {/* <p className="p1">ADN SAP</p> */}
-        <div className="cont-adns-form-avisos-emp">
-          {_array.map((item, index) => (
-            <AdnForm key={index} data={item} />
+        <div
+          className="cont-adns-form-avisos-emp"
+          id="cont-adns-form-avisos-emp"
+        >
+          {adns.map((item, index) => (
+            <AdnForm
+              key={index}
+              data={item}
+              adns={adns}
+              setAdns={setAdns}
+              errores2={errores2}
+              modulos={selectModulo}
+              setSelectModulo={setSelectModulo}
+            />
           ))}
         </div>
         <div className="add-mod-form-avisos-adn-emp">
@@ -38,11 +82,7 @@ const StepTwo = forwardRef(({ setStep, ref }) => {
           >
             Atras
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setStep("three")}
-          >
+          <Button variant="contained" color="primary" onClick={validation}>
             Siguiente
           </Button>
         </div>

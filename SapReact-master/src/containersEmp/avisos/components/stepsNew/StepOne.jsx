@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react"; 
+import React, { forwardRef, useState, useEffect } from "react";
 import "./Styles.css";
 import { Button } from "../../../../components";
 import { LinearProgress, MenuItem } from "@material-ui/core";
@@ -11,23 +11,79 @@ import {
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
 
-const StepOne = forwardRef(({ setStep, ref }) => {
-  //data
-  const [titulo, setTitulo] = useState("");
-  const [profesion, setProfesion] = useState("");
-  const [area, setArea] = useState("");
-  const [fechaInicio, setFechaInicio] = useState(null);
-  const [fechaTermino, setFechaTermino] = useState(null);
-  const [tipoConsultor, setTipoConsultor] = useState("Training");
+const StepOne = forwardRef((props, ref) => {
+  const {
+    setStep,
+    titulo,
+    setTitulo,
+    profesion,
+    setProfesion,
+    area,
+    setArea,
+    fechaInicio,
+    setFechaInicio,
+    fechaTermino,
+    setFechaTermino,
+    tipoConsultor,
+    setTipoConsultor,
+  } = props;
+
   //errores
   const [tituloError, setTituloError] = useState(false);
   const [profesionError, setProfesionError] = useState(false);
   const [areaError, setAreaError] = useState(false);
   const [fechaInicioError, setFechaInicioError] = useState(false);
   const [fechaTerminoError, setFechaTerminoError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [fechaMsg, setFechaMsg] = useState("");
+  const [initDefault, setInitDefault] = useState(true);
+  const [_switch, setSwitch] = useState(false);
 
-  const loading = false;
+  const validacion = () => {
+    setLoading(true);
+    if (titulo.trim() === "") {
+      setTituloError(true);
+    }
+    if (profesion === "") {
+      setProfesionError(true);
+    }
+    if (area === "") {
+      setAreaError(true);
+    }
+    if (fechaInicio === null) {
+      setFechaInicioError(true);
+    }
+    if (fechaTermino === null) {
+      setFechaTerminoError(true);
+      setFechaMsg("Fecha Termino no puede estar vacio");
+    } else {
+      if (Date.parse(fechaInicio) > Date.parse(fechaTermino)) {
+        setFechaTerminoError(true);
+        setFechaMsg("Fecha Termino no puede ser menor a la fecha Inicial");
+      }
+    }
+    setInitDefault(false);
+    setTimeout(() => {
+      setLoading(false);
+      setSwitch(!_switch);
+    }, 500);
+  };
 
+  useEffect(() => {
+    if (initDefault === false) {
+      if (
+        tituloError ||
+        profesionError ||
+        areaError ||
+        fechaInicioError ||
+        fechaTerminoError
+      ) {
+        return;
+      } else {
+        setStep("two");
+      }
+    }
+  }, [_switch]);
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">
@@ -38,7 +94,10 @@ const StepOne = forwardRef(({ setStep, ref }) => {
             helpertext="no puede estar vacio"
             error={tituloError}
             value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
+            onChange={(e) => {
+              setTituloError(false);
+              setTitulo(e.target.value);
+            }}
           />
         </div>
         <div className="container-inputs-form-emp">
@@ -47,7 +106,10 @@ const StepOne = forwardRef(({ setStep, ref }) => {
             helpertext="no puede estar vacio"
             error={profesionError}
             value={profesion}
-            onChange={(e) => setProfesion(e.target.value)}
+            onChange={(e) => {
+              setProfesionError(false);
+              setProfesion(e.target.value);
+            }}
           >
             <MenuItem className="custom-menu-item" value="item1">
               item1
@@ -69,7 +131,10 @@ const StepOne = forwardRef(({ setStep, ref }) => {
             helpertext="no puede estar vacio"
             error={areaError}
             value={area}
-            onChange={(e) => setArea(e.target.value)}
+            onChange={(e) => {
+              setAreaError(false);
+              setArea(e.target.value);
+            }}
           >
             <MenuItem className="custom-menu-item" value="item1">
               item1
@@ -97,13 +162,16 @@ const StepOne = forwardRef(({ setStep, ref }) => {
                 fullWidth
                 size="small"
                 label="Inicio"
-                // helperText={
-                // diainicioError ? "Fecha inicio no puede estar vacio" : null
-                // }
+                helperText={
+                  fechaInicioError ? "Fecha inicio no puede estar vacio" : null
+                }
                 format="dd/MM/yyyy"
                 value={fechaInicio}
                 // maxDate={new Date()}
-                onChange={(newValue) => setFechaInicio(newValue)}
+                onChange={(newValue) => {
+                  setFechaInicioError(false);
+                  setFechaInicio(newValue);
+                }}
                 InputProps={{
                   className: "input-date-picker-inicio",
                   readOnly: true,
@@ -119,10 +187,13 @@ const StepOne = forwardRef(({ setStep, ref }) => {
                 fullWidth
                 label="Término"
                 format="dd/MM/yyyy"
-                // helperText={diafinError ? fechamsg : null}
+                helperText={fechaTerminoError ? fechaMsg : null}
                 value={fechaTermino}
                 // maxDate={new Date()}
-                onChange={(newValue) => setFechaTermino(newValue)}
+                onChange={(newValue) => {
+                  setFechaTerminoError(false);
+                  setFechaTermino(newValue);
+                }}
                 InputProps={{
                   className: "input-date-picker-inicio",
                   readOnly: true,
@@ -186,11 +257,7 @@ const StepOne = forwardRef(({ setStep, ref }) => {
           <Button variant="contained" color="primary">
             Cancelar
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setStep("two")}
-          >
+          <Button variant="contained" color="primary" onClick={validacion}>
             Siguiente
           </Button>
         </div>
