@@ -11,7 +11,7 @@ const CustomIconButton = forwardRef((props, ref) => {
             : props.bg === "close"
             ? "#F0F0F0"
             : null,
-        color: props.color === "close" ? "#8F8E97" : "white",
+        color: props.customcolor === "close" ? "#8F8E97" : "white",
         boxShadow: "1px 1px 5px 1px rgba(0,0,0,0.2)",
         padding: props.bg === "close" ? "10px" : null,
       },

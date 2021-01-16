@@ -7,9 +7,10 @@ import { ArrowBackIos, ArrowForwardIos, Close } from "@material-ui/icons";
 import { modulos } from "../../../../../../assets/modulos";
 import SwipeableViews from "react-swipeable-views";
 
-const AdnForm = ({ setAdns, adns, data, errores2 }) => {
+const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [cargando, setCargando] = useState(false);
   const [modulo, setModulo] = useState(null);
   const [error, setError] = useState(false);
   const [initDefault, setInitDefault] = useState(true);
@@ -39,12 +40,14 @@ const AdnForm = ({ setAdns, adns, data, errores2 }) => {
 
   const addModulo = (e) => {
     setModulo(e);
+    setSwitch(!_swith);
     adns.map((item) => {
       if (item.id === data.id) {
         item.modulo = e;
         item.submodulos = [];
       }
     });
+    
   };
 
   useEffect(() => {
@@ -73,6 +76,12 @@ const AdnForm = ({ setAdns, adns, data, errores2 }) => {
   }, [errores2]);
   console.log(adns);
   // console.log(data);
+  useEffect(() => {
+    setCargando(true);
+    setTimeout(() => {
+      setCargando(false);
+    }, 200);
+  }, [_swith]);
   return (
     <div
       className="adn-form-avisos-emp"
@@ -89,15 +98,38 @@ const AdnForm = ({ setAdns, adns, data, errores2 }) => {
           value={data.modulo}
           onChange={(e) => addModulo(e.target.value)}
         >
-          {modulos.map((item, index) => (
-            <MenuItem
-              key={index}
-              className="custom-menu-item"
-              value={item.modulo}
-            >
-              {item.modulo}
-            </MenuItem>
-          ))}
+          {cargando
+            ? null
+            : modulos.map((item, index) => {
+                const valor = adns.filter((i) => i.modulo === item.modulo);
+                console.log(valor);
+                return valor.length > 0 ? (
+                  <MenuItem
+                    key={index}
+                    className="custom-menu-item"
+                    value={item.modulo}
+                    disabled
+                  >
+                    {item.modulo}
+                  </MenuItem>
+                ) : (
+                  <MenuItem
+                    key={index}
+                    className="custom-menu-item"
+                    value={item.modulo}
+                  >
+                    {item.modulo}
+                  </MenuItem>
+                );
+                // <MenuItem
+                //   key={index}
+                //   className="custom-menu-item"
+                //   value={item.modulo}
+                //   disabled
+                // >
+                //   {item.modulo}
+                // </MenuItem>
+              })}
         </CustomSelectB>
       </div>
       <>

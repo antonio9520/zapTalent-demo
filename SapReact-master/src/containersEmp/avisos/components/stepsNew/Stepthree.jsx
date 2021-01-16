@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import "./Styles.css";
 import {
   Button,
@@ -14,6 +14,7 @@ import {
 } from "@material-ui/pickers";
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
+import { regiones } from "../../../../assets/regiones";
 
 const Stepthree = forwardRef((props, ref) => {
   const {
@@ -37,9 +38,67 @@ const Stepthree = forwardRef((props, ref) => {
     dispResidencia,
     setDispResidencia,
   } = props;
+  const comunas = regiones.find((item) => item.region === region);
+  const [errorJLaboral, setErrorJLaboral] = useState(false);
+  const [errorTContrato, setErrorTContrato] = useState(false);
+  const [errorCVacantes, setErrorCVacantes] = useState(false);
+  const [errorFContratacion, setErrorFContratacion] = useState(false);
+  const [errorPais, setErrorPais] = useState(false);
+  const [errorRegion, setErrorRegion] = useState(false);
+  const [errorCiudad, setErrorCiudad] = useState(false);
+  const [initDefault, setInitDefault] = useState(true);
+  const [_switch, setSwitch] = useState(false);
 
-  const loading = false;
+  const [loading, setLoading] = useState(false);
 
+  const validacion = () => {
+    setLoading(true);
+    if (jornadaLaboral === "") {
+      setErrorJLaboral(true);
+    }
+    if (tipoContrato === "") {
+      setErrorTContrato(true);
+    }
+    if (cantidadVacantes < 1) {
+      setErrorCVacantes(true);
+    }
+    if (fechaContratacion === null) {
+      setErrorFContratacion(true);
+    }
+    if (pais === "") {
+      setErrorPais(true);
+    }
+    if (region === "") {
+      setErrorRegion(true);
+    }
+    if (ciudad === "") {
+      setErrorCiudad(true);
+    }
+
+    setInitDefault(false);
+    setTimeout(() => {
+      setLoading(false);
+      setSwitch(!_switch);
+    }, 500);
+  };
+
+  useEffect(() => {
+    if (initDefault === false) {
+      if (
+        errorJLaboral ||
+        errorTContrato ||
+        errorCVacantes ||
+        errorFContratacion ||
+        errorPais ||
+        errorRegion ||
+        errorCiudad
+      ) {
+        return;
+      } else {
+        setStep("four");
+      }
+    }
+  }, [_switch]);
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">
@@ -49,10 +108,13 @@ const Stepthree = forwardRef((props, ref) => {
             <div className="container-inputs-form-emp">
               <CustomSelectB
                 label="Jornada Laboral"
-                helpertext="no puede estar vacio"
-                // error={profesionError}
-                // value={profesion}
-                // onChange={(e) => setProfesion(e.target.value)}
+                helpertext="No puede estar vacio"
+                error={errorJLaboral}
+                value={jornadaLaboral}
+                onChange={(e) => {
+                  setErrorJLaboral(false);
+                  setJornadaLaboral(e.target.value);
+                }}
               >
                 <MenuItem className="custom-menu-item" value="item1">
                   item1
@@ -71,11 +133,14 @@ const Stepthree = forwardRef((props, ref) => {
             <div className="container-inputs-form-emp">
               <CustomInput
                 label="Cantidad de vacantes"
-                helpertext="no puede estar vacio"
+                helpertext="Introduzca un numero valido"
                 type="number"
-                // error={areaError}
-                // value={area}
-                // onChange={(e) => setArea(e.target.value)}
+                error={errorCVacantes}
+                value={cantidadVacantes}
+                onChange={(e) => {
+                  setErrorCVacantes(false);
+                  setCantidadVacantes(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -83,10 +148,13 @@ const Stepthree = forwardRef((props, ref) => {
             <div className="container-inputs-form-emp">
               <CustomSelectB
                 label="Tipo de Contrato"
-                helpertext="no puede estar vacio"
-                // error={profesionError}
-                // value={profesion}
-                // onChange={(e) => setProfesion(e.target.value)}
+                helpertext="No puede estar vacio"
+                error={errorTContrato}
+                value={tipoContrato}
+                onChange={(e) => {
+                  setErrorTContrato(false);
+                  setTipoContrato(e.target.value);
+                }}
               >
                 <MenuItem className="custom-menu-item" value="item1">
                   item1
@@ -105,16 +173,21 @@ const Stepthree = forwardRef((props, ref) => {
             <div className="container-inputs-form-emp">
               <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
                 <KeyboardDatePicker
-                  // error={fechaInicioError}
+                  error={errorFContratacion}
                   fullWidth
                   size="small"
                   label="Fecha de contratación"
-                  // helperText={
-                  // diainicioError ? "Fecha inicio no puede estar vacio" : null
-                  // }
+                  minDate={new Date()}
+                  maxDate={new Date("2030-01-01")}
+                  helperText={
+                    errorFContratacion ? "Seleccione una fecha" : null
+                  }
                   format="dd/MM/yyyy"
-                  // value={fechaInicio}
-                  // onChange={(newValue) => setFechaInicio(newValue)}
+                  value={fechaContratacion}
+                  onChange={(newValue) => {
+                    setErrorFContratacion(false);
+                    setFechaContratacion(newValue);
+                  }}
                   InputProps={{
                     className: "input-date-picker-inicio",
                     readOnly: true,
@@ -132,69 +205,69 @@ const Stepthree = forwardRef((props, ref) => {
             <div className="container-inputs-form-emp">
               <CustomSelectB
                 label="País"
-                helpertext="no puede estar vacio"
-                // error={profesionError}
-                // value={profesion}
-                // onChange={(e) => setProfesion(e.target.value)}
+                helpertext="Seleccione un país"
+                error={errorPais}
+                value={pais}
+                onChange={(e) => {
+                  setErrorPais(false);
+                  setPais(e.target.value);
+                }}
               >
-                <MenuItem className="custom-menu-item" value="item1">
-                  item1
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item2">
-                  item2
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item3">
-                  item3
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item4">
-                  item4
+                <MenuItem className="custom-menu-item" value="Chile">
+                  Chile
                 </MenuItem>
               </CustomSelectB>
             </div>
             <div className="container-inputs-form-emp">
               <CustomSelectB
-                label="Región"
-                helpertext="no puede estar vacio"
-                // error={profesionError}
-                // value={profesion}
-                // onChange={(e) => setProfesion(e.target.value)}
+                label="Ciudad"
+                helpertext="Seleccione una ciudad"
+                error={errorCiudad}
+                value={ciudad}
+                onChange={(e) => {
+                  setErrorCiudad(false);
+                  setCiudad(e.target.value);
+                }}
               >
-                <MenuItem className="custom-menu-item" value="item1">
-                  item1
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item2">
-                  item2
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item3">
-                  item3
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item4">
-                  item4
-                </MenuItem>
+                {comunas ? (
+                  comunas.comunas.map((item, index) => (
+                    <MenuItem
+                      className="custom-menu-item"
+                      key={index}
+                      value={item}
+                    >
+                      {item}
+                    </MenuItem>
+                  ))
+                ) : (
+                  <MenuItem className="custom-menu-item" value="">
+                    Seleccione una región
+                  </MenuItem>
+                )}
               </CustomSelectB>
             </div>
           </div>
           <div style={{ flex: 1, paddingLeft: "10px" }}>
             <div className="container-inputs-form-emp">
               <CustomSelectB
-                label="Ciudad"
-                helpertext="no puede estar vacio"
-                // error={profesionError}
-                // value={profesion}
-                // onChange={(e) => setProfesion(e.target.value)}
+                label="Región"
+                helpertext="Seleccione una región"
+                error={errorRegion}
+                value={region}
+                onChange={(e) => {
+                  setErrorRegion(false);
+                  setRegion(e.target.value);
+                }}
               >
-                <MenuItem className="custom-menu-item" value="item1">
-                  item1
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item2">
-                  item2
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item3">
-                  item3
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item4">
-                  item4
-                </MenuItem>
+                {regiones.map((item, index) => (
+                  <MenuItem
+                    className="custom-menu-item"
+                    key={index}
+                    value={item.region}
+                  >
+                    {item.region}
+                  </MenuItem>
+                ))}
               </CustomSelectB>
             </div>
           </div>
@@ -247,17 +320,13 @@ const Stepthree = forwardRef((props, ref) => {
           >
             Atras
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setStep("four")}
-          >
+          <Button variant="contained" color="primary" onClick={validacion}>
             Siguiente
           </Button>
         </div>
       </div>
       <div className="cont-icon-close-formulario">
-        <IconButton bg="close" size="small" color="close">
+        <IconButton bg="close" size="small" customcolor="close">
           <Close className="icon-close" />
         </IconButton>
       </div>

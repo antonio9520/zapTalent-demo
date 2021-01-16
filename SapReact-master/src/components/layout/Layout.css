@@ -29,13 +29,11 @@
     margin: 0;
     /* background: inherit; */
     /* background-color: lawngreen; */
-   
   }
   .contenedor-main-mini {
     margin: 0;
     /* background: inherit; */
     /* background-color: rgb(252, 101, 0); */
-  
   }
   /* .contenedor-main {
     background: var(--white);
@@ -49,4 +47,3 @@
 .li-active.icon-sidebar {
   color: white !important;
 }
-

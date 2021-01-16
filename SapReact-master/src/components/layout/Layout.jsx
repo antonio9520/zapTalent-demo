@@ -8,7 +8,7 @@ import { Alert } from "@material-ui/lab";
 import { hiddenAlertAction } from "../../redux/actions/trabajoAction";
 import { useDispatch, useSelector } from "react-redux";
 
-const Layout = (props) => {  
+const Layout = (props) => {
   const dispatch = useDispatch();
   const _alert = useSelector((state) => state.trabajo.alert);
   const [open, setOpen] = useState(true);
@@ -31,7 +31,7 @@ const Layout = (props) => {
         >
           <Alert severity={_alert.type}>{_alert.msg}</Alert>
         </Snackbar>
-      </div> 
+      </div>
     </>
   );
 };

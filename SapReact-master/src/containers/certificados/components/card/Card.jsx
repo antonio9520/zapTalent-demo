@@ -30,7 +30,7 @@ const Card = (props) => {
     "Febrero",
     "Marzo",
     "Abril",
-    "Mayo",
+    "Mayo", 
     "Junio",
     "Julio",
     "Agosto",

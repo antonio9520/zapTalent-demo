@@ -1,48 +1,8 @@
 const Avisos = require("../models/avisos");
 
 exports.crearAviso = async (req, res) => {
-  const {
-    titulo,
-    area,
-    fechaInicio,
-    fechaTermino,
-    estado,
-    jornadaLaboral,
-    tipoContrato,
-    fechaContratacion,
-    cantidadVacantes,
-    pais,
-    ciudad,
-    region,
-    dispResidencia,
-    dispViajar,
-    renta,
-    beneficios,
-    descripcion,
-    adnsap,
-  } = req.body;
-
   try {
-    const aviso = new Avisos({
-      titulo: titulo,
-      area: area,
-      fechaInicio: fechaInicio,
-      fechaTermino: fechaTermino,
-      estado: estado,
-      jornadaLaboral: jornadaLaboral,
-      tipoContrato: tipoContrato,
-      fechaContratacion: fechaContratacion,
-      cantidadVacantes: cantidadVacantes,
-      pais: pais,
-      ciudad: ciudad,
-      region: region,
-      dispResidencia: dispResidencia,
-      dispViajar: dispViajar,
-      renta: renta,
-      beneficios: beneficios,
-      descripcion: descripcion,
-      adnsap: adnsap,
-    });
+    const aviso = new Avisos(req.body);
 
     await aviso.save();
     res.status(200).json(aviso);
@@ -52,9 +12,10 @@ exports.crearAviso = async (req, res) => {
 };
 
 exports.mostrarAvisos = async (req, res) => {
+  console.log(req.params.id)
   try {
-    const aviso = await Avisos.find();
-    res.json(aviso);
+    const avisos = await Avisos.find({ idusuario: req.params.id });
+    res.json(avisos);
   } catch (err) {
     res.status(500).json({ msg: "Hubo un error" });
   }

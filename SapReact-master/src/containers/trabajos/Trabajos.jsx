@@ -3,7 +3,7 @@ import "./Trabajos.css";
 import { CardInit, ModalEliminar, Spinner } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, CardJob, ModalEditar } from "./components";
-import { IconButton, Fab } from "@material-ui/core";
+import { Fab } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
 import Loader from "react-loader-spinner";

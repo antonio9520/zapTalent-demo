@@ -26,12 +26,15 @@ const StepOne = forwardRef((props, ref) => {
     setFechaTermino,
     tipoConsultor,
     setTipoConsultor,
+    anosExp,
+    setAnosExp,
   } = props;
 
   //errores
   const [tituloError, setTituloError] = useState(false);
   const [profesionError, setProfesionError] = useState(false);
   const [areaError, setAreaError] = useState(false);
+  const [errorAnosExp, setErrorAnosExp] = useState(false);
   const [fechaInicioError, setFechaInicioError] = useState(false);
   const [fechaTerminoError, setFechaTerminoError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -49,6 +52,9 @@ const StepOne = forwardRef((props, ref) => {
     }
     if (area === "") {
       setAreaError(true);
+    }
+    if (anosExp < 1) {
+      setErrorAnosExp(true);
     }
     if (fechaInicio === null) {
       setFechaInicioError(true);
@@ -75,6 +81,7 @@ const StepOne = forwardRef((props, ref) => {
         tituloError ||
         profesionError ||
         areaError ||
+        errorAnosExp ||
         fechaInicioError ||
         fechaTerminoError
       ) {
@@ -101,7 +108,7 @@ const StepOne = forwardRef((props, ref) => {
           />
         </div>
         <div className="container-inputs-form-emp">
-          <CustomSelectB
+          <CustomInput
             label="Profesión"
             helpertext="no puede estar vacio"
             error={profesionError}
@@ -110,20 +117,7 @@ const StepOne = forwardRef((props, ref) => {
               setProfesionError(false);
               setProfesion(e.target.value);
             }}
-          >
-            <MenuItem className="custom-menu-item" value="item1">
-              item1
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item2">
-              item2
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item3">
-              item3
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item4">
-              item4
-            </MenuItem>
-          </CustomSelectB>
+          />
         </div>
         <div className="container-inputs-form-emp">
           <CustomSelectB
@@ -150,7 +144,19 @@ const StepOne = forwardRef((props, ref) => {
             </MenuItem>
           </CustomSelectB>
         </div>
-
+        <div className="container-inputs-form-emp">
+          <CustomInput
+            label="Años de experiencia"
+            helpertext="Introduzca un nuemero valido"
+            error={errorAnosExp}
+            type="number"
+            value={anosExp}
+            onChange={(e) => {
+              setErrorAnosExp(false);
+              setAnosExp(e.target.value);
+            }}
+          />
+        </div>
         <div
           className="campo-date-form-avisos-emp"
           style={{ marginTop: "5px" }}
@@ -162,6 +168,8 @@ const StepOne = forwardRef((props, ref) => {
                 fullWidth
                 size="small"
                 label="Inicio"
+                minDate={new Date()}
+                maxDate={new Date("2030-01-01")}
                 helperText={
                   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
                 }
@@ -189,6 +197,8 @@ const StepOne = forwardRef((props, ref) => {
                 format="dd/MM/yyyy"
                 helperText={fechaTerminoError ? fechaMsg : null}
                 value={fechaTermino}
+                minDate={new Date()}
+                maxDate={new Date("2030-01-01")}
                 // maxDate={new Date()}
                 onChange={(newValue) => {
                   setFechaTerminoError(false);
@@ -263,7 +273,7 @@ const StepOne = forwardRef((props, ref) => {
         </div>
       </div>
       <div className="cont-icon-close-formulario">
-        <IconButton bg="close" size="small" color="close">
+        <IconButton bg="close" size="small" customcolor="close">
           <Close className="icon-close" />
         </IconButton>
       </div>

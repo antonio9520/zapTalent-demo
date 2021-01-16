@@ -5,7 +5,7 @@ exports.crearTrabajo = async (req, res) => {
   try {
     //Crear nuevo Trabajo
     trabajo = new Trabajo(req.body);
-    //guardar trabajo
+    //guardar trabajo 
     await trabajo.save();
     res.json(trabajo);
   } catch (error) {

@@ -1,11 +1,9 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import "./Styles.css";
 import { Button, IconButton, CustomSelectB } from "../../../../components";
 import { LinearProgress, TextField, MenuItem } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import NumberFormat from "react-number-format";
-import { agregarAvisoAction } from "../../../../redux/actions/actions-emp/avisosAction";
-import { useDispatch } from "react-redux";
 
 const StepFour = forwardRef((props, ref) => {
   const {
@@ -18,8 +16,41 @@ const StepFour = forwardRef((props, ref) => {
     setDescripcion,
     estado,
     setEstado,
+    guardarAviso,
+    cargando,
   } = props;
-  const loading = false;
+
+  const [initDefault, setInitDefault] = useState(true);
+  const [errorRenta, setErrorRenta] = useState(false);
+  const [errorBeneficios, setErrorBeneficios] = useState(false);
+  const [errorDescripcion, setErrorDescripcion] = useState(false);
+  const [_switch, setSwitch] = useState(false);
+
+  const validacion = () => {
+    if (renta < 1) {
+      setErrorRenta(true);
+    }
+    if (beneficios === "") {
+      setErrorBeneficios(true);
+    }
+    if (descripcion === "") {
+      setErrorDescripcion(true);
+    }
+    setInitDefault(false);
+    setTimeout(() => {
+      setSwitch(!_switch);
+    }, 100);
+  };
+
+  useEffect(() => {
+    if (initDefault === false) {
+      if (errorRenta || errorBeneficios || errorDescripcion) {
+        return;
+      } else {
+        guardarAviso();
+      }
+    }
+  }, [_switch]);
 
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
@@ -31,23 +62,22 @@ const StepFour = forwardRef((props, ref) => {
             <div style={{ marginTop: "14px" }}>
               <TextField
                 fullWidth
-                // label="Manejo de presupuesto (opcional)"
                 placeholder="$ 000.000"
-                // value={manejopresupuesto}
-                // onChange={(e) => {
-                //   setManPressError(false);
-                //   setManejoPresupuesto(e.target.value);
-                // }}
+                value={renta}
+                onChange={(e) => {
+                  setErrorRenta(false);
+                  setRenta(e.target.value);
+                }}
                 id="formatted-numberformat-input"
                 InputProps={{
                   inputComponent: NumberFormatCustom,
                   className: "multiline-form-estudios ",
                 }}
-                // error={manPreError}
+                error={errorRenta}
                 InputLabelProps={{
                   className: "multiline-form-estudios manpre-form-trabajos",
                 }}
-                // helperText={manPreError ? "Introduzca un numero valido" : null}
+                helperText={errorRenta ? "Introduzca un numero valido" : null}
               />
             </div>
           </div>
@@ -55,10 +85,13 @@ const StepFour = forwardRef((props, ref) => {
             <p className="p1">Beneficios</p>
             <CustomSelectB
               label="Seleccione"
-              helpertext="no puede estar vacio"
-              // error={profesionError}
-              // value={profesion}
-              // onChange={(e) => setProfesion(e.target.value)}
+              helpertext="Seleccione un beneficio"
+              error={errorBeneficios}
+              value={beneficios}
+              onChange={(e) => {
+                setErrorBeneficios(false);
+                setBeneficios(e.target.value);
+              }}
             >
               <MenuItem className="custom-menu-item" value="item1">
                 item1
@@ -83,10 +116,16 @@ const StepFour = forwardRef((props, ref) => {
             fullWidth
             id="standard-multiline-static"
             label="Describa el empleo"
-            // onChange={(e) => setRefLogros(e.target.value)}
+            onChange={(e) => {
+              setErrorDescripcion(false);
+              setDescripcion(e.target.value);
+            }}
             name="logros"
             type="text"
+            error={errorDescripcion}
+            value={descripcion}
             // defaultValue={reflogros}
+            helperText={errorDescripcion ? "No puede estar vacio" : null}
             multiline
             rows={2}
             InputLabelProps={{ className: "multiline-form-estudios" }}
@@ -155,21 +194,17 @@ const StepFour = forwardRef((props, ref) => {
           >
             Atras
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => console.log("guardar")}
-          >
+          <Button variant="contained" color="primary" onClick={validacion}>
             Guardar
           </Button>
         </div>
       </div>
       <div className="cont-icon-close-formulario">
-        <IconButton bg="close" size="small" color="close">
+        <IconButton bg="close" size="small" customcolor="close">
           <Close className="icon-close" />
         </IconButton>
       </div>
-      {loading ? (
+      {cargando ? (
         <>
           <div className="overlay-loading"></div>
           <div className="linear-progres-global">

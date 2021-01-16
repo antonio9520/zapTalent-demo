@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const { appConfig } = require("../../config/config");
 
 const avisosSchema = mongoose.Schema({
+  idusuario: {
+    type: String,
+    require: true,
+    trim: true,
+  },
   titulo: {
     type: String,
     trim: true,
@@ -11,6 +16,10 @@ const avisosSchema = mongoose.Schema({
     trim: true,
   },
   area: {
+    type: String,
+    trim: true,
+  },
+  anosExp: {
     type: String,
     trim: true,
   },
@@ -30,7 +39,7 @@ const avisosSchema = mongoose.Schema({
     type: String,
     trim: true,
   },
-  adnsap: [],
+  adns: [],
   jornadaLaboral: {
     type: String,
     trim: true,
@@ -67,7 +76,7 @@ const avisosSchema = mongoose.Schema({
     type: String,
     trim: true,
   },
-  rentaOfrecida: {
+  renta: {
     type: String,
     trim: true,
   },

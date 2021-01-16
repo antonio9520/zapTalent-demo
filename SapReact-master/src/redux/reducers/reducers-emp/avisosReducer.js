@@ -2,6 +2,9 @@ import {
   AGREGAR_AVISO,
   AGREGAR_AVISO_EXITO,
   AGREGAR_AVISO_ERROR,
+  DESCARGA_AVISO_ERROR,
+  DESCARGA_AVISO_EXITO,
+  COMENZAR_DESCARGA_AVISO,
 } from "../../types/typesEmp";
 
 const initialState = {
@@ -15,12 +18,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    //   case COMENZAR_DESCARGA_TRABAJO:
-    //     return {
-    //       ...state,
-    //       loading: true,
-    //       error: null,
-    //     };
+    case COMENZAR_DESCARGA_AVISO:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
     //   case COMENZAR_EDICION_TRABAJO:
     case AGREGAR_AVISO:
       return {
@@ -28,17 +31,17 @@ export default function (state = initialState, action) {
         cargando: true,
         error: null,
       };
-    //   case DESCARGA_TRABAJO_EXITO:
-    //     return {
-    //       ...state,
-    //       loading: false,
-    //       error: null,
-    //       trabajos: action.payload,
-    //     };
+    case DESCARGA_AVISO_EXITO:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        avisos: action.payload,
+      };
     //   case TRABAJO_EDITADO_ERROR:
+    //   case TRABAJO_ELIMINADO_ERROR:
     case AGREGAR_AVISO_ERROR:
-      //   case TRABAJO_ELIMINADO_ERROR:
-      //   case DESCARGA_TRABAJO_ERROR:
+    case DESCARGA_AVISO_ERROR:
       return {
         ...state,
         loading: false,

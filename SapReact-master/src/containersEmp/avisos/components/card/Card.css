@@ -128,14 +128,14 @@
 }
 .estado-card-avisos-emp {
   background-color: var(--blue-primary);
-  padding: 5px 20px;
+  padding: 10px 20px;
   margin-left: 10px;
   border-radius: 3px;
   color: white;
 }
 .estado-card-avisos-emp p {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 .btns-cards-avisos-emp {
   background-color: #8f8e97 !important;

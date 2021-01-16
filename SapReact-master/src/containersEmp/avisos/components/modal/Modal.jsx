@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
 import { StepOne, StepTwo, StepThree, StepFour } from "../stepsNew";
 import shortid from "shortid";
-import { modulos } from "../../../../assets/modulos";
+import { useDispatch, useSelector } from "react-redux";
+import { agregarAvisoAction } from "../../../../redux/actions/actions-emp/avisosAction";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -13,12 +14,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 const CustomModal = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { setOpenModal, openModal } = props;
-  const [step, setStep] = useState("two");
+  const usuario = useSelector((state) => state.authEmp.usuario);
+  const cargando = useSelector((state) => state.aviso.cargando);
+  const [step, setStep] = useState("one");
   //step one
   const [titulo, setTitulo] = useState("");
   const [profesion, setProfesion] = useState("");
   const [area, setArea] = useState("");
+  const [anosExp, setAnosExp] = useState(null);
   const [fechaInicio, setFechaInicio] = useState(null);
   const [fechaTermino, setFechaTermino] = useState(null);
   const [tipoConsultor, setTipoConsultor] = useState("Junior");
@@ -26,11 +31,10 @@ const CustomModal = (props) => {
   const [adns, setAdns] = useState([
     { id: shortid.generate(), modulo: "", submodulos: [] },
   ]);
-  const [selectModulo, setSelectModulo] = useState(modulos);
   //step three
   const [jornadaLaboral, setJornadaLaboral] = useState("");
   const [tipoContrato, setTipoContrato] = useState("");
-  const [cantidadVacantes, setCantidadVacantes] = useState(0);
+  const [cantidadVacantes, setCantidadVacantes] = useState(null);
   const [fechaContratacion, setFechaContratacion] = useState(null);
   const [pais, setPais] = useState("");
   const [ciudad, setCiudad] = useState("");
@@ -38,13 +42,67 @@ const CustomModal = (props) => {
   const [dispViajar, setDispViajar] = useState(true);
   const [dispResidencia, setDispResidencia] = useState(false);
   //step four
-  const [renta, setRenta] = useState(0);
+  const [renta, setRenta] = useState(null);
   const [beneficios, setBeneficios] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [estado, setEstado] = useState("Activo");
 
+  //guardar aviso
+  const guardarAviso = () => {
+    dispatch(
+      agregarAvisoAction({
+        idusuario: usuario._id,
+        titulo,
+        profesion,
+        area,
+        anosExp,
+        fechaInicio,
+        fechaTermino,
+        tipoConsultor,
+        adns: adns,
+        jornadaLaboral,
+        tipoContrato,
+        cantidadVacantes,
+        fechaContratacion,
+        pais,
+        region,
+        ciudad,
+        dispResidencia,
+        dispViajar,
+        renta,
+        beneficios,
+        descripcion,
+        estado,
+      })
+    ).then((res) => (res === true ? closeModal() : null));
+  };
+  // console.log(usuario);
   const closeModal = () => {
     setOpenModal(false);
+    setTitulo("");
+    setProfesion("");
+    setArea("");
+    setAnosExp(null);
+    setFechaInicio(null);
+    setFechaTermino(null);
+    setTipoConsultor("Junior");
+    //step two
+    setAdns([{ id: shortid.generate(), modulo: "", submodulos: [] }]);
+    //step three
+    setJornadaLaboral("");
+    setTipoContrato("");
+    setCantidadVacantes(null);
+    setFechaContratacion(null);
+    setPais("");
+    setCiudad("");
+    setRegion("");
+    setDispViajar(true);
+    setDispResidencia(false);
+    //step four
+    setRenta(null);
+    setBeneficios("");
+    setDescripcion("");
+    setEstado("Activo");
     setTimeout(() => {
       setStep("one");
     }, 300);
@@ -80,6 +138,8 @@ const CustomModal = (props) => {
             setFechaTermino={setFechaTermino}
             tipoConsultor={tipoConsultor}
             setTipoConsultor={setTipoConsultor}
+            anosExp={anosExp}
+            setAnosExp={setAnosExp}
           />
         ) : step === "two" ? (
           <StepTwo
@@ -87,8 +147,6 @@ const CustomModal = (props) => {
             closeModal={closeModal}
             adns={adns}
             setAdns={setAdns}
-            selectModulo={selectModulo}
-            setSelectModulo={setSelectModulo}
           />
         ) : step === "three" ? (
           <StepThree
@@ -125,6 +183,8 @@ const CustomModal = (props) => {
             setDescripcion={setDescripcion}
             estado={estado}
             setEstado={setEstado}
+            guardarAviso={guardarAviso}
+            cargando={cargando}
           />
         ) : null}
       </Fade>

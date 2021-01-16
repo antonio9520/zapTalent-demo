@@ -7,10 +7,11 @@ import AdnForm from "./components/adnForm/AdnForm";
 import shortid from "shortid";
 
 const StepTwo = forwardRef((props, ref) => {
-  const { setStep, adns, setAdns, selectModulo, setSelectModulo } = props;
+  const { setStep, adns, setAdns } = props;
   const [loading, setLoading] = useState(false);
   const [errores, setErrores] = useState([]);
   const [errores2, setErrores2] = useState([]);
+  const [_swith, setSwitch] = useState(false);
 
   const addModulo = () => {
     const container = document.getElementById("cont-adns-form-avisos-emp");
@@ -63,8 +64,8 @@ const StepTwo = forwardRef((props, ref) => {
               adns={adns}
               setAdns={setAdns}
               errores2={errores2}
-              modulos={selectModulo}
-              setSelectModulo={setSelectModulo}
+              _swith={_swith}
+              setSwitch={setSwitch}
             />
           ))}
         </div>
@@ -88,7 +89,7 @@ const StepTwo = forwardRef((props, ref) => {
         </div>
       </div>
       <div className="cont-icon-close-formulario">
-        <IconButton bg="close" size="small" color="close">
+        <IconButton bg="close" size="small" customcolor="close">
           <Close className="icon-close" />
         </IconButton>
       </div>

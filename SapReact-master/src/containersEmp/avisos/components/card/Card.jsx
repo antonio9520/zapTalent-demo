@@ -12,27 +12,54 @@ import {
   ArrowDropDown,
 } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
-const Card = () => {
+
+const Card = ({ data }) => {
+  console.log(data);
+  const inicio = new Date(data.fechaInicio);
+  const termino = new Date(data.fechaTermino);
+
+  const MESES = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
   return (
     <div className="card-avisos-empresas">
       <div className="top-card-avisos-emp">
         <div className="left-card-avisos-emp">
           <div className="fechas-card-avisos-emp">
             <EventAvailable className="icon-calendar-avisos-emp" />
-            <p>Mayo 21 - 2020</p>
+            <p>
+              {MESES[inicio.getMonth()]} {inicio.getDay()} -{" "}
+              {inicio.getFullYear()}
+            </p>
 
             <EventBusy className="icon-calendar-avisos-emp" />
-            <p>Agosto 21 - 2020</p>
+            <p>
+              {MESES[termino.getMonth()]} {termino.getDay()} -{" "}
+              {termino.getFullYear()}
+            </p>
           </div>
           <p className="p1">SCL Consultores</p>
-          <p className="p2">Programador Python</p>
-          <p className="p3">Ingeniero en informática</p>
+          <p className="p2">{data.titulo}</p>
+          <p className="p3">{data.profesion}</p>
           <div className="anos-exp-card-avisos-emp">
-            <p>2 años de experiencia</p>
+            <p>{data.anosExp} años de experiencia</p>
           </div>
           <div className="direccion-card-avisos-emp">
             <LocationOn className="icon-calendar-avisos-emp" />
-            <p>San Miguel, Santiago, R. Metropolitana</p>
+            <p>
+              {data.ciudad}, {data.region}
+            </p>
           </div>
         </div>
         <div className="right-card-avisos-emp">
@@ -52,14 +79,14 @@ const Card = () => {
         <div className="right-bottom-avisos-emp">
           <p className="p1">Estado: </p>
           <div className="estado-card-avisos-emp">
-            <p>Activo</p>
+            <p>{data.estado}</p>
           </div>
           <IconButton>
             <ArrowDropDown />
           </IconButton>
         </div>
         <div className="left-bottom-avisos-emp">
-          <IconButton  className="btns-cards-avisos-emp">
+          <IconButton className="btns-cards-avisos-emp">
             <Cached />
           </IconButton>
           <IconButton className="btns-cards-avisos-emp">

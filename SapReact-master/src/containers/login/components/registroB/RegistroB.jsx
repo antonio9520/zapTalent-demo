@@ -7,7 +7,7 @@ import { regiones } from "../../../../assets/regiones";
 import { Close } from "@material-ui/icons";
 
 const RegistroB = (props) => {
-  const {
+  const { 
     setView,
     region,
     comuna,

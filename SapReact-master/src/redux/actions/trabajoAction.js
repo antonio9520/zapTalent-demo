@@ -17,7 +17,7 @@ import {
 import clientAxios from "../../config/axios";
 
 const showAlert = (data) => ({
-  type: SHOW_ALERT,
+  type: SHOW_ALERT, 
   payload: data,
 });
 
