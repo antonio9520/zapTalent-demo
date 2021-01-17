@@ -59,7 +59,7 @@ export function eliminarTrabajoAction(id) {
         showAlert({ show: true, msg: "Trabajo eliminado.", type: "success" })
       );
     } catch (error) {
-      console.log(error);
+      console.log(error); 
       dispatch(eliminarTrabajoError());
       dispatch(
         showAlert({ show: true, msg: error.response.data.msg, type: "error" })

@@ -6,6 +6,12 @@ import {
   COMENZAR_DESCARGA_AVISO,
   DESCARGA_AVISO_ERROR,
   DESCARGA_AVISO_EXITO,
+  OBTENER_AVISO_ELIMINAR,
+  AVISO_ELIMINADO_ERROR,
+  AVISO_ELIMINADO_EXITO,
+  COMENZAR_EDICION_AVISO,
+  AVISO_EDITADO_ERROR,
+  AVISO_EDITADO_EXITO,
 } from "../../types/typesEmp";
 
 import clientAxios from "../../../config/axios";
@@ -78,4 +84,75 @@ const descargaExito = (data) => ({
 
 const descargaError = () => ({
   type: DESCARGA_AVISO_ERROR,
+});
+
+//ELIMINAR
+export function eliminarAvisoAction(id) {
+  return async (dispatch) => {
+    dispatch(obtenerEliminarAviso(id));
+    try {
+      await clientAxios.delete(`/api/avisos/${id}`);
+      dispatch(eliminarAvisoExito());
+      dispatch(
+        showAlert({ show: true, msg: "Aviso eliminado.", type: "success" })
+      );
+    } catch (error) {
+      console.log(error);
+      dispatch(eliminarAvisoError());
+      dispatch(
+        showAlert({ show: true, msg: error.response.data.msg, type: "error" })
+      );
+    }
+  };
+}
+
+const obtenerEliminarAviso = (id) => ({
+  type: OBTENER_AVISO_ELIMINAR,
+  payload: id,
+});
+
+const eliminarAvisoExito = () => ({
+  type: AVISO_ELIMINADO_EXITO,
+});
+
+const eliminarAvisoError = () => ({
+  type: AVISO_ELIMINADO_ERROR,
+});
+
+//EDITAR
+export function editarAvisoAction(data) {
+  return async (dispatch) => {
+    dispatch(comenzarEditar());
+
+    try {
+      await clientAxios
+        .put(`/api/avisos/${data._id}`, data)
+        .then((res) => dispatch(editarAvisoExito(res.data)));
+      dispatch(
+        showAlert({
+          show: true,
+          msg: "Aviso editado correctamente.",
+          type: "success",
+        })
+      );
+      return true;
+    } catch (error) {
+      console.log(error);
+      dispatch(editarAvisoError());
+      showAlert({ show: true, msg: error.response.data.msg, type: "error" });
+    }
+  };
+}
+
+const comenzarEditar = () => ({
+  type: COMENZAR_EDICION_AVISO,
+});
+
+const editarAvisoExito = (data) => ({
+  type: AVISO_EDITADO_EXITO,
+  payload: data,
+});
+
+const editarAvisoError = () => ({
+  type: AVISO_EDITADO_ERROR,
 });

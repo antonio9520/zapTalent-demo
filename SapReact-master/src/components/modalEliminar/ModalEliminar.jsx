@@ -8,6 +8,7 @@ import { eliminarTrabajoAction } from "../../redux/actions/trabajoAction";
 import { eliminarEstudioAction } from "../../redux/actions/estudioAction";
 import { eliminarCertificadoAction } from "../../redux/actions/certificadoAction";
 import { eliminarAdnAction } from "../../redux/actions/adnAction";
+import { eliminarAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -26,6 +27,7 @@ const CustomModal = (props) => {
     estudio,
     certificado,
     adnsap,
+    aviso,
     idEliminar,
     setIdEliminar,
   } = props;
@@ -49,6 +51,9 @@ const CustomModal = (props) => {
     }
     if (adnsap) {
       dispatch(eliminarAdnAction(idEliminar));
+    }
+    if (aviso) {
+      dispatch(eliminarAvisoAction(idEliminar));
     }
   };
   const DeleteComponent = () => {

@@ -95,15 +95,17 @@ const StepOne = forwardRef((props, ref) => {
       }
     }
   }, [_switch]);
+  console.log(titulo);
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">
-        <h1>Crea tu nuevo aviso</h1>
+        <h1>Edita tu aviso</h1>
         <div className="container-inputs-form-emp">
           <CustomInput
             label="Título de aviso"
             helpertext="no puede estar vacio"
             error={tituloError}
+            defaultValue={titulo}
             value={titulo}
             onChange={(e) => {
               setTituloError(false);
@@ -115,6 +117,7 @@ const StepOne = forwardRef((props, ref) => {
           <CustomInput
             label="Profesión"
             helpertext="no puede estar vacio"
+            defaultValue={profesion}
             error={profesionError}
             value={profesion}
             onChange={(e) => {

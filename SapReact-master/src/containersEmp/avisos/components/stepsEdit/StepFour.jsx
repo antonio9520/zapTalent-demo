@@ -17,7 +17,7 @@ const StepFour = forwardRef((props, ref) => {
     setDescripcion,
     estado,
     setEstado,
-    guardarAviso,
+    guardarAvisoEditado,
     cargando,
   } = props;
 
@@ -48,7 +48,7 @@ const StepFour = forwardRef((props, ref) => {
       if (errorRenta || errorBeneficios || errorDescripcion) {
         return;
       } else {
-        guardarAviso();
+        guardarAvisoEditado();
       }
     }
   }, [_switch]);

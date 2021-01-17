@@ -69,12 +69,10 @@ const avisosSchema = mongoose.Schema({
     trim: true,
   },
   dispViajar: {
-    type: String,
-    trim: true,
+    type: Boolean,
   },
   dispResidencia: {
-    type: String,
-    trim: true,
+    type: Boolean,
   },
   renta: {
     type: String,

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Avisos.css";
-import { Header, Card, Modal } from "./components";
+import { Header, Card, Modal, ModalEditar } from "./components";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "react-loader-spinner";
+import { ModalEliminar } from "../../components";
 
 const Avisos = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,10 @@ const Avisos = () => {
   const avisos = useSelector((state) => state.aviso.avisos);
   const loading = useSelector((state) => state.aviso.loading);
   const [openModal, setOpenModal] = useState(false);
+  const [idEliminar, setIdEliminar] = useState("");
+  const [openModalEliminar, setOpenModalEliminar] = useState(false);
+  const [openModalEditar, setOpenModalEditar] = useState(false);
+  const [dataEditar, setDataEditar] = useState(null);
 
   useEffect(() => {
     if (usuario) {
@@ -50,10 +55,31 @@ const Avisos = () => {
 
           <div className="cont-cards-avisos-emp">
             {avisos.map((item, index) => (
-              <Card data={item} key={index} />
+              <Card
+                data={item}
+                key={index}
+                setIdEliminar={setIdEliminar}
+                setOpenModalEliminar={setOpenModalEliminar}
+                setOpenModalEditar={setOpenModalEditar}
+                setDataEditar={setDataEditar}
+              />
             ))}
           </div>
           <Modal setOpenModal={setOpenModal} openModal={openModal} />
+          <ModalEliminar
+            aviso
+            openModalEliminar={openModalEliminar}
+            setOpenModalEliminar={setOpenModalEliminar}
+            idEliminar={idEliminar}
+            setIdEliminar={setIdEliminar}
+          />
+          <ModalEditar
+            setOpenModalEditar={setOpenModalEditar}
+            openModalEditar={openModalEditar}
+            setDataEditar={setDataEditar}
+            data={dataEditar}
+            
+          />
         </div>
       )}
     </>

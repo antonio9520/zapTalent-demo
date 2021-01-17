@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Trabajos.css";
-import { CardInit, ModalEliminar, Spinner } from "../../components";
+import { CardInit, ModalEliminar } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, CardJob, ModalEditar } from "./components";
 import { Fab } from "@material-ui/core";

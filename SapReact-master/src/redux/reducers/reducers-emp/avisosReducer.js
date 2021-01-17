@@ -5,6 +5,12 @@ import {
   DESCARGA_AVISO_ERROR,
   DESCARGA_AVISO_EXITO,
   COMENZAR_DESCARGA_AVISO,
+  OBTENER_AVISO_ELIMINAR,
+  AVISO_ELIMINADO_ERROR,
+  AVISO_ELIMINADO_EXITO,
+  AVISO_EDITADO_EXITO,
+  AVISO_EDITADO_ERROR,
+  COMENZAR_EDICION_AVISO,
 } from "../../types/typesEmp";
 
 const initialState = {
@@ -24,7 +30,7 @@ export default function (state = initialState, action) {
         loading: true,
         error: null,
       };
-    //   case COMENZAR_EDICION_TRABAJO:
+    case COMENZAR_EDICION_AVISO:
     case AGREGAR_AVISO:
       return {
         ...state,
@@ -38,8 +44,8 @@ export default function (state = initialState, action) {
         error: null,
         avisos: action.payload,
       };
-    //   case TRABAJO_EDITADO_ERROR:
-    //   case TRABAJO_ELIMINADO_ERROR:
+    case AVISO_EDITADO_ERROR:
+    case AVISO_ELIMINADO_ERROR:
     case AGREGAR_AVISO_ERROR:
     case DESCARGA_AVISO_ERROR:
       return {
@@ -48,37 +54,35 @@ export default function (state = initialState, action) {
         cargando: false,
         error: true,
       };
-    //   case OBTENER_TRABAJO_ELIMINAR:
-    //     return {
-    //       ...state,
-    //       loading: true,
-    //       trabajoeliminar: action.payload,
-    //     };
-    //   case TRABAJO_ELIMINADO_EXITO:
-    //     return {
-    //       ...state,
-    //       trabajos: state.trabajos.filter(
-    //         (trabajo) => trabajo._id !== state.trabajoeliminar
-    //       ),
-    //       trabajoeliminar: null,
-    //       loading: false,
-    //     };
+    case OBTENER_AVISO_ELIMINAR:
+      return {
+        ...state,
+        loading: true,
+        avisoeliminar: action.payload,
+      };
+    case AVISO_ELIMINADO_EXITO:
+      return {
+        ...state,
+        avisos: state.avisos.filter(
+          (aviso) => aviso._id !== state.avisoeliminar
+        ),
+        avisoeliminar: null,
+        loading: false,
+      };
     case AGREGAR_AVISO_EXITO:
       return {
         ...state,
         cargando: false,
         avisos: [...state.avisos, action.payload],
       };
-    //   case TRABAJO_EDITADO_EXITO:
-    //     return {
-    //       ...state,
-    //       cargando: false,
-    //       trabajos: state.trabajos.map((trabajo) =>
-    //         trabajo._id === action.payload._id
-    //           ? (trabajo = action.payload)
-    //           : trabajo
-    //       ),
-    //     };
+    case AVISO_EDITADO_EXITO:
+      return {
+        ...state,
+        cargando: false,
+        avisos: state.avisos.map((aviso) =>
+          aviso._id === action.payload._id ? (aviso = action.payload) : aviso
+        ),
+      };
 
     default:
       return state;

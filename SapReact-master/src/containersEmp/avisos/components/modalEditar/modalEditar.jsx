@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
-import { StepOne, StepTwo, StepThree, StepFour } from "../stepsNew";
+import { StepOne, StepTwo, StepThree, StepFour } from "../stepsEdit";
 import shortid from "shortid";
 import { useDispatch, useSelector } from "react-redux";
-import { agregarAvisoAction } from "../../../../redux/actions/actions-emp/avisosAction";
+import { editarAvisoAction } from "../../../../redux/actions/actions-emp/avisosAction";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
 const CustomModal = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { setOpenModal, openModal } = props;
+  const { setOpenModalEditar, openModalEditar, data, setDataEditar } = props;
+  console.log(data);
   const usuario = useSelector((state) => state.authEmp.usuario);
   const cargando = useSelector((state) => state.aviso.cargando);
   const [step, setStep] = useState("one");
@@ -48,9 +49,10 @@ const CustomModal = (props) => {
   const [estado, setEstado] = useState("Activo");
 
   //guardar aviso
-  const guardarAviso = () => {
+  const guardarAvisoEditado = () => {
     dispatch(
-      agregarAvisoAction({
+      editarAvisoAction({
+        _id: data._id,
         idusuario: usuario._id,
         titulo,
         profesion,
@@ -76,9 +78,9 @@ const CustomModal = (props) => {
       })
     ).then((res) => (res === true ? closeModal() : null));
   };
-  // console.log(usuario);
+  
   const closeModal = () => {
-    setOpenModal(false);
+    setOpenModalEditar(false);
     setTitulo("");
     setProfesion("");
     setArea("");
@@ -103,16 +105,48 @@ const CustomModal = (props) => {
     setBeneficios("");
     setDescripcion("");
     setEstado("Activo");
+    setDataEditar(null);
     setTimeout(() => {
       setStep("one");
     }, 300);
   };
+  
+ 
+  useEffect(() => {
+    if (data) {
+      setTitulo(data.titulo);
+      setProfesion(data.profesion);
+      setArea(data.area);
+      if (data.anosExp) {
+        setAnosExp(data.anosExp);
+      }
+      setFechaInicio(data.fechaInicio);
+      setFechaTermino(data.fechaTermino);
+      setTipoConsultor(data.tipoConsultor);
+      setAdns(data.adns);
+      //step three
+      setJornadaLaboral(data.jornadaLaboral);
+      setTipoContrato(data.tipoContrato);
+      setCantidadVacantes(data.cantidadVacantes);
+      setFechaContratacion(data.fechaContratacion);
+      setPais(data.pais);
+      setCiudad(data.ciudad);
+      setRegion(data.region);
+      setDispViajar(data.dispViajar);
+      setDispResidencia(data.dispResidencia);
+      //step four
+      setRenta(data.renta);
+      setBeneficios(data.beneficios);
+      setDescripcion(data.descripcion);
+      setEstado(data.estado);
+    }
+  }, [data]);
   return (
     <Modal
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       className={classes.modal}
-      open={openModal}
+      open={openModalEditar}
       // open={true}
       onClose={() => closeModal()}
       closeAfterTransition
@@ -121,7 +155,7 @@ const CustomModal = (props) => {
         timeout: 500,
       }}
     >
-      <Fade in={openModal}>
+      <Fade in={openModalEditar}>
         <>
           {step === "one" ? (
             <StepOne
@@ -184,7 +218,7 @@ const CustomModal = (props) => {
               setDescripcion={setDescripcion}
               estado={estado}
               setEstado={setEstado}
-              guardarAviso={guardarAviso}
+              guardarAvisoEditado={guardarAvisoEditado}
               cargando={cargando}
             />
           ) : null}

@@ -12,8 +12,15 @@ import {
   ArrowDropDown,
 } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
+import { Tooltip } from "../../../../components";
 
-const Card = ({ data }) => {
+const Card = ({
+  data,
+  setOpenModalEliminar,
+  setIdEliminar,
+  setOpenModalEditar,
+  setDataEditar,
+}) => {
   console.log(data);
   const inicio = new Date(data.fechaInicio);
   const termino = new Date(data.fechaTermino);
@@ -32,6 +39,19 @@ const Card = ({ data }) => {
     "Noviembre",
     "Diciembre",
   ];
+
+  const initDelete = () => {
+    setIdEliminar(data._id);
+    setOpenModalEliminar(true);
+  };
+
+  const comenzarEditar = () => {
+    setDataEditar(data);
+    setTimeout(() => {
+      setOpenModalEditar(true);
+    }, 200);
+  };
+
   return (
     <div className="card-avisos-empresas">
       <div className="top-card-avisos-emp">
@@ -52,9 +72,12 @@ const Card = ({ data }) => {
           <p className="p1">SCL Consultores</p>
           <p className="p2">{data.titulo}</p>
           <p className="p3">{data.profesion}</p>
-          <div className="anos-exp-card-avisos-emp">
-            <p>{data.anosExp} años de experiencia</p>
-          </div>
+          {data.anosExp ? (
+            <div className="anos-exp-card-avisos-emp">
+              <p>{data.anosExp} años de experiencia</p>
+            </div>
+          ) : null}
+
           <div className="direccion-card-avisos-emp">
             <LocationOn className="icon-calendar-avisos-emp" />
             <p>
@@ -66,11 +89,11 @@ const Card = ({ data }) => {
           <div className="sub-right-avisos-emp">
             <div>
               <p className="p1">Inscritos</p>
-              <p className="p2">55</p>
+              <p className="p2">0</p>
             </div>
             <div>
               <p className="p1">No leídos</p>
-              <p className="p2">45</p>
+              <p className="p2">0</p>
             </div>
           </div>
         </div>
@@ -86,21 +109,34 @@ const Card = ({ data }) => {
           </IconButton>
         </div>
         <div className="left-bottom-avisos-emp">
-          <IconButton className="btns-cards-avisos-emp">
-            <Cached />
-          </IconButton>
-          <IconButton className="btns-cards-avisos-emp">
-            <Print />
-          </IconButton>
-          <IconButton className="btns-cards-avisos-emp">
-            <FileCopy />
-          </IconButton>
-          <IconButton className="btns-cards-avisos-emp">
-            <Edit />
-          </IconButton>
-          <IconButton className="btns-cards-avisos-emp">
-            <Delete />
-          </IconButton>
+          <Tooltip title="Republicar">
+            <IconButton className="btns-cards-avisos-emp">
+              <Cached />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Imprimir">
+            <IconButton className="btns-cards-avisos-emp">
+              <Print />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Duplicar">
+            <IconButton className="btns-cards-avisos-emp">
+              <FileCopy />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Editar">
+            <IconButton
+              className="btns-cards-avisos-emp"
+              onClick={comenzarEditar}
+            >
+              <Edit />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Eliminar">
+            <IconButton className="btns-cards-avisos-emp" onClick={initDelete}>
+              <Delete />
+            </IconButton>
+          </Tooltip>
         </div>
       </div>
     </div>

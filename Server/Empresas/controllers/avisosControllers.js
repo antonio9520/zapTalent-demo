@@ -12,7 +12,7 @@ exports.crearAviso = async (req, res) => {
 };
 
 exports.mostrarAvisos = async (req, res) => {
-  console.log(req.params.id)
+  console.log(req.params.id);
   try {
     const avisos = await Avisos.find({ idusuario: req.params.id });
     res.json(avisos);
@@ -22,10 +22,10 @@ exports.mostrarAvisos = async (req, res) => {
 };
 
 exports.deleteAvisos = async (req, res) => {
-  const idaviso = req.params.idaviso;
+  const id = req.params.id;
 
   try {
-    Avisos.findById(idaviso, (err, aviso) => {
+    Avisos.findById(id, (err, aviso) => {
       if (err) res.status(402).json({ msg: "Error al borrar aviso" });
       aviso.remove((err) => {
         if (err) res.status(402).json({ msg: "Error al borrar aviso" });
@@ -38,48 +38,56 @@ exports.deleteAvisos = async (req, res) => {
 };
 
 exports.putAviso = async (req, res) => {
-  const idaviso = req.params.idaviso;
+  const id = req.params.id;
 
   const {
     titulo,
-    area_empresa,
-    fecini,
-    fecfin,
+    profesion,
+    area,
+    anosExp,
+    fechaInicio,
+    fechaTermino,
+    tipoConsultor,
     estado,
-    jornada_laboral,
-    tipo_contrato,
-    fecha_contratacion,
-    cantidad_vacante,
+    adns,
+    jornadaLaboral,
+    tipoContrato,
+    fechaContratacion,
+    cantidadVacantes,
     pais,
     ciudad,
     region,
-    disp_residencia,
-    disp_viaje,
-    renta_ofrecida,
+    dispResidencia,
+    dispViajar,
+    renta,
     beneficios,
-    sobre_trabajo,
+    descripcion,
   } = req.body;
-
+  console.log(dispResidencia);
   try {
-    Avisos.findById(idaviso, (err, aviso) => {
+    Avisos.findById(id, (err, aviso) => {
       if (err) return res.status(404).json({ msg: "aviso no encontrado" });
       if (titulo) aviso.titulo = titulo;
-      if (area_empresa) aviso.area_empresa = area_empresa;
-      if (fecini) aviso.fecini = fecini;
-      if (fecfin) aviso.fecfin = fecfin;
+      if (profesion) aviso.profesion = profesion;
+      if (area) aviso.area = area;
+      if (anosExp) aviso.anosExp = anosExp;
+      if (fechaInicio) aviso.fechaInicio = fechaInicio;
+      if (fechaTermino) aviso.fechaTermino = fechaTermino;
+      if (tipoConsultor) aviso.tipoConsultor = tipoConsultor;
+      if (adns) aviso.adns = adns;
       if (estado) aviso.estado = estado;
-      if (jornada_laboral) aviso.jornada_laboral = jornada_laboral;
-      if (tipo_contrato) aviso.tipo_contrato = tipo_contrato;
-      if (fecha_contratacion) aviso.fecha_contratacion = fecha_contratacion;
-      if (cantidad_vacante) aviso.cantidad_vacante = cantidad_vacante;
+      if (jornadaLaboral) aviso.jornadaLaboral = jornadaLaboral;
+      if (tipoContrato) aviso.tipoContrato = tipoContrato;
+      if (fechaContratacion) aviso.fechaContratacion = fechaContratacion;
+      if (cantidadVacantes) aviso.cantidadVacantes = cantidadVacantes;
       if (pais) aviso.pais = pais;
       if (ciudad) aviso.ciudad = ciudad;
       if (region) aviso.region = region;
-      if (disp_residencia) aviso.disp_residencia = disp_residencia;
-      if (disp_viaje) aviso.disp_viaje = disp_viaje;
-      if (renta_ofrecida) aviso.renta_ofrecida = renta_ofrecida;
+      if (dispResidencia !== undefined) aviso.dispResidencia = dispResidencia;
+      if (dispViajar !== undefined) aviso.dispViajar = dispViajar;
+      if (renta) aviso.renta = renta;
       if (beneficios) aviso.beneficios = beneficios;
-      if (sobre_trabajo) aviso.sobre_trabajo = sobre_trabajo;
+      if (descripcion) aviso.descripcion = descripcion;
 
       aviso.save((err) => {
         if (err) return res.status(500).json({ msg: "Error al Actualizar" });

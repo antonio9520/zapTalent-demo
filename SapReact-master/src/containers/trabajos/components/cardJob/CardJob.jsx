@@ -19,7 +19,7 @@ const CardJob = (props) => {
     data,
     setOpenModalEliminar,
     setIdEliminar,
-    setOpenModalEditar,
+    setOpenModalEditar, 
     setDataEditar,
   } = props;
   const [_switch, setSwitch] = useState(false);
