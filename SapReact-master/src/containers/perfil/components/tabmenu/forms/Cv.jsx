@@ -107,7 +107,7 @@ const Cv = ({ loading }) => {
           onClick={() => setEditar(true)}
           disabled={editar}
         >
-          <p>Cancelar</p>
+          <p style={{ color: "white" }}>Cancelar</p>
         </ListItem>
         <ListItem
           button
@@ -115,7 +115,7 @@ const Cv = ({ loading }) => {
           className="btn-adnzap-modal"
           onClick={saveCv}
         >
-          <p>Guardar</p>
+          <p style={{ color: "white" }}>Guardar</p>
         </ListItem>
       </div>
     </div>

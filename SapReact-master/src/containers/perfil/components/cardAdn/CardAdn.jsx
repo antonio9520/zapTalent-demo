@@ -133,10 +133,16 @@ const Modulo = ({ data, setOpenModalEditar, setDataEditar, setSwitch }) => {
         <IconButton className="btn-edit-modulo-perfil" onClick={initEdit}>
           <Edit />
         </IconButton>
-        <p className="p1-mod-perfil">Mi ADN ZAP</p>
-        <p className="p2-mod-perfil">{data.name}</p>
+        <p className="p1-mod-perfil" style={{ color: "white" }}>
+          Mi ADN ZAP
+        </p>
+        <p className="p2-mod-perfil" style={{ color: "white" }}>
+          {data.name}
+        </p>
         {data.idcert ? (
-          <p className="p3-mod-perfil">ID: {data.idcert}</p>
+          <p className="p3-mod-perfil" style={{ color: "white" }}>
+            ID: {data.idcert}
+          </p>
         ) : null}
 
         <div
@@ -162,15 +168,19 @@ const Modulo = ({ data, setOpenModalEditar, setDataEditar, setSwitch }) => {
                   expanded === "panel" + index ? "acordion-active" : null
                 }
               >
-                <p className="p4-mod-perfil">
+                <p className="p4-mod-perfil" style={{ color: "white" }}>
                   {item.name} - {item.desc}
                 </p>
               </AccordionSummary>
               <AccordionDetails>
                 <div className="cont-summ-mod-perfil">
-                  <p className="p5-mod-perfil">{item.obs}</p>
+                  <p className="p5-mod-perfil" style={{ color: "white" }}>
+                    {item.obs}
+                  </p>
                   <div className="nivel-submod-perfil-b">
-                    <p className="p6-mod-perfil">{item.nivel}</p>
+                    <p className="p6-mod-perfil" style={{ color: "white" }}>
+                      {item.nivel}
+                    </p>
                   </div>
                 </div>
               </AccordionDetails>

@@ -1,0 +1,15 @@
+.ofertas-laborales {
+  padding-top: 75px;
+  padding-left: 10px;
+  max-width: 1500px;
+}
+
+.cont-header-of-laborales {
+  padding-right: 10px;
+}
+
+.cont-card-of-laborales {
+  padding: 10px 10px 0 0;
+
+  overflow: visible;
+}

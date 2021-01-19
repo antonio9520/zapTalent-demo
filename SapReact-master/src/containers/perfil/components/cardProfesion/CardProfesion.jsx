@@ -22,7 +22,7 @@ const CardProfesion = (props) => {
         </p>
       </Tooltip>
       <div className="cont-exp-card-est-card-pro">
-        <p>
+        <p style={{ color: "white" }}>
           Experiencia{" "}
           {dateResult.years === 1
             ? dateResult.years + " año"

@@ -1,0 +1,225 @@
+.card-ofertas-laborales {
+  background-color: var(--white);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+  min-width: 1300px;
+  border: 1px solid #ced1e9;
+  border-radius: 5px;
+}
+
+.top-card-ofertas-laborales {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ced1e9;
+}
+
+/*item-1*/
+.top-card-ofertas-laborales .item-1 div {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #dbdbdb;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+}
+.top-card-ofertas-laborales .item-1 {
+  padding: 0 20px;
+}
+/*item-2*/
+.top-card-ofertas-laborales .item-2 {
+  min-width: 250px;
+  /* background-color: saddlebrown; */
+  /* padding-left: 20px; */
+}
+.top-card-ofertas-laborales .item-2 h1 {
+  margin: 0;
+  color: var(--blue-primary);
+  font-size: 22px;
+  white-space: nowrap;
+}
+.top-card-ofertas-laborales .item-2 p:nth-child(2) {
+  margin: 0;
+  margin-top: 10px;
+  color: var(--gray-text);
+}
+.top-card-ofertas-laborales .item-2 p:nth-child(3) {
+  margin: 0;
+  margin-top: 10px;
+  color: var(--blue-primary);
+}
+.top-card-ofertas-laborales .item-2 div {
+  background-color: #39cbba;
+  display: inline-block;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.top-card-ofertas-laborales .item-2 div p {
+  margin: 5px 10px;
+  font-size: 14px;
+  color: white;
+}
+/*item-3*/
+.icon-card-ofertas-laborales {
+  color: var(--blue-primary);
+}
+.top-card-ofertas-laborales .item-3 {
+  min-width: 150px;
+}
+.top-card-ofertas-laborales .item-3 div {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.top-card-ofertas-laborales .item-3 div:nth-child(1) {
+  margin-top: inherit;
+}
+.top-card-ofertas-laborales .item-3 div p {
+  margin: 0;
+  margin-left: 10px;
+  font-size: 12px;
+}
+/*item-4*/
+.top-card-ofertas-laborales .item-4 {
+  min-width: 150px;
+}
+
+.top-card-ofertas-laborales .item-4 div {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.top-card-ofertas-laborales .item-4 div:nth-child(1) {
+  margin-top: inherit;
+}
+.top-card-ofertas-laborales .item-4 div p {
+  margin: 0;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+/*item-5*/
+.top-card-ofertas-laborales .item-5 {
+  min-width: 250px;
+}
+.top-card-ofertas-laborales .item-5 h5 {
+  color: var(--blue-primary);
+  margin: 0;
+}
+.modulos-card-ofertas-laborales {
+  display: flex;
+  margin-top: 10px;
+}
+.modulo-activo-ol {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  background: var(--degradado-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.modulo-activo-ol p {
+  font-size: 12px;
+}
+.modulo-inactivo-ol {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  background: var(--degradado-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-right: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.submodulos-card-ofertas-laborales {
+  display: flex;
+  margin-top: 10px;
+}
+/*item-6*/
+.top-card-ofertas-laborales .item-6 {
+  font-size: 12px;
+  color: var(--gray-text);
+  display: flex;
+  padding: 0 10px 10px 0;
+}
+.top-card-ofertas-laborales .item-6 div {
+  background-color: #f8f8fb;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.top-card-ofertas-laborales .item-6 p {
+  margin: 10px;
+}
+
+/*Bottom*/
+.bottom-card-ofertas-laborales {
+  display: flex;
+  padding: 15px 0;
+  position: relative;
+}
+/*Item-1*/
+.bottom-card-ofertas-laborales .item-1 {
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+}
+
+.bottom-card-ofertas-laborales .item-1 p {
+  margin: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: var(--gray-text);
+  font-size: 14px;
+}
+
+/*item-2*/
+.bottom-card-ofertas-laborales .item-2 {
+  display: flex;
+  align-items: center;
+  padding-left: 113px;
+}
+.bottom-card-ofertas-laborales .item-2 p {
+  margin: 0;
+  margin-left: 10px;
+  color: var(--gray-text);
+  font-size: 14px;
+}
+
+/*item-3*/
+
+.bottom-card-ofertas-laborales .item-3 {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  justify-content: space-between;
+  /* background-color: lawngreen; */
+}
+.bottom-card-ofertas-laborales .item-3 p {
+  margin: 0;
+  color: var(--blue-primary);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.btn-postular-ofertas-laborales {
+  background-color: var(--blue-primary) !important;
+  position: absolute !important;
+  right: 10px;
+  bottom: 10px;
+  padding:5px 70px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-postular-ofertas-laborales p {
+  color: white !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}

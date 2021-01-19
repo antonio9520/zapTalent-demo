@@ -23,7 +23,7 @@ const SectionNine = () => {
               name="message"
             ></textarea>
             <ListItem button className="btn-left-section-nine">
-              <p>Enviar</p>
+              <p style={{color: "white"}}>Enviar</p>
             </ListItem>
           </form>
         </div>
@@ -51,7 +51,7 @@ const SectionNine = () => {
               </div>
             </div>
             <ListItem button className="btn-left-section-nine">
-              <p>Comenzar</p>
+              <p style={{color: "white"}}>Comenzar</p>
             </ListItem>
           </div>
         </div>

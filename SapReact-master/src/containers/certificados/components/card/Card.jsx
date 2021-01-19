@@ -30,7 +30,7 @@ const Card = (props) => {
     "Febrero",
     "Marzo",
     "Abril",
-    "Mayo", 
+    "Mayo",
     "Junio",
     "Julio",
     "Agosto",
@@ -74,7 +74,7 @@ const Card = (props) => {
         {data ? MESES[f.getMonth()] + ", " + data.fecha.substring(0, 4) : null}
       </p>
       <div className="cont-estado-cert">
-        <p>{data.estado}</p>
+        <p style={{ color: "white" }}>{data.estado}</p>
       </div>
       <p className="p4-cert">{data.obs}</p>
       <div className="cont-btns-card-cert-b2">
@@ -147,7 +147,7 @@ const Card = (props) => {
       </div>
       {data.fecha.substring(0, 4) === "2020" ? (
         <div className="etiqueta-nuevo">
-          <p>Nuevo</p>
+          <p style={{ color: "white" }}>Nuevo</p>
         </div>
       ) : null}
     </div>

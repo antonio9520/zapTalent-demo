@@ -18,7 +18,6 @@ const SubModulos = ({
   setErrorThree,
   switch2,
   errorThree,
-
 }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -26,7 +25,7 @@ const SubModulos = ({
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  }; 
+  };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -167,7 +166,7 @@ const SubMod = ({
       }
       onClick={() => handleClick()}
     >
-      <p>{data.name}</p>
+      <p style={{ color: "white" }}>{data.name}</p>
     </div>
   );
 };
@@ -196,7 +195,7 @@ const Nivel = ({ activeSM, modActive, arrayModules, setErrorThree }) => {
   };
 
   let initobs;
-  
+
   useEffect(() => {
     arrayModules.map((item) => {
       if (item.name === modActive) {
@@ -263,7 +262,7 @@ const Nivel = ({ activeSM, modActive, arrayModules, setErrorThree }) => {
               onClick={() => setActive("No Maneja")}
               style={{ backgroundColor: "#BCBCBC" }}
             >
-              <p>No Maneja</p>
+              <p style={{ color: "white" }}>No Maneja</p>
             </div>
             <div
               className={
@@ -272,7 +271,7 @@ const Nivel = ({ activeSM, modActive, arrayModules, setErrorThree }) => {
               onClick={() => setActive("Básico")}
               style={{ backgroundColor: "#909090" }}
             >
-              <p>Básico</p>
+              <p style={{ color: "white" }}>Básico</p>
             </div>
             <div
               className={
@@ -281,7 +280,7 @@ const Nivel = ({ activeSM, modActive, arrayModules, setErrorThree }) => {
               onClick={() => setActive("Medio")}
               style={{ backgroundColor: "#43B6F2" }}
             >
-              <p>Medio</p>
+              <p style={{ color: "white" }}>Medio</p>
             </div>
             <div
               className={
@@ -290,7 +289,7 @@ const Nivel = ({ activeSM, modActive, arrayModules, setErrorThree }) => {
               onClick={() => setActive("Avanzado")}
               style={{ backgroundColor: "#2169D9" }}
             >
-              <p>Avanzado</p>
+              <p style={{ color: "white" }}>Avanzado</p>
             </div>
           </div>
           <div style={{ margin: "5px 0", width: "100%" }}>

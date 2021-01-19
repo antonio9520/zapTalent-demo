@@ -317,7 +317,7 @@ const StepFour = ({ setStep, arrayModules, closeModal, setArrayModules }) => {
           disabled={editMod || editSubMod}
           style={{ opacity: editMod || editSubMod ? "0.2" : null }}
         >
-          <p>Atras</p>
+          <p style={{ color: "white" }}>Atras</p>
         </ListItem>
         <ListItem
           button
@@ -326,7 +326,7 @@ const StepFour = ({ setStep, arrayModules, closeModal, setArrayModules }) => {
           onClick={handleClick}
           style={{ opacity: editMod || editSubMod ? "0.2" : null }}
         >
-          <p>Guardar ADN</p>
+          <p style={{ color: "white" }}>Guardar ADN</p>
         </ListItem>
       </div>
       {cargando ? (
@@ -350,7 +350,9 @@ const Modulos = ({ data, active, setActive, editMod, editSubMod }) => {
       className={active === data.name ? "mod-two-active" : "mod-two-inactive"}
       style={{ cursor: editMod || editSubMod ? "default" : "pointer" }}
     >
-      <p style={{ fontSize: "8px", textAlign: "center" }}>{data.name}</p>
+      <p style={{ fontSize: "8px", textAlign: "center", color: "white" }}>
+        {data.name}
+      </p>
     </div>
   );
 };

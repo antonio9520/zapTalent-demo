@@ -103,8 +103,10 @@ const Sidebar = (props) => {
 
                 {!open ? (
                   <>
-                    <p>{usuario ? nombreuser + " " + apellidouser : null}</p>
-                    <p>{profesion}</p>
+                    <p style={{ color: "white" }}>
+                      {usuario ? nombreuser + " " + apellidouser : null}
+                    </p>
+                    <p style={{ color: "white" }}>{profesion}</p>
                   </>
                 ) : null}
               </Link>

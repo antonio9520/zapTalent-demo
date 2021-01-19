@@ -32,7 +32,7 @@ const Formulario = (props) => {
   const [certificacion, setCertificacion] = useState(
     data ? data.certificacion : ""
   );
-  const [universidad, setUniversidad] = useState( 
+  const [universidad, setUniversidad] = useState(
     data ? data.universidad : null
   );
   const [pais, setPais] = useState(data ? data.pais : null);
@@ -308,7 +308,7 @@ const Formulario = (props) => {
           className="btn-form-estudio"
           onClick={guardarCertificado}
         >
-          <p>Guardar</p>
+          <p style={{ color: "white" }}>Guardar</p>
         </ListItem>
       </div>
       {loading ? (

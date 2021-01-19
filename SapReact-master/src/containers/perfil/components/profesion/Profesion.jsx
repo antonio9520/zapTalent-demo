@@ -91,14 +91,14 @@ const Profesion = ({ setOpenModalProfesion }) => {
                   className="btn-chips-hab"
                   onClick={() => setOpenModalProfesion(false)}
                 >
-                  <p>Cancelar</p>
+                  <p style={{ color: "white" }}>Cancelar</p>
                 </ListItem>
                 <ListItem
                   button
                   className="btn-chips-hab"
                   onClick={handleClick}
                 >
-                  <p>Guardar</p>
+                  <p style={{ color: "white" }}>Guardar</p>
                 </ListItem>
               </div>
             </>

@@ -132,7 +132,7 @@ const Formulario = (props) => {
             error={errorUniver}
             helpertext="Seleccione un item"
           >
-           {estudios_data.map((item, index) => (
+            {estudios_data.map((item, index) => (
               <MenuItem
                 className="custom-menu-item"
                 key={index}
@@ -304,15 +304,13 @@ const Formulario = (props) => {
           className="btn-form-estudio"
           onClick={guardarCertificado}
         >
-          <p>Guardar</p>
+          <p style={{ color: "white" }}>Guardar</p>
         </ListItem>
       </div>
       {loading ? (
         <>
           <div className="overlay-loading"></div>
-          <div
-            className="linear-progres-global"
-          >
+          <div className="linear-progres-global">
             <LinearProgress className="progres-editar-perfil" />
           </div>
         </>

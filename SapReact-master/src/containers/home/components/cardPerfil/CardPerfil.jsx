@@ -16,9 +16,9 @@ const CardPerfil = (props) => {
           <img src={userlogo} alt="user-logo" />
         </div>
         <div className="cont-center-card-home">
-          <p>Bienvenido {nombre}!</p>
-          <p>Ya tienes tu perfil en ZAPTalent</p>
-          <p>
+          <p style={{color: "white"}}>Bienvenido {nombre}!</p>
+          <p style={{color: "white"}}>Ya tienes tu perfil en ZAPTalent</p>
+          <p style={{color: "white"}}>
             Sabías qué si completas tu perfil, tienes muchas más posibilidades
             de obtener ese empleo que tanto te mereces. Sólo te falta un poco...
           </p>

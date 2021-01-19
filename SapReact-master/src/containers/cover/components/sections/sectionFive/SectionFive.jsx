@@ -6,7 +6,7 @@ const SectionFive = () => {
     <div className="cont-section-five" id="section-five">
       <div className="sub-section-five">
         <h1>Módulos SAP</h1>
-        <p className="p1-section-five">
+        <p className="p1-section-five" style={{color: "white"}}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae velit
           reiciendis labore quod nobis architecto delectus ex temporibus. Porro,
           voluptas fugit? Iste ipsa quae saepe incidunt beatae ipsam cumque,

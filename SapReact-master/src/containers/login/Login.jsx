@@ -56,7 +56,7 @@ const Login = (props) => {
   // console.log(autenticado);
   useEffect(() => {
     if (autenticado) {
-      props.history.push("/home");
+      props.history.push("/ofertas-laborales");
     }
     // eslint-disable-next-line
   }, [autenticado]);
@@ -189,7 +189,7 @@ const Login = (props) => {
         setCargando(false);
         if (error.response) {
           if (error.response.status === 404) {
-            setErrorEmailRec(true); 
+            setErrorEmailRec(true);
             setMsgEmailRec("El email no se encuentra registrado");
           }
         }
@@ -285,11 +285,17 @@ const Login = (props) => {
                   className="btn-ingresar-login"
                   onClick={() => funcLogin()}
                 >
-                  <p>Ingresar</p>
+                  <p style={{ color: "white" }}>Ingresar</p>
                 </ListItem>
                 <Link className="link" to="/inicio">
                   <ListItem button className="btn-cancelar-login">
-                    <p style={{ width: "150px", textAlign: "center" }}>
+                    <p
+                      style={{
+                        width: "150px",
+                        textAlign: "center",
+                        color: "white",
+                      }}
+                    >
                       Cancelar
                     </p>
                   </ListItem>
@@ -336,18 +342,18 @@ const Login = (props) => {
 
         <div className="cont-right-item">
           <div className="cont-top-right-login">
-            <p>¿Qué aún no tienes Cuenta?</p>
+            <p style={{ color: "white" }}>¿Qué aún no tienes Cuenta?</p>
             <ListItem
               button
               className="btn-registrate-login"
               onClick={OpenModalF}
             >
-              <p>Regístrate</p>
+              <p style={{ color: "white" }}>Regístrate</p>
             </ListItem>
           </div>
           <div className="cont-center-right-login">
-            <p>Accede desde tu cuenta favorita</p>
-            <p>
+            <p style={{ color: "white" }}>Accede desde tu cuenta favorita</p>
+            <p style={{ color: "white" }}>
               Así de fácil es poder acceder y ser parte de la red de
               profesionales SAP más grande de Chile.
             </p>
@@ -368,7 +374,7 @@ const Login = (props) => {
                   <Facebook style={{ color: "#506BA3", marginRight: "10px" }} />
                 }
               />
-            </div> 
+            </div>
 
             <GoogleLogin
               clientId="461564686457-ah096iok3dhnsimuqvhieom283j1d6ml.apps.googleusercontent.com"

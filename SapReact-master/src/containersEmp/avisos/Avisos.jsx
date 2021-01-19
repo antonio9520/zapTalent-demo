@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Avisos.css";
-import { Header, Card, Modal, ModalEditar } from "./components";
+import { Header, Card, Modal, ModalEditar, ModalCopy } from "./components";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "react-loader-spinner";
@@ -16,6 +16,8 @@ const Avisos = () => {
   const [openModalEliminar, setOpenModalEliminar] = useState(false);
   const [openModalEditar, setOpenModalEditar] = useState(false);
   const [dataEditar, setDataEditar] = useState(null);
+  const [openModalCopy, setOpenModalCopy] = useState(false);
+  const [dataCopy, setDataCopy] = useState(null);
 
   useEffect(() => {
     if (usuario) {
@@ -62,6 +64,8 @@ const Avisos = () => {
                 setOpenModalEliminar={setOpenModalEliminar}
                 setOpenModalEditar={setOpenModalEditar}
                 setDataEditar={setDataEditar}
+                setOpenModalCopy={setOpenModalCopy}
+                setDataCopy={setDataCopy}
               />
             ))}
           </div>
@@ -78,7 +82,12 @@ const Avisos = () => {
             openModalEditar={openModalEditar}
             setDataEditar={setDataEditar}
             data={dataEditar}
-            
+          />
+          <ModalCopy
+            setOpenModalCopy={setOpenModalCopy}
+            openModalCopy={openModalCopy}
+            setDataCopy={setDataCopy}
+            data={dataCopy}
           />
         </div>
       )}

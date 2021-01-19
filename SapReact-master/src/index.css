@@ -30,6 +30,11 @@
     rgba(21, 134, 234, 1) 0%,
     rgba(46, 74, 199, 1) 100%
   );
+  --degradado-gray: linear-gradient(
+    90deg,
+    rgba(202, 214, 226, 1) 0%,
+    rgba(141, 145, 158, 1) 100%
+  );
   --degradado-empresas: linear-gradient(
     90deg,
     rgba(248, 152, 29, 1) 0%,

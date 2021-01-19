@@ -65,14 +65,14 @@ const StepThree = (props) => {
               className={`btn-adnzap-modal `}
               onClick={() => setStep("two")}
             >
-              <p>Atras</p>
+              <p style={{ color: "white" }}>Atras</p>
             </ListItem>
             <ListItem
               button
               className={`btn-adnzap-modal `}
               onClick={() => validation()}
             >
-              <p>Guardar y seguir</p>
+              <p style={{ color: "white" }}>Guardar y seguir</p>
             </ListItem>
           </div>
           <div className="cont-iconbtn-close-adn">
@@ -101,7 +101,7 @@ const Modulos = ({ data, active, setActive }) => {
       }
       onClick={() => setActive(data.name)}
     >
-      <p>{data.name}</p>
+      <p style={{ color: "white" }}>{data.name}</p>
     </div>
   );
 };

@@ -73,14 +73,14 @@ const StepTwo = (props) => {
             className={`btn-adnzap-modal }`}
             onClick={() => setStep("one")}
           >
-            <p>Atras</p>
+            <p style={{ color: "white" }}>Atras</p>
           </ListItem>
           <ListItem
             button
             className={`btn-adnzap-modal`}
             onClick={() => validation()}
           >
-            <p>Guardar y seguir</p>
+            <p style={{ color: "white" }}>Guardar y seguir</p>
           </ListItem>
         </div>
         <Snackbar open={_alert} onClose={handleClose} autoHideDuration={6000}>
@@ -111,7 +111,7 @@ const Modulos = ({ item, active, setActive, errorTwo, switch2 }) => {
           : `mod-two-inactive ${error ? "error-two" : null}`
       }
     >
-      <p>{item.name}</p>
+      <p style={{ color: "white" }}>{item.name}</p>
     </div>
   );
 };

@@ -9,6 +9,7 @@
 
 .card-a-degradado {
   background: var(--degradado-blue);
+  color: white;
 }
 
 .card-a-white {

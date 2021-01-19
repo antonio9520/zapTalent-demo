@@ -101,7 +101,7 @@ const Phone = ({ usuario, loading }) => {
           className="btn-adnzap-modal"
           onClick={cancelEdit}
         >
-          <p>Cancelar</p>
+          <p style={{ color: "white" }}>Cancelar</p>
         </ListItem>
         <ListItem
           button
@@ -109,7 +109,7 @@ const Phone = ({ usuario, loading }) => {
           className="btn-adnzap-modal"
           onClick={savePhone}
         >
-          <p>Guardar</p>
+          <p style={{ color: "white" }}>Guardar</p>
         </ListItem>
       </div>
     </div>

@@ -141,16 +141,23 @@ const CardSModulo = ({
           <div
             className={nivel ? "box-name-four-adn-nivel" : "box-name-four-adn"}
           >
-            <p style={{ fontSize: "12px", textAlign: "center" }}>{data.name}</p>
+            <p
+              style={{ fontSize: "12px", textAlign: "center", color: "white" }}
+            >
+              {data.name}
+            </p>
           </div>
         </div>
         <div className="rigth-top-four-adn">
-          <p className={nivel ? "p1-card-four-adn-nivel" : "p1-card-four-adn"}>
+          <p
+            className={nivel ? "p1-card-four-adn-nivel" : "p1-card-four-adn"}
+           
+          >
             {data.desc}
           </p>
           <div style={{ display: "flex", alignItems: "center" }}>
             <div className="nivel-four-adn">
-              <p className="p2-card-four-adn">{nameNivel}</p>
+              <p className="p2-card-four-adn" style={{ color: "white" }}>{nameNivel}</p>
             </div>
             <div
               className={

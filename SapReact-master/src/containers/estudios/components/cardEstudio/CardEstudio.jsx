@@ -71,7 +71,7 @@ const CardEstudio = (props) => {
       <div className="cont-box-card-estudio">
         <div className="box-top-estudio">
           <div className="sub-box-estudio-1">
-            <p>{data.estado}</p>
+            <p style={{ color: "white" }}>{data.estado}</p>
           </div>
           {/* {data.estado === "Titulado" || data.estado === "Egresado" ? (
             <div className="sub-box-estudio-2">
@@ -81,7 +81,7 @@ const CardEstudio = (props) => {
         </div>
         <div className="box-bottom-estudio">
           <div className="sub-box-estudio-3">
-            <p>Promedio: {data.promedio}</p>
+            <p style={{ color: "white" }}>Promedio: {data.promedio}</p>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 import Loader from "react-loader-spinner";
 import { modulos } from "../../../../../../assets/modulos";
 import SwipeableViews from "react-swipeable-views";
-import { Tooltip } from "../../../../../../components"; 
+import { Tooltip } from "../../../../../../components";
 
 const SubModulos = ({
   arrayModules,
@@ -161,7 +161,7 @@ const SubMod = ({ item, arrayModules, active, setErrorTwo, setSwitch2 }) => {
           }
           onClick={() => handleClick()}
         >
-          <p>{item.submodulo}</p>
+          <p style={{ color: "white" }}>{item.submodulo}</p>
         </div>
       </Tooltip>
     </>

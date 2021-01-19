@@ -110,14 +110,14 @@ const StepOne = (props) => {
 
         <div className="cont-btn-adn-one">
           <ListItem button className="btn-adnzap-modal" onClick={closeModal}>
-            <p>Cancelar</p>
+            <p style={{ color: "white" }}>Cancelar</p>
           </ListItem>
           <ListItem
             button
             className="btn-adnzap-modal"
             onClick={() => validation()}
           >
-            <p>Guardar y seguir</p>
+            <p style={{ color: "white" }}>Guardar y seguir</p>
           </ListItem>
         </div>
         <Snackbar open={_alert} onClose={handleClose} autoHideDuration={6000}>

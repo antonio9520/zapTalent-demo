@@ -143,7 +143,7 @@ const Location = ({ usuario, loading }) => {
             setEditar(!editar);
           }}
         >
-          <p>Cancelar</p>
+          <p style={{ color: "white" }}>Cancelar</p>
         </ListItem>
         <ListItem
           disabled={editar}
@@ -151,7 +151,7 @@ const Location = ({ usuario, loading }) => {
           className="btn-adnzap-modal"
           onClick={saveLocation}
         >
-          <p>Guardar</p>
+          <p style={{ color: "white" }}>Guardar</p>
         </ListItem>
       </div>
     </div>

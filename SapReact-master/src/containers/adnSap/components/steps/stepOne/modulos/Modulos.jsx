@@ -70,7 +70,7 @@ const ItemModulo = ({ item, setArrayModules, arrayModules }) => {
         }
         onClick={() => handleClick()}
       >
-        <p>{item.modulo}</p>
+        <p style={{ color: "white" }}>{item.modulo}</p>
       </div>
     </Tooltip>
   );

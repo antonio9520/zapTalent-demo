@@ -1,0 +1,23 @@
+.cont-filtros-ofertas-laborales {
+  width: 300px;
+  padding: 10px;
+}
+
+.item-doble-filtros-of {
+  display: flex;
+}
+.cont-filtros-ofertas-laborales .item-1 {
+  border-bottom: 1px solid #e8e9f5;
+}
+.cont-filtros-ofertas-laborales .item-1 p {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gray-text);
+}
+
+.cont-filtros-ofertas-laborales .item-2 p {
+  font-size: 14px;
+
+  color: var(--gray-text);
+  margin-bottom: 5px;
+}

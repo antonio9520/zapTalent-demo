@@ -46,7 +46,7 @@ const CardEst = (props) => {
         </p>
       </Tooltip>
       <div className="cont-exp-card-est-pro">
-        <p>
+        <p style={{ color: "white" }}>
           Experiencia{" "}
           {dateResult.years === 1
             ? dateResult.years + " año"

@@ -611,7 +611,7 @@ const Formulario = (props) => {
       </div>
       <div className="bottom-form-estudios">
         <ListItem button className="btn-form-estudio" onClick={guardarEstudio}>
-          <p>Guardar</p>
+          <p style={{ color: "white" }}>Guardar</p>
         </ListItem>
       </div>
       {loading ? (

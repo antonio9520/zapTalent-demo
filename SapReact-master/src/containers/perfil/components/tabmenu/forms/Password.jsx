@@ -203,7 +203,7 @@ const Password = ({ usuario, loading }) => {
             setEditar(true);
           }}
         >
-          <p>Cancelar</p>
+          <p style={{ color: "white" }}>Cancelar</p>
         </ListItem>
         <ListItem
           disabled={editar}
@@ -211,7 +211,7 @@ const Password = ({ usuario, loading }) => {
           className="btn-adnzap-modal"
           onClick={changePassword}
         >
-          <p>Guardar</p>
+          <p style={{ color: "white" }}>Guardar</p>
         </ListItem>
       </div>
     </div>

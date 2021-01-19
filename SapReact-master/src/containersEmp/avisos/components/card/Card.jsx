@@ -20,6 +20,8 @@ const Card = ({
   setIdEliminar,
   setOpenModalEditar,
   setDataEditar,
+  setOpenModalCopy,
+  setDataCopy,
 }) => {
   console.log(data);
   const inicio = new Date(data.fechaInicio);
@@ -43,6 +45,13 @@ const Card = ({
   const initDelete = () => {
     setIdEliminar(data._id);
     setOpenModalEliminar(true);
+  };
+
+  const comenzarCopiar = () => {
+    setDataCopy(data);
+    setTimeout(() => {
+      setOpenModalCopy(true);
+    }, 200);
   };
 
   const comenzarEditar = () => {
@@ -114,13 +123,16 @@ const Card = ({
               <Cached />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Imprimir">
+          {/* <Tooltip title="Imprimir">
             <IconButton className="btns-cards-avisos-emp">
               <Print />
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip title="Duplicar">
-            <IconButton className="btns-cards-avisos-emp">
+            <IconButton
+              className="btns-cards-avisos-emp"
+              onClick={comenzarCopiar}
+            >
               <FileCopy />
             </IconButton>
           </Tooltip>

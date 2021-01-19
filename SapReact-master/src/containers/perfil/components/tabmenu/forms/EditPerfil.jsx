@@ -147,7 +147,9 @@ const EditPerfil = ({ usuario, loading }) => {
           <Tooltip title="Editar">
             <IconButton
               className={
-                !editar || loading ? "icon-btn-edit-perfil-inact" : "icon-btn-edit-perfil"
+                !editar || loading
+                  ? "icon-btn-edit-perfil-inact"
+                  : "icon-btn-edit-perfil"
               }
               onClick={() => setEditar(!editar)}
               disabled={!editar || loading}
@@ -283,7 +285,7 @@ const EditPerfil = ({ usuario, loading }) => {
               setEditar(!editar);
             }}
           >
-            <p>Cancelar</p>
+            <p style={{ color: "white" }}>Cancelar</p>
           </ListItem>
           <ListItem
             disabled={editar}
@@ -291,7 +293,7 @@ const EditPerfil = ({ usuario, loading }) => {
             className="btn-adnzap-modal"
             onClick={() => handleClick()}
           >
-            <p>Guardar</p>
+            <p style={{ color: "white" }}>Guardar</p>
           </ListItem>
         </div>
       </div>

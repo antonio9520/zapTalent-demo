@@ -143,7 +143,12 @@ const RRSS = ({ type, setOpenModal, action, url2 }) => {
           error={error}
           defaultValue={url}
           startAdornment={
-            <InputAdornment className="input-adorment-perfil-rrss" position="start">{link}</InputAdornment>
+            <InputAdornment
+              className="input-adorment-perfil-rrss"
+              position="start"
+            >
+              {link}
+            </InputAdornment>
           }
         />
 
@@ -164,10 +169,10 @@ const RRSS = ({ type, setOpenModal, action, url2 }) => {
           className="btn-chips-hab"
           onClick={() => setOpenModal(false)}
         >
-          <p style={{ fontSize: "12px" }}>Cancelar</p>
+          <p style={{ fontSize: "12px", color: "white" }}>Cancelar</p>
         </ListItem>
         <ListItem button className="btn-chips-hab" onClick={handleClick}>
-          <p style={{ fontSize: "12px" }}>Guardar</p>
+          <p style={{ fontSize: "12px", color: "white" }}>Guardar</p>
         </ListItem>
       </div>
       {loading ? (

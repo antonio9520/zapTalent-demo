@@ -1,11 +1,11 @@
-import React,{useCallback} from "react";
+import React, { useCallback } from "react";
 import "./CardHabilidades.css";
 import { IconButton } from "@material-ui/core";
 import { Edit } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
 
 const CardHabilidades = ({ habilidades, setOpenModalHab }) => {
-  const random =  () => {
+  const random = () => {
     return Math.floor(Math.random() * (6 - 1 + 1) + 1);
   };
   const colors = [
@@ -27,7 +27,7 @@ const CardHabilidades = ({ habilidades, setOpenModalHab }) => {
           let num = random();
           return (
             <div key={index} style={{ backgroundColor: colors[num - 1] }}>
-              <p>{item.name}</p>
+              <p style={{ color: "white" }}>{item.name}</p>
             </div>
           );
         })}

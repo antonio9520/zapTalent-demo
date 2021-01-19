@@ -60,7 +60,7 @@ const Form = ({
   return (
     <div className="cont-form-one-adn">
       <div className="cont-name-one-form">
-        <p className="p1-form-adn-one">
+        <p className="p1-form-adn-one" style={{ color: "white" }}>
           {item.name.length > 3 ? item.name.substring(0, 3) : item.name}
         </p>
       </div>
@@ -110,7 +110,7 @@ const Form = ({
               {helpertext}
             </FormHelperText>
           ) : null} */}
-        </FormControl>  
+        </FormControl>
       </div>
       <div style={{ margin: "5px 0", width: "100%" }}>
         <input

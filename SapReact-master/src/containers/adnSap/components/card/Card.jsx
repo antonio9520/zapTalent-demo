@@ -61,7 +61,10 @@ const Card = ({
       ) : ( */}
       <div className="cont-card-adn">
         <div className="cont-mod-adn">
-          <p className={data.name.length > 6 ? "name-submod-large" : null}>
+          <p
+            className={data.name.length > 6 ? "name-submod-large" : null}
+            style={{ color: "white" }}
+          >
             {data.name}
           </p>
         </div>
@@ -177,7 +180,10 @@ const SubModulos = ({ data }) => {
           }}
         >
           <div className="name-adn-submod">
-            <p className={data.name.length > 6 ? "name-submod-large" : null}>
+            <p
+              className={data.name.length > 6 ? "name-submod-large" : null}
+              style={{ color: "white" }}
+            >
               {data.name}
             </p>
           </div>
@@ -191,7 +197,7 @@ const SubModulos = ({ data }) => {
             </p>
           </Tooltip>
           <div className="cont-nivel-adn-submodulo">
-            <p>{data.nivel}</p>
+            <p style={{ color: "white" }}>{data.nivel}</p>
           </div>
         </div>
       </div>

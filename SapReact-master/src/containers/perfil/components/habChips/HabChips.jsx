@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./HabChips.css";
 import {
   Chip,
-  makeStyles, 
+  makeStyles,
   InputAdornment,
   IconButton,
   ListItem,
 } from "@material-ui/core";
 import { CustomInput, Tooltip } from "../../../../components";
-import {  Close } from "@material-ui/icons";
+import { Close } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { editarUsuarioAction } from "../../../../redux/actions/authAction";
 import shortid from "shortid";
@@ -39,7 +39,6 @@ const HabChips = ({ setOpenModalHab }) => {
   const [_id] = useState(usuario ? usuario._id : null);
   const [showbtn, setShowBtn] = useState(false);
 
-
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) =>
       chips.filter((chip) => chip.key !== chipToDelete.key)
@@ -62,7 +61,6 @@ const HabChips = ({ setOpenModalHab }) => {
   };
 
   const saveHabilidades = () => {
-   
     dispatch(editarUsuarioAction({ _id, habilidades: chipData }));
     setOpenModalHab(false);
   };
@@ -113,13 +111,13 @@ const HabChips = ({ setOpenModalHab }) => {
           showbtn ? (
             <InputAdornment position="end">
               {/* <Tooltip title="Añadir" placement="top"> */}
-                <ListItem
-                  button
-                  className="icon-btn-input-adr-hab"
-                  onClick={addChip}
-                >
-                  <p>Añadir</p>
-                </ListItem>
+              <ListItem
+                button
+                className="icon-btn-input-adr-hab"
+                onClick={addChip}
+              >
+                <p>Añadir</p>
+              </ListItem>
               {/* </Tooltip> */}
             </InputAdornment>
           ) : null
@@ -131,10 +129,10 @@ const HabChips = ({ setOpenModalHab }) => {
           className="btn-chips-hab"
           onClick={() => setOpenModalHab(false)}
         >
-          <p>Cancelar</p>
+          <p style={{ color: "white" }}>Cancelar</p>
         </ListItem>
         <ListItem button className="btn-chips-hab" onClick={saveHabilidades}>
-          <p>Guardar</p>
+          <p style={{ color: "white" }}>Guardar</p>
         </ListItem>
       </div>
     </div>
