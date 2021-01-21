@@ -22,6 +22,7 @@ const Card = ({
   setDataEditar,
   setOpenModalCopy,
   setDataCopy,
+  setOpenModalRep,
 }) => {
   console.log(data);
   const inicio = new Date(data.fechaInicio);
@@ -61,6 +62,13 @@ const Card = ({
     }, 200);
   };
 
+  const republicar = () => {
+    setDataEditar(data);
+    setTimeout(() => {
+      setOpenModalRep(true);
+    }, 200);
+  };
+
   return (
     <div className="card-avisos-empresas">
       <div className="top-card-avisos-emp">
@@ -68,24 +76,30 @@ const Card = ({
           <div className="fechas-card-avisos-emp">
             <EventAvailable className="icon-calendar-avisos-emp" />
             <p>
-              {MESES[inicio.getMonth()]} {inicio.getDay()} -{" "}
+              {MESES[inicio.getMonth()]}{" "}
+              {inicio.toLocaleDateString().substring(0, 2)} -{" "}
               {inicio.getFullYear()}
             </p>
 
             <EventBusy className="icon-calendar-avisos-emp" />
             <p>
-              {MESES[termino.getMonth()]} {termino.getDay()} -{" "}
+              {MESES[termino.getMonth()]}{" "}
+              {termino.toLocaleDateString().substring(0, 2)} -{" "}
               {termino.getFullYear()}
             </p>
           </div>
-          <p className="p1">SCL Consultores</p>
+          <p className="p1">{data.nameuser}</p>
           <p className="p2">{data.titulo}</p>
           <p className="p3">{data.profesion}</p>
           {data.anosExp ? (
             <div className="anos-exp-card-avisos-emp">
               <p>{data.anosExp} años de experiencia</p>
             </div>
-          ) : null}
+          ) : (
+            <div className="anos-exp-card-avisos-emp">
+              <p>Sin experiencia laboral</p>
+            </div>
+          )}
 
           <div className="direccion-card-avisos-emp">
             <LocationOn className="icon-calendar-avisos-emp" />
@@ -119,7 +133,7 @@ const Card = ({
         </div>
         <div className="left-bottom-avisos-emp">
           <Tooltip title="Republicar">
-            <IconButton className="btns-cards-avisos-emp">
+            <IconButton className="btns-cards-avisos-emp" onClick={republicar}>
               <Cached />
             </IconButton>
           </Tooltip>

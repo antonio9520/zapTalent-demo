@@ -5,6 +5,7 @@ import OutInput from "./outInput/OutInput";
 import CustomSelect from "./customSelect/CustomSelect";
 import CustomInput from "./customInput/CustomInput";
 import CustomSelectB from "./customSelectB/CustomSelectB";
+import CustomSelectC from "./customSelectC/CustomSelectC";
 import CardInit from "./cardInit/CardInit";
 import ModalEliminar from "./modalEliminar/ModalEliminar";
 import Spinner from "./spinner/Spinner";
@@ -26,4 +27,5 @@ export {
   Tooltip,
   IconButton,
   Button,
+  CustomSelectC,
 };

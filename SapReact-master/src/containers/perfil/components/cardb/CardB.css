@@ -10,6 +10,7 @@
 }
 .type-a-perfil {
   background: var(--degradado-blue);
+  color: white;
 }
 
 .type-b-perfil {
@@ -18,6 +19,7 @@
 .text-card-b-perfil {
   color: var(--blue-primary);
 }
+
 .cont-card-b-perfil p {
   margin: 0;
   font-size: 18px;
@@ -54,8 +56,7 @@
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2) !important;
 }
 
-
-@media only screen and (max-width: 599px){
+@media only screen and (max-width: 599px) {
   .cont-card-b-perfil {
     min-height: 150px;
   }

@@ -1,9 +1,22 @@
 import React, { forwardRef, useState, useEffect } from "react";
 import "./Styles.css";
-import { Button, IconButton, CustomSelectB } from "../../../../components";
-import { LinearProgress, TextField, MenuItem } from "@material-ui/core";
-import { Close } from "@material-ui/icons";
+import {
+  Button,
+  IconButton as IconButtonCustom,
+  CustomSelectB,
+  CustomInput,
+  Tooltip,
+} from "../../../../components";
+import {
+  LinearProgress,
+  TextField,
+  MenuItem,
+  IconButton,
+  InputAdornment,
+} from "@material-ui/core";
+import { Close, Add } from "@material-ui/icons";
 import NumberFormat from "react-number-format";
+import shortid from "shortid";
 
 const StepFour = forwardRef((props, ref) => {
   const {
@@ -26,23 +39,42 @@ const StepFour = forwardRef((props, ref) => {
   const [errorBeneficios, setErrorBeneficios] = useState(false);
   const [errorDescripcion, setErrorDescripcion] = useState(false);
   const [_switch, setSwitch] = useState(false);
+  const [errores, setErrores] = useState([]);
+  const [errores2, setErrores2] = useState([]);
 
-  const validacion = () => {
+  const validacion = async () => {
     if (renta < 1) {
       setErrorRenta(true);
-    }
-    if (beneficios === "") {
-      setErrorBeneficios(true);
     }
     if (descripcion === "") {
       setErrorDescripcion(true);
     }
+    setErrores([]);
+    await mapearDatos();
     setInitDefault(false);
     setTimeout(() => {
       setSwitch(!_switch);
     }, 100);
   };
 
+  const mapearDatos = () => {
+    beneficios.map((item) => {
+      if (item.beneficio === "") {
+        errores.push(item.id);
+      }
+    });
+    setErrores2(errores);
+  };
+  const añadirBeneficio = () => {
+    const container = document.getElementById(
+      "cont-inputs-beneficio-aviso-emp"
+    );
+
+    setBeneficios([...beneficios, { id: shortid.generate(), beneficio: "" }]);
+    setTimeout(() => {
+      container.scrollTop = "1000";
+    }, 100);
+  };
   useEffect(() => {
     if (initDefault === false) {
       if (errorRenta || errorBeneficios || errorDescripcion) {
@@ -82,31 +114,36 @@ const StepFour = forwardRef((props, ref) => {
               />
             </div>
           </div>
-          <div style={{ flex: 1, paddingLeft: "10px" }}>
+          <div  className="cont-beneficios-avisos-emp" style={{ flex: 1, paddingLeft: "10px" }}>
             <p className="p1">Beneficios</p>
-            <CustomSelectB
-              label="Seleccione"
-              helpertext="Seleccione un beneficio"
-              error={errorBeneficios}
-              value={beneficios}
-              onChange={(e) => {
-                setErrorBeneficios(false);
-                setBeneficios(e.target.value);
-              }}
-            >
-              <MenuItem className="custom-menu-item" value="item1">
-                item1
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="item2">
-                item2
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="item3">
-                item3
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="item4">
-                item4
-              </MenuItem>
-            </CustomSelectB>
+            <div className="sub-beneficios-avisos-emp">
+              <div
+                className="cont-inputs-beneficio-aviso-emp"
+                id="cont-inputs-beneficio-aviso-emp"
+              >
+                {beneficios.map((item, index) => (
+                  <InputBeneficio
+                    key={index}
+                    data={item}
+                    numero={index + 1}
+                    setBeneficios={setBeneficios}
+                    beneficios={beneficios}
+                    errores2={errores2}
+                    setSwitch={setSwitch}
+                  />
+                ))}
+              </div>
+              <div className="cont-add-beneficio-avisos-emp">
+                <IconButtonCustom
+                  bg="primary"
+                  size="small"
+                  onClick={añadirBeneficio}
+                >
+                  <Add />
+                </IconButtonCustom>
+                <p>Añadir beneficio</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="container-inputs-form-emp">
@@ -245,3 +282,68 @@ function NumberFormatCustom(props) {
     />
   );
 }
+
+const InputBeneficio = ({
+  numero,
+  data,
+  setBeneficios,
+  beneficios,
+  errores2,
+}) => {
+  const [error, setError] = useState(false);
+  const [initDefault, setInitDefault] = useState(true);
+
+  const deleteBeneficio = () => {
+    const result = beneficios.filter((item) => item.id !== data.id);
+    setBeneficios(result);
+  };
+
+  const changeText = (e) => {
+    setError(false);
+    setBeneficios(
+      beneficios.map((it) =>
+        it.id === data.id ? { ...it, [e.target.name]: e.target.value } : it
+      )
+    );
+  };
+  console.log(beneficios);
+  useEffect(() => {
+    if (initDefault === false) {
+      if (errores2.length > 0) {
+        const valor = errores2.filter((item) => item === data.id);
+
+        if (valor.length > 0) {
+          setError(true);
+        } else {
+          setError(false);
+        }
+      }
+    }
+    setInitDefault(false);
+  }, [errores2]);
+
+  return (
+    <div style={{ marginBottom: "10px" }}>
+      <CustomInput
+        label={`Beneficio ${numero}`}
+        onChange={changeText}
+        value={data.beneficio}
+        error={error}
+        name="beneficio"
+        endAdornment={
+          <Tooltip title="Eliminar beneficio" placement="top">
+            <InputAdornment position="end">
+              <IconButton
+                size="small"
+                className="btn-delete-input-beneficio-emp"
+                onClick={deleteBeneficio}
+              >
+                <Close className="icon-close" />
+              </IconButton>
+            </InputAdornment>
+          </Tooltip>
+        }
+      />
+    </div>
+  );
+};

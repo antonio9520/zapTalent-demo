@@ -1,0 +1,20 @@
+.republicar-avisos-emp {
+  background-color: white;
+  border-radius: 5px;
+  width: 98%;
+  max-width: 500px;
+
+  position: relative;
+}
+.sub-republicar-avisos-emp {
+  padding: 30px 40px;
+}
+.republicar-avisos-emp h1 {
+  font-weight: 200;
+  color: var(--gray-text);
+  margin-bottom: 50px;
+}
+.dates-republicar-avisos-emp {
+  display: flex;
+  margin-bottom: 50px;
+}

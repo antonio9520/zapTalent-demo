@@ -28,6 +28,8 @@
 /*item-2*/
 .top-card-ofertas-laborales .item-2 {
   min-width: 250px;
+  max-width: 250px;
+  overflow: hidden;
   /* background-color: saddlebrown; */
   /* padding-left: 20px; */
 }
@@ -36,6 +38,8 @@
   color: var(--blue-primary);
   font-size: 22px;
   white-space: nowrap;
+  /* overflow: hidden; */
+  /* background-color: khaki; */
 }
 .top-card-ofertas-laborales .item-2 p:nth-child(2) {
   margin: 0;
@@ -147,6 +151,8 @@
   color: var(--gray-text);
   display: flex;
   padding: 0 10px 10px 0;
+
+  flex: 1;
 }
 .top-card-ofertas-laborales .item-6 div {
   background-color: #f8f8fb;
@@ -213,7 +219,7 @@
   position: absolute !important;
   right: 10px;
   bottom: 10px;
-  padding:5px 70px !important;
+  padding: 5px 70px !important;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 

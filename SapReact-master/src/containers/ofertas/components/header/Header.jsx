@@ -57,7 +57,7 @@ const Header = ({ setOpen }) => {
           <AntTab label="Activos" />
           <AntTab label="Caducados" />
         </AntTabs>
-        <Tooltip title="Nuevo Aviso">
+        <Tooltip title="Filtrar">
           <IconButton bg="primary" onClick={() => setOpen(true)}>
             <FilterList />
           </IconButton>

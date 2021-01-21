@@ -5,9 +5,15 @@ import {
   IconButton,
   CustomSelectB,
   CustomInput,
+  Tooltip,
 } from "../../../../components";
-import { Close } from "@material-ui/icons";
-import { LinearProgress, MenuItem } from "@material-ui/core";
+import { Close, ArrowBack } from "@material-ui/icons";
+import {
+  LinearProgress,
+  MenuItem,
+  InputAdornment,
+  IconButton as IconButtonMUI,
+} from "@material-ui/core";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -22,7 +28,7 @@ const Stepthree = forwardRef((props, ref) => {
     closeModal,
     jornadaLaboral,
     setJornadaLaboral,
-    tipoContrato,
+    tipoContrato, 
     setTipoContrato,
     cantidadVacantes,
     setCantidadVacantes,
@@ -49,6 +55,7 @@ const Stepthree = forwardRef((props, ref) => {
   const [errorCiudad, setErrorCiudad] = useState(false);
   const [initDefault, setInitDefault] = useState(true);
   const [_switch, setSwitch] = useState(false);
+  const [_switchContrato, setSwitchContrato] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -57,7 +64,7 @@ const Stepthree = forwardRef((props, ref) => {
     if (jornadaLaboral === "") {
       setErrorJLaboral(true);
     }
-    if (tipoContrato === "") {
+    if (tipoContrato.desc === "") {
       setErrorTContrato(true);
     }
     if (cantidadVacantes < 1) {
@@ -83,6 +90,8 @@ const Stepthree = forwardRef((props, ref) => {
     }, 500);
   };
 
+  console.log(tipoContrato);
+
   useEffect(() => {
     if (initDefault === false) {
       if (
@@ -100,6 +109,12 @@ const Stepthree = forwardRef((props, ref) => {
       }
     }
   }, [_switch]);
+
+  useEffect(() => {
+    if (tipoContrato.value === "Otro") {
+      setSwitchContrato(true);
+    }
+  }, [tipoContrato]);
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">
@@ -117,17 +132,35 @@ const Stepthree = forwardRef((props, ref) => {
                   setJornadaLaboral(e.target.value);
                 }}
               >
-                <MenuItem className="custom-menu-item" value="item1">
-                  item1
+                <MenuItem
+                  className="custom-menu-item"
+                  value="60 horas semanales"
+                >
+                  60 horas semanales
                 </MenuItem>
-                <MenuItem className="custom-menu-item" value="item2">
-                  item2
+                <MenuItem
+                  className="custom-menu-item"
+                  value="45 horas semanales"
+                >
+                  45 horas semanales
                 </MenuItem>
-                <MenuItem className="custom-menu-item" value="item3">
-                  item3
+                <MenuItem className="custom-menu-item" value="Bisemanal">
+                  Bisemanal
                 </MenuItem>
-                <MenuItem className="custom-menu-item" value="item4">
-                  item4
+                <MenuItem className="custom-menu-item" value="Part-time">
+                  Part-time
+                </MenuItem>
+                <MenuItem
+                  className="custom-menu-item"
+                  value="Jornada extraordinaria"
+                >
+                  Jornada extraordinaria
+                </MenuItem>
+                <MenuItem className="custom-menu-item" value="Desde casa">
+                  Desde casa
+                </MenuItem>
+                <MenuItem className="custom-menu-item" value="Teletrabajo">
+                  Teletrabajo
                 </MenuItem>
               </CustomSelectB>
             </div>
@@ -147,29 +180,77 @@ const Stepthree = forwardRef((props, ref) => {
           </div>
           <div style={{ flex: 1, paddingLeft: "10px" }}>
             <div className="container-inputs-form-emp">
-              <CustomSelectB
-                label="Tipo de Contrato"
-                helpertext="No puede estar vacio"
-                error={errorTContrato}
-                value={tipoContrato}
-                onChange={(e) => {
-                  setErrorTContrato(false);
-                  setTipoContrato(e.target.value);
-                }}
-              >
-                <MenuItem className="custom-menu-item" value="item1">
-                  item1
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item2">
-                  item2
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item3">
-                  item3
-                </MenuItem>
-                <MenuItem className="custom-menu-item" value="item4">
-                  item4
-                </MenuItem>
-              </CustomSelectB>
+              {_switchContrato ? (
+                <CustomInput
+                  label="Introduzca el tipo de Contrato"
+                  helpertext="No puede estar vacio"
+                  error={errorTContrato}
+                  value={tipoContrato.desc}
+                  endAdornment={
+                    <Tooltip title="Volver a selección" placement="top">
+                      <InputAdornment position="end">
+                        <IconButtonMUI
+                          size="small"
+                          className="btn-delete-input-beneficio-emp"
+                          onClick={() => {
+                            setSwitchContrato(false);
+                            setTipoContrato({ value: "", desc: "" });
+                          }}
+                        >
+                          <ArrowBack className="icon-close" />
+                        </IconButtonMUI>
+                      </InputAdornment>
+                    </Tooltip>
+                  }
+                  onChange={(e) => {
+                    setErrorTContrato(false);
+                    setTipoContrato({
+                      ...tipoContrato,
+                      desc: e.target.value,
+                    });
+                  }}
+                />
+              ) : (
+                <CustomSelectB
+                  label="Tipo de Contrato"
+                  helpertext="No puede estar vacio"
+                  error={errorTContrato}
+                  value={tipoContrato.desc}
+                  onChange={(e) => {
+                    setErrorTContrato(false);
+                    if (e.target.value === "Otro") {
+                      setTipoContrato({
+                        value: e.target.value,
+                        desc: "",
+                      });
+                      return;
+                    }
+                    setTipoContrato({
+                      value: e.target.value,
+                      desc: e.target.value,
+                    });
+                  }}
+                >
+                  <MenuItem className="custom-menu-item" value="Plazo fijo">
+                    Plazo fijo
+                  </MenuItem>
+                  <MenuItem className="custom-menu-item" value="Aprendizaje">
+                    Aprendizaje
+                  </MenuItem>
+                  <MenuItem className="custom-menu-item" value="A trato">
+                    A trato
+                  </MenuItem>
+                  <MenuItem className="custom-menu-item" value="De temporada">
+                    De temporada
+                  </MenuItem>
+                  <MenuItem className="custom-menu-item" value="Indefinido">
+                    Indefinido
+                  </MenuItem>
+                  <MenuItem className="custom-menu-item" value="Otro">
+                    Otro
+                  </MenuItem>
+                </CustomSelectB>
+              )}
             </div>
             <div className="container-inputs-form-emp">
               <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>

@@ -7,6 +7,9 @@ const avisosSchema = mongoose.Schema({
     require: true,
     trim: true,
   },
+  nameusuario: {
+    type: String,
+  },
   titulo: {
     type: String,
     trim: true,
@@ -20,6 +23,10 @@ const avisosSchema = mongoose.Schema({
     trim: true,
   },
   anosExp: {
+    type: String,
+    trim: true,
+  },
+  anosExpSap: {
     type: String,
     trim: true,
   },
@@ -45,8 +52,14 @@ const avisosSchema = mongoose.Schema({
     trim: true,
   },
   tipoContrato: {
-    type: String,
-    trim: true,
+    value: {
+      type: String,
+      trim: true,
+    },
+    desc: {
+      type: String,
+      trim: true,
+    },
   },
   fechaContratacion: {
     type: Date,
@@ -78,10 +91,7 @@ const avisosSchema = mongoose.Schema({
     type: String,
     trim: true,
   },
-  beneficios: {
-    type: String,
-    trim: true,
-  },
+  beneficios: [],
   descripcion: {
     type: String,
     trim: true,

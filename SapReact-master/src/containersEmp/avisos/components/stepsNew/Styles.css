@@ -127,3 +127,33 @@
   cursor: pointer;
   transition: 0.5s all ease-in-out;
 }
+
+/*four*/
+.cont-beneficios-avisos-emp {
+  position: relative;
+}
+.cont-add-beneficio-avisos-emp {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  /* background-color: lightcoral; */
+}
+.sub-beneficios-avisos-emp {
+  position: absolute;
+  top: 18px;
+  /* background-color: lightgreen; */
+  width: 100%;
+}
+.cont-inputs-beneficio-aviso-emp {
+  max-height: 50px;
+  overflow: auto;
+  padding-right: 10px;
+  scroll-behavior: smooth;
+}
+
+.cont-add-beneficio-avisos-emp p {
+  margin: 0;
+  margin-left: 10px;
+  color: var(--gray-text);
+  font-size: 14px;
+}

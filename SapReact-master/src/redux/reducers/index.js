@@ -5,6 +5,7 @@ import estudioReducer from "./estudioReducer";
 import certificadoReducer from "./certificadoReducer";
 import adnReducer from "./adnReducer";
 import alertReducer from "./alertReducer";
+import ofertasLaboralesReducer from "./OfertasLaboralesReducer";
 //EMPRESA
 import authEmpReducer from "./reducers-emp/authReducer";
 import avisoReducers from "./reducers-emp/avisosReducer";
@@ -18,4 +19,5 @@ export default combineReducers({
   alert: alertReducer,
   authEmp: authEmpReducer,
   aviso: avisoReducers,
+  ofertasLaborales: ofertasLaboralesReducer,
 });

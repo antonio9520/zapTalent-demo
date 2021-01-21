@@ -12,7 +12,7 @@ const CardB = (props) => {
   const overlay = classNames({
     "typeA1-cardb": type === "typeA1",
     "typeA2-cardb": type === "typeA2",
-    "typeB1-cardb": type === "typeB1",
+    "typeB1-cardb": type === "typeB1", 
     "typeB2-cardb": type === "typeB2",
   });
   const title = classNames({

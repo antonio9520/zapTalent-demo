@@ -6,7 +6,7 @@ import { Close } from "@material-ui/icons";
 import { CustomInput, CustomSelectB, IconButton } from "../../../../components";
 import {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker,
+  KeyboardDatePicker, 
 } from "@material-ui/pickers";
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";

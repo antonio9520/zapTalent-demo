@@ -12,7 +12,33 @@ import {
 import { Button } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
 
-const Card = () => {
+const Card = ({ data }) => {
+  const {
+    fechaInicio,
+    fechaTermino,
+    adns,
+    fechaContratacion,
+    idusuario,
+    titulo,
+    _id,
+    profesion,
+    area,
+    tipoConsultor,
+    jornadaLaboral,
+    tipoContrato,
+    cantidadVacantes,
+    pais,
+    region,
+    ciudad,
+    dispResidencia,
+    dispViajar,
+    renta,
+    beneficios,
+    descripcion,
+    estado,
+    anosExp,
+    nameuser,
+  } = data;
   const [modulos, setModulos] = useState(["MM", "FI"]);
   return (
     <div className="card-ofertas-laborales">
@@ -23,37 +49,45 @@ const Card = () => {
           </div>
         </div>
         <div className="item-2">
-          <h1>Programador PHP</h1>
-          <p>Ingeniero en informatica</p>
-          <p>Apiux Texnologia SPA</p>
+          <h1 className={titulo.length > 22 ? "name-submod-large" : null}>
+            {titulo}
+          </h1>
+          <p>{profesion}</p>
+          <p>{nameuser}</p>
           <div>
-            <p>2 años de experiencia</p>
+            {anosExp ? (
+              <p>{anosExp} años de experiencia</p>
+            ) : (
+              <p>Sin experiencia laboral</p>
+            )}
           </div>
         </div>
         <div className="item-3">
           <Tooltip title="Tipo de consultor">
             <div>
               <BusinessCenter className="icon-card-ofertas-laborales" />
-              <p style={{ color: "#2B7DE6", fontWeight: "600" }}>Senior</p>
+              <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
+                {tipoConsultor}
+              </p>
             </div>
           </Tooltip>
 
           <Tooltip title="Tipo de Jornada">
             <div>
               <BusinessCenter className="icon-card-ofertas-laborales" />
-              <p>Jornada Completa</p>
+              <p>{jornadaLaboral}</p>
             </div>
           </Tooltip>
           <Tooltip title="Fecha de contratación">
             <div>
               <BusinessCenter className="icon-card-ofertas-laborales" />
-              <p>30/5/2020</p>
+              <p>{fechaContratacion.substring(0, 10)}</p>
             </div>
           </Tooltip>
           <Tooltip title="Disponibilidad de viajar">
             <div>
               <Flight className="icon-card-ofertas-laborales" />
-              <p>Si</p>
+              {dispViajar ? <p>Si</p> : <p>No</p>}
             </div>
           </Tooltip>
         </div>
@@ -68,7 +102,7 @@ const Card = () => {
           <Tooltip title="Tipo de contrato">
             <div>
               <BusinessCenter className="icon-card-ofertas-laborales" />
-              <p>Contrato fijo</p>
+              <p>{tipoContrato}</p>
             </div>
           </Tooltip>
           <Tooltip title="Cantidad de Vacantes">
@@ -80,7 +114,7 @@ const Card = () => {
           <Tooltip title="Disponibilidad de cambio de residencia">
             <div>
               <Home className="icon-card-ofertas-laborales" />
-              <p>Si</p>
+              {dispResidencia ? <p>Si</p> : <p>No</p>}
             </div>
           </Tooltip>
         </div>
@@ -97,34 +131,25 @@ const Card = () => {
         </div>
         <div className="item-6">
           <div>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
+            <p>{descripcion}</p>
           </div>
         </div>
       </div>
       <div className="bottom-card-ofertas-laborales">
         <div className="item-1">
           <EventAvailable className="icon-card-ofertas-laborales" />
-          <p>Mayo 21 - 2020</p>
+          <p>{fechaInicio.substring(0, 10)}</p>
           <EventBusy className="icon-card-ofertas-laborales" />
-          <p>Agosto 21 - 2020</p>
+          <p>{fechaTermino.substring(0, 10)}</p>
         </div>
         <div className="item-2">
           <Room className="icon-card-ofertas-laborales" />
-          <p>San Miguel, Santiago, R. Metropolitana</p>
+          <p>
+            {ciudad}, {region}
+          </p>
         </div>
         <div className="item-3">
-          <p>Salario: $1.000.000</p>
+          <p>Salario: ${renta}</p>
           <Button className="btn-postular-ofertas-laborales">
             <p>Postular</p>
           </Button>

@@ -1,16 +1,24 @@
 import React, { forwardRef, useState } from "react";
 import "./Styles.css";
-import { Button, IconButton } from "../../../../components";
+import { Button, IconButton, CustomInput } from "../../../../components";
 import { LinearProgress } from "@material-ui/core";
 import { Close, Add } from "@material-ui/icons";
 import AdnForm from "./components/adnForm/AdnForm";
 import shortid from "shortid";
 
 const StepTwo = forwardRef((props, ref) => {
-  const { setStep, closeModal, adns, setAdns } = props;
+  const {
+    setStep,
+    closeModal,
+    adns,
+    setAdns,
+    anosExpSap,
+    setAnosExpZap,
+  } = props;
   const [loading, setLoading] = useState(false);
   const [errores, setErrores] = useState([]);
   const [errores2, setErrores2] = useState([]);
+  const [errorAnosExp, setErrorAnosExp] = useState(false);
   const [_swith, setSwitch] = useState(false);
 
   const addModulo = () => {
@@ -24,6 +32,7 @@ const StepTwo = forwardRef((props, ref) => {
   // console.log(adns);
   const validation = async () => {
     setLoading(true);
+
     setErrores([]);
     await mapearDatos();
 
@@ -33,6 +42,13 @@ const StepTwo = forwardRef((props, ref) => {
     }, 500);
   };
   const mapearDatos = () => {
+    if (anosExpSap !== null && anosExpSap !== "") {
+      console.log("asdnkadjnkadn");
+      if (anosExpSap < 1) {
+        console.log("error");
+        setErrorAnosExp(true);
+      }
+    }
     adns.map((item) => {
       if (item.modulo === "") {
         errores.push(item.id);
@@ -42,8 +58,9 @@ const StepTwo = forwardRef((props, ref) => {
     });
     setErrores2(errores);
   };
+
   const nextStep = () => {
-    if (errores.length === 0) {
+    if (errores.length === 0 && !errorAnosExp) {
       setStep("three");
     }
   };
@@ -53,6 +70,19 @@ const StepTwo = forwardRef((props, ref) => {
       <div className="form-nuevo-aviso-emp">
         <h1>¿Qué perfil ADN SAP?</h1>
         {/* <p className="p1">ADN SAP</p> */}
+        <div>
+          <CustomInput
+            label="Años de experiencia SAP (opcional)"
+            helpertext="Introduzca un nuemero valido"
+            error={errorAnosExp}
+            type="number"
+            value={anosExpSap}
+            onChange={(e) => {
+              setErrorAnosExp(false);
+              setAnosExpZap(e.target.value);
+            }}
+          />
+        </div>
         <div
           className="cont-adns-form-avisos-emp"
           id="cont-adns-form-avisos-emp"

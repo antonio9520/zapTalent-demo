@@ -46,16 +46,16 @@ server.use("/api/adnsap", require("./routes/adnsap"));
 //Importar ruta para restablecer contrasena
 server.use("/api/restablecer", require("./routes/restablecer"));
 //import actualizar contrase;a
-server.use('/api/actualizarpass', require("./routes/cambiarpass"));
+server.use("/api/actualizarpass", require("./routes/cambiarpass"));
 //ruta confirmacion
 server.use("/api/confirmar", require("./routes/confirmar"));
 //ruta imagenes email
 server.use("/api/fotoemail", require("./routes/imaemail"));
-
+//ruta ofertas laborales
+server.use("/api/ofertasLaborales", require("./routes/ofertasLaborales"));
 
 //===================================================================================
 //===================================================================================
-
 
 //-----------------------------------
 //Rutas Empresas
@@ -64,14 +64,13 @@ server.use("/api/fotoemail", require("./routes/imaemail"));
 //Autentificacion Usuario Empresa
 server.use("/api/authEmpresa", require("./Empresas/routes/authEmpresa"));
 //Usuario Empresa
-server.use("/api/usuarioEmpresa" ,require('./Empresas/routes/usuarioEmpresa'));
+server.use("/api/usuarioEmpresa", require("./Empresas/routes/usuarioEmpresa"));
 //Avisos routes
 server.use("/api/avisos", require("./Empresas/routes/avisos"));
 //empresas datos
 server.use("/api/empresas", require("./Empresas/routes/empresas"));
 //postulacion routes
 server.use("/api/postulacion", require("./Empresas/routes/postulacionR"));
-
 
 //-----------------------------------
 //Fin Rutas Empresas
@@ -91,8 +90,6 @@ server.use("/api/usuarioAdmin", require("./Admin/routes/usuarioAdmin"));
 //-----------------------------------
 //Fin Rutas Admin
 //-----------------------------------
-
-
 
 //arrancar app
 server.listen(port, "0.0.0.0", () => {

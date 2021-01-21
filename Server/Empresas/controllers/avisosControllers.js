@@ -49,6 +49,7 @@ exports.putAviso = async (req, res) => {
     fechaTermino,
     tipoConsultor,
     estado,
+    anosExpSap,
     adns,
     jornadaLaboral,
     tipoContrato,
@@ -74,6 +75,7 @@ exports.putAviso = async (req, res) => {
       if (fechaInicio) aviso.fechaInicio = fechaInicio;
       if (fechaTermino) aviso.fechaTermino = fechaTermino;
       if (tipoConsultor) aviso.tipoConsultor = tipoConsultor;
+      if (anosExpSap) aviso.anosExpSap = anosExpSap;
       if (adns) aviso.adns = adns;
       if (estado) aviso.estado = estado;
       if (jornadaLaboral) aviso.jornadaLaboral = jornadaLaboral;

@@ -29,12 +29,13 @@ const CustomModal = (props) => {
   const [fechaTermino, setFechaTermino] = useState(null);
   const [tipoConsultor, setTipoConsultor] = useState("Junior");
   //step two
+  const [anosExpSap, setAnosExpZap] = useState(null);
   const [adns, setAdns] = useState([
     { id: shortid.generate(), modulo: "", submodulos: [] },
   ]);
   //step three
   const [jornadaLaboral, setJornadaLaboral] = useState("");
-  const [tipoContrato, setTipoContrato] = useState("");
+  const [tipoContrato, setTipoContrato] = useState({ value: "", desc: "" });
   const [cantidadVacantes, setCantidadVacantes] = useState(null);
   const [fechaContratacion, setFechaContratacion] = useState(null);
   const [pais, setPais] = useState("");
@@ -44,7 +45,7 @@ const CustomModal = (props) => {
   const [dispResidencia, setDispResidencia] = useState(false);
   //step four
   const [renta, setRenta] = useState(null);
-  const [beneficios, setBeneficios] = useState("");
+  const [beneficios, setBeneficios] = useState([]);
   const [descripcion, setDescripcion] = useState("");
   const [estado, setEstado] = useState("Activo");
 
@@ -53,7 +54,7 @@ const CustomModal = (props) => {
     dispatch(
       editarAvisoAction({
         _id: data._id,
-        idusuario: usuario._id,
+        // idusuario: usuario._id,
         titulo,
         profesion,
         area,
@@ -78,7 +79,7 @@ const CustomModal = (props) => {
       })
     ).then((res) => (res === true ? closeModal() : null));
   };
-  
+
   const closeModal = () => {
     setOpenModalEditar(false);
     setTitulo("");
@@ -92,7 +93,7 @@ const CustomModal = (props) => {
     setAdns([{ id: shortid.generate(), modulo: "", submodulos: [] }]);
     //step three
     setJornadaLaboral("");
-    setTipoContrato("");
+    setTipoContrato({ value: "", desc: "" });
     setCantidadVacantes(null);
     setFechaContratacion(null);
     setPais("");
@@ -102,7 +103,7 @@ const CustomModal = (props) => {
     setDispResidencia(false);
     //step four
     setRenta(null);
-    setBeneficios("");
+    setBeneficios([]);
     setDescripcion("");
     setEstado("Activo");
     setDataEditar(null);
@@ -110,8 +111,7 @@ const CustomModal = (props) => {
       setStep("one");
     }, 300);
   };
-  
- 
+
   useEffect(() => {
     if (data) {
       setTitulo(data.titulo);
@@ -123,6 +123,8 @@ const CustomModal = (props) => {
       setFechaInicio(data.fechaInicio);
       setFechaTermino(data.fechaTermino);
       setTipoConsultor(data.tipoConsultor);
+      //step two
+      setAnosExpZap(data.anosExpSap);
       setAdns(data.adns);
       //step three
       setJornadaLaboral(data.jornadaLaboral);
@@ -182,6 +184,8 @@ const CustomModal = (props) => {
               closeModal={closeModal}
               adns={adns}
               setAdns={setAdns}
+              anosExpSap={anosExpSap}
+              setAnosExpZap={setAnosExpZap}
             />
           ) : step === "three" ? (
             <StepThree

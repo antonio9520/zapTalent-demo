@@ -23,10 +23,10 @@ const CardB = (props) => {
   });
   return (
     <div className={cardStyle}>
-      <div>
+      <div> 
         <p className={textStyle}>{texto}</p>
       </div>
-      <div>
+      <div> 
         {link ? (
           <Link to="/estudios" className="link">
             <IconButton className={btnStyle} {...props}>

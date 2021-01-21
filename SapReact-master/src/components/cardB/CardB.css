@@ -99,6 +99,7 @@
   font-size: 25px;
   width: 180px;
   text-align: center;
+  color: white;
 }
 .titleA2-cardb {
   margin: 0;
@@ -116,6 +117,7 @@
   height: 50px !important;
   border-radius: 5px !important;
   box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  color: white !important;
 }
 .btn-comenzar-cardb p {
   margin: 0;
@@ -125,6 +127,7 @@
   margin: 0;
   text-align: center;
   width: 250px;
+  color: white;
 }
 
 .descA2-cardb {

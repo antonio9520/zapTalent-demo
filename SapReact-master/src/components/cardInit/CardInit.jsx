@@ -34,7 +34,7 @@ const CardInit = (props) => {
               className="btn-cardinit-estudios"
               onClick={() => setOpenModal(true)}
             >
-              <p>Comenzar</p>
+              <p style={{ color: "white" }}>Comenzar</p>
             </ListItem>
           </div>
         </div>

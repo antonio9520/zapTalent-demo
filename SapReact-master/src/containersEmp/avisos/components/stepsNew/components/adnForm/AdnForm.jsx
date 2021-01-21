@@ -14,6 +14,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
   const [modulo, setModulo] = useState(null);
   const [error, setError] = useState(false);
   const [initDefault, setInitDefault] = useState(true);
+  
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -47,7 +48,6 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
         item.submodulos = [];
       }
     });
-    
   };
 
   useEffect(() => {
@@ -59,12 +59,10 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
   }, [modulo]);
 
   useEffect(() => {
-    console.log(errores2);
     if (initDefault === false) {
       if (errores2.length > 0) {
         const valor = errores2.filter((item) => item === data.id);
-        console.log(valor);
-        console.log("entro useEffect");
+
         if (valor.length > 0) {
           setError(true);
         } else {
@@ -74,7 +72,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
     }
     setInitDefault(false);
   }, [errores2]);
-  console.log(adns);
+
   // console.log(data);
   useEffect(() => {
     setCargando(true);
@@ -102,7 +100,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
             ? null
             : modulos.map((item, index) => {
                 const valor = adns.filter((i) => i.modulo === item.modulo);
-                console.log(valor);
+
                 return valor.length > 0 ? (
                   <MenuItem
                     key={index}
