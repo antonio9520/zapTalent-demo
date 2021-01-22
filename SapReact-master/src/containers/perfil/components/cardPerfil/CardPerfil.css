@@ -96,7 +96,8 @@
 
 .label-btn-add-photo {
   display: flex;
-  height: 40px;
+  height: 40px !important;
+  /* background-color: rosybrown; */
   width: 40px !important;
   cursor: pointer;
   border-radius: 50%;
@@ -109,7 +110,7 @@
 .p1-perfil-b {
   font-size: 12px;
   color: var(--gray-text);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .p2-perfil-b {

@@ -11,7 +11,7 @@ const Ofertas = () => {
     (state) => state.ofertasLaborales.ofertasLaborales
   );
   const loading = useSelector((state) => state.ofertasLaborales.loading);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     dispatch(obtenerOferLaboralesAction());

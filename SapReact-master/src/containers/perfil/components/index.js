@@ -12,6 +12,8 @@ import CardHabilidades from "./cardHabilidades/CardHabilidades";
 import ModalProfesion from "./modalProf/ModalProf";
 import CardProfesion from "./cardProfesion/CardProfesion";
 import ModalRRSS from "./modalRRSS/ModalRRSS";
+//new
+import CardPerfilNew from "./cardPerfilNew/CardPerfil";
 
 export {
   Header,
@@ -28,4 +30,5 @@ export {
   ModalProfesion,
   CardProfesion,
   ModalRRSS,
+  CardPerfilNew,
 };

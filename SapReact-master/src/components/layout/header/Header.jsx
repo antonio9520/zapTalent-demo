@@ -1,7 +1,13 @@
 import React from "react";
 import "./Header.css";
-import { Badge } from "@material-ui/core";
-import { MailOutline, NotificationsNone } from "@material-ui/icons";
+import { Badge, IconButton } from "@material-ui/core";
+import {
+  MailOutline,
+  NotificationsNone,
+  ArrowBackIos,
+  Menu,
+  ArrowBack,
+} from "@material-ui/icons";
 import logo from "../../../resources/images/SAPTalent/ZAPTalent-Logotipo-Horizontal-Blanco.svg";
 import userlogo from "../../../resources/images/SAPTalent/icon-new-user.svg";
 import { useSelector } from "react-redux";
@@ -12,29 +18,19 @@ const Header = (props) => {
   // const usuario = useSelector((state) => state.auth.usuario);
 
   return (
-    <div className="container-header">
+    <div className={!open ? "container-header-open" : "container-header"}>
       <div className="header-left">
-        <div className="cont-logo-principal">
-          <img src={logo} alt="logo" className="logo-principal" />
-        </div>
-        <button className="btn-open-sidebar" onClick={() => setOpen(!open)}>
-          <div className="icon-bars">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </button>
+        {open ? (
+          <IconButton onClick={() => setOpen(!open)}>
+            <Menu className="btn-open-sidebar-b" />
+          </IconButton>
+        ) : (
+          <IconButton onClick={() => setOpen(!open)}>
+            <ArrowBackIos className="btn-open-sidebar-b" />
+          </IconButton>
+        )}
       </div>
       <div className="header-right">
-        <button className="btn-header-right">
-          <div className="icon-bars">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </button>
         {/* <div className="cont-logo-user">
           <>
             {usuario.imageURL ? (

@@ -1,14 +1,32 @@
 .container-header {
   display: flex;
-  background: var(--degradado-blue);
+  /* background: red; */
   height: 55px;
+  /* left: 80px; */
+  padding-left: 80px;
+  position: fixed;
+  flex-direction: row;
+  width: 100%;
+  top: 0;
+  overflow: hidden;
+  transition: 0.5s all ease-in-out;
+  z-index: 99;
+  /* box-shadow: 0 0.5px 10px 1px rgb(58, 58, 58); */
+}
+.container-header-open {
+  display: flex;
+  /* background: red; */
+  height: 55px;
+  /* left: 80px; */
+  padding-left: 250px;
   position: fixed;
   flex-direction: row;
   width: 100%;
   top: 0;
   overflow: hidden;
   z-index: 99;
-  box-shadow: 0 0.5px 10px 1px rgb(58, 58, 58);
+  transition: 0.5s all ease-in-out;
+  /* box-shadow: 0 0.5px 10px 1px rgb(58, 58, 58); */
 }
 .header-left {
   display: flex;
@@ -24,7 +42,12 @@
   border: none;
   outline: none;
   cursor: pointer;
-  margin-left: 35px;
+  margin-left: 0px !important;
+}
+.btn-open-sidebar-b {
+  color: var(--gray-text) !important;
+  width: 25px !important;
+  height: 25px !important;
 }
 .btn-header-right {
   background: transparent;
@@ -138,7 +161,7 @@
   align-items: center;
 }
 .icon-mail {
-  color: white;
+  color: var(--gray-text) !important;
 }
 .cont-icon {
   display: flex;

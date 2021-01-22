@@ -56,7 +56,7 @@ const Login = (props) => {
   // console.log(autenticado);
   useEffect(() => {
     if (autenticado) {
-      props.history.push("/ofertas-laborales");
+      props.history.push("/perfil");
     }
     // eslint-disable-next-line
   }, [autenticado]);

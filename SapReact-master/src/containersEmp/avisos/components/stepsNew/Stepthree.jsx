@@ -128,7 +128,7 @@ const Stepthree = forwardRef((props, ref) => {
                 error={errorJLaboral}
                 value={jornadaLaboral}
                 onChange={(e) => {
-                  setErrorJLaboral(false);
+                  setErrorJLaboral(false); 
                   setJornadaLaboral(e.target.value);
                 }}
               >

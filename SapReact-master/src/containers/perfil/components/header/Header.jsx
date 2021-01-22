@@ -10,7 +10,7 @@ const Header = () => {
       </div>
       <div>
         <p>Perfil completado a 79%</p>
-        <Settings className="icon-header-perfil-b"/>
+        <Settings className="icon-header-perfil-new"/>
       </div>
     </div>
   );

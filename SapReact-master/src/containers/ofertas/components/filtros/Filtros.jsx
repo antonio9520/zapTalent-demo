@@ -9,37 +9,85 @@ import {
   OutInput,
 } from "../../../../components";
 import { useDispatch } from "react-redux";
-
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: "auto",
-  },
-});
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import esLocale from "date-fns/locale/es";
+import DateFnsUtils from "@date-io/date-fns";
+import { regiones } from "../../../../assets/regiones";
+import { set } from "date-fns";
 
 const Filtros = ({ open, setOpen }) => {
   const dispatch = useDispatch();
-  const classes = useStyles();
+
   const [tipoConsultor, setTipoConsultor] = useState(null);
   const [anosExp, setAnosExp] = useState(null);
-  const [industria, setIndustria] = useState(null);
-  const [renta, setRenta] = useState(null);
+  const [area, setArea] = useState(null);
+  const [minimo, setMinimo] = useState(null);
+  const [maximo, setMaximo] = useState(null);
   const [fecha, setFecha] = useState(null);
   const [tipoContrato, setTipoContrato] = useState(null);
-  const [cargo, setCargo] = useState(null);
   const [comuna, setComuna] = useState(null);
   const [region, setRegion] = useState(null);
   const [tipoJornada, setTipoJornada] = useState(null);
-
+  const comunas = regiones.find((item) => item.region === region);
   const query = {};
 
   const filtrar = () => {
     if (tipoConsultor) {
       query.tipoConsultor = tipoConsultor;
     }
+    if (anosExp) {
+      query.anosExpSap = anosExp;
+    }
+    if (area) {
+      query.area = area;
+    }
+    if (minimo && maximo) {
+      query.renta = { $gte: minimo, $lte: maximo };
+    } else if (minimo) {
+      query.renta = { $gte: minimo };
+    } else if (maximo) {
+      query.renta = { $lte: maximo };
+    }
+    if (region) {
+      query.region = region;
+    }
+    // if (tipoContrato) {
+    //   query.tipoContrato = {};
+    //   query.tipoContrato.value = tipoContrato;
+    // }
+    if (fecha) {
+      // query.creacion = {
+      //   $gte: new Date(`${fecha.substring(0, 10)}T00:00:00.000Z`),
+      //   $lte: new Date(`${fecha.substring(0, 10)}T23:59:59.999Z`),
+      // };
+      // query.creacion = ;
+  
+    }
+    if (tipoJornada) {
+      query.jornadaLaboral = tipoJornada;
+    }
+    if (comuna) {
+      query.ciudad = comuna;
+    }
     dispatch(filtrarOferLaboralesAction(query));
+  };
+  console.log(fecha ? new Date(fecha) : null);
+
+  const limpiarFiltros = () => {
+    setTipoConsultor(null);
+    setAnosExp(null);
+    setArea(null);
+    setMinimo(null);
+    setMaximo(null);
+    setFecha(null);
+    setTipoContrato(null);
+    setComuna(null);
+    setRegion(null);
+    setTipoJornada(null);
+    dispatch(filtrarOferLaboralesAction({}));
   };
   return (
     <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
@@ -78,9 +126,10 @@ const Filtros = ({ open, setOpen }) => {
           <OutInput
             // label="Nombres"
             // helpertext={nombresmsg}
-            // funcOnChange={setNombres}
+            funcOnChange={setAnosExp}
             // defaultValue={nombres}
-            name="names"
+            value={anosExp}
+            name="anosExp"
             size="small"
             type="number"
             // error={errornombre}
@@ -89,18 +138,24 @@ const Filtros = ({ open, setOpen }) => {
         </div>
         <div className="item-2">
           <p>Industria</p>
-          <CustomSelect placeholder="Selecciona" size="small">
-            <MenuItem className="custom-menu-item" value="Training">
-              Training
+          <CustomSelect
+            placeholder="Selecciona"
+            size="small"
+            onChange={setArea}
+            value={area}
+            name="area"
+          >
+            <MenuItem className="custom-menu-item" value="item1">
+              item1
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Junior">
-              Junior
+            <MenuItem className="custom-menu-item" value="item2">
+              item2
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Semi Senior">
-              Semi Senior
+            <MenuItem className="custom-menu-item" value="item3">
+              item3
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Senior">
-              Senior
+            <MenuItem className="custom-menu-item" value="item4">
+              item4
             </MenuItem>
           </CustomSelect>
         </div>
@@ -110,9 +165,9 @@ const Filtros = ({ open, setOpen }) => {
             <OutInput
               label="Mínimo"
               // helpertext={nombresmsg}
-              // funcOnChange={setNombres}
+              funcOnChange={setMinimo}
               // defaultValue={nombres}
-              name="names"
+              name="minimo"
               size="small"
               type="number"
               // error={errornombre}
@@ -121,9 +176,9 @@ const Filtros = ({ open, setOpen }) => {
             <OutInput
               label="Maximo"
               // helpertext={nombresmsg}
-              // funcOnChange={setNombres}
+              funcOnChange={setMaximo}
               // defaultValue={nombres}
-              name="names"
+              name="maximo"
               size="small"
               type="number"
               // error={errornombre}
@@ -133,39 +188,62 @@ const Filtros = ({ open, setOpen }) => {
         </div>
         <div className="item-2">
           <p>Fecha Publicación</p>
-          <CustomSelect placeholder="Selecciona" size="small">
-            <MenuItem className="custom-menu-item" value="Training">
-              Training
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Junior">
-              Junior
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Semi Senior">
-              Semi Senior
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Senior">
-              Senior
-            </MenuItem>
-          </CustomSelect>
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
+            <KeyboardDatePicker
+              // error={fechaInicioError}
+              fullWidth
+              size="small"
+              label="Inicio"
+              minDate={new Date("2010-01-01")}
+              maxDate={new Date("2030-01-01")}
+              // helperText={
+              //   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
+              // }
+              format="dd/MM/yyyy"
+              value={fecha}
+              // maxDate={new Date()}
+              onChange={(newValue) => {
+                setFecha(newValue);
+              }}
+              InputProps={{
+                className: "input-date-picker-inicio",
+                readOnly: true,
+              }}
+              className="date-picker-inicio"
+              InputLabelProps={{ className: "input-label-date-form" }}
+            />
+          </MuiPickersUtilsProvider>
         </div>
         <div className="item-2">
           <p>Tipo Contrato</p>
-          <CustomSelect placeholder="Selecciona" size="small">
-            <MenuItem className="custom-menu-item" value="Training">
-              Training
+          <CustomSelect
+            placeholder="Selecciona"
+            size="small"
+            onChange={setTipoContrato}
+            value={tipoContrato}
+            name="area"
+          >
+            <MenuItem className="custom-menu-item" value="Plazo fijo">
+              Plazo fijo
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Junior">
-              Junior
+            <MenuItem className="custom-menu-item" value="Aprendizaje">
+              Aprendizaje
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Semi Senior">
-              Semi Senior
+            <MenuItem className="custom-menu-item" value="A trato">
+              A trato
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Senior">
-              Senior
+            <MenuItem className="custom-menu-item" value="De temporada">
+              De temporada
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Indefinido">
+              Indefinido
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Otro">
+              Otro
             </MenuItem>
           </CustomSelect>
         </div>
-        <div className="item-2">
+        {/* <div className="item-2">
           <p>Cargo</p>
           <CustomSelect placeholder="Selecciona" size="small">
             <MenuItem className="custom-menu-item" value="Training">
@@ -181,45 +259,92 @@ const Filtros = ({ open, setOpen }) => {
               Senior
             </MenuItem>
           </CustomSelect>
-        </div>
+        </div> */}
         <div className="item-2">
           <p>Geografico</p>
           <div className="item-doble-filtros-of">
-            <CustomSelect placeholder="Comuna" size="small">
-              <MenuItem className="custom-menu-item" value="Training">
-                Training
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Junior">
-                Junior
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Semi Senior">
-                Semi Senior
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Senior">
-                Senior
-              </MenuItem>
+            <CustomSelect
+              placeholder="Región"
+              size="small"
+              onChange={setRegion}
+              value={region}
+              // error={errorconsultor}
+              // helpertext="Seleccione un tipo de consultor"
+              // funcionError={setErrorConsultor}
+              name="region"
+            >
+              {regiones.map((item, index) => (
+                <MenuItem
+                  className="custom-menu-item"
+                  key={index}
+                  value={item.region}
+                >
+                  {item.region}
+                </MenuItem>
+              ))}
             </CustomSelect>
-            <CustomSelect placeholder="Regón" size="small">
-              <MenuItem className="custom-menu-item" value="Training">
-                Training
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Junior">
-                Junior
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Semi Senior">
-                Semi Senior
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Senior">
-                Senior
-              </MenuItem>
+            <CustomSelect
+              placeholder="Comuna"
+              size="small"
+              onChange={setComuna}
+              value={comuna}
+              name="comuna"
+            >
+              {comunas ? (
+                comunas.comunas.map((item, index) => (
+                  <MenuItem
+                    className="custom-menu-item"
+                    key={index}
+                    value={item}
+                  >
+                    {item}
+                  </MenuItem>
+                ))
+              ) : (
+                <MenuItem className="custom-menu-item" value="">
+                  Seleccione una región
+                </MenuItem>
+              )}
             </CustomSelect>
           </div>
         </div>
         <div className="item-2">
           <p>Tipo Jornada</p>
+          <CustomSelect
+            placeholder="Selecciona"
+            size="small"
+            onChange={setTipoJornada}
+            value={tipoJornada}
+            name="tipoJornada"
+          >
+            <MenuItem className="custom-menu-item" value="60 horas semanales">
+              60 horas semanales
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="45 horas semanales">
+              45 horas semanales
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Bisemanal">
+              Bisemanal
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Part-time">
+              Part-time
+            </MenuItem>
+            <MenuItem
+              className="custom-menu-item"
+              value="Jornada extraordinaria"
+            >
+              Jornada extraordinaria
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Desde casa">
+              Desde casa
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Teletrabajo">
+              Teletrabajo
+            </MenuItem>
+          </CustomSelect>
         </div>
         <div className="item-11">
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={limpiarFiltros}>
             <p style={{ margin: 0 }}>Limpiar</p>
           </Button>
           <Button variant="contained" color="primary" onClick={filtrar}>

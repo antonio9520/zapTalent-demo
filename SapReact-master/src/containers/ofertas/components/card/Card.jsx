@@ -26,6 +26,7 @@ const Card = ({ data }) => {
     tipoConsultor,
     jornadaLaboral,
     tipoContrato,
+    anosExpSap,
     cantidadVacantes,
     pais,
     region,
@@ -39,6 +40,7 @@ const Card = ({ data }) => {
     anosExp,
     nameuser,
   } = data;
+
   const [modulos, setModulos] = useState(["MM", "FI"]);
   return (
     <div className="card-ofertas-laborales">
@@ -96,19 +98,27 @@ const Card = ({ data }) => {
           <Tooltip title="Experiencia SAP">
             <div>
               <BusinessCenter className="icon-card-ofertas-laborales" />
-              <p style={{ color: "#2B7DE6", fontWeight: "600" }}>3 Años</p>
+              {anosExpSap ? (
+                <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
+                  {anosExpSap} Años
+                </p>
+              ) : (
+                <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
+                  Sin Experiencia
+                </p>
+              )}
             </div>
           </Tooltip>
           <Tooltip title="Tipo de contrato">
             <div>
               <BusinessCenter className="icon-card-ofertas-laborales" />
-              <p>{tipoContrato}</p>
+              <p>{tipoContrato.value}</p>
             </div>
           </Tooltip>
           <Tooltip title="Cantidad de Vacantes">
             <div>
               <BusinessCenter className="icon-card-ofertas-laborales" />
-              <p>2</p>
+              <p>{cantidadVacantes}</p>
             </div>
           </Tooltip>
           <Tooltip title="Disponibilidad de cambio de residencia">

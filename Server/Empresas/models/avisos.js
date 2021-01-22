@@ -88,13 +88,17 @@ const avisosSchema = mongoose.Schema({
     type: Boolean,
   },
   renta: {
-    type: String,
+    type: Number,
     trim: true,
   },
   beneficios: [],
   descripcion: {
     type: String,
     trim: true,
+  },
+  creacion: {
+    type: Date,
+    default: Date(),
   },
 });
 

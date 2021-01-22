@@ -3,7 +3,7 @@
   position: fixed;
   width: 250px;
   background-color: var(--body-sidebar);
-  z-index: 1;
+  z-index: 100;
 
   transition: 0.5s ease-in-out;
   /* background-color: seagreen; */
@@ -16,7 +16,7 @@
   position: fixed;
   width: 80px;
   background-color: var(--body-sidebar);
-  z-index: 1;
+  z-index: 100;
 
   transition: 0.5s ease-in-out;
   /* box-shadow: inset 0 0 15px 10px #323147, 0.5px 0 10px 1px rgb(58, 58, 58); */
