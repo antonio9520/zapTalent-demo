@@ -1,16 +1,19 @@
 /* eslint-disable no-lone-blocks */
 import React, { useState, useEffect } from "react";
 import "./Perfil.css";
-import { Grid, makeStyles, Fab } from "@material-ui/core";
-import { CardPerfilNew } from "./components";
-import { AccountCircle } from "@material-ui/icons";
-import { CardB } from "../../components";
+import { makeStyles } from "@material-ui/core";
+import {
+  CardPerfilNew,
+  ModalRRSS,
+  Modal,
+  ModalHab,
+  CardJobNew,
+} from "./components";
+import { CardInitPerfil } from "../../components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
-import { ModalEditar } from "../adnSap/components";
-import { Tooltip } from "../../components";
 
 const useStyles = makeStyles((theme) => ({
   itemRightsubCont: {
@@ -28,9 +31,8 @@ const Perfil = () => {
   const adns = useSelector((state) => state.adn.adns);
   const trabajos = useSelector((state) => state.trabajo.trabajos);
   const [screenw, setScreenW] = useState(window.innerWidth);
-  const [cardT1, setCardT1] = useState("");
-  const [cardT2, setCardT2] = useState("");
-  const [cardh, setCardH] = useState("");
+  const [cardSexo, setCardSexo] = useState("");
+
   const [openModal, setOpenModal] = useState(false);
   const [openModalHab, setOpenModalHab] = useState(false);
   const [dataProfesion, setDataProfesion] = useState(null);
@@ -44,39 +46,43 @@ const Perfil = () => {
   useEffect(() => {
     if (usuario) {
       if (usuario.sexo === "Masculino") {
-        setCardT1("typeA1");
-        setCardT2("typeA2");
-        setCardH("typeA");
+        setCardSexo("typeMasc");
       } else if (usuario.sexo === "Femenino") {
-        setCardT1("typeB1");
-        setCardT2("typeB2");
-        setCardH("typeB");
+        setCardSexo("typeFeme");
       }
     }
   }, [usuario]);
 
   useEffect(() => {
-    if (usuario) {
-      const cargarEstudios = () => dispatch(obtenerEstudiosAction(usuario._id));
-      cargarEstudios();
+    if (estudios.length === 0) {
+      if (usuario) {
+        const cargarEstudios = () =>
+          dispatch(obtenerEstudiosAction(usuario._id));
+        cargarEstudios();
+      }
     }
-
     // eslint-disable-next-line
   }, [usuario]);
 
   useEffect(() => {
-    if (!_switch) {
-      if (usuario) {
-        dispatch(obtenerAdnAction(usuario._id));
+    if (adns.length === 0) {
+      if (!_switch) {
+        if (usuario) {
+          dispatch(obtenerAdnAction(usuario._id));
+        }
       }
     }
   }, [usuario, _switch]);
 
   useEffect(() => {
-    if (usuario) {
-      const cargarTrabajos = () => dispatch(obtenerTrabajosAction(usuario._id));
-      cargarTrabajos();
+    if (trabajos.length === 0) {
+      if (usuario) {
+        const cargarTrabajos = () =>
+          dispatch(obtenerTrabajosAction(usuario._id));
+        cargarTrabajos();
+      }
     }
+
     //eslint-disable-next-line
   }, [usuario]);
 
@@ -102,17 +108,108 @@ const Perfil = () => {
   console.log(dataProfesion);
   return (
     <div className="cont-new-perfil">
+      <ModalRRSS
+        setOpenModalRRSS={setOpenModalRRSS}
+        openModalRRSS={openModalRRSS.open}
+        type={openModalRRSS.type}
+        action={openModalRRSS.action}
+        url={openModalRRSS.url}
+      />
+      <Modal
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+        active={active}
+        setActive={setActive}
+        activeStep={activeStep}
+        setActiveStep={setActiveStep}
+      />
+      <ModalHab setOpenModalHab={setOpenModalHab} openModalHab={openModalHab} />
       {/* <h1>perfil</h1> */}
       <div className="left-new-perfil">
+        <div className="item-1">
+          <CardInitPerfil
+            type={cardSexo}
+            imgOne
+            colorOne
+            title="¿Cuál es tu Profesión?"
+            desc="Muéstranos tu carrera y/o profesión."
+            txtBtn="Comenzar"
+            link="/estudios"
+          />
+        </div>
         <div className="item-1"></div>
-        <div className="item-1"></div>
-        <div className="item-1"></div>
-        <div className="item-1"></div>
-        <div className="item-1"></div>
-        <div className="item-1"></div>
+        <div className="item-1">
+          {/* <CardInitPerfil
+            type={cardSexo}
+            imgTwo
+            colorTwo
+            title="Mis Postulaciones Laborales"
+            desc="Tus últimas postulaciones laborales."
+            txtBtn="Ver ofertas laborales"
+            link="/ofertas-laborales"
+          /> */}
+          {trabajos.length > 0 ? (
+            <CardJobNew data={trabajos} />
+          ) : (
+            <CardInitPerfil
+              type={cardSexo}
+              imgFour
+              colorOne
+              title="Experiencia Laboral"
+              desc="Cuéntanos en donde haz trabajado y cuánta experiencia tienes."
+              txtBtn="Comenzar"
+              link="/trabajos"
+            />
+          )}
+        </div>
+        <div className="item-1">
+          <CardInitPerfil
+            type={cardSexo}
+            imgThree
+            colorTwo
+            title="Comparte tu ADN SAP"
+            desc="Ingresa tu ADN y da a conocer tu talento SAP."
+            txtBtn="Comenzar"
+            link="/sap-adn"
+          />
+        </div>
+        <div className="item-1">
+          {trabajos.length > 0 ? (
+            <CardJobNew data={trabajos} />
+          ) : (
+            <CardInitPerfil
+              type={cardSexo}
+              imgFour
+              colorOne
+              title="Experiencia Laboral"
+              desc="Cuéntanos en donde haz trabajado y cuánta experiencia tienes."
+              txtBtn="Comenzar"
+              link="/trabajos"
+            />
+          )}
+        </div>
+        <div className="item-1">
+          <CardInitPerfil
+            type={cardSexo}
+            imgFive
+            colorOne
+            title="Revela Certificación"
+            desc="Tus certificaciones tienen un lugar importante acá."
+            txtBtn="Comenzar"
+            link="/certificaciones"
+          />
+        </div>
       </div>
       <div className="right-new-perfil">
-        <CardPerfilNew />
+        <CardPerfilNew
+          openModalRRSS={openModalRRSS}
+          setOpenModalRRSS={setOpenModalRRSS}
+          setOpenModal={setOpenModal}
+          setActive={setActive}
+          setActiveStep={setActiveStep}
+          habilidades={usuario.habilidades}
+          setOpenModalHab={setOpenModalHab}
+        />
       </div>
     </div>
   );

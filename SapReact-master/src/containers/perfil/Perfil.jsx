@@ -361,23 +361,7 @@ const Perfil = () => {
           </Grid>
         )}
       </Grid>
-      {/* {usuario ? (
-        usuario.cvURL ? (
-          <Tooltip title="Ver CV.">
-            <Fab
-              size="medium"
-              color="secondary"
-              aria-label="add"
-              className="btn-cv-perfil-fb"
-              href={usuario.cvURL}
-              target="_blank"
-              onClick={() => {}}
-            >
-              <AccountCircle />
-            </Fab>
-          </Tooltip>
-        ) : null
-      ) : null} */}
+
     </div>
   );
 };

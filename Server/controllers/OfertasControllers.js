@@ -15,9 +15,10 @@ exports.mostrarAvisos = async (req, res) => {
 exports.filtrarAvisos = async (req, res) => {
   console.log(req.body);
   const tipoContrato = "Indefinido";
+  const query = { "tipoContrato.value": tipoContrato };
   try {
     const avisos = await Avisos.find({
-      $or: [{ "tipoContrato.value": tipoContrato }],
+      $or: [query],
     });
     //{ $or: [{ tipoConsultor: "Junior" }] }
     res.json(avisos);

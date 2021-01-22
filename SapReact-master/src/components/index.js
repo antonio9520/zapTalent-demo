@@ -12,6 +12,7 @@ import Spinner from "./spinner/Spinner";
 import Tooltip from "./tooltip/Tooltip";
 import IconButton from "./iconButton/IconButton";
 import Button from "./button/Button";
+import CardInitPerfil from "./cardInitPerfil/Card";
 
 export {
   Layout,
@@ -28,4 +29,5 @@ export {
   IconButton,
   Button,
   CustomSelectC,
+  CardInitPerfil,
 };

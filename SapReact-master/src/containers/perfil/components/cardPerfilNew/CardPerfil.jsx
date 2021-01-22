@@ -20,11 +20,20 @@ import { Tooltip } from "../../../../components";
 import imgUser from "../../../../resources/images/SAPTalent/icon-new-user.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { subirImagenAction } from "../../../../redux/actions/authAction";
+import Footer from "./footer/Footer";
 
-const CardPerfil = () => {
+const CardPerfil = ({
+  openModalRRSS,
+  setOpenModalRRSS,
+  setOpenModal,
+  setActive,
+  setActiveStep,
+  habilidades,
+  setOpenModalHab,
+}) => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.auth.usuario);
-  const [active, setActive] = useState(true);
+  const [active2, setActive2] = useState(true);
   let profesion;
   if (usuario) {
     profesion = usuario.profesion ? usuario.profesion.name : null;
@@ -70,7 +79,7 @@ const CardPerfil = () => {
       </div>
       <div className="item-2">
         <div>
-        {image.preimage ? (
+          {image.preimage ? (
             <div className="cont-img-perfil-perfil-new">
               <img
                 className="user-img-perfil-perfil-new"
@@ -79,16 +88,20 @@ const CardPerfil = () => {
               ></img>
             </div>
           ) : (
-            <img src={imgUser} className="user-img-perfil-new" alt="user-imge" />
+            <img
+              src={imgUser}
+              className="user-img-perfil-new"
+              alt="user-imge"
+            />
           )}
-          
+
           {/* <IconButton className="btn-upload-image-perfil-new">
             <Publish />
           </IconButton> */}
           <input
             type="file"
             id="raised-button-file"
-            // onChange={(e) => fileChange(e)}
+            onChange={(e) => fileChange(e)}
             style={{ display: "none" }}
             accept="image/*"
           />
@@ -128,53 +141,88 @@ const CardPerfil = () => {
         </div>
         <div className="btn-perfil-new">
           <Button
-            className={active ? "btn-active" : "btn-inactive"}
-            onClick={() => setActive(true)}
+            className={active2 ? "btn-active" : "btn-inactive"}
+            onClick={() => setActive2(true)}
           >
             <p>Datos personales</p>
           </Button>
           <Button
-            className={!active ? "btn-active" : "btn-inactive"}
-            onClick={() => setActive(false)}
+            className={!active2 ? "btn-active" : "btn-inactive"}
+            onClick={() => setActive2(false)}
           >
             <p>Habilidades</p>
           </Button>
         </div>
       </div>
       <div className="item-3">
-        {active ? <DatosPersonales usuario={usuario} /> : null}
+        {active2 ? (
+          <>
+            <DatosPersonales usuario={usuario} />
+            <Tooltip title="Editar perfil">
+              <IconButton
+                className="btn-edit-perfil-new"
+                onClick={() => setOpenModal(true)}
+              >
+                <Edit />
+              </IconButton>
+            </Tooltip>
+          </>
+        ) : (
+          <Habilidades
+            habilidades={habilidades}
+            setOpenModalHab={setOpenModalHab}
+          />
+        )}
       </div>
+      {active2 ? (
+        <div className="item-4">
+          {usuario ? (
+            usuario.cvURL ? (
+              <Tooltip title="Ver CV.">
+                <IconButton
+                  className="btn-cv-perfil-new"
+                  href={usuario.cvURL}
+                  target="_blank"
+                >
+                  <Description className="icon-cv-perfil-new" />
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <Tooltip title="Subir CV.">
+                <IconButton
+                  className="btn-cv-perfil-new"
+                  onClick={() => {
+                    setActive("five");
+                    setActiveStep(4);
+                    setOpenModal(true);
+                  }}
+                >
+                  <CloudUpload className="icon-cv-perfil-new" />
+                </IconButton>
+              </Tooltip>
+            )
+          ) : null}
+        </div>
+      ) : (
+        <div className="item-4-b">
+          <div className="item-2-b">
+            <IconButton
+              onClick={() => setOpenModalHab(true)}
+              className="btn-habilidades-new-perfil"
+            >
+              <Edit />
+            </IconButton>
+          </div>
+        </div>
+      )}
 
-      <div className="item-4">
-        {usuario ? (
-          usuario.cvURL ? (
-            <Tooltip title="Ver CV.">
-              <IconButton
-                className="btn-cv-perfil-new"
-                href={usuario.cvURL}
-                target="_blank"
-              >
-                <Description className="icon-cv-perfil-new" />
-              </IconButton>
-            </Tooltip>
-          ) : (
-            <Tooltip title="Subir CV.">
-              <IconButton
-                className="btn-cv-perfil-new"
-                onClick={() => {
-                  setActive("five");
-                  //   setActiveStep(4);
-                  //   setOpenModal(true);
-                }}
-              >
-                <CloudUpload className="icon-cv-perfil-new" />
-              </IconButton>
-            </Tooltip>
-          )
-        ) : null}
-      </div>
       <div className="item-5">
-        <div className="rrss-perfil-new"></div>
+        <div className="rrss-perfil-new">
+          <Footer
+            openModalRRSS={openModalRRSS}
+            setOpenModalRRSS={setOpenModalRRSS}
+          />
+        </div>
       </div>
     </div>
   );
@@ -313,5 +361,19 @@ const DatosPersonales = ({ usuario }) => {
         </div>
       </div>
     </>
+  );
+};
+
+const Habilidades = ({ habilidades }) => {
+  return (
+    <div className="cont-habilidades-perfil-new">
+      <div className="item-1-b">
+        {habilidades.map((item, index) => (
+          <div className="habilidad">
+            <p>{item.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };

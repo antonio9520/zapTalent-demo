@@ -9,10 +9,12 @@
 }
 
 .p-mis-trabajos-perfil {
-  color: var(--gray-text);
+  color: var(--blue-primary);
   margin: 0;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 3px;
 }
 
 .btn-arrow-perfil-job {
@@ -29,8 +31,8 @@
 }
 
 .p2-job-b-perfil {
-  color: var(--gray-text);
-  font-size: 38px;
+  color: var(--blue-primary);
+  font-size: 30px;
   margin: 0;
   font-weight: 200;
   text-align: left;
@@ -79,15 +81,15 @@
   color: var(--gray-text);
   margin: 0;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .p4-job-b-perfil {
   margin: 5px 0;
   color: var(--gray-text);
   margin: 0;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 200;
 }
 
 .sub-right-job-b-2-perfil {
@@ -117,7 +119,9 @@
   /* background-color: sandybrown; */
   margin: 0;
 }
+.icon-suitcase-new-perfil{
 
+}
 .sub-right-job-b1-2-perfil {
   display: flex;
   /* background-color: seagreen; */
@@ -135,7 +139,7 @@
   padding-left: 5px;
   margin-top: 3px !important;
   color: var(--gray-text);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 300;
 }
 
@@ -145,9 +149,9 @@
   margin-bottom: 5px;
 }
 .p1-job-b-perfil {
-  color: var(--gray-text);
-  font-size: 12px;
-  margin: 5px 0 10px 0;
+  color: var(--blue-primary);
+  font-size: 10px;
+  margin: 5px 0 0px 0;
 }
 .item-1-job-b-perfil textarea {
   max-height: 120px;

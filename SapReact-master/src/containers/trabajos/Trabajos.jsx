@@ -31,9 +31,12 @@ const Trabajos = () => {
   }, [usuario]);
 
   useEffect(() => {
-    if (usuario) {
-      const cargarTrabajos = () => dispatch(obtenerTrabajosAction(usuario._id));
-      cargarTrabajos();
+    if (trabajos.length === 0) {
+      if (usuario) {
+        const cargarTrabajos = () =>
+          dispatch(obtenerTrabajosAction(usuario._id));
+        cargarTrabajos();
+      }
     }
 
     // eslint-disable-next-line

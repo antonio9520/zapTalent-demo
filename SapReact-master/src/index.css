@@ -167,13 +167,13 @@ div::-webkit-scrollbar:horizontal {
 }
 
 div::-webkit-scrollbar-thumb {
-  background-color: #dbdbdb;
+  background-color: #4BACEF;
   border-radius: 20px;
 }
 
 div::-webkit-scrollbar-track {
   border-radius: 10px;
-  background-color: #ededee;
+  background-color: #DBEEFC;
 }
 
 /*TEXTAREA*/

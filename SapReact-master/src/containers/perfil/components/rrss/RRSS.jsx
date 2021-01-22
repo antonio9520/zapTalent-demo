@@ -7,6 +7,7 @@ import {
   LinkedIn,
   Close,
   Delete,
+  Link,
 } from "@material-ui/icons";
 import { CustomInput, Tooltip } from "../../../../components";
 import {
@@ -109,6 +110,8 @@ const RRSS = ({ type, setOpenModal, action, url2 }) => {
       setLink("https://twitter.com/");
     } else if (type === "LinkedIn") {
       setLink("https://www.linkedin.com/in/");
+    } else if (type === "Portafolio") {
+      setLink("");
     }
   }, []);
   return (
@@ -130,6 +133,8 @@ const RRSS = ({ type, setOpenModal, action, url2 }) => {
           <LinkedIn className="icon-modal-rrss-perfil" />
         ) : type === "Twitter" ? (
           <Twitter className="icon-modal-rrss-perfil" />
+        ) : type === "Portafolio" ? (
+          <Link className="icon-modal-rrss-perfil" />
         ) : null}
 
         <CustomInput

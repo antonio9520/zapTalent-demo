@@ -27,7 +27,7 @@ const Card = ({
       setLoading(false);
     }, 300);
   }, []);
-  
+
   const [file, setFile] = useState(null);
 
   const fileChange = (e) => {
@@ -54,7 +54,9 @@ const Card = ({
       subirAdn();
     }
   }, [file]);
-
+  useEffect(() => {
+    console.log("renderizando..");
+  }, []);
   return (
     <>
       {/* {loading ? (

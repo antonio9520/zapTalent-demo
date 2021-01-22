@@ -22,7 +22,7 @@ const AdnSap = () => {
   const [dataEditar, setDataEditar] = useState(null);
   const [hidden, setHidden] = useState(false);
   const [_switch, setSwitch] = useState(false);
- 
+
   useEffect(() => {
     if (usuario) {
       if (usuario.sexo === "Masculino") {
@@ -34,9 +34,11 @@ const AdnSap = () => {
   }, [usuario]);
 
   useEffect(() => {
-    if (!_switch) {
-      if (usuario) {
-        dispatch(obtenerAdnAction(usuario._id));
+    if (adns.length === 0) {
+      if (!_switch) {
+        if (usuario) {
+          dispatch(obtenerAdnAction(usuario._id));
+        }
       }
     }
   }, [usuario, _switch]);

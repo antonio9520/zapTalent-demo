@@ -472,12 +472,14 @@
   overflow: auto;
 }
 .left-new-perfil .item-1 {
-  background-color: rgb(172, 156, 228);
+  background-color: white;
+  border-radius: 5px;
   width: 31%;
   height: 47%;
-  border: 1px solid black;
+  overflow: hidden;
   margin: 10px;
-  min-width: 275px;
+  min-width: 310px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 .right-new-perfil {
