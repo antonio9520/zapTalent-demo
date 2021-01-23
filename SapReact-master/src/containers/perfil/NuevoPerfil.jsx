@@ -8,12 +8,14 @@ import {
   Modal,
   ModalHab,
   CardJobNew,
+  CardCert,
 } from "./components";
 import { CardInitPerfil } from "../../components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
+import { obtenerCertificadosAction } from "../../redux/actions/certificadoAction";
 
 const useStyles = makeStyles((theme) => ({
   itemRightsubCont: {
@@ -27,6 +29,7 @@ const Perfil = () => {
   const [openModalProfesion, setOpenModalProfesion] = useState(false);
   const [dataEditar, setDataEditar] = useState(null);
   const usuario = useSelector((state) => state.auth.usuario);
+  const certificados = useSelector((state) => state.certificado.certificados);
   const estudios = useSelector((state) => state.estudio.estudios);
   const adns = useSelector((state) => state.adn.adns);
   const trabajos = useSelector((state) => state.trabajo.trabajos);
@@ -63,7 +66,16 @@ const Perfil = () => {
     }
     // eslint-disable-next-line
   }, [usuario]);
-
+  useEffect(() => {
+    if (certificados.length === 0) {
+      if (usuario) {
+        const cargarCertificados = () =>
+          dispatch(obtenerCertificadosAction(usuario._id));
+        cargarCertificados();
+      }
+    }
+    // eslint-disable-next-line
+  }, [usuario]);
   useEffect(() => {
     if (adns.length === 0) {
       if (!_switch) {
@@ -139,7 +151,7 @@ const Perfil = () => {
         </div>
         <div className="item-1"></div>
         <div className="item-1">
-          {/* <CardInitPerfil
+          <CardInitPerfil
             type={cardSexo}
             imgTwo
             colorTwo
@@ -147,20 +159,7 @@ const Perfil = () => {
             desc="Tus últimas postulaciones laborales."
             txtBtn="Ver ofertas laborales"
             link="/ofertas-laborales"
-          /> */}
-          {trabajos.length > 0 ? (
-            <CardJobNew data={trabajos} />
-          ) : (
-            <CardInitPerfil
-              type={cardSexo}
-              imgFour
-              colorOne
-              title="Experiencia Laboral"
-              desc="Cuéntanos en donde haz trabajado y cuánta experiencia tienes."
-              txtBtn="Comenzar"
-              link="/trabajos"
-            />
-          )}
+          />
         </div>
         <div className="item-1">
           <CardInitPerfil
@@ -189,15 +188,19 @@ const Perfil = () => {
           )}
         </div>
         <div className="item-1">
-          <CardInitPerfil
-            type={cardSexo}
-            imgFive
-            colorOne
-            title="Revela Certificación"
-            desc="Tus certificaciones tienen un lugar importante acá."
-            txtBtn="Comenzar"
-            link="/certificaciones"
-          />
+          {trabajos.length > 0 ? (
+            <CardCert data={certificados} />
+          ) : (
+            <CardInitPerfil
+              type={cardSexo}
+              imgFive
+              colorOne
+              title="Revela Certificación"
+              desc="Tus certificaciones tienen un lugar importante acá."
+              txtBtn="Comenzar"
+              link="/certificaciones"
+            />
+          )}
         </div>
       </div>
       <div className="right-new-perfil">

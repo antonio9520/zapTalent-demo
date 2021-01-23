@@ -9,6 +9,7 @@ import {
   AccountCircle,
   Business,
   Visibility,
+  Edit,
 } from "@material-ui/icons";
 import "./CardJob.css";
 import SwipeableViews from "react-swipeable-views";
@@ -39,14 +40,19 @@ const CardJob = ({ data }) => {
         <div className="header-card-job-new-perfil">
           <Business className="header-icon-job-new-perfil" />
           <p className="p-mis-trabajos-perfil">Mis trabajos</p>
+          <Tooltip title="Editar">
+            <IconButton className="btn-edit-new-perfil-job">
+              <Edit fontSize="small" />
+            </IconButton>
+          </Tooltip>
         </div>
-        <div className="sub-swipeables-new-perfil">
+        {/* <div className="sub-swipeables-new-perfil"> */}
           <SwipeableViews index={activeStep}>
             {datasort.map((item, index) => (
               <Trabajo key={index} data={item} />
             ))}
           </SwipeableViews>
-        </div>
+        {/* </div> */}
         <div className="overlay-view-more"></div>
       </div>
       <div className="cont-arrow-btns-new-perfil">
@@ -96,124 +102,126 @@ const Trabajo = ({ data }) => {
     }
   }, []);
   return (
-    <div className="cont-card-job-perfil">
-      {/* <div className="cont-img-card-job-b">
+    <div className="sub-swipeables-new-perfil">
+      <div className="cont-card-job-perfil" style={{ paddingRight: "20px" }}>
+        {/* <div className="cont-img-card-job-b">
           <img src={icontrabajo} alt="icon-trabajo" />
         </div> */}
-      <div className="sub-right-job-b-perfil">
-        <p className="p2-job-b-perfil">{data.nomempresa}</p>
-        <p className="p3-job-b-perfil">{data.cargo}</p>
-        <p className="p4-job-b-perfil">{data.actempresa}</p>
-        <div className="sub-right-job-b2-perfil">
-          <div className="sub-right-job-b1-perfil">
-            <BusinessCenter className="icon-suitcase-new-perfil" />
-            <Tooltip title={data.areapuesto}>
-              {data.areapuesto.length > 15 ? (
-                <p className="short-text-job-perfil">
-                  {data.areapuesto.substring(0, 20)}...
-                </p>
-              ) : (
-                <p className="short-text-job-perfil">{data.areapuesto}</p>
-              )}
-            </Tooltip>
+        <div className="sub-right-job-b-perfil">
+          <p className="p2-job-b-perfil">{data.nomempresa}</p>
+          <p className="p3-job-b-perfil">{data.cargo}</p>
+          <p className="p4-job-b-perfil">{data.actempresa}</p>
+          <div className="sub-right-job-b2-perfil">
+            <div className="sub-right-job-b1-perfil">
+              <BusinessCenter className="icon-suitcase-new-perfil" />
+              <Tooltip title={data.areapuesto}>
+                {data.areapuesto.length > 15 ? (
+                  <p className="short-text-job-perfil">
+                    {data.areapuesto.substring(0, 20)}...
+                  </p>
+                ) : (
+                  <p className="short-text-job-perfil">{data.areapuesto}</p>
+                )}
+              </Tooltip>
+            </div>
+            <div className="sub-right-job-b1-2-perfil">
+              <BusinessCenter className="icon-suitcase-new-perfil" />
+              <Tooltip title={data.subarea}>
+                {data.subarea.length > 15 ? (
+                  <p className="short-text-job-perfil">
+                    {data.subarea.substring(0, 20)}...
+                  </p>
+                ) : (
+                  <p className="short-text-job-perfil">{data.subarea}</p>
+                )}
+              </Tooltip>
+            </div>
           </div>
-          <div className="sub-right-job-b1-2-perfil">
-            <BusinessCenter className="icon-suitcase-new-perfil" />
-            <Tooltip title={data.subarea}>
-              {data.subarea.length > 15 ? (
-                <p className="short-text-job-perfil">
-                  {data.subarea.substring(0, 20)}...
-                </p>
-              ) : (
-                <p className="short-text-job-perfil">{data.subarea}</p>
-              )}
-            </Tooltip>
-          </div>
+          <p className="p1-job-b-perfil">
+            {data.inidate.substring(0, 4)} -{" "}
+            {_switch ? "Actualidad" : data.findate.substring(0, 4)}
+          </p>
+          <p className="p1-job-b-perfil-b">{data.pais}</p>
         </div>
-        <p className="p1-job-b-perfil">
-          {data.inidate.substring(0, 4)} -{" "}
-          {_switch ? "Actualidad" : data.findate.substring(0, 4)}
-        </p>
-        <p className="p1-job-b-perfil-b">{data.pais}</p>
-      </div>
-      <div className="sub-right-job-b-2-perfil">
-        <div className="cont-pc-pa">
-          {data.personacargo ? (
+        <div className="sub-right-job-b-2-perfil">
+          <div className="cont-pc-pa">
+            {data.personacargo ? (
+              <div className="item-2-job-b-perfil">
+                <p className="p6-job-b">Personas a Cargo</p>
+                <div>
+                  <p className="p7-job-b">
+                    <NumberFormat
+                      value={data.personacargo}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      // prefix={"$"}
+                    />
+                  </p>
+                </div>
+              </div>
+            ) : null}
+          </div>
+          {data.manejopresupuesto ? (
             <div className="item-2-job-b-perfil">
-              <p className="p6-job-b">Personas a Cargo</p>
+              <p className="p6-job-b">Manejo de presupuesto Anual</p>
               <div>
                 <p className="p7-job-b">
                   <NumberFormat
-                    value={data.personacargo}
+                    value={data.manejopresupuesto}
                     displayType={"text"}
                     thousandSeparator={true}
-                    // prefix={"$"}
+                    prefix={"$"}
                   />
                 </p>
               </div>
             </div>
           ) : null}
+          {data.reflogros ? (
+            <div className="item-1-job-b-perfil ">
+              <p className="p6-job-b-perfil">Logros</p>
+              <div>
+                <textarea readOnly defaultValue={data.reflogros}></textarea>
+              </div>
+            </div>
+          ) : null}
+          {data.expzap ? (
+            <div className="item-1-job-b-perfil ">
+              <p className="p6-job-b-perfil">Experiencia SAP</p>
+              <div>
+                <textarea readOnly defaultValue={data.expzap}></textarea>
+              </div>
+            </div>
+          ) : null}
+          {data.refnombre || data.email || data.refphone || data.refrelacion ? (
+            <div className="item-1-job-perfil-new">
+              <p className="p6-job-b">Referencia</p>
+              {data.refnombre ? (
+                <div>
+                  <Person className="icon-ref-card-job" />
+                  <p className="p8-job-b-new"> {data.refnombre}</p>
+                </div>
+              ) : null}
+              {data.email ? (
+                <div>
+                  <Email className="icon-ref-card-job" />
+                  <p className="p8-job-b-new">{data.email}</p>
+                </div>
+              ) : null}
+              {data.refphone ? (
+                <div>
+                  <PhoneAndroid className="icon-ref-card-job" />
+                  <p className="p8-job-b-new">{data.refphone}</p>
+                </div>
+              ) : null}
+              {data.refrelacion ? (
+                <div>
+                  <AccountCircle className="icon-ref-card-job" />
+                  <p className="p8-job-b-new">{data.refrelacion}</p>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
         </div>
-        {data.manejopresupuesto ? (
-          <div className="item-2-job-b-perfil">
-            <p className="p6-job-b">Manejo de presupuesto Anual</p>
-            <div>
-              <p className="p7-job-b">
-                <NumberFormat
-                  value={data.manejopresupuesto}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"$"}
-                />
-              </p>
-            </div>
-          </div>
-        ) : null}
-        {data.reflogros ? (
-          <div className="item-1-job-b-perfil ">
-            <p className="p6-job-b-perfil">Logros</p>
-            <div>
-              <textarea readOnly defaultValue={data.reflogros}></textarea>
-            </div>
-          </div>
-        ) : null}
-        {data.expzap ? (
-          <div className="item-1-job-b-perfil ">
-            <p className="p6-job-b-perfil">Experiencia SAP</p>
-            <div>
-              <textarea readOnly defaultValue={data.expzap}></textarea>
-            </div>
-          </div>
-        ) : null}
-        {data.refnombre || data.email || data.refphone || data.refrelacion ? (
-          <div className="item-1-job-perfil-new">
-            <p className="p6-job-b">Referencia</p>
-            {data.refnombre ? (
-              <div>
-                <Person className="icon-ref-card-job" />
-                <p className="p8-job-b-new"> {data.refnombre}</p>
-              </div>
-            ) : null}
-            {data.email ? (
-              <div>
-                <Email className="icon-ref-card-job" />
-                <p className="p8-job-b-new">{data.email}</p>
-              </div>
-            ) : null}
-            {data.refphone ? (
-              <div>
-                <PhoneAndroid className="icon-ref-card-job" />
-                <p className="p8-job-b-new">{data.refphone}</p>
-              </div>
-            ) : null}
-            {data.refrelacion ? (
-              <div>
-                <AccountCircle className="icon-ref-card-job" />
-                <p className="p8-job-b-new">{data.refrelacion}</p>
-              </div>
-            ) : null}
-          </div>
-        ) : null}
       </div>
     </div>
   );

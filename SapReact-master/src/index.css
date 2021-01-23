@@ -155,6 +155,7 @@ div::-webkit-scrollbar {
 
 div::-webkit-scrollbar:vertical {
   width: 7px;
+  
 }
 
 div::-webkit-scrollbar-button:increment,
@@ -164,16 +165,19 @@ div::-webkit-scrollbar-button:increment,
 
 div::-webkit-scrollbar:horizontal {
   height: 5px;
+  
 }
 
 div::-webkit-scrollbar-thumb {
   background-color: #4BACEF;
   border-radius: 20px;
+  
 }
 
 div::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: #DBEEFC;
+
 }
 
 /*TEXTAREA*/

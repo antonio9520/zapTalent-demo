@@ -15,6 +15,7 @@ import ModalRRSS from "./modalRRSS/ModalRRSS";
 //new
 import CardPerfilNew from "./cardPerfilNew/CardPerfil";
 import CardJobNew from "./cardJobNew/CardJob";
+import CardCert from "./cardCert/Card";
 
 export {
   Header,
@@ -33,4 +34,5 @@ export {
   ModalRRSS,
   CardPerfilNew,
   CardJobNew,
+  CardCert,
 };

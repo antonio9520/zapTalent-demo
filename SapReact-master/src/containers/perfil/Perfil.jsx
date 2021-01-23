@@ -17,7 +17,6 @@ import {
   CardProfesion,
   ModalRRSS,
 } from "./components";
-import { AccountCircle } from "@material-ui/icons";
 import { CardB } from "../../components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
 import { useSelector, useDispatch } from "react-redux";

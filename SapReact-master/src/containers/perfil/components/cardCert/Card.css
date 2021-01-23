@@ -1,0 +1,45 @@
+.header-icon-cert-new-perfil {
+  color: #2a52cc;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0;
+}
+
+.p-mis-cert-perfil {
+  color: #2a52cc;
+  margin: 0;
+  font-weight: 600;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.estado-cert-perfil-new {
+  background-color: #28a5f1;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 15px 0;
+}
+
+.estado-cert-perfil-new p {
+  margin: 0;
+  font-size: 12px;
+  color: white;
+}
+
+.p-obs-cert-perfil-new {
+  margin: 0;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--gray-text);
+  line-height: 15px;
+  padding-right: 15px;
+}
+
+.p4-cert-perfil-new-perfil {
+  margin: 0;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--gray-text);
+}

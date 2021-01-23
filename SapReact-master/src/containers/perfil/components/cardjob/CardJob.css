@@ -8,14 +8,7 @@
   /* background-color: coral; */
 }
 
-.p-mis-trabajos-perfil {
-  color: var(--blue-primary);
-  margin: 0;
-  font-weight: 600;
-  font-size: 12px;
-  margin-left: 5px;
-  margin-top: 3px;
-}
+
 
 .btn-arrow-perfil-job {
   background-color: var(--blue-primary) !important;
@@ -51,7 +44,9 @@
   font-style: italic;
   margin: 0;
 }
-
+.item-1-job-b-perfil {
+  margin: 10px 0;
+}
 .item-1-job-b-perfil div {
   /* background-color: salmon; */
   background-color: #f5f5f5;
@@ -67,6 +62,8 @@
 
 .item-2-job-b-perfil {
   flex: 1;
+  margin: 10px 0 5px 0;
+  /* background-color: seagreen; */
 }
 
 .p6-job-b-perfil {
@@ -119,8 +116,7 @@
   /* background-color: sandybrown; */
   margin: 0;
 }
-.icon-suitcase-new-perfil{
-
+.icon-suitcase-new-perfil {
 }
 .sub-right-job-b1-2-perfil {
   display: flex;
