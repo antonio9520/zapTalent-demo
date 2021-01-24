@@ -111,7 +111,7 @@ const Certificado = ({ data }) => {
   return (
     <div className="sub-swipeables-new-perfil">
       <div className="cont-card-job-perfil">
-        <p className="p2-job-b-perfil">{data.certificacion}</p>
+        <p className="p2-cert-b-perfil">{data.certificacion}</p>
         <p className="p3-job-b-perfil">{data.universidad}</p>
         <p className="p4-cert-perfil-new-perfil">
           {data

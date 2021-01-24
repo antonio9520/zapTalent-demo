@@ -1,4 +1,5 @@
 import {
+  COMENZAR_OBTENER_USUARIO,
   LOGIN_EXITOSO,
   CERRAR_SESION,
   LOGIN_ERROR,
@@ -41,10 +42,11 @@ const cerrarSesion = () => ({
 //AUTH
 export function usuarioAuthAction() {
   return async (dispatch) => {
+    
     const token = localStorage.getItem("token");
     if (token) {
       tokenAuth(token);
-    } 
+    }
 
     try {
       const respuesta = await clientAxios.get("/api/auth");
@@ -63,7 +65,7 @@ const usuarioAuth = (data) => ({
 });
 
 const obtenerAuthError = () => ({
-  type: OBTENER_USUARIO_ERROR,  
+  type: OBTENER_USUARIO_ERROR,
 });
 
 //INICIAR SESION
@@ -201,7 +203,7 @@ export function subirImagenAction(data) {
 //SUBIR IMAGEN
 export function subirCVAction(data) {
   return async (dispatch) => {
-    dispatch(comenzarEditar());  
+    dispatch(comenzarEditar());
     try {
       const fd = new FormData();
       if (data.imageURL) {
@@ -210,7 +212,7 @@ export function subirCVAction(data) {
         dispatch(usuarioAuthAction());
         dispatch(
           showAlert({
-            show: true, 
+            show: true,
             msg: "Archivo guardado correctamente",
             type: "success",
           })

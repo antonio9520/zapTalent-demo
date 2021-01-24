@@ -32,9 +32,9 @@ const Sidebar = (props) => {
     dispatch(cerrarSesionAction());
   };
 
-  useEffect(() => {
-    dispatch(usuarioAuthAction());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(usuarioAuthAction());
+  // }, []);
 
   let nombreuser;
   let apellidouser;

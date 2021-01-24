@@ -137,7 +137,7 @@ const CardPerfil = ({
         </p>
         <p className="p2">{profesion}</p>
         <div className="consultor-perfil-new">
-          <p>Consultor {usuario.consultor}</p>
+          <p>Consultor {usuario ? usuario.consultor : null}</p>
         </div>
         <div className="btn-perfil-new">
           <Button

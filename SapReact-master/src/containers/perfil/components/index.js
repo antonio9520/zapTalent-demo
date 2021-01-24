@@ -16,6 +16,8 @@ import ModalRRSS from "./modalRRSS/ModalRRSS";
 import CardPerfilNew from "./cardPerfilNew/CardPerfil";
 import CardJobNew from "./cardJobNew/CardJob";
 import CardCert from "./cardCert/Card";
+import CardAdnNew from "./cardAdnNew/Card";
+import CardPost from "./cardPost/Card";
 
 export {
   Header,
@@ -35,4 +37,6 @@ export {
   CardPerfilNew,
   CardJobNew,
   CardCert,
+  CardAdnNew,
+  CardPost,
 };

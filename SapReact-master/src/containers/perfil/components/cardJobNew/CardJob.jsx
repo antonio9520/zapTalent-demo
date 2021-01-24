@@ -33,7 +33,7 @@ const CardJob = ({ data }) => {
     b = new Date(b.findate);
     return a > b ? -1 : a < b ? 1 : 0;
   });
-
+  
   return (
     <div className="card-job-new-perfil">
       <div className="cont-swipeables-new-perfil">

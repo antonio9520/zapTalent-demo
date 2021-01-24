@@ -1,0 +1,135 @@
+.card-adn-new-perfil {
+  background: var(--degradado-blue);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.btn-arrow-perfil-adn {
+  background-color: var(--white) !important;
+  color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.btn-arrow-perfil-inact-adn {
+  background-color: var(--white) !important;
+  color: var(--blue-primary) !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+  opacity: 0.5;
+}
+
+.p-mi-adn-perfil {
+  color: var(--white);
+  margin: 0;
+  font-weight: 600;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.header-icon-adn-new-perfil {
+  color: var(--white);
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0;
+}
+.cont-swipeables-new-perfil .overlay-view-more-adn {
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  height: 70px;
+  background-image: url("../../../../resources/images/ZAPTalent-Degradado-2-02.png");
+}
+
+.cont-adn-submod-perfil-new {
+  border: 1px solid #477cdc;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.name-modulo-adn-new-perfil {
+  color: white;
+  background: var(--degradado-blue);
+  width: 65px;
+  height: 65px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.p-1-adn-new-perfil {
+  color: white;
+  font-weight: 200;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.p-2-adn-new-perfil {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+}
+
+.p-6-adn-new-perfil::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #96b2df !important;
+}
+.p-3-adn-new-perfil {
+  color: white;
+  font-weight: 200;
+  font-size: 12px;
+  margin: 10px 0;
+  padding-right: 20px;
+  line-height: 15px;
+  font-style: italic;
+}
+
+.p-4-adn-new-perfil {
+  color: white;
+  font-weight: 200;
+  /* margin: 10px 0; */
+  margin: 0;
+  margin-top: 13px;
+  padding-right: 20px;
+  font-size: 14px;
+  line-height: 15px;
+}
+.p-5-adn-new-perfil {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.p-6-adn-new-perfil {
+  color: white;
+  font-weight: 200;
+  font-size: 12px;
+  margin: 10px;
+  padding-right: 20px;
+  line-height: 15px;
+  font-style: italic;
+  max-height: 80px;
+  overflow: auto;
+}
+
+.nivel-adn-new-perfil {
+  background-color: #4bacef;
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.nivel-adn-new-perfil p {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 200;
+}

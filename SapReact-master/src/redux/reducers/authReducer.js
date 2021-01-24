@@ -28,6 +28,7 @@ const initialState = {
   loading: false,
   error: false,
   status: 0,
+  fixcargando: true,
 };
 
 export default function (state = initialState, action) {
@@ -61,6 +62,7 @@ export default function (state = initialState, action) {
         cargando: false,
         loading: false,
         error: false,
+        fixcargando: false,
       };
     case USUARIO_EDITADO_EXITO_PASS:
       return {
@@ -109,6 +111,7 @@ export default function (state = initialState, action) {
         usuario: action.payload,
         cargando: false,
         loading: false,
+        fixcargando: false,
       };
     case OBTENER_USUARIO_ERROR:
       return {

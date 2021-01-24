@@ -118,15 +118,18 @@
   height: 40px;
   border-radius: 3px;
   background: var(--degradado-blue);
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   margin-right: 5px;
   cursor: pointer;
+  transition: 0.5s all ease-in-out;
 }
 .modulo-activo-ol p {
   font-size: 12px;
+  
 }
 .modulo-inactivo-ol {
   width: 40px;
@@ -138,8 +141,13 @@
   align-items: center;
   color: white;
   margin-right: 5px;
-  font-size: 12px;
+
   cursor: pointer;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  transition: 0.5s all ease-in-out;
+}
+.modulo-inactivo-ol p {
+  font-size: 12px;
 }
 .submodulos-card-ofertas-laborales {
   display: flex;

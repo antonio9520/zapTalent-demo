@@ -40,7 +40,7 @@ const Card = ({ data }) => {
     anosExp,
     nameuser,
   } = data;
-
+  // console.log(data);
   const [modulos, setModulos] = useState(["MM", "FI"]);
   return (
     <div className="card-ofertas-laborales">

@@ -53,7 +53,7 @@ const Login = (props) => {
   const [errormsg, setErrorMsg] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState("");
-  // console.log(autenticado);
+  console.log(autenticado);
   useEffect(() => {
     if (autenticado) {
       props.history.push("/perfil");
