@@ -16,7 +16,9 @@ const Card = ({
   imgFive,
   colorOne,
   colorTwo,
+  openProfesion,
   link,
+  setOpenModalProfesion,
 }) => {
   const cardClasses = classNames({
     "cont-card-new-perfil": true,
@@ -45,8 +47,11 @@ const Card = ({
     <div className={cardClasses}>
       <h1 className={tituloStyle}>{title}</h1>
       <p className={descStyle}>{desc}</p>
-      <Link className="link" to={link}>
-        <Button className={btnStyle}>
+      <Link className="link" to={link ? link : null}>
+        <Button
+          className={btnStyle}
+          onClick={() => (openProfesion ? setOpenModalProfesion(true) : null)}
+        >
           <p>{txtBtn}</p>
         </Button>
       </Link>

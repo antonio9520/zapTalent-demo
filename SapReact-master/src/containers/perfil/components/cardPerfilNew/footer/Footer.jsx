@@ -138,8 +138,23 @@ const Footer = ({
             classes={classes}
             FabProps={{ className: classes.fab }}
           >
-            {actions.map((action) =>
-              action.type === "inactive" ? (
+            {actions.map((action) => {
+              let url;
+              if (action.url) {
+                if (action.name === "Instagram") {
+                  url = action.url.slice(26);
+                } else if (action.name === "Facebook") {
+                  url = action.url.slice(25);
+                } else if (action.name === "LinkedIn") {
+                  url = action.url.slice(28);
+                } else if (action.name === "Twitter") {
+                  url = action.url.slice(20);
+                } else {
+                  url = action.url;
+                }
+              }
+
+              return action.type === "inactive" ? (
                 <SpeedDialAction
                   key={action.name}
                   icon={action.icon}
@@ -167,7 +182,7 @@ const Footer = ({
                     handleModal({
                       type: action.name,
                       action: "put-delete",
-                      url: action.url,
+                      url: url,
                     });
                   }}
                   className="speed-dial-action-active"
@@ -175,8 +190,8 @@ const Footer = ({
                   // TooltipClasses={classes}
                   tooltipPlacement="top"
                 />
-              )
-            )}
+              );
+            })}
           </SpeedDial>
         </Tooltip>
       </div>

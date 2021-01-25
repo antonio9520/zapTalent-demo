@@ -1,0 +1,33 @@
+.profesion-new-perfil {
+  background-color: brown;
+  width: 100%;
+  height: 100%;
+}
+
+.estado-card-profesion {
+  background-color: #59cbba;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 3px;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+  margin-right: 300px;
+}
+.estado-card-profesion p {
+  margin: 0;
+  font-size: 12px;
+  color: white;
+}
+.exp-card-profesion {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  background-color: #28a5f1;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 3px;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+}
+.exp-card-profesion p {
+  margin: 0;
+  font-size: 12px;
+  color: white;
+}

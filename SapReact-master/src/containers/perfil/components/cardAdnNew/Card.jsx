@@ -37,63 +37,57 @@ const Card = ({ data }) => {
 
   return (
     <>
-      {loading ? (
-        <div>
-          <h1>Cargando</h1>
-        </div>
-      ) : (
-        <div className="card-adn-new-perfil">
-          <div className="cont-swipeables-new-perfil">
-            <div className="header-card-job-new-perfil">
-              <AccountTree className="header-icon-adn-new-perfil" />
-              <p className="p-mi-adn-perfil">Mi ADN SAP</p>
-              <Tooltip title="Editar">
-                <IconButton className="btn-edit-new-perfil-job">
-                  <Edit fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </div>
-            {/* <div className="sub-swipeables-new-perfil"> */}
-            <SwipeableViews index={activeStep}>
-              {datasort.map((item, index) => (
-                <Adn key={index} data={item} />
-              ))}
-            </SwipeableViews>
-            {/* </div> */}
-            {/* <div className="overlay-view-more-adn"></div> */}
+      <div className="card-adn-new-perfil">
+        <div className="cont-swipeables-new-perfil">
+          <div className="header-card-job-new-perfil">
+            <AccountTree className="header-icon-adn-new-perfil" />
+            <p className="p-mi-adn-perfil">Mi ADN SAP</p>
+            <Tooltip title="Editar">
+              <IconButton className="btn-edit-new-perfil-job">
+                <Edit fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </div>
-          <div className="cont-arrow-btns-new-perfil">
-            <IconButton className={"btn-arrow-perfil-adn"}>
-              <Visibility />
+          {/* <div className="sub-swipeables-new-perfil"> */}
+          <SwipeableViews index={activeStep}>
+            {datasort.map((item, index) => (
+              <Adn key={index} data={item} />
+            ))}
+          </SwipeableViews>
+          {/* </div> */}
+          {/* <div className="overlay-view-more-adn"></div> */}
+        </div>
+        <div className="cont-arrow-btns-new-perfil">
+          <IconButton className={"btn-arrow-perfil-adn"}>
+            <Visibility />
+          </IconButton>
+          <div>
+            <IconButton
+              disabled={activeStep === 0}
+              style={{ marginRight: "10px" }}
+              className={
+                activeStep === 0
+                  ? "btn-arrow-perfil-inact-adn"
+                  : "btn-arrow-perfil-adn"
+              }
+              onClick={() => handleBack()}
+            >
+              <ArrowBack />
             </IconButton>
-            <div>
-              <IconButton
-                disabled={activeStep === 0}
-                style={{ marginRight: "10px" }}
-                className={
-                  activeStep === 0
-                    ? "btn-arrow-perfil-inact-adn"
-                    : "btn-arrow-perfil-adn"
-                }
-                onClick={() => handleBack()}
-              >
-                <ArrowBack />
-              </IconButton>
-              <IconButton
-                disabled={activeStep === data.length - 1}
-                className={
-                  activeStep === data.length - 1
-                    ? "btn-arrow-perfil-inact-adn"
-                    : "btn-arrow-perfil-adn"
-                }
-                onClick={() => handleNext()}
-              >
-                <ArrowForward />
-              </IconButton>
-            </div>
+            <IconButton
+              disabled={activeStep === data.length - 1}
+              className={
+                activeStep === data.length - 1
+                  ? "btn-arrow-perfil-inact-adn"
+                  : "btn-arrow-perfil-adn"
+              }
+              onClick={() => handleNext()}
+            >
+              <ArrowForward />
+            </IconButton>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };

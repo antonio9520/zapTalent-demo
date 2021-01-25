@@ -119,6 +119,7 @@ export default function (state = initialState, action) {
         cargando: false,
         loading: false,
         error: false,
+        fixcargando: false,
       };
     case ERROR_EMAIL:
       return {

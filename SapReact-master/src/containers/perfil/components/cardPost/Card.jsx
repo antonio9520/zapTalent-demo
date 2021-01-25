@@ -40,61 +40,55 @@ const Card = ({ data }) => {
 
   return (
     <>
-      {loading ? (
-        <div>
-          <h1>Cargando</h1>
-        </div>
-      ) : (
-        <div className="card-adn-new-perfil">
-          <div className="cont-swipeables-new-perfil">
-            <div className="header-card-job-new-perfil">
-              <BusinessCenter className="header-icon-adn-new-perfil" />
-              <p className="p-mi-adn-perfil">Tus Postulaciones</p>
-              <Tooltip title="Ver">
-                <IconButton className="btn-view-new-perfil-post">
-                  <Visibility fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </div>
-            {/* <div className="sub-swipeables-new-perfil"> */}
-            <SwipeableViews index={activeStep}>
-              {datasort.map((item, index) => (
-                <Postulacion key={index} data={item} />
-              ))}
-            </SwipeableViews>
-            {/* </div> */}
-            {/* <div className="overlay-view-more-adn"></div> */}
+      <div className="card-adn-new-perfil">
+        <div className="cont-swipeables-new-perfil">
+          <div className="header-card-job-new-perfil">
+            <BusinessCenter className="header-icon-adn-new-perfil" />
+            <p className="p-mi-adn-perfil">Tus Postulaciones</p>
+            <Tooltip title="Ver">
+              <IconButton className="btn-view-new-perfil-post">
+                <Visibility fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </div>
-          <div className="cont-arrow-btns-new-perfil">
-            <div></div>
-            <div>
-              <IconButton
-                disabled={activeStep === 0}
-                style={{ marginRight: "10px" }}
-                className={
-                  activeStep === 0
-                    ? "btn-arrow-perfil-inact-adn"
-                    : "btn-arrow-perfil-adn"
-                }
-                onClick={() => handleBack()}
-              >
-                <ArrowBack />
-              </IconButton>
-              <IconButton
-                disabled={activeStep === data.length - 1}
-                className={
-                  activeStep === data.length - 1
-                    ? "btn-arrow-perfil-inact-adn"
-                    : "btn-arrow-perfil-adn"
-                }
-                onClick={() => handleNext()}
-              >
-                <ArrowForward />
-              </IconButton>
-            </div>
+          {/* <div className="sub-swipeables-new-perfil"> */}
+          <SwipeableViews index={activeStep}>
+            {datasort.map((item, index) => (
+              <Postulacion key={index} data={item} />
+            ))}
+          </SwipeableViews>
+          {/* </div> */}
+          {/* <div className="overlay-view-more-adn"></div> */}
+        </div>
+        <div className="cont-arrow-btns-new-perfil">
+          <div></div>
+          <div>
+            <IconButton
+              disabled={activeStep === 0}
+              style={{ marginRight: "10px" }}
+              className={
+                activeStep === 0
+                  ? "btn-arrow-perfil-inact-adn"
+                  : "btn-arrow-perfil-adn"
+              }
+              onClick={() => handleBack()}
+            >
+              <ArrowBack />
+            </IconButton>
+            <IconButton
+              disabled={activeStep === data.length - 1}
+              className={
+                activeStep === data.length - 1
+                  ? "btn-arrow-perfil-inact-adn"
+                  : "btn-arrow-perfil-adn"
+              }
+              onClick={() => handleNext()}
+            >
+              <ArrowForward />
+            </IconButton>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };
@@ -103,7 +97,7 @@ export default Card;
 
 const Postulacion = ({ data }) => {
   const [_switch, setSwitch] = useState(false);
-  console.log(data);
+
   const [modulos, setModulos] = useState(["MM", "FI"]);
   const {
     fechaInicio,

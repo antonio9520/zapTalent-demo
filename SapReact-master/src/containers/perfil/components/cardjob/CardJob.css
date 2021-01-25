@@ -74,11 +74,12 @@
 }
 
 .p3-job-b-perfil {
-  margin: 5px 0;
+ 
   color: var(--gray-text);
   margin: 0;
   font-size: 14px;
   font-weight: 200;
+  margin: 5px 0;
 }
 
 .p4-job-b-perfil {

@@ -4,16 +4,22 @@
   border-radius: 5px;
   padding: 20px 20px;
   margin: 0 0 10px 0;
+  position: relative;
 }
 
 .p1-card-est-perfil {
-  color: var(--gray-text);
+  color: var(--blue-primary);
   margin: 0;
+  margin-left: 10px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
-
+.icon-card-est {
+  color: var(--blue-primary);
+  width: 20px !important;
+  height: 20px !important;
+}
 .p2-card-est-perfil {
   color: var(--blue-primary);
   margin: 0;
@@ -33,4 +39,23 @@
 .cont-exp-card-est p {
   margin: 0;
   font-size: 12px;
+}
+
+.left-card-est {
+  position: absolute;
+  height: 100%;
+  right: 20px;
+  /* background-color: rosybrown; */
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.btn-card-est {
+  background-color: var(--blue-primary) !important;
+  color: white !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  width:  40px !important ;
+  height: 40px !important ;
 }

@@ -18,6 +18,7 @@ import CardJobNew from "./cardJobNew/CardJob";
 import CardCert from "./cardCert/Card";
 import CardAdnNew from "./cardAdnNew/Card";
 import CardPost from "./cardPost/Card";
+import CardProNew from "./cardProfesionNew/Card";
 
 export {
   Header,
@@ -39,4 +40,5 @@ export {
   CardCert,
   CardAdnNew,
   CardPost,
+  CardProNew,
 };

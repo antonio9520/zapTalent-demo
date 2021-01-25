@@ -107,7 +107,7 @@ const Certificado = ({ data }) => {
     "Diciembre",
   ];
   const f = new Date(data.fecha);
-  console.log(data);
+
   return (
     <div className="sub-swipeables-new-perfil">
       <div className="cont-card-job-perfil">

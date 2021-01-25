@@ -2,6 +2,8 @@ import React from "react";
 import "./CardEst.css";
 import { calcDate } from "../../../../assets/calcDate";
 import { Tooltip } from "../../../../components";
+import { School, Edit, Visibility } from "@material-ui/icons";
+import { IconButton } from "@material-ui/core";
 
 const CardEst = (props) => {
   const { data } = props;
@@ -12,7 +14,10 @@ const CardEst = (props) => {
 
   return (
     <div className="card-est-perfil">
-      <p className="p1-card-est-perfil">{data.tipoestudio}</p>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <School className="icon-card-est" />
+        <p className="p1-card-est-perfil">{data.tipoestudio}</p>
+      </div>
       <Tooltip title={data.carrera}>
         <p className="p2-card-est-perfil">
           {data.carrera.length > 35
@@ -21,7 +26,7 @@ const CardEst = (props) => {
         </p>
       </Tooltip>
       <div className="cont-exp-card-est">
-        <p style={{color: "white"}}>
+        <p style={{ color: "white" }}>
           Experiencia{" "}
           {dateResult.years === 1
             ? dateResult.years + " año"
@@ -31,6 +36,14 @@ const CardEst = (props) => {
             ? dateResult.months + " mes"
             : dateResult.months + " años"}
         </p>
+      </div>
+      <div className="left-card-est">
+        <IconButton className="btn-card-est">
+          <Visibility />
+        </IconButton>
+        <IconButton className="btn-card-est">
+          <Edit />
+        </IconButton>
       </div>
     </div>
   );

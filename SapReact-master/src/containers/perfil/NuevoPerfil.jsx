@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./Perfil.css";
 import { makeStyles } from "@material-ui/core";
 import {
+  ModalProfesion,
   CardPerfilNew,
   ModalRRSS,
   Modal,
@@ -11,6 +12,8 @@ import {
   CardCert,
   CardAdnNew,
   CardPost,
+  CardProNew,
+  CardEst,
 } from "./components";
 import { CardInitPerfil } from "../../components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
@@ -121,6 +124,10 @@ const Perfil = () => {
   }, []);
   return (
     <div className="cont-new-perfil">
+      <ModalProfesion
+        setOpenModalProfesion={setOpenModalProfesion}
+        openModalProfesion={openModalProfesion}
+      />
       <ModalRRSS
         setOpenModalRRSS={setOpenModalRRSS}
         openModalRRSS={openModalRRSS.open}
@@ -140,17 +147,49 @@ const Perfil = () => {
       {/* <h1>perfil</h1> */}
       <div className="left-new-perfil">
         <div className="item-1">
-          <CardInitPerfil
-            type={cardSexo}
-            imgOne
-            colorOne
-            title="¿Cuál es tu Profesión?"
-            desc="Muéstranos tu carrera y/o profesión."
-            txtBtn="Comenzar"
-            link="/estudios"
-          />
+          {usuario ? (
+            dataProfesion ? (
+              <CardProNew data={dataProfesion} name={usuario.profesion.name} />
+            ) : (
+              <CardInitPerfil
+                type={cardSexo}
+                imgOne
+                colorOne
+                openProfesion
+                setOpenModalProfesion={setOpenModalProfesion}
+                title="¿Cuál es tu Profesión?"
+                desc="Muéstranos tu carrera y/o profesión."
+                txtBtn="Comenzar"
+                // link="/estudios"
+              />
+            )
+          ) : null}
         </div>
-        <div className="item-1"></div>
+        <div
+          className="item-1"
+          style={{ backgroundColor: "inherit", boxShadow: "inherit" }}
+        >
+          <div
+            style={{
+              overflow: "auto",
+              maxHeight: "100%",
+              width: "100%",
+              padding: "10px 10px 10px 10px",
+            }}
+          >
+            {estudios.map((item, index) => {
+              if (usuario.profesion) {
+                if (usuario.profesion._id === item._id) {
+                  return null;
+                } else {
+                  return <CardEst key={index} data={item} />;
+                }
+              } else {
+                return <CardEst key={index} data={item} />;
+              }
+            })}
+          </div>
+        </div>
         <div className="item-1">
           {postulaciones.length > 0 ? (
             <CardPost data={postulaciones} />
@@ -167,7 +206,7 @@ const Perfil = () => {
           )}
         </div>
         <div className="item-1">
-          {cargandoadn ? null : adns.length > 0 ? (
+          {adns.length > 0 ? (
             <CardAdnNew data={adns} />
           ) : (
             <CardInitPerfil
