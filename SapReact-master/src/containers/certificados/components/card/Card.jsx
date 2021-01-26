@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Card.css";
 import { IconButton } from "@material-ui/core";
 import {
-  Delete,
   Edit,
   CloudUploadOutlined,
   VisibilityOutlined,
-  Toll,
   Close,
-  EditOutlined,
 } from "@material-ui/icons";
 import logocert from "../../../../resources/images/icon-menu-miscertificaciones.svg";
 import { useDispatch } from "react-redux";
@@ -39,6 +36,8 @@ const Card = (props) => {
     "Noviembre",
     "Diciembre",
   ];
+  const now = new Date();
+  const year = now.getFullYear();
   const f = new Date(data.fecha);
   const initDelete = () => {
     setIdEliminar(data._id);
@@ -91,9 +90,6 @@ const Card = (props) => {
               </IconButton>
             </Tooltip>
           ) : (
-            // <IconButton size="small" className="btns-card-adn one">
-            //   <CloudUpload />
-            // </IconButton>
             <>
               <input
                 type="file"
@@ -145,7 +141,7 @@ const Card = (props) => {
           </Tooltip>
         </div>
       </div>
-      {data.fecha.substring(0, 4) === "2020" ? (
+      {data.fecha.substring(0, 4) === year.toString() ? (
         <div className="etiqueta-nuevo">
           <p style={{ color: "white" }}>Nuevo</p>
         </div>

@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import "./Filtros.css";
-import { Drawer, makeStyles, MenuItem } from "@material-ui/core";
+import { Drawer, MenuItem } from "@material-ui/core";
 import { filtrarOferLaboralesAction } from "../../../../redux/actions/ofertasLaboralesAction";
-import {
-  CustomSelect,
-  CustomSelectC,
-  Button,
-  OutInput,
-} from "../../../../components";
+import { CustomSelect, Button, OutInput } from "../../../../components";
 import { useDispatch } from "react-redux";
 import {
   MuiPickersUtilsProvider,
@@ -16,7 +11,6 @@ import {
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
 import { regiones } from "../../../../assets/regiones";
-import { set } from "date-fns";
 
 const Filtros = ({ open, setOpen }) => {
   const dispatch = useDispatch();
@@ -33,48 +27,33 @@ const Filtros = ({ open, setOpen }) => {
   const [tipoJornada, setTipoJornada] = useState(null);
   const comunas = regiones.find((item) => item.region === region);
   const query = {};
-
+  const date = new Date(fecha);
+  date.setDate(date.getDate() - 1);
   const filtrar = () => {
-    if (tipoConsultor) {
-      query.tipoConsultor = tipoConsultor;
-    }
-    if (anosExp) {
-      query.anosExpSap = anosExp;
-    }
-    if (area) {
-      query.area = area;
-    }
-    if (minimo && maximo) {
-      query.renta = { $gte: minimo, $lte: maximo };
-    } else if (minimo) {
-      query.renta = { $gte: minimo };
-    } else if (maximo) {
-      query.renta = { $lte: maximo };
-    }
-    if (region) {
-      query.region = region;
-    }
-    // if (tipoContrato) {
-    //   query.tipoContrato = {};
-    //   query.tipoContrato.value = tipoContrato;
-    // }
-    if (fecha) {
-      // query.creacion = {
-      //   $gte: new Date(`${fecha.substring(0, 10)}T00:00:00.000Z`),
-      //   $lte: new Date(`${fecha.substring(0, 10)}T23:59:59.999Z`),
-      // };
-      // query.creacion = ;
-  
-    }
+    if (tipoConsultor) query.tipoConsultor = tipoConsultor;
+
+    if (anosExp) query.anosExpSap = anosExp;
+
+    if (area) query.area = area;
+
+    if (minimo) query.minimo = minimo;
+
+    if (maximo) query.maximo = maximo;
+
+    if (fecha) query.fecha = date;
+
+    if (tipoContrato) query.tipoContrato = tipoContrato;
+
+    if (region) query.region = region;
+
+    if (comuna) query.comuna = comuna;
+
     if (tipoJornada) {
       query.jornadaLaboral = tipoJornada;
     }
-    if (comuna) {
-      query.ciudad = comuna;
-    }
-    dispatch(filtrarOferLaboralesAction(query));
+
+    dispatch(filtrarOferLaboralesAction(query)).then(() => setOpen(false));
   };
-  console.log(fecha ? new Date(fecha) : null);
 
   const limpiarFiltros = () => {
     setTipoConsultor(null);
@@ -87,7 +66,7 @@ const Filtros = ({ open, setOpen }) => {
     setComuna(null);
     setRegion(null);
     setTipoJornada(null);
-    dispatch(filtrarOferLaboralesAction({}));
+    dispatch(filtrarOferLaboralesAction({})).then(() => setOpen(false));
   };
   return (
     <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>

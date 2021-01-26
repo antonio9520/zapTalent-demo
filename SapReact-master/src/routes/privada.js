@@ -13,9 +13,8 @@ const Privada = ({ ...props }) => {
   useEffect(() => {
     dispatch(usuarioAuthAction());
     // eslint-disable-next-line
-    console.log("auth-privada");
   }, []);
-  console.log("privada: " + loading);
+
   return (
     <>
       <Route

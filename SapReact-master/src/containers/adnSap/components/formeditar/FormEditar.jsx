@@ -51,7 +51,6 @@ const FormEditar = ({
         submodulos,
       })
     ).then((res) => (res ? cancelarEditar() : null));
-    // closeModalEditar();
   };
   const fileChange = (e) => {
     if (e.target.value) {
@@ -59,17 +58,6 @@ const FormEditar = ({
     }
   };
   const editObsFunc = () => {
-    //validar id
-    // if (idmod.trim() === "") {
-    //   dispatch(
-    //     showAlertAction({
-    //       show: true,
-    //       msg: "Id modulo no puede estar vacio",
-    //       type: "error",
-    //     })
-    //   );
-    //   return;
-    // }
     setEditId(false);
     setEditObs(true);
   };
@@ -78,15 +66,7 @@ const FormEditar = ({
     setEditMod(false);
     setEditObs(false);
   };
-  const initDelete = (subdelete) => {
-    // subdelete.map((it) => {
-    //   console.log(it);
-    //   setArrayModules([it]);
-    // });
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 300);
-  };
+
   const deleteModulo = (id) => {
     // if (arrayModules.length > 0) {
     //   const subdelete = arrayModules.filter((item) =>
@@ -266,7 +246,10 @@ const FormEditar = ({
             className={`btn-adnzap-modal `}
             onClick={() => setOpenModalEditar(false)}
             disabled={editMod || editSubMod}
-            style={{ opacity: editMod || editSubMod ? "0.2" : "" }}
+            style={{
+              opacity: editMod || editSubMod ? "0.2" : "",
+              color: "white",
+            }}
           >
             <p>Cancelar</p>
           </ListItem>
@@ -275,7 +258,10 @@ const FormEditar = ({
             disabled={editMod || editSubMod}
             className={`btn-adnzap-modal `}
             onClick={handleClick}
-            style={{ opacity: editMod || editSubMod ? "0.2" : "" }}
+            style={{
+              opacity: editMod || editSubMod ? "0.2" : "",
+              color: "white",
+            }}
           >
             <p>Guardar ADN</p>
           </ListItem>
@@ -345,8 +331,13 @@ export default FormEditar;
 
 const Modulos = ({ data }) => {
   return (
-    <div className={"mod-two-active"}  style={{overflow: "hidden"}}>
-      <p style={{ fontSize: "12px" }} className={data.name.length > 6 ? "name-submod-large" : null}>{data.name}</p>
+    <div className={"mod-two-active"} style={{ overflow: "hidden" }}>
+      <p
+        style={{ fontSize: "12px", color: "white" }}
+        className={data.name.length > 6 ? "name-submod-large" : null}
+      >
+        {data.name}
+      </p>
     </div>
   );
 };

@@ -37,6 +37,9 @@ const EditPerfil = ({ usuario, loading }) => {
   const [nombresmsg, setNombresMsg] = useState("");
   const [apellidosmsg, setApellidosMsg] = useState("");
   const [nacionmsg, setNacionMsg] = useState("");
+  const [consultor, setConsultor] = useState(
+    usuario ? usuario.consultor : null
+  );
   const formatRut2 = () => {
     document.getElementById("input-rut-ed").value = rut;
   };
@@ -113,6 +116,7 @@ const EditPerfil = ({ usuario, loading }) => {
         email,
         ecivil,
         nacion,
+        consultor,
       })
     );
     setEditar(true);
@@ -141,7 +145,7 @@ const EditPerfil = ({ usuario, loading }) => {
 
   return (
     <>
-      <div style={{ position: "relative", height: "420px" }}>
+      <div style={{ position: "relative", height: "470px" }}>
         <div className="top-edit-perfil-2">
           <p>Editar perfil</p>
           <Tooltip title="Editar">
@@ -159,6 +163,36 @@ const EditPerfil = ({ usuario, loading }) => {
           </Tooltip>
         </div>
         <div className="form-edit-perfil">
+          <div className="item-edit-perfil" style={{ marginBottom: "20px" }}>
+            <AccountCircle className="icon-form-edit-perfil" />
+            <p className="p-tipo-consultor-edit-perfil">Tipo Consultor</p>
+            <div className="tipo-consultor-edit-perfil">
+              <div
+                className={consultor === "Training" ? "tc-active" : null}
+                onClick={() => setConsultor("Training")}
+              >
+                <p>Training</p>
+              </div>
+              <div
+                className={consultor === "Junior" ? "tc-active" : null}
+                onClick={() => setConsultor("Junior")}
+              >
+                <p>Junior</p>
+              </div>
+              <div
+                className={consultor === "Semi Senior" ? "tc-active" : null}
+                onClick={() => setConsultor("Semi Senior")}
+              >
+                <p>Semi Senior</p>
+              </div>
+              <div
+                className={consultor === "Senior" ? "tc-active" : null}
+                onClick={() => setConsultor("Senior")}
+              >
+                <p>Senior</p>
+              </div>
+            </div>
+          </div>
           <div className="item-edit-perfil">
             <AccountCircle className="icon-form-edit-perfil" />
             <CustomInput

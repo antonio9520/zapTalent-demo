@@ -88,11 +88,22 @@
 }
 
 .new-card-perfil .item-2 .consultor-perfil-new {
-  background-color: #0081f2;
   padding: 10px;
   border-radius: 5px;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
 }
-
+.new-card-perfil .item-2 .consultor-perfil-new.training {
+  background-color: #919192;
+}
+.new-card-perfil .item-2 .consultor-perfil-new.junior {
+  background-color: #28a4f0;
+}
+.new-card-perfil .item-2 .consultor-perfil-new.semiSenior {
+  background-color: #0081f2;
+}
+.new-card-perfil .item-2 .consultor-perfil-new.senior {
+  background-color: #ebcb45;
+}
 .new-card-perfil .item-2 .consultor-perfil-new p {
   color: white;
   margin: 0;
@@ -107,14 +118,17 @@
 .new-card-perfil .item-2 .btn-perfil-new .btn-active {
   background-color: #1c77e1;
   padding: 5px 20px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
 }
 .new-card-perfil .item-2 .btn-perfil-new .btn-active p {
   color: white;
   margin: 0;
+ 
 }
 .new-card-perfil .item-2 .btn-perfil-new .btn-inactive {
   background-color: #f2f2f2;
   padding: 5px 20px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
 }
 .new-card-perfil .item-2 .btn-perfil-new .btn-inactive p {
   color: var(--gray-text);

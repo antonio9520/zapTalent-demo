@@ -16,8 +16,9 @@ import SwipeableViews from "react-swipeable-views";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
 import NumberFormat from "react-number-format";
+import { Link } from "react-router-dom";
 
-const CardJob = ({ data }) => {
+const CardJob = ({ data, setOpenModalEditar, setDataEditar }) => {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -33,32 +34,40 @@ const CardJob = ({ data }) => {
     b = new Date(b.findate);
     return a > b ? -1 : a < b ? 1 : 0;
   });
-  
+
+  const initEdit = () => {
+    setDataEditar(datasort[activeStep]);
+    setOpenModalEditar(true);
+  };
   return (
     <div className="card-job-new-perfil">
       <div className="cont-swipeables-new-perfil">
         <div className="header-card-job-new-perfil">
           <Business className="header-icon-job-new-perfil" />
           <p className="p-mis-trabajos-perfil">Mis trabajos</p>
-          <Tooltip title="Editar">
-            <IconButton className="btn-edit-new-perfil-job">
+          <Tooltip title="Editar" placement="top">
+            <IconButton className="btn-edit-new-perfil-job" onClick={initEdit}>
               <Edit fontSize="small" />
             </IconButton>
           </Tooltip>
         </div>
         {/* <div className="sub-swipeables-new-perfil"> */}
-          <SwipeableViews index={activeStep}>
-            {datasort.map((item, index) => (
-              <Trabajo key={index} data={item} />
-            ))}
-          </SwipeableViews>
+        <SwipeableViews index={activeStep}>
+          {datasort.map((item, index) => (
+            <Trabajo key={index} data={item} />
+          ))}
+        </SwipeableViews>
         {/* </div> */}
         <div className="overlay-view-more"></div>
       </div>
       <div className="cont-arrow-btns-new-perfil">
-        <IconButton className={"btn-arrow-perfil-job"}>
-          <Visibility />
-        </IconButton>
+        <Link to="/trabajos">
+          <Tooltip title="Ver" placement="top">
+            <IconButton className={"btn-arrow-perfil-job"}>
+              <Visibility />
+            </IconButton>
+          </Tooltip>
+        </Link>
         <div>
           <IconButton
             disabled={activeStep === 0}
@@ -108,7 +117,9 @@ const Trabajo = ({ data }) => {
           <img src={icontrabajo} alt="icon-trabajo" />
         </div> */}
         <div className="sub-right-job-b-perfil">
-          <p className="p2-job-b-perfil">{data.nomempresa}</p>
+          <Link className="link" to="/trabajos">
+            <p className="p2-job-b-perfil">{data.nomempresa}</p>
+          </Link>
           <p className="p3-job-b-perfil">{data.cargo}</p>
           <p className="p4-job-b-perfil">{data.actempresa}</p>
           <div className="sub-right-job-b2-perfil">

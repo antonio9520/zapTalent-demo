@@ -21,6 +21,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
 import { obtenerCertificadosAction } from "../../redux/actions/certificadoAction";
+/**EDITAR*/
+import { ModalEditar as ModalEditarTrabajo } from "../../containers/trabajos/components";
+import { ModalEditar as ModalEditarCert } from "../../containers/certificados/components";
+import { ModalEditar as ModalEditarEstudio } from "../../containers/estudios/components";
+import { ModalEditar as ModalEditarAdn } from "../../containers/adnSap/components";
 
 const useStyles = makeStyles((theme) => ({
   itemRightsubCont: {
@@ -30,29 +35,39 @@ const useStyles = makeStyles((theme) => ({
 const Perfil = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [openModalEditar, setOpenModalEditar] = useState(false);
+  /* MODALES EDITAR* */
+  const [openEditarTrabajo, setOpenEditarTrabajo] = useState(false);
+  const [openEditarCert, setOpenEditarCert] = useState(false);
+  const [openEditarAdn, setOpenEditarAdn] = useState(false);
+  const [openEditarEst, setOpenEditarEst] = useState(false);
   const [openModalProfesion, setOpenModalProfesion] = useState(false);
+  /**DATA EDITAR */
   const [dataEditar, setDataEditar] = useState(null);
-  const usuario = useSelector((state) => state.auth.usuario);
-  const certificados = useSelector((state) => state.certificado.certificados);
-  const estudios = useSelector((state) => state.estudio.estudios);
-  const adns = useSelector((state) => state.adn.adns);
-  const cargandoadn = useSelector((state) => state.adn.loading);
-  const trabajos = useSelector((state) => state.trabajo.trabajos);
-  const [screenw, setScreenW] = useState(window.innerWidth);
-  const [cardSexo, setCardSexo] = useState("");
+  const [dataTrabajos, setDataTrabajos] = useState(null);
+  const [dataCert, setDataCert] = useState(null);
+  const [dataAdn, setDataAdn] = useState(null);
+  const [dataEstudios, setDataEstudios] = useState(null);
+  /**MODALES PERFIL */
   const [openModal, setOpenModal] = useState(false);
   const [openModalHab, setOpenModalHab] = useState(false);
-  const [dataProfesion, setDataProfesion] = useState(null);
-  const [_switch, setSwitch] = useState(false);
-  const [active, setActive] = useState("one");
-  const [activeStep, setActiveStep] = useState(0);
   const [openModalRRSS, setOpenModalRRSS] = useState({
     open: false,
     type: "Instagram",
   });
+  /** */
+  const [cardSexo, setCardSexo] = useState("");
+  const [dataProfesion, setDataProfesion] = useState(null);
+  const [_switch, setSwitch] = useState(false);
+  const [active, setActive] = useState("one");
+  const [activeStep, setActiveStep] = useState(0);
   const [postulaciones, setPostulaciones] = useState([]);
-
+  /*DATOS REDUX**/
+  const usuario = useSelector((state) => state.auth.usuario);
+  const certificados = useSelector((state) => state.certificado.certificados);
+  // const estudios = useSelector((state) => state.estudio.estudios);
+  const adns = useSelector((state) => state.adn.adns);
+  const trabajos = useSelector((state) => state.trabajo.trabajos);
+  const estudios = [];
   useEffect(() => {
     if (usuario) {
       if (usuario.sexo === "Masculino") {
@@ -83,6 +98,7 @@ const Perfil = () => {
     }
     // eslint-disable-next-line
   }, [usuario]);
+
   useEffect(() => {
     if (adns.length === 0) {
       if (!_switch) {
@@ -120,7 +136,7 @@ const Perfil = () => {
   useEffect(() => {
     setTimeout(() => {
       setPostulaciones(datapost);
-    }, 1000);
+    }, 500);
   }, []);
   return (
     <div className="cont-new-perfil">
@@ -144,12 +160,42 @@ const Perfil = () => {
         setActiveStep={setActiveStep}
       />
       <ModalHab setOpenModalHab={setOpenModalHab} openModalHab={openModalHab} />
-      {/* <h1>perfil</h1> */}
+      {/**MODALES EDITAR */}
+      <ModalEditarTrabajo
+        setOpenModalEditar={setOpenEditarTrabajo}
+        openModalEditar={openEditarTrabajo}
+        setDataEditar={setDataTrabajos}
+        data={dataTrabajos}
+      />
+      <ModalEditarCert
+        setOpenModalEditar={setOpenEditarCert}
+        openModalEditar={openEditarCert}
+        setDataEditar={setDataCert}
+        data={dataCert}
+      />
+      <ModalEditarEstudio
+        setOpenModalEditar={setOpenEditarEst}
+        openModalEditar={openEditarEst}
+        setDataEditar={setDataEstudios}
+        data={dataEstudios}
+      />
+      <ModalEditarAdn
+        setOpenModalEditar={setOpenEditarAdn}
+        openModalEditar={openEditarAdn}
+        dataEditar={dataAdn}
+        setDataEditar={setDataAdn}
+        setSwitch={setSwitch}
+      />
       <div className="left-new-perfil">
         <div className="item-1">
           {usuario ? (
             dataProfesion ? (
-              <CardProNew data={dataProfesion} name={usuario.profesion.name} />
+              <CardProNew
+                data={dataProfesion}
+                name={usuario.profesion.name}
+                setOpenModalProfesion={setOpenModalProfesion}
+                link="/estudios"
+              />
             ) : (
               <CardInitPerfil
                 type={cardSexo}
@@ -160,7 +206,7 @@ const Perfil = () => {
                 title="¿Cuál es tu Profesión?"
                 desc="Muéstranos tu carrera y/o profesión."
                 txtBtn="Comenzar"
-                // link="/estudios"
+                // link=""
               />
             )
           ) : null}
@@ -177,17 +223,20 @@ const Perfil = () => {
               padding: "10px 10px 10px 10px",
             }}
           >
-            {estudios.map((item, index) => {
-              if (usuario.profesion) {
-                if (usuario.profesion._id === item._id) {
-                  return null;
-                } else {
-                  return <CardEst key={index} data={item} />;
-                }
-              } else {
-                return <CardEst key={index} data={item} />;
-              }
-            })}
+            {estudios.length > 0 ? (
+              estudios.map((item, index) => {
+                return (
+                  <CardEst
+                    key={index}
+                    data={item}
+                    setOpenModalEditar={setOpenEditarEst}
+                    setDataEditar={setDataEstudios}
+                  />
+                );
+              })
+            ) : (
+              <p>card</p>
+            )}
           </div>
         </div>
         <div className="item-1">
@@ -207,7 +256,11 @@ const Perfil = () => {
         </div>
         <div className="item-1">
           {adns.length > 0 ? (
-            <CardAdnNew data={adns} />
+            <CardAdnNew
+              data={adns}
+              setOpenModalEditar={setOpenEditarAdn}
+              setDataEditar={setDataAdn}
+            />
           ) : (
             <CardInitPerfil
               type={cardSexo}
@@ -222,7 +275,11 @@ const Perfil = () => {
         </div>
         <div className="item-1">
           {trabajos.length > 0 ? (
-            <CardJobNew data={trabajos} />
+            <CardJobNew
+              data={trabajos}
+              setOpenModalEditar={setOpenEditarTrabajo}
+              setDataEditar={setDataTrabajos}
+            />
           ) : (
             <CardInitPerfil
               type={cardSexo}
@@ -236,8 +293,12 @@ const Perfil = () => {
           )}
         </div>
         <div className="item-1">
-          {trabajos.length > 0 ? (
-            <CardCert data={certificados} />
+          {certificados.length > 0 ? (
+            <CardCert
+              data={certificados}
+              setOpenModalEditar={setOpenEditarCert}
+              setDataEditar={setDataCert}
+            />
           ) : (
             <CardInitPerfil
               type={cardSexo}

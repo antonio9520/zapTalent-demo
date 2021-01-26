@@ -3,11 +3,12 @@ import "./Card.css";
 import { IconButton } from "@material-ui/core";
 import { Edit, Visibility, School, EventAvailable } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
+import { Link } from "react-router-dom";
 
-const Card = ({ data, name }) => {
+const Card = ({ data, name, setOpenModalProfesion, link }) => {
   const { institucion, diainicio, diafin, estado } = data;
   const [experiencia, setExperiencia] = useState(null);
-  console.log(data);
+
   useEffect(() => {
     if (diafin) {
       let fin = diafin.substring(0, 4);
@@ -17,41 +18,16 @@ const Card = ({ data, name }) => {
     }
   }, []);
   return (
-    // <div className="profesion-new-perfil">
-    //   <div>
-    //     <School />
-    //     <p> Tu Profesión</p>
-    //   </div>
-    //   <div>
-    //     <p>{name}</p>
-    //     <p>{institucion}</p>
-    //     <div>
-    //       <EventAvailable />
-    //       <p>
-    //         {diainicio.substring(0, 4)} - {diafin.substring(0, 4)}
-    //       </p>
-    //     </div>
-    //     <div>
-    //       <p>{estado}</p>
-    //     </div>
-    //     <div>
-    //       <p>Experiencia: {experiencia} años</p>
-    //     </div>
-    //   </div>
-    //   <IconButton>
-    //     <Edit />
-    //   </IconButton>
-    //   <IconButton>
-    //     <Visibility />
-    //   </IconButton>
-    // </div>
     <div className="card-adn-new-perfil">
       <div className="cont-swipeables-new-perfil">
         <div className="header-card-job-new-perfil">
           <School className="header-icon-adn-new-perfil" />
           <p className="p-mi-adn-perfil">Tu profesión</p>
-          <Tooltip title="Editar">
-            <IconButton className="btn-edit-new-perfil-job">
+          <Tooltip title="Editar" placement="top">
+            <IconButton
+              className="btn-edit-new-perfil-job"
+              onClick={() => setOpenModalProfesion(true)}
+            >
               <Edit fontSize="small" />
             </IconButton>
           </Tooltip>
@@ -88,9 +64,13 @@ const Card = ({ data, name }) => {
       <div className="cont-arrow-btns-new-perfil">
         <div></div>
         <div>
-          <IconButton className={"btn-arrow-perfil-adn"}>
-            <Visibility />
-          </IconButton>
+          <Link to={link}>
+            <Tooltip title="Ver">
+              <IconButton className={"btn-arrow-perfil-adn"}>
+                <Visibility />
+              </IconButton>
+            </Tooltip>
+          </Link>
         </div>
       </div>
     </div>

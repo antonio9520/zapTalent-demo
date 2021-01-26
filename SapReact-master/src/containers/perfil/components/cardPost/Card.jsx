@@ -13,6 +13,7 @@ import {
 import SwipeableViews from "react-swipeable-views";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
+import { Link } from "react-router-dom";
 
 const Card = ({ data }) => {
   const [loading, setLoading] = useState(true);
@@ -45,11 +46,14 @@ const Card = ({ data }) => {
           <div className="header-card-job-new-perfil">
             <BusinessCenter className="header-icon-adn-new-perfil" />
             <p className="p-mi-adn-perfil">Tus Postulaciones</p>
-            <Tooltip title="Ver">
-              <IconButton className="btn-view-new-perfil-post">
-                <Visibility fontSize="small" />
-              </IconButton>
-            </Tooltip>
+
+            <Link to="/ofertas-laborales">
+              <Tooltip title="Ver" placement="top">
+                <IconButton className="btn-view-new-perfil-post">
+                  <Visibility fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </Link>
           </div>
           {/* <div className="sub-swipeables-new-perfil"> */}
           <SwipeableViews index={activeStep}>
@@ -236,7 +240,7 @@ const SubModulos = () => {
   return (
     <>
       {submodulos.map((item, index) => (
-        <div className={"modulo-activo-ol"}>
+        <div key={index} className={"modulo-activo-ol"}>
           <p>{item}</p>
         </div>
       ))}

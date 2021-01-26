@@ -79,7 +79,7 @@ export function obtenerAdnAction(id) {
     dispatch(descargaAdn());
     try {
       const respuesta = await clientAxios.get(`/api/adnsap/${id}`);
-      console.log(respuesta.data);
+
       dispatch(descargaExito(respuesta.data));
     } catch (error) {
       console.log(error);
@@ -149,7 +149,7 @@ export function editarAdnAction(data) {
         fd.append("iduser", data.iduser);
       }
       if (data.name) {
-        fd.append("name", data.name); 
+        fd.append("name", data.name);
       }
       if (data.desc) {
         fd.append("desc", data.desc);

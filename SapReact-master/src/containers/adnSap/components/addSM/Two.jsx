@@ -68,6 +68,7 @@ const Two = (props) => {
             button
             className={`btn-adnzap-modal `}
             onClick={() => setView("one")}
+            style={{ color: "white" }}
           >
             <p>Atras</p>
           </ListItem>
@@ -75,6 +76,7 @@ const Two = (props) => {
             button
             className={`btn-adnzap-modal `}
             onClick={() => validation()}
+            style={{ color: "white" }}
           >
             <p>Guardar y seguir</p>
           </ListItem>

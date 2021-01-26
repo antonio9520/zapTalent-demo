@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Card.css";
 import {
   ArrowForward,
   ArrowBack,
-  BusinessCenter,
-  Person,
-  Email,
-  PhoneAndroid,
-  AccountCircle,
   Business,
   Visibility,
   Edit,
@@ -16,10 +11,14 @@ import {
 import SwipeableViews from "react-swipeable-views";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
+import { useDispatch } from "react-redux";
+import { editarCertAction } from "../../../../redux/actions/certificadoAction";
+import { Link } from "react-router-dom";
 
-const Card = ({ data }) => {
+const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
+  const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
-
+  const [file, setFile] = useState(null);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -33,15 +32,43 @@ const Card = ({ data }) => {
     b = new Date(b.findate);
     return a > b ? -1 : a < b ? 1 : 0;
   });
+  const initEdit = () => {
+    setDataEditar(datasort[activeStep]);
+    setOpenModalEditar(true);
+  };
+  const fileChange = (e) => {
+    if (e.target.value) {
+      setFile(e.target.files[0]);
+    }
+  };
 
+  const certificadoURL = file;
+  useEffect(() => {
+    const subirAdn = () => {
+      dispatch(
+        editarCertAction({ _id: datasort[activeStep]._id, certificadoURL })
+      );
+    };
+    if (certificadoURL) {
+      subirAdn();
+    }
+  }, [file]);
   return (
     <div className="card-job-new-perfil">
       <div className="cont-swipeables-new-perfil">
         <div className="header-card-job-new-perfil">
-          <Business className="header-icon-cert-new-perfil" />
-          <p className="p-mis-cert-perfil">Mis Certificados</p>
-          <Tooltip title="Editar">
-            <IconButton className="btn-edit-new-perfil-job">
+          <Link
+            className="link"
+            to="/certificaciones"
+            style={{ display: "flex" }}
+          >
+            <Business className="header-icon-cert-new-perfil" />
+            <Tooltip title="Ir a mis Certificaciones." placement="top">
+              <p className="p-mis-cert-perfil">Mis Certificados</p>
+            </Tooltip>
+          </Link>
+          <Tooltip title="Editar" placement="top">
+            <IconButton className="btn-edit-new-perfil-job" onClick={initEdit}>
               <Edit fontSize="small" />
             </IconButton>
           </Tooltip>
@@ -56,9 +83,47 @@ const Card = ({ data }) => {
         <div className="overlay-view-more"></div>
       </div>
       <div className="cont-arrow-btns-new-perfil">
-        <IconButton className={"btn-arrow-perfil-job"}>
-          <CloudUpload />
-        </IconButton>
+        {datasort ? (
+          datasort[activeStep].certificadoURL ? (
+            <Tooltip title="Ver archivo">
+              <IconButton
+                className={"btn-arrow-perfil-job"}
+                href={data[activeStep].certificadoURL}
+                target="_blank"
+              >
+                <Visibility />
+              </IconButton>
+            </Tooltip>
+          ) : (
+            <>
+              <input
+                type="file"
+                id={`raised-button-file${data._id}`}
+                onChange={(e) => fileChange(e)}
+                style={{ display: "none" }}
+                accept="application/pdf, image/png, .jpeg, .jpg, image/gif, .doc, .docx"
+              />
+              <Tooltip title="Subir archivo">
+                <IconButton className={"btn-arrow-perfil-job"}>
+                  <label
+                    htmlFor={`raised-button-file${data._id}`}
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      borderRadius: "50%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <CloudUpload />
+                  </label>
+                </IconButton>
+              </Tooltip>
+            </>
+          )
+        ) : null}
         <div>
           <IconButton
             disabled={activeStep === 0}

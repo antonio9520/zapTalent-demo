@@ -4,14 +4,18 @@ import { calcDate } from "../../../../assets/calcDate";
 import { Tooltip } from "../../../../components";
 import { School, Edit, Visibility } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const CardEst = (props) => {
-  const { data } = props;
+  const { data, setOpenModalEditar, setDataEditar } = props;
 
   if (data === undefined) return null;
   let today = new Date();
   const dateResult = calcDate(today, data.diafin);
-
+  const initEdit = () => {
+    setDataEditar(data);
+    setOpenModalEditar(true);
+  };
   return (
     <div className="card-est-perfil">
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -38,12 +42,18 @@ const CardEst = (props) => {
         </p>
       </div>
       <div className="left-card-est">
-        <IconButton className="btn-card-est">
-          <Visibility />
-        </IconButton>
-        <IconButton className="btn-card-est">
-          <Edit />
-        </IconButton>
+        <Link to="/estudios">
+          <Tooltip title="Ver" placement="top">
+            <IconButton className="btn-card-est">
+              <Visibility />
+            </IconButton>
+          </Tooltip>
+        </Link>
+        <Tooltip title="Editar" placement="top">
+          <IconButton className="btn-card-est" onClick={initEdit}>
+            <Edit />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );

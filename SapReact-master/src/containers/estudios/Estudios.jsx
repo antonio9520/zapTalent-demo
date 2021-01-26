@@ -32,11 +32,13 @@ const Estudios = () => {
   }, [usuario]);
 
   useEffect(() => {
-    if (usuario) {
-      const cargarEstudios = () => dispatch(obtenerEstudiosAction(usuario._id));
-      cargarEstudios();
+    if (estudios.length === 0) {
+      if (usuario) {
+        const cargarEstudios = () =>
+          dispatch(obtenerEstudiosAction(usuario._id));
+        cargarEstudios();
+      }
     }
-
     // eslint-disable-next-line
   }, [usuario]);
 

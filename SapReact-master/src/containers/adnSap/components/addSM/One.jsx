@@ -127,10 +127,16 @@ const One = (props) => {
               setArraySubMod([]);
               setView("default");
             }}
+            style={{ color: "white" }}
           >
             <p>Cancelar</p>
           </ListItem>
-          <ListItem button className="btn-adnzap-modal" onClick={nextStep}>
+          <ListItem
+            button
+            className="btn-adnzap-modal"
+            style={{ color: "white" }}
+            onClick={nextStep}
+          >
             <p>Continuar</p>
           </ListItem>
         </div>
@@ -202,7 +208,7 @@ const SubMod = ({
           }
           onClick={() => handleClick()}
         >
-          <p>{item.submodulo}</p>
+          <p  style={{ color: "white" }}>{item.submodulo}</p>
         </div>
       </Tooltip>
     </>

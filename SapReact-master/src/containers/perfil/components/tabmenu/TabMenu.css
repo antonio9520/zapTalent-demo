@@ -2,11 +2,12 @@
   background-color: var(--white);
   width: 95%;
   max-width: 500px;
-  height: 600px;
+  height: 640px;
   border-radius: 10px;
   padding: 60px 20px;
   position: relative;
   overflow: hidden;
+  
 }
 
 .cont-items-menu-ed-per {
@@ -92,7 +93,7 @@
   .cont-edit-perfil {
     height: 98%;
     overflow: auto;
-    max-height: 570px;
+    max-height: 640px;
     padding: 30px 20px;
   }
 }
@@ -103,7 +104,7 @@
   .cont-edit-perfil {
     height: 98%;
     overflow: auto;
-    max-height: 600px;
+    max-height: 640px;
   }
 }
 
@@ -113,7 +114,7 @@
     width: 98%;
     height: 98%;
     overflow: auto;
-    height: 600px;
+    height: 640px;
     padding: 40px 0px;
   }
 

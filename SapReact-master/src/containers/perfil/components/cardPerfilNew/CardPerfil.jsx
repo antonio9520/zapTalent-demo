@@ -136,7 +136,21 @@ const CardPerfil = ({
           {usuario ? usuario.nombres + " " + usuario.apellidos : "Indefinido"}
         </p>
         <p className="p2">{profesion}</p>
-        <div className="consultor-perfil-new">
+        <div
+          className={`consultor-perfil-new ${
+            usuario
+              ? usuario.consultor === "Training"
+                ? "training"
+                : usuario.consultor === "Junior"
+                ? "junior"
+                : usuario.consultor === "Semi Senior"
+                ? "semiSenior"
+                : usuario.consultor === "Senior"
+                ? "senior"
+                : null
+              : null
+          }`}
+        >
           <p>Consultor {usuario ? usuario.consultor : null}</p>
         </div>
         <div className="btn-perfil-new">

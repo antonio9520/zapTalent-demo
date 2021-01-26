@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Card.css";
 import {
   ArrowForward,
@@ -6,15 +6,19 @@ import {
   Visibility,
   Edit,
   AccountTree,
+  CloudUpload,
 } from "@material-ui/icons";
 import SwipeableViews from "react-swipeable-views";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { editarAdnAction } from "../../../../redux/actions/adnAction";
 
-const Card = ({ data }) => {
-  const [loading, setLoading] = useState(true);
+const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
+  const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
-
+  const [file, setFile] = useState(null);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -29,38 +33,96 @@ const Card = ({ data }) => {
     return a > b ? -1 : a < b ? 1 : 0;
   });
 
+  const initEdit = () => {
+    setDataEditar(datasort[activeStep]);
+    setOpenModalEditar(true);
+  };
+  const fileChange = (e) => {
+    if (e.target.value) {
+      setFile(e.target.files[0]);
+    }
+  };
+  const adnURL = file;
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
-
+    const subirAdn = () => {
+      dispatch(editarAdnAction({ _id: datasort[activeStep]._id, adnURL }));
+    };
+    if (adnURL) {
+      subirAdn();
+    }
+  }, [file]);
   return (
     <>
       <div className="card-adn-new-perfil">
         <div className="cont-swipeables-new-perfil">
           <div className="header-card-job-new-perfil">
-            <AccountTree className="header-icon-adn-new-perfil" />
-            <p className="p-mi-adn-perfil">Mi ADN SAP</p>
-            <Tooltip title="Editar">
-              <IconButton className="btn-edit-new-perfil-job">
+            <Link className="link" to="/sap-adn" style={{ display: "flex" }}>
+              <AccountTree className="header-icon-adn-new-perfil" />
+              <Tooltip title="Ir a mi ADN-SAP" placement="top">
+                <p className="p-mi-adn-perfil">Mi ADN SAP</p>
+              </Tooltip>
+            </Link>
+            <Tooltip title="Editar" placement="top">
+              <IconButton
+                className="btn-edit-new-perfil-job"
+                onClick={initEdit}
+              >
                 <Edit fontSize="small" />
               </IconButton>
             </Tooltip>
           </div>
+
           {/* <div className="sub-swipeables-new-perfil"> */}
           <SwipeableViews index={activeStep}>
             {datasort.map((item, index) => (
               <Adn key={index} data={item} />
             ))}
           </SwipeableViews>
-          {/* </div> */}
+
           {/* <div className="overlay-view-more-adn"></div> */}
         </div>
         <div className="cont-arrow-btns-new-perfil">
-          <IconButton className={"btn-arrow-perfil-adn"}>
-            <Visibility />
-          </IconButton>
+          {datasort ? (
+            datasort[activeStep].adnURL ? (
+              <Tooltip title="Ver archivo">
+                <IconButton
+                  className={"btn-arrow-perfil-adn"}
+                  href={data[activeStep].adnURL}
+                  target="_blank"
+                >
+                  <Visibility />
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <>
+                <input
+                  type="file"
+                  id={`raised-button-file${data._id}`}
+                  onChange={(e) => fileChange(e)}
+                  style={{ display: "none" }}
+                  accept="application/pdf, image/png, .jpeg, .jpg, image/gif, .doc, .docx"
+                />
+                <Tooltip title="Subir archivo">
+                  <IconButton className={"btn-arrow-perfil-adn"}>
+                    <label
+                      htmlFor={`raised-button-file${data._id}`}
+                      style={{
+                        width: "25px",
+                        height: "25px",
+                        borderRadius: "50%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <CloudUpload style={{ color: "#187ce2" }} />
+                    </label>
+                  </IconButton>
+                </Tooltip>
+              </>
+            )
+          ) : null}
           <div>
             <IconButton
               disabled={activeStep === 0}

@@ -6,8 +6,7 @@ import { obtenerCertificadosAction } from "../../redux/actions/certificadoAction
 import { IconButton } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import { Card, Modal, ModalEditar } from "./components";
-import Loader from "react-loader-spinner"; 
-
+import Loader from "react-loader-spinner";
 
 const Certificados = () => {
   const dispatch = useDispatch();
@@ -33,13 +32,15 @@ const Certificados = () => {
   }, [usuario]);
 
   useEffect(() => {
-    if (usuario) {
-      const cargarCertificados = () =>
-        dispatch(obtenerCertificadosAction(usuario._id));
-      cargarCertificados();
+    if (certificados.length === 0) {
+      if (usuario) {
+        const cargarCertificados = () =>
+          dispatch(obtenerCertificadosAction(usuario._id));
+        cargarCertificados();
+      }
     }
     // eslint-disable-next-line
-  }, [usuario]);  
+  }, [usuario]);
 
   const datasort = certificados.sort(function (a, b) {
     a = new Date(a.fecha);

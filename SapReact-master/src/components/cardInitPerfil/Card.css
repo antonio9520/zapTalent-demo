@@ -33,7 +33,32 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.backgound-img-card-one-feme {
+  background-image: url("../../resources/cardsPerfil/oneF.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
+.backgound-img-card-two-feme {
+  background-image: url("../../resources/cardsPerfil/twoF.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.backgound-img-card-three-feme {
+  background-image: url("../../resources/cardsPerfil/threeF.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.backgound-img-card-four-feme {
+  background-image: url("../../resources/cardsPerfil/fourF.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.backgound-img-card-five-feme {
+  background-image: url("../../resources/cardsPerfil/fiveF.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 /*title*/
 .title-card-new-perfil {
   max-width: 280px;

@@ -27,6 +27,11 @@ const Card = ({
     "backgound-img-card-three": imgThree && type === "typeMasc",
     "backgound-img-card-four": imgFour && type === "typeMasc",
     "backgound-img-card-five": imgFive && type === "typeMasc",
+    "backgound-img-card-one-feme": imgOne && type === "typeFeme",
+    "backgound-img-card-two-feme": imgTwo && type === "typeFeme",
+    "backgound-img-card-three-feme": imgThree && type === "typeFeme",
+    "backgound-img-card-four-feme": imgFour && type === "typeFeme",
+    "backgound-img-card-five-feme": imgFive && type === "typeFeme",
   });
   const tituloStyle = classNames({
     "title-card-new-perfil": true,
@@ -47,7 +52,7 @@ const Card = ({
     <div className={cardClasses}>
       <h1 className={tituloStyle}>{title}</h1>
       <p className={descStyle}>{desc}</p>
-      <Link className="link" to={link ? link : null}>
+      <Link className="link" to={link ? link : ""}>
         <Button
           className={btnStyle}
           onClick={() => (openProfesion ? setOpenModalProfesion(true) : null)}

@@ -143,10 +143,15 @@ const CardSModulo = ({
       >
         <div>
           <div
-          style={{overflow: "hidden"}}
+            style={{ overflow: "hidden" }}
             className={nivel ? "box-name-four-adn-nivel" : "box-name-four-adn"}
           >
-            <p className={data.name.length > 6 ? "name-submod-large" : null}>{data.name}</p>
+            <p
+              style={{ color: "white" }}
+              className={data.name.length > 6 ? "name-submod-large" : null}
+            >
+              {data.name}
+            </p>
           </div>
         </div>
         <div className="rigth-top-four-adn">
@@ -155,7 +160,9 @@ const CardSModulo = ({
           </p>
           <div style={{ display: "flex", alignItems: "center" }}>
             <div className="nivel-four-adn">
-              <p className="p2-card-four-adn">{nameNivel}</p>
+              <p style={{ color: "white" }} className="p2-card-four-adn">
+                {nameNivel}
+              </p>
             </div>
             <div
               className={

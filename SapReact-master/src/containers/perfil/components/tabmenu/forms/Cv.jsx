@@ -40,7 +40,7 @@ const Cv = ({ loading }) => {
   };
 
   return (
-    <div style={{ position: "relative", height: "420px" }}>
+    <div style={{ position: "relative", height: "470px" }}>
       <div className="top-edit-perfil-2">
         <p>Subir CV</p>
         <Tooltip title="Editar">

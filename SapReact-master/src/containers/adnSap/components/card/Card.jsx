@@ -54,9 +54,7 @@ const Card = ({
       subirAdn();
     }
   }, [file]);
-  useEffect(() => {
-    console.log("renderizando..");
-  }, []);
+ 
   return (
     <>
       {/* {loading ? (

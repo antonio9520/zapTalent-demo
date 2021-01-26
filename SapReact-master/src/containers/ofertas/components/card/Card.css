@@ -112,13 +112,29 @@
 .modulos-card-ofertas-laborales {
   display: flex;
   margin-top: 10px;
+  /* background-color: royalblue; */
+  max-width: 170px;
+  overflow: auto;
+  padding-bottom: 5px;
+}
+.name-submod-large-card-ol {
+  /* Starting position */
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  /* Apply animation to this element */
+  -moz-animation: scroll-left 7s linear infinite;
+  -webkit-animation: scroll-left 7s linear infinite;
+  animation: scroll-left 7s linear infinite;
 }
 .modulo-activo-ol {
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
   border-radius: 3px;
   background: var(--degradado-blue);
-  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,14 +142,16 @@
   margin-right: 5px;
   cursor: pointer;
   transition: 0.5s all ease-in-out;
+  overflow: hidden;
 }
 .modulo-activo-ol p {
   font-size: 12px;
-  
 }
 .modulo-inactivo-ol {
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
   border-radius: 3px;
   background: var(--degradado-gray);
   display: flex;
@@ -141,10 +159,10 @@
   align-items: center;
   color: white;
   margin-right: 5px;
-
   cursor: pointer;
-  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
   transition: 0.5s all ease-in-out;
+  overflow: hidden;
 }
 .modulo-inactivo-ol p {
   font-size: 12px;
@@ -152,6 +170,10 @@
 .submodulos-card-ofertas-laborales {
   display: flex;
   margin-top: 10px;
+  flex-wrap: wrap;
+  max-width: 170px;
+  overflow: auto;
+  max-height: 45px;
 }
 /*item-6*/
 .top-card-ofertas-laborales .item-6 {

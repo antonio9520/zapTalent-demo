@@ -80,8 +80,8 @@ const SubModulos = ({
                           setActiveSM={setActiveSM}
                           activeSM={activeSM}
                           active={active}
-                            errorThree={errorThree}
-                            switch2={switch2}
+                          errorThree={errorThree}
+                          switch2={switch2}
                         />
                       ))}
                     </div>
@@ -106,7 +106,7 @@ const SubModulos = ({
                 className="dots-one-adn"
               />
             </div>
-          </div>  
+          </div>
           <Nivel
             arraySubMod={arraySubMod}
             setArraySubMod={setArraySubMod}
@@ -139,13 +139,13 @@ const SubMod = ({
     });
   }, []);
 
-    useEffect(() => {
-      errorThree.map((i) => {
-        if (i === data.name) {
-          setError(true);
-        }
-      });
-    }, [switch2]);
+  useEffect(() => {
+    errorThree.map((i) => {
+      if (i === data.name) {
+        setError(true);
+      }
+    });
+  }, [switch2]);
 
   const handleClick = () => {
     setActiveSM(data.name);
@@ -160,16 +160,12 @@ const SubMod = ({
       }
       onClick={() => handleClick()}
     >
-      <p>{data.name}</p>
+      <p style={{ color: "white" }}>{data.name}</p>
     </div>
   );
 };
 
-const Nivel = ({
-  activeSM,
-  setErrorThree,
-  arraySubMod,
-}) => {
+const Nivel = ({ activeSM, setErrorThree, arraySubMod }) => {
   const [active, setActive] = useState(null);
   const [loading, setLoading] = useState(true);
   const [obs, setObs] = useState(null);
@@ -247,7 +243,7 @@ const Nivel = ({
               onClick={() => setActive("No Maneja")}
               style={{ backgroundColor: "#BCBCBC" }}
             >
-              <p>No Maneja</p>
+              <p style={{ color: "white" }}>No Maneja</p>
             </div>
             <div
               className={
@@ -256,7 +252,7 @@ const Nivel = ({
               onClick={() => setActive("Básico")}
               style={{ backgroundColor: "#909090" }}
             >
-              <p>Básico</p>
+              <p style={{ color: "white" }}>Básico</p>
             </div>
             <div
               className={
@@ -265,7 +261,7 @@ const Nivel = ({
               onClick={() => setActive("Medio")}
               style={{ backgroundColor: "#43B6F2" }}
             >
-              <p>Medio</p>
+              <p style={{ color: "white" }}>Medio</p>
             </div>
             <div
               className={
@@ -274,7 +270,7 @@ const Nivel = ({
               onClick={() => setActive("Avanzado")}
               style={{ backgroundColor: "#2169D9" }}
             >
-              <p>Avanzado</p>
+              <p style={{ color: "white" }}>Avanzado</p>
             </div>
           </div>
           <div style={{ margin: "5px 0", width: "100%" }}>

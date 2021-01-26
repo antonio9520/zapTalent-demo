@@ -13,6 +13,7 @@ import {
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
 import NumberFormat from "react-number-format";
+import { Link } from "react-router-dom";
 
 const CardJob = ({ data }) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -85,7 +86,9 @@ const Trabajo = ({ data }) => {
       </div> */}
       <div className="sub-right-job-b-perfil">
         <p className="p-mis-trabajos-perfil">Mis trabajos</p>
+
         <p className="p2-job-b-perfil">{data.nomempresa}</p>
+
         <p className="p3-job-b-perfil">{data.cargo}</p>
         <p className="p4-job-b-perfil">{data.actempresa}</p>
         <div className="sub-right-job-b2-perfil">

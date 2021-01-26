@@ -51,7 +51,7 @@ const Location = ({ usuario, loading }) => {
     setErrorDirect(false);
   };
   return (
-    <div style={{ position: "relative", height: "420px" }}>
+    <div style={{ position: "relative", height: "470px" }}>
       <div className="top-edit-perfil-2">
         <p>Editar dirección</p>
         <Tooltip title="Editar">
