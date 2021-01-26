@@ -13,11 +13,9 @@ import {
   Business,
   AccountTree,
 } from "@material-ui/icons";
-import {
-  cerrarSesionAction,
-  usuarioAuthAction,
-} from "../../../redux/actions/authAction";
+import { cerrarSesionAction } from "../../../redux/actions/authAction";
 import { useDispatch, useSelector } from "react-redux";
+import logo from "../../../resources/images/SAPTalent/SAPTalent-Logo-White.svg";
 
 const Sidebar = (props) => {
   const { open } = props;
@@ -50,9 +48,12 @@ const Sidebar = (props) => {
   }, [usuario]);
   return (
     <div
-      style={{ paddingTop: "55px" }}
+      style={{ paddingTop: "75px" }}
       className={open ? "cont-sidebar-mini" : "cont-sidebar"}
     >
+      <div className="header-logo-sidebar">
+        <img src={logo} alt="SAP"/>
+      </div>
       <div className="sidebar-body">
         <List className="list-sidebar">
           <ListItem

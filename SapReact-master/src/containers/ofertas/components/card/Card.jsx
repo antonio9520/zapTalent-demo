@@ -8,9 +8,16 @@ import {
   EventAvailable,
   EventBusy,
   Room,
+  Visibility,
+  AccountCircle,
+  QueryBuilder,
+  EventSeat,
+  Description,
+  AccountTree,
 } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
+import NumberFormat from "react-number-format";
 
 const Card = ({ data }) => {
   const {
@@ -67,7 +74,7 @@ const Card = ({ data }) => {
         <div className="item-3">
           <Tooltip title="Tipo de consultor">
             <div>
-              <BusinessCenter className="icon-card-ofertas-laborales" />
+              <AccountCircle className="icon-card-ofertas-laborales" />
               <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
                 {tipoConsultor}
               </p>
@@ -76,7 +83,7 @@ const Card = ({ data }) => {
 
           <Tooltip title="Tipo de Jornada">
             <div>
-              <BusinessCenter className="icon-card-ofertas-laborales" />
+              <QueryBuilder className="icon-card-ofertas-laborales" />
               <p>{jornadaLaboral}</p>
             </div>
           </Tooltip>
@@ -97,7 +104,7 @@ const Card = ({ data }) => {
         <div className="item-4">
           <Tooltip title="Experiencia SAP">
             <div>
-              <BusinessCenter className="icon-card-ofertas-laborales" />
+              <AccountTree className="icon-card-ofertas-laborales" />
               {anosExpSap ? (
                 <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
                   {anosExpSap} Años
@@ -111,13 +118,13 @@ const Card = ({ data }) => {
           </Tooltip>
           <Tooltip title="Tipo de contrato">
             <div>
-              <BusinessCenter className="icon-card-ofertas-laborales" />
+              <Description className="icon-card-ofertas-laborales" />
               <p>{tipoContrato.value}</p>
             </div>
           </Tooltip>
           <Tooltip title="Cantidad de Vacantes">
             <div>
-              <BusinessCenter className="icon-card-ofertas-laborales" />
+              <EventSeat className="icon-card-ofertas-laborales" />
               <p>{cantidadVacantes}</p>
             </div>
           </Tooltip>
@@ -167,7 +174,15 @@ const Card = ({ data }) => {
           </p>
         </div>
         <div className="item-3">
-          <p>Salario: ${renta}</p>
+          <p>
+            Salario: ${" "}
+            <NumberFormat
+              value={renta}
+              displayType={"text"}
+              thousandSeparator={true}
+              // prefix={"$"}
+            />
+          </p>
           <Button className="btn-postular-ofertas-laborales">
             <p>Postular</p>
           </Button>

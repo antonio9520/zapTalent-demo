@@ -52,7 +52,7 @@ const Card = ({
     <div className={cardClasses}>
       <h1 className={tituloStyle}>{title}</h1>
       <p className={descStyle}>{desc}</p>
-      <Link className="link" to={link ? link : ""}>
+      <Link className="link" to={!openProfesion ? link : "/perfil"}>
         <Button
           className={btnStyle}
           onClick={() => (openProfesion ? setOpenModalProfesion(true) : null)}

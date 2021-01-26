@@ -1,6 +1,7 @@
 .container-header {
   display: flex;
   /* background: red; */
+  /* background-color: #ffffff; */
   height: 55px;
   /* left: 80px; */
   padding-left: 80px;
@@ -19,6 +20,7 @@
   height: 55px;
   /* left: 80px; */
   padding-left: 250px;
+  /* background-color: white; */
   position: fixed;
   flex-direction: row;
   width: 100%;

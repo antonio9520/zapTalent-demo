@@ -15,7 +15,7 @@ import "./CardJob.css";
 import SwipeableViews from "react-swipeable-views";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
-import NumberFormat from "react-number-format";
+import NumberFormat from "react-number-format"; 
 import { Link } from "react-router-dom";
 
 const CardJob = ({ data, setOpenModalEditar, setDataEditar }) => {

@@ -9,11 +9,17 @@ import {
   EventAvailable,
   Flight,
   Home,
+  AccountCircle,
+  QueryBuilder,
+  EventSeat,
+  Description,
+  AccountTree,
 } from "@material-ui/icons";
 import SwipeableViews from "react-swipeable-views";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
 import { Link } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 const Card = ({ data }) => {
   const [loading, setLoading] = useState(true);
@@ -146,14 +152,14 @@ const Postulacion = ({ data }) => {
         <div className="item-3">
           <Tooltip title="Tipo de consultor">
             <div>
-              <BusinessCenter className="icon-card-post-new-perfil" />
+              <AccountCircle className="icon-card-post-new-perfil" />
               <p style={{ fontWeight: "600" }}>{tipoConsultor}</p>
             </div>
           </Tooltip>
 
           <Tooltip title="Tipo de Jornada">
             <div>
-              <BusinessCenter className="icon-card-post-new-perfil" />
+              <QueryBuilder className="icon-card-post-new-perfil" />
               <p>{jornadaLaboral}</p>
             </div>
           </Tooltip>
@@ -174,7 +180,7 @@ const Postulacion = ({ data }) => {
         <div className="item-4">
           <Tooltip title="Experiencia SAP">
             <div>
-              <BusinessCenter className="icon-card-post-new-perfil" />
+              <AccountTree className="icon-card-post-new-perfil" />
               {anosExpSap ? (
                 <p style={{ fontWeight: "600" }}>{anosExpSap} Años</p>
               ) : (
@@ -184,13 +190,13 @@ const Postulacion = ({ data }) => {
           </Tooltip>
           <Tooltip title="Tipo de contrato">
             <div>
-              <BusinessCenter className="icon-card-post-new-perfil" />
+              <Description className="icon-card-post-new-perfil" />
               <p>{tipoContrato.value}</p>
             </div>
           </Tooltip>
           <Tooltip title="Cantidad de Vacantes">
             <div>
-              <BusinessCenter className="icon-card-post-new-perfil" />
+              <EventSeat className="icon-card-post-new-perfil" />
               <p>{cantidadVacantes}</p>
             </div>
           </Tooltip>
@@ -214,7 +220,15 @@ const Postulacion = ({ data }) => {
         </div>
       </div>
       <p className="p4-post-b-perfil">Salario</p>
-      <p className="p5-post-b-perfil">$ {renta}</p>
+      <p className="p5-post-b-perfil">
+        ${" "}
+        <NumberFormat
+          value={renta}
+          displayType={"text"}
+          thousandSeparator={true}
+          // prefix={"$"}
+        />
+      </p>
     </div>
   );
 };

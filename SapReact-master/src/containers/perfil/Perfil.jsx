@@ -288,7 +288,7 @@ const Perfil = () => {
                 />
               )}
             </Grid>
-            <Grid 
+            <Grid
               item
               xs={12}
               sm={6}
@@ -360,7 +360,6 @@ const Perfil = () => {
           </Grid>
         )}
       </Grid>
-
     </div>
   );
 };

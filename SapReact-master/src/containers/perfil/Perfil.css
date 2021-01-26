@@ -458,6 +458,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
+  position: relative;
 }
 
 .left-new-perfil {
@@ -470,6 +471,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: auto;
+  position: relative;
 }
 .left-new-perfil .item-1 {
   background-color: white;
@@ -489,4 +491,26 @@
   width: 350px;
   height: 100vh;
   right: 0;
+}
+
+.titulo-page {
+  position: absolute;
+  top: 8px;
+  left: 70px;
+ 
+  display: flex;
+  
+  /* background-color: rgb(139, 63, 63); */
+  
+  
+}
+.titulo-page h1 {
+  color: var(--blue-primary);
+  margin-left: 10px;
+  font-weight: 200;
+}
+.titulo-page img {
+  fill: var(--blue-primary) !important;
+  stroke: var(--blue-primary) !important;
+  height: 40px;
 }

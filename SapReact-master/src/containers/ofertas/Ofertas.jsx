@@ -5,6 +5,7 @@ import { obtenerOferLaboralesAction } from "../../redux/actions/ofertasLaborales
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "react-loader-spinner";
 
+
 const Ofertas = () => {
   const dispatch = useDispatch();
   const ofertasLaborales = useSelector(
@@ -14,7 +15,7 @@ const Ofertas = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    dispatch(obtenerOferLaboralesAction());
+    dispatch(obtenerOferLaboralesAction()); 
   }, []);
 
   return (

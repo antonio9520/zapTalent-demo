@@ -14,7 +14,10 @@ import {
   CardPost,
   CardProNew,
   CardEst,
+  CardB2,
 } from "./components";
+import NuevoLogo from "../../resources/icon-logo";
+import logo from "../../resources/images/SPAimages/icon-card-cv-saptalent.svg";
 import { CardInitPerfil } from "../../components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
 import { useSelector, useDispatch } from "react-redux";
@@ -42,7 +45,6 @@ const Perfil = () => {
   const [openEditarEst, setOpenEditarEst] = useState(false);
   const [openModalProfesion, setOpenModalProfesion] = useState(false);
   /**DATA EDITAR */
-  const [dataEditar, setDataEditar] = useState(null);
   const [dataTrabajos, setDataTrabajos] = useState(null);
   const [dataCert, setDataCert] = useState(null);
   const [dataAdn, setDataAdn] = useState(null);
@@ -60,14 +62,14 @@ const Perfil = () => {
   const [_switch, setSwitch] = useState(false);
   const [active, setActive] = useState("one");
   const [activeStep, setActiveStep] = useState(0);
-  const [postulaciones, setPostulaciones] = useState([]);
+  const [postulaciones, setPostulaciones] = useState(datapost);
   /*DATOS REDUX**/
   const usuario = useSelector((state) => state.auth.usuario);
   const certificados = useSelector((state) => state.certificado.certificados);
-  // const estudios = useSelector((state) => state.estudio.estudios);
+  const estudios = useSelector((state) => state.estudio.estudios);
   const adns = useSelector((state) => state.adn.adns);
   const trabajos = useSelector((state) => state.trabajo.trabajos);
-  const estudios = [];
+  // const estudios = [];
   useEffect(() => {
     if (usuario) {
       if (usuario.sexo === "Masculino") {
@@ -133,11 +135,6 @@ const Perfil = () => {
     }
   }, [estudios]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setPostulaciones(datapost);
-    }, 500);
-  }, []);
   return (
     <div className="cont-new-perfil">
       <ModalProfesion
@@ -187,6 +184,10 @@ const Perfil = () => {
         setSwitch={setSwitch}
       />
       <div className="left-new-perfil">
+        <div className="titulo-page">
+          <img src={logo} alt="SAP"></img>
+          <h1>Perfil</h1>
+        </div>
         <div className="item-1">
           {usuario ? (
             dataProfesion ? (
@@ -201,26 +202,30 @@ const Perfil = () => {
                 type={cardSexo}
                 imgOne
                 colorOne
-                openProfesion
+                openProfesion={estudios.length > 0 ? true : false}
                 setOpenModalProfesion={setOpenModalProfesion}
                 title="¿Cuál es tu Profesión?"
                 desc="Muéstranos tu carrera y/o profesión."
                 txtBtn="Comenzar"
-                // link=""
+                link="/estudios"
               />
             )
           ) : null}
         </div>
         <div
           className="item-1"
-          style={{ backgroundColor: "inherit", boxShadow: "inherit" }}
+          style={{
+            backgroundColor: "inherit",
+            boxShadow: "inherit",
+            overflow: "visible",
+          }}
         >
           <div
             style={{
-              overflow: "auto",
+              overflow: estudios.length > 0 ? "auto" : "visible",
               maxHeight: "100%",
               width: "100%",
-              padding: "10px 10px 10px 10px",
+              padding: estudios.length > 0 ? "10px 10px 10px 10px" : "0",
             }}
           >
             {estudios.length > 0 ? (
@@ -235,7 +240,10 @@ const Perfil = () => {
                 );
               })
             ) : (
-              <p>card</p>
+              <>
+                <CardB2 link typeB texto="¿Estudios superiores?" />
+                <CardB2 link typeB texto="¿Tienes cursos?" />
+              </>
             )}
           </div>
         </div>
