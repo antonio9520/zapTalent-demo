@@ -19,6 +19,7 @@ import CardCert from "./cardCert/Card";
 import CardAdnNew from "./cardAdnNew/Card";
 import CardPost from "./cardPost/Card";
 import CardProNew from "./cardProfesionNew/Card";
+import Drawer from "./drawerCardPerfil/Drawer";
 
 export {
   Header,
@@ -41,4 +42,5 @@ export {
   CardAdnNew,
   CardPost,
   CardProNew,
+  Drawer,
 };

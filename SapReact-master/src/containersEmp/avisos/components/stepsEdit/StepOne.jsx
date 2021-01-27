@@ -10,6 +10,7 @@ import {
 } from "@material-ui/pickers";
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
+import { actEmpresa } from "../../../../assets/actEmpresa";
 
 const StepOne = forwardRef((props, ref) => {
   const {
@@ -137,18 +138,15 @@ const StepOne = forwardRef((props, ref) => {
               setArea(e.target.value);
             }}
           >
-            <MenuItem className="custom-menu-item" value="item1">
-              item1
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item2">
-              item2
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item3">
-              item3
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item4">
-              item4
-            </MenuItem>
+            {actEmpresa.map((item, index) => (
+              <MenuItem
+                key={index}
+                className="custom-menu-item"
+                value={item.Seleccionar}
+              >
+                {item.Seleccionar}
+              </MenuItem>
+            ))}
           </CustomSelectB>
         </div>
         <div className="container-inputs-form-emp">

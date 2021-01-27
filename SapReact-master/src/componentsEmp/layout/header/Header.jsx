@@ -12,7 +12,7 @@ const Header = (props) => {
   // const usuario = useSelector((state) => state.auth.usuario);
 
   return (
-    <div className="container-header-emp">
+    <div className="container-header-emp" style={{ zIndex: 100 }}>
       <div className="header-left">
         <div className="cont-logo-principal">
           <img src={logo} alt="logo" className="logo-principal" />

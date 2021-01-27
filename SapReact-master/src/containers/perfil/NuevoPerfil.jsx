@@ -1,7 +1,9 @@
 /* eslint-disable no-lone-blocks */
 import React, { useState, useEffect } from "react";
 import "./Perfil.css";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, IconButton } from "@material-ui/core";
+import { AccountCircle } from "@material-ui/icons";
+import { Tooltip } from "../../components";
 import {
   ModalProfesion,
   CardPerfilNew,
@@ -15,8 +17,8 @@ import {
   CardProNew,
   CardEst,
   CardB2,
+  Drawer,
 } from "./components";
-import NuevoLogo from "../../resources/icon-logo";
 import logo from "../../resources/images/SPAimages/icon-card-cv-saptalent.svg";
 import { CardInitPerfil } from "../../components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
@@ -57,6 +59,7 @@ const Perfil = () => {
     type: "Instagram",
   });
   /** */
+  const [openDrawer, setOpenDrawer] = useState(true);
   const [cardSexo, setCardSexo] = useState("");
   const [dataProfesion, setDataProfesion] = useState(null);
   const [_switch, setSwitch] = useState(false);
@@ -137,6 +140,25 @@ const Perfil = () => {
 
   return (
     <div className="cont-new-perfil">
+      <Tooltip title="Ver información de perfil">
+        <IconButton
+          className="btn-open-drawer-perfil"
+          onClick={() => setOpenDrawer(true)}
+        >
+          <AccountCircle />
+        </IconButton>
+      </Tooltip>
+      <Drawer
+        open={openDrawer}
+        setOpen={setOpenDrawer}
+        openModalRRSS={openModalRRSS}
+        setOpenModalRRSS={setOpenModalRRSS}
+        setOpenModal={setOpenModal}
+        setActive={setActive}
+        setActiveStep={setActiveStep}
+        habilidades={usuario ? usuario.habilidades : null}
+        setOpenModalHab={setOpenModalHab}
+      />
       <ModalProfesion
         setOpenModalProfesion={setOpenModalProfesion}
         openModalProfesion={openModalProfesion}

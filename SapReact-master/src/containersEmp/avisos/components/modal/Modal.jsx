@@ -18,7 +18,7 @@ const CustomModal = (props) => {
   const { setOpenModal, openModal } = props;
   const usuario = useSelector((state) => state.authEmp.usuario);
   const cargando = useSelector((state) => state.aviso.cargando);
-  const [step, setStep] = useState("one");
+  const [step, setStep] = useState("two");
   //step one
   const [titulo, setTitulo] = useState("");
   const [profesion, setProfesion] = useState("");

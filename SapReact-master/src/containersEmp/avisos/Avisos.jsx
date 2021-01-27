@@ -18,7 +18,7 @@ const Avisos = () => {
   const usuario = useSelector((state) => state.authEmp.usuario);
   const avisos = useSelector((state) => state.aviso.avisos);
   const loading = useSelector((state) => state.aviso.loading);
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(true);
   const [idEliminar, setIdEliminar] = useState("");
   const [openModalEliminar, setOpenModalEliminar] = useState(false);
   const [openModalEditar, setOpenModalEditar] = useState(false);

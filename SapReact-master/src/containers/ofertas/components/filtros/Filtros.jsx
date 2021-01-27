@@ -11,6 +11,7 @@ import {
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
 import { regiones } from "../../../../assets/regiones";
+import { actEmpresa } from "../../../../assets/actEmpresa";
 
 const Filtros = ({ open, setOpen }) => {
   const dispatch = useDispatch();
@@ -124,18 +125,15 @@ const Filtros = ({ open, setOpen }) => {
             value={area}
             name="area"
           >
-            <MenuItem className="custom-menu-item" value="item1">
-              item1
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item2">
-              item2
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item3">
-              item3
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item4">
-              item4
-            </MenuItem>
+            {actEmpresa.map((item, index) => (
+              <MenuItem
+                key={index}
+                className="custom-menu-item"
+                value={item.Seleccionar}
+              >
+                {item.Seleccionar}
+              </MenuItem>
+            ))}
           </CustomSelect>
         </div>
         <div className="item-2">

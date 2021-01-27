@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import {
   ListItem,
   IconButton,
@@ -14,13 +14,8 @@ import Loader from "react-loader-spinner";
 import { Tooltip } from "../../../../components";
 import { editarAdnAction } from "../../../../redux/actions/adnAction";
 
-const FormEditar = ({
-  setOpenModalEditar,
-  dataEditar,
-  setView,
-  cancelarEditar,
-}) => {
-  console.log(dataEditar);
+const FormEditar = forwardRef((props, ref) => {
+  const { setOpenModalEditar, dataEditar, setView, cancelarEditar } = props;
   const dispatch = useDispatch();
   const cargando = useSelector((state) => state.adn.cargando);
   const [loading, setLoading] = useState(false);
@@ -123,7 +118,6 @@ const FormEditar = ({
           {obs || editObs ? (
             <>
               <p className="pobs-title">Observación</p>
-              {/* <p className="pobs-desc">{data.obs}</p> */}
               <textarea
                 className={
                   editObs
@@ -325,7 +319,7 @@ const FormEditar = ({
       ) : null}
     </div>
   );
-};
+});
 
 export default FormEditar;
 

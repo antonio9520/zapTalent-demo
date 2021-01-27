@@ -44,17 +44,19 @@
   color: white;
   border-radius: 3px;
   padding: 5px 10px;
-  margin-left: 5px;
+  margin-left: 15px;
   cursor: pointer;
   height: 25px;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
   transition: 0.5s all ease-in-out;
 }
 .div-tipo-consultor-active {
   color: white;
   border-radius: 3px;
-  padding: 10px 20px;
-  margin-left: 5px;
+  padding: 5px 10px;
+  margin-left: 15px;
   cursor: pointer;
+  transform: scale(1.2);
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
   transition: 0.5s all ease-in-out;
 }

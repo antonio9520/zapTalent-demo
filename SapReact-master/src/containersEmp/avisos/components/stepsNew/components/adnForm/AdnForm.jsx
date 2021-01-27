@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./AdnForm.css";
 import { CustomSelectB, Tooltip } from "../../../../../../components";
-import { IconButton, MenuItem, MobileStepper } from "@material-ui/core";
+import { IconButton, MenuItem, MobileStepper, Button } from "@material-ui/core";
 import Loader from "react-loader-spinner";
-import { ArrowBackIos, ArrowForwardIos, Close } from "@material-ui/icons";
+import { ArrowBackIos, ArrowForwardIos, Close, Info } from "@material-ui/icons";
 import { modulos } from "../../../../../../assets/modulos";
 import SwipeableViews from "react-swipeable-views";
 
@@ -14,7 +14,10 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
   const [modulo, setModulo] = useState(null);
   const [error, setError] = useState(false);
   const [initDefault, setInitDefault] = useState(true);
-  
+  const [nivel, setNivel] = useState(null);
+  const [_switch_nivel, setSwitchNivel] = useState(false);
+  const [dataNivel, setDataNivel] = useState("");
+  const [errorNivel, setErrorNivel] = useState(false);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -50,6 +53,11 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
     });
   };
 
+  const addNivel = (data) => {
+    setSwitchNivel(true);
+    setDataNivel(data);
+  };
+
   useEffect(() => {
     setLoading(true);
     setActiveStep(0);
@@ -73,6 +81,30 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
     setInitDefault(false);
   }, [errores2]);
 
+  const saveNivel = (id) => {
+    adns.map((it) => {
+      if (it.id === id) {
+        it.submodulos.push({
+          submodulo: dataNivel.name,
+          nivel: nivel,
+        });
+      }
+    });
+    setSwitchNivel(false);
+    setLoading(true);
+    setActiveStep(0);
+    setNivel(null);
+    setTimeout(() => {
+      setLoading(false);
+    }, 200);
+  };
+  const recargar = () => {
+    setLoading(true);
+    setActiveStep(0);
+    setTimeout(() => {
+      setLoading(false);
+    }, 200);
+  };
   // console.log(data);
   useEffect(() => {
     setCargando(true);
@@ -119,14 +151,6 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
                     {item.modulo}
                   </MenuItem>
                 );
-                // <MenuItem
-                //   key={index}
-                //   className="custom-menu-item"
-                //   value={item.modulo}
-                //   disabled
-                // >
-                //   {item.modulo}
-                // </MenuItem>
               })}
         </CustomSelectB>
       </div>
@@ -168,6 +192,10 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
                               setAdns={setAdns}
                               adns={adns}
                               id={data.id}
+                              addNivel={addNivel}
+                              _switch_nivel={_switch_nivel}
+                              setSwitchNivel={setSwitchNivel}
+                              recargar={recargar}
                             />
                           ))}
                         </div>
@@ -202,20 +230,89 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
           <Close className="icon-close" />
         </IconButton>
       </div>
+      {_switch_nivel ? (
+        <div className="overlay-card-adn-emp">
+          <p>Selecciona un nivel para {dataNivel.name}</p>
+          <div style={{ width: "300px", marginBottom: "20px" }}>
+            <CustomSelectB
+              label="Nivel"
+              helpertext="Seleccione un nivel"
+              error={errorNivel}
+              value={nivel}
+              onChange={(e) => {
+                setErrorNivel(false);
+                setNivel(e.target.value);
+              }}
+            >
+              <MenuItem className="custom-menu-item" value="No Maneja">
+                No Maneja
+              </MenuItem>
+              <MenuItem className="custom-menu-item" value="Básico">
+                Básico
+              </MenuItem>
+              <MenuItem className="custom-menu-item" value="Medio">
+                Medio
+              </MenuItem>
+              <MenuItem className="custom-menu-item" value="Avanzado">
+                Avanzado
+              </MenuItem>
+            </CustomSelectB>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <Button
+              className="btn-overlay-card-adn-emp"
+              onClick={() => {
+                setDataNivel(null);
+                setSwitchNivel(false);
+                setNivel(null);
+              }}
+            >
+              Cancelar
+            </Button>
+            <Button
+              className="btn-overlay-card-adn-emp"
+              onClick={() => {
+                if (nivel === null) {
+                  setErrorNivel(true);
+                } else {
+                  saveNivel(dataNivel.id);
+                }
+              }}
+            >
+              Continuar
+            </Button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };
 
 export default AdnForm;
 
-const Submodulos = ({ data, id, setAdns, adns }) => {
+const Submodulos = ({
+  data,
+  id,
+  setAdns,
+  adns,
+  addNivel,
+  _switch_nivel,
+  setSwitchNivel,
+  recargar,
+}) => {
   const [active, setActive] = useState(false);
-
+  const [nivel, setNivel] = useState(null);
   const handleClick = () => {
-    setActive(!active);
     if (active) {
       adns.map((it) => {
         if (it.id === id) {
+          setActive(false);
           const filtro = it.submodulos.filter(
             (i) => i.submodulo !== data.submodulo
           );
@@ -225,45 +322,53 @@ const Submodulos = ({ data, id, setAdns, adns }) => {
           });
         }
       });
+      recargar();
     } else {
-      adns.map((it) => {
-        if (it.id === id) {
-          it.submodulos.push({
-            submodulo: data.submodulo,
-          });
-        }
-      });
+      addNivel({ name: data.submodulo, id: id });
     }
     console.log(adns);
   };
+
+  //VALOR POR DEFAULT
   useEffect(() => {
     adns.map((it) => {
       if (it.id === id) {
         it.submodulos.map((ite) => {
           if (ite.submodulo === data.submodulo) {
             setActive(true);
+            if (ite.nivel) {
+              setNivel(ite.nivel);
+            }
           }
         });
       }
     });
-  }, []);
+  }, [_switch_nivel]);
   // console.log(adns);
+  console.log(data);
   return (
     <Tooltip title={data.desc}>
-      <div
-        className={
-          active ? "cont-submod-avisos-emp" : "cont-submod-avisos-emp-inact"
-        }
-        onClick={handleClick}
-      >
-        <p
+      <>
+        <div
           className={
-            data.submodulo.length > 3 ? "name-submod-large-aviso-emp" : null
+            active ? "cont-submod-avisos-emp" : "cont-submod-avisos-emp-inact"
           }
+          onClick={handleClick}
         >
-          {data.submodulo}
-        </p>
-      </div>
+          <p
+            className={
+              data.submodulo.length > 3 ? "name-submod-large-aviso-emp" : null
+            }
+          >
+            {data.submodulo}
+          </p>
+          {nivel ? (
+            <Tooltip title={nivel} placement="top">
+              <Info className="cont-info-add-form-adn" />
+            </Tooltip>
+          ) : null}
+        </div>
+      </>
     </Tooltip>
   );
 };

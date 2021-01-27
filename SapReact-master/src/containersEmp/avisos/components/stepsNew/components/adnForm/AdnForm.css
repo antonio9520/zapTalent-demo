@@ -7,7 +7,44 @@
   margin-top: 10px;
   position: relative;
 }
+.overlay-card-adn-emp {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px 30px;
+  animation: 0.5s overlay-visible forwards;
+  /* animation: 0.5s overlay-visible-moss; */
+}
 
+.overlay-card-adn-emp p {
+  color: var(--blue-primary);
+  margin: 0;
+  margin-top: 10px;
+}
+@keyframes overlay-visible {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn-overlay-card-adn-emp {
+  background-color: var(--blue-primary) !important;
+  color: white !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  padding: 5px 20px !important;
+}
 .stepper-submod-form-emp {
   /* background-color: lightcoral; */
   margin-top: 30px;
@@ -22,6 +59,7 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
   transition: 0.5s all ease-in-out;
 }
 
@@ -44,6 +82,7 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 60px;
+  position: relative;
 }
 .cont-submod-avisos-emp-inact p {
   margin: 0;
@@ -70,10 +109,19 @@
   color: var(--gray-text);
 }
 
-.cont-loading-adn-emp{
+.cont-loading-adn-emp {
   /* background-color: royalblue; */
   display: flex;
   justify-content: center;
   align-items: flex-end;
   height: 70px;
+}
+
+.cont-info-add-form-adn {
+  position: absolute;
+  top:2px;
+  right: 2px;
+  width: 15px !important;
+  height: 15px !important;
+  color: white;
 }

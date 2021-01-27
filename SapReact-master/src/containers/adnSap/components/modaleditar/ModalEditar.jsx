@@ -22,6 +22,10 @@ const CustomModal = (props) => {
     dataEditar,
   } = props;
   const [view, setView] = useState("default");
+  console.log(dataEditar);
+  const [submodulos, setSubmodulos] = useState(
+    dataEditar ? dataEditar.submodulos : null
+  );
   const [arraySubMod, setArraySubMod] = useState([]);
 
   const cancelarEditar = () => {
@@ -56,6 +60,7 @@ const CustomModal = (props) => {
             dataEditar={dataEditar}
             setView={setView}
             cancelarEditar={cancelarEditar}
+ 
           />
         ) : view === "one" ? (
           <One
@@ -71,6 +76,8 @@ const CustomModal = (props) => {
             arraySubMod={arraySubMod}
             setArraySubMod={setArraySubMod}
             setDataEditar={setDataEditar}
+            submodulos={submodulos}
+            setSubmodulos={setSubmodulos}
           />
         ) : null}
       </Fade>

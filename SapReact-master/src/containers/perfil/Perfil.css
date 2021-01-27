@@ -482,6 +482,7 @@
   margin: 10px;
   min-width: 310px;
   box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  min-height: 380px;
 }
 
 .right-new-perfil {
@@ -497,12 +498,10 @@
   position: absolute;
   top: 8px;
   left: 70px;
- 
+
   display: flex;
-  
+
   /* background-color: rgb(139, 63, 63); */
-  
-  
 }
 .titulo-page h1 {
   color: var(--blue-primary);
@@ -513,4 +512,45 @@
   fill: var(--blue-primary) !important;
   stroke: var(--blue-primary) !important;
   height: 40px;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+  .cont-new-perfil {
+    /* background-color: red; */
+  }
+  .left-new-perfil {
+    padding-right: 0;
+  }
+  .left-new-perfil .item-1 {
+  }
+
+  .right-new-perfil {
+    display: none;
+  }
+  .btn-open-drawer-perfil {
+    position: absolute !important;
+    right: 0;
+    top: 40px;
+    z-index: 99;
+    background-color: var(--blue-primary) !important;
+    color: white !important;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+}
+
+@media only screen and (max-width: 500px) {
 }
