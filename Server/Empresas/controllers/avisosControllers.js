@@ -1,4 +1,5 @@
 const Avisos = require("../models/avisos");
+const Usuario = require("../../models/usuario");
 
 exports.crearAviso = async (req, res) => {
   try {
@@ -25,7 +26,7 @@ exports.deleteAvisos = async (req, res) => {
   const id = req.params.id;
 
   try {
-    Avisos.findById(id, (err, aviso) => {
+    await Avisos.findById(id, (err, aviso) => {
       if (err) res.status(402).json({ msg: "Error al borrar aviso" });
       aviso.remove((err) => {
         if (err) res.status(402).json({ msg: "Error al borrar aviso" });
@@ -63,10 +64,12 @@ exports.putAviso = async (req, res) => {
     renta,
     beneficios,
     descripcion,
+    submodulos,
+    modulos,
   } = req.body;
-  console.log(dispResidencia);
+
   try {
-    Avisos.findById(id, (err, aviso) => {
+    await Avisos.findById(id, (err, aviso) => {
       if (err) return res.status(404).json({ msg: "aviso no encontrado" });
       if (titulo) aviso.titulo = titulo;
       if (profesion) aviso.profesion = profesion;
@@ -90,6 +93,8 @@ exports.putAviso = async (req, res) => {
       if (renta) aviso.renta = renta;
       if (beneficios) aviso.beneficios = beneficios;
       if (descripcion) aviso.descripcion = descripcion;
+      if (submodulos) aviso.submodulos = submodulos;
+      if (modulos) aviso.modulos = modulos;
 
       aviso.save((err) => {
         if (err) return res.status(500).json({ msg: "Error al Actualizar" });
@@ -98,5 +103,35 @@ exports.putAviso = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ msg: "Hubo un error" });
+  }
+};
+
+exports.postularAviso = async (req, res) => {
+  const { id_aviso, id_user } = req.body;
+  console.log(req.body);
+  console.log(id_aviso);
+  console.log(id_user);
+
+  try {
+    Avisos.findById(id_aviso, (err, aviso) => {
+      if (err) return res.status(404).json({ msg: "aviso no encontrado" });
+
+      Usuario.findById(id_user, (err, usuario) => {
+        if (err) return res.status(404).json({ msg: "usuario no encontrado" });
+
+        // aviso.save((err) => {
+        //   if (err) return res.status(500).json({ msg: "Error al Actualizar" });
+        //   res.status(200).send(aviso);
+        // });
+        return res.send([usuario, aviso]);
+      });
+
+      // aviso.save((err) => {
+      //   if (err) return res.status(500).json({ msg: "Error al Actualizar" });
+      //   res.status(200).send(aviso);
+      // });
+    });
+  } catch (error) {
+    console.log(error);
   }
 };

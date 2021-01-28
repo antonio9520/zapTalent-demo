@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { appConfig } = require("../../config/config");
+
 
 const avisosSchema = mongoose.Schema({
   idusuario: {
@@ -27,7 +27,7 @@ const avisosSchema = mongoose.Schema({
     trim: true,
   },
   anosExpSap: {
-    type: String,
+    type: Number,
     trim: true,
   },
   fechaInicio: {
@@ -100,6 +100,9 @@ const avisosSchema = mongoose.Schema({
     type: Date,
     default: Date(),
   },
+  submodulos: [],
+  modulos: [],
+  post_users: [],
 });
 
-module.exports = mongoose.model("avisos", avisosSchema);
+module.exports = mongoose.model("Avisos", avisosSchema);

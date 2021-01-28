@@ -21,9 +21,8 @@ exports.filtrarAvisos = async (req, res) => {
     const avisos = await Avisos.find({
       $or: [query],
     });
-    //{ $or: [{ tipoConsultor: "Junior" }] }
+
     res.json(avisos);
-    // console.log(avisos);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Error en el servidor." });
@@ -33,15 +32,19 @@ exports.filtrarAvisos = async (req, res) => {
 const createQuery = (data) => {
   const {
     tipoConsultor,
-    anosExpSap,
+    anosExpMin,
+    anosExpMax,
     area,
     minimo,
     maximo,
-    fecha,
+    fechaini,
+    fechafin,
     tipoContrato,
     region,
     comuna,
     jornadaLaboral,
+    modulos,
+    submodulos,
   } = data;
   let query;
 
@@ -52,7 +55,9 @@ const createQuery = (data) => {
   }
 
   if (tipoConsultor) query.tipoConsultor = tipoConsultor;
-  if (anosExpSap) query.anosExpSap = anosExpSap;
+
+  if (modulos) query.modulos = modulos;
+  if (submodulos) query.submodulos = submodulos;
   if (area) query.area = area;
   if (minimo && maximo) {
     query.renta = { $gte: minimo, $lte: maximo };
@@ -61,10 +66,22 @@ const createQuery = (data) => {
   } else if (maximo) {
     query.renta = { $lte: maximo };
   }
-  if (fecha) {
+  if (anosExpMin && anosExpMax) {
+    query.anosExpSap = { $gte: anosExpMin, $lte: anosExpMax };
+  } else if (anosExpMin) {
+    query.anosExpSap = { $gte: anosExpMin };
+  } else if (anosExpMax) {
+    query.anosExpSap = { $lte: anosExpMax };
+  }
+  if (fechaini && fechafin) {
     query.creacion = {
-      $gte: new Date(`${fecha.substring(0, 10)}T00:00:00.000Z`),
-      $lte: new Date(`${fecha.substring(0, 10)}T23:59:59.999Z`),
+      $gte: new Date(`${fechaini.substring(0, 10)}T00:00:00.000Z`),
+      $lte: new Date(`${fechafin.substring(0, 10)}T23:59:59.999Z`),
+    };
+  } else if (fechaini) {
+    query.creacion = {
+      $gte: new Date(`${fechaini.substring(0, 10)}T00:00:00.000Z`),
+      $lte: new Date(),
     };
   }
   if (region) query.region = region;

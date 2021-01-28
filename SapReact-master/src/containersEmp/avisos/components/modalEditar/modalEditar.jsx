@@ -49,8 +49,22 @@ const CustomModal = (props) => {
   const [descripcion, setDescripcion] = useState("");
   const [estado, setEstado] = useState("Activo");
 
+  const dataSubmodulos = () => {
+    let submodulos = [];
+    let modulos = [];
+    adns.map((item) => {
+      modulos.push(item.modulo);
+      console.log(item);
+      item.submodulos.map((item) => {
+        submodulos.push(item.submodulo);
+      });
+    });
+    return { modulos, submodulos };
+  };
+
   //guardar aviso
-  const guardarAvisoEditado = () => {
+  const guardarAvisoEditado = async () => {
+    let submod = await dataSubmodulos();
     dispatch(
       editarAvisoAction({
         _id: data._id,
@@ -60,6 +74,7 @@ const CustomModal = (props) => {
         area,
         anosExp,
         fechaInicio,
+        anosExpSap,
         fechaTermino,
         tipoConsultor,
         adns: adns,
@@ -76,6 +91,8 @@ const CustomModal = (props) => {
         beneficios,
         descripcion,
         estado,
+        submodulos: submod.submodulos,
+        modulos: submod.modulos,
       })
     ).then((res) => (res === true ? closeModal() : null));
   };

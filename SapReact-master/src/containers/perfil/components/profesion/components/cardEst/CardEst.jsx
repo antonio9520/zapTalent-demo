@@ -9,9 +9,14 @@ const CardEst = (props) => {
   if (data === undefined) return null;
   let today = new Date();
   const dateResult = calcDate(today, data.diafin);
-
+  console.log(data);
   const handleClick = () => {
-    setActive({ _id: data._id, name: data.carrera });
+    setActive({
+      _id: data._id,
+      name: data.carrera,
+      tipoestudio: data.tipoestudio,
+      carrera: data.carrera,
+    });
   };
 
   return (

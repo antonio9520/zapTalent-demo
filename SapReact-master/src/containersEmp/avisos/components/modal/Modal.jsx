@@ -12,13 +12,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
 }));
+
 const CustomModal = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { setOpenModal, openModal } = props;
   const usuario = useSelector((state) => state.authEmp.usuario);
   const cargando = useSelector((state) => state.aviso.cargando);
-  const [step, setStep] = useState("two");
+  const [step, setStep] = useState("one");
   //step one
   const [titulo, setTitulo] = useState("");
   const [profesion, setProfesion] = useState("");
@@ -48,8 +49,22 @@ const CustomModal = (props) => {
   const [descripcion, setDescripcion] = useState("");
   const [estado, setEstado] = useState("Activo");
 
+  const dataSubmodulos = () => {
+    let submodulos = [];
+    let modulos = [];
+    adns.map((item) => {
+      modulos.push(item.modulo);
+      console.log(item);
+      item.submodulos.map((item) => {
+        submodulos.push(item.submodulo);
+      });
+    });
+    return { modulos, submodulos };
+  };
+
   //guardar aviso
-  const guardarAviso = () => {
+  const guardarAviso = async () => {
+    let submod = await dataSubmodulos();
     dispatch(
       agregarAvisoAction({
         idusuario: usuario._id,
@@ -76,6 +91,8 @@ const CustomModal = (props) => {
         beneficios,
         descripcion,
         estado,
+        submodulos: submod.submodulos,
+        modulos: submod.modulos,
       })
     ).then((res) => (res === true ? closeModal() : null));
   };
@@ -201,3 +218,48 @@ const CustomModal = (props) => {
 };
 
 export default CustomModal;
+
+const data = [
+  {
+    id: "d_G_kgXeK",
+    modulo: "BI",
+    submodulos: [
+      {
+        submodulo: "BI",
+        nivel: "Avanzado",
+      },
+    ],
+  },
+  {
+    id: "yQKDlrt6b",
+    modulo: "MM",
+    submodulos: [
+      {
+        submodulo: "PUR",
+        nivel: "No Maneja",
+      },
+      {
+        submodulo: "IV",
+        nivel: "Medio",
+      },
+      {
+        submodulo: "SRV",
+        nivel: "Básico",
+      },
+    ],
+  },
+  {
+    id: "O1E44nz62",
+    modulo: "QM",
+    submodulos: [
+      {
+        submodulo: "IM",
+        nivel: "Medio",
+      },
+      {
+        submodulo: "CA",
+        nivel: "No Maneja",
+      },
+    ],
+  },
+];

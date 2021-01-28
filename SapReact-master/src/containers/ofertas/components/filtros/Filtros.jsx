@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Filtros.css";
 import { Drawer, MenuItem } from "@material-ui/core";
 import { filtrarOferLaboralesAction } from "../../../../redux/actions/ofertasLaboralesAction";
@@ -12,28 +12,40 @@ import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
 import { regiones } from "../../../../assets/regiones";
 import { actEmpresa } from "../../../../assets/actEmpresa";
+import { modulos } from "../../../../assets/modulos";
 
 const Filtros = ({ open, setOpen }) => {
   const dispatch = useDispatch();
 
   const [tipoConsultor, setTipoConsultor] = useState(null);
-  const [anosExp, setAnosExp] = useState(null);
+  const [anosExpMin, setAnosExpMin] = useState(null);
+  const [anosExpMax, setAnosExpMax] = useState(null);
   const [area, setArea] = useState(null);
   const [minimo, setMinimo] = useState(null);
   const [maximo, setMaximo] = useState(null);
   const [fecha, setFecha] = useState(null);
+  const [fechaini, setFechaIni] = useState(null);
+  const [fechafin, setFechaFin] = useState(null);
   const [tipoContrato, setTipoContrato] = useState(null);
   const [comuna, setComuna] = useState(null);
   const [region, setRegion] = useState(null);
+  const [_modulo, setModulos] = useState(null);
+  const [_submodulo, setSubmodulos] = useState(null);
   const [tipoJornada, setTipoJornada] = useState(null);
   const comunas = regiones.find((item) => item.region === region);
+  const submodulos = modulos.find((item) => item.modulo === _modulo);
   const query = {};
-  const date = new Date(fecha);
-  date.setDate(date.getDate() - 1);
+  const date1 = new Date(fechaini);
+  date1.setDate(date1.getDate() - 1);
+  const date2 = new Date(fechafin);
+  date2.setDate(date2.getDate() - 1);
+
   const filtrar = () => {
     if (tipoConsultor) query.tipoConsultor = tipoConsultor;
 
-    if (anosExp) query.anosExpSap = anosExp;
+    if (anosExpMin) query.anosExpMin = anosExpMin;
+
+    if (anosExpMax) query.anosExpMax = anosExpMax;
 
     if (area) query.area = area;
 
@@ -41,7 +53,9 @@ const Filtros = ({ open, setOpen }) => {
 
     if (maximo) query.maximo = maximo;
 
-    if (fecha) query.fecha = date;
+    if (fechaini) query.fechaini = date1;
+
+    if (fechafin) query.fechafin = date2;
 
     if (tipoContrato) query.tipoContrato = tipoContrato;
 
@@ -52,16 +66,27 @@ const Filtros = ({ open, setOpen }) => {
     if (tipoJornada) {
       query.jornadaLaboral = tipoJornada;
     }
+    if (_modulo) {
+      query.modulos = _modulo;
+    }
+    if (_submodulo) {
+      query.submodulos = _submodulo;
+    }
 
     dispatch(filtrarOferLaboralesAction(query)).then(() => setOpen(false));
   };
 
   const limpiarFiltros = () => {
     setTipoConsultor(null);
-    setAnosExp(null);
+    setAnosExpMin(null);
+    setAnosExpMax(null);
     setArea(null);
+    setFechaIni(null);
+    setFechaFin(null);
     setMinimo(null);
     setMaximo(null);
+    setModulos(null);
+    setSubmodulos(null);
     setFecha(null);
     setTipoContrato(null);
     setComuna(null);
@@ -69,6 +94,9 @@ const Filtros = ({ open, setOpen }) => {
     setTipoJornada(null);
     dispatch(filtrarOferLaboralesAction({})).then(() => setOpen(false));
   };
+  useEffect(() => {
+    setSubmodulos(null);
+  }, [_modulo]);
   return (
     <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
       <div className="cont-filtros-ofertas-laborales">
@@ -78,7 +106,7 @@ const Filtros = ({ open, setOpen }) => {
         <div className="item-2">
           <p>ADN-SAP</p>
           <CustomSelect
-            placeholder="Selecciona"
+            placeholder="Tipo Consultor"
             size="small"
             onChange={setTipoConsultor}
             value={tipoConsultor}
@@ -100,21 +128,85 @@ const Filtros = ({ open, setOpen }) => {
               Senior
             </MenuItem>
           </CustomSelect>
+
+          <div className="item-doble-filtros-of">
+            <CustomSelect
+              placeholder="Modulo"
+              size="small"
+              onChange={setModulos}
+              value={_modulo}
+              // error={errorconsultor}
+              // helpertext="Seleccione un tipo de consultor"
+              // funcionError={setErrorConsultor}
+              name="consultor"
+            >
+              {modulos.map((item, index) => (
+                <MenuItem
+                  key={index}
+                  className="custom-menu-item"
+                  value={item.modulo}
+                >
+                  {item.modulo}
+                </MenuItem>
+              ))}
+            </CustomSelect>
+            <CustomSelect
+              placeholder="SubModulo"
+              size="small"
+              onChange={setSubmodulos}
+              value={_submodulo}
+              // error={errorconsultor}
+              // helpertext="Seleccione un tipo de consultor"
+              // funcionError={setErrorConsultor}
+              name="consultor"
+            >
+              {submodulos ? (
+                submodulos.submodulos.map((item, index) => (
+                  <MenuItem
+                    key={index}
+                    className="custom-menu-item"
+                    value={item.submodulo}
+                  >
+                    {item.submodulo}
+                  </MenuItem>
+                ))
+              ) : (
+                <MenuItem className="custom-menu-item" value={null}>
+                  Seleccione un modulo
+                </MenuItem>
+              )}
+            </CustomSelect>
+          </div>
         </div>
         <div className="item-2">
           <p>Años de experiencia SAP</p>
-          <OutInput
-            // label="Nombres"
-            // helpertext={nombresmsg}
-            funcOnChange={setAnosExp}
-            // defaultValue={nombres}
-            value={anosExp}
-            name="anosExp"
-            size="small"
-            type="number"
-            // error={errornombre}
-            // funcionError={setErrorNombre}
-          />
+
+          <div className="item-doble-filtros-of">
+            <OutInput
+              label="Rango minimo"
+              // helpertext={nombresmsg}
+              funcOnChange={setAnosExpMin}
+              // defaultValue={nombres}
+              value={anosExpMin}
+              name="anosExp"
+              size="small"
+              type="number"
+              // error={errornombre}
+              // funcionError={setErrorNombre}
+            />
+            <OutInput
+              label="Rango Maximo"
+              // helpertext={nombresmsg}
+              funcOnChange={setAnosExpMax}
+              // defaultValue={nombres}
+              value={anosExpMax}
+              name="anosExp"
+              size="small"
+              type="number"
+              // error={errornombre}
+              // funcionError={setErrorNombre}
+            />
+          </div>
         </div>
         <div className="item-2">
           <p>Industria</p>
@@ -165,30 +257,56 @@ const Filtros = ({ open, setOpen }) => {
         </div>
         <div className="item-2">
           <p>Fecha Publicación</p>
+
           <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
-            <KeyboardDatePicker
-              // error={fechaInicioError}
-              fullWidth
-              size="small"
-              label="Inicio"
-              minDate={new Date("2010-01-01")}
-              maxDate={new Date("2030-01-01")}
-              // helperText={
-              //   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
-              // }
-              format="dd/MM/yyyy"
-              value={fecha}
-              // maxDate={new Date()}
-              onChange={(newValue) => {
-                setFecha(newValue);
-              }}
-              InputProps={{
-                className: "input-date-picker-inicio",
-                readOnly: true,
-              }}
-              className="date-picker-inicio"
-              InputLabelProps={{ className: "input-label-date-form" }}
-            />
+            <div className="item-doble-filtros-of">
+              <KeyboardDatePicker
+                // error={fechaInicioError}
+                fullWidth
+                size="small"
+                label="Rango minimo"
+                minDate={new Date("2010-01-01")}
+                maxDate={new Date("2030-01-01")}
+                // helperText={
+                //   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
+                // }
+                format="dd/MM/yyyy"
+                value={fechaini}
+                // maxDate={new Date()}
+                onChange={(newValue) => {
+                  setFechaIni(newValue);
+                }}
+                InputProps={{
+                  className: "input-date-picker-inicio",
+                  readOnly: true,
+                }}
+                className="date-picker-inicio"
+                InputLabelProps={{ className: "input-label-date-form" }}
+              />
+              <KeyboardDatePicker
+                // error={fechaInicioError}
+                fullWidth
+                size="small"
+                label="Rango maximo"
+                minDate={new Date("2010-01-01")}
+                maxDate={new Date("2030-01-01")}
+                // helperText={
+                //   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
+                // }
+                format="dd/MM/yyyy"
+                value={fechafin}
+                // maxDate={new Date()}
+                onChange={(newValue) => {
+                  setFechaFin(newValue);
+                }}
+                InputProps={{
+                  className: "input-date-picker-inicio",
+                  readOnly: true,
+                }}
+                className="date-picker-inicio"
+                InputLabelProps={{ className: "input-label-date-form" }}
+              />
+            </div>
           </MuiPickersUtilsProvider>
         </div>
         <div className="item-2">

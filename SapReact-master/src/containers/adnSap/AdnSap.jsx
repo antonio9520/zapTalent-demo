@@ -41,7 +41,13 @@ const AdnSap = () => {
         }
       }
     }
-  }, [usuario, _switch]);
+  }, [usuario]);
+
+  const evitarBug = () => {
+    if (usuario) {
+      dispatch(obtenerAdnAction(usuario._id));
+    }
+  };
   // console.log(adns);
   return (
     <>
@@ -117,6 +123,7 @@ const AdnSap = () => {
               dataEditar={dataEditar}
               setDataEditar={setDataEditar}
               setSwitch={setSwitch}
+              evitarBug={evitarBug}
             />
             <Modal
               setOpenModal={setOpenModal}

@@ -59,7 +59,7 @@ const Perfil = () => {
     type: "Instagram",
   });
   /** */
-  const [openDrawer, setOpenDrawer] = useState(true);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const [cardSexo, setCardSexo] = useState("");
   const [dataProfesion, setDataProfesion] = useState(null);
   const [_switch, setSwitch] = useState(false);

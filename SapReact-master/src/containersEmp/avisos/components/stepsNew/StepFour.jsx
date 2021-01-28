@@ -3,7 +3,6 @@ import "./Styles.css";
 import {
   Button,
   IconButton as IconButtonCustom,
-  CustomSelectB,
   CustomInput,
   Tooltip,
 } from "../../../../components";
@@ -63,7 +62,7 @@ const StepFour = forwardRef((props, ref) => {
     });
     setErrores2(errores);
   };
-  
+
   useEffect(() => {
     if (initDefault === false) {
       if (errorRenta || errorDescripcion || errores.length > 0) {

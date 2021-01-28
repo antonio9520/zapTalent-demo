@@ -7,6 +7,7 @@ import AdnForm from "./components/adnForm/AdnForm";
 import shortid from "shortid";
 
 const StepTwo = forwardRef((props, ref) => {
+  
   const {
     setStep,
     closeModal,
@@ -15,6 +16,7 @@ const StepTwo = forwardRef((props, ref) => {
     anosExpSap,
     setAnosExpZap,
   } = props;
+
   const [loading, setLoading] = useState(false);
   const [errores, setErrores] = useState([]);
   const [errores2, setErrores2] = useState([]);

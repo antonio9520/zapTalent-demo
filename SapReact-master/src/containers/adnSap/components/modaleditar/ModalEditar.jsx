@@ -20,6 +20,7 @@ const CustomModal = (props) => {
     setOpenModalEditar,
     openModalEditar,
     dataEditar,
+    evitarBug,
   } = props;
   const [view, setView] = useState("default");
   console.log(dataEditar);
@@ -30,7 +31,7 @@ const CustomModal = (props) => {
 
   const cancelarEditar = () => {
     setOpenModalEditar(false);
-    setSwitch(false);
+    evitarBug()
     setTimeout(() => {
       // setSwitch(false);
       setDataEditar(null);
@@ -60,7 +61,6 @@ const CustomModal = (props) => {
             dataEditar={dataEditar}
             setView={setView}
             cancelarEditar={cancelarEditar}
- 
           />
         ) : view === "one" ? (
           <One
