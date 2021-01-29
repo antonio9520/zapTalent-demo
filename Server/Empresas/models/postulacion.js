@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const postulacionSchema = mongoose.Schema({
 
-    idusuario: {
+    iduser: {
         type: String,
         trim: true,
     },
@@ -10,7 +10,7 @@ const postulacionSchema = mongoose.Schema({
         type: String,
         trim: true
     },
-    fecpostu: {
+    creacion: {
         type: Date,
         default: Date()
     }

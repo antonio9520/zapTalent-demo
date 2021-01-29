@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const avisosSchema = mongoose.Schema({
   idusuario: {
     type: String,
@@ -102,7 +101,9 @@ const avisosSchema = mongoose.Schema({
   },
   submodulos: [],
   modulos: [],
-  post_users: [],
+  id_post: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Avisos", avisosSchema);

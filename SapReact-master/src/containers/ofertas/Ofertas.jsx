@@ -2,22 +2,27 @@ import React, { useEffect, useState } from "react";
 import "./Ofertas.css";
 import { Card, Header, Filtros } from "./components";
 import { obtenerOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
+import { obtenerPostulacionesAction } from "../../redux/actions/postAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "react-loader-spinner";
-
 
 const Ofertas = () => {
   const dispatch = useDispatch();
   const ofertasLaborales = useSelector(
     (state) => state.ofertasLaborales.ofertasLaborales
   );
+  const usuario = useSelector((state) => state.auth.usuario);
   const loading = useSelector((state) => state.ofertasLaborales.loading);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    dispatch(obtenerOferLaboralesAction()); 
+    dispatch(obtenerOferLaboralesAction());
   }, []);
-
+  useEffect(() => {
+    if (usuario) {
+      dispatch(obtenerPostulacionesAction(usuario._id));
+    }
+  }, [usuario]);
   return (
     <>
       <div className="ofertas-laborales">

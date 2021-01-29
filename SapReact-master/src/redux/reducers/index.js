@@ -9,6 +9,7 @@ import ofertasLaboralesReducer from "./OfertasLaboralesReducer";
 //EMPRESA
 import authEmpReducer from "./reducers-emp/authReducer";
 import avisoReducers from "./reducers-emp/avisosReducer";
+import postReducer from "./postReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -20,4 +21,5 @@ export default combineReducers({
   authEmp: authEmpReducer,
   aviso: avisoReducers,
   ofertasLaborales: ofertasLaboralesReducer,
+  postulaciones: postReducer,
 });

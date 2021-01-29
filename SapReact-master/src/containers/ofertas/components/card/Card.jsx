@@ -18,14 +18,24 @@ import {
 import { Button } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
 import NumberFormat from "react-number-format";
+import {
+  crearPostulacionAction,
+  eliminarPostulacionAction,
+} from "../../../../redux/actions/postAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const Card = ({ data }) => {
+  const dispatch = useDispatch();
+  const usuario = useSelector((state) => state.auth.usuario);
+  const postulaciones = useSelector(
+    (state) => state.postulaciones.postulaciones
+  );
+  const loading = useSelector((state) => state.postulaciones.loading);
   const {
     fechaInicio,
     fechaTermino,
     adns,
     fechaContratacion,
-    idusuario,
     titulo,
     _id,
     profesion,
@@ -47,8 +57,35 @@ const Card = ({ data }) => {
     anosExp,
     nameuser,
   } = data;
-  // console.log(data);
+
   const [active, setActive] = useState(0);
+  const [postulado, setPostulado] = useState(false);
+  const [id_post, setIdPost] = useState(null);
+  const [_switch, setSwitch] = useState(false);
+
+  const postular = () => {
+    if (usuario) {
+      dispatch(crearPostulacionAction({ idaviso: _id, iduser: usuario._id }));
+    }
+  };
+  const cancelarPostulacion = () => {
+    if (id_post) {
+      console.log("if id_post");
+      dispatch(eliminarPostulacionAction({ id_post, _id })).then((res) =>
+        res ? setPostulado(false) : null
+      );
+    }
+    console.log("funcion cancelar");
+  };
+  useEffect(() => {
+    console.log("useEffect");
+    postulaciones.map((item) => {
+      if (item._id === _id) {
+        setPostulado(true);
+        setIdPost(item.id_post);
+      }
+    });
+  }, [loading]);
   return (
     <div className="card-ofertas-laborales">
       <div className="top-card-ofertas-laborales">
@@ -183,9 +220,21 @@ const Card = ({ data }) => {
               // prefix={"$"}
             />
           </p>
-          <Button className="btn-postular-ofertas-laborales">
-            <p>Postular</p>
-          </Button>
+          {postulado ? (
+            <Button
+              className="btn-cancelar-postular-ofertas-laborales"
+              onClick={cancelarPostulacion}
+            >
+              <p>cancelar postulacion</p>
+            </Button>
+          ) : (
+            <Button
+              className="btn-postular-ofertas-laborales"
+              onClick={postular}
+            >
+              <p>Postular</p>
+            </Button>
+          )}
         </div>
       </div>
     </div>

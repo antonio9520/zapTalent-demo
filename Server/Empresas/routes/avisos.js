@@ -13,6 +13,6 @@ router.get("/:id", avisosControllers.mostrarAvisos);
 
 router.delete("/:id", avisosControllers.deleteAvisos);
 // router.put("/", usuarioAdminControllers.putUserAdmin);
-router.put("/postular/:id", avisosControllers.postularAviso);
+
 
 module.exports = router;

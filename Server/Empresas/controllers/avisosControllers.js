@@ -1,5 +1,5 @@
 const Avisos = require("../models/avisos");
-const Usuario = require("../../models/usuario");
+
 
 exports.crearAviso = async (req, res) => {
   try {
@@ -106,32 +106,3 @@ exports.putAviso = async (req, res) => {
   }
 };
 
-exports.postularAviso = async (req, res) => {
-  const { id_aviso, id_user } = req.body;
-  console.log(req.body);
-  console.log(id_aviso);
-  console.log(id_user);
-
-  try {
-    Avisos.findById(id_aviso, (err, aviso) => {
-      if (err) return res.status(404).json({ msg: "aviso no encontrado" });
-
-      Usuario.findById(id_user, (err, usuario) => {
-        if (err) return res.status(404).json({ msg: "usuario no encontrado" });
-
-        // aviso.save((err) => {
-        //   if (err) return res.status(500).json({ msg: "Error al Actualizar" });
-        //   res.status(200).send(aviso);
-        // });
-        return res.send([usuario, aviso]);
-      });
-
-      // aviso.save((err) => {
-      //   if (err) return res.status(500).json({ msg: "Error al Actualizar" });
-      //   res.status(200).send(aviso);
-      // });
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
