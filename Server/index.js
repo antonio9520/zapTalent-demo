@@ -23,6 +23,7 @@ server.use("/public", express.static(`${__dirname}/storage/usuario`));
 server.use("/public/cv", express.static(`${__dirname}/storage/cv`));
 server.use("/public/estudios", express.static(`${__dirname}/storage/estudios`));
 server.use("/public/imaemail", express.static(`${__dirname}/storage/imaemail`));
+server.use("/public/logoEmp", express.static(`${__dirname}/storage/logoEmp`));
 server.use(
   "/public/certificados",
   express.static(`${__dirname}/storage/certificados`)

@@ -2,14 +2,32 @@
   padding-top: 75px;
   padding-left: 10px;
   max-width: 1500px;
+  position: relative;
 }
 
 .cont-header-of-laborales {
-  padding-right: 10px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+  padding-left: 10px;
 }
 
 .cont-card-of-laborales {
-  padding: 10px 10px 0 0;
-
-  overflow: visible;
+  /* padding: 10px 10px 0 0;
+  max-height: 80vh;
+  overflow: auto; */
+  /* display: flex;
+  flex-wrap: wrap; */
+  justify-content: space-around;
+  padding-bottom: 60px;
+  max-height: 81vh;
+  overflow: auto;
+  padding-right: 20px;
+  padding-left: 10px;
+  overflow-x: visible;
+}
+.icon-page-header-user {
+  color: var(--blue-primary) !important;
+  width: 30px !important;
+  height: 30px !important;
+  margin-top: 3px;
 }

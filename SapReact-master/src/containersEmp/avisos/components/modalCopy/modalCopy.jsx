@@ -16,7 +16,7 @@ const CustomModal = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { setOpenModalCopy, openModalCopy, data, setDataCopy } = props;
-  console.log(data);
+
   const usuario = useSelector((state) => state.authEmp.usuario);
   const cargando = useSelector((state) => state.aviso.cargando);
   const [step, setStep] = useState("one");

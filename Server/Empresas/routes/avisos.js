@@ -9,7 +9,7 @@ router.post("/", avisosControllers.crearAviso);
 
 router.put("/:id", avisosControllers.putAviso);
 
-router.get("/:id", avisosControllers.mostrarAvisos);
+router.get("/:id/:skip", avisosControllers.mostrarAvisos);
 
 router.delete("/:id", avisosControllers.deleteAvisos);
 // router.put("/", usuarioAdminControllers.putUserAdmin);

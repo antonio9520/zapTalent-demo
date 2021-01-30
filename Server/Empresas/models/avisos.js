@@ -6,7 +6,7 @@ const avisosSchema = mongoose.Schema({
     require: true,
     trim: true,
   },
-  nameusuario: {
+  nameuser: {
     type: String,
   },
   titulo: {
@@ -102,6 +102,12 @@ const avisosSchema = mongoose.Schema({
   submodulos: [],
   modulos: [],
   id_post: {
+    type: String,
+  },
+  postulaciones: {
+    type: String,
+  },
+  logoURL: {
     type: String,
   },
 });

@@ -69,6 +69,7 @@ const CustomModal = (props) => {
       agregarAvisoAction({
         idusuario: usuario._id,
         nameuser: usuario.nameuser,
+        logoURL: usuario.logoURL,
         titulo,
         profesion,
         area,

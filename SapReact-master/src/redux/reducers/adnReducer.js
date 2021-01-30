@@ -46,7 +46,7 @@ export default function (state = initialState, action) {
         adns: action.payload,
       };
     case DESCARGA_ADN_ERROR:
-    case AGREGAR_ADN_ERROR:
+    case AGREGAR_ADN_ERROR: 
     case ADN_ELIMINADO_ERROR:
     case ADN_EDITADO_ERROR:
       return {

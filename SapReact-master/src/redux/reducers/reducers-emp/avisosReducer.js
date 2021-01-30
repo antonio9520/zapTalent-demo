@@ -42,7 +42,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        avisos: action.payload,
+        avisos: [...state.avisos, action.payload],
       };
     case AVISO_EDITADO_ERROR:
     case AVISO_ELIMINADO_ERROR:

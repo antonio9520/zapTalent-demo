@@ -7,7 +7,7 @@ const ofertasControllers = require("../controllers/OfertasControllers");
 //Api/usuarios
 
 //Recuperar trabajo por id usuario
-router.get("/", ofertasControllers.mostrarAvisos);
-router.post("/", ofertasControllers.filtrarAvisos);
+router.get("/:skip", ofertasControllers.mostrarAvisos);
+router.post("/:skip", ofertasControllers.filtrarAvisos);
 
 module.exports = router;

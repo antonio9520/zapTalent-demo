@@ -26,6 +26,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
 import { obtenerCertificadosAction } from "../../redux/actions/certificadoAction";
+import { obtenerPostulacionesAction } from "../../redux/actions/postAction";
 /**EDITAR*/
 import { ModalEditar as ModalEditarTrabajo } from "../../containers/trabajos/components";
 import { ModalEditar as ModalEditarCert } from "../../containers/certificados/components";
@@ -65,13 +66,16 @@ const Perfil = () => {
   const [_switch, setSwitch] = useState(false);
   const [active, setActive] = useState("one");
   const [activeStep, setActiveStep] = useState(0);
-  const [postulaciones, setPostulaciones] = useState(datapost);
+
   /*DATOS REDUX**/
   const usuario = useSelector((state) => state.auth.usuario);
   const certificados = useSelector((state) => state.certificado.certificados);
   const estudios = useSelector((state) => state.estudio.estudios);
   const adns = useSelector((state) => state.adn.adns);
   const trabajos = useSelector((state) => state.trabajo.trabajos);
+  const postulaciones = useSelector(
+    (state) => state.postulaciones.postulaciones
+  );
   // const estudios = [];
   useEffect(() => {
     if (usuario) {
@@ -124,6 +128,14 @@ const Perfil = () => {
     }
 
     //eslint-disable-next-line
+  }, [usuario]);
+
+  useEffect(() => {
+    if (postulaciones.length === 0) {
+      if (usuario) {
+        dispatch(obtenerPostulacionesAction(usuario._id));
+      }
+    }
   }, [usuario]);
 
   useEffect(() => {

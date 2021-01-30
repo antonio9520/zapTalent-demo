@@ -1,5 +1,5 @@
 const Avisos = require("../models/avisos");
-
+const Postulacion = require("../models/postulacion");
 
 exports.crearAviso = async (req, res) => {
   try {
@@ -13,13 +13,28 @@ exports.crearAviso = async (req, res) => {
 };
 
 exports.mostrarAvisos = async (req, res) => {
-  console.log(req.params.id);
+  const skip = req.params.skip;
+
   try {
-    const avisos = await Avisos.find({ idusuario: req.params.id });
-    res.json(avisos);
+    const avisos = await Avisos.find({ idusuario: req.params.id }, undefined, {
+      skip: parseInt(skip),
+      limit: 5,
+    });
+    const dataAvisos = await datapostulaciones(avisos);
+    res.json(dataAvisos);
   } catch (err) {
     res.status(500).json({ msg: "Hubo un error" });
   }
+};
+
+const datapostulaciones = async (avisos) => {
+  for (let i = 0; i < avisos.length; i++) {
+    const postulaciones = await Postulacion.find({
+      idaviso: avisos[i]._id,
+    }).countDocuments();
+    avisos[i].postulaciones = postulaciones;
+  }
+  return avisos;
 };
 
 exports.deleteAvisos = async (req, res) => {
@@ -105,4 +120,3 @@ exports.putAviso = async (req, res) => {
     res.status(500).json({ msg: "Hubo un error" });
   }
 };
-

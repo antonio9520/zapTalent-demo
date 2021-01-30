@@ -24,7 +24,7 @@ const Card = ({
   setDataCopy,
   setOpenModalRep,
 }) => {
-  console.log(data);
+
   const inicio = new Date(data.fechaInicio);
   const termino = new Date(data.fechaTermino);
 
@@ -112,7 +112,7 @@ const Card = ({
           <div className="sub-right-avisos-emp">
             <div>
               <p className="p1">Inscritos</p>
-              <p className="p2">0</p>
+              <p className="p2">{data.postulaciones}</p>
             </div>
             <div>
               <p className="p1">No leídos</p>

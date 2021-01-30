@@ -5,6 +5,7 @@ import {
   COMENZAR_FILTRAR_OF,
   FILTRAR_ERROR_OF,
   FILTRAR_EXITO_OF,
+  DETENER_CARGA_OF,
 } from "../types";
 
 const initialState = {
@@ -29,7 +30,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        ofertasLaborales: action.payload,
+        ofertasLaborales: [...state.ofertasLaborales, action.payload],
       };
 
     case DESCARGA_OFER_LABORAL_ERROR:
@@ -39,7 +40,12 @@ export default function (state = initialState, action) {
         loading: false,
         error: true,
       };
-
+    case DETENER_CARGA_OF:
+      return {
+        ...state,
+        loading: false,
+        error: false,
+      };
     default:
       return state;
   }

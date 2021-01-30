@@ -60,12 +60,15 @@ const agregarAvisoError = () => ({
 });
 
 //OBTENER
-export function obtenerAvisoAction(id) {
+export function obtenerAvisoAction({ _id, skip }) {
   return async (dispatch) => {
     dispatch(descargaAviso());
     try {
-      const respuesta = await clientAxios.get(`/api/avisos/${id}`);
-      dispatch(descargaExito(respuesta.data));
+      const respuesta = await clientAxios.get(`/api/avisos/${_id}/${skip}`);
+      for (let i = 0; i < respuesta.data.length; i++) {
+        dispatch(descargaExito(respuesta.data[i]));
+      }
+      
     } catch (error) {
       console.log(error);
       dispatch(descargaError());

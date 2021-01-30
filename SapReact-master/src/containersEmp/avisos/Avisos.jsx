@@ -26,86 +26,79 @@ const Avisos = () => {
   const [openModalCopy, setOpenModalCopy] = useState(false);
   const [dataCopy, setDataCopy] = useState(null);
   const [openModalRep, setOpenModalRep] = useState(false);
+  const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     if (usuario) {
-      const cargarTrabajos = () => dispatch(obtenerAvisoAction(usuario._id));
-      cargarTrabajos();
+      const cargarAvisos = () =>
+        dispatch(obtenerAvisoAction({ _id: usuario._id, skip }));
+      cargarAvisos();
     }
 
     // eslint-disable-next-line
-  }, [usuario]);
+  }, [usuario, skip]);
 
+  const handleScroll = (e) => {
+    const { offsetHeight, scrollTop, scrollHeight } = e.target;
+
+    if (offsetHeight + scrollTop === scrollHeight) {
+      setSkip(avisos.length);
+    }
+  };
   return (
     <>
-      {loading ? (
-        <div
-          style={{
-            width: "100%",
-            height: "100vh",
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-          }}
-        >
-          <Loader
-            type="Oval"
-            color="#00BFFF"
-            height={100}
-            width={100}
-            visible={loading}
-            //  timeout={3000} //3 secs
-          />
+      <div className="cont-avisos-emp" onScroll={handleScroll}>
+        <div className="cont-header-avisos-emp">
+          <Header setOpenModal={setOpenModal} />
         </div>
-      ) : (
-        <div className="cont-avisos-emp">
-          <div className="cont-header-avisos-emp">
-            <Header setOpenModal={setOpenModal} />
-          </div>
 
-          <div className="cont-cards-avisos-emp">
-            {avisos.map((item, index) => (
-              <Card
-                data={item}
-                key={index}
-                setIdEliminar={setIdEliminar}
-                setOpenModalEliminar={setOpenModalEliminar}
-                setOpenModalEditar={setOpenModalEditar}
-                setDataEditar={setDataEditar}
-                setOpenModalCopy={setOpenModalCopy}
-                setDataCopy={setDataCopy}
-                setOpenModalRep={setOpenModalRep}
-              />
-            ))}
-          </div>
-          <Modal setOpenModal={setOpenModal} openModal={openModal} />
-          <ModalEliminar
-            aviso
-            openModalEliminar={openModalEliminar}
-            setOpenModalEliminar={setOpenModalEliminar}
-            idEliminar={idEliminar}
-            setIdEliminar={setIdEliminar}
-          />
-          <ModalEditar
-            setOpenModalEditar={setOpenModalEditar}
-            openModalEditar={openModalEditar}
-            setDataEditar={setDataEditar}
-            data={dataEditar}
-          />
-          <ModalCopy
-            setOpenModalCopy={setOpenModalCopy}
-            openModalCopy={openModalCopy}
-            setDataCopy={setDataCopy}
-            data={dataCopy}
-          />
-          <ModalRep
-            openModalRep={openModalRep}
-            setOpenModalRep={setOpenModalRep}
-            data={dataEditar}
-            setDataEditar={setDataEditar}
-          />
+        <div className="cont-cards-avisos-emp">
+          {avisos.map((item, index) => (
+            <Card
+              data={item}
+              key={index}
+              setIdEliminar={setIdEliminar}
+              setOpenModalEliminar={setOpenModalEliminar}
+              setOpenModalEditar={setOpenModalEditar}
+              setDataEditar={setDataEditar}
+              setOpenModalCopy={setOpenModalCopy}
+              setDataCopy={setDataCopy}
+              setOpenModalRep={setOpenModalRep}
+            />
+          ))}
+          {loading ? (
+            <div className="div-cargando-avisos">
+              <p>Cargando...</p>
+            </div>
+          ) : null}
         </div>
-      )}
+        <Modal setOpenModal={setOpenModal} openModal={openModal} />
+        <ModalEliminar
+          aviso
+          openModalEliminar={openModalEliminar}
+          setOpenModalEliminar={setOpenModalEliminar}
+          idEliminar={idEliminar}
+          setIdEliminar={setIdEliminar}
+        />
+        <ModalEditar
+          setOpenModalEditar={setOpenModalEditar}
+          openModalEditar={openModalEditar}
+          setDataEditar={setDataEditar}
+          data={dataEditar}
+        />
+        <ModalCopy
+          setOpenModalCopy={setOpenModalCopy}
+          openModalCopy={openModalCopy}
+          setDataCopy={setDataCopy}
+          data={dataCopy}
+        />
+        <ModalRep
+          openModalRep={openModalRep}
+          setOpenModalRep={setOpenModalRep}
+          data={dataEditar}
+          setDataEditar={setDataEditar}
+        />
+      </div>
     </>
   );
 };

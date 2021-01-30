@@ -8,7 +8,6 @@ import {
   EventAvailable,
   EventBusy,
   Room,
-  Visibility,
   AccountCircle,
   QueryBuilder,
   EventSeat,
@@ -23,7 +22,7 @@ import {
   eliminarPostulacionAction,
 } from "../../../../redux/actions/postAction";
 import { useDispatch, useSelector } from "react-redux";
-
+import Loader from "react-loader-spinner";
 const Card = ({ data }) => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.auth.usuario);
@@ -64,35 +63,57 @@ const Card = ({ data }) => {
   const [_switch, setSwitch] = useState(false);
 
   const postular = () => {
+    setSwitch(true);
     if (usuario) {
-      dispatch(crearPostulacionAction({ idaviso: _id, iduser: usuario._id }));
+      dispatch(
+        crearPostulacionAction({ idaviso: _id, iduser: usuario._id })
+      ).then(() => setSwitch(false));
     }
   };
-  const cancelarPostulacion = () => {
-    if (id_post) {
-      console.log("if id_post");
-      dispatch(eliminarPostulacionAction({ id_post, _id })).then((res) =>
-        res ? setPostulado(false) : null
-      );
+  const cancelarPostulacion = async () => {
+    setSwitch(true);
+    const eliminar = await setearIdPost();
+
+    if (eliminar) {
+      await dispatch(
+        eliminarPostulacionAction({ id_post: eliminar, _id })
+      ).then((res) => (res ? setPostulado(false) : null));
     }
-    console.log("funcion cancelar");
+    setSwitch(false);
   };
+
+  const setearIdPost = () => {
+    let id_post;
+    postulaciones.map((item) => {
+      if (item._id === _id) {
+        id_post = item.id_post;
+      }
+    });
+    return id_post;
+  };
+
   useEffect(() => {
-    console.log("useEffect");
     postulaciones.map((item) => {
       if (item._id === _id) {
         setPostulado(true);
         setIdPost(item.id_post);
       }
     });
-  }, [loading]);
+  }, [postulaciones]);
+
   return (
     <div className="card-ofertas-laborales">
       <div className="top-card-ofertas-laborales">
         <div className="item-1">
-          <div>
-            <img src={icontrabajo} alt="icon-trabajo" />
-          </div>
+          {data.logoURL ? (
+            <div className="logo-emp-of">
+              <img src={data.logoURL} alt="icon-trabajo" />
+            </div>
+          ) : (
+            <div>
+              <img src={icontrabajo} alt="icon-trabajo" />
+            </div>
+          )}
         </div>
         <div className="item-2">
           <h1 className={titulo.length > 22 ? "name-submod-large" : null}>
@@ -100,6 +121,7 @@ const Card = ({ data }) => {
           </h1>
           <p>{profesion}</p>
           <p>{nameuser}</p>
+          <p>{area}</p>
           <div>
             {anosExp ? (
               <p>{anosExp} años de experiencia</p>
@@ -224,15 +246,41 @@ const Card = ({ data }) => {
             <Button
               className="btn-cancelar-postular-ofertas-laborales"
               onClick={cancelarPostulacion}
+              disabled={_switch}
             >
               <p>cancelar postulacion</p>
+              {_switch ? (
+                <div className="loader-btn-postular">
+                  <Loader
+                    type="Oval"
+                    color="#fff"
+                    height={20}
+                    width={20}
+                    visible={_switch}
+                    //  timeout={3000} //3 secs
+                  />
+                </div>
+              ) : null}
             </Button>
           ) : (
             <Button
               className="btn-postular-ofertas-laborales"
               onClick={postular}
+              disabled={_switch}
             >
               <p>Postular</p>
+              {_switch ? (
+                <div className="loader-btn-postular">
+                  <Loader
+                    type="Oval"
+                    color="#fff"
+                    height={20}
+                    width={20}
+                    visible={_switch}
+                    //  timeout={3000} //3 secs
+                  />
+                </div>
+              ) : null}
             </Button>
           )}
         </div>

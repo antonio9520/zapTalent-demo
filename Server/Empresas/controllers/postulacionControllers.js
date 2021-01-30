@@ -4,11 +4,11 @@ const Avisos = require("../models/avisos");
 exports.crearPostulacion = async (req, res) => {
   try {
     const postulacion = new Postulacion(req.body);
-    await postulacion.save();
+    const post = await postulacion.save();
 
     const id = postulacion.idaviso;
     const data = await Avisos.findById(id);
-
+    data.id_post = post._id;
     res.status(200).json(data);
   } catch (error) {
     console.log(error);

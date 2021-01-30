@@ -2,7 +2,7 @@
   background-color: var(--white);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
-  min-width: 1300px;
+  min-width: 1150px;
   border: 1px solid #ced1e9;
   border-radius: 5px;
 }
@@ -21,9 +21,15 @@
   border: 1px solid #dbdbdb;
   background-color: #f5f5f5;
   border-radius: 50%;
+  overflow: hidden;
 }
 .top-card-ofertas-laborales .item-1 {
   padding: 0 20px;
+}
+.logo-emp-of img {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
 }
 /*item-2*/
 .top-card-ofertas-laborales .item-2 {
@@ -38,12 +44,13 @@
   color: var(--blue-primary);
   font-size: 22px;
   white-space: nowrap;
+  font-weight: 500;
   /* overflow: hidden; */
   /* background-color: khaki; */
 }
 .top-card-ofertas-laborales .item-2 p:nth-child(2) {
   margin: 0;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   color: var(--gray-text);
 }
 .top-card-ofertas-laborales .item-2 p:nth-child(3) {
@@ -51,17 +58,24 @@
   margin-top: 10px;
   color: var(--blue-primary);
 }
+.top-card-ofertas-laborales .item-2 p:nth-child(4) {
+  margin: 0;
+
+  font-size: 14px;
+  color: var(--blue-primary);
+}
+
 .top-card-ofertas-laborales .item-2 div {
   background-color: #39cbba;
   display: inline-block;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
 }
 .top-card-ofertas-laborales .item-2 div p {
   margin: 5px 10px;
   font-size: 14px;
   color: white;
-  
 }
 /*item-3*/
 .icon-card-ofertas-laborales {
@@ -82,7 +96,7 @@
   margin: 0;
   margin-left: 10px;
   font-size: 12px;
-  color: var(--gray-text)
+  color: var(--gray-text);
 }
 /*item-4*/
 .top-card-ofertas-laborales .item-4 {
@@ -101,7 +115,7 @@
   margin: 0;
   margin-left: 10px;
   font-size: 12px;
-  color: var(--gray-text)
+  color: var(--gray-text);
 }
 
 /*item-5*/
@@ -114,7 +128,7 @@
 }
 .modulos-card-ofertas-laborales {
   display: flex;
-  margin-top: 10px;
+  margin-top: 20px;
   /* background-color: royalblue; */
   max-width: 170px;
   overflow: auto;
@@ -172,7 +186,7 @@
 }
 .submodulos-card-ofertas-laborales {
   display: flex;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   flex-wrap: wrap;
   max-width: 170px;
   overflow: auto;
@@ -200,7 +214,7 @@
 /*Bottom*/
 .bottom-card-ofertas-laborales {
   display: flex;
-  padding: 15px 0;
+  padding: 10px 0;
   position: relative;
 }
 /*Item-1*/
@@ -215,7 +229,7 @@
   margin-left: 10px;
   margin-right: 10px;
   color: var(--gray-text);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /*item-2*/
@@ -243,7 +257,7 @@
 .bottom-card-ofertas-laborales .item-3 p {
   margin: 0;
   color: var(--blue-primary);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 20px;
 }
 
@@ -251,15 +265,15 @@
   background-color: var(--blue-primary) !important;
   position: absolute !important;
   right: 10px;
-  bottom: 10px;
+  bottom: 6px;
   padding: 5px 70px !important;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 .btn-cancelar-postular-ofertas-laborales {
-  background-color: var(--blue-primary) !important;
+  background-color: var(--light-blue) !important;
   position: absolute !important;
   right: 10px;
-  bottom: 10px;
+  bottom: 6px;
   padding: 5px 33px !important;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
@@ -274,4 +288,9 @@
   margin: 0 !important;
   font-size: 12px !important;
   font-weight: 400 !important;
+}
+.loader-btn-postular {
+  position: absolute;
+  right: 10px;
+  top: 5px;
 }

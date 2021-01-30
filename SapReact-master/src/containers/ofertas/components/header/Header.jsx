@@ -37,11 +37,9 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Header = ({ setOpen }) => {
-  const [value, setValue] = React.useState(0);
-
+const Header = ({ setOpen, indexTab, setindexTab }) => {
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setindexTab(newValue);
   };
   return (
     <div className="header-avisos-emp">
@@ -52,8 +50,13 @@ const Header = ({ setOpen }) => {
         <div style={{ width: "350px", marginRight: "50px" }}>
           <SearchBar />
         </div>
-        <AntTabs value={value} onChange={handleChange} aria-label="ant example">
+        <AntTabs
+          value={indexTab}
+          onChange={handleChange}
+          aria-label="ant example"
+        >
           <AntTab label="Todos" />
+          <AntTab label="Mis Postulaciones" />
           <AntTab label="Activos" />
           <AntTab label="Caducados" />
         </AntTabs>

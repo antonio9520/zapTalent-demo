@@ -5,16 +5,25 @@ import {
   COMENZAR_FILTRAR_OF,
   FILTRAR_ERROR_OF,
   FILTRAR_EXITO_OF,
+  DETENER_CARGA_OF,
 } from "../types";
 import clientAxios from "../../config/axios";
 
 //OBTENER
-export function obtenerOferLaboralesAction(id) {
+export function obtenerOferLaboralesAction(skip) {
   return async (dispatch) => {
     dispatch(descargaOferLaborales());
+    console.log(skip);
     try {
-      const respuesta = await clientAxios.get(`/api/ofertasLaborales`);
-      dispatch(descargaExito(respuesta.data));
+      const respuesta = await clientAxios.get(`/api/ofertasLaborales/${skip}`);
+
+      if (respuesta.data.length === 0) {
+        dispatch(detenerCarga());
+      } else {
+        for (let i = 0; i < respuesta.data.length; i++) {
+          dispatch(descargaExito(respuesta.data[i]));
+        }
+      }
     } catch (error) {
       console.log(error);
       dispatch(descargaError());
@@ -25,7 +34,9 @@ export function obtenerOferLaboralesAction(id) {
 const descargaOferLaborales = () => ({
   type: COMENZAR_DESCARGA_OFER_LABORAL,
 });
-
+const detenerCarga = () => ({
+  type: DETENER_CARGA_OF,
+});
 const descargaExito = (data) => ({
   type: DESCARGA_OFER_LABORAL_EXITO,
   payload: data,
@@ -41,7 +52,6 @@ export function filtrarOferLaboralesAction(query) {
     try {
       const respuesta = await clientAxios.post(`/api/ofertasLaborales/`, query);
       dispatch(filtrarExito(respuesta.data));
-      
     } catch (error) {
       console.log(error);
       dispatch(filtrarError());

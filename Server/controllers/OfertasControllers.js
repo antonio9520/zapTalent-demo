@@ -2,8 +2,14 @@ const Avisos = require("../Empresas/models/avisos");
 
 //OBTENER
 exports.mostrarAvisos = async (req, res) => {
+  const skip = req.params.skip;
+
   try {
-    const avisos = await Avisos.find();
+    const avisos = await Avisos.find({}, undefined, {
+      skip: parseInt(skip),
+      limit: 5,
+    });
+
     res.json(avisos);
   } catch (error) {
     console.log(error);
@@ -13,14 +19,20 @@ exports.mostrarAvisos = async (req, res) => {
 
 //FILTRAR
 exports.filtrarAvisos = async (req, res) => {
-  console.log(req.body);
-
+  const skip = 0;
   const query = await createQuery(req.body);
 
   try {
-    const avisos = await Avisos.find({
-      $or: [query],
-    });
+    const avisos = await Avisos.find(
+      {
+        $or: [query],
+      },
+      undefined,
+      {
+        skip: parseInt(skip),
+        limit: 5,
+      }
+    );
 
     res.json(avisos);
   } catch (error) {
