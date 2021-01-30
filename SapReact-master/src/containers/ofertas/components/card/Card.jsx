@@ -44,7 +44,6 @@ const Card = ({ data }) => {
     tipoContrato,
     anosExpSap,
     cantidadVacantes,
-    pais,
     region,
     ciudad,
     dispResidencia,
@@ -102,190 +101,192 @@ const Card = ({ data }) => {
   }, [postulaciones]);
 
   return (
-    <div className="card-ofertas-laborales">
-      <div className="top-card-ofertas-laborales">
-        <div className="item-1">
-          {data.logoURL ? (
-            <div className="logo-emp-of">
-              <img src={data.logoURL} alt="icon-trabajo" />
-            </div>
-          ) : (
-            <div>
-              <img src={icontrabajo} alt="icon-trabajo" />
-            </div>
-          )}
-        </div>
-        <div className="item-2">
-          <h1 className={titulo.length > 22 ? "name-submod-large" : null}>
-            {titulo}
-          </h1>
-          <p>{profesion}</p>
-          <p>{nameuser}</p>
-          <p>{area}</p>
-          <div>
-            {anosExp ? (
-              <p>{anosExp} años de experiencia</p>
+    <>
+      <div className="card-ofertas-laborales">
+        <div className="top-card-ofertas-laborales">
+          <div className="item-1">
+            {data.logoURL ? (
+              <div className="logo-emp-of">
+                <img src={data.logoURL} alt="icon-trabajo" />
+              </div>
             ) : (
-              <p>Sin experiencia laboral</p>
+              <div>
+                <img src={icontrabajo} alt="icon-trabajo" />
+              </div>
+            )}
+          </div>
+          <div className="item-2">
+            <h1 className={titulo.length > 22 ? "name-submod-large" : null}>
+              {titulo}
+            </h1>
+            <p>{profesion}</p>
+            <p>{nameuser}</p>
+            <p>{area}</p>
+            <div>
+              {anosExp ? (
+                <p>{anosExp} años de experiencia</p>
+              ) : (
+                <p>Sin experiencia laboral</p>
+              )}
+            </div>
+          </div>
+          <div className="item-3">
+            <Tooltip title="Tipo de consultor">
+              <div>
+                <AccountCircle className="icon-card-ofertas-laborales" />
+                <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
+                  {tipoConsultor}
+                </p>
+              </div>
+            </Tooltip>
+
+            <Tooltip title="Tipo de Jornada">
+              <div>
+                <QueryBuilder className="icon-card-ofertas-laborales" />
+                <p>{jornadaLaboral}</p>
+              </div>
+            </Tooltip>
+            <Tooltip title="Fecha de contratación">
+              <div>
+                <BusinessCenter className="icon-card-ofertas-laborales" />
+                <p>{fechaContratacion.substring(0, 10)}</p>
+              </div>
+            </Tooltip>
+            <Tooltip title="Disponibilidad de viajar">
+              <div>
+                <Flight className="icon-card-ofertas-laborales" />
+                {dispViajar ? <p>Si</p> : <p>No</p>}
+              </div>
+            </Tooltip>
+          </div>
+
+          <div className="item-4">
+            <Tooltip title="Experiencia SAP">
+              <div>
+                <AccountTree className="icon-card-ofertas-laborales" />
+                {anosExpSap ? (
+                  <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
+                    {anosExpSap} Años
+                  </p>
+                ) : (
+                  <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
+                    Sin Experiencia
+                  </p>
+                )}
+              </div>
+            </Tooltip>
+            <Tooltip title="Tipo de contrato">
+              <div>
+                <Description className="icon-card-ofertas-laborales" />
+                <p>{tipoContrato.value}</p>
+              </div>
+            </Tooltip>
+            <Tooltip title="Cantidad de Vacantes">
+              <div>
+                <EventSeat className="icon-card-ofertas-laborales" />
+                <p>{cantidadVacantes}</p>
+              </div>
+            </Tooltip>
+            <Tooltip title="Disponibilidad de cambio de residencia">
+              <div>
+                <Home className="icon-card-ofertas-laborales" />
+                {dispResidencia ? <p>Si</p> : <p>No</p>}
+              </div>
+            </Tooltip>
+          </div>
+          <div className="item-5">
+            <h5>Módulos y submodulos</h5>
+            <div className="modulos-card-ofertas-laborales">
+              {adns.map((item, index) => (
+                <Modulos
+                  key={index}
+                  data={item}
+                  setActive={setActive}
+                  num={index}
+                  active={active}
+                />
+              ))}
+            </div>
+            <div className="submodulos-card-ofertas-laborales">
+              {adns[active].submodulos.map((item, index) => (
+                <SubModulos key={index} data={item} />
+              ))}
+            </div>
+          </div>
+          <div className="item-6">
+            <div>
+              <p>{descripcion}</p>
+            </div>
+          </div>
+        </div>
+        <div className="bottom-card-ofertas-laborales">
+          <div className="item-1">
+            <EventAvailable className="icon-card-ofertas-laborales" />
+            <p>{fechaInicio.substring(0, 10)}</p>
+            <EventBusy className="icon-card-ofertas-laborales" />
+            <p>{fechaTermino.substring(0, 10)}</p>
+          </div>
+          <div className="item-2">
+            <Room className="icon-card-ofertas-laborales" />
+            <p>
+              {ciudad}, {region}
+            </p>
+          </div>
+          <div className="item-3">
+            <p>
+              Salario: ${" "}
+              <NumberFormat
+                value={renta}
+                displayType={"text"}
+                thousandSeparator={true}
+                // prefix={"$"}
+              />
+            </p>
+            {postulado ? (
+              <Button
+                className="btn-cancelar-postular-ofertas-laborales"
+                onClick={cancelarPostulacion}
+                disabled={_switch}
+              >
+                <p>cancelar postulacion</p>
+                {_switch ? (
+                  <div className="loader-btn-postular">
+                    <Loader
+                      type="Oval"
+                      color="#fff"
+                      height={20}
+                      width={20}
+                      visible={_switch}
+                      //  timeout={3000} //3 secs
+                    />
+                  </div>
+                ) : null}
+              </Button>
+            ) : (
+              <Button
+                className="btn-postular-ofertas-laborales"
+                onClick={postular}
+                disabled={_switch}
+              >
+                <p>Postular</p>
+                {_switch ? (
+                  <div className="loader-btn-postular">
+                    <Loader
+                      type="Oval"
+                      color="#fff"
+                      height={20}
+                      width={20}
+                      visible={_switch}
+                      //  timeout={3000} //3 secs
+                    />
+                  </div>
+                ) : null}
+              </Button>
             )}
           </div>
         </div>
-        <div className="item-3">
-          <Tooltip title="Tipo de consultor">
-            <div>
-              <AccountCircle className="icon-card-ofertas-laborales" />
-              <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
-                {tipoConsultor}
-              </p>
-            </div>
-          </Tooltip>
-
-          <Tooltip title="Tipo de Jornada">
-            <div>
-              <QueryBuilder className="icon-card-ofertas-laborales" />
-              <p>{jornadaLaboral}</p>
-            </div>
-          </Tooltip>
-          <Tooltip title="Fecha de contratación">
-            <div>
-              <BusinessCenter className="icon-card-ofertas-laborales" />
-              <p>{fechaContratacion.substring(0, 10)}</p>
-            </div>
-          </Tooltip>
-          <Tooltip title="Disponibilidad de viajar">
-            <div>
-              <Flight className="icon-card-ofertas-laborales" />
-              {dispViajar ? <p>Si</p> : <p>No</p>}
-            </div>
-          </Tooltip>
-        </div>
-
-        <div className="item-4">
-          <Tooltip title="Experiencia SAP">
-            <div>
-              <AccountTree className="icon-card-ofertas-laborales" />
-              {anosExpSap ? (
-                <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
-                  {anosExpSap} Años
-                </p>
-              ) : (
-                <p style={{ color: "#2B7DE6", fontWeight: "600" }}>
-                  Sin Experiencia
-                </p>
-              )}
-            </div>
-          </Tooltip>
-          <Tooltip title="Tipo de contrato">
-            <div>
-              <Description className="icon-card-ofertas-laborales" />
-              <p>{tipoContrato.value}</p>
-            </div>
-          </Tooltip>
-          <Tooltip title="Cantidad de Vacantes">
-            <div>
-              <EventSeat className="icon-card-ofertas-laborales" />
-              <p>{cantidadVacantes}</p>
-            </div>
-          </Tooltip>
-          <Tooltip title="Disponibilidad de cambio de residencia">
-            <div>
-              <Home className="icon-card-ofertas-laborales" />
-              {dispResidencia ? <p>Si</p> : <p>No</p>}
-            </div>
-          </Tooltip>
-        </div>
-        <div className="item-5">
-          <h5>Módulos y submodulos</h5>
-          <div className="modulos-card-ofertas-laborales">
-            {adns.map((item, index) => (
-              <Modulos
-                key={index}
-                data={item}
-                setActive={setActive}
-                num={index}
-                active={active}
-              />
-            ))}
-          </div>
-          <div className="submodulos-card-ofertas-laborales">
-            {adns[active].submodulos.map((item, index) => (
-              <SubModulos key={index} data={item} />
-            ))}
-          </div>
-        </div>
-        <div className="item-6">
-          <div>
-            <p>{descripcion}</p>
-          </div>
-        </div>
       </div>
-      <div className="bottom-card-ofertas-laborales">
-        <div className="item-1">
-          <EventAvailable className="icon-card-ofertas-laborales" />
-          <p>{fechaInicio.substring(0, 10)}</p>
-          <EventBusy className="icon-card-ofertas-laborales" />
-          <p>{fechaTermino.substring(0, 10)}</p>
-        </div>
-        <div className="item-2">
-          <Room className="icon-card-ofertas-laborales" />
-          <p>
-            {ciudad}, {region}
-          </p>
-        </div>
-        <div className="item-3">
-          <p>
-            Salario: ${" "}
-            <NumberFormat
-              value={renta}
-              displayType={"text"}
-              thousandSeparator={true}
-              // prefix={"$"}
-            />
-          </p>
-          {postulado ? (
-            <Button
-              className="btn-cancelar-postular-ofertas-laborales"
-              onClick={cancelarPostulacion}
-              disabled={_switch}
-            >
-              <p>cancelar postulacion</p>
-              {_switch ? (
-                <div className="loader-btn-postular">
-                  <Loader
-                    type="Oval"
-                    color="#fff"
-                    height={20}
-                    width={20}
-                    visible={_switch}
-                    //  timeout={3000} //3 secs
-                  />
-                </div>
-              ) : null}
-            </Button>
-          ) : (
-            <Button
-              className="btn-postular-ofertas-laborales"
-              onClick={postular}
-              disabled={_switch}
-            >
-              <p>Postular</p>
-              {_switch ? (
-                <div className="loader-btn-postular">
-                  <Loader
-                    type="Oval"
-                    color="#fff"
-                    height={20}
-                    width={20}
-                    visible={_switch}
-                    //  timeout={3000} //3 secs
-                  />
-                </div>
-              ) : null}
-            </Button>
-          )}
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

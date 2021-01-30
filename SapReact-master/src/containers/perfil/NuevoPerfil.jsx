@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Perfil.css";
 import { makeStyles, IconButton } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
@@ -32,15 +32,18 @@ import { ModalEditar as ModalEditarTrabajo } from "../../containers/trabajos/com
 import { ModalEditar as ModalEditarCert } from "../../containers/certificados/components";
 import { ModalEditar as ModalEditarEstudio } from "../../containers/estudios/components";
 import { ModalEditar as ModalEditarAdn } from "../../containers/adnSap/components";
-
+/**Resize */
+import { useContainerDimensions } from "../../hooks/useResize";
 const useStyles = makeStyles((theme) => ({
   itemRightsubCont: {
     height: "100%",
   },
 }));
 const Perfil = () => {
+  const componentRef = useRef();
+
+  const { width, height } = useContainerDimensions(componentRef);
   const dispatch = useDispatch();
-  const classes = useStyles();
   /* MODALES EDITAR* */
   const [openEditarTrabajo, setOpenEditarTrabajo] = useState(false);
   const [openEditarCert, setOpenEditarCert] = useState(false);
@@ -217,10 +220,12 @@ const Perfil = () => {
         setDataEditar={setDataAdn}
         setSwitch={setSwitch}
       />
-      <div className="left-new-perfil">
+      <div className="left-new-perfil" ref={componentRef}>
         <div className="titulo-page">
           <img src={logo} alt="SAP"></img>
           <h1>Perfil</h1>
+          {/* <p>width: {width}px</p>
+          <p>height: {height}px</p> */}
         </div>
         <div className="item-1">
           {usuario ? (

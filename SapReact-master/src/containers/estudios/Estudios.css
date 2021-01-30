@@ -4,6 +4,8 @@
   /* background-color: aquamarine; */
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
   padding: 40px 40px 20px 5px;
 }
 

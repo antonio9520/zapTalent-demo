@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Perfil.css";
 import { Grid, makeStyles, Fab } from "@material-ui/core";
 import {
@@ -24,6 +24,7 @@ import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
 import { ModalEditar } from "../adnSap/components";
 import { Tooltip } from "../../components";
+import { useContainerDimensions } from "../../hooks/useResize";
 
 const useStyles = makeStyles((theme) => ({
   itemRightsubCont: {
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Perfil = () => {
+ 
   const dispatch = useDispatch();
   const classes = useStyles();
   const [openModalEditar, setOpenModalEditar] = useState(false);

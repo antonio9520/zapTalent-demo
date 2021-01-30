@@ -19,6 +19,7 @@ exports.mostrarAvisos = async (req, res) => {
 
 //FILTRAR
 exports.filtrarAvisos = async (req, res) => {
+  console.log("filtro");
   const skip = 0;
   const query = await createQuery(req.body);
 
@@ -57,6 +58,7 @@ const createQuery = (data) => {
     jornadaLaboral,
     modulos,
     submodulos,
+    estado,
   } = data;
   let query;
 
@@ -99,6 +101,7 @@ const createQuery = (data) => {
   if (region) query.region = region;
   if (comuna) query.ciudad = comuna;
   if (jornadaLaboral) query.jornadaLaboral = jornadaLaboral;
+  if (estado) query.estado = estado;
   //2021-01-21T22:42:30.000Z
   return query;
 };

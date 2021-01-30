@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Ofertas.css";
 import { Card, Header, Filtros } from "./components";
 import { BusinessCenterOutlined } from "@material-ui/icons";
-import { obtenerOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
+import {
+  obtenerOferLaboralesAction,
+  filtrarOferLaboralesAction,
+} from "../../redux/actions/ofertasLaboralesAction";
 import { obtenerPostulacionesAction } from "../../redux/actions/postAction";
 import { useSelector, useDispatch } from "react-redux";
+import shortid from "shortid";
 
 const Ofertas = () => {
   const dispatch = useDispatch();
@@ -16,6 +20,7 @@ const Ofertas = () => {
   );
   const usuario = useSelector((state) => state.auth.usuario);
   const loading = useSelector((state) => state.ofertasLaborales.loading);
+  const loadingPost = useSelector((state) => state.postulaciones.loading);
   const [open, setOpen] = useState(false);
   const [skip, setSkip] = useState(0);
   const [indexTab, setindexTab] = useState(0);
@@ -30,8 +35,11 @@ const Ofertas = () => {
     if (usuario) {
       const cargarOfertasLaborales = () =>
         dispatch(obtenerOferLaboralesAction(skip));
-      cargarOfertasLaborales();
+      if (skip === ofertasLaborales.length) {
+        cargarOfertasLaborales();
+      }
     }
+
     // eslint-disable-next-line
   }, [usuario, skip]);
 
@@ -43,7 +51,10 @@ const Ofertas = () => {
     }
   };
   useEffect(() => {
-    console.log(indexTab);
+    if (indexTab === 2) {
+      dispatch(filtrarOferLaboralesAction({ estado: "Activo" }));
+      console.log("filtra");
+    }
   }, [indexTab]);
   return (
     <>
@@ -63,22 +74,32 @@ const Ofertas = () => {
         <div className="cont-card-of-laborales" onScroll={handleScroll}>
           {indexTab === 0
             ? ofertasLaborales.map((item, index) => (
-                <Card data={item} key={index} />
-              ))
-            : indexTab === 1
-            ? postulaciones.map((item, index) => (
-                <Card data={item} key={index} />
+                <Card data={item} key={item._id} />
               ))
             : null}
-          {loading ? (
+          {indexTab === 1
+            ? postulaciones.map((item, index) => (
+                <Card data={item} key={item._id} />
+              ))
+            : null}{" "}
+          {indexTab === 2
+            ? ofertasLaborales.map((item, index) => (
+                <Card data={item} key={item._id} />
+              ))
+            : null}
+          {loading || loadingPost ? (
             <div className="div-cargando-avisos">
               <p>Cargando...</p>
             </div>
-          ) : (
+          ) : indexTab === 1 ? (
             <div className="div-cargando-avisos">
-              <p>No quedan mas avisos</p>
+              <p>No Tienes mas postulaciones</p>
             </div>
-          )}
+          ) : indexTab === 0 ? (
+            <div className="div-cargando-avisos">
+              <p>No quedan mas ofertas laborales</p>
+            </div>
+          ) : null}
         </div>
         <Filtros open={open} setOpen={setOpen} />
       </div>

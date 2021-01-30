@@ -8,6 +8,6 @@ const ofertasControllers = require("../controllers/OfertasControllers");
 
 //Recuperar trabajo por id usuario
 router.get("/:skip", ofertasControllers.mostrarAvisos);
-router.post("/:skip", ofertasControllers.filtrarAvisos);
+router.post("/", ofertasControllers.filtrarAvisos);
 
 module.exports = router;

@@ -50,10 +50,12 @@ exports.deletePostulacion = async (req, res) => {
 
   try {
     Postulacion.findById(idpostulacion, (err, postulacions) => {
-      postulacions.remove((err) => {
-        if (err) res.status(402).json({ msg: "Error al borrar postulacion" });
-        res.status(200).send({ msg: "Postulacion eliminada correctamente" });
-      });
+      if (postulacions) {
+        postulacions.remove((err) => {
+          if (err) res.status(402).json({ msg: "Error al borrar postulacion" });
+          res.status(200).send({ msg: "Postulacion eliminada correctamente" });
+        });
+      }
     });
   } catch (error) {
     res.status(500).send({ msg: "Error en el servidor" });
