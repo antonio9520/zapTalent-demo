@@ -26,15 +26,15 @@ exports.filtrarAvisos = async (req, res) => {
   try {
     const avisos = await Avisos.find(
       {
-        $or: [query],
+        $and: [query],
       },
       undefined,
       {
         skip: parseInt(skip),
         limit: 5,
       }
-    );
-
+    ).sort({ creacion: -1 });
+    console.log(avisos);
     res.json(avisos);
   } catch (error) {
     console.log(error);
