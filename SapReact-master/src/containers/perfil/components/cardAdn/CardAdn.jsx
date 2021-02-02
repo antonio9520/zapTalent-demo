@@ -189,7 +189,7 @@ const Modulo = ({ data, setOpenModalEditar, setDataEditar, setSwitch }) => {
         </div>
         {data.adnURL ? (
           <ListItem button className="btn-ver-cert-perfil" onClick={openNewTab}>
-            <p>Ver certificado</p>
+            <p style={{ color: "white" }}>Ver certificado</p>
           </ListItem>
         ) : null}
       </div>

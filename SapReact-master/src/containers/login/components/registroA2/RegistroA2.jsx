@@ -19,9 +19,6 @@ const RegistroA2 = (props) => {
   const [errornacion, setErrorNacion] = useState(false);
   const [errorcivil, setErrorCivil] = useState(false);
   const [errorsexo, setErrorSexo] = useState(false);
- 
-
-
 
   //Validacion
   const validacion = () => {
@@ -128,10 +125,10 @@ const RegistroA2 = (props) => {
       </div>
       <div className="bottom-reg-a2">
         <ListItem button className="btn-rut-reg-a" onClick={() => setView("A")}>
-          <p>Atras</p>
+          <p style={{ color: "white" }}>Atras</p>
         </ListItem>
         <ListItem button onClick={validacion} className="btn-rut-reg-a">
-          <p>Siguiente</p>
+          <p style={{ color: "white" }}>Siguiente</p>
         </ListItem>
       </div>
     </div>

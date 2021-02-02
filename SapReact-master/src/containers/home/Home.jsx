@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { HeaderHome, CardPerfil, Table } from "./components";
 import { CardA, CardB } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { CardAdn, CardJob } from "../perfil/components";
 import { ModalEditar } from "../adnSap/components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
+import { filtrarOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const Home = () => {
   const [cardT2, setCardT2] = useState("");
   const [screenw, setScreenW] = useState(window.innerWidth);
   const [_switch, setSwitch] = useState(false);
+  const [skip, setSkip] = useState(0);
   // const adns = [];
   // const trabajos = [];
   useEffect(() => {
@@ -35,7 +37,7 @@ const Home = () => {
   }, [usuario]);
 
   let nombreuser;
- 
+
   if (usuario) {
     nombreuser = usuario.nombres.split(" ")[0];
   }
@@ -60,6 +62,9 @@ const Home = () => {
     }
     //eslint-disable-next-line
   }, [usuario]);
+  useEffect(() => {
+    dispatch(filtrarOferLaboralesAction({ skip }));
+  }, [usuario, skip]);
   return (
     <div
       className={
@@ -95,7 +100,7 @@ const Home = () => {
           xl={12}
           className="cont-card-perfil-home"
         >
-          <CardPerfil />
+          <CardPerfil nombre={nombreuser} />
         </Grid>
         <Grid
           item
@@ -162,7 +167,7 @@ const Home = () => {
           xl={6}
           className="cont-table-home-jobs"
         >
-          <Table />
+          <Table setSkip={setSkip} />
         </Grid>
         <Grid
           item
@@ -198,7 +203,9 @@ const Home = () => {
           md={6}
           lg={3}
           xl={3}
-          className={`cont-card-right-home ${trabajos.length > 0 ? "trabajos-home-xs" : null}`}
+          className={`cont-card-right-home ${
+            trabajos.length > 0 ? "trabajos-home-xs" : null
+          }`}
         >
           {trabajos.length > 0 ? (
             <CardJob data={trabajos} />

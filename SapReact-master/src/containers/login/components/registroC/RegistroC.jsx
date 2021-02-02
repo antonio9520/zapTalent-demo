@@ -131,10 +131,10 @@ const RegistroC = (props) => {
               className="btn-rut-reg-a"
               onClick={() => setView("B")}
             >
-              <p>Atras</p>
+              <p style={{ color: "white" }}>Atras</p>
             </ListItem>
             <ListItem button onClick={nextView} className="btn-rut-reg-a">
-              <p>Registrarse!</p>
+              <p style={{ color: "white" }}>Registrarse!</p>
             </ListItem>
           </div>
         </div>

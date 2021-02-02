@@ -116,7 +116,15 @@ const Card = ({ data }) => {
             )}
           </div>
           <div className="item-2">
-            <h1 className={titulo.length > 22 ? "name-submod-large" : null}>
+            <h1
+              className={
+                titulo
+                  ? titulo.length > 22
+                    ? "name-submod-large"
+                    : null
+                  : null
+              }
+            >
               {titulo}
             </h1>
             <p>{profesion}</p>
@@ -149,7 +157,11 @@ const Card = ({ data }) => {
             <Tooltip title="Fecha de contratación">
               <div>
                 <BusinessCenter className="icon-card-ofertas-laborales" />
-                <p>{fechaContratacion.substring(0, 10)}</p>
+                <p>
+                  {fechaContratacion
+                    ? fechaContratacion.substring(0, 10)
+                    : null}
+                </p>
               </div>
             </Tooltip>
             <Tooltip title="Disponibilidad de viajar">
@@ -178,7 +190,7 @@ const Card = ({ data }) => {
             <Tooltip title="Tipo de contrato">
               <div>
                 <Description className="icon-card-ofertas-laborales" />
-                <p>{tipoContrato.value}</p>
+                <p>{tipoContrato ? tipoContrato.value : null}</p>
               </div>
             </Tooltip>
             <Tooltip title="Cantidad de Vacantes">
@@ -197,20 +209,24 @@ const Card = ({ data }) => {
           <div className="item-5">
             <h5>Módulos y submodulos</h5>
             <div className="modulos-card-ofertas-laborales">
-              {adns.map((item, index) => (
-                <Modulos
-                  key={index}
-                  data={item}
-                  setActive={setActive}
-                  num={index}
-                  active={active}
-                />
-              ))}
+              {adns
+                ? adns.map((item, index) => (
+                    <Modulos
+                      key={index}
+                      data={item}
+                      setActive={setActive}
+                      num={index}
+                      active={active}
+                    />
+                  ))
+                : null}
             </div>
             <div className="submodulos-card-ofertas-laborales">
-              {adns[active].submodulos.map((item, index) => (
-                <SubModulos key={index} data={item} />
-              ))}
+              {adns
+                ? adns[active].submodulos.map((item, index) => (
+                    <SubModulos key={index} data={item} />
+                  ))
+                : null}
             </div>
           </div>
           <div className="item-6">
@@ -222,9 +238,9 @@ const Card = ({ data }) => {
         <div className="bottom-card-ofertas-laborales">
           <div className="item-1">
             <EventAvailable className="icon-card-ofertas-laborales" />
-            <p>{fechaInicio.substring(0, 10)}</p>
+            <p>{fechaInicio ? fechaInicio.substring(0, 10) : null}</p>
             <EventBusy className="icon-card-ofertas-laborales" />
-            <p>{fechaTermino.substring(0, 10)}</p>
+            <p>{fechaTermino ? fechaTermino.substring(0, 10) : null}</p>
           </div>
           <div className="item-2">
             <Room className="icon-card-ofertas-laborales" />

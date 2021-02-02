@@ -4,8 +4,9 @@ const fs = require("fs").promises;
 const jwt = require("jsonwebtoken");
 const enviarEmail = require("../handlers/email");
 const juice = require("juice");
-const open = require('open');
-const start = require('open');
+const open = require("open");
+const start = require("open");
+
 exports.crearUsuarios = async (req, res) => {
   //extraer email y pass
   const { email, password } = req.body;
@@ -46,17 +47,17 @@ exports.crearUsuarios = async (req, res) => {
         expiresIn: 3600000,
       },
       (error, token) => {
-        if (error) throw error;
-
+        if (error)  throw error;
+        
         //mensaje de confirmacion
-        res.json({ token });
+        res.json({ token, dato: true });
       }
     );
 
     //Crear URL de confirmacion
     const confirmarUrl = `http://${req.headers.host}/api/confirmar/${email}`;
     // const confirmarUrl = `http://zaptalent.cl/login-register/${email}`;
-    
+
     //crear objeto usuario
     const userconfi = {
       email,
@@ -66,9 +67,8 @@ exports.crearUsuarios = async (req, res) => {
       userconfi,
       subject: "Confirma tu Cuenta de ZapTalent",
       confirmarUrl,
-      archivo: "emailconfirm"
+      archivo: "emailconfirm",
     });
-
   } catch (error) {
     console.log(error);
     res.status(400).send("hubo un error");
@@ -277,14 +277,14 @@ exports.confirmarCuenta = async (req, res) => {
     },
   });
   let usuarios = await Usuario.findOne({ email });
- 
+
   if (!usuario) {
     res.status(404).send("No valido");
     res.redirect("https://zaptalent.cl/login-register");
-  }   //crear objeto usuario
-    const userconfi = {
-      email,
-    };
+  } //crear objeto usuario
+  const userconfi = {
+    email,
+  };
   const name = usuarios.nombres;
   const apellidos = usuarios.apellidos;
   const rut = usuarios.rut;
@@ -305,17 +305,16 @@ exports.confirmarCuenta = async (req, res) => {
     ecivil,
     nacion,
     direccion,
-    archivo: "infouser"
-  });  
+    archivo: "infouser",
+  });
 
   usuarios.activo = 1;
-  
+
   await usuarios.save();
   //si el usuario no existe
   // Opens the URL in the default browser.
-  await start('https://zaptalent.cl/login-register');
-    await open('https://zaptalent.cl/login-register');
-
+  await start("https://zaptalent.cl/login-register");
+  await open("https://zaptalent.cl/login-register");
 };
 
 exports.validacionEmailRut = async (req, res) => {

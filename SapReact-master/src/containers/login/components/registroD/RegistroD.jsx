@@ -1,7 +1,7 @@
 import React from "react";
 import "./RegistroD.css";
 import logo from "../../../../resources/images/brand/Logotipo-SAPTalent-original.svg";
-import logoemail from "../../../../resources/images/ZAPTalent-RevisatuCorreo.png"
+import logoemail from "../../../../resources/images/ZAPTalent-RevisatuCorreo.png";
 import { ListItem } from "@material-ui/core";
 
 const RegistroD = ({ handleClose }) => {
@@ -15,14 +15,15 @@ const RegistroD = ({ handleClose }) => {
       </div>
       <div>
         <p>
-          Y por último, dentro de los proximos 5 minutos enviaremos un email de confirmación a tu cuenta de
-          correo (Si no vez el correo recuerda revisar tu bandeja de Spam).
+          Y por último, dentro de los proximos 5 minutos enviaremos un email de
+          confirmación a tu cuenta de correo (Si no vez el correo recuerda
+          revisar tu bandeja de Spam).
         </p>
         <p>Activa y comienza a ser parte de ZAPTalent</p>
       </div>
       <div className="reg-bottom-d2">
         <ListItem button className="btn-rut-reg-d2" onClick={handleClose}>
-          <p>Iniciar sesiòn</p>
+          <p style={{ color: "white" }}>Iniciar sesiòn</p>
         </ListItem>
       </div>
     </div>

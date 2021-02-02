@@ -19,10 +19,10 @@ exports.mostrarAvisos = async (req, res) => {
 
 //FILTRAR
 exports.filtrarAvisos = async (req, res) => {
-  console.log("filtro");
-  const skip = 0;
+  const { skip } = req.body;
   const query = await createQuery(req.body);
-
+  console.log(skip);
+  console.log(query);
   try {
     const avisos = await Avisos.find(
       {

@@ -98,7 +98,7 @@ const RegistroA = (props) => {
       setErrorNombre(true);
       setNombresMsg("Nombres no puede estar vacio");
       // return;
-    } else if (pattern.test(nombres.trim()) === false) { 
+    } else if (pattern.test(nombres.trim()) === false) {
       setErrorNombre(true);
       setNombresMsg("Nombres no puede contener numeros");
     }
@@ -217,7 +217,7 @@ const RegistroA = (props) => {
       }
     }
   }, [_switch]);
-console.log(phone)
+  console.log(phone);
   return (
     <div className="cont-reg-A">
       <div className="btn-close-registro">
@@ -241,7 +241,7 @@ console.log(phone)
               setPassportError(false);
             }}
           >
-            <p>Rut</p>
+            <p style={{ color: "white" }}>Rut</p>
           </ListItem>
           <ListItem
             button
@@ -253,7 +253,7 @@ console.log(phone)
               setRut("");
             }}
           >
-            <p>Pasaporte</p>
+            <p style={{ color: "white" }}>Pasaporte</p>
           </ListItem>
         </div>
       </div>
@@ -415,7 +415,7 @@ console.log(phone)
       </div>
       <div className="bottom-reg-A">
         <ListItem button className="btn-rut-reg-a" disabled>
-          <p>Atras</p>
+          <p style={{ color: "white" }}>Atras</p>
         </ListItem>
         <ListItem
           button
@@ -423,7 +423,7 @@ console.log(phone)
           onClick={validacion}
           className="btn-rut-reg-a"
         >
-          <p>Siguiente</p>
+          <p style={{ color: "white" }}>Siguiente</p>
         </ListItem>
       </div>
     </div>
@@ -431,5 +431,3 @@ console.log(phone)
 };
 
 export default RegistroA;
-
-

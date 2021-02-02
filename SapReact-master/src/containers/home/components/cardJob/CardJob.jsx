@@ -1,14 +1,14 @@
 import React from "react";
 import "./CardJob.css";
 
-const CardJob = () => {
+const CardJob = ({ data }) => {
   return (
     <div className="cont-card-job">
       <div className="sub-div-cardjob-1">
-          <div className="img-card-job"></div>
+        <div className="img-card-job"></div>
       </div>
       <div className="sub-div-cardjob-2">
-        <p>Entel Empresas</p>
+        <p>{data.titulo}</p>
       </div>
       <div className="sub-div-cardjob-3">
         <p>Analistas de Negocios Digitales</p>
@@ -20,10 +20,10 @@ const CardJob = () => {
         <p>Hace 1 dia</p>
       </div>
       <div className="sub-div-cardjob-6">
-        <p>Región Metropolitana</p>
+        <p>{data.region}</p>
       </div>
       <div className="sub-div-cardjob-7">
-        <p>$600.000</p>
+        <p>$ {data.renta}</p>
       </div>
     </div>
   );

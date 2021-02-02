@@ -36,11 +36,14 @@
 
 .cont-card-left-home {
   padding: 5px;
-  height: 500px;
+  /* height: 500px; */
+  min-height: 400px;
+  /* background-color: coral; */
 }
 
 .cont-card-right-home {
   padding: 5px;
+  min-height: 400px;
   /* height: 56%; */
   /* padding-bottom: 30px; */
   /* background-color: darkgoldenrod; */
@@ -91,7 +94,7 @@
   .cont-card-left-home {
     padding: 5px 5px 5px 10px;
     /* height: 530px; */
-    height: 100%;
+    /* height: 100%; */
     padding-top: 30px;
     /* background-color: aquamarine; */
   }

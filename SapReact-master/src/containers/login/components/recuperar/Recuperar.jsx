@@ -62,15 +62,19 @@ const recuperar = (props) => {
       <div className="cont-btns-login">
         <div className="cont-btn-ing-can-login">
           <ListItem button className="btn-ingresar-login" onClick={restablecer}>
-            <p>Enviar</p>
+            <p style={{ color: "white" }}>Enviar</p>
           </ListItem>
-          <Link className="link" to="/login-register">
+          <Link className="link" to="/login">
             <ListItem
               button
               className="btn-cancelar-login"
               onClick={() => setrecuperar("default")}
             >
-              <p style={{ width: "150px", textAlign: "center" }}>Volver</p>
+              <p
+                style={{ width: "150px", textAlign: "center", color: "white" }}
+              >
+                Volver
+              </p>
             </ListItem>
           </Link>
         </div>

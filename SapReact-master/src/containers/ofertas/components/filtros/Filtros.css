@@ -1,23 +1,46 @@
 .cont-filtros-ofertas-laborales {
   width: 300px;
   padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .item-doble-filtros-of {
   display: flex;
+  margin-top: 10px;
 }
 .cont-filtros-ofertas-laborales .item-1 {
   border-bottom: 1px solid #e8e9f5;
+  flex: 1;
+  /* background-color: cadetblue; */
 }
 .cont-filtros-ofertas-laborales .item-1 p {
   font-size: 22px;
   font-weight: 500;
-  color: var(--gray-text);
+  color: var(--blue-primary);
 }
 
 .cont-filtros-ofertas-laborales .item-2 p {
   font-size: 14px;
-
-  color: var(--gray-text);
+  color: var(--light-blue);
   margin-bottom: 5px;
+}
+.cont-filtros-ofertas-laborales .item-11 {
+  /* background-color: chartreuse; */
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: flex-end;
+}
+.cont-filtros-of {
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  flex: 9;
+  justify-content: space-between;
+}
+
+.btn-limpiar-filtros-of {
+  color: white !important;
 }

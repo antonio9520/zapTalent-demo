@@ -37,9 +37,22 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Header = ({ setOpen, indexTab, setindexTab }) => {
+const Header = ({
+  setOpen,
+  indexTab,
+  setindexTab,
+  setSkip,
+  obtenerOfertas,
+  query,
+}) => {
   const handleChange = (event, newValue) => {
     setindexTab(newValue);
+    setSkip(0);
+    console.log(query);
+    query.skip = 0;
+    if (newValue !== 1) {
+      obtenerOfertas(query, newValue);
+    }
   };
   return (
     <div className="header-avisos-emp">

@@ -7,7 +7,7 @@ import { regiones } from "../../../../assets/regiones";
 import { Close } from "@material-ui/icons";
 
 const RegistroB = (props) => {
-  const { 
+  const {
     setView,
     region,
     comuna,
@@ -111,10 +111,10 @@ const RegistroB = (props) => {
           className="btn-rut-reg-a"
           onClick={() => setView("A2")}
         >
-          <p>Atras</p>
+          <p style={{ color: "white" }}>Atras</p>
         </ListItem>
         <ListItem button onClick={nextView} className="btn-rut-reg-a">
-          <p>Siguiente</p>
+          <p style={{ color: "white" }}>Siguiente</p>
         </ListItem>
       </div>
     </div>

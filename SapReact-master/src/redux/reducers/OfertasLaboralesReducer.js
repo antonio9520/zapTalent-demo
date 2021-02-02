@@ -6,12 +6,15 @@ import {
   FILTRAR_ERROR_OF,
   FILTRAR_EXITO_OF,
   DETENER_CARGA_OF,
+  INIT_OBTENER_OF,
+  FILTRAR_EXITO_OF_INIT,
 } from "../types";
 
 const initialState = {
   ofertasLaborales: [],
   error: null,
   loading: false,
+  cargando: false,
 };
 
 export default function (state = initialState, action) {
@@ -27,12 +30,19 @@ export default function (state = initialState, action) {
     case DESCARGA_OFER_LABORAL_EXITO:
     case FILTRAR_EXITO_OF:
       return {
-        ...state,
+        ...state, 
         loading: false,
         error: null,
         ofertasLaborales: [...state.ofertasLaborales, action.payload],
       };
-
+    case FILTRAR_EXITO_OF_INIT:
+    case INIT_OBTENER_OF:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        ofertasLaborales: action.payload,
+      };
     case DESCARGA_OFER_LABORAL_ERROR:
     case FILTRAR_ERROR_OF:
       return {

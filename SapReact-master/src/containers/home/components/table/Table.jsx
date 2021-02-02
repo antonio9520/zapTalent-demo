@@ -1,7 +1,21 @@
 import React from "react";
 import "./Table.css";
 import { SearchBar, CardJob } from "../";
-const Table = () => {
+import { useSelector } from "react-redux";
+
+const Table = ({ setSkip }) => {
+  const ofertasLaborales = useSelector(
+    (state) => state.ofertasLaborales.ofertasLaborales
+  );
+
+  const handleScroll = (e) => {
+    const { offsetHeight, scrollTop, scrollHeight } = e.target;
+    const alto = scrollHeight - 150;
+    if (offsetHeight + scrollTop > alto) {
+      console.log("scroll");
+      setSkip(ofertasLaborales.length);
+    }
+  };
   return (
     <div className="cont-table">
       <div className="cont-top-table-home">
@@ -12,25 +26,12 @@ const Table = () => {
           <SearchBar />
         </div>
       </div>
-      <div className="cont-center-table-home">
-        <div className="cont-card-job-table">
-          <CardJob />
-        </div>
-        <div className="cont-card-job-table">
-          <CardJob />
-        </div>
-        <div className="cont-card-job-table">
-          <CardJob />
-        </div>
-        <div className="cont-card-job-table">
-          <CardJob />
-        </div>
-        <div className="cont-card-job-table">
-          <CardJob />
-        </div>
-        <div className="cont-card-job-table">
-          <CardJob />
-        </div>
+      <div className="cont-center-table-home" onScroll={handleScroll}>
+        {ofertasLaborales.map((item) => (
+          <div key={item._id} className="cont-card-job-table">
+            <CardJob data={item} />
+          </div>
+        ))}
       </div>
     </div>
   );
