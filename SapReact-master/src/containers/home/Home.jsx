@@ -100,7 +100,14 @@ const Home = () => {
           xl={12}
           className="cont-card-perfil-home"
         >
-          <CardPerfil nombre={nombreuser} />
+          <CardPerfil
+            nombre={nombreuser}
+            titulo="Ya tienes tu perfil en ZAPTalent."
+            subtitle="Sabías qué si completas tu perfil, tienes muchas más posibilidades
+            de obtener ese empleo que tanto te mereces. Sólo te falta un poco..."
+            textBtn="Completar"
+            to="/perfil"
+          />
         </Grid>
         <Grid
           item

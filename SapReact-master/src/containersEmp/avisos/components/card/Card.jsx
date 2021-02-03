@@ -5,7 +5,6 @@ import {
   EventBusy,
   LocationOn,
   Cached,
-  Print,
   FileCopy,
   Edit,
   Delete,
@@ -24,7 +23,6 @@ const Card = ({
   setDataCopy,
   setOpenModalRep,
 }) => {
-
   const inicio = new Date(data.fechaInicio);
   const termino = new Date(data.fechaTermino);
 
@@ -137,11 +135,7 @@ const Card = ({
               <Cached />
             </IconButton>
           </Tooltip>
-          {/* <Tooltip title="Imprimir">
-            <IconButton className="btns-cards-avisos-emp">
-              <Print />
-            </IconButton>
-          </Tooltip> */}
+
           <Tooltip title="Duplicar">
             <IconButton
               className="btns-cards-avisos-emp"
