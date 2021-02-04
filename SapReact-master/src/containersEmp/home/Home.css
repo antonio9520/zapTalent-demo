@@ -1,43 +1,34 @@
 .container-home-empresas {
-  /* padding-top: 75px; */
   padding-left: 15px;
-  /* background-color: crimson; */
   min-height: 100vh;
 }
 
-.cont-home-big-emp {
-}
+
 
 .sub-conteiner-home-emp {
   padding-top: 75px;
-  /* background-color: red; */
-  /* height: 100%; */
+  padding-left: 10px;
   height: 100vh;
   max-width: 1500px;
 }
 .cont-header-home-emp {
   padding: 5px;
   height: 10%;
-  /* background-color: tomato; */
 }
 .cont-card-perfil-home-emp {
   height: 20%;
-  /* background-color: teal; */
   padding: 5px;
 }
 .cont-cards-home-emp {
-  /* background-color: violet; */
   height: 18%;
 }
-.cont-table-home-jobs-emp {
-  /* background-color: yellow; */
+.cont-table-home-emp {
   height: 52%;
+  padding: 5px;
+  padding-bottom: 10px;
 }
 .cont-card-left-home-emp {
   padding: 5px;
+  padding-bottom: 10px;
   height: 52%;
-  /* height: 500px; */
-  /* min-height: 500px; */
-  /* height: 100%; */
-  /* background-color: coral; */
 }

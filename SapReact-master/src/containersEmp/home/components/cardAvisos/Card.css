@@ -18,9 +18,9 @@
 }
 
 .card-avisos-home-emp .item-top p {
-  color: var(--gray-text);
-  margin: 0;
-  font-weight: 600;
+  color: var(--blue-primary);
+  font-weight: 500;
+  font-size: 18px;
 }
 
 /*Center*/
@@ -194,7 +194,7 @@
 }
 
 .mod-aviso-home-emp-inac {
-  background-color: #e4e4e4;
+  background-color: #b6b6b6;
   box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
   transition: 0.5s all ease-in-out;
 }

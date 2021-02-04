@@ -15,7 +15,7 @@ import {
 } from "@material-ui/icons";
 import { cerrarSesionAction } from "../../../redux/actions/authAction";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../../resources/images/SAPTalent/SAPTalent-Logo-White.svg";
+import logo from "../../../resources/images/SAPTalent/ZAPTalent-Logotipo-horizontal-Blanco.png";
 
 const Sidebar = (props) => {
   const { open } = props;
@@ -52,7 +52,7 @@ const Sidebar = (props) => {
       className={open ? "cont-sidebar-mini" : "cont-sidebar"}
     >
       <div className="header-logo-sidebar">
-        <img src={logo} alt="SAP"/>
+        <img src={logo} alt="SAP" />
       </div>
       <div className="sidebar-body">
         <List className="list-sidebar">

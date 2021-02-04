@@ -3,7 +3,7 @@ import "./Home.css";
 import { Grid } from "@material-ui/core";
 import { HeaderHome, CardPerfil } from "../../containers/home/components";
 import { CardA } from "../../components";
-import { CardAvisos } from "./components";
+import { CardAvisos, Table } from "./components";
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 
@@ -116,9 +116,9 @@ const Home = () => {
         md={12}
         lg={6}
         xl={6}
-        className="cont-table-home-jobs-emp"
+        className="cont-table-home-emp"
       >
-        <p>Table</p>
+        <Table />
       </Grid>
       <Grid
         item

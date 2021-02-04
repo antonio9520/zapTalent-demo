@@ -129,8 +129,7 @@ const Anuncio = ({ data, height }) => {
     "Diciembre",
   ];
   const [submoduls] = submodulos;
-  console.log(submoduls);
-  console.log(submodulos);
+
   return (
     <div className="aviso-home-emp" style={{ height: height }}>
       <div className="left-aviso-home-emp">
@@ -320,7 +319,7 @@ const Modulos = ({ data, setActive, active, num }) => {
 };
 
 const Submodulos = ({ data }) => {
-  console.log(data);
+  
   return (
     <div className="submod-aviso-home-emp">
       <p>{data.submodulo}</p>

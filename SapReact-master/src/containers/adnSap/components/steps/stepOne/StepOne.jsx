@@ -76,7 +76,7 @@ const StepOne = (props) => {
             <div className="btn-right-adn">
               <IconButton
                 onClick={handleNext}
-                disabled={activeStep === modulos.length / 3 - 1}
+                disabled={activeStep === Math.ceil(modulos.length / 3) - 1}
               >
                 <ArrowForwardIos />
               </IconButton>
@@ -85,7 +85,7 @@ const StepOne = (props) => {
           <div className="cont-mobile-adn">
             <MobileStepper
               variant="dots"
-              steps={modulos.length / 3}
+              steps={Math.ceil(modulos.length / 3)}
               position="static"
               activeStep={activeStep}
               className="dots-one-adn"

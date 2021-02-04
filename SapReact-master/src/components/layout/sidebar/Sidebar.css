@@ -35,9 +35,10 @@
 .header-logo-sidebar img {
   /* background-color: salmon; */
   margin: 0;
-  height: 230px;
-  margin-top: -77px;
-  margin-left: 5px;
+  width: 220px;
+  /* height: 230px; */
+  margin-top: 4px;
+  margin-left: 10px;
 }
 .header-sidebar {
   display: flex;

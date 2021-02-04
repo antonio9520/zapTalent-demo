@@ -1,0 +1,170 @@
+.card-table-home-emp {
+  width: 100%;
+  background-color: rosybrown;
+  margin-top: 10px;
+  background-color: var(--white);
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  min-height: 100px;
+  display: flex;
+}
+
+/*item-1*/
+.card-table-home-emp .item-1 {
+  flex: 0.5;
+  /* background-color: rgb(231, 181, 181); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-table-home-emp .item-1 .cont-imagen {
+  width: 60px;
+  background-color: white;
+  height: 60px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card-table-home-emp .item-1 .cont-imagen img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-size: cover;
+}
+/*item-2*/
+.card-table-home-emp .item-2 {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background-color: rgb(187, 236, 236); */
+}
+.card-table-home-emp .item-2 .p1 {
+  color: var(--blue-primary);
+  font-weight: 500;
+}
+.card-table-home-emp .item-2 .p2 {
+  color: var(--gray-text);
+  font-size: 14px;
+  font-weight: 200;
+}
+.tipo-cons-home-post-emp {
+  background-color: #197ee6;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  border-radius: 3px;
+  margin-top: 10px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
+}
+.tipo-cons-home-post-emp p {
+  color: white;
+  font-size: 12px;
+}
+/*item-3*/
+.card-table-home-emp .item-3 {
+  flex: 1;
+  /* background-color: rgb(225, 205, 243); */
+}
+.card-table-home-emp .item-3 .p1 {
+  font-size: 14px;
+  color: var(--blue-primary);
+  font-weight: 500;
+  margin-top: 20px;
+  text-align: center;
+}
+.swip-home-emp {
+  display: flex;
+  flex-direction: column;
+}
+.stepper-user-home-emp {
+  flex: 1;
+  display: flex;
+  margin-top: -8px;
+  justify-content: center;
+}
+.swip-home-emp .top-swip-home-emp {
+  display: flex;
+  /* background-color: chocolate; */
+  height: 40px;
+}
+.swip-home-emp .top-swip-home-emp .left-swip-home-emp {
+  /* background-color: coral; */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swip-home-emp .top-swip-home-emp .center-swip-home-emp {
+  /* background-color: rgb(104, 235, 99); */
+  flex: 2.3;
+}
+.swip-home-emp .top-swip-home-emp .right-swip-home-emp {
+  /* background-color: rgb(126, 217, 240); */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-swip-home-emp {
+  width: 15px !important;
+  height: 15px !important;
+  background-color: #4bacef !important;
+  box-shadow: 1px 1px 5px 1x rgba(0, 0, 0, 0.2);
+}
+.btn-swip-home-emp .icon-swip-home-emp {
+  width: 10px;
+  color: white;
+}
+
+.swip-cont-home-emp {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: rosybrown; */
+  height: 40px;
+}
+.swip-cont-home-emp .swip-item-home-emp {
+  background: var(--degradado-blue);
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+.swip-cont-home-emp p {
+  color: white;
+  font-size: 12px;
+}
+
+/*item-4*/
+.card-table-home-emp .item-4 {
+  flex: 1;
+  /* background-color: rgb(235, 198, 172); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-table-home-emp .item-4 div {
+  display: flex;
+  align-items: center;
+}
+
+.card-table-home-emp .item-4 .icon-user-home-emp {
+  width: 20px;
+  color: var(--blue-primary);
+}
+
+.card-table-home-emp .item-4 div p {
+  font-size: 12px;
+  color: var(--gray-text);
+  margin-left: 10px;
+}

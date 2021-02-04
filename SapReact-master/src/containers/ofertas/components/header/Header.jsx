@@ -10,7 +10,7 @@ const AntTabs = withStyles({
     marginTop: "8px",
   },
   indicator: {
-    backgroundColor: "#4653B1",
+    backgroundColor: "#197EE6",
     height: "5px",
   },
 })(Tabs);

@@ -84,7 +84,7 @@ const SubModulos = ({
             <div className="btn-right-adn">
               <IconButton
                 onClick={handleNext}
-                disabled={activeStep === arraySubModulos.length - 1}
+                disabled={activeStep === Math.ceil(arraySubModulos.length - 1)}
               >
                 <ArrowForwardIos />
               </IconButton>

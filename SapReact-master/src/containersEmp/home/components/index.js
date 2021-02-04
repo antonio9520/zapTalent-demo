@@ -1,3 +1,4 @@
 import CardAvisos from "./cardAvisos/Card";
+import Table from "./table/Table";
 
-export { CardAvisos };
+export { CardAvisos, Table };
