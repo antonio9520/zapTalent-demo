@@ -107,8 +107,9 @@ export default Card;
 
 const Postulacion = ({ data }) => {
   const [_switch, setSwitch] = useState(false);
-
+  const [active, setActive] = useState(0);
   const [modulos, setModulos] = useState(["MM", "FI"]);
+  const [submodulos, setSubModulos] = useState(["SM", "PR", "SR", "MN"]);
   const {
     fechaInicio,
     fechaTermino,
@@ -210,13 +211,29 @@ const Postulacion = ({ data }) => {
       </div>
       <div className="item-5">
         <p className="p4-post-b-perfil">Módulos y submodulos</p>
-        <div className="modulos-card-ofertas-laborales">
-          {modulos.map((item, index) => (
-            <Modulos key={index} data={item} />
+        <div
+          className="modulos-card-ofertas-laborales"
+          style={{ marginBottom: "10px" }}
+        >
+          {adns.map((item, index) => (
+            <Modulos
+              key={index}
+              data={item}
+              setActive={setActive}
+              num={index}
+              active={active}
+            />
           ))}
         </div>
-        <div className="submodulos-card-ofertas-laborales">
-          <SubModulos />
+        <div
+          className="submodulos-card-ofertas-laborales"
+          style={{ maxHeight: "50px" }}
+        >
+          {adns
+            ? adns[active].submodulos.map((item, index) => (
+                <SubModulos key={index} data={item} />
+              ))
+            : null}
         </div>
       </div>
       <p className="p4-post-b-perfil">Salario</p>
@@ -227,37 +244,48 @@ const Postulacion = ({ data }) => {
           displayType={"text"}
           thousandSeparator={true}
           // prefix={"$"}
-        />
+        /> 
       </p>
     </div>
   );
 };
 
-const Modulos = ({ data }) => {
-  const [active, setActive] = useState(true);
+const Modulos = ({ data, num, setActive, active }) => {
+  const [activeM, setActiveM] = useState(false);
 
+  const handleClick = () => {
+    setActiveM(!activeM);
+    setActive(num);
+  };
+  useEffect(() => {
+    if (num === active) {
+      setActiveM(true);
+    } else {
+      setActiveM(false);
+    }
+  }, [active]);
   return (
     <>
       <div
-        className={active ? "modulo-activo-ol" : "modulo-inactivo-ol"}
-        onClick={() => setActive(!active)}
+        className={activeM ? "modulo-activo-ol" : "modulo-inactivo-ol"}
+        onClick={handleClick}
       >
-        <p>{data}</p>
+        <p className={data.modulo.length > 6 ? "name-submod-large" : null}>
+          {data.modulo}
+        </p>
       </div>
     </>
   );
 };
 
-const SubModulos = () => {
-  const [submodulos, setSubModulos] = useState(["SM", "PR", "SR", "MN"]);
-
+const SubModulos = ({ data }) => {
   return (
     <>
-      {submodulos.map((item, index) => (
-        <div key={index} className={"modulo-activo-ol"}>
-          <p>{item}</p>
-        </div>
-      ))}
+      <div className={"modulo-activo-ol"} style={{ marginTop: "5px" }}>
+        <p className={data.submodulo.length > 6 ? "name-submod-large" : null}>
+          {data.submodulo}
+        </p>
+      </div>
     </>
   );
 };

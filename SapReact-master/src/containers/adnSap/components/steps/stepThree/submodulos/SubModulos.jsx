@@ -10,6 +10,7 @@ import {
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 import Loader from "react-loader-spinner";
 import SwipeableViews from "react-swipeable-views";
+import { Tooltip } from "../../../../../../components";
 
 const SubModulos = ({
   arrayModules,
@@ -156,18 +157,20 @@ const SubMod = ({
   const handleClick = () => {
     setActiveSM(data.name);
   };
-
+  console.log(data);
   return (
-    <div
-      className={
-        activeSM === data.name
-          ? `sub-cont-SwipeableViews-active ${error ? "error-two" : null}`
-          : `sub-cont-SwipeableViews ${error ? "error-two" : null}`
-      }
-      onClick={() => handleClick()}
-    >
-      <p style={{ color: "white" }}>{data.name}</p>
-    </div>
+    <Tooltip title={data.desc}>
+      <div
+        className={
+          activeSM === data.name
+            ? `sub-cont-SwipeableViews-active ${error ? "error-two" : null}`
+            : `sub-cont-SwipeableViews ${error ? "error-two" : null}`
+        }
+        onClick={() => handleClick()}
+      >
+        <p style={{ color: "white" }}>{data.name}</p>
+      </div>
+    </Tooltip>
   );
 };
 

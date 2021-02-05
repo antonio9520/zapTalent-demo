@@ -3,7 +3,7 @@ import "./Table.css";
 import { SearchBar, CardJob } from "../";
 import { useSelector } from "react-redux";
 
-const Table = ({ setSkip }) => {
+const Table = ({ setSkip, setOpenModal, setDataOL }) => {
   const ofertasLaborales = useSelector(
     (state) => state.ofertasLaborales.ofertasLaborales
   );
@@ -29,7 +29,11 @@ const Table = ({ setSkip }) => {
       <div className="cont-center-table-home" onScroll={handleScroll}>
         {ofertasLaborales.map((item) => (
           <div key={item._id} className="cont-card-job-table">
-            <CardJob data={item} />
+            <CardJob
+              data={item}
+              setOpenModal={setOpenModal}
+              setDataOL={setDataOL}
+            />
           </div>
         ))}
       </div>

@@ -1,5 +1,7 @@
 const Postulacion = require("../models/postulacion");
 const Avisos = require("../models/avisos");
+const Usuario = require("../../models/usuario");
+const Adnsap = require("../../models/adnsap");
 
 exports.crearPostulacion = async (req, res) => {
   try {
@@ -60,4 +62,40 @@ exports.deletePostulacion = async (req, res) => {
   } catch (error) {
     res.status(500).send({ msg: "Error en el servidor" });
   }
+};
+
+/**EMPRESAS */
+
+exports.usuarioPostulados = async (req, res) => {
+  const idemp = req.params.id;
+  const skip = req.params.skip;
+  // console.log("render-----------------------------------------------");
+  try {
+    const postulaciones = await Postulacion.find({
+      idemp: idemp,
+    });
+    // console.log(postulaciones);
+    const data = await dataUsuarios(postulaciones);
+    res.send(data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Error en el servidor." });
+  }
+};
+
+const dataUsuarios = async (data) => {
+  let usuarios = [];
+
+  for (let i = 0; i < data.length; i++) {
+    let usuario = await Usuario.findById(data[i].iduser);
+    const adnsap = await Adnsap.find(
+      { iduser: usuario._id },
+      { name: 1, desc: 1 }
+    );
+    console.log(adnsap);
+    usuario.id_post = data[i]._id;
+    usuario.adns = adnsap;
+    usuarios.push(usuario);
+  }
+  return usuarios;
 };

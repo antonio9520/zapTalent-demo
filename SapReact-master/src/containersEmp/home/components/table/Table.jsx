@@ -57,7 +57,7 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Table = () => {
+const Table = ({ postulados, setOpenModal }) => {
   const [value, setValue] = React.useState(0);
   const [age, setAge] = React.useState("");
   const data = ["", "", "", "", "", "", "", "", "", "", "", ""];
@@ -84,13 +84,13 @@ const Table = () => {
             aria-label="ant example"
           >
             <AntTab label="Leidos" />
-            <AntTab label="No leidos" />
+            <AntTab style={{ marginLeft: "20px" }} label="No leidos" />
           </AntTabs>
         </div>
       </div>
       <div className="center">
-        {data.map((item, index) => (
-          <CardTable />
+        {postulados.map((item, index) => (
+          <CardTable data={item} key={index} setOpenModal={setOpenModal} />
         ))}
       </div>
       <div className="bottom">

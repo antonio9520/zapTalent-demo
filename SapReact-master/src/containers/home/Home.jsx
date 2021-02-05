@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Grid } from "@material-ui/core";
-import { HeaderHome, CardPerfil, Table } from "./components";
+import { HeaderHome, CardPerfil, Table, ModalAviso } from "./components";
 import { CardA, CardB } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { CardAdn, CardJob } from "../perfil/components";
@@ -16,6 +16,8 @@ const Home = () => {
   const adns = useSelector((state) => state.adn.adns);
   const trabajos = useSelector((state) => state.trabajo.trabajos);
   const [openModalEditar, setOpenModalEditar] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [dataOL, setDataOL] = useState(null);
   const [dataEditar, setDataEditar] = useState(null);
   const [cardT1, setCardT1] = useState("");
   const [cardT2, setCardT2] = useState("");
@@ -72,6 +74,11 @@ const Home = () => {
       }
       style={{ width: "100%", maxWidth: "1500px" }}
     >
+      <ModalAviso
+        data={dataOL}
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+      />
       <ModalEditar
         setOpenModalEditar={setOpenModalEditar}
         openModalEditar={openModalEditar}
@@ -174,7 +181,11 @@ const Home = () => {
           xl={6}
           className="cont-table-home-jobs"
         >
-          <Table setSkip={setSkip} />
+          <Table
+            setSkip={setSkip}
+            setOpenModal={setOpenModal}
+            setDataOL={setDataOL}
+          />
         </Grid>
         <Grid
           item

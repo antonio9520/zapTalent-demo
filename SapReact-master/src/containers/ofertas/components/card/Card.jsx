@@ -54,6 +54,7 @@ const Card = ({ data }) => {
     estado,
     anosExp,
     nameuser,
+    idusuario,
   } = data;
 
   const [active, setActive] = useState(0);
@@ -65,7 +66,11 @@ const Card = ({ data }) => {
     setSwitch(true);
     if (usuario) {
       dispatch(
-        crearPostulacionAction({ idaviso: _id, iduser: usuario._id })
+        crearPostulacionAction({
+          idaviso: _id,
+          iduser: usuario._id,
+          idemp: idusuario,
+        })
       ).then(() => setSwitch(false));
     }
   };
@@ -324,14 +329,16 @@ const Modulos = ({ data, num, setActive, active }) => {
   }, [active]);
   return (
     <>
-      <div
-        className={activeM ? "modulo-activo-ol" : "modulo-inactivo-ol"}
-        onClick={handleClick}
-      >
-        <p className={data.modulo.length > 6 ? "name-submod-large" : null}>
-          {data.modulo}
-        </p>
-      </div>
+      <Tooltip title={data.desc ? data.desc : ""}>
+        <div
+          className={activeM ? "modulo-activo-ol" : "modulo-inactivo-ol"}
+          onClick={handleClick}
+        >
+          <p className={data.modulo.length > 6 ? "name-submod-large" : null}>
+            {data.modulo}
+          </p>
+        </div>
+      </Tooltip>
     </>
   );
 };
@@ -339,11 +346,13 @@ const Modulos = ({ data, num, setActive, active }) => {
 const SubModulos = ({ data }) => {
   return (
     <>
-      <div className={"modulo-activo-ol"} style={{ marginTop: "3px" }}>
-        <p className={data.submodulo.length > 6 ? "name-submod-large" : null}>
-          {data.submodulo}
-        </p>
-      </div>
+      <Tooltip title={data.desc ? data.desc : ""}>
+        <div className={"modulo-activo-ol"} style={{ marginTop: "3px" }}>
+          <p className={data.submodulo.length > 6 ? "name-submod-large" : null}>
+            {data.submodulo}
+          </p>
+        </div>
+      </Tooltip>
     </>
   );
 };

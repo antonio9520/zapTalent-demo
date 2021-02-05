@@ -11,8 +11,21 @@ import {
   PhoneIphone,
 } from "@material-ui/icons";
 import SwipeableViews from "react-swipeable-views";
+import { Tooltip } from "../../../../components";
 
-const CardTable = () => {
+const CardTable = ({ data, setOpenModal }) => {
+  const {
+    nombres,
+    imageURL,
+    apellidos,
+    profesion,
+    consultor,
+    anosZap,
+    comuna,
+    region,
+    phone,
+    adns,
+  } = data;
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -21,106 +34,81 @@ const CardTable = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-  const adns = [
-    {
-      modulo: "FI",
-      desc: "descripcion",
-      submodulos: [
-        { submodulo: "CA", desc: "Descripcion" },
-        { submodulo: "LO", desc: "Descripcion" },
-        { submodulo: "JY", desc: "Descripcion" },
-      ],
-    },
-    {
-      modulo: "CO",
-      desc: "descripcion",
-      submodulos: [{ submodulo: "CA", desc: "Descripcion" }],
-    },
-    {
-      modulo: "FI",
-      desc: "descripcion",
-      submodulos: [
-        { submodulo: "CA", desc: "Descripcion" },
-        { submodulo: "LO", desc: "Descripcion" },
-        { submodulo: "JY", desc: "Descripcion" },
-        { submodulo: "CA", desc: "Descripcion" },
-        { submodulo: "LO", desc: "Descripcion" },
-        { submodulo: "JY", desc: "Descripcion" },
-      ],
-    },
-    {
-      modulo: "FI",
-      desc: "descripcion",
-      submodulos: [
-        { submodulo: "CA", desc: "Descripcion" },
-        { submodulo: "LO", desc: "Descripcion" },
-        { submodulo: "JY", desc: "Descripcion" },
-      ],
-    },
-  ];
-  const lenghtArray = adns.length;
 
-  console.log(adns.length);
+  const lenghtArray = adns.length;
+  const nombreuser = nombres.split(" ");
+  const apellidosuser = apellidos.split(" ");
+  const nombrecompleto =
+    nombreuser[0] + " " + apellidosuser[0] + " " + apellidosuser[1];
+
+  const verUsuario = () => {
+    setOpenModal(true);
+  };
   return (
-    <div className="card-table-home-emp">
-      <div className="item-1">
-        <div className="cont-imagen">
-          <img src={imagen} alt="userimage" />
-        </div>
-      </div>
-      <div className="item-2">
-        <p className="p1">Abraham Vidal Carrasco.</p>
-        <p className="p2">Ingeniero en informatica</p>
-        <div className="tipo-cons-home-post-emp">
-          <p>Consultor Semi Senior</p>
-        </div>
-      </div>
-      <div className="item-4">
-        <div>
-          <AccountTree className="icon-user-home-emp" /> <p>5 Años</p>
-        </div>
-        <div>
-          <LocationOn className="icon-user-home-emp" /> <p>Coronel, Bio Bio</p>
-        </div>
-        <div>
-          <PhoneIphone className="icon-user-home-emp" /> <p>+(569) 5670 7412</p>
-        </div>
-      </div>
-      <div className="item-3">
-        <p className="p1">Modulos</p>
-        <div className="swip-home-emp">
-          <div className="top-swip-home-emp">
-            <div className="left-swip-home-emp">
-              <IconButton
-                className="btn-swip-home-emp"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-              >
-                <ArrowBackIos className="icon-swip-home-emp" />
-              </IconButton>
-            </div>
-            <div className="center-swip-home-emp">
-              <Modulos activeStep={activeStep} data={adns} />
-            </div>
-            <div className="right-swip-home-emp">
-              <IconButton
-                className="btn-swip-home-emp"
-                onClick={handleNext}
-                disabled={activeStep === Math.ceil(lenghtArray / 3) - 1}
-              >
-                <ArrowForwardIos className="icon-swip-home-emp" />
-              </IconButton>
-            </div>
-          </div>
-          <div className="stepper-user-home-emp">
-            <MobileStepperCustom
-              activeStep={activeStep}
-              lenghtArray={lenghtArray}
-            />
+    <Tooltip title="Ver postulante">
+      <div className="card-table-home-emp" onClick={verUsuario}>
+        <div className="item-1">
+          <div className="cont-imagen">
+            <img src={imageURL ? imageURL : null} alt="userimage" />
           </div>
         </div>
+        <div className="item-2">
+          <p className="p1">{nombrecompleto}</p>
+          <p className="p2">{profesion ? profesion.name : null}</p>
+          <div className="tipo-cons-home-post-emp">
+            <p>Consultor {consultor}</p>
+          </div>
+        </div>
+        <div className="item-4">
+          <div>
+            <AccountTree className="icon-user-home-emp" /> <p>{anosZap} Años</p>
+          </div>
+          <div>
+            <LocationOn className="icon-user-home-emp" />
+            <p>
+              {comuna}, {region}
+            </p>
+          </div>
+          <div>
+            <PhoneIphone className="icon-user-home-emp" /> <p>{phone}</p>
+          </div>
+        </div>
+        <div className="item-3">
+          <p className="p1">Modulos</p>
+          <div className="swip-home-emp">
+            <div className="top-swip-home-emp">
+              <div className="left-swip-home-emp">
+                <IconButton
+                  className="btn-swip-home-emp"
+                  onClick={handleBack}
+                  disabled={activeStep === 0}
+                >
+                  <ArrowBackIos className="icon-swip-home-emp" />
+                </IconButton>
+              </div>
+              <div className="center-swip-home-emp">
+                <Modulos activeStep={activeStep} data={adns} />
+              </div>
+              <div className="right-swip-home-emp">
+                <IconButton
+                  className="btn-swip-home-emp"
+                  onClick={handleNext}
+                  disabled={activeStep === Math.ceil(lenghtArray / 3) - 1}
+                >
+                  <ArrowForwardIos className="icon-swip-home-emp" />
+                </IconButton>
+              </div>
+            </div>
+            <div className="stepper-user-home-emp">
+              <MobileStepperCustom
+                activeStep={activeStep}
+                lenghtArray={lenghtArray}
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </Tooltip>
   );
 };
 
@@ -142,13 +130,21 @@ const Modulos = ({ data, activeStep }) => {
         ? arrayModulos.map((item, index) => (
             <div key={index} className="swip-cont-home-emp">
               {item.map((item, index) => (
-                <div
-                  className={
-                    activo ? "swip-item-home-emp" : "wip-item-home-emp-inac "
-                  }
-                >
-                  <p>{item.modulo}</p>
-                </div>
+                <Tooltip title={item.desc}>
+                  <div
+                    className={
+                      activo ? "swip-item-home-emp" : "wip-item-home-emp-inac "
+                    }
+                  >
+                    <p
+                      className={
+                        item.name.length > 2 ? "name-submod-large" : null
+                      }
+                    >
+                      {item.name}
+                    </p>
+                  </div>
+                </Tooltip>
               ))}
             </div>
           ))

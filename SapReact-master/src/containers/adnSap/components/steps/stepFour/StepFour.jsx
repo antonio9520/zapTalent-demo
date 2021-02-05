@@ -345,15 +345,17 @@ export default StepFour;
 
 const Modulos = ({ data, active, setActive, editMod, editSubMod }) => {
   return (
-    <div
-      onClick={() => (editMod || editSubMod ? null : setActive(data.name))}
-      className={active === data.name ? "mod-two-active" : "mod-two-inactive"}
-      style={{ cursor: editMod || editSubMod ? "default" : "pointer" }}
-    >
-      <p style={{ fontSize: "8px", textAlign: "center", color: "white" }}>
-        {data.name}
-      </p>
-    </div>
+    <Tooltip title={data.desc}>
+      <div
+        onClick={() => (editMod || editSubMod ? null : setActive(data.name))}
+        className={active === data.name ? "mod-two-active" : "mod-two-inactive"}
+        style={{ cursor: editMod || editSubMod ? "default" : "pointer" }}
+      >
+        <p style={{ fontSize: "8px", textAlign: "center", color: "white" }}>
+          {data.name}
+        </p>
+      </div>
+    </Tooltip>
   );
 };
 

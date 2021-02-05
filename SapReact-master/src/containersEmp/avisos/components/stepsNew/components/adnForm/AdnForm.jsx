@@ -13,7 +13,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
   const [cargando, setCargando] = useState(false);
   const [modulo, setModulo] = useState(null);
   const [error, setError] = useState(false);
-  const [initDefault, setInitDefault] = useState(true);
+  const [initDefault, setInitDefault] = useState(true); 
   const [nivel, setNivel] = useState(null);
   const [_switch_nivel, setSwitchNivel] = useState(false);
   const [dataNivel, setDataNivel] = useState("");
@@ -87,6 +87,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
         it.submodulos.push({
           submodulo: dataNivel.name,
           nivel: nivel,
+          desc: dataNivel.desc,
         });
       }
     });
@@ -324,7 +325,7 @@ const Submodulos = ({
       });
       recargar();
     } else {
-      addNivel({ name: data.submodulo, id: id });
+      addNivel({ name: data.submodulo, id: id, desc: data.desc });
     }
     console.log(adns);
   };

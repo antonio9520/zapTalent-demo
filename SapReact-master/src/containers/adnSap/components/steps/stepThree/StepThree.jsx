@@ -4,6 +4,7 @@ import { ListItem, IconButton, Snackbar } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import SubModulos from "./submodulos/SubModulos";
 import { Alert } from "@material-ui/lab";
+import { Tooltip } from "../../../../../components";
 
 const StepThree = (props) => {
   const { setStep, arrayModules, setArrayModules, closeModal } = props;
@@ -93,15 +94,17 @@ export default StepThree;
 
 const Modulos = ({ data, active, setActive }) => {
   return (
-    <div
-      className={
-        active === data.name
-          ? "sub-modulo-three-adn-active"
-          : "sub-modulo-three-adn"
-      }
-      onClick={() => setActive(data.name)}
-    >
-      <p style={{ color: "white" }}>{data.name}</p>
-    </div>
+    <Tooltip title={data.desc}>
+      <div
+        className={
+          active === data.name
+            ? "sub-modulo-three-adn-active"
+            : "sub-modulo-three-adn"
+        }
+        onClick={() => setActive(data.name)}
+      >
+        <p style={{ color: "white" }}>{data.name}</p>
+      </div>
+    </Tooltip>
   );
 };

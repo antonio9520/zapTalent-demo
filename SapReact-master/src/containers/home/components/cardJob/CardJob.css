@@ -33,12 +33,14 @@
   /* background-color: rgb(65, 225, 113); */
   flex: 1.2;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   padding: 5px;
 }
 .sub-div-cardjob-2 p {
   font-size: 13px;
+  font-weight: 500;
+  text-align: left;
   color: var(--blue-primary);
 }
 .sub-div-cardjob-3 {

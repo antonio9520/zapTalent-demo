@@ -1,9 +1,14 @@
 import React from "react";
 import "./CardJob.css";
+import NumberFormat from "react-number-format";
 
-const CardJob = ({ data }) => {
+const CardJob = ({ data, setOpenModal, setDataOL }) => {
+  const verAviso = () => {
+    setDataOL(data);
+    setOpenModal(true);
+  };
   return (
-    <div className="cont-card-job">
+    <div className="cont-card-job" onClick={verAviso}>
       <div className="sub-div-cardjob-1">
         <div className="img-card-job"></div>
       </div>
@@ -23,7 +28,15 @@ const CardJob = ({ data }) => {
         <p>{data.region}</p>
       </div>
       <div className="sub-div-cardjob-7">
-        <p>$ {data.renta}</p>
+        <p>
+          ${" "}
+          <NumberFormat
+            value={data.renta}
+            displayType={"text"}
+            thousandSeparator={true}
+            // prefix={"$"}
+          />{" "}
+        </p>
       </div>
     </div>
   );

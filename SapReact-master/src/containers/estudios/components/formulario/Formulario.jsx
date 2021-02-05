@@ -20,6 +20,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { paises } from "../../../../assets/paises";
 import { agregarEstudioAction } from "../../../../redux/actions/estudioAction";
 import { estudios_data } from "../../../../assets/estudios";
+import { areaEstudio } from "../../../../assets/areaEstudio";
 
 const Formulario = (props) => {
   const { setOpenModal } = props;
@@ -297,15 +298,11 @@ const Formulario = (props) => {
             error={areaestudioError}
             helpertext="Área de estudio no puede estar vacio"
           >
-            <MenuItem className="custom-menu-item" value="item1">
-              item1
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item2">
-              item2
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="item3">
-              item3
-            </MenuItem>
+            {areaEstudio.map((item, index) => (
+              <MenuItem key={index} className="custom-menu-item" value={item}>
+                {item}
+              </MenuItem>
+            ))}
           </CustomSelectB>
         </div>
         <div className="campo-date-form-estudio">

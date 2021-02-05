@@ -5,6 +5,7 @@ import { LinearProgress } from "@material-ui/core";
 import { Close, Add } from "@material-ui/icons";
 import AdnForm from "./components/adnForm/AdnForm";
 import shortid from "shortid";
+import { modulos } from "../../../../assets/modulos";
 
 const StepTwo = forwardRef((props, ref) => {
   const {
@@ -24,7 +25,10 @@ const StepTwo = forwardRef((props, ref) => {
   const addModulo = () => {
     const container = document.getElementById("cont-adns-form-avisos-emp");
 
-    setAdns([...adns, { id: shortid.generate(), modulo: "", submodulos: [] }]);
+    setAdns([
+      ...adns,
+      { id: shortid.generate(), modulo: "", submodulos: [], desc: "" },
+    ]);
     setTimeout(() => {
       container.scrollTop = "12000";
     }, 100);
@@ -57,12 +61,21 @@ const StepTwo = forwardRef((props, ref) => {
     });
     setErrores2(errores);
   };
-  const nextStep = () => {
+  const nextStep = async () => {
+    await addDesc();
     if (errores.length === 0) {
       setStep("three");
     }
   };
-
+  const addDesc = () => {
+    modulos.map((item) => {
+      adns.map((it) => {
+        if (item.modulo === it.modulo) {
+          it.desc = item.desc;
+        }
+      });
+    });
+  };
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">

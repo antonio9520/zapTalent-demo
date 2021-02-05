@@ -118,16 +118,18 @@
 .new-card-perfil .item-2 .btn-perfil-new .btn-active {
   background-color: #1c77e1;
   padding: 5px 20px;
-  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.5s all ease-in-out;
 }
 .new-card-perfil .item-2 .btn-perfil-new .btn-active p {
   color: white;
   margin: 0;
 }
 .new-card-perfil .item-2 .btn-perfil-new .btn-inactive {
-  background-color: #f2f2f2;
+  background-color: #e4e4e4;
   padding: 5px 20px;
-  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+  transition: 0.5s all ease-in-out;
 }
 .new-card-perfil .item-2 .btn-perfil-new .btn-inactive p {
   color: var(--gray-text);
@@ -219,8 +221,9 @@
 .cont-habilidades-perfil-new .item-1-b {
   /* background-color: cadetblue; */
   display: flex;
+  /* align-items: flex-end; */
   flex-wrap: wrap;
-  flex: 1;
+  /* flex: 1; */
   max-height: 350px;
   overflow: auto;
   padding: 0 20px;
@@ -235,6 +238,7 @@
   border-radius: 5px;
   margin: 3px;
   padding: 0 20px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
 }
 .cont-habilidades-perfil-new .item-1-b .habilidad p {
   margin: 0;
@@ -377,16 +381,18 @@
   .new-card-perfil .item-2 .btn-perfil-new .btn-active {
     background-color: #1c77e1;
     padding: 5px 20px;
-    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    transition: 0.5s all ease-in-out;
   }
   .new-card-perfil .item-2 .btn-perfil-new .btn-active p {
     color: white;
     margin: 0;
   }
   .new-card-perfil .item-2 .btn-perfil-new .btn-inactive {
-    background-color: #f2f2f2;
+    background-color: #e4e4e4;
     padding: 5px 20px;
-    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+    transition: 0.5s all ease-in-out;
   }
   .new-card-perfil .item-2 .btn-perfil-new .btn-inactive p {
     color: var(--gray-text);
@@ -479,7 +485,7 @@
     /* background-color: cadetblue; */
     display: flex;
     flex-wrap: wrap;
-    flex: 1;
+    /* flex: 1; */
     max-height: 250px;
     overflow: auto;
     padding: 0 20px;
@@ -494,7 +500,6 @@
     border-radius: 5px;
     margin: 3px;
     padding: 0 15px;
-    
   }
   .cont-habilidades-perfil-new .item-1-b .habilidad p {
     margin: 0;

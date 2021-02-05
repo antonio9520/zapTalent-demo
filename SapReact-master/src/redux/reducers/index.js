@@ -6,10 +6,11 @@ import certificadoReducer from "./certificadoReducer";
 import adnReducer from "./adnReducer";
 import alertReducer from "./alertReducer";
 import ofertasLaboralesReducer from "./OfertasLaboralesReducer";
+import postReducer from "./postReducer";
 //EMPRESA
 import authEmpReducer from "./reducers-emp/authReducer";
 import avisoReducers from "./reducers-emp/avisosReducer";
-import postReducer from "./postReducer";
+import postuladosReducers from "./reducers-emp/postuladosReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -22,4 +23,5 @@ export default combineReducers({
   aviso: avisoReducers,
   ofertasLaborales: ofertasLaboralesReducer,
   postulaciones: postReducer,
+  postulados: postuladosReducers,
 });

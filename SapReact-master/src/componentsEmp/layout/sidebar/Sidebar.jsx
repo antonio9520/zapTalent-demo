@@ -24,9 +24,9 @@ const Sidebar = (props) => {
     dispatch(cerrarSesionEmpAction());
   };
 
-  useEffect(() => {
-    dispatch(usuarioAuthEmpAction());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(usuarioAuthEmpAction());
+  // }, []);
 
   let nombreuser;
   let apellidouser;

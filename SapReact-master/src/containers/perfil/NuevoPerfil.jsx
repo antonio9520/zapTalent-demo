@@ -151,8 +151,12 @@ const Perfil = () => {
         }
       });
     }
-  }, [estudios]);
-
+  }, [usuario, estudios]);
+  const evitarBug = () => {
+    if (usuario) {
+      dispatch(obtenerAdnAction(usuario._id));
+    }
+  };
   return (
     <div className="cont-new-perfil">
       <Tooltip title="Ver información de perfil">
@@ -219,6 +223,7 @@ const Perfil = () => {
         dataEditar={dataAdn}
         setDataEditar={setDataAdn}
         setSwitch={setSwitch}
+        evitarBug={evitarBug}
       />
       <div className="left-new-perfil" ref={componentRef}>
         <div className="titulo-page">
@@ -351,7 +356,7 @@ const Perfil = () => {
               type={cardSexo}
               imgFive
               colorOne
-              title="Revela Certificación"
+              title="Comparte tus certificaciones."
               desc="Tus certificaciones tienen un lugar importante acá."
               txtBtn="Comenzar"
               link="/certificaciones"

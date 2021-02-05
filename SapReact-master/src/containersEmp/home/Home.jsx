@@ -1,22 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Grid } from "@material-ui/core";
 import { HeaderHome, CardPerfil } from "../../containers/home/components";
 import { CardA } from "../../components";
-import { CardAvisos, Table } from "./components";
+import { CardAvisos, Table, Modal } from "./components";
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
+import { obtenerPostuladosAction } from "../../redux/actions/actions-emp/postuladosAction";
 
 const Home = () => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.authEmp.usuario);
   const avisos = useSelector((state) => state.aviso.avisos);
+  const postulados = useSelector((state) => state.postulados.postulados);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     if (usuario) {
       const cargarAvisos = () =>
         dispatch(obtenerAvisoAction({ _id: usuario._id, skip: 0 }));
       cargarAvisos();
+      const cargarPostulados = () =>
+        dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0 }));
+      cargarPostulados();
     }
 
     // eslint-disable-next-line
@@ -25,6 +31,7 @@ const Home = () => {
   // const trabajos = [];
   return (
     <Grid container className="sub-conteiner-home-emp">
+      <Modal openModal={openModal} setOpenModal={setOpenModal}/>
       <Grid
         item
         className="cont-header-home-emp"
@@ -118,7 +125,7 @@ const Home = () => {
         xl={6}
         className="cont-table-home-emp"
       >
-        <Table />
+        <Table postulados={postulados} setOpenModal={setOpenModal}/>
       </Grid>
       <Grid
         item

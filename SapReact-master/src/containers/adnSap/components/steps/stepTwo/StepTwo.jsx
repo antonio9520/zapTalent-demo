@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./StepTwo.css";
-import { ListItem, IconButton, Snackbar } from "@material-ui/core";
+import { ListItem, IconButton, Snackbar, Tooltip } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import SubModulos from "./submodulos/SubModulos";
 import { Alert } from "@material-ui/lab";
@@ -103,15 +103,17 @@ const Modulos = ({ item, active, setActive, errorTwo, switch2 }) => {
     });
   }, [switch2]);
   return (
-    <div
-      onClick={() => setActive(item.name)}
-      className={
-        active === item.name
-          ? `mod-two-active ${error ? "error-two" : null}`
-          : `mod-two-inactive ${error ? "error-two" : null}`
-      }
-    >
-      <p style={{ color: "white" }}>{item.name}</p>
-    </div>
+    <Tooltip title={item.desc}>
+      <div
+        onClick={() => setActive(item.name)}
+        className={
+          active === item.name
+            ? `mod-two-active ${error ? "error-two" : null}`
+            : `mod-two-inactive ${error ? "error-two" : null}`
+        }
+      >
+        <p style={{ color: "white" }}>{item.name}</p>
+      </div>
+    </Tooltip>
   );
 };
