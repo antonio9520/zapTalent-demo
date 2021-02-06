@@ -70,6 +70,7 @@ const Card = ({ data }) => {
           idaviso: _id,
           iduser: usuario._id,
           idemp: idusuario,
+          titulo: titulo,
         })
       ).then(() => setSwitch(false));
     }

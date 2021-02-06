@@ -25,7 +25,7 @@ const Modulos = (props) => {
               arrayModules={arrayModules}
               setArrayModules={setArrayModules}
             />
-          ))}
+          ))} 
         </div>
       ))}
     </SwipeableViews>

@@ -54,7 +54,7 @@ const Card = ({
       subirAdn();
     }
   }, [file]);
- 
+
   return (
     <>
       {/* {loading ? (
@@ -99,9 +99,6 @@ const Card = ({
                 </IconButton>
               </Tooltip>
             ) : (
-              // <IconButton size="small" className="btns-card-adn one">
-              //   <CloudUpload />
-              // </IconButton>
               <>
                 <input
                   type="file"
@@ -162,7 +159,6 @@ const Card = ({
           </div>
         </div>
       </div>
-      {/* )} */}
     </>
   );
 };

@@ -17,6 +17,7 @@ const postulacionSchema = mongoose.Schema({
   idemp: {
     type: String,
   },
+  titulo: { type: String, trim: true },
   leido: {
     type: Boolean,
     default: false,

@@ -64,7 +64,6 @@ export function filtrarOferLaboralesAction(query) {
       const respuesta = await clientAxios.post(`/api/ofertasLaborales/`, query);
       if (respuesta.data.length === 0) {
         dispatch(detenerCarga());
-        dispatch(filtrarExitoInit(respuesta.data));
       } else {
         if (skip === 0) {
           dispatch(filtrarExitoInit(respuesta.data));

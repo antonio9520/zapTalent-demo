@@ -283,11 +283,7 @@ const CardJob = (props) => {
           </IconButton>
         </Tooltip>
       </div>
-      {/* {data.findate.substring(0, 4) === ano.toString() ? (
-        <div className="etiqueta-nuevo">
-          <p>Nuevo</p>
-        </div>
-      ) : null} */}
+  
       {_switch ? (
         <div className="etiqueta-nuevo" style={{ backgroundColor: "white" }}>
           <p style={{ color: "#187ce2" }}>Trabajo Actual</p>

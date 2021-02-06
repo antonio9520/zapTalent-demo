@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Table.css";
 import { SearchBar } from "../../../../containers/home/components";
 import {
@@ -58,9 +58,9 @@ const AntTab = withStyles((theme) => ({
 }))((props) => <Tab disableRipple {...props} />);
 
 const Table = ({ postulados, setOpenModal }) => {
-  const [value, setValue] = React.useState(0);
-  const [age, setAge] = React.useState("");
-  const data = ["", "", "", "", "", "", "", "", "", "", "", ""];
+  const [value, setValue] = useState(0);
+  const [age, setAge] = useState("");
+  
   const classes = useStyles();
 
   const handleChange = (event, newValue) => {

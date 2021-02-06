@@ -1,0 +1,84 @@
+.info-user-home-emp {
+  background-color: white;
+  border-radius: 5px;
+  width: 550px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+}
+.info-user-home-emp p {
+  margin: 0;
+}
+
+/*top*/
+.info-user-home-emp .top {
+  height: 150px;
+  background-image: url("../../../../resources//images/ZAPTalent-Background-1.jpg");
+  background-size: cover;
+  background-position: 50%;
+  display: flex;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+.info-user-home-emp .top div:nth-child(1) {
+  width: 76px;
+  height: 76px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-user-home-emp .top img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.info-user-home-emp .top .cont-p {
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+.info-user-home-emp .top .cont-p .p1 {
+  color: white;
+  font-size: 20px;
+  font-weight: 200;
+}
+.info-user-home-emp .top .cont-p .p2 {
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+}
+.info-user-home-emp .top .cont-p .p3 {
+  color: white;
+  font-size: 12px;
+  font-weight: 200;
+  margin-top: 5px;
+}
+.info-user-home-emp .top .cont-p .exp-adn {
+  background-color: #4ec0ef;
+  width: 130px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+.info-user-home-emp .top .cont-p .exp-adn p {
+  color: white;
+  font-size: 12px;
+  font-weight: 200;
+}
+/**bottom*/
+.info-user-home-emp .bottom {
+  height: 400px;
+  /* background-color: green; */
+}
+
+.info-user-home-emp .tab-menu-emp-user{
+/* background-color: aqua; */
+display: flex;
+justify-content: center;
+}
