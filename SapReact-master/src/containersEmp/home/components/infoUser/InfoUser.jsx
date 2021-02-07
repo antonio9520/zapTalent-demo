@@ -50,12 +50,11 @@ const AntTab = withStyles((theme) => ({
 }))((props) => <Tab disableRipple {...props} />);
 
 const InfoUser = forwardRef((props, ref) => {
-  const { data } = props;
+  const { data, closeModal } = props;
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.userInfo.usuario);
   const loading = useSelector((state) => state.userInfo.loading);
 
-  const { setOpenModal } = props;
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -75,7 +74,7 @@ const InfoUser = forwardRef((props, ref) => {
             <Tooltip title="Cerrar" placement="top">
               <IconButton
                 className="btn-close-info-user-emp"
-                onClick={() => setOpenModal(false)}
+                onClick={() => closeModal()}
               >
                 <Close style={{ width: "15px" }} />
               </IconButton>

@@ -9,6 +9,7 @@ import {
   OBTENER_TRABAJO_EXITO_USER_INFO,
   OBTENER_CERT_EXITO_USER_INFO,
   OBTENER_ADN_EXITO_USER_INFO,
+  RESET_DATA_USER_INFO,
 } from "../../types/typesEmp";
 
 const initialState = {
@@ -39,6 +40,27 @@ export default function (state = initialState, action) {
         loading: false,
         usuario: action.payload,
         error: false,
+      };
+    case OBTENER_ESTUDIO_USER_INFO:
+      return {
+        ...state,
+        loadingEst: true,
+      };
+    case OBTENER_ESTUDIO_EXITO_USER_INFO:
+      return {
+        ...state,
+        loadingEst: false,
+        estudios: action.payload,
+      };
+    case RESET_DATA_USER_INFO:
+      return {
+        ...state,
+        usuario: {},
+        estudios: [],
+        trabajos: [],
+        certificados: [],
+        adnSap: [],
+        error: null,
       };
     default:
       return state;

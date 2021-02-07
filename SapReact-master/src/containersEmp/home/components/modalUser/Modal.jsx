@@ -1,6 +1,8 @@
 import React from "react";
 import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
 import InfoUser from "../infoUser/InfoUser";
+import { useDispatch } from "react-redux";
+import { resetDataUserInfoAction } from "../../../../redux/actions/actions-emp/infoUserAction";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -12,12 +14,15 @@ const useStyles = makeStyles((theme) => ({
 
 const CustomModal = (props) => {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const { setOpenModal, openModal, data } = props;
 
   // console.log(usuario);
   const closeModal = () => {
     setOpenModal(false);
+    setTimeout(() => {
+      dispatch(resetDataUserInfoAction());
+    }, 200);
   };
   return (
     <Modal
@@ -34,7 +39,11 @@ const CustomModal = (props) => {
       }}
     >
       <Fade in={openModal}>
-        <InfoUser setOpenModal={setOpenModal} data={data} />
+        <InfoUser
+          setOpenModal={setOpenModal}
+          data={data}
+          closeModal={closeModal}
+        />
       </Fade>
     </Modal>
   );
