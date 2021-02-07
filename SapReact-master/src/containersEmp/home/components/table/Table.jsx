@@ -57,10 +57,10 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Table = ({ postulados, setOpenModal }) => {
+const Table = ({ postulados, setOpenModal, setDataUser }) => {
   const [value, setValue] = useState(0);
   const [age, setAge] = useState("");
-  
+
   const classes = useStyles();
 
   const handleChange = (event, newValue) => {
@@ -90,7 +90,12 @@ const Table = ({ postulados, setOpenModal }) => {
       </div>
       <div className="center">
         {postulados.map((item, index) => (
-          <CardTable data={item} key={index} setOpenModal={setOpenModal} />
+          <CardTable
+            data={item}
+            key={index}
+            setOpenModal={setOpenModal}
+            setDataUser={setDataUser}
+          />
         ))}
       </div>
       <div className="bottom">

@@ -13,7 +13,7 @@ import {
 import SwipeableViews from "react-swipeable-views";
 import { Tooltip } from "../../../../components";
 
-const CardTable = ({ data, setOpenModal }) => {
+const CardTable = ({ data, setOpenModal, setDataUser }) => {
   const {
     nombres,
     imageURL,
@@ -42,6 +42,7 @@ const CardTable = ({ data, setOpenModal }) => {
     nombreuser[0] + " " + apellidosuser[0] + " " + apellidosuser[1];
 
   const verUsuario = () => {
+    setDataUser(data);
     setOpenModal(true);
   };
   return (

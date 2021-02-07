@@ -12,29 +12,22 @@ import {
   LocationOn,
 } from "@material-ui/icons";
 
-const DatosPersonales = () => {
+const DatosPersonales = ({ data }) => {
+  const { rut, phone, email, direccion, ecivil, nacion, comuna, region } = data;
   return (
     <div className="datosPersonales-emp">
       <div className="top-b">
         <div className="item-1">
-          <Item title="Rut" value="18.88.161-0" icon={<Fingerprint />} />
-          <Item
-            title="Email"
-            value="antonio.vidal95@hotmail.com"
-            icon={<Mail />}
-          />
-          <Item
-            title="Numero móvil"
-            value="+(569) 5670 7412"
-            icon={<PhoneAndroid />}
-          />
+          <Item title="Rut" value={rut} icon={<Fingerprint />} />
+          <Item title="Email" value={email} icon={<Mail />} />
+          <Item title="Numero móvil" value={phone} icon={<PhoneAndroid />} />
         </div>
         <div className="item-1">
-          <Item title="Estado Civil" value="Soltero" icon={<AccountCircle />} />
-          <Item title="Nacionalidad" value="Chileno" icon={<Flag />} />
+          <Item title="Estado Civil" value={ecivil} icon={<AccountCircle />} />
+          <Item title="Nacionalidad" value={nacion} icon={<Flag />} />
           <Item
             title="Dirección"
-            value="psj. Hernando de Magallanez 4 #3777, lagunillas norte, coronel, bio bio"
+            value={direccion + ", " + comuna + ", " + region}
             icon={<LocationOn />}
           />
         </div>

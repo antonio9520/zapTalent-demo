@@ -9,7 +9,17 @@
 .info-user-home-emp p {
   margin: 0;
 }
-
+.cont-btn-close-info-user-emp {
+  position: absolute !important;
+  top: 10px ;
+  right: 10px ;
+}
+.btn-close-info-user-emp {
+  background-color: white !important;
+  width: 30px;
+  height: 30px;
+  color: var(--blue-primary) !important;
+}
 /*top*/
 .info-user-home-emp .top {
   height: 150px;
@@ -77,8 +87,8 @@
   /* background-color: green; */
 }
 
-.info-user-home-emp .tab-menu-emp-user{
-/* background-color: aqua; */
-display: flex;
-justify-content: center;
+.info-user-home-emp .tab-menu-emp-user {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
 }

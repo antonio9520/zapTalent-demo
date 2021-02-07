@@ -92,8 +92,9 @@ const dataUsuarios = async (data) => {
       { iduser: usuario._id },
       { name: 1, desc: 1 }
     );
-    console.log(adnsap);
+
     usuario.id_post = data[i]._id;
+    usuario.titulo = data[i].titulo;
     usuario.adns = adnsap;
     usuarios.push(usuario);
   }

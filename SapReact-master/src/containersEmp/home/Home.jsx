@@ -13,7 +13,8 @@ const Home = () => {
   const usuario = useSelector((state) => state.authEmp.usuario);
   const avisos = useSelector((state) => state.aviso.avisos);
   const postulados = useSelector((state) => state.postulados.postulados);
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  const [dataUser, setDataUser] = useState(null);
 
   useEffect(() => {
     if (usuario) {
@@ -31,7 +32,7 @@ const Home = () => {
   // const trabajos = [];
   return (
     <Grid container className="sub-conteiner-home-emp">
-      <Modal openModal={openModal} setOpenModal={setOpenModal} />
+      <Modal openModal={openModal} setOpenModal={setOpenModal} data={dataUser}/>
       <Grid
         item
         className="cont-header-home-emp"
@@ -125,7 +126,11 @@ const Home = () => {
         xl={6}
         className="cont-table-home-emp"
       >
-        <Table postulados={postulados} setOpenModal={setOpenModal} />
+        <Table
+          postulados={postulados}
+          setOpenModal={setOpenModal}
+          setDataUser={setDataUser}
+        />
       </Grid>
       <Grid
         item

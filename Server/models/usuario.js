@@ -103,6 +103,12 @@ const UsuariosSchema = mongoose.Schema({
   rrss: [],
   postulaciones: [],
   adns: [],
+  id_post: {
+    type: String,
+  },
+  titulo: {
+    type: String,
+  },
 });
 
 UsuariosSchema.methods.setImgUrl = function setImgUrl(filename) {

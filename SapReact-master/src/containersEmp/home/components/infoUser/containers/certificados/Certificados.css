@@ -1,0 +1,59 @@
+.cont-certificados-home-emp {
+  /* background-color: green; */
+  width: 100%;
+  height: 100%;
+}
+/*top*/
+.cont-certificados-home-emp .top-b {
+  /* background-color: rgb(159, 189, 50); */
+  height: 270px;
+}
+.card-info-certificados-home-emp {
+  /* background-color: blueviolet; */
+  width: 100%;
+  height: 270px;
+  padding: 0px 50px;
+  padding-top: 30px;
+}
+
+.card-info-certificados-home-emp .header-cert-home-emp {
+  display: flex;
+  justify-content: space-between;
+}
+.card-info-certificados-home-emp .header-cert-home-emp .p1 {
+  font-size: 24px;
+  color: #3a65af;
+}
+.card-info-certificados-home-emp .p2 {
+  font-size: 14px;
+  color: #3a65af;
+  margin-top: 5px;
+}
+.card-info-certificados-home-emp .p3 {
+  font-size: 12px;
+  color: var(--light-blue);
+  margin-top: 5px;
+}
+.card-info-certificados-home-emp .p4 {
+  font-size: 12px;
+  color: var(--gray-text);
+  margin-top: 20px;
+}
+
+.card-info-certificados-home-emp .header-cert-home-emp div {
+  background-color: #58a9de;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 80px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+/*bottom*/
+.cont-certificados-home-emp .bottom-b {
+  display: flex;
+  justify-content: center;
+}

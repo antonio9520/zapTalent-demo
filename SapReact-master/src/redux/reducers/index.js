@@ -11,6 +11,7 @@ import postReducer from "./postReducer";
 import authEmpReducer from "./reducers-emp/authReducer";
 import avisoReducers from "./reducers-emp/avisosReducer";
 import postuladosReducers from "./reducers-emp/postuladosReducer";
+import userInfoReducer from "./reducers-emp/infoUserReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -24,4 +25,5 @@ export default combineReducers({
   ofertasLaborales: ofertasLaboralesReducer,
   postulaciones: postReducer,
   postulados: postuladosReducers,
+  userInfo: userInfoReducer,
 });

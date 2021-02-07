@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 const CustomModal = (props) => {
   const classes = useStyles();
 
-  const { setOpenModal, openModal } = props;
+  const { setOpenModal, openModal, data } = props;
 
   // console.log(usuario);
   const closeModal = () => {
@@ -34,7 +34,7 @@ const CustomModal = (props) => {
       }}
     >
       <Fade in={openModal}>
-        <InfoUser />
+        <InfoUser setOpenModal={setOpenModal} data={data} />
       </Fade>
     </Modal>
   );
