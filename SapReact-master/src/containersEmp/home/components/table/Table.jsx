@@ -18,8 +18,15 @@ const useStyles = makeStyles({
   select: {
     fontSize: "12px",
   },
+  selectMenu: {
+    fontSize: "12px",
+  },
   icon: {
     color: "#197EE6",
+  },
+  label: {
+    fontSize: "14px",
+    fontStyle: "italic",
   },
 });
 const AntTabs = withStyles({
@@ -89,14 +96,20 @@ const Table = ({ postulados, setOpenModal, setDataUser }) => {
         </div>
       </div>
       <div className="center">
-        {postulados.map((item, index) => (
-          <CardTable
-            data={item}
-            key={index}
-            setOpenModal={setOpenModal}
-            setDataUser={setDataUser}
-          />
-        ))}
+        {postulados.length === 0 ? (
+          <div className="no-post-table-home-emp">
+            <p>No tienes postulantes.</p>
+          </div>
+        ) : (
+          postulados.map((item, index) => (
+            <CardTable
+              data={item}
+              key={index}
+              setOpenModal={setOpenModal}
+              setDataUser={setDataUser}
+            />
+          ))
+        )}
       </div>
       <div className="bottom">
         <div className="overlay-home-emp"></div>
@@ -105,7 +118,10 @@ const Table = ({ postulados, setOpenModal, setDataUser }) => {
         </div>
         <div className="right">
           <FormControl variant="outlined" fullWidth size="small">
-            <InputLabel id="demo-simple-select-required-label">
+            <InputLabel
+              id="demo-simple-select-required-label"
+              className={classes.label}
+            >
               Filtrar por aviso
             </InputLabel>
             <Select

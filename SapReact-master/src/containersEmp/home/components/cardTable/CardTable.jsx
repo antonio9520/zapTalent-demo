@@ -61,7 +61,7 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
           </p>
         </Tooltip>
         <p className="p2">{profesion ? profesion.name : null}</p>
-        <div className="tipo-cons-home-post-emp">
+        <div className={`tipo-cons-home-post-emp ${consultor === "Senior" ? "consultor-senior-table-home-emp" : null}`}>
           <p>Consultor {consultor}</p>
         </div>
       </div>
@@ -93,7 +93,13 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
               </IconButton>
             </div>
             <div className="center-swip-home-emp">
-              <Modulos activeStep={activeStep} data={adns} />
+              {adns.length === 0 ? (
+                <div className="no-posee-card-table-home-emp">
+                  <p>No posee</p>
+                </div>
+              ) : (
+                <Modulos activeStep={activeStep} data={adns} />
+              )}
             </div>
             <div className="right-swip-home-emp">
               <IconButton

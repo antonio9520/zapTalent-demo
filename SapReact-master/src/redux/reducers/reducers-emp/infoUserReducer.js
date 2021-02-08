@@ -17,7 +17,7 @@ const initialState = {
   estudios: [],
   trabajos: [],
   certificados: [],
-  adnSap: [],
+  adns: [],
   error: null,
   loading: false,
   loadingEst: false,
@@ -52,6 +52,39 @@ export default function (state = initialState, action) {
         loadingEst: false,
         estudios: action.payload,
       };
+    case OBTENER_TRABAJO_USER_INFO:
+      return {
+        ...state,
+        loadingTrab: true,
+      };
+    case OBTENER_TRABAJO_EXITO_USER_INFO:
+      return {
+        ...state,
+        loadingTrab: false,
+        trabajos: action.payload,
+      };
+    case OBTENER_CERTIFICADO_USER_INFO:
+      return {
+        ...state,
+        loadingCert: true,
+      };
+    case OBTENER_CERT_EXITO_USER_INFO:
+      return {
+        ...state,
+        loadingCert: false,
+        certificados: action.payload,
+      };
+    case OBTENER_ADN_USER_INFO:
+      return {
+        ...state,
+        loadingAdn: true,
+      };
+    case OBTENER_ADN_EXITO_USER_INFO:
+      return {
+        ...state,
+        loadingAdn: false,
+        adns: action.payload,
+      };
     case RESET_DATA_USER_INFO:
       return {
         ...state,
@@ -59,8 +92,13 @@ export default function (state = initialState, action) {
         estudios: [],
         trabajos: [],
         certificados: [],
-        adnSap: [],
+        adns: [],
         error: null,
+        loading: false,
+        loadingEst: false,
+        loadingTrab: false,
+        loadingCert: false,
+        loadingAdn: false,
       };
     default:
       return state;

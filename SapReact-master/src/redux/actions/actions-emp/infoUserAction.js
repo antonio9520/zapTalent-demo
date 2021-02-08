@@ -20,7 +20,9 @@ export function obtenerUserInfoAction(data) {
   return async (dispatch) => {
     dispatch(descargaUserInfo());
     try {
-      dispatch(descargaExitoUserInfo(data));
+      setTimeout(() => {
+        dispatch(descargaExitoUserInfo(data));
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +37,7 @@ const descargaExitoUserInfo = (data) => ({
   type: OBTENER_EXITO_USER_INFO,
   payload: data,
 });
-
+/**ESTUDIOS */
 export function obtenerEstudiosUserInfoAction(id) {
   return async (dispatch) => {
     dispatch(descargaEstudiosUserInfo());
@@ -59,6 +61,75 @@ const descargaEstudiosExitoUserInfo = (data) => ({
   payload: data,
 });
 
+/**trabajos */
+export function obtenertrabajosUserInfoAction(id) {
+  return async (dispatch) => {
+    dispatch(descargaTrabajosUserInfo());
+    try {
+      const respuesta = await clientAxios.get(`/api/trabajos/${id}`);
+      setTimeout(() => {
+        dispatch(descargaTrabajosExitoUserInfo(respuesta.data));
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+const descargaTrabajosUserInfo = () => ({
+  type: OBTENER_TRABAJO_USER_INFO,
+});
+
+const descargaTrabajosExitoUserInfo = (data) => ({
+  type: OBTENER_TRABAJO_EXITO_USER_INFO,
+  payload: data,
+});
+/**CERTIFICADOS  */
+export function obtenerCertificadosUserInfoAction(id) {
+  return async (dispatch) => {
+    dispatch(descargaCertUserInfo());
+    try {
+      const respuesta = await clientAxios.get(`/api/certificacion/${id}`);
+      setTimeout(() => {
+        dispatch(descargaCertExitoUserInfo(respuesta.data));
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+const descargaCertUserInfo = () => ({
+  type: OBTENER_CERTIFICADO_USER_INFO,
+});
+
+const descargaCertExitoUserInfo = (data) => ({
+  type: OBTENER_CERT_EXITO_USER_INFO,
+  payload: data,
+});
+/**ADNS  */
+export function obtenerAdnUserInfoAction(id) {
+  return async (dispatch) => {
+    dispatch(descargaAdnsUserInfo());
+    try {
+      const respuesta = await clientAxios.get(`/api/adnsap/${id}`);
+      setTimeout(() => {
+        dispatch(descargaAdnsExitoUserInfo(respuesta.data));
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+const descargaAdnsUserInfo = () => ({
+  type: OBTENER_ADN_USER_INFO,
+});
+
+const descargaAdnsExitoUserInfo = (data) => ({
+  type: OBTENER_ADN_EXITO_USER_INFO,
+  payload: data,
+});
 /**RESET DATA
  */
 export function resetDataUserInfoAction(id) {

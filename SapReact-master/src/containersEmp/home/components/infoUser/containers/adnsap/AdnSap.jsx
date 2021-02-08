@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AdnSap.css";
 import SwipeableViews from "react-swipeable-views";
 import {
@@ -14,6 +14,10 @@ import {
   ArrowBack,
   AddCircleOutline,
 } from "@material-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { obtenerAdnUserInfoAction } from "../../../../../../redux/actions/actions-emp/infoUserAction";
+import { Tooltip } from "../../../../../../components";
+import Loader from "react-loader-spinner";
 
 const AccordionCustom = withStyles({
   root: {
@@ -74,6 +78,11 @@ const AccordionDetailsCustom = withStyles((theme) => ({
 }))(AccordionDetails);
 
 const AdnSap = () => {
+  const dispatch = useDispatch();
+  const adns = useSelector((state) => state.userInfo.adns);
+  const loading = useSelector((state) => state.userInfo.loadingAdn);
+  const usuario = useSelector((state) => state.userInfo.usuario);
+
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -82,45 +91,84 @@ const AdnSap = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-  const data = ["", "", "", "", ""];
+
+  useEffect(() => {
+    if (adns.length === 0) {
+      dispatch(obtenerAdnUserInfoAction(usuario._id));
+    }
+  }, []);
   return (
     <div className="cont-adnsap-home-emp">
-      <div className="top-b">
-        <SwipeableViews index={activeStep}>
-          {data.map((item, index) => (
-            <Card key={index} data={item} />
-          ))}
-        </SwipeableViews>
-      </div>
-      <div className="bottom-b">
-        <IconButton
-          className="btn-info-user-emp"
-          onClick={handleBack}
-          disabled={activeStep === 0 ? true : false}
-          style={{ opacity: activeStep === 0 ? "0.7" : null }}
+      {loading ? (
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            justifyContent: "center",
+            paddingTop: "130px",
+            display: "flex",
+          }}
         >
-          <ArrowBack />
-        </IconButton>
-        <IconButton className="btn-info-user-emp">
-          <GetApp />
-        </IconButton>
-        <IconButton
-          className="btn-info-user-emp"
-          onClick={handleNext}
-          disabled={activeStep === data.length - 1 ? true : false}
-          style={{ opacity: activeStep === data.length - 1 ? "0.7" : null }}
-        >
-          <ArrowForward />
-        </IconButton>
-      </div>
+          <Loader
+            type="Oval"
+            color="#00BFFF"
+            height={50}
+            width={50}
+            visible={loading}
+            //  timeout={3000} //3 secs
+          />
+        </div>
+      ) : (
+        <>
+          {adns.length === 0 ? (
+            <div className="cont-no-info-info-usuario-emp">
+              <p>No hay información</p>
+            </div>
+          ) : (
+            <>
+              <div className="top-b">
+                <SwipeableViews index={activeStep}>
+                  {adns.map((item, index) => (
+                    <Card key={index} data={item} />
+                  ))}
+                </SwipeableViews>
+              </div>
+              <div className="bottom-b">
+                <IconButton
+                  className="btn-info-user-emp"
+                  onClick={handleBack}
+                  disabled={activeStep === 0 ? true : false}
+                  style={{ opacity: activeStep === 0 ? "0.7" : null }}
+                >
+                  <ArrowBack />
+                </IconButton>
+                <IconButton className="btn-info-user-emp">
+                  <GetApp />
+                </IconButton>
+                <IconButton
+                  className="btn-info-user-emp"
+                  onClick={handleNext}
+                  disabled={activeStep === adns.length - 1 ? true : false}
+                  style={{
+                    opacity: activeStep === adns.length - 1 ? "0.7" : null,
+                  }}
+                >
+                  <ArrowForward />
+                </IconButton>
+              </div>
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 };
 
 export default AdnSap;
 
-const Card = () => {
-  const [expanded, setExpanded] = useState("panel1");
+const Card = ({ data }) => {
+  const { desc, name, idcert, submodulos } = data;
+  const [expanded, setExpanded] = useState(0);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -129,76 +177,33 @@ const Card = () => {
     <div className="card-info-adnsap-home-emp">
       <div className="left-b">
         <p className="p1">Mi ADN SAP</p>
-        <p className="p2">MM</p>
-        <p className="p3">K-15425444</p>
+        <Tooltip title={desc}>
+          <p className="p2">{name}</p>
+        </Tooltip>
+        <p className="p3">{idcert}</p>
       </div>
       <div className="right-b">
-        <AccordionCustom
-          square
-          expanded={expanded === "panel1"}
-          onChange={handleChange("panel1")}
-        >
-          <AccordionSummaryCustom
-            aria-controls="panel1d-content"
-            id="panel1d-header"
+        {submodulos.map((item, index) => (
+          <AccordionCustom
+            key={index}
+            square
+            expanded={expanded === index}
+            onChange={handleChange(index)}
           >
-            <AddCircleOutline className="icon-acordion-adn-home-emp" />
-            <p>MR - Planificacion de Necesidades de Materiales</p>
-          </AccordionSummaryCustom>
-          <AccordionDetailsCustom>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </p>
-          </AccordionDetailsCustom>
-        </AccordionCustom>
-        <AccordionCustom
-          square
-          expanded={expanded === "panel2"}
-          onChange={handleChange("panel2")}
-        >
-          <AccordionSummaryCustom
-            aria-controls="panel2d-content"
-            id="panel2d-header"
-          >
-            <AddCircleOutline className="icon-acordion-adn-home-emp" />
-            <p>PUR Gestión de Compras</p>
-          </AccordionSummaryCustom>
-          <AccordionDetailsCustom>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </p>
-          </AccordionDetailsCustom>
-        </AccordionCustom>
-        <AccordionCustom
-          square
-          expanded={expanded === "panel3"}
-          onChange={handleChange("panel3")}
-        >
-          <AccordionSummaryCustom
-            aria-controls="panel3d-content"
-            id="panel3d-header"
-          >
-            <AddCircleOutline className="icon-acordion-adn-home-emp" />
-            <p>IM Gestión de Inventario</p>
-          </AccordionSummaryCustom>
-          <AccordionDetailsCustom>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </p>
-          </AccordionDetailsCustom>
-        </AccordionCustom>
+            <AccordionSummaryCustom
+              aria-controls={"panel1d-content"}
+              id="panel1d-header"
+            >
+              <AddCircleOutline className="icon-acordion-adn-home-emp" />
+              <p>
+                {item.name} - {item.desc}
+              </p>
+            </AccordionSummaryCustom>
+            <AccordionDetailsCustom>
+              <p>{item.obs ? item.obs : "No hay observaciones"}</p>
+            </AccordionDetailsCustom>
+          </AccordionCustom>
+        ))}
       </div>
     </div>
   );

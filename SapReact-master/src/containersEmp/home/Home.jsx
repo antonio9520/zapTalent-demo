@@ -3,7 +3,7 @@ import "./Home.css";
 import { Grid } from "@material-ui/core";
 import { HeaderHome, CardPerfil } from "../../containers/home/components";
 import { CardA } from "../../components";
-import { CardAvisos, Table, Modal } from "./components";
+import { CardAvisos, Table, Modal, CardAvisosEmpty } from "./components";
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 import { obtenerPostuladosAction } from "../../redux/actions/actions-emp/postuladosAction";
@@ -32,7 +32,11 @@ const Home = () => {
   // const trabajos = [];
   return (
     <Grid container className="sub-conteiner-home-emp">
-      <Modal openModal={openModal} setOpenModal={setOpenModal} data={dataUser}/>
+      <Modal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        data={dataUser}
+      />
       <Grid
         item
         className="cont-header-home-emp"
@@ -141,7 +145,11 @@ const Home = () => {
         xl={6}
         className={`cont-card-left-home-emp `}
       >
-        <CardAvisos data={avisos} />
+        {avisos.length === 0 ? (
+          <CardAvisosEmpty />
+        ) : (
+          <CardAvisos data={avisos} />
+        )}
       </Grid>
     </Grid>
   );

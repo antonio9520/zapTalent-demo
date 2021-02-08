@@ -103,3 +103,17 @@
   display: flex;
   justify-content: center;
 }
+
+/*no hay info*/
+
+.cont-no-info-info-usuario-emp {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 130px;
+}
+
+.cont-no-info-info-usuario-emp p {
+  color: var(--gray-text);
+}

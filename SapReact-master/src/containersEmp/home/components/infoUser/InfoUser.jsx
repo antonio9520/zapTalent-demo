@@ -13,6 +13,7 @@ import { Close } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerUserInfoAction } from "../../../../redux/actions/actions-emp/infoUserAction";
+import Loader from "react-loader-spinner";
 
 const AntTabs = withStyles({
   root: {
@@ -67,19 +68,18 @@ const InfoUser = forwardRef((props, ref) => {
   return (
     <div ref={ref} className="info-user-home-emp">
       {loading ? (
-        <p>Cargando</p>
+        <div className="loader-info-user-emp">
+          <Loader
+            type="Oval"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            visible={loading}
+            //  timeout={3000} //3 secs
+          />
+        </div>
       ) : (
         <>
-          <div className="cont-btn-close-info-user-emp">
-            <Tooltip title="Cerrar" placement="top">
-              <IconButton
-                className="btn-close-info-user-emp"
-                onClick={() => closeModal()}
-              >
-                <Close style={{ width: "15px" }} />
-              </IconButton>
-            </Tooltip>
-          </div>
           <div className="top">
             <div>
               <img src={usuario.imageURL} alt="userimage" />
@@ -103,6 +103,14 @@ const InfoUser = forwardRef((props, ref) => {
                 ) : null}
               </p>
             </div>
+            <Tooltip title="Cerrar" placement="top">
+              <IconButton
+                className="btn-close-info-user-emp"
+                onClick={() => closeModal()}
+              >
+                <Close style={{ width: "15px" }} />
+              </IconButton>
+            </Tooltip>
           </div>
           <div className="bottom">
             <div className="tab-menu-emp-user">

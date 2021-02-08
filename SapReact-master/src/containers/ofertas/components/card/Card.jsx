@@ -23,6 +23,7 @@ import {
 } from "../../../../redux/actions/postAction";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
+
 const Card = ({ data }) => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.auth.usuario);
