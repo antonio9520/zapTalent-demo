@@ -47,8 +47,8 @@ exports.crearUsuarios = async (req, res) => {
         expiresIn: 3600000,
       },
       (error, token) => {
-        if (error)  throw error;
-        
+        if (error) throw error;
+
         //mensaje de confirmacion
         res.json({ token, dato: true });
       }
@@ -319,8 +319,6 @@ exports.confirmarCuenta = async (req, res) => {
 
 exports.validacionEmailRut = async (req, res) => {
   const { email, rut } = req.body;
-  console.log(email);
-  console.log(rut);
   try {
     const emailValidado = await Usuario.findOne({ email: email });
     const rutValidado = await Usuario.findOne({ rut: rut });
@@ -329,5 +327,14 @@ exports.validacionEmailRut = async (req, res) => {
     return res.status(200).json({ _rut, _email });
   } catch (error) {
     res.status(400).json({ msg: "Error en el servidor" });
+  }
+};
+
+exports.totalUsers = async (req, res) => {
+  try {
+    const totalusers = await Usuario.find({}).countDocuments();
+    return res.status(200).json(totalusers);
+  } catch (error) {
+    console.log(error);
   }
 };

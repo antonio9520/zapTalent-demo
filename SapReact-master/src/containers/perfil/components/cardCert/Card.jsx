@@ -91,7 +91,7 @@ const Card = ({ data, setOpenModalEditar, setDataEditar, empresas }) => {
             <Certificado key={index} data={item} />
           ))}
         </SwipeableViews>
-        {/* </div> */}
+        {/* </div> */} 
         <div className="overlay-view-more"></div>
       </div>
       <div className="cont-arrow-btns-new-perfil">

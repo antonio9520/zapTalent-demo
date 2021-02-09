@@ -12,8 +12,8 @@ import {
   InputLabel,
 } from "@material-ui/core";
 import CardTable from "../cardTable/CardTable";
-import { queryAllByAltText } from "@testing-library/react";
-
+import { useSelector } from "react-redux";
+import Loader from "react-loader-spinner";
 const useStyles = makeStyles({
   root: {},
   select: {
@@ -75,7 +75,8 @@ const Table = ({
 }) => {
   const [value, setValue] = useState(0);
   const [aviso, setAviso] = useState("");
-  const [_id, setId] = useState(null);
+  const totalusers = useSelector((state) => state.postulados.totalusers);
+  const loading = useSelector((state) => state.postulados.loading);
 
   const classes = useStyles();
 
@@ -95,9 +96,11 @@ const Table = ({
       setQuery({ ...query, leido: true });
     }
   }, [value]);
+
   const setIdAviso = (id) => {
     setQuery({ ...query, _id: id });
   };
+
   return (
     <div className="table-home-emp">
       <div className="top">
@@ -117,9 +120,28 @@ const Table = ({
         </div>
       </div>
       <div className="center">
-        {postulados.length === 0 ? (
+        {loading ? (
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+            }}
+          >
+            <Loader
+              type="Oval"
+              color="#00BFFF"
+              height={50}
+              width={50}
+              visible={loading}
+              //  timeout={3000} //3 secs
+            />
+          </div>
+        ) : postulados.length === 0 ? (
           <div className="no-post-table-home-emp">
-            <p>No tienes postulantes.</p>
+            <p>No hay postulaciones.</p>
           </div>
         ) : (
           postulados.map((item, index) => (
@@ -135,7 +157,7 @@ const Table = ({
       <div className="bottom">
         <div className="overlay-home-emp"></div>
         <div className="left">
-          <p>136 Profesionales</p>
+          <p>{totalusers} Profesionales</p>
         </div>
         <div className="right">
           <FormControl variant="outlined" fullWidth size="small">

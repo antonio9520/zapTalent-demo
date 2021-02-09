@@ -6,13 +6,26 @@ import { CardA } from "../../components";
 import { CardAvisos, Table, Modal, CardAvisosEmpty } from "./components";
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
-import { obtenerPostuladosAction } from "../../redux/actions/actions-emp/postuladosAction";
+import {
+  obtenerPostuladosAction,
+  obtenerTotalUsuariosAction,
+  obtenerTotalAvisosAction,
+  obtenerTotalPostNoLeidosAction,
+  obtenerTotalPostulantesAction,
+} from "../../redux/actions/actions-emp/postuladosAction";
 
 const Home = () => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.authEmp.usuario);
   const avisos = useSelector((state) => state.aviso.avisos);
   const postulados = useSelector((state) => state.postulados.postulados);
+  const totalpostulantes = useSelector(
+    (state) => state.postulados.totalpostulantes
+  );
+  const totalavisos = useSelector((state) => state.postulados.totalavisos);
+  const postulantesnoleidos = useSelector(
+    (state) => state.postulados.postulantesnoleidos
+  );
   const [openModal, setOpenModal] = useState(false);
   const [dataUser, setDataUser] = useState(null);
   const [dataFiltro, setDataFiltro] = useState([]);
@@ -29,8 +42,22 @@ const Home = () => {
       const cargarPostulados = () =>
         dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
       cargarPostulados();
-    }
 
+      const cargarTotalUsers = () => dispatch(obtenerTotalUsuariosAction());
+      cargarTotalUsers();
+
+      const cargarTotalAvisos = () =>
+        dispatch(obtenerTotalAvisosAction(usuario._id));
+      cargarTotalAvisos();
+
+      const cargarTotalPostulantes = () =>
+        dispatch(obtenerTotalPostulantesAction(usuario._id));
+      cargarTotalPostulantes();
+
+      const cargarTotalNoLeidos = () =>
+        dispatch(obtenerTotalPostNoLeidosAction(usuario._id));
+      cargarTotalNoLeidos();
+    }
     // eslint-disable-next-line
   }, [usuario]);
   useEffect(() => {
@@ -120,7 +147,7 @@ const Home = () => {
             xl={3}
             className="items-cards-home"
           >
-            <CardA white titulo="Mis avisos" />
+            <CardA white titulo="Mis avisos" value={totalavisos} />
           </Grid>
           <Grid
             item
@@ -131,7 +158,11 @@ const Home = () => {
             xl={3}
             className="items-cards-home"
           >
-            <CardA degradado titulo="N° de postulantes" />
+            <CardA
+              degradado
+              titulo="N° de postulantes"
+              value={totalpostulantes}
+            />
           </Grid>
           <Grid
             item
@@ -142,7 +173,11 @@ const Home = () => {
             xl={3}
             className="items-cards-home"
           >
-            <CardA degradado titulo="Postulaciones no leidas" />
+            <CardA
+              degradado
+              titulo="Postulaciones no leidas"
+              value={postulantesnoleidos}
+            />
           </Grid>
         </Grid>
       </Grid>

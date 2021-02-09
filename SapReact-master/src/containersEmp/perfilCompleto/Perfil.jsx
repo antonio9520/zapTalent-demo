@@ -1,7 +1,8 @@
 /* eslint-disable no-lone-blocks */
 import React, { useRef, useState, useEffect } from "react";
 import { makeStyles, IconButton } from "@material-ui/core";
-import { AccountCircle, CenterFocusStrong } from "@material-ui/icons";
+import { AccountCircle } from "@material-ui/icons";
+import "./Perfil.css";
 import { Tooltip } from "../../components";
 import {
   CardPerfilNew,
@@ -24,6 +25,7 @@ import {
   obtenerCertificadosUserInfoAction,
   obtenerAdnUserInfoAction,
 } from "../../redux/actions/actions-emp/infoUserAction";
+import { obtenerPostulacionesEmpresaAction } from "../../redux/actions/actions-emp/postuladosAction";
 import Loader from "react-loader-spinner";
 
 const useStyles = makeStyles((theme) => ({
@@ -54,11 +56,9 @@ const Perfil = (props) => {
   const [activeStep, setActiveStep] = useState(0);
 
   /*DATOS REDUX**/
-
-  const postulaciones = useSelector(
-    (state) => state.postulaciones.postulaciones
-  );
-
+  const usuarioemp = useSelector((state) => state.authEmp.usuario);
+  const postulaciones = useSelector((state) => state.userInfo.postulaciones);
+  const loadingPost = useSelector((state) => state.userInfo.loadingPost);
   const usuario = useSelector((state) => state.userInfo.usuario);
   const loading = useSelector((state) => state.userInfo.loading);
   const estudios = useSelector((state) => state.userInfo.estudios);
@@ -126,6 +126,23 @@ const Perfil = (props) => {
       }
     }
 
+    //eslint-disable-next-line
+  }, [usuario]);
+  useEffect(() => {
+    if (usuario && usuarioemp) {
+      if (postulaciones.length === 0) {
+        if (usuario) {
+          const cargarPostulaciones = () =>
+            dispatch(
+              obtenerPostulacionesEmpresaAction({
+                iduser: usuario._id,
+                idemp: usuarioemp._id,
+              })
+            );
+          cargarPostulaciones();
+        }
+      }
+    }
     //eslint-disable-next-line
   }, [usuario]);
 
@@ -213,10 +230,9 @@ const Perfil = (props) => {
                   padding: "0 40px",
                   textAlign: "center",
                 }}
+                className="perfil-1-emp"
               >
-                <p style={{ color: "#7d7f80" }}>
-                  No hay información de usuario.
-                </p>
+                <p style={{ color: "white" }}>No hay información de usuario.</p>
               </div>
             )
           ) : null}
@@ -249,7 +265,7 @@ const Perfil = (props) => {
         <div className="item-1">
           {postulaciones.length > 0 ? (
             <CardPost data={postulaciones} empresas />
-          ) : loading ? (
+          ) : loadingPost ? (
             <div
               style={{
                 width: "100%",
@@ -264,7 +280,7 @@ const Perfil = (props) => {
                 color="#00BFFF"
                 height={50}
                 width={50}
-                visible={loading}
+                visible={loadingPost}
                 //  timeout={3000} //3 secs
               />
             </div>
@@ -279,8 +295,9 @@ const Perfil = (props) => {
                 padding: "0 40px",
                 textAlign: "center",
               }}
+              className="perfil-5-emp"
             >
-              <p style={{ color: "#7d7f80" }}>
+              <p style={{ color: "white" }}>
                 No hay información de postulaciones.
               </p>
             </div>
@@ -319,8 +336,9 @@ const Perfil = (props) => {
                 padding: "0 40px",
                 textAlign: "center",
               }}
+              className="perfil-2-emp"
             >
-              <p style={{ color: "#7d7f80" }}>No hay información de AdnSap.</p>
+              <p style={{ color: "white" }}>No hay información de AdnSap.</p>
             </div>
           )}
         </div>
@@ -357,8 +375,9 @@ const Perfil = (props) => {
                 padding: "0 40px",
                 textAlign: "center",
               }}
+              className="perfil-3-emp"
             >
-              <p style={{ color: "#7d7f80" }}>
+              <p style={{ color: "white" }}>
                 No hay información de experiencia laboral.
               </p>
             </div>
@@ -397,8 +416,9 @@ const Perfil = (props) => {
                 padding: "0 40px",
                 textAlign: "center",
               }}
+              className="perfil-4-emp"
             >
-              <p style={{ color: "#7d7f80" }}>
+              <p style={{ color: "white" }}>
                 No hay información de certificados.
               </p>
             </div>

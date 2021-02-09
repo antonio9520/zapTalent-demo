@@ -34,5 +34,6 @@ router.put(
   upload.single("imageURL"),
   usuarioControllers.actualizarCV
 );
+router.get("/total/usuarios", usuarioControllers.totalUsers)
 
 module.exports = router;

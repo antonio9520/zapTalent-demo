@@ -12,6 +12,7 @@ import {
   LocationOn,
 } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
+import { Tooltip } from "../../../../../../components";
 
 const DatosPersonales = ({ data }) => {
   const history = useHistory();
@@ -50,12 +51,20 @@ const DatosPersonales = ({ data }) => {
         </div>
       </div>
       <div className="bottom-b">
-        <IconButton className="btn-info-user-emp" onClick={verPerfilCompleto}>
-          <Visibility />
-        </IconButton>
-        <IconButton className="btn-info-user-emp">
-          <GetApp />
-        </IconButton>
+        <Tooltip title="Ver perfil completo">
+          <IconButton className="btn-info-user-emp" onClick={verPerfilCompleto}>
+            <Visibility />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Descargar CV.">
+          <IconButton
+            className="btn-info-user-emp"
+            disabled={true}
+            style={{ opacity: "0.7" }}
+          >
+            <GetApp />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );

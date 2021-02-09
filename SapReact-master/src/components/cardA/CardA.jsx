@@ -4,7 +4,7 @@ import classNames from "classnames";
 import iconcard from "../../resources/images/SPAimages/icon-card-cv-saptalent.svg";
 
 const CardA = (props) => {
-  const { degradado, white, titulo, image } = props;
+  const { degradado, white, titulo, image, value } = props;
   const cardClasses = classNames({
     "cont-card-a": true,
     "card-a-degradado": degradado,
@@ -53,7 +53,7 @@ const CardA = (props) => {
             alignItems: "flex-start",
           }}
         >
-          <p className={descStyle}>0</p>
+          <p className={descStyle}>{value ? value : 0}</p>
         </div>
       </div>
       <div

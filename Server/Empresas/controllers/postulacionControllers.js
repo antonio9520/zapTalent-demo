@@ -33,6 +33,25 @@ exports.obtenerPostulaciones = async (req, res) => {
     res.status(500).json({ msg: "Error en el servidor." });
   }
 };
+/*/empresas*/
+exports.obtenerPostulacionesEmp = async (req, res) => {
+  const iduser = req.params.iduser;
+  const idemp = req.params.idemp;
+
+  try {
+    const postulaciones = await Postulacion.find({
+      iduser: iduser,
+      idemp: idemp,
+    });
+
+    const data = await dataAvisos(postulaciones);
+    console.log(data);
+    res.send(data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Error en el servidor." });
+  }
+};
 
 const dataAvisos = async (data) => {
   let postulaciones = [];
@@ -46,7 +65,6 @@ const dataAvisos = async (data) => {
   }
   return postulaciones;
 };
-
 exports.deletePostulacion = async (req, res) => {
   const idpostulacion = req.params.idpostulacion;
 
@@ -72,7 +90,7 @@ exports.usuarioPostulados = async (req, res) => {
   const { leido, _id } = req.body;
 
   let query = {};
-  console.log("id" + _id);
+
   query.leido = leido;
   query.idemp = idemp;
   if (_id) {
@@ -126,5 +144,37 @@ exports.changeLeido = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Error en el servidor." });
+  }
+};
+
+exports.obtenerAvisosCount = async (req, res) => {
+  const idemp = req.params.id;
+  try {
+    const totalusers = await Avisos.find({ idusuario: idemp }).countDocuments();
+    return res.status(200).json(totalusers);
+  } catch (error) {
+    console.log(error);
+  }
+};
+exports.obtenerPostulantesCount = async (req, res) => {
+  const idemp = req.params.id;
+  try {
+    const total = await Postulacion.find({ idemp: idemp }).countDocuments();
+
+    return res.status(200).json(total);
+  } catch (error) {
+    console.log(error);
+  }
+};
+exports.obtenerNoLeidosCount = async (req, res) => {
+  const idemp = req.params.id;
+  try {
+    const total = await Postulacion.find({
+      idemp: idemp,
+      leido: false,
+    }).countDocuments();
+    return res.status(200).json(total);
+  } catch (error) {
+    console.log(error);
   }
 };

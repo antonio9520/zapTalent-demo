@@ -44,14 +44,15 @@
 .left-card-avisos-emp .p3 {
   color: var(--gray-text);
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 5px;
 }
 .anos-exp-card-avisos-emp {
   background-color: #37cbba;
   display: inline-block;
-  padding: 10px;
+  padding: 7px 10px;
   margin-top: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   color: white;
 }
@@ -125,13 +126,15 @@
 }
 .right-bottom-avisos-emp .p1 {
   color: var(--gray-text);
+  font-size: 14px;
 }
 .estado-card-avisos-emp {
   background-color: var(--blue-primary);
-  padding: 10px 20px;
+  padding: 7px 20px;
   margin-left: 10px;
   border-radius: 3px;
   color: white;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 .estado-card-avisos-emp p {
   margin: 0;

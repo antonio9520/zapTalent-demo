@@ -66,27 +66,42 @@ const Estudios = () => {
                 </SwipeableViews>
               </div>
               <div className="bottom-b">
-                <IconButton
-                  className="btn-info-user-emp"
-                  onClick={handleBack}
-                  disabled={activeStep === 0 ? true : false}
-                  style={{ opacity: activeStep === 0 ? "0.7" : null }}
-                >
-                  <ArrowBack />
-                </IconButton>
-                <IconButton className="btn-info-user-emp">
-                  <GetApp />
-                </IconButton>
-                <IconButton
-                  className="btn-info-user-emp"
-                  onClick={handleNext}
-                  disabled={activeStep === estudios.length - 1 ? true : false}
-                  style={{
-                    opacity: activeStep === estudios.length - 1 ? "0.7" : null,
-                  }}
-                >
-                  <ArrowForward />
-                </IconButton>
+                <Tooltip title="Anterior">
+                  <IconButton
+                    className="btn-info-user-emp"
+                    onClick={handleBack}
+                    disabled={activeStep === 0 ? true : false}
+                    style={{ opacity: activeStep === 0 ? "0.7" : null }}
+                  >
+                    <ArrowBack />
+                  </IconButton>
+                </Tooltip>
+                {estudios ? (
+                  estudios[activeStep].estudioURL ? (
+                    <Tooltip title="Descargar documento">
+                      <IconButton
+                        className="btn-info-user-emp"
+                        href={estudios[activeStep].estudioURL}
+                        target="_blank"
+                      >
+                        <GetApp />
+                      </IconButton>
+                    </Tooltip>
+                  ) : null
+                ) : null}
+                <Tooltip title="Siguiente">
+                  <IconButton
+                    className="btn-info-user-emp"
+                    onClick={handleNext}
+                    disabled={activeStep === estudios.length - 1 ? true : false}
+                    style={{
+                      opacity:
+                        activeStep === estudios.length - 1 ? "0.7" : null,
+                    }}
+                  >
+                    <ArrowForward />
+                  </IconButton>
+                </Tooltip>
               </div>
             </>
           )}

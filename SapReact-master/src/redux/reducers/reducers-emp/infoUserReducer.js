@@ -11,7 +11,8 @@ import {
   OBTENER_ADN_EXITO_USER_INFO,
   RESET_DATA_USER_INFO,
   RESET_DATA_USER_INFO_B,
-  
+  OBTENER_POSTULACIONES_ID_EMPRESA,
+  COMENZAR_OBTENER_POST_ID_EMPRESA,
 } from "../../types/typesEmp";
 
 const initialState = {
@@ -20,12 +21,14 @@ const initialState = {
   trabajos: [],
   certificados: [],
   adns: [],
+  postulaciones: [],
   error: null,
   loading: false,
   loadingEst: false,
   loadingTrab: false,
   loadingCert: false,
   loadingAdn: false,
+  loadingPost: false,
 };
 
 export default function (state = initialState, action) {
@@ -95,6 +98,7 @@ export default function (state = initialState, action) {
         trabajos: [],
         certificados: [],
         adns: [],
+        postulaciones: [],
         error: null,
         loading: false,
         loadingEst: false,
@@ -108,12 +112,24 @@ export default function (state = initialState, action) {
         estudios: [],
         trabajos: [],
         certificados: [],
+        postulaciones: [],
         adns: [],
         error: null,
         loadingEst: false,
         loadingTrab: false,
         loadingCert: false,
         loadingAdn: false,
+      };
+    case COMENZAR_OBTENER_POST_ID_EMPRESA:
+      return {
+        ...state,
+        loadingPost: true,
+      };
+    case OBTENER_POSTULACIONES_ID_EMPRESA:
+      return {
+        ...state,
+        loadingPost: false,
+        postulaciones: action.payload,
       };
     default:
       return state;

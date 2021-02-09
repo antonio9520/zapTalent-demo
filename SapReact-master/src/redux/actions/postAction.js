@@ -62,7 +62,7 @@ export function obtenerPostulacionesAction(id) {
       const respuesta = await clientAxios.put(`/api/postulacion/${id}`);
       dispatch(obtenerExito(respuesta.data));
     } catch (error) {
-      console.log(error);
+      console.log(error); 
       dispatch(obtenerError());
     }
   };
