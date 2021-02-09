@@ -55,6 +55,7 @@ function App() {
                 "/empresas/eco-sap",
                 "/empresas/avisos",
                 "/empresas/publicar-aviso",
+                "/empresas/perfil/:id",
               ]}
             />
             <Route exact path="/login-empresas" component={LoginEmp} />

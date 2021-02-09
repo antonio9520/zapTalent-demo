@@ -12,7 +12,11 @@ import {
 import { Close } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
 import { useSelector, useDispatch } from "react-redux";
-import { obtenerUserInfoAction } from "../../../../redux/actions/actions-emp/infoUserAction";
+import {
+  obtenerUserInfoAction,
+  resetDataUserInfoAction,
+} from "../../../../redux/actions/actions-emp/infoUserAction";
+import { changeLeidoPostulanteAction } from "../../../../redux/actions/actions-emp/postuladosAction";
 import Loader from "react-loader-spinner";
 
 const AntTabs = withStyles({
@@ -62,8 +66,16 @@ const InfoUser = forwardRef((props, ref) => {
     setValue(newValue);
   };
   useEffect(() => {
+    dispatch(resetDataUserInfoAction("b"));
     dispatch(obtenerUserInfoAction(data));
   }, []);
+  useEffect(() => {
+    if (usuario) {
+      if (usuario.leido === false) {
+        dispatch(changeLeidoPostulanteAction(usuario.id_post));
+      }
+    }
+  }, [usuario]);
   console.log(usuario);
   return (
     <div ref={ref} className="info-user-home-emp">
@@ -96,9 +108,9 @@ const InfoUser = forwardRef((props, ref) => {
               </div>
               <p className="p3">
                 {usuario.titulo} #
-                {usuario.id_post ? (
+                {usuario.idaviso ? (
                   <span style={{ textTransform: "uppercase" }}>
-                    {usuario.id_post.slice(18)}
+                    {usuario.idaviso.slice(18)}
                   </span>
                 ) : null}
               </p>

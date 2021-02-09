@@ -21,7 +21,7 @@ const CustomModal = (props) => {
   const closeModal = () => {
     setOpenModal(false);
     setTimeout(() => {
-      dispatch(resetDataUserInfoAction());
+      dispatch(resetDataUserInfoAction("a"));
     }, 200);
   };
   return (

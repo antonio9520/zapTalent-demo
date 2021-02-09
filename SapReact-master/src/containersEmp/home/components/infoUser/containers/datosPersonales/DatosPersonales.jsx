@@ -11,9 +11,26 @@ import {
   Flag,
   LocationOn,
 } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
 
 const DatosPersonales = ({ data }) => {
-  const { rut, phone, email, direccion, ecivil, nacion, comuna, region } = data;
+  const history = useHistory();
+  const {
+    rut,
+    phone,
+    email,
+    direccion,
+    ecivil,
+    nacion,
+    comuna,
+    region,
+    _id,
+  } = data;
+
+  const verPerfilCompleto = () => {
+    history.push(`/empresas/perfil/${_id}`);
+  };
+
   return (
     <div className="datosPersonales-emp">
       <div className="top-b">
@@ -33,7 +50,7 @@ const DatosPersonales = ({ data }) => {
         </div>
       </div>
       <div className="bottom-b">
-        <IconButton className="btn-info-user-emp">
+        <IconButton className="btn-info-user-emp" onClick={verPerfilCompleto}>
           <Visibility />
         </IconButton>
         <IconButton className="btn-info-user-emp">

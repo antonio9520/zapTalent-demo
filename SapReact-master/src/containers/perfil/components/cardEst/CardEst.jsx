@@ -7,7 +7,7 @@ import { IconButton } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const CardEst = (props) => {
-  const { data, setOpenModalEditar, setDataEditar } = props;
+  const { data, setOpenModalEditar, setDataEditar, empresas } = props;
 
   if (data === undefined) return null;
   let today = new Date();
@@ -41,20 +41,22 @@ const CardEst = (props) => {
             : dateResult.months + " años"}
         </p>
       </div>
-      <div className="left-card-est">
-        <Link to="/estudios">
-          <Tooltip title="Ver" placement="top">
-            <IconButton className="btn-card-est">
-              <Visibility />
+      {!empresas ? (
+        <div className="left-card-est">
+          <Link to="/estudios">
+            <Tooltip title="Ver" placement="top">
+              <IconButton className="btn-card-est">
+                <Visibility />
+              </IconButton>
+            </Tooltip>
+          </Link>
+          <Tooltip title="Editar" placement="top">
+            <IconButton className="btn-card-est" onClick={initEdit}>
+              <Edit />
             </IconButton>
           </Tooltip>
-        </Link>
-        <Tooltip title="Editar" placement="top">
-          <IconButton className="btn-card-est" onClick={initEdit}>
-            <Edit />
-          </IconButton>
-        </Tooltip>
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 };

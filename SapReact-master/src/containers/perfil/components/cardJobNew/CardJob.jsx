@@ -15,10 +15,10 @@ import "./CardJob.css";
 import SwipeableViews from "react-swipeable-views";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
-import NumberFormat from "react-number-format"; 
+import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
 
-const CardJob = ({ data, setOpenModalEditar, setDataEditar }) => {
+const CardJob = ({ data, setOpenModalEditar, setDataEditar, empresas }) => {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -43,13 +43,29 @@ const CardJob = ({ data, setOpenModalEditar, setDataEditar }) => {
     <div className="card-job-new-perfil">
       <div className="cont-swipeables-new-perfil">
         <div className="header-card-job-new-perfil">
-          <Business className="header-icon-job-new-perfil" />
-          <p className="p-mis-trabajos-perfil">Mis trabajos</p>
-          <Tooltip title="Editar" placement="top">
-            <IconButton className="btn-edit-new-perfil-job" onClick={initEdit}>
-              <Edit fontSize="small" />
-            </IconButton>
-          </Tooltip>
+          {!empresas ? (
+            <Link to="/trabajos">
+              <Tooltip title="Ir a mis trabajos" placement="top">
+                <Business className="header-icon-job-new-perfil" />
+                <p className="p-mis-trabajos-perfil">Mis trabajos</p>
+              </Tooltip>
+            </Link>
+          ) : (
+            <>
+              <Business className="header-icon-job-new-perfil" />
+              <p className="p-mis-trabajos-perfil">Mis trabajos</p>
+            </>
+          )}
+          {!empresas ? (
+            <Tooltip title="Editar" placement="top">
+              <IconButton
+                className="btn-edit-new-perfil-job"
+                onClick={initEdit}
+              >
+                <Edit fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          ) : null}
         </div>
         {/* <div className="sub-swipeables-new-perfil"> */}
         <SwipeableViews index={activeStep}>
@@ -61,13 +77,14 @@ const CardJob = ({ data, setOpenModalEditar, setDataEditar }) => {
         <div className="overlay-view-more"></div>
       </div>
       <div className="cont-arrow-btns-new-perfil">
-        <Link to="/trabajos">
-          <Tooltip title="Ver" placement="top">
-            <IconButton className={"btn-arrow-perfil-job"}>
-              <Visibility />
-            </IconButton>
-          </Tooltip>
-        </Link>
+        {!empresas ? (
+          <IconButton className={"btn-arrow-perfil-job"}>
+            <Visibility />
+          </IconButton>
+        ) : (
+          <div style={{ width: "10px", height: "10px", opacity: 0 }}></div>
+        )}
+
         <div>
           <IconButton
             disabled={activeStep === 0}

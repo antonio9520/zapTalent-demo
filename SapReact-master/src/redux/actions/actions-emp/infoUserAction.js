@@ -10,6 +10,8 @@ import {
   OBTENER_CERT_EXITO_USER_INFO,
   OBTENER_ADN_EXITO_USER_INFO,
   RESET_DATA_USER_INFO,
+  RESET_DATA_USER_INFO_B,
+  POSTULANTE_LEIDO_EXITO,
 } from "../../types/typesEmp";
 
 import clientAxios from "../../../config/axios";
@@ -132,12 +134,22 @@ const descargaAdnsExitoUserInfo = (data) => ({
 });
 /**RESET DATA
  */
-export function resetDataUserInfoAction(id) {
+export function resetDataUserInfoAction(type) {
   return async (dispatch) => {
-    dispatch(resetDataUserInfo());
+    if (type === "b") {
+      dispatch(resetDataUserInfoB());
+    } else {
+      dispatch(resetDataUserInfo());
+    }
   };
 }
 
 const resetDataUserInfo = () => ({
   type: RESET_DATA_USER_INFO,
 });
+
+const resetDataUserInfoB = () => ({
+  type: RESET_DATA_USER_INFO_B,
+});
+
+

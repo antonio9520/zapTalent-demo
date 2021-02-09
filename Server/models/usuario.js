@@ -106,6 +106,12 @@ const UsuariosSchema = mongoose.Schema({
   id_post: {
     type: String,
   },
+  idaviso: {
+    type: String,
+  },
+  leido: {
+    type: Boolean,
+  },
   titulo: {
     type: String,
   },

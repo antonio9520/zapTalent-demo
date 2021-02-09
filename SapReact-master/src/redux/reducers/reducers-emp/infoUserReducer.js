@@ -10,6 +10,8 @@ import {
   OBTENER_CERT_EXITO_USER_INFO,
   OBTENER_ADN_EXITO_USER_INFO,
   RESET_DATA_USER_INFO,
+  RESET_DATA_USER_INFO_B,
+  
 } from "../../types/typesEmp";
 
 const initialState = {
@@ -95,6 +97,19 @@ export default function (state = initialState, action) {
         adns: [],
         error: null,
         loading: false,
+        loadingEst: false,
+        loadingTrab: false,
+        loadingCert: false,
+        loadingAdn: false,
+      };
+    case RESET_DATA_USER_INFO_B:
+      return {
+        ...state,
+        estudios: [],
+        trabajos: [],
+        certificados: [],
+        adns: [],
+        error: null,
         loadingEst: false,
         loadingTrab: false,
         loadingCert: false,

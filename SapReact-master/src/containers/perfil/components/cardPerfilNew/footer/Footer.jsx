@@ -34,6 +34,7 @@ const Footer = ({
   setActive,
   setOpenModal,
   setActiveStep,
+  empresas,
 }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -131,6 +132,7 @@ const Footer = ({
             //   hidden={hidden}
             className="speed-dial-footer-perfil"
             icon={<Edit />}
+            disabled={empresas}
             onClose={() => handleClose()}
             onOpen={() => handleOpen()}
             open={open}
@@ -158,6 +160,7 @@ const Footer = ({
                 <SpeedDialAction
                   key={action.name}
                   icon={action.icon}
+                  disabled={empresas}
                   tooltipTitle={action.name}
                   onClick={() => {
                     handleClose();
@@ -176,6 +179,7 @@ const Footer = ({
                 <SpeedDialAction
                   key={action.name}
                   icon={action.icon}
+                  disabled={empresas}
                   tooltipTitle={action.name}
                   onClick={() => {
                     handleClose();

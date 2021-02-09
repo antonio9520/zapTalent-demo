@@ -4,11 +4,8 @@ import userlogo from "../../../resources/images/SAPTalent/icon-new-user.svg";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "@material-ui/core";
 import { Tooltip } from "../../../components";
-import { ExitToApp, Home, BusinessCenter } from "@material-ui/icons";
-import {
-  usuarioAuthEmpAction,
-  cerrarSesionEmpAction,
-} from "../../../redux/actions/actions-emp/authAction";
+import { ExitToApp, Home, AccountTree, RecentActors } from "@material-ui/icons";
+import { cerrarSesionEmpAction } from "../../../redux/actions/actions-emp/authAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const Sidebar = (props) => {
@@ -28,17 +25,8 @@ const Sidebar = (props) => {
   //   dispatch(usuarioAuthEmpAction());
   // }, []);
 
-  let nombreuser;
-  let apellidouser;
-  let profesion;
-  // if (usuario) {
-  //   nombreuser = usuario.nombres.split(" ")[0];
-  //   apellidouser = usuario.apellidos.split(" ")[0];
-  //   profesion = usuario.profesion ? usuario.profesion.name : null;
-  // }
-
   useEffect(() => {
-    setImage(usuario ? (usuario.imageURL ? usuario.imageURL : null) : null);
+    setImage(usuario ? (usuario.logoURL ? usuario.logoURL : null) : null);
   }, [usuario]);
   return (
     <div
@@ -95,8 +83,9 @@ const Sidebar = (props) => {
 
                 {!open ? (
                   <>
-                    <p>{usuario ? nombreuser + " " + apellidouser : null}</p>
-                    <p>{profesion}</p>
+                    <p style={{ color: "white", marginTop: "10px" }}>
+                      {usuario ? usuario.nameuser : null}
+                    </p>
                   </>
                 ) : null}
               </div>
@@ -128,7 +117,7 @@ const Sidebar = (props) => {
             <Tooltip title="Ecosistema SAP" placement="right">
               <Link to="/empresas/eco-sap" className="link link-sidebar">
                 {/* <img src={iconOfertas} alt="ofertas" /> */}
-                <BusinessCenter className="exitapp-sidebar" />
+                <AccountTree className="exitapp-sidebar" />
                 <p className={open ? "txt-sidebar-mini" : "txt-sidebar2"}>
                   Ecosistema SAP
                 </p>
@@ -143,7 +132,7 @@ const Sidebar = (props) => {
             <Tooltip title="Mis Avisos" placement="right">
               <Link to="/empresas/avisos" className="link link-sidebar">
                 {/* <img src={iconOfertas} alt="ofertas" /> */}
-                <BusinessCenter className="exitapp-sidebar" />
+                <RecentActors className="exitapp-sidebar" />
                 <p className={open ? "txt-sidebar-mini" : "txt-sidebar2"}>
                   Mis Avisos
                 </p>

@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { editarAdnAction } from "../../../../redux/actions/adnAction";
 
-const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
+const Card = ({ data, setOpenModalEditar, setDataEditar, empresas }) => {
   const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
   const [file, setFile] = useState(null);
@@ -56,20 +56,30 @@ const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
       <div className="card-adn-new-perfil">
         <div className="cont-swipeables-new-perfil">
           <div className="header-card-job-new-perfil">
-            <Link className="link" to="/sap-adn" style={{ display: "flex" }}>
-              <AccountTree className="header-icon-adn-new-perfil" />
-              <Tooltip title="Ir a mi ADN-SAP" placement="top">
+            {!empresas ? (
+              <Link className="link" to="/sap-adn" style={{ display: "flex" }}>
+                <AccountTree className="header-icon-adn-new-perfil" />
+                <Tooltip title="Ir a mi ADN-SAP" placement="top">
+                  <p className="p-mi-adn-perfil">Mi ADN SAP</p>
+                </Tooltip>
+              </Link>
+            ) : (
+              <div style={{ display: "flex" }}>
+                <AccountTree className="header-icon-adn-new-perfil" />
                 <p className="p-mi-adn-perfil">Mi ADN SAP</p>
+              </div>
+            )}
+
+            {!empresas ? (
+              <Tooltip title="Editar" placement="top">
+                <IconButton
+                  className="btn-edit-new-perfil-job"
+                  onClick={initEdit}
+                >
+                  <Edit fontSize="small" />
+                </IconButton>
               </Tooltip>
-            </Link>
-            <Tooltip title="Editar" placement="top">
-              <IconButton
-                className="btn-edit-new-perfil-job"
-                onClick={initEdit}
-              >
-                <Edit fontSize="small" />
-              </IconButton>
-            </Tooltip>
+            ) : null}
           </div>
 
           {/* <div className="sub-swipeables-new-perfil"> */}
@@ -93,7 +103,7 @@ const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
                   <Visibility />
                 </IconButton>
               </Tooltip>
-            ) : (
+            ) : !empresas ? (
               <>
                 <input
                   type="file"
@@ -121,6 +131,8 @@ const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
                   </IconButton>
                 </Tooltip>
               </>
+            ) : (
+              <div style={{ width: "10px", height: "10px", opacity: 0 }}></div>
             )
           ) : null}
           <div>

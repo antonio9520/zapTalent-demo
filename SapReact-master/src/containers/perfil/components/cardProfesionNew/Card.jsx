@@ -5,7 +5,7 @@ import { Edit, Visibility, School, EventAvailable } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
 import { Link } from "react-router-dom";
 
-const Card = ({ data, name, setOpenModalProfesion, link }) => {
+const Card = ({ data, name, setOpenModalProfesion, link, empresas }) => {
   const { institucion, diainicio, diafin, estado } = data;
   const [experiencia, setExperiencia] = useState(null);
 
@@ -23,14 +23,16 @@ const Card = ({ data, name, setOpenModalProfesion, link }) => {
         <div className="header-card-job-new-perfil">
           <School className="header-icon-adn-new-perfil" />
           <p className="p-mi-adn-perfil">Tu profesión</p>
-          <Tooltip title="Editar" placement="top">
-            <IconButton
-              className="btn-edit-new-perfil-job"
-              onClick={() => setOpenModalProfesion(true)}
-            >
-              <Edit fontSize="small" />
-            </IconButton>
-          </Tooltip>
+          {!empresas ? (
+            <Tooltip title="Editar" placement="top">
+              <IconButton
+                className="btn-edit-new-perfil-job"
+                onClick={() => setOpenModalProfesion(true)}
+              >
+                <Edit fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          ) : null}
         </div>
         {/* <div className="sub-swipeables-new-perfil"> */}
         <div
@@ -63,15 +65,17 @@ const Card = ({ data, name, setOpenModalProfesion, link }) => {
       </div>
       <div className="cont-arrow-btns-new-perfil">
         <div></div>
-        <div>
-          <Link to={link}>
-            <Tooltip title="Ver">
-              <IconButton className={"btn-arrow-perfil-adn"}>
-                <Visibility />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </div>
+        {!empresas ? (
+          <div>
+            <Link to={link}>
+              <Tooltip title="Ver">
+                <IconButton className={"btn-arrow-perfil-adn"}>
+                  <Visibility />
+                </IconButton>
+              </Tooltip>
+            </Link>
+          </div>
+        ) : null}
       </div>
     </div>
   );

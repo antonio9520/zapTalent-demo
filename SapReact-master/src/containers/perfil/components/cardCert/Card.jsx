@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { editarCertAction } from "../../../../redux/actions/certificadoAction";
 import { Link } from "react-router-dom";
 
-const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
+const Card = ({ data, setOpenModalEditar, setDataEditar, empresas }) => {
   const dispatch = useDispatch();
   const [activeStep, setActiveStep] = useState(0);
   const [file, setFile] = useState(null);
@@ -57,21 +57,33 @@ const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
     <div className="card-job-new-perfil">
       <div className="cont-swipeables-new-perfil">
         <div className="header-card-job-new-perfil">
-          <Link
-            className="link"
-            to="/certificaciones"
-            style={{ display: "flex" }}
-          >
-            <Business className="header-icon-cert-new-perfil" />
-            <Tooltip title="Ir a mis Certificaciones." placement="top">
+          {!empresas ? (
+            <>
+              <Link
+                className="link"
+                to="/certificaciones"
+                style={{ display: "flex" }}
+              >
+                <Business className="header-icon-cert-new-perfil" />
+                <Tooltip title="Ir a mis Certificaciones." placement="top">
+                  <p className="p-mis-cert-perfil">Mis Certificados</p>
+                </Tooltip>
+              </Link>
+              <Tooltip title="Editar" placement="top">
+                <IconButton
+                  className="btn-edit-new-perfil-job"
+                  onClick={initEdit}
+                >
+                  <Edit fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </>
+          ) : (
+            <>
+              <Business className="header-icon-cert-new-perfil" />
               <p className="p-mis-cert-perfil">Mis Certificados</p>
-            </Tooltip>
-          </Link>
-          <Tooltip title="Editar" placement="top">
-            <IconButton className="btn-edit-new-perfil-job" onClick={initEdit}>
-              <Edit fontSize="small" />
-            </IconButton>
-          </Tooltip>
+            </>
+          )}
         </div>
         {/* <div className="sub-swipeables-new-perfil"> */}
         <SwipeableViews index={activeStep}>
@@ -94,7 +106,7 @@ const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
                 <Visibility />
               </IconButton>
             </Tooltip>
-          ) : (
+          ) : !empresas ? (
             <>
               <input
                 type="file"
@@ -122,6 +134,8 @@ const Card = ({ data, setOpenModalEditar, setDataEditar }) => {
                 </IconButton>
               </Tooltip>
             </>
+          ) : (
+            <div style={{ width: "10px", height: "10px", opacity: 0 }}></div>
           )
         ) : null}
         <div>

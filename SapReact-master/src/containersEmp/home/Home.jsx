@@ -15,21 +15,46 @@ const Home = () => {
   const postulados = useSelector((state) => state.postulados.postulados);
   const [openModal, setOpenModal] = useState(false);
   const [dataUser, setDataUser] = useState(null);
+  const [dataFiltro, setDataFiltro] = useState([]);
+  const [query, setQuery] = useState({ leido: false });
 
   useEffect(() => {
     if (usuario) {
-      const cargarAvisos = () =>
-        dispatch(obtenerAvisoAction({ _id: usuario._id, skip: 0 }));
-      cargarAvisos();
+      if (avisos.length === 0) {
+        const cargarAvisos = () =>
+          dispatch(obtenerAvisoAction({ _id: usuario._id, skip: 0 }));
+        cargarAvisos();
+      }
+
       const cargarPostulados = () =>
-        dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0 }));
+        dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
       cargarPostulados();
     }
 
     // eslint-disable-next-line
   }, [usuario]);
+  useEffect(() => {
+    if (usuario) {
+      const cargarPostulados = () =>
+        dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
+      cargarPostulados();
+    }
+
+    // eslint-disable-next-line
+  }, [query]);
   // const adns = [];
   // const trabajos = [];
+  useEffect(() => {
+    for (let i = 0; i < avisos.length; i++) {
+      console.log(avisos[i].titulo);
+      setDataFiltro([
+        ...dataFiltro,
+        { _id: avisos[i]._id, titulo: avisos[i].titulo },
+      ]);
+      // dataFiltro.push({ _id: avisos[i]._id, titulo: avisos[i].titulo });
+    }
+  }, [avisos]);
+
   return (
     <Grid container className="sub-conteiner-home-emp">
       <Modal
@@ -134,13 +159,16 @@ const Home = () => {
           postulados={postulados}
           setOpenModal={setOpenModal}
           setDataUser={setDataUser}
+          dataFiltro={avisos}
+          setQuery={setQuery}
+          query={query}
         />
       </Grid>
       <Grid
         item
         xs={12}
-        sm={6}
-        md={6}
+        sm={12}
+        md={12}
         lg={6}
         xl={6}
         className={`cont-card-left-home-emp `}

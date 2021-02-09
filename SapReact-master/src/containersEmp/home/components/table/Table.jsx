@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Table.css";
 import { SearchBar } from "../../../../containers/home/components";
 import {
@@ -12,6 +12,7 @@ import {
   InputLabel,
 } from "@material-ui/core";
 import CardTable from "../cardTable/CardTable";
+import { queryAllByAltText } from "@testing-library/react";
 
 const useStyles = makeStyles({
   root: {},
@@ -64,9 +65,17 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Table = ({ postulados, setOpenModal, setDataUser }) => {
+const Table = ({
+  postulados,
+  setOpenModal,
+  setDataUser,
+  dataFiltro,
+  setQuery,
+  query,
+}) => {
   const [value, setValue] = useState(0);
-  const [age, setAge] = useState("");
+  const [aviso, setAviso] = useState("");
+  const [_id, setId] = useState(null);
 
   const classes = useStyles();
 
@@ -75,7 +84,19 @@ const Table = ({ postulados, setOpenModal, setDataUser }) => {
   };
 
   const handleChangeSelect = (event) => {
-    setAge(event.target.value);
+    //
+
+    setAviso(event.target.value);
+  };
+  useEffect(() => {
+    if (value === 0) {
+      setQuery({ ...query, leido: false });
+    } else {
+      setQuery({ ...query, leido: true });
+    }
+  }, [value]);
+  const setIdAviso = (id) => {
+    setQuery({ ...query, _id: id });
   };
   return (
     <div className="table-home-emp">
@@ -90,8 +111,8 @@ const Table = ({ postulados, setOpenModal, setDataUser }) => {
             onChange={handleChange}
             aria-label="ant example"
           >
-            <AntTab label="Leidos" />
-            <AntTab style={{ marginLeft: "20px" }} label="No leidos" />
+            <AntTab label="No leidos" />
+            <AntTab style={{ marginLeft: "20px" }} label="Leidos" />
           </AntTabs>
         </div>
       </div>
@@ -127,17 +148,33 @@ const Table = ({ postulados, setOpenModal, setDataUser }) => {
             <Select
               labelId="demo-simple-select-required-label"
               id="demo-simple-select-required"
-              value={age}
+              value={aviso}
               label="Filtrar por aviso"
               onChange={handleChangeSelect}
               classes={{ select: classes.select, icon: classes.icon }}
             >
-              <MenuItem value="">
-                <em>None</em>
+              <MenuItem
+                value=""
+                className="custom-menu-item"
+                onClick={() => setIdAviso(null)}
+              >
+                <em>Ninguno</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {dataFiltro.map((item, index) => {
+                return (
+                  <MenuItem
+                    key={index}
+                    className="custom-menu-item"
+                    value={item.titulo}
+                    onClick={() => setIdAviso(item._id)}
+                  >
+                    {item.titulo + " #"}
+                    <span style={{ textTransform: "uppercase" }}>
+                      {item._id.slice(18)}
+                    </span>
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
         </div>
