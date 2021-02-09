@@ -44,10 +44,12 @@ const CardJob = ({ data, setOpenModalEditar, setDataEditar, empresas }) => {
       <div className="cont-swipeables-new-perfil">
         <div className="header-card-job-new-perfil">
           {!empresas ? (
-            <Link to="/trabajos">
+            <Link to="/trabajos" className="link">
               <Tooltip title="Ir a mis trabajos" placement="top">
-                <Business className="header-icon-job-new-perfil" />
-                <p className="p-mis-trabajos-perfil">Mis trabajos</p>
+                <div style={{ display: "flex" }}>
+                  <Business className="header-icon-job-new-perfil" />
+                  <p className="p-mis-trabajos-perfil">Mis trabajos</p>
+                </div>
               </Tooltip>
             </Link>
           ) : (

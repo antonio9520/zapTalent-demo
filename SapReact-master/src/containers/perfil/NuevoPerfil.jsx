@@ -332,6 +332,7 @@ const Perfil = () => {
               setOpenModalEditar={setOpenEditarTrabajo}
               setDataEditar={setDataTrabajos}
             />
+            // <p>jhakd</p>
           ) : (
             <CardInitPerfil
               type={cardSexo}
