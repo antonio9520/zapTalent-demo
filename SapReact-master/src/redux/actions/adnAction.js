@@ -111,6 +111,7 @@ export function eliminarAdnAction(id) {
       dispatch(
         showAlert({ show: true, msg: "Adn eliminado.", type: "success" })
       );
+      return true;
     } catch (error) {
       console.log(error);
       dispatch(eliminarAdnError());

@@ -17,7 +17,7 @@ import {
 import clientAxios from "../../config/axios";
 
 const showAlert = (data) => ({
-  type: SHOW_ALERT, 
+  type: SHOW_ALERT,
   payload: data,
 });
 
@@ -58,8 +58,9 @@ export function eliminarTrabajoAction(id) {
       dispatch(
         showAlert({ show: true, msg: "Trabajo eliminado.", type: "success" })
       );
+      return true;
     } catch (error) {
-      console.log(error); 
+      console.log(error);
       dispatch(eliminarTrabajoError());
       dispatch(
         showAlert({ show: true, msg: error.response.data.msg, type: "error" })

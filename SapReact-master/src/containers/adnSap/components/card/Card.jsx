@@ -18,6 +18,8 @@ const Card = ({
   setIdEliminar,
   setOpenModalEditar,
   setDataEditar,
+  setDataAdnUser,
+  dataAdnUser,
 }) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -36,8 +38,19 @@ const Card = ({
     }
   };
   const adnURL = file;
-
+  // console.log("%cData Modulos:", "color: green; font-size: 18px", dataAdnUser);
   const initDelete = () => {
+    let modulos = dataAdnUser.modulos.filter((item) =>
+      item === data.name ? null : item
+    );
+    let submodulos = [];
+    data.submodulos.map((item) => {
+      submodulos = dataAdnUser.submodulos.filter((i) =>
+        i === item.name ? null : item
+      );
+    });
+
+    setDataAdnUser({ modulos, submodulos });
     setIdEliminar(data._id);
     setOpenModalEliminar(true);
   };

@@ -8,12 +8,14 @@ import {
   MailOutline,
   Group,
   Flag,
+  MonetizationOn,
 } from "@material-ui/icons";
 import { CustomInput, CustomSelectB, Tooltip } from "../../../../../components";
 import { editarUsuarioAction } from "../../../../../redux/actions/authAction";
 import { useDispatch } from "react-redux";
 import { formatRut, RutFormat, validateRut } from "@fdograph/rut-utilities";
 import validator from "validator";
+import { naciones } from "../../../../../assets/nacionalidades";
 
 const EditPerfil = ({ usuario, loading }) => {
   const dispatch = useDispatch();
@@ -26,6 +28,9 @@ const EditPerfil = ({ usuario, loading }) => {
   const [email, setEmail] = useState(usuario ? usuario.email : null);
   const [ecivil, setEcivil] = useState(usuario ? usuario.ecivil : null);
   const [nacion, setNacion] = useState(usuario ? usuario.nacion : null);
+  const [pretencion, setPretencion] = useState(
+    usuario ? usuario.pretencion : null
+  );
   const [_id] = useState(usuario ? usuario._id : null);
   const [rutmsg, setRutMsg] = useState("");
   const [rutError, setRutError] = useState(false);
@@ -36,6 +41,7 @@ const EditPerfil = ({ usuario, loading }) => {
   const [emailmsg, setEmailMsg] = useState("");
   const [nombresmsg, setNombresMsg] = useState("");
   const [apellidosmsg, setApellidosMsg] = useState("");
+  const [errorpretencion, setErrorPretencion] = useState(false);
   const [nacionmsg, setNacionMsg] = useState("");
   const [consultor, setConsultor] = useState(
     usuario ? usuario.consultor : null
@@ -106,7 +112,10 @@ const EditPerfil = ({ usuario, loading }) => {
       setNacionMsg("Nación no puede contener numeros");
       return;
     }
-
+    if (parseInt(pretencion) < 1) {
+      setErrorPretencion(true);
+      return;
+    }
     dispatch(
       editarUsuarioAction({
         _id,
@@ -117,6 +126,7 @@ const EditPerfil = ({ usuario, loading }) => {
         ecivil,
         nacion,
         consultor,
+        pretencion,
       })
     );
     setEditar(true);
@@ -145,7 +155,7 @@ const EditPerfil = ({ usuario, loading }) => {
 
   return (
     <>
-      <div style={{ position: "relative", height: "470px" }}>
+      <div style={{ position: "relative", height: "500px" }}>
         <div className="top-edit-perfil-2">
           <p>Editar perfil</p>
           <Tooltip title="Editar">
@@ -291,22 +301,29 @@ const EditPerfil = ({ usuario, loading }) => {
               name="nation"
               disabled={editar}
             >
-              <MenuItem className="custom-menu-item" value="Chileno">
-                Chileno
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Argentino">
-                Argentino
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Peruano">
-                Peruano
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Boliviano">
-                Boliviano
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Brazileño">
-                Brazileño
-              </MenuItem>
+              {naciones.map((item, index) => (
+                <MenuItem key={index} className="custom-menu-item" value={item}>
+                  {item}
+                </MenuItem>
+              ))}
             </CustomSelectB>
+          </div>
+          <div className="item-edit-perfil">
+            <MonetizationOn className="icon-form-edit-perfil" />
+            <CustomInput
+              label="Pretención de renta"
+              defaultValue={pretencion}
+              value={pretencion}
+              type="number"
+              onChange={(e) => {
+                setErrorPretencion(false);
+                setPretencion(e.target.value);
+              }}
+              error={errorpretencion}
+              helpertext="Introduzca un numero valido."
+              name="pretencionrenta"
+              disabled={editar}
+            />
           </div>
         </div>
         <div className="cont-btn-edit-perfil">

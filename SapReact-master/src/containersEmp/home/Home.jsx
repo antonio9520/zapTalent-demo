@@ -30,7 +30,7 @@ const Home = () => {
   const [dataUser, setDataUser] = useState(null);
   const [dataFiltro, setDataFiltro] = useState([]);
   const [query, setQuery] = useState({ leido: false });
-
+  // console.table(avisos);
   useEffect(() => {
     if (usuario) {
       if (avisos.length === 0) {
@@ -57,7 +57,9 @@ const Home = () => {
       const cargarTotalNoLeidos = () =>
         dispatch(obtenerTotalPostNoLeidosAction(usuario._id));
       cargarTotalNoLeidos();
+      console.log("funcion");
     }
+
     // eslint-disable-next-line
   }, [usuario]);
   useEffect(() => {

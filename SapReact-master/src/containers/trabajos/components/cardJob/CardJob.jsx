@@ -19,11 +19,17 @@ const CardJob = (props) => {
     data,
     setOpenModalEliminar,
     setIdEliminar,
-    setOpenModalEditar, 
+    setOpenModalEditar,
     setDataEditar,
+    dataJobUser,
+    setDataJobUser,
   } = props;
   const [_switch, setSwitch] = useState(false);
   const initDelete = () => {
+    let industrias = dataJobUser.filter((item) =>
+      item === data.actempresa ? null : item
+    );
+    setDataJobUser(industrias);
     setIdEliminar(data._id);
     setOpenModalEliminar(true);
   };
@@ -48,7 +54,7 @@ const CardJob = (props) => {
           ? "linear-gradient(90deg,rgba(21, 134, 234, 1) 0%, rgba(46, 74, 199, 1) 100%"
           : null,
       }}
-    > 
+    >
       <div className="cont-img-card-job-b">
         <img src={icontrabajo} alt="icon-trabajo" />
       </div>
@@ -283,7 +289,7 @@ const CardJob = (props) => {
           </IconButton>
         </Tooltip>
       </div>
-  
+
       {_switch ? (
         <div className="etiqueta-nuevo" style={{ backgroundColor: "white" }}>
           <p style={{ color: "#187ce2" }}>Trabajo Actual</p>

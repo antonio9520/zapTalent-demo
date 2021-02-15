@@ -3,12 +3,14 @@ import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
 import "./ModalEliminar.css";
 import iconDelete from "../../resources/images/icon-info-delete.svg";
 import { ListItem } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { eliminarTrabajoAction } from "../../redux/actions/trabajoAction";
 import { eliminarEstudioAction } from "../../redux/actions/estudioAction";
 import { eliminarCertificadoAction } from "../../redux/actions/certificadoAction";
 import { eliminarAdnAction } from "../../redux/actions/adnAction";
 import { eliminarAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
+import { editarUsuarioAction } from "../../redux/actions/authAction";
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -19,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const CustomModal = (props) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-
+  const usuario = useSelector((state) => state.auth.usuario);
   const {
     setOpenModalEliminar,
     openModalEliminar,
@@ -30,6 +32,9 @@ const CustomModal = (props) => {
     aviso,
     idEliminar,
     setIdEliminar,
+    dataAdnUser,
+    dataJobUser,
+    dataEstudioUser,
   } = props;
 
   const deleteCancel = () => {
@@ -41,16 +46,44 @@ const CustomModal = (props) => {
     setOpenModalEliminar(false);
 
     if (trabajo) {
-      dispatch(eliminarTrabajoAction(idEliminar));
+      dispatch(eliminarTrabajoAction(idEliminar)).then((res) =>
+        res === true
+          ? dispatch(
+              editarUsuarioAction({
+                _id: usuario._id,
+                industria: dataJobUser,
+              })
+            )
+          : null
+      );
     }
     if (estudio) {
-      dispatch(eliminarEstudioAction(idEliminar));
+      dispatch(eliminarEstudioAction(idEliminar)).then((res) =>
+        res === true
+          ? dispatch(
+              editarUsuarioAction({
+                _id: usuario._id,
+                carreras: dataEstudioUser,
+              })
+            )
+          : null
+      );
     }
     if (certificado) {
       dispatch(eliminarCertificadoAction(idEliminar));
     }
     if (adnsap) {
-      dispatch(eliminarAdnAction(idEliminar));
+      dispatch(eliminarAdnAction(idEliminar)).then((res) =>
+        res === true
+          ? dispatch(
+              editarUsuarioAction({
+                _id: usuario._id,
+                modulos: dataAdnUser.modulos,
+                submodulos: dataAdnUser.submodulos,
+              })
+            )
+          : null
+      );
     }
     if (aviso) {
       dispatch(eliminarAvisoAction(idEliminar));

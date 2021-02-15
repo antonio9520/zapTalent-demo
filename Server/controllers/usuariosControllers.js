@@ -111,6 +111,11 @@ exports.putUsuario = async (req, res) => {
     habilidades,
     profesion,
     rrss,
+    pretencion,
+    modulos,
+    submodulos,
+    industria,
+    carreras,
   } = req.body;
 
   try {
@@ -127,7 +132,7 @@ exports.putUsuario = async (req, res) => {
       if (apellidos) usuario.apellidos = apellidos;
       if (phone) usuario.phone = phone;
       if (email) usuario.email = email;
-      // if (password) usuario.password = bcryptjs.hashSync(password, bcryptjs.genSaltSync(15));
+
       if (ecivil) usuario.ecivil = ecivil;
       if (comuna) usuario.comuna = comuna;
       if (region) usuario.region = region;
@@ -141,7 +146,11 @@ exports.putUsuario = async (req, res) => {
       if (habilidades) usuario.habilidades = habilidades;
       if (profesion) usuario.profesion = profesion;
       if (rrss) usuario.rrss = rrss;
-
+      if (pretencion) usuario.pretencion = pretencion;
+      if (modulos) usuario.modulos = modulos;
+      if (submodulos) usuario.submodulos = submodulos;
+      if (industria) usuario.industria = industria;
+      if (carreras) usuario.carreras = carreras;
       usuario.save(function (err) {
         if (err)
           return res.status(500).json({ msg: "error al actualizar datos" });

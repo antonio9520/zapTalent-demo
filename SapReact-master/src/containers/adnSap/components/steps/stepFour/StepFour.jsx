@@ -12,13 +12,14 @@ import {
 import CardSModulo from "./cardsmodulo/CardSModulo";
 import { Tooltip } from "../../../../../components";
 import { agregarAdnAction } from "../../../../../redux/actions/adnAction";
+import { editarUsuarioAction } from "../../../../../redux/actions/authAction";
 import { useDispatch, useSelector } from "react-redux";
-import { showAlertAction } from "../../../../../redux/actions/alertAction";
 import Loader from "react-loader-spinner";
 
 const StepFour = ({ setStep, arrayModules, closeModal, setArrayModules }) => {
   const dispatch = useDispatch();
   const cargando = useSelector((state) => state.adn.cargando);
+  const usuario = useSelector((state) => state.auth.usuario);
   const [active, setActive] = useState(
     arrayModules.length > 0 ? arrayModules[0].name : null
   );
@@ -58,8 +59,22 @@ const StepFour = ({ setStep, arrayModules, closeModal, setArrayModules }) => {
   }
 
   const handleClick = () => {
+    let modulos = usuario.modulos;
+    let submodulos = usuario.submodulos;
+
+    arrayModules.map((item) => {
+      modulos.push(item.name);
+      item.submodulos.map((i) => {
+        submodulos.push(i.name);
+      });
+    });
+
     dispatch(agregarAdnAction(arrayModules)).then((res) =>
-      res === true ? closeModal() : null
+      res === true
+        ? dispatch(
+            editarUsuarioAction({ _id: usuario._id, modulos, submodulos })
+          ).then((res) => (res === true ? closeModal() : null))
+        : null
     );
   };
 
@@ -75,18 +90,6 @@ const StepFour = ({ setStep, arrayModules, closeModal, setArrayModules }) => {
     }
   };
   const editObsFunc = () => {
-    // validar id
-    // let data = arrayModules.find((item) => item.name === active);
-    // if (data.idcert === "") {
-    //   dispatch(
-    //     showAlertAction({
-    //       show: true,
-    //       msg: "Id modulo no puede estar vacio",
-    //       type: "error",
-    //     })
-    //   );
-    //   return;
-    // }
     setEditId(false);
     setEditObs(true);
   };

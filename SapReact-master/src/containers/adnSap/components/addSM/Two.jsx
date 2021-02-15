@@ -9,7 +9,7 @@ const Two = (props) => {
     dataEditar,
     arraySubMod,
     setArraySubMod,
-    setDataEditar,
+    submodulosuser,
   } = props;
   const [errorThree, setErrorThree] = useState([]);
   const [switch2, setSwitch2] = useState(false);
@@ -32,6 +32,7 @@ const Two = (props) => {
       setAlert(true);
     } else {
       for (let i = 0; i < arraySubMod.length; i++) {
+        submodulosuser.push(arraySubMod[i].name);
         dataEditar.submodulos.push(arraySubMod[i]);
       }
 

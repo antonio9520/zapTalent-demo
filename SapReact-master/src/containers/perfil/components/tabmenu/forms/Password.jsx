@@ -85,7 +85,7 @@ const Password = ({ usuario, loading }) => {
   }, [statusError]);
 
   return (
-    <div style={{ position: "relative", height: "470px" }}>
+    <div style={{ position: "relative", height: "500px" }}>
       <div className="top-edit-perfil-2">
         <p>Cambiar contraseña</p>
         <Tooltip title="Editar">

@@ -1,0 +1,57 @@
+.eco-sap-empresas {
+  padding-top: 70px;
+  /* padding-left: 10px; */
+  padding-right: 10px;
+  max-width: 1700px;
+}
+.eco-sap-empresas p {
+  margin: 0;
+}
+.top-eco-sap-emp {
+  display: flex;
+}
+.header-eco-sap-emp {
+  flex: 6;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 30px;
+}
+.space-top-eco-sap-emp {
+  flex: 2;
+  max-width: 300px;
+}
+.bottom-eco-sap-emp {
+  /* background-color: brown; */
+  display: flex;
+}
+.content-eco-sap {
+  /* background-color: cadetblue; */
+  flex: 6;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: 83vh;
+  overflow: auto;
+  padding-left: 15px;
+  padding-right: 20px;
+  padding-bottom: 45px;
+  padding-top: 10px;
+}
+.content-eco-sap::-webkit-scrollbar-track {
+  margin-top: 25px;
+}
+.filtros-eco-sap-emp {
+  /* background-color: chocolate; */
+  flex: 2;
+  max-width: 300px;
+  padding: 20px 10px 0 10px;
+}
+
+@media (max-width: 1500px) {
+  .space-top-eco-sap-emp {
+    display: none;
+  }
+  .filtros-eco-sap-emp {
+    display: none;
+  }
+}

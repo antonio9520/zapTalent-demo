@@ -1,0 +1,78 @@
+.card-eco-sap-emp {
+  background-color: var(--white);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.15);
+  /* height: 200px; */
+  padding: 0;
+  border-radius: 5px;
+  display: flex;
+  width: 250px;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.foto-card-eco-sap-emp {
+  /* background-color: rosybrown; */
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.foto-card-eco-sap-emp img {
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+}
+
+.card-eco-sap-emp .p1 {
+  color: var(--blue-primary);
+  text-align: center;
+  margin-top: 10px;
+  max-width: 220px;
+}
+
+.card-eco-sap-emp .p2 {
+  color: var(--gray-text);
+  font-size: 14px;
+  max-width: 200px;
+  min-height: 20px;
+  text-align: center;
+}
+
+.anos-exp-eco-sap-card {
+  background-color: var(--light-blue);
+  height: 20px;
+  width: 150px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.anos-exp-eco-sap-card p {
+  color: white;
+  font-size: 12px;
+}
+
+.card-eco-sap-emp .btn-eco-sap-emp {
+  background-color: var(--blue-primary) !important;
+  color: white;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  margin-left: 5px;
+  height: 35px;
+  width: 35px;
+}
+.bottom-card-eco-sap-emp {
+  /* background-color: rosybrown; */
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #d9d6d5;
+  justify-content: center;
+  padding: 10px 0;
+}

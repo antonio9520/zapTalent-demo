@@ -25,7 +25,7 @@ const StepOne = () => {
               <p className="p2-step-one-emp">
                 Ingresa o registrate haciendo click en el botón
               </p>
-              <Link to="/auth-emp" className="link">
+              <Link to="/empresas/home" className="link">
                 <ListItem button className="btn-step-one-emp">
                   <p>Ingresar</p>
                 </ListItem>

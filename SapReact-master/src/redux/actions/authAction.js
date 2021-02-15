@@ -42,7 +42,6 @@ const cerrarSesion = () => ({
 //AUTH
 export function usuarioAuthAction() {
   return async (dispatch) => {
-    
     const token = localStorage.getItem("token");
     if (token) {
       tokenAuth(token);
@@ -278,7 +277,13 @@ export function editarUsuarioAction(data) {
           })
         );
         return true;
-      } else if (data.rrss) {
+      } else if (
+        data.rrss ||
+        data.modulos ||
+        data.submodulos ||
+        data.industria ||
+        data.carreras
+      ) {
         await clientAxios.put(`/api/usuarios/${data._id}`, data).then((res) => {
           dispatch(editarUsuarioExito(res.data));
         });

@@ -54,7 +54,7 @@ const Menu = () => {
           </LinkScroll>
         </li>
         <li>
-          <Link to="/auth" className="link">
+          <Link to="/home" className="link">
             <p className="p-menu">Login</p>
           </Link>
         </li>

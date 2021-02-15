@@ -65,6 +65,7 @@ const dataAvisos = async (data) => {
   }
   return postulaciones;
 };
+
 exports.deletePostulacion = async (req, res) => {
   const idpostulacion = req.params.idpostulacion;
 
@@ -88,7 +89,6 @@ exports.usuarioPostulados = async (req, res) => {
   const idemp = req.params.id;
   const skip = req.params.skip;
   const { leido, _id } = req.body;
-
   let query = {};
 
   query.leido = leido;
@@ -96,12 +96,12 @@ exports.usuarioPostulados = async (req, res) => {
   if (_id) {
     query.idaviso = _id;
   }
-  // console.log("render-----------------------------------------------");
+
   try {
     const postulaciones = await Postulacion.find({
       $and: [query],
     });
-    // console.log(postulaciones);
+
     const data = await dataUsuarios(postulaciones);
     res.send(data);
   } catch (error) {
@@ -115,17 +115,20 @@ const dataUsuarios = async (data) => {
 
   for (let i = 0; i < data.length; i++) {
     let usuario = await Usuario.findById(data[i].iduser);
-    const adnsap = await Adnsap.find(
-      { iduser: usuario._id },
-      { name: 1, desc: 1 }
-    );
 
-    usuario.id_post = data[i]._id;
-    usuario.idaviso = data[i].idaviso;
-    usuario.titulo = data[i].titulo;
-    usuario.leido = data[i].leido;
-    usuario.adns = adnsap;
-    usuarios.push(usuario);
+    if (usuario) {
+      const adnsap = await Adnsap.find(
+        { iduser: usuario._id },
+        { name: 1, desc: 1 }
+      );
+
+      usuario.id_post = data[i]._id;
+      usuario.idaviso = data[i].idaviso;
+      usuario.titulo = data[i].titulo;
+      usuario.leido = data[i].leido;
+      usuario.adns = adnsap;
+      usuarios.push(usuario);
+    }
   }
   return usuarios;
 };

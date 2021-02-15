@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 40px 40px 20px 5px;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 .icon-btn-add-trabajos {

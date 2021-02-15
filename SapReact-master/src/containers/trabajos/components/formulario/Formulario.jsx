@@ -9,7 +9,6 @@ import {
   Input,
   FormHelperText,
   LinearProgress,
-  Checkbox,
 } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import { CustomInput, CustomSelectB } from "../../../../components";
@@ -23,6 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { paises } from "../../../../assets/paises";
 import { actEmpresa } from "../../../../assets/actEmpresa";
 import { agregarTrabajoAction } from "../../../../redux/actions/trabajoAction";
+import { editarUsuarioAction } from "../../../../redux/actions/authAction";
 import { data_cargo } from "../../../../assets/cargos";
 import validator from "validator";
 import InputMask from "react-input-mask";
@@ -174,14 +174,14 @@ const Formulario = (props) => {
   };
 
   const guardarTrabajo = () => {
-    console.log(findate);
     let fechaTermino;
     if (_switch) {
       fechaTermino = "2100-11-07T23:38:52.946Z";
     } else {
       fechaTermino = findate;
     }
-    console.log(fechaTermino);
+    let industria = usuario.industria;
+    industria.push(actempresa);
     dispatch(
       agregarTrabajoAction({
         idusuario,
@@ -202,7 +202,13 @@ const Formulario = (props) => {
         inidate,
         findate: fechaTermino,
       })
-    ).then((res) => (res === true ? setOpenModal(false) : null));
+    ).then((res) =>
+      res === true
+        ? dispatch(
+            editarUsuarioAction({ _id: usuario._id, industria })
+          ).then((res) => (res === true ? setOpenModal(false) : null))
+        : null
+    );
   };
 
   const changeInit = (value) => {

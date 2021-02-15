@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { appConfig } = require("../config/config");
-const Sequelize = require("sequelize");
-const { INTEGER } = require("sequelize");
+
 const UsuariosSchema = mongoose.Schema({
   rut: {
     type: String,
@@ -103,6 +102,9 @@ const UsuariosSchema = mongoose.Schema({
   rrss: [],
   postulaciones: [],
   adns: [],
+  modulos: [],
+  submodulos: [],
+  industria: [],
   id_post: {
     type: String,
   },
@@ -115,6 +117,11 @@ const UsuariosSchema = mongoose.Schema({
   titulo: {
     type: String,
   },
+  pretencion: {
+    type: Number,
+    trim: true,
+  },
+  carreras: [],
 });
 
 UsuariosSchema.methods.setImgUrl = function setImgUrl(filename) {

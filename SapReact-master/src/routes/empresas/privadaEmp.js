@@ -12,13 +12,11 @@ const Privada = ({ ...props }) => {
 
   useEffect(() => {
     dispatch(usuarioAuthEmpAction());
+    console.log("privada");
     // eslint-disable-next-line
   }, []);
 
-  // console.log(auth);
-  // console.log(cargando);
-  // let auth = true;
-  // let cargando = false;
+
   return (
     <Route
       {...props}

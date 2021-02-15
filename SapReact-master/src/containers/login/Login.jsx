@@ -53,10 +53,10 @@ const Login = (props) => {
   const [errormsg, setErrorMsg] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState("");
-  console.log(autenticado);
+
   useEffect(() => {
     if (autenticado) {
-      props.history.push("/perfil");
+      props.history.push("/home");
     }
     // eslint-disable-next-line
   }, [autenticado]);
@@ -204,6 +204,7 @@ const Login = (props) => {
   }, [token]);
   useEffect(() => {
     dispatch(usuarioAuthAction());
+
     // eslint-disable-next-line
   }, []);
   return (

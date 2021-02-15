@@ -22,6 +22,7 @@ const CustomModal = (props) => {
       setArrayModules([]);
     }, 300);
   };
+  
   return (
     <Modal
       aria-labelledby="transition-modal-title"

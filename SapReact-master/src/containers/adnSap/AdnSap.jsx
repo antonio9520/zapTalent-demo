@@ -20,6 +20,10 @@ const AdnSap = () => {
   const [idEliminar, setIdEliminar] = useState("");
   const [openModalEliminar, setOpenModalEliminar] = useState(false);
   const [dataEditar, setDataEditar] = useState(null);
+  const [dataAdnUser, setDataAdnUser] = useState({
+    modulos: [],
+    submodulos: [],
+  });
   const [hidden, setHidden] = useState(false);
   const [_switch, setSwitch] = useState(false);
 
@@ -38,10 +42,14 @@ const AdnSap = () => {
       if (!_switch) {
         if (usuario) {
           dispatch(obtenerAdnAction(usuario._id));
+          setDataAdnUser({
+            modulos: usuario.modulos,
+            submodulos: usuario.submodulos,
+          });
         }
       }
     }
-  }, [usuario]); 
+  }, [usuario]);
 
   const evitarBug = () => {
     if (usuario) {
@@ -107,6 +115,8 @@ const AdnSap = () => {
                 setOpenModalEditar={setOpenModalEditar}
                 setDataEditar={setDataEditar}
                 setSwitch={setSwitch}
+                setDataAdnUser={setDataAdnUser}
+                dataAdnUser={dataAdnUser}
               />
             ))}
 
@@ -116,6 +126,7 @@ const AdnSap = () => {
               setOpenModalEliminar={setOpenModalEliminar}
               idEliminar={idEliminar}
               setIdEliminar={setIdEliminar}
+              dataAdnUser={dataAdnUser}
             />
             <ModalEditar
               setOpenModalEditar={setOpenModalEditar}

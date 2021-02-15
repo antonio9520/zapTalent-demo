@@ -117,6 +117,7 @@ export function eliminarEstudioAction(id) {
       dispatch(
         showAlert({ show: true, msg: "Estudio eliminado.", type: "success" })
       );
+      return true;
     } catch (error) {
       console.log(error);
       dispatch(eliminarEstudioError());

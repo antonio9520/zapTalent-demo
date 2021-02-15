@@ -29,10 +29,12 @@ const Avisos = () => {
   const [skip, setSkip] = useState(0);
 
   useEffect(() => {
+    const cargarAvisos = () =>
+      dispatch(obtenerAvisoAction({ _id: usuario._id, skip }));
     if (usuario) {
-      const cargarAvisos = () =>
-        dispatch(obtenerAvisoAction({ _id: usuario._id, skip }));
-      cargarAvisos();
+      if (avisos.length === 0) {
+        cargarAvisos();
+      }
     }
 
     // eslint-disable-next-line

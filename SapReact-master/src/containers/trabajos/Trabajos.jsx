@@ -16,6 +16,7 @@ const Trabajos = () => {
   const [cardT1, setCardT1] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [idEliminar, setIdEliminar] = useState("");
+  const [dataJobUser, setDataJobUser] = useState([]);
   const [openModalEliminar, setOpenModalEliminar] = useState(false);
   const [openModalEditar, setOpenModalEditar] = useState(false);
   const [dataEditar, setDataEditar] = useState(null);
@@ -36,6 +37,7 @@ const Trabajos = () => {
         const cargarTrabajos = () =>
           dispatch(obtenerTrabajosAction(usuario._id));
         cargarTrabajos();
+        setDataJobUser(usuario.industria);
       }
     }
 
@@ -98,6 +100,8 @@ const Trabajos = () => {
                 setOpenModalEliminar={setOpenModalEliminar}
                 setOpenModalEditar={setOpenModalEditar}
                 setDataEditar={setDataEditar}
+                dataJobUser={dataJobUser}
+                setDataJobUser={setDataJobUser}
               />
             ))}
             <ModalEditar
@@ -113,6 +117,7 @@ const Trabajos = () => {
               setOpenModalEliminar={setOpenModalEliminar}
               idEliminar={idEliminar}
               setIdEliminar={setIdEliminar}
+              dataJobUser={dataJobUser}
             />
           </div>
         </>

@@ -11,7 +11,7 @@ import {
   Flag,
   Fingerprint,
   People,
-  AddAPhoto,
+  MonetizationOn,
   Description,
   CloudUpload,
 } from "@material-ui/icons";
@@ -21,6 +21,7 @@ import imgUser from "../../../../resources/images/SAPTalent/icon-new-user.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { subirImagenAction } from "../../../../redux/actions/authAction";
 import Footer from "./footer/Footer";
+import NumberFormat from "react-number-format";
 
 const CardPerfil = ({
   openModalRRSS,
@@ -363,6 +364,39 @@ const DatosPersonales = ({ usuario }) => {
           </div>
         </div>
       </div>
+      {usuario ? (
+        usuario.pretencion ? (
+          <div className="item-card-perfil-b">
+            <div className="sub-item-pefil-left">
+              <div className="cont-img-perfil-new">
+                <MonetizationOn className="icon-perfil-new" />
+              </div>
+            </div>
+            <div className="sub-item-pefil-left-2">
+              <div className="sub-item-pefil-right-top">
+                <p className="p1-perfil-b">Pretención de renta</p>
+              </div>
+              <div className="sub-item-pefil-right-bottom">
+                <p className="p2-perfil-b">
+                  {usuario ? (
+                    <>
+                      {"$ "}
+                      <NumberFormat
+                        value={usuario.pretencion}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        // prefix={"$"}
+                      />{" "}
+                    </>
+                  ) : (
+                    "Indefinido"
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : null
+      ) : null}
       <div className="item-card-perfil-b">
         <div className="sub-item-pefil-left">
           <div className="cont-img-perfil-new">

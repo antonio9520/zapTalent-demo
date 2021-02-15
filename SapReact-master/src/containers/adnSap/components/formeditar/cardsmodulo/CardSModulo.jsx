@@ -16,6 +16,8 @@ const CardSModulo = ({
   submodulos,
   setSubmodulos,
   dataEditar,
+  setSubmodulosUser,
+  submodulosuser,
 }) => {
   const dispatch = useDispatch();
   const [obs, setObs] = useState(data.obs);
@@ -101,6 +103,10 @@ const CardSModulo = ({
     );
     submodulos = [];
     if (subdelete.length > 0) {
+      const subdeleteuser = submodulosuser.filter((item) =>
+        item === data.name ? null : item
+      );
+      setSubmodulosUser(subdeleteuser);
       dataEditar.submodulos = subdelete;
       setSubmodulos(subdelete);
       setTimeout(() => {

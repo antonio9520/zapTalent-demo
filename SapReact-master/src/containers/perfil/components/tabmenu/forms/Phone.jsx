@@ -42,7 +42,7 @@ const Phone = ({ usuario, loading }) => {
     setErrorPhone(false);
   };
   return (
-    <div style={{ position: "relative", height: "470px" }}>
+    <div style={{ position: "relative", height: "500px" }}>
       <div className="top-edit-perfil-2">
         <p>Editar teléfono</p>
         <Tooltip title="Editar">

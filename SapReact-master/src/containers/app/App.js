@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -35,7 +35,7 @@ function App() {
             <Privada
               exact
               path={[
-                "/auth",
+                // "/auth",
                 "/home",
                 "/ofertas-laborales",
                 "/estudios",
@@ -50,7 +50,7 @@ function App() {
             <PrivadaEmp
               exact
               path={[
-                "/auth-emp",
+                // "/auth-emp",
                 "/empresas/home",
                 "/empresas/eco-sap",
                 "/empresas/avisos",

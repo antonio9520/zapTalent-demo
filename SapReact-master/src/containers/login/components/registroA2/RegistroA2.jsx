@@ -4,6 +4,7 @@ import { OutInput, CustomSelect } from "../../../../components";
 import logo from "../../../../resources/img/ZAPTalent-Logotipo-Vertical-Original.svg";
 import { ListItem, MenuItem, IconButton } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
+import { naciones } from "../../../../assets/nacionalidades";
 
 const RegistroA2 = (props) => {
   const {
@@ -105,21 +106,11 @@ const RegistroA2 = (props) => {
             error={errornacion}
             funcionError={setErrorNacion}
           >
-            <MenuItem className="custom-menu-item" value="Chileno">
-              Chileno
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Argentino">
-              Argentino
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Peruano">
-              Peruano
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Boliviano">
-              Boliviano
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Brazileño">
-              Brazileño
-            </MenuItem>
+            {naciones.map((item, index) => (
+              <MenuItem className="custom-menu-item" value={item}>
+                {item}
+              </MenuItem>
+            ))}
           </CustomSelect>
         </div>
       </div>

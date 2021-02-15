@@ -21,6 +21,7 @@ import { paises } from "../../../../assets/paises";
 import { agregarEstudioAction } from "../../../../redux/actions/estudioAction";
 import { estudios_data } from "../../../../assets/estudios";
 import { areaEstudio } from "../../../../assets/areaEstudio";
+import { editarUsuarioAction } from "../../../../redux/actions/authAction";
 
 const Formulario = (props) => {
   const { setOpenModal } = props;
@@ -114,6 +115,8 @@ const Formulario = (props) => {
       setObservacionError(true);
       return;
     }
+    let carreras = usuario.carreras;
+    carreras.push({ carrera, tipoestudio });
 
     dispatch(
       agregarEstudioAction({
@@ -131,7 +134,13 @@ const Formulario = (props) => {
         diafin,
         estudioURL,
       })
-    ).then((res) => (res === true ? setOpenModal(false) : null));
+    ).then((res) =>
+      res === true
+        ? dispatch(
+            editarUsuarioAction({ _id: usuario._id, carreras })
+          ).then((res) => (res === true ? setOpenModal(false) : null))
+        : null
+    );
   };
 
   const validarPromedio = (key, value) => {

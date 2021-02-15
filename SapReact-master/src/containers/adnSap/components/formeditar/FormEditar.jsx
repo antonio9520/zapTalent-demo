@@ -13,11 +13,19 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
 import { Tooltip } from "../../../../components";
 import { editarAdnAction } from "../../../../redux/actions/adnAction";
+import { editarUsuarioAction } from "../../../../redux/actions/authAction";
 
 const FormEditar = forwardRef((props, ref) => {
-  const { setOpenModalEditar, dataEditar, setView, cancelarEditar } = props;
+  const {
+    dataEditar,
+    setView,
+    cancelarEditar,
+    submodulosuser,
+    setSubmodulosUser,
+  } = props;
   const dispatch = useDispatch();
   const cargando = useSelector((state) => state.adn.cargando);
+  const usuario = useSelector((state) => state.auth.usuario);
   const [loading, setLoading] = useState(false);
   const [editMod, setEditMod] = useState(false);
   const [editId, setEditId] = useState(false);
@@ -27,6 +35,7 @@ const FormEditar = forwardRef((props, ref) => {
   const [file, setFile] = useState(
     dataEditar ? (dataEditar.adnURL ? dataEditar.adnURL : null) : null
   );
+
   //DATA
   const [idmod, setIdMod] = useState(dataEditar ? dataEditar.idcert : null);
   const [obs, setObs] = useState(dataEditar ? dataEditar.obs : null);
@@ -45,7 +54,16 @@ const FormEditar = forwardRef((props, ref) => {
         adnURL,
         submodulos,
       })
-    ).then((res) => (res ? cancelarEditar() : null));
+    ).then((res) =>
+      res
+        ? dispatch(
+            editarUsuarioAction({
+              _id: usuario._id,
+              submodulos: submodulosuser,
+            })
+          ).then((res) => (res === true ? cancelarEditar() : null))
+        : null
+    );
   };
   const fileChange = (e) => {
     if (e.target.value) {
@@ -208,6 +226,8 @@ const FormEditar = forwardRef((props, ref) => {
                 setSubmodulos={setSubmodulos}
                 submodulos={submodulos}
                 dataEditar={dataEditar}
+                setSubmodulosUser={setSubmodulosUser}
+                submodulosuser={submodulosuser}
               />
             ))
           )}
@@ -238,7 +258,7 @@ const FormEditar = forwardRef((props, ref) => {
           <ListItem
             button
             className={`btn-adnzap-modal `}
-            onClick={() => setOpenModalEditar(false)}
+            onClick={() => cancelarEditar()}
             disabled={editMod || editSubMod}
             style={{
               opacity: editMod || editSubMod ? "0.2" : "",
@@ -263,7 +283,7 @@ const FormEditar = forwardRef((props, ref) => {
       </div>
 
       <div className="cont-iconbtn-close-adn">
-        <IconButton onClick={() => setOpenModalEditar(false)}>
+        <IconButton onClick={() => cancelarEditar()}>
           <Close
             className={editMod || editSubMod ? "icon-close-edit-mod" : null}
           />

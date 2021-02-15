@@ -3,6 +3,7 @@ import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
 import FormEditar from "../formeditar/FormEditar";
 import One from "../addSM/One";
 import Two from "../addSM/Two";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -23,15 +24,15 @@ const CustomModal = (props) => {
     evitarBug,
   } = props;
   const [view, setView] = useState("default");
-  console.log(dataEditar);
+  const usuario = useSelector((state) => state.auth.usuario);
   const [submodulos, setSubmodulos] = useState(
     dataEditar ? dataEditar.submodulos : null
   );
   const [arraySubMod, setArraySubMod] = useState([]);
-
+  const [submodulosuser, setSubmodulosUser] = useState(usuario.submodulos);
   const cancelarEditar = () => {
+    evitarBug();
     setOpenModalEditar(false);
-    evitarBug()
     setTimeout(() => {
       // setSwitch(false);
       setDataEditar(null);
@@ -61,6 +62,8 @@ const CustomModal = (props) => {
             dataEditar={dataEditar}
             setView={setView}
             cancelarEditar={cancelarEditar}
+            submodulosuser={submodulosuser}
+            setSubmodulosUser={setSubmodulosUser}
           />
         ) : view === "one" ? (
           <One
@@ -78,6 +81,7 @@ const CustomModal = (props) => {
             setDataEditar={setDataEditar}
             submodulos={submodulos}
             setSubmodulos={setSubmodulos}
+            submodulosuser={submodulosuser}
           />
         ) : null}
       </Fade>

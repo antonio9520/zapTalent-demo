@@ -15,6 +15,7 @@ const Estudios = () => {
   const estudios = useSelector((state) => state.estudio.estudios);
   const [cardT1, setCardT1] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [dataEstudioUser, setDataEstudioUser] = useState([]);
   const [openModalEliminar, setOpenModalEliminar] = useState(false);
   const [openModalEditar, setOpenModalEditar] = useState(false);
   const [dataEditar, setDataEditar] = useState(null);
@@ -37,6 +38,7 @@ const Estudios = () => {
         const cargarEstudios = () =>
           dispatch(obtenerEstudiosAction(usuario._id));
         cargarEstudios();
+        setDataEstudioUser(usuario.carreras);
       }
     }
     // eslint-disable-next-line
@@ -100,6 +102,8 @@ const Estudios = () => {
                 setOpenModalEliminar={setOpenModalEliminar}
                 setOpenModalEditar={setOpenModalEditar}
                 setDataEditar={setDataEditar}
+                dataEstudioUser={dataEstudioUser}
+                setDataEstudioUser={setDataEstudioUser}
               />
             ))}
             <ModalEditar
@@ -115,6 +119,7 @@ const Estudios = () => {
               setOpenModalEliminar={setOpenModalEliminar}
               idEliminar={idEliminar}
               setIdEliminar={setIdEliminar}
+              dataEstudioUser={dataEstudioUser}
             />
           </div>
         </>

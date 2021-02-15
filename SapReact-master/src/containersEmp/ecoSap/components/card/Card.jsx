@@ -1,31 +1,18 @@
 import React, { useState, forwardRef } from "react";
-import "./CardTable.css";
-import imagen from "../../../../resources/images/brand/SAPTalent-card-habilities-woman-new.png";
-import { MobileStepper, IconButton } from "@material-ui/core";
+import "./Card.css";
+import imguser from "../../../../resources/img/bg-error.webp";
+import { IconButton, MobileStepper } from "@material-ui/core";
+import SwipeableViews from "react-swipeable-views";
 import {
+  Visibility,
+  GetApp,
   ArrowBackIos,
   ArrowForwardIos,
-  AccountTree,
-  LocationOn,
-  Mail,
-  PhoneIphone,
 } from "@material-ui/icons";
-import SwipeableViews from "react-swipeable-views";
 import { Tooltip } from "../../../../components";
 
-const CardTable = ({ data, setOpenModal, setDataUser }) => {
-  const {
-    nombres,
-    imageURL,
-    apellidos,
-    profesion,
-    consultor,
-    anosZap,
-    comuna,
-    region,
-    phone,
-    adns,
-  } = data;
+const Card = ({ data }) => {
+  const { nombres, apellidos, imageURL, profesion, anosZap, adns } = data;
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -35,56 +22,32 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const lenghtArray = adns.length;
-  const nombreuser = nombres.split(" ");
-  const apellidosuser = apellidos.split(" ");
-  const nombrecompleto =
-    nombreuser[0] + " " + apellidosuser[0] + " " + apellidosuser[1];
-
-  const verUsuario = () => {
-    setDataUser(data);
-    setOpenModal(true);
-  };
   return (
-    <div className="card-table-home-emp">
-      <div className="item-1">
-        <Tooltip title="Ver postulante">
-          <div className="cont-imagen" onClick={verUsuario}>
-            <img src={imageURL ? imageURL : null} alt="userimage" />
-          </div>
-        </Tooltip>
+    <div className="card-eco-sap-emp">
+      <div className="foto-card-eco-sap-emp">
+        {imageURL ? (
+          <img src={imageURL} alt="userimage" />
+        ) : (
+          <img src={imguser} alt="userimage" />
+        )}
       </div>
-      <div className="item-2">
-        <Tooltip title="Ver postulante">
-          <p className="p1" onClick={verUsuario}>
-            {nombrecompleto}
-          </p>
-        </Tooltip>
+      <div
+        style={{
+          padding: "0 20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <p className="p1">
+          {nombres} {apellidos}
+        </p>
         <p className="p2">{profesion ? profesion.name : null}</p>
-        <div
-          className={`tipo-cons-home-post-emp ${
-            consultor === "Senior" ? "consultor-senior-table-home-emp" : null
-          }`}
-        >
-          <p>Consultor {consultor}</p>
+        <div className="anos-exp-eco-sap-card">
+          <p>{anosZap} años de experiencia</p>
         </div>
       </div>
-      <div className="item-4">
-        <div>
-          <AccountTree className="icon-user-home-emp" /> <p>{anosZap} Años</p>
-        </div>
-        <div>
-          <LocationOn className="icon-user-home-emp" />
-          <p>
-            {comuna}, {region}
-          </p>
-        </div>
-        <div>
-          <PhoneIphone className="icon-user-home-emp" /> <p>{phone}</p>
-        </div>
-      </div>
-      <div className="item-3">
-        <p className="p1">Modulos</p>
+      <div>
         <div className="swip-home-emp">
           <div className="top-swip-home-emp">
             <div className="left-swip-home-emp">
@@ -97,37 +60,44 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
               </IconButton>
             </div>
             <div className="center-swip-home-emp">
-              {adns.length === 0 ? (
-                <div className="no-posee-card-table-home-emp">
-                  <p>No posee</p>
-                </div>
-              ) : (
-                <Modulos activeStep={activeStep} data={adns} />
-              )}
+              {adns ? (
+                adns.length === 0 ? (
+                  <div className="no-posee-card-table-home-emp">
+                    <p>No posee</p>
+                  </div>
+                ) : (
+                  <Modulos activeStep={activeStep} data={adns} />
+                )
+              ) : null}
             </div>
             <div className="right-swip-home-emp">
               <IconButton
                 className="btn-swip-home-emp"
                 onClick={handleNext}
-                disabled={activeStep === Math.ceil(lenghtArray / 3) - 1}
+                // disabled={activeStep === Math.ceil(lenghtArray / 3) - 1}
               >
                 <ArrowForwardIos className="icon-swip-home-emp" />
               </IconButton>
             </div>
           </div>
           <div className="stepper-user-home-emp">
-            <MobileStepperCustom
-              activeStep={activeStep}
-              lenghtArray={lenghtArray}
-            />
+            <MobileStepperCustom activeStep={activeStep} lenghtArray={2} />
           </div>
         </div>
+      </div>
+      <div className="bottom-card-eco-sap-emp">
+        <IconButton className="btn-eco-sap-emp">
+          <Visibility />
+        </IconButton>
+        <IconButton className="btn-eco-sap-emp">
+          <GetApp />
+        </IconButton>
       </div>
     </div>
   );
 };
 
-export default CardTable;
+export default Card;
 
 const Modulos = ({ data, activeStep }) => {
   const [activo, setActivo] = useState(true);
