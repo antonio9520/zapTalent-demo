@@ -54,7 +54,7 @@ const Home = () => {
         dispatch(obtenerTotalPostulantesAction(usuario._id));
       cargarTotalPostulantes();
 
-      const cargarTotalNoLeidos = () =>
+      const cargarTotalNoLeidos = () => 
         dispatch(obtenerTotalPostNoLeidosAction(usuario._id));
       cargarTotalNoLeidos();
       console.log("funcion");
@@ -113,6 +113,9 @@ const Home = () => {
       >
         <CardPerfil
           // nombre={nombreuser}
+          imageURL={
+            usuario ? (usuario.logoURL ? usuario.logoURL : null) : null
+          }
           titulo="Comienza a reclutar a los mejores talentos SAP de Chile."
           subtitle="Crea tu primer aviso aquí."
           textBtn="Publicar Aviso"
@@ -191,12 +194,10 @@ const Home = () => {
         lg={6}
         xl={6}
         className="cont-table-home-emp"
-      >
+      > 
         <Table
           postulados={postulados}
-          setOpenModal={setOpenModal}
-          setDataUser={setDataUser}
-          dataFiltro={avisos}
+          dataFiltro={dataFiltro}
           setQuery={setQuery}
           query={query}
         />

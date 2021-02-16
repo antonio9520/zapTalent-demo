@@ -29,7 +29,9 @@ const CustomModal = (props) => {
     dataEditar ? dataEditar.submodulos : null
   );
   const [arraySubMod, setArraySubMod] = useState([]);
-  const [submodulosuser, setSubmodulosUser] = useState(usuario.submodulos);
+  const [submodulosuser, setSubmodulosUser] = useState(
+    usuario ? usuario.submodulos : null
+  );
   const cancelarEditar = () => {
     evitarBug();
     setOpenModalEditar(false);

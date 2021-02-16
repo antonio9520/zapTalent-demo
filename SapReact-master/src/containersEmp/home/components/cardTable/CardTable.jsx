@@ -2,6 +2,7 @@ import React, { useState, forwardRef } from "react";
 import "./CardTable.css";
 import imagen from "../../../../resources/images/brand/SAPTalent-card-habilities-woman-new.png";
 import { MobileStepper, IconButton } from "@material-ui/core";
+import imguser from "../../../../resources/images/SAPTalent/icon-new-user.svg";
 import {
   ArrowBackIos,
   ArrowForwardIos,
@@ -50,7 +51,7 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
       <div className="item-1">
         <Tooltip title="Ver postulante">
           <div className="cont-imagen" onClick={verUsuario}>
-            <img src={imageURL ? imageURL : null} alt="userimage" />
+            <img src={imageURL ? imageURL : imguser} alt="userimage" />
           </div>
         </Tooltip>
       </div>

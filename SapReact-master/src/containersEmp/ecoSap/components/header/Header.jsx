@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Header.css";
 import { SearchBar } from "../../../../componentsEmp";
 import { withStyles, Tabs, Tab } from "@material-ui/core";
+import { Tooltip, IconButton } from "../../../../components";
+import { FilterList } from "@material-ui/icons";
 
 const AntTabs = withStyles({
   root: {
@@ -35,9 +37,22 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Header = ({ value, setValue }) => {
+const Header = ({
+  value,
+  setValue,
+  setSkip,
+  setUsuarios,
+  _switch,
+  setSwitch,
+  setQuery,
+  setOpen,
+}) => {
   // console.log("%cVerde", "color: green; font-size: 28px");
   const handleChange = (event, newValue) => {
+    setUsuarios([]);
+    setQuery({});
+    setSkip(0);
+    setSwitch(!_switch);
     setValue(newValue);
   };
   return (
@@ -47,7 +62,7 @@ const Header = ({ value, setValue }) => {
         style={{
           display: "flex",
           alignItems: "center",
-          width: "700px",
+          width: "750px",
           justifyContent: "space-between",
         }}
       >
@@ -56,6 +71,13 @@ const Header = ({ value, setValue }) => {
           <AntTab label="Todos" />
           <AntTab label="Postulantes" />
         </AntTabs>
+        <div className="cont-btn-filter">
+          <Tooltip title="Filtrar">
+            <IconButton bg="primary" onClick={() => setOpen(true)}>
+              <FilterList />
+            </IconButton>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );

@@ -30,6 +30,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  min-height: 83vh;
   max-height: 83vh;
   overflow: auto;
   padding-left: 15px;

@@ -88,10 +88,28 @@ exports.deletePostulacion = async (req, res) => {
 exports.usuarioPostulados = async (req, res) => {
   const idemp = req.params.id;
   const skip = req.params.skip;
-  const { leido, _id } = req.body;
+  const {
+    leido,
+    _id,
+    tipoConsultor,
+    modulo,
+    submodulo,
+    carrera,
+    nivel,
+    industria,
+    sexo,
+    comuna,
+    region,
+    anosExpMin,
+    anosExpMax,
+  } = req.body;
+
   let query = {};
 
-  query.leido = leido;
+  if (leido !== undefined) {
+    query.leido = leido;
+  }
+
   query.idemp = idemp;
   if (_id) {
     query.idaviso = _id;
@@ -101,8 +119,22 @@ exports.usuarioPostulados = async (req, res) => {
     const postulaciones = await Postulacion.find({
       $and: [query],
     });
+    const query2 = await createQuery({
+      tipoConsultor,
+      modulo,
+      submodulo,
+      carrera,
+      nivel,
+      industria,
+      sexo,
+      comuna,
+      region,
+      anosExpMin,
+      anosExpMax,
+    });
 
-    const data = await dataUsuarios(postulaciones);
+    const data = await dataUsuarios(postulaciones, query2);
+    console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -110,11 +142,16 @@ exports.usuarioPostulados = async (req, res) => {
   }
 };
 
-const dataUsuarios = async (data) => {
+const dataUsuarios = async (data, query) => {
   let usuarios = [];
 
   for (let i = 0; i < data.length; i++) {
-    let usuario = await Usuario.findById(data[i].iduser);
+    query._id = data[i].iduser;
+    // ObjectId ("568c28fffc4be30d44d0398e")
+    console.log(query);
+    let usuario = await Usuario.findOne({
+      $and: [query],
+    });
 
     if (usuario) {
       const adnsap = await Adnsap.find(
@@ -131,6 +168,49 @@ const dataUsuarios = async (data) => {
     }
   }
   return usuarios;
+};
+/**CREACION DE QUERY */
+const createQuery = (data) => {
+  const {
+    tipoConsultor,
+    modulo,
+    submodulo,
+    carrera,
+    nivel,
+    industria,
+    sexo,
+    comuna,
+    region,
+    anosExpMin,
+    anosExpMax,
+  } = data;
+  let query;
+
+  if (carrera && nivel) {
+    query = {
+      carreras: { $elemMatch: { carrera: carrera, tipoestudio: nivel } },
+    };
+  } else if (carrera) {
+    query = { carreras: { $elemMatch: { carrera: carrera } } };
+  } else {
+    query = {};
+  }
+  if (sexo) query.sexo = sexo;
+  if (tipoConsultor) query.consultor = tipoConsultor;
+  if (modulo) query.modulos = modulo;
+  if (submodulo) query.submodulos = submodulo;
+  if (anosExpMin && anosExpMax) {
+    query.anosZap = { $gte: anosExpMin, $lte: anosExpMax };
+  } else if (anosExpMin) {
+    query.anosZap = { $gte: anosExpMin };
+  } else if (anosExpMax) {
+    query.anosZap = { $lte: anosExpMax };
+  }
+  if (region) query.region = region;
+  if (comuna) query.comuna = comuna;
+  if (industria) query.industria = industria;
+  //2021-01-21T22:42:30.000Z
+  return query;
 };
 
 exports.changeLeido = async (req, res) => {

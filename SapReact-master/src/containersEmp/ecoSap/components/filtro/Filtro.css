@@ -6,6 +6,7 @@
   box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.15);
   padding: 15px 0;
   position: relative;
+  max-width: 320px;
 }
 
 .cont-filtro-eco-sap-emp h1 {

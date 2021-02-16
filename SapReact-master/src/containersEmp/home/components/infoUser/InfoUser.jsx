@@ -107,10 +107,10 @@ const InfoUser = forwardRef((props, ref) => {
                 <p>Experiencia {usuario.anosZap} años</p>
               </div>
               <p className="p3">
-                {usuario.titulo} #
+                {usuario.titulo} {" "}
                 {usuario.idaviso ? (
                   <span style={{ textTransform: "uppercase" }}>
-                    {usuario.idaviso.slice(18)}
+                    #{usuario.idaviso.slice(18)}
                   </span>
                 ) : null}
               </p>

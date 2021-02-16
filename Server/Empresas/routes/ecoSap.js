@@ -7,7 +7,7 @@ const ecoSapControllers = require("../controllers/ecoSapControllers");
 //api/auth
 
 
-router.get("/:skip", ecoSapControllers.obtenerUsuarios);
+router.put("/:skip", ecoSapControllers.obtenerUsuarios);
 
 // router.put("/", usuarioAdminControllers.putUserAdmin);
 

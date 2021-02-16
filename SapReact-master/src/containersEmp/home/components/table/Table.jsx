@@ -86,7 +86,6 @@ const Table = ({
 
   const handleChangeSelect = (event) => {
     //
-
     setAviso(event.target.value);
   };
   useEffect(() => {

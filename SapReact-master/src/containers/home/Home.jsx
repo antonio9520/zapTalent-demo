@@ -108,6 +108,9 @@ const Home = () => {
           className="cont-card-perfil-home"
         >
           <CardPerfil
+            // imageURL={
+            //   usuario ? (usuario.imageURL ? usuario.imageURL : null) : null
+            // }
             nombre={nombreuser}
             titulo="Ya tienes tu perfil en ZAPTalent."
             subtitle="Sabías qué si completas tu perfil, tienes muchas más posibilidades

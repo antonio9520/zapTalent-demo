@@ -5,14 +5,22 @@ import { ListItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const CardPerfil = (props) => {
-  const { nombre, titulo, subtitle, textBtn, to } = props;
-  
+  const { nombre, titulo, subtitle, textBtn, to, imageURL } = props;
+
   return (
     <>
       <div className="container-perfilhome">
         <div className="overlay-perfil-home"></div>
         <div className="cont-img-card-perfil-home">
-          <img src={userlogo} alt="user-logo" />
+          {imageURL ? (
+            <img
+              style={{ borderRadius: "50%", height: "120px", width: "120px" }}
+              src={imageURL ? imageURL : userlogo}
+              alt="user-logo"
+            />
+          ) : (
+            <img src={userlogo} alt="user-logo" />
+          )}
         </div>
         <div className="cont-center-card-home">
           <p style={{ color: "white" }}>Bienvenido {nombre}!</p>

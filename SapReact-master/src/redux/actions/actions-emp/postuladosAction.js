@@ -122,7 +122,9 @@ const obtenerTotalUsuarios = (data) => ({
 export function obtenerTotalPostulantesAction(id) {
   return async (dispatch) => {
     try {
-      const respuesta = await clientAxios.get(`/api/postulacion/total/postulantes/emp/${id}`);
+      const respuesta = await clientAxios.get(
+        `/api/postulacion/total/postulantes/emp/${id}`
+      );
       console.log(respuesta);
       dispatch(obtenerTotalPostulantes(respuesta.data));
     } catch (error) {
@@ -140,7 +142,9 @@ const obtenerTotalPostulantes = (data) => ({
 export function obtenerTotalAvisosAction(id) {
   return async (dispatch) => {
     try {
-      const respuesta = await clientAxios.get(`/api/postulacion/total/avisos/emp/${id}`);
+      const respuesta = await clientAxios.get(
+        `/api/postulacion/total/avisos/emp/${id}`
+      );
       console.log(respuesta);
       dispatch(obtenerTotalAvisos(respuesta.data));
     } catch (error) {
@@ -158,7 +162,9 @@ const obtenerTotalAvisos = (data) => ({
 export function obtenerTotalPostNoLeidosAction(id) {
   return async (dispatch) => {
     try {
-      const respuesta = await clientAxios.get(`/api/postulacion/total/noleidos/emp/${id}`);
+      const respuesta = await clientAxios.get(
+        `/api/postulacion/total/noleidos/emp/${id}`
+      );
       console.log(respuesta);
       dispatch(obtenerTotalPostNoLeidos(respuesta.data));
     } catch (error) {

@@ -13,7 +13,23 @@
 .title-header-eco-sap-emp {
   color: var(--blue-primary);
   font-size: 18px;
-  
 }
 
+.cont-header-eco-sap-emp .cont-btn-filter {
+  /* background-color: blue; */
+  display: none;
+  margin-right: 20px;
+}
 
+@media (max-width: 1500px) {
+  .space-top-eco-sap-emp {
+    display: none;
+  }
+  .filtros-eco-sap-emp {
+    display: none;
+  }
+  .cont-header-eco-sap-emp .cont-btn-filter {
+    /* background-color: blue; */
+    display: inherit;
+  }
+}

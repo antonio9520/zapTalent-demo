@@ -38,7 +38,6 @@ const Ofertas = () => {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
     const alto = scrollHeight - 150;
     if (offsetHeight + scrollTop > alto) {
-      console.log("scroll");
       setSkip(ofertasLaborales.length);
     }
   };
@@ -97,7 +96,6 @@ const Ofertas = () => {
     }
   };
   useEffect(() => {
-    console.log("skip");
     if (skip > 0) {
       obtenerOfertasMore(query, indexTab, skip);
     }

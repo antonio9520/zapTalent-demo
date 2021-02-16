@@ -237,7 +237,7 @@ const Filtros = ({
           </div>
           <div className="item-2">
             <p>Industria</p>
-            <CustomSelect
+            <CustomSelect  
               placeholder="Selecciona"
               size="small"
               onChange={setArea}

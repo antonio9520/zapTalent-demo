@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from "react";
 import "./Card.css";
-import imguser from "../../../../resources/img/bg-error.webp";
+import imguser from "../../../../resources/images/SAPTalent/icon-new-user.svg";
 import { IconButton, MobileStepper } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import {
@@ -11,7 +11,7 @@ import {
 } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
 
-const Card = ({ data }) => {
+const Card = ({ data, setOpenModal, setDataUser }) => {
   const { nombres, apellidos, imageURL, profesion, anosZap, adns } = data;
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
@@ -21,14 +21,26 @@ const Card = ({ data }) => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
+  const verUsuario = () => {
+    setDataUser(data);
+    setOpenModal(true);
+  };
   return (
     <div className="card-eco-sap-emp">
       <div className="foto-card-eco-sap-emp">
         {imageURL ? (
           <img src={imageURL} alt="userimage" />
         ) : (
-          <img src={imguser} alt="userimage" />
+          <img
+            style={{
+              width: "130px",
+              height: "130px",
+              marginBottom: "-25px",
+              marginTop: "-25px",
+            }}
+            src={imguser}
+            alt="userimage"
+          />
         )}
       </div>
       <div
@@ -74,23 +86,30 @@ const Card = ({ data }) => {
               <IconButton
                 className="btn-swip-home-emp"
                 onClick={handleNext}
-                // disabled={activeStep === Math.ceil(lenghtArray / 3) - 1}
+                disabled={activeStep === Math.ceil(adns.length / 3) - 1}
               >
                 <ArrowForwardIos className="icon-swip-home-emp" />
               </IconButton>
             </div>
           </div>
           <div className="stepper-user-home-emp">
-            <MobileStepperCustom activeStep={activeStep} lenghtArray={2} />
+            <MobileStepperCustom
+              activeStep={activeStep}
+              lenghtArray={adns.length}
+            />
           </div>
         </div>
       </div>
       <div className="bottom-card-eco-sap-emp">
-        <IconButton className="btn-eco-sap-emp">
+        <IconButton className="btn-eco-sap-emp" onClick={verUsuario}>
           <Visibility />
         </IconButton>
-        <IconButton className="btn-eco-sap-emp">
-          <GetApp />
+        <IconButton
+          disabled
+          className="btn-eco-sap-emp"
+          style={{ opacity: "0.5" }}
+        >
+          <GetApp style={{ color: "white" }} />
         </IconButton>
       </div>
     </div>
