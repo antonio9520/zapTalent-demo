@@ -57,20 +57,19 @@ const descargaError = () => ({
 //FILTRAR
 export function filtrarOferLaboralesAction(query) {
   const { skip } = query;
-  // console.log(skip);
+  console.log("%cQuery: ", "font-size: 20px; color: red", query);
   return async (dispatch) => {
     dispatch(comenzarFiltrar());
     try {
       const respuesta = await clientAxios.post(`/api/ofertasLaborales/`, query);
       if (respuesta.data.length === 0) {
         dispatch(detenerCarga());
+      }
+      if (skip === 0) {
+        dispatch(filtrarExitoInit(respuesta.data));
       } else {
-        if (skip === 0) {
-          dispatch(filtrarExitoInit(respuesta.data));
-        } else {
-          for (let i = 0; i < respuesta.data.length; i++) {
-            dispatch(filtrarExito(respuesta.data[i]));
-          }
+        for (let i = 0; i < respuesta.data.length; i++) {
+          dispatch(filtrarExito(respuesta.data[i]));
         }
       }
     } catch (error) {

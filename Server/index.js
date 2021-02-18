@@ -54,7 +54,8 @@ server.use("/api/confirmar", require("./routes/confirmar"));
 server.use("/api/fotoemail", require("./routes/imaemail"));
 //ruta ofertas laborales
 server.use("/api/ofertasLaborales", require("./routes/ofertasLaborales"));
-
+//ruta counter home
+server.use("/api/homeCounter", require("./routes/homeCounter"));
 //===================================================================================
 //===================================================================================
 

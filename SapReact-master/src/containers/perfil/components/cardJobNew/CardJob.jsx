@@ -79,14 +79,14 @@ const CardJob = ({ data, setOpenModalEditar, setDataEditar, empresas }) => {
         <div className="overlay-view-more"></div>
       </div>
       <div className="cont-arrow-btns-new-perfil">
-        {!empresas ? (
+        {/* {!empresas ? (
           <IconButton className={"btn-arrow-perfil-job"}>
             <Visibility />
           </IconButton>
         ) : (
-          <div style={{ width: "10px", height: "10px", opacity: 0 }}></div>
-        )}
-
+          
+        )} */}
+        <div style={{ width: "10px", height: "10px", opacity: 0 }}></div>
         <div>
           <IconButton
             disabled={activeStep === 0}

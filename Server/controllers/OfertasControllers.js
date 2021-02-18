@@ -21,7 +21,7 @@ exports.mostrarAvisos = async (req, res) => {
 exports.filtrarAvisos = async (req, res) => {
   const { skip } = req.body;
   const query = await createQuery(req.body);
-
+  console.log(query);
   try {
     const avisos = await Avisos.find(
       {
@@ -34,6 +34,7 @@ exports.filtrarAvisos = async (req, res) => {
       }
     ).sort({ creacion: -1 });
     // console.log(avisos);
+    console.log(avisos);
     res.json(avisos);
   } catch (error) {
     console.log(error);

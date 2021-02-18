@@ -482,7 +482,7 @@
   height: 47%;
   overflow: hidden;
   margin: 10px;
-  min-width: 38px;
+  min-width: 300px;
   box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
   min-height: 380px;
 }

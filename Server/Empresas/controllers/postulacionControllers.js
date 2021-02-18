@@ -58,10 +58,10 @@ const dataAvisos = async (data) => {
 
   for (let i = 0; i < data.length; i++) {
     let aviso = await Avisos.findById(data[i].idaviso);
-
-    aviso.id_post = data[i]._id;
-
-    postulaciones.push(aviso);
+    if (aviso) {
+      aviso.id_post = data[i]._id;
+      postulaciones.push(aviso);
+    }
   }
   return postulaciones;
 };

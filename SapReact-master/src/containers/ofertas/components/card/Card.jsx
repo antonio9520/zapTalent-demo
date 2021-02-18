@@ -62,6 +62,27 @@ const Card = ({ data }) => {
   const [postulado, setPostulado] = useState(false);
   const [id_post, setIdPost] = useState(null);
   const [_switch, setSwitch] = useState(false);
+  console.log(titulo);
+  console.log(fechaInicio);
+
+  console.log(fechaTermino);
+  const MESES = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
+  const inicio = new Date(fechaInicio);
+  const termino = new Date(fechaTermino);
+  const contratacion = new Date(fechaContratacion);
 
   const postular = () => {
     setSwitch(true);
@@ -127,7 +148,7 @@ const Card = ({ data }) => {
               className={
                 titulo
                   ? titulo.length > 22
-                    ? "name-submod-large"
+                    ? "name-submod-large-card-ol"
                     : null
                   : null
               }
@@ -166,7 +187,11 @@ const Card = ({ data }) => {
                 <BusinessCenter className="icon-card-ofertas-laborales" />
                 <p>
                   {fechaContratacion
-                    ? fechaContratacion.substring(0, 10)
+                    ? contratacion.getDate() +
+                      "/" +
+                      contratacion.getMonth() +
+                      "/" +
+                      contratacion.getFullYear()
                     : null}
                 </p>
               </div>
@@ -245,9 +270,25 @@ const Card = ({ data }) => {
         <div className="bottom-card-ofertas-laborales">
           <div className="item-1">
             <EventAvailable className="icon-card-ofertas-laborales" />
-            <p>{fechaInicio ? fechaInicio.substring(0, 10) : null}</p>
+            <p>
+              {fechaInicio
+                ? MESES[inicio.getMonth()] +
+                  " " +
+                  inicio.getDate() +
+                  " - " +
+                  inicio.getFullYear()
+                : null}
+            </p>
             <EventBusy className="icon-card-ofertas-laborales" />
-            <p>{fechaTermino ? fechaTermino.substring(0, 10) : null}</p>
+            <p>
+              {fechaTermino
+                ? MESES[termino.getMonth()] +
+                  " " +
+                  termino.getDate() +
+                  " - " +
+                  termino.getFullYear()
+                : null}
+            </p>
           </div>
           <div className="item-2">
             <Room className="icon-card-ofertas-laborales" />

@@ -333,7 +333,7 @@ const Perfil = () => {
               setDataEditar={setDataTrabajos}
             />
             // <p>jhakd</p>
-          ) : (
+          ) : ( 
             <CardInitPerfil
               type={cardSexo}
               imgFour

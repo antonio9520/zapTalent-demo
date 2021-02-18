@@ -14,8 +14,14 @@ const CardPerfil = (props) => {
         <div className="cont-img-card-perfil-home">
           {imageURL ? (
             <img
-              style={{ borderRadius: "50%", height: "120px", width: "120px" }}
-              src={imageURL ? imageURL : userlogo}
+              style={{
+                borderRadius: "50%",
+                height: "120px",
+                width: "120px",
+                marginTop: "30px",
+                marginBottom: "30px",
+              }}
+              src={imageURL}
               alt="user-logo"
             />
           ) : (

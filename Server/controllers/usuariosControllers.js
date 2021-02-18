@@ -116,6 +116,7 @@ exports.putUsuario = async (req, res) => {
     submodulos,
     industria,
     carreras,
+    dateActCV,
   } = req.body;
 
   try {
@@ -132,7 +133,6 @@ exports.putUsuario = async (req, res) => {
       if (apellidos) usuario.apellidos = apellidos;
       if (phone) usuario.phone = phone;
       if (email) usuario.email = email;
-
       if (ecivil) usuario.ecivil = ecivil;
       if (comuna) usuario.comuna = comuna;
       if (region) usuario.region = region;
@@ -151,6 +151,7 @@ exports.putUsuario = async (req, res) => {
       if (submodulos) usuario.submodulos = submodulos;
       if (industria) usuario.industria = industria;
       if (carreras) usuario.carreras = carreras;
+      if (dateActCV) usuario.dateActCV = dateActCV;
       usuario.save(function (err) {
         if (err)
           return res.status(500).json({ msg: "error al actualizar datos" });

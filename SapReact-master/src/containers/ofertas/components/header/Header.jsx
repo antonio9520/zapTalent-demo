@@ -68,10 +68,10 @@ const Header = ({
           onChange={handleChange}
           aria-label="ant example"
         >
-          <AntTab label="Todos" />
-          <AntTab label="Mis Postulaciones" />
           <AntTab label="Activos" />
+          <AntTab label="Mis Postulaciones" />
           <AntTab label="Caducados" />
+          <AntTab label="Todos" />
         </AntTabs>
         <Tooltip title="Filtrar">
           <IconButton bg="primary" onClick={() => setOpen(true)}>

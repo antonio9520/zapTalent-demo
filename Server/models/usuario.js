@@ -122,6 +122,9 @@ const UsuariosSchema = mongoose.Schema({
     trim: true,
   },
   carreras: [{ carrera: String, tipoestudio: String }],
+  dateActCV: {
+    type: Date,
+  },
 });
 
 UsuariosSchema.methods.setImgUrl = function setImgUrl(filename) {

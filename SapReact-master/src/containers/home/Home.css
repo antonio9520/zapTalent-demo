@@ -3,6 +3,8 @@
   min-height: 100vh;
   width: 100%;
   padding-top: 75px;
+  padding-left: 10px;
+  padding-bottom: 10px;
   /* min-height: 850px; */
 }
 .cont-home-big {
@@ -28,7 +30,7 @@
 }
 
 .cont-table-home-jobs {
-  height: 56%;
+  /* height: 100%; */
   /* height: 500px; */
   /* background-color: darkblue; */
   padding: 5px;
@@ -40,7 +42,12 @@
   min-height: 400px;
   /* background-color: coral; */
 }
-
+.cont-card-left-home .cont-card-adn-new-home {
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+}
 .cont-card-right-home {
   padding: 5px;
   min-height: 400px;
@@ -48,7 +55,13 @@
   /* padding-bottom: 30px; */
   /* background-color: darkgoldenrod; */
 }
-
+.cont-card-right-home .cont-card-job-new-home {
+  background-color: white;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  overflow: hidden;
+  height: 100%;
+}
 .sub-cont-cards-home {
   /* background-color: darkgoldenrod; */
   height: 100%;
@@ -58,7 +71,6 @@
   padding: 5px;
 }
 .adns-home-xs {
-  
   /* background-color: lightsalmon; */
 }
 /* MEDIA QUERIES */

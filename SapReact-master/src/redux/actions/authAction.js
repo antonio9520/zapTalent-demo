@@ -217,6 +217,7 @@ export function subirCVAction(data) {
           })
         );
       }
+      dispatch(editarUsuarioAction({ _id: data._id, dateActCV: new Date() }));
     } catch (error) {
       console.log(error);
       dispatch(editarError());
@@ -282,7 +283,8 @@ export function editarUsuarioAction(data) {
         data.modulos ||
         data.submodulos ||
         data.industria ||
-        data.carreras
+        data.carreras ||
+        data.dateActCV
       ) {
         await clientAxios.put(`/api/usuarios/${data._id}`, data).then((res) => {
           dispatch(editarUsuarioExito(res.data));

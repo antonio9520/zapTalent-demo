@@ -4,11 +4,14 @@ import { Grid } from "@material-ui/core";
 import { HeaderHome, CardPerfil, Table, ModalAviso } from "./components";
 import { CardA, CardB } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
-import { CardAdn, CardJob } from "../perfil/components";
+import { CardJob } from "../perfil/components";
 import { ModalEditar } from "../adnSap/components";
+import { CardAdnNew, CardJobNew } from "../perfil/components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
 import { filtrarOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
+import { ModalEditar as ModalEditarTrabajo } from "../../containers/trabajos/components";
+import clientAxios from "../../config/axios";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,6 +19,11 @@ const Home = () => {
   const adns = useSelector((state) => state.adn.adns);
   const trabajos = useSelector((state) => state.trabajo.trabajos);
   const [openModalEditar, setOpenModalEditar] = useState(false);
+  const [openEditarTrabajo, setOpenEditarTrabajo] = useState(false);
+  const [dataTrabajos, setDataTrabajos] = useState(null);
+  const [postCount, setPostCount] = useState(0);
+  const [ofertasCount, setOfertasCount] = useState(0);
+  const [ultimaActCV, setUltimaActCV] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [dataOL, setDataOL] = useState(null);
   const [dataEditar, setDataEditar] = useState(null);
@@ -26,17 +34,6 @@ const Home = () => {
   const [skip, setSkip] = useState(0);
   // const adns = [];
   // const trabajos = [];
-  useEffect(() => {
-    if (usuario) {
-      if (usuario.sexo === "Masculino") {
-        setCardT1("typeA1");
-        setCardT2("typeA2");
-      } else if (usuario.sexo === "Femenino") {
-        setCardT1("typeB1");
-        setCardT2("typeB2");
-      }
-    }
-  }, [usuario]);
 
   let nombreuser;
 
@@ -64,20 +61,64 @@ const Home = () => {
     }
     //eslint-disable-next-line
   }, [usuario]);
+
   useEffect(() => {
     dispatch(filtrarOferLaboralesAction({ skip }));
   }, [usuario, skip]);
-  return (
-    <div
-      className={
-        adns.length > 0 || trabajos.length > 0 ? "cont-home-big" : null
+
+  const cargarCounters = async () => {
+    try {
+      const resultPostCount = await clientAxios.get(
+        `/api/homeCounter/totalPostulaciones/${usuario._id}`
+      );
+      setPostCount(resultPostCount.data);
+
+      const resultOfertasCount = await clientAxios.get(
+        `/api/homeCounter/totalAvisos`
+      );
+      setOfertasCount(resultOfertasCount.data);
+
+      if (usuario.dateActCV) {
+        const fechaInicio = new Date(usuario.dateActCV).getTime();
+        const fechaFin = new Date().getTime();
+
+        const diff = fechaFin - fechaInicio;
+        setUltimaActCV(Math.round(diff / (1000 * 60 * 60 * 24)));
       }
-      style={{ width: "100%", maxWidth: "1500px" }}
-    >
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (usuario) {
+      if (usuario.sexo === "Masculino") {
+        setCardT1("typeA1");
+        setCardT2("typeA2");
+      } else if (usuario.sexo === "Femenino") {
+        setCardT1("typeB1");
+        setCardT2("typeB2");
+      }
+      cargarCounters();
+    }
+  }, [usuario]);
+  const evitarBug = () => {
+    if (usuario) {
+      dispatch(obtenerAdnAction(usuario._id));
+    }
+  };
+  return (
+    <div style={{ width: "100%", maxWidth: "1500px" }}>
       <ModalAviso
         data={dataOL}
         setOpenModal={setOpenModal}
         openModal={openModal}
+      />
+      <ModalEditarTrabajo
+        setOpenModalEditar={setOpenEditarTrabajo}
+        openModalEditar={openEditarTrabajo}
+        setDataEditar={setDataTrabajos}
+        data={dataTrabajos}
       />
       <ModalEditar
         setOpenModalEditar={setOpenModalEditar}
@@ -85,6 +126,7 @@ const Home = () => {
         dataEditar={dataEditar}
         setDataEditar={setDataEditar}
         setSwitch={setSwitch}
+        evitarBug={evitarBug}
       />
       <Grid container className="conteiner-home">
         <Grid
@@ -108,9 +150,9 @@ const Home = () => {
           className="cont-card-perfil-home"
         >
           <CardPerfil
-            // imageURL={
-            //   usuario ? (usuario.imageURL ? usuario.imageURL : null) : null
-            // }
+            imageURL={
+              usuario ? (usuario.imageURL ? usuario.imageURL : null) : null
+            }
             nombre={nombreuser}
             titulo="Ya tienes tu perfil en ZAPTalent."
             subtitle="Sabías qué si completas tu perfil, tienes muchas más posibilidades
@@ -138,7 +180,7 @@ const Home = () => {
               xl={3}
               className="items-cards-home"
             >
-              <CardA degradado titulo="N° de postulaciones" />
+              <CardA degradado titulo="N° de postulaciones" value={postCount} />
             </Grid>
             <Grid
               item
@@ -160,7 +202,11 @@ const Home = () => {
               xl={3}
               className="items-cards-home"
             >
-              <CardA white titulo="N° de ofertas laborales disponibles" />
+              <CardA
+                white
+                titulo="N° de ofertas laborales disponibles"
+                value={ofertasCount}
+              />
             </Grid>
             <Grid
               item
@@ -171,7 +217,12 @@ const Home = () => {
               xl={3}
               className="items-cards-home"
             >
-              <CardA image white titulo="Última actualización de tu CV" />
+              <CardA
+                image
+                white
+                titulo="Última actualización de tu CV"
+                value={ultimaActCV}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -202,12 +253,13 @@ const Home = () => {
           }`}
         >
           {adns.length > 0 ? (
-            <CardAdn
-              data={adns}
-              setOpenModalEditar={setOpenModalEditar}
-              setDataEditar={setDataEditar}
-              setSwitch={setSwitch}
-            />
+            <div className="cont-card-adn-new-home">
+              <CardAdnNew
+                data={adns}
+                setOpenModalEditar={setOpenModalEditar}
+                setDataEditar={setDataEditar}
+              />
+            </div>
           ) : (
             <CardB
               type={cardT1}
@@ -229,7 +281,13 @@ const Home = () => {
           }`}
         >
           {trabajos.length > 0 ? (
-            <CardJob data={trabajos} />
+            <div className="cont-card-job-new-home">
+              <CardJobNew
+                data={trabajos}
+                setOpenModalEditar={setOpenEditarTrabajo}
+                setDataEditar={setDataTrabajos}
+              />
+            </div>
           ) : (
             <CardB
               type={cardT2}

@@ -9,7 +9,7 @@ const HeaderHome = () => {
         <p style={{ color: "#187ce2", margin: "0" }}>Home</p>
       </div>
       <div className="cont-right-header-home">
-        <SearchBar />
+        {/* <SearchBar /> */}
       </div>
     </div>
   );

@@ -79,6 +79,7 @@ const Filtros = ({
     if (_submodulo) {
       query.submodulos = _submodulo;
     }
+    query.estado = "Activo"
     query.skip = 0;
     console.log(query);
     setindexTab(0);

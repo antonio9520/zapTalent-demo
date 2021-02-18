@@ -3,7 +3,7 @@
   width: 100%;
   height: 60px;
   border-radius: 5px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
   display: flex;
   cursor: pointer;
 }
@@ -20,13 +20,17 @@
   align-items: center;
   padding: 5px;
 }
+.sub-div-cardjob-1 .img-job-of-table-home {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 .img-card-job {
   width: 40px;
   height: 40px;
   background-color: var(--white);
   border-radius: 50%;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-  background-image: url("../../../../resources/images/Entel-logo.png");
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
   background-size: cover;
 }
 .sub-div-cardjob-2 {
@@ -34,14 +38,23 @@
   flex: 1.2;
   display: flex;
   /* justify-content: center; */
-  align-items: center;
+  /* align-items: center; */
+  justify-content: center;
   padding: 5px;
+  flex-direction: column;
+
 }
-.sub-div-cardjob-2 p {
+.sub-div-cardjob-2 p:nth-child(1) {
   font-size: 13px;
   font-weight: 500;
   text-align: left;
   color: var(--blue-primary);
+}
+.sub-div-cardjob-2 p:nth-child(2) {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  color: var(--gray-text);
 }
 .sub-div-cardjob-3 {
   /* background-color: rgb(129, 68, 27); */
@@ -83,7 +96,7 @@
   /* background-color: rgb(70, 13, 13); */
   flex: 1.4;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   padding: 5px;
 }
@@ -101,5 +114,6 @@
 }
 .sub-div-cardjob-7 p {
   font-size: 11px;
+  font-weight: 600;
   color: var(--gray-text);
 }

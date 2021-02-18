@@ -44,7 +44,7 @@ const Ofertas = () => {
   const obtenerOfertas = async (querie, index) => {
     // console.log(query);
     console.log(querie);
-    if (index === 0) {
+    if (index === 3) {
       setCargando(true);
       // console.log(query);
       await dispatch(filtrarOferLaboralesAction(querie)).then(() =>
@@ -57,14 +57,14 @@ const Ofertas = () => {
       // console.log("index: 0");
     } else if (index === 1) {
       // console.log("index: 1");
-    } else if (index === 2) {
+    } else if (index === 0) {
       setCargando(true);
       await dispatch(filtrarOferLaboralesAction({ skip: 0, estado: "Activo" }));
       setTimeout(() => {
         setCargando(false);
       }, 500);
       // console.log("index: 2");
-    } else if (index === 3) {
+    } else if (index === 2) {
       setCargando(true); // console.log("index: 3");
       await dispatch(
         filtrarOferLaboralesAction({
@@ -78,15 +78,14 @@ const Ofertas = () => {
     }
   };
   const obtenerOfertasMore = (querie, index, skip) => {
-    console.log(query);
-    console.log(querie);
-    if (index === 0) {
+    
+    if (index === 3) {
       querie.skip = skip;
       dispatch(filtrarOferLaboralesAction(querie)).then(() => setOpen(false));
     } else if (index === 1) {
+    } else if (index === 0) {
+      dispatch(filtrarOferLaboralesAction({ skip, query }));
     } else if (index === 2) {
-      dispatch(filtrarOferLaboralesAction({ skip, estado: "Activo" }));
-    } else if (index === 3) {
       dispatch(
         filtrarOferLaboralesAction({
           skip,
