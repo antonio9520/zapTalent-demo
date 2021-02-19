@@ -60,7 +60,11 @@ const dataAvisos = async (data) => {
     let aviso = await Avisos.findById(data[i].idaviso);
     if (aviso) {
       aviso.id_post = data[i]._id;
+      aviso.eliminado = false;
       postulaciones.push(aviso);
+    } else {
+      data[i].eliminado = true;
+      postulaciones.push(data[i]);
     }
   }
   return postulaciones;
@@ -146,25 +150,28 @@ const dataUsuarios = async (data, query) => {
   let usuarios = [];
 
   for (let i = 0; i < data.length; i++) {
-    query._id = data[i].iduser;
-    // ObjectId ("568c28fffc4be30d44d0398e")
-    console.log(query);
-    let usuario = await Usuario.findOne({
-      $and: [query],
-    });
+    const aviso = await Avisos.findById(data[i].idaviso);
+    if (aviso) {
+      query._id = data[i].iduser;
+      // ObjectId ("568c28fffc4be30d44d0398e")
+      console.log(query);
+      let usuario = await Usuario.findOne({
+        $and: [query],
+      });
 
-    if (usuario) {
-      const adnsap = await Adnsap.find(
-        { iduser: usuario._id },
-        { name: 1, desc: 1 }
-      );
+      if (usuario) {
+        const adnsap = await Adnsap.find(
+          { iduser: usuario._id },
+          { name: 1, desc: 1 }
+        );
 
-      usuario.id_post = data[i]._id;
-      usuario.idaviso = data[i].idaviso;
-      usuario.titulo = data[i].titulo;
-      usuario.leido = data[i].leido;
-      usuario.adns = adnsap;
-      usuarios.push(usuario);
+        usuario.id_post = data[i]._id;
+        usuario.idaviso = data[i].idaviso;
+        usuario.titulo = data[i].titulo;
+        usuario.leido = data[i].leido;
+        usuario.adns = adnsap;
+        usuarios.push(usuario);
+      }
     }
   }
   return usuarios;

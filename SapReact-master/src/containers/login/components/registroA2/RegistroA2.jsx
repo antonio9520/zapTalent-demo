@@ -65,14 +65,23 @@ const RegistroA2 = (props) => {
             error={errorcivil}
             funcionError={setErrorCivil}
           >
-            <MenuItem className="custom-menu-item" value="Soltero">
-              Soltero
+            <MenuItem className="custom-menu-item" value="Soltero/a">
+              Soltero/a
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Casado">
-              Casado
+            <MenuItem className="custom-menu-item" value="Casado/a">
+              Casado/a
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Viudo">
-              Viudo
+            <MenuItem className="custom-menu-item" value="Viudo/a">
+              Viudo/a
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Divorciado/a">
+              Divorciado/a
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Conviviente civil">
+              Conviviente civil
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Separado">
+              Separado
             </MenuItem>
           </CustomSelect>
         </div>

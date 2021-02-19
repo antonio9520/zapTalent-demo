@@ -23,16 +23,10 @@ exports.filtrarAvisos = async (req, res) => {
   const query = await createQuery(req.body);
   console.log(query);
   try {
-    const avisos = await Avisos.find(
-      {
-        $and: [query],
-      },
-      undefined,
-      {
-        skip: parseInt(skip),
-        limit: 5,
-      }
-    ).sort({ creacion: -1 });
+    const avisos = await Avisos.find(query, undefined, {
+      skip: parseInt(skip),
+      limit: 5,
+    }).sort({ creacion: -1 });
     // console.log(avisos);
     console.log(avisos);
     res.json(avisos);
@@ -59,15 +53,26 @@ const createQuery = (data) => {
     modulos,
     submodulos,
     estado,
+    activo,
+    caducado,
   } = data;
   let query;
 
+  // $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ]
+  console.log(new Date());
   if (tipoContrato) {
     query = { "tipoContrato.value": tipoContrato };
   } else {
     query = {};
   }
-
+  if (activo) {
+    query.$or = [{ estado: estado, fechaTermino: { $gte: new Date() } }];
+    // query.fechaTermino = { $gte: new Date() };
+  }
+  if (caducado) {
+    query.fechaTermino = { $lte: new Date() };
+    // query.fechaTermino = { $lte: new Date() };
+  }
   if (tipoConsultor) query.tipoConsultor = tipoConsultor;
 
   if (modulos) query.modulos = modulos;
@@ -87,6 +92,7 @@ const createQuery = (data) => {
   } else if (anosExpMax) {
     query.anosExpSap = { $lte: anosExpMax };
   }
+
   if (fechaini && fechafin) {
     query.creacion = {
       $gte: new Date(`${fechaini.substring(0, 10)}T00:00:00.000Z`),
@@ -101,7 +107,8 @@ const createQuery = (data) => {
   if (region) query.region = region;
   if (comuna) query.ciudad = comuna;
   if (jornadaLaboral) query.jornadaLaboral = jornadaLaboral;
-  if (estado) query.estado = estado;
+
+  // if (estado) query.estado = estado;
   //2021-01-21T22:42:30.000Z
   return query;
 };

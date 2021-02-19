@@ -58,16 +58,7 @@ const CustomModal = (props) => {
       );
     }
     if (estudio) {
-      dispatch(eliminarEstudioAction(idEliminar)).then((res) =>
-        res === true
-          ? dispatch(
-              editarUsuarioAction({
-                _id: usuario._id,
-                carreras: dataEstudioUser,
-              })
-            )
-          : null
-      );
+      dispatch(eliminarEstudioAction(idEliminar));
     }
     if (certificado) {
       dispatch(eliminarCertificadoAction(idEliminar));

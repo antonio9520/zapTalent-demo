@@ -22,5 +22,9 @@ const postulacionSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  eliminado: {
+    type: Boolean,
+    default: false,
+  },
 });
 module.exports = mongoose.model("postulacion", postulacionSchema);

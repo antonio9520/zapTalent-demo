@@ -22,7 +22,6 @@ import { editarEstudioAction } from "../../../../redux/actions/estudioAction";
 import { estudios_data } from "../../../../assets/estudios";
 import { areaEstudio } from "../../../../assets/areaEstudio";
 
-
 const Formulario = (props) => {
   const { setDataEditar, setOpenModalEditar, data } = props;
   const dispatch = useDispatch();
@@ -130,10 +129,10 @@ const Formulario = (props) => {
       setPaisError(true);
       return;
     }
-    if (observacion === "") {
-      setObservacionError(true);
-      return;
-    }
+    // if (observacion === "") {
+    //   setObservacionError(true);
+    //   return;
+    // }
 
     dispatch(
       editarEstudioAction({
@@ -170,6 +169,12 @@ const Formulario = (props) => {
         }
       case "1-10":
         if (value > 10 || value < 1) {
+          return true;
+        } else {
+          return false;
+        }
+      case "1-20":
+        if (value > 20 || value < 1) {
           return true;
         } else {
           return false;
@@ -404,6 +409,9 @@ const Formulario = (props) => {
               </MenuItem>
               <MenuItem className="custom-menu-item" value="1-10">
                 De 1 a 10
+              </MenuItem>
+              <MenuItem className="custom-menu-item" value="1-20">
+                De 1 a 20
               </MenuItem>
               <MenuItem className="custom-menu-item" value="1-100">
                 De 1 a 100

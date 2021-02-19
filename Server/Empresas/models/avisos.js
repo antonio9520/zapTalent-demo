@@ -110,6 +110,7 @@ const avisosSchema = mongoose.Schema({
   logoURL: {
     type: String,
   },
+  eliminado: {},
 });
 
 module.exports = mongoose.model("Avisos", avisosSchema);

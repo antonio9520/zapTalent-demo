@@ -55,6 +55,7 @@
   /* border: 1px solid blue; */
   display: flex;
   margin-right: 30px;
+  min-height: 40px;
 }
 .item-card-perfil-b p {
   margin: 0;

@@ -59,7 +59,9 @@ const Ofertas = () => {
       // console.log("index: 1");
     } else if (index === 0) {
       setCargando(true);
-      await dispatch(filtrarOferLaboralesAction({ skip: 0, estado: "Activo" }));
+      await dispatch(
+        filtrarOferLaboralesAction({ skip: 0, estado: "Activo", activo: true })
+      );
       setTimeout(() => {
         setCargando(false);
       }, 500);
@@ -70,6 +72,7 @@ const Ofertas = () => {
         filtrarOferLaboralesAction({
           skip: 0,
           estado: "Proceso Finalizado",
+          caducado: true,
         })
       );
       setTimeout(() => {
@@ -78,7 +81,6 @@ const Ofertas = () => {
     }
   };
   const obtenerOfertasMore = (querie, index, skip) => {
-    
     if (index === 3) {
       querie.skip = skip;
       dispatch(filtrarOferLaboralesAction(querie)).then(() => setOpen(false));

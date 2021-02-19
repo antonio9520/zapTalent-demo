@@ -136,117 +136,124 @@ const Postulacion = ({ data }) => {
     estado,
     anosExp,
     nameuser,
+    eliminado,
   } = data;
   return (
-    <div className="sub-swipeables-new-perfil">
-      <p className="p2-post-b-perfil">{titulo}</p>
-      <p className="p3-post-b-perfil">{profesion}</p>
-      <div className="dates-card-post">
-        <EventAvailable className="icon-card-post-new-perfil" />
-        <p>{fechaInicio.substring(0, 10)}</p>
-        <EventBusy className="icon-card-post-new-perfil" />
-        <p>{fechaTermino.substring(0, 10)}</p>
-      </div>
-      <p className="p1-post-new-perfil">{ciudad + ", " + region}</p>
-      <p className="p2-post-new-perfil">{descripcion}</p>
-      <div className="cont-datos-card-post">
-        <div className="item-3">
-          <Tooltip title="Tipo de consultor">
-            <div>
-              <AccountCircle className="icon-card-post-new-perfil" />
-              <p style={{ fontWeight: "600" }}>{tipoConsultor}</p>
-            </div>
-          </Tooltip>
+    <>
+      {eliminado ? (
+        <p>Eliminado</p>
+      ) : (
+        <div className="sub-swipeables-new-perfil">
+          <p className="p2-post-b-perfil">{titulo}</p>
+          <p className="p3-post-b-perfil">{profesion}</p>
+          <div className="dates-card-post">
+            <EventAvailable className="icon-card-post-new-perfil" />
+            <p>{fechaInicio.substring(0, 10)}</p>
+            <EventBusy className="icon-card-post-new-perfil" />
+            <p>{fechaTermino.substring(0, 10)}</p>
+          </div>
+          <p className="p1-post-new-perfil">{ciudad + ", " + region}</p>
+          <p className="p2-post-new-perfil">{descripcion}</p>
+          <div className="cont-datos-card-post">
+            <div className="item-3">
+              <Tooltip title="Tipo de consultor">
+                <div>
+                  <AccountCircle className="icon-card-post-new-perfil" />
+                  <p style={{ fontWeight: "600" }}>{tipoConsultor}</p>
+                </div>
+              </Tooltip>
 
-          <Tooltip title="Tipo de Jornada">
-            <div>
-              <QueryBuilder className="icon-card-post-new-perfil" />
-              <p>{jornadaLaboral}</p>
+              <Tooltip title="Tipo de Jornada">
+                <div>
+                  <QueryBuilder className="icon-card-post-new-perfil" />
+                  <p>{jornadaLaboral}</p>
+                </div>
+              </Tooltip>
+              <Tooltip title="Fecha de contratación">
+                <div>
+                  <BusinessCenter className="icon-card-post-new-perfil" />
+                  <p>{fechaContratacion.substring(0, 10)}</p>
+                </div>
+              </Tooltip>
+              <Tooltip title="Disponibilidad de viajar">
+                <div>
+                  <Flight className="icon-card-post-new-perfil" />
+                  {dispViajar ? <p>Si</p> : <p>No</p>}
+                </div>
+              </Tooltip>
             </div>
-          </Tooltip>
-          <Tooltip title="Fecha de contratación">
-            <div>
-              <BusinessCenter className="icon-card-post-new-perfil" />
-              <p>{fechaContratacion.substring(0, 10)}</p>
-            </div>
-          </Tooltip>
-          <Tooltip title="Disponibilidad de viajar">
-            <div>
-              <Flight className="icon-card-post-new-perfil" />
-              {dispViajar ? <p>Si</p> : <p>No</p>}
-            </div>
-          </Tooltip>
-        </div>
 
-        <div className="item-4">
-          <Tooltip title="Experiencia SAP">
-            <div>
-              <AccountTree className="icon-card-post-new-perfil" />
-              {anosExpSap ? (
-                <p style={{ fontWeight: "600" }}>{anosExpSap} Años</p>
-              ) : (
-                <p style={{ fontWeight: "600" }}>Sin Experiencia</p>
-              )}
+            <div className="item-4">
+              <Tooltip title="Experiencia SAP">
+                <div>
+                  <AccountTree className="icon-card-post-new-perfil" />
+                  {anosExpSap ? (
+                    <p style={{ fontWeight: "600" }}>{anosExpSap} Años</p>
+                  ) : (
+                    <p style={{ fontWeight: "600" }}>Sin Experiencia</p>
+                  )}
+                </div>
+              </Tooltip>
+              <Tooltip title="Tipo de contrato">
+                <div>
+                  <Description className="icon-card-post-new-perfil" />
+                  <p>{tipoContrato.value}</p>
+                </div>
+              </Tooltip>
+              <Tooltip title="Cantidad de Vacantes">
+                <div>
+                  <EventSeat className="icon-card-post-new-perfil" />
+                  <p>{cantidadVacantes}</p>
+                </div>
+              </Tooltip>
+              <Tooltip title="Disponibilidad de cambio de residencia">
+                <div>
+                  <Home className="icon-card-post-new-perfil" />
+                  {dispResidencia ? <p>Si</p> : <p>No</p>}
+                </div>
+              </Tooltip>
             </div>
-          </Tooltip>
-          <Tooltip title="Tipo de contrato">
-            <div>
-              <Description className="icon-card-post-new-perfil" />
-              <p>{tipoContrato.value}</p>
+          </div>
+          <div className="item-5">
+            <p className="p4-post-b-perfil">Módulos y submodulos</p>
+            <div
+              className="modulos-card-ofertas-laborales"
+              style={{ marginBottom: "10px" }}
+            >
+              {adns.map((item, index) => (
+                <Modulos
+                  key={index}
+                  data={item}
+                  setActive={setActive}
+                  num={index}
+                  active={active}
+                />
+              ))}
             </div>
-          </Tooltip>
-          <Tooltip title="Cantidad de Vacantes">
-            <div>
-              <EventSeat className="icon-card-post-new-perfil" />
-              <p>{cantidadVacantes}</p>
+            <div
+              className="submodulos-card-ofertas-laborales"
+              style={{ maxHeight: "50px" }}
+            >
+              {adns
+                ? adns[active].submodulos.map((item, index) => (
+                    <SubModulos key={index} data={item} />
+                  ))
+                : null}
             </div>
-          </Tooltip>
-          <Tooltip title="Disponibilidad de cambio de residencia">
-            <div>
-              <Home className="icon-card-post-new-perfil" />
-              {dispResidencia ? <p>Si</p> : <p>No</p>}
-            </div>
-          </Tooltip>
-        </div>
-      </div>
-      <div className="item-5">
-        <p className="p4-post-b-perfil">Módulos y submodulos</p>
-        <div
-          className="modulos-card-ofertas-laborales"
-          style={{ marginBottom: "10px" }}
-        >
-          {adns.map((item, index) => (
-            <Modulos
-              key={index}
-              data={item}
-              setActive={setActive}
-              num={index}
-              active={active}
+          </div>
+          <p className="p4-post-b-perfil">Salario</p>
+          <p className="p5-post-b-perfil">
+            ${" "}
+            <NumberFormat
+              value={renta}
+              displayType={"text"}
+              thousandSeparator={true}
+              // prefix={"$"}
             />
-          ))}
+          </p>
         </div>
-        <div
-          className="submodulos-card-ofertas-laborales"
-          style={{ maxHeight: "50px" }}
-        >
-          {adns
-            ? adns[active].submodulos.map((item, index) => (
-                <SubModulos key={index} data={item} />
-              ))
-            : null}
-        </div>
-      </div>
-      <p className="p4-post-b-perfil">Salario</p>
-      <p className="p5-post-b-perfil">
-        ${" "}
-        <NumberFormat
-          value={renta}
-          displayType={"text"}
-          thousandSeparator={true}
-          // prefix={"$"}
-        /> 
-      </p>
-    </div>
+      )}
+    </>
   );
 };
 

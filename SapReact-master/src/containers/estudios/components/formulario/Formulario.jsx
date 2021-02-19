@@ -8,6 +8,7 @@ import {
   InputAdornment,
   MenuItem,
   LinearProgress,
+  Menu,
 } from "@material-ui/core";
 import { Close, CloudUpload } from "@material-ui/icons";
 import {
@@ -111,13 +112,36 @@ const Formulario = (props) => {
       setPaisError(true);
       return;
     }
-    if (observacion.trim() === "") {
-      setObservacionError(true);
-      return;
-    }
+    // if (observacion.trim() === "") {
+    //   setObservacionError(true);
+    //   return;
+    // }
     let carreras = usuario.carreras;
     carreras.push({ carrera, tipoestudio });
 
+    // dispatch(
+    //   agregarEstudioAction({
+    //     idusuario,
+    //     tipoestudio,
+    //     carrera,
+    //     institucion,
+    //     areaestudio,
+    //     escalanotas,
+    //     promedio: promedio.toUpperCase(),
+    //     pais,
+    //     observacion,
+    //     estado: active,
+    //     diainicio,
+    //     diafin,
+    //     estudioURL,
+    //   })
+    // ).then((res) =>
+    //   res === true
+    //     ? dispatch(
+    //         editarUsuarioAction({ _id: usuario._id, carreras })
+    //       ).then((res) => (res === true ? setOpenModal(false) : null))
+    //     : null
+    // );
     dispatch(
       agregarEstudioAction({
         idusuario,
@@ -134,13 +158,7 @@ const Formulario = (props) => {
         diafin,
         estudioURL,
       })
-    ).then((res) =>
-      res === true
-        ? dispatch(
-            editarUsuarioAction({ _id: usuario._id, carreras })
-          ).then((res) => (res === true ? setOpenModal(false) : null))
-        : null
-    );
+    ).then((res) => (res === true ? setOpenModal(false) : null));
   };
 
   const validarPromedio = (key, value) => {
@@ -165,6 +183,12 @@ const Formulario = (props) => {
         }
       case "1-100":
         if (value > 100 || value < 1) {
+          return true;
+        } else {
+          return false;
+        }
+      case "1-20":
+        if (value > 20 || value < 1) {
           return true;
         } else {
           return false;
@@ -381,6 +405,9 @@ const Formulario = (props) => {
               </MenuItem>
               <MenuItem className="custom-menu-item" value="1-10">
                 De 1 a 10
+              </MenuItem>
+              <MenuItem className="custom-menu-item" value="1-20">
+                De 1 a 20
               </MenuItem>
               <MenuItem className="custom-menu-item" value="1-100">
                 De 1 a 100

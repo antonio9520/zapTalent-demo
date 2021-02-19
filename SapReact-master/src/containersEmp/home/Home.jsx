@@ -200,6 +200,8 @@ const Home = () => {
           dataFiltro={dataFiltro}
           setQuery={setQuery}
           query={query}
+          setDataUser={setDataUser}
+          setOpenModal={setOpenModal}
         />
       </Grid>
       <Grid

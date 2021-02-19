@@ -4,10 +4,18 @@ import {
   InputLabel,
   Select,
   FormHelperText,
+  makeStyles,
 } from "@material-ui/core";
 import "./CustomSelectB.css";
 
+const useStyle = makeStyles({
+  // select: {
+  //   maxWidth: "150px"
+  // },
+});
+
 const CustomSelectB = (props) => {
+  const classes = useStyle();
   const { label, error, helpertext } = props;
 
   return (
@@ -16,6 +24,7 @@ const CustomSelectB = (props) => {
       fullWidth
       size="small"
       error={error}
+      
     >
       <InputLabel id="select-123" className="input-label-custom-select">
         {label}
@@ -23,9 +32,11 @@ const CustomSelectB = (props) => {
       <Select
         labelId="select-123"
         id="select-456"
+        autoWidth
         // onChange={handleChange}
         className="select-custom-select-b"
         {...props}
+        // classes={{ select: classes.select}}
       >
         {/* <MenuItem value="">
           <em></em>

@@ -275,14 +275,23 @@ const EditPerfil = ({ usuario, loading }) => {
               onChange={(e) => setEcivil(e.target.value)}
               disabled={editar}
             >
-              <MenuItem value="Soltero" className="custom-menu-item">
-                Soltero
+              <MenuItem className="custom-menu-item" value="Soltero/a">
+                Soltero/a
               </MenuItem>
-              <MenuItem value="Casado" className="custom-menu-item">
-                Casado
+              <MenuItem className="custom-menu-item" value="Casado/a">
+                Casado/a
               </MenuItem>
-              <MenuItem value="Divorciado" className="custom-menu-item">
-                Divorciado
+              <MenuItem className="custom-menu-item" value="Viudo/a">
+                Viudo/a
+              </MenuItem>
+              <MenuItem className="custom-menu-item" value="Divorciado/a">
+                Divorciado/a
+              </MenuItem>
+              <MenuItem className="custom-menu-item" value="Conviviente civil">
+                Conviviente civil
+              </MenuItem>
+              <MenuItem className="custom-menu-item" value="Separado">
+                Separado
               </MenuItem>
             </CustomSelectB>
           </div>

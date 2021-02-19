@@ -110,6 +110,12 @@ body {
 .custom-menu-item {
   font-size: 14px !important;
   color: #7d7f80 !important;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+  padding-right: inherit !important;
+  padding-left: inherit !important;
+  max-width: 400px !important;
+  overflow: auto !important;
 }
 .linear-progres-global {
 }
@@ -120,6 +126,36 @@ components:
 colors:
 
 */
+/*menu item*/
+
+
+.custom-menu-item::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.custom-menu-item::-webkit-scrollbar:vertical {
+  width: 7px;
+}
+
+.custom-menu-item::-webkit-scrollbar-button:increment,
+.contenedor::-webkit-scrollbar-button {
+  display: none;
+}
+
+.custom-menu-item::-webkit-scrollbar:horizontal {
+  height: 5px;
+}
+
+.custom-menu-item::-webkit-scrollbar-thumb {
+  background-color: #4bacef;
+  border-radius: 20px;
+}
+
+.custom-menu-item::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #dbeefc;
+  
+}
 /*P*/
 p::-webkit-scrollbar {
   -webkit-appearance: none;

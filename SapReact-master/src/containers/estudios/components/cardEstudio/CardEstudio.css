@@ -17,6 +17,7 @@
   overflow: hidden;
   padding: 20px 20px 30px 20px;
   align-items: center;
+  min-height: 400px;
 }
 
 .cont-img-card-estudio {

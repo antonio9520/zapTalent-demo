@@ -25,9 +25,9 @@ const CardEstudio = (props) => {
   const dispatch = useDispatch();
   const [file, setFile] = useState(null);
   const initDelete = () => {
-    let carreras =  dataEstudioUser.filter((item) =>
-    item.carrera === data.carrera ? null : item
-  );
+    let carreras = dataEstudioUser.filter((item) =>
+      item.carrera === data.carrera ? null : item
+    );
     setDataEstudioUser(carreras);
     setIdEliminar(data._id);
     setOpenModalEliminar(true);
@@ -91,9 +91,12 @@ const CardEstudio = (props) => {
           </div>
         </div>
       </div>
-      <div className="cont-obs-card-estudio">
-        <p>{data.observacion}</p>
-      </div>
+      {data.observacion ? (
+        <div className="cont-obs-card-estudio">
+          <p>{data.observacion}</p>
+        </div>
+      ) : null}
+
       <div className="cont-btns-card-est-b2">
         {data ? (
           data.estudioURL ? (
