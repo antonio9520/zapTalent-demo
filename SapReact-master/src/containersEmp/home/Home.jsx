@@ -12,6 +12,7 @@ import {
   obtenerTotalAvisosAction,
   obtenerTotalPostNoLeidosAction,
   obtenerTotalPostulantesAction,
+  obtenerTotalUsuariosDiaAction,
 } from "../../redux/actions/actions-emp/postuladosAction";
 
 const Home = () => {
@@ -26,11 +27,14 @@ const Home = () => {
   const postulantesnoleidos = useSelector(
     (state) => state.postulados.postulantesnoleidos
   );
+  const totalUsuariosDias = useSelector(
+    (state) => state.postulados.totalUsuariosDias
+  );
   const [openModal, setOpenModal] = useState(false);
   const [dataUser, setDataUser] = useState(null);
   const [dataFiltro, setDataFiltro] = useState([]);
   const [query, setQuery] = useState({ leido: false });
-  // console.table(avisos);
+
   useEffect(() => {
     if (usuario) {
       if (avisos.length === 0) {
@@ -39,29 +43,22 @@ const Home = () => {
         cargarAvisos();
       }
 
-      const cargarPostulados = () =>
-        dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
-      cargarPostulados();
+      dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
 
-      const cargarTotalUsers = () => dispatch(obtenerTotalUsuariosAction());
-      cargarTotalUsers();
+      dispatch(obtenerTotalUsuariosAction());
 
-      const cargarTotalAvisos = () =>
-        dispatch(obtenerTotalAvisosAction(usuario._id));
-      cargarTotalAvisos();
+      dispatch(obtenerTotalAvisosAction(usuario._id));
 
-      const cargarTotalPostulantes = () =>
-        dispatch(obtenerTotalPostulantesAction(usuario._id));
-      cargarTotalPostulantes();
+      dispatch(obtenerTotalPostulantesAction(usuario._id));
 
-      const cargarTotalNoLeidos = () => 
-        dispatch(obtenerTotalPostNoLeidosAction(usuario._id));
-      cargarTotalNoLeidos();
-      console.log("funcion");
+      dispatch(obtenerTotalPostNoLeidosAction(usuario._id));
+
+      dispatch(obtenerTotalUsuariosDiaAction(usuario._id));
     }
 
     // eslint-disable-next-line
   }, [usuario]);
+
   useEffect(() => {
     if (usuario) {
       const cargarPostulados = () =>
@@ -113,9 +110,7 @@ const Home = () => {
       >
         <CardPerfil
           // nombre={nombreuser}
-          imageURL={
-            usuario ? (usuario.logoURL ? usuario.logoURL : null) : null
-          }
+          imageURL={usuario ? (usuario.logoURL ? usuario.logoURL : null) : null}
           titulo="Comienza a reclutar a los mejores talentos SAP de Chile."
           subtitle="Crea tu primer aviso aquí."
           textBtn="Publicar Aviso"
@@ -141,7 +136,12 @@ const Home = () => {
             xl={3}
             className="items-cards-home"
           >
-            <CardA image white titulo="Nuevos usuarios hoy" />
+            <CardA
+              image
+              white
+              titulo="Nuevos usuarios hoy"
+              value={totalUsuariosDias}
+            />
           </Grid>
           <Grid
             item
@@ -194,7 +194,7 @@ const Home = () => {
         lg={6}
         xl={6}
         className="cont-table-home-emp"
-      > 
+      >
         <Table
           postulados={postulados}
           dataFiltro={dataFiltro}

@@ -10,6 +10,7 @@ import {
   OBTENER_TOTAL_AVISOS,
   OBTENER_TOTAL_POSTULANTES,
   OBTENER_TOTAL_NO_LEIDOS,
+  OBTENER_TOTAL_USUARIOS_DIAS,
 } from "../../types/typesEmp";
 
 import clientAxios from "../../../config/axios";
@@ -175,5 +176,25 @@ export function obtenerTotalPostNoLeidosAction(id) {
 
 const obtenerTotalPostNoLeidos = (data) => ({
   type: OBTENER_TOTAL_NO_LEIDOS,
+  payload: data,
+});
+
+//OBTENER total postulantes no leidos
+export function obtenerTotalUsuariosDiaAction() {
+  return async (dispatch) => {
+    try {
+      const respuesta = await clientAxios.get(
+        `/api/usuarios/totaldia/usuarios`
+      );
+      console.log(respuesta);
+      dispatch(obtenerTotalUsuariosDia(respuesta.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+const obtenerTotalUsuariosDia = (data) => ({
+  type: OBTENER_TOTAL_USUARIOS_DIAS,
   payload: data,
 });

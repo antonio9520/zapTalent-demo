@@ -30,6 +30,8 @@ const Filtro = ({
   const [region, setRegion] = useState(null);
   const [anosExpMin, setAnosExpMin] = useState(null);
   const [anosExpMax, setAnosExpMax] = useState(null);
+  const [pretencionMin, setPretencionMin] = useState(null);
+  const [pretencionMax, setPretencionMax] = useState(null);
 
   const comunas = regiones.find((item) => item.region === region);
   const submodulos = modulos.find((item) => item.modulo === _modulo);
@@ -46,6 +48,8 @@ const Filtro = ({
     if (region) query.region = region;
     if (anosExpMin) query.anosExpMin = anosExpMin;
     if (anosExpMax) query.anosExpMax = anosExpMax;
+    if (pretencionMin) query.pretencionMin = pretencionMin;
+    if (pretencionMax) query.pretencionMax = pretencionMax;
     if (skip > 0) {
       setSkip(0);
     } else {
@@ -68,13 +72,14 @@ const Filtro = ({
     setRegion(null);
     setAnosExpMin(null);
     setAnosExpMax(null);
+    setPretencionMin(null);
+    setPretencionMax(null);
     setSkip(0);
     setSwitch(!_switch);
     return;
   };
   const setIdAviso = (id) => {
     setQuery({ ...query, _id: id });
-    
   };
   return (
     <div className="cont-filtro-eco-sap-emp">
@@ -297,7 +302,39 @@ const Filtro = ({
           </CustomSelect>
         </div>
       ) : null}
-
+      <div className="item">
+        <p>Pretencion de renta</p>
+        <div style={{ display: "flex" }}>
+          <div style={{ flex: 1, paddingRight: "5px" }}>
+            <OutInput
+              label="Rango mínimo"
+              // helpertext={nombresmsg}
+              funcOnChange={setPretencionMin}
+              // defaultValue={nombres}
+              value={pretencionMin}
+              name="anosExp"
+              size="small"
+              type="number"
+              // error={errornombre}
+              // funcionError={setErrorNombre}
+            />
+          </div>
+          <div style={{ flex: 1, paddingLeft: "5px" }}>
+            <OutInput
+              label="Rango maximo"
+              // helpertext={nombresmsg}
+              funcOnChange={setPretencionMax}
+              defaultValue={pretencionMax}
+              value={pretencionMax}
+              name="anosExp"
+              size="small"
+              type="number"
+              // error={errornombre}
+              // funcionError={setErrorNombre}
+            />
+          </div>
+        </div>
+      </div>
       <div className="item">
         <p>Género</p>
         <CustomSelect

@@ -22,13 +22,14 @@ exports.filtrarAvisos = async (req, res) => {
   const { skip } = req.body;
   const query = await createQuery(req.body);
   console.log(query);
+  // console.log(query);
   try {
     const avisos = await Avisos.find(query, undefined, {
       skip: parseInt(skip),
       limit: 5,
     }).sort({ creacion: -1 });
     // console.log(avisos);
-    console.log(avisos);
+    // console.log(avisos);
     res.json(avisos);
   } catch (error) {
     console.log(error);
@@ -55,11 +56,13 @@ const createQuery = (data) => {
     estado,
     activo,
     caducado,
+    search,
   } = data;
-  let query;
+  let query;  
 
   // $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ]
-  console.log(new Date());
+  // console.log(new Date());
+
   if (tipoContrato) {
     query = { "tipoContrato.value": tipoContrato };
   } else {
@@ -72,6 +75,13 @@ const createQuery = (data) => {
   if (caducado) {
     query.fechaTermino = { $lte: new Date() };
     // query.fechaTermino = { $lte: new Date() };
+  }
+  if (search) {
+    query.$text = {
+      $search: search,
+      $caseSensitive: false,
+      $diacriticSensitive: false,
+    };
   }
   if (tipoConsultor) query.tipoConsultor = tipoConsultor;
 

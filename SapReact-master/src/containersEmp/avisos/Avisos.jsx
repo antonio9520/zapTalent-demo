@@ -37,7 +37,7 @@ const Avisos = () => {
       }
     }
 
-    // eslint-disable-next-line
+    // eslint-disable-next-line 
   }, [usuario, skip]);
 
   const handleScroll = (e) => {

@@ -19,16 +19,10 @@ const CardEstudio = (props) => {
     setOpenModalEliminar,
     setDataEditar,
     setOpenModalEditar,
-    dataEstudioUser,
-    setDataEstudioUser,
   } = props;
   const dispatch = useDispatch();
   const [file, setFile] = useState(null);
   const initDelete = () => {
-    let carreras = dataEstudioUser.filter((item) =>
-      item.carrera === data.carrera ? null : item
-    );
-    setDataEstudioUser(carreras);
     setIdEliminar(data._id);
     setOpenModalEliminar(true);
   };

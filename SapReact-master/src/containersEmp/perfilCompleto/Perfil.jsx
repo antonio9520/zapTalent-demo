@@ -1,6 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import React, { useRef, useState, useEffect } from "react";
-import { makeStyles, IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import "./Perfil.css";
 import { Tooltip } from "../../components";
@@ -12,11 +12,9 @@ import {
   CardPost,
   CardProNew,
   CardEst,
-  CardB2,
   Drawer,
 } from "../../containers/perfil/components";
 import logo from "../../resources/images/SPAimages/icon-card-cv-saptalent.svg";
-import { CardInitPerfil } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import {
   obtenerUserInfoAction,
@@ -28,11 +26,6 @@ import {
 import { obtenerPostulacionesEmpresaAction } from "../../redux/actions/actions-emp/postuladosAction";
 import Loader from "react-loader-spinner";
 
-const useStyles = makeStyles((theme) => ({
-  itemRightsubCont: {
-    height: "100%",
-  },
-}));
 const Perfil = (props) => {
   const {
     match: { params },

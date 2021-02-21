@@ -64,10 +64,7 @@ const Card = ({ data }) => {
   const [postulado, setPostulado] = useState(false);
   const [id_post, setIdPost] = useState(null);
   const [_switch, setSwitch] = useState(false);
-  console.log(titulo);
-  console.log(fechaInicio);
 
-  console.log(fechaTermino);
   const MESES = [
     "Enero",
     "Febrero",

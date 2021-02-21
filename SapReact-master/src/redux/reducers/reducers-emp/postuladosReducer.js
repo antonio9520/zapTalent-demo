@@ -8,6 +8,7 @@ import {
   OBTENER_TOTAL_AVISOS,
   OBTENER_TOTAL_POSTULANTES,
   OBTENER_TOTAL_NO_LEIDOS,
+  OBTENER_TOTAL_USUARIOS_DIAS,
 } from "../../types/typesEmp";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   totalpostulantes: 0,
   totalavisos: 0,
   postulantesnoleidos: 0,
+  totalUsuariosDias: 0,
 };
 
 export default function (state = initialState, action) {
@@ -74,6 +76,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         postulantesnoleidos: action.payload,
+      };
+    case OBTENER_TOTAL_USUARIOS_DIAS:
+      return {
+        ...state,
+        totalUsuariosDias: action.payload,
       };
     default:
       return state;

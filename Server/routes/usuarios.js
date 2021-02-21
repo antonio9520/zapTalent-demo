@@ -2,22 +2,16 @@
 const express = require("express");
 const router = express.Router();
 const usuarioControllers = require("../controllers/usuariosControllers");
-const upload = require('../libs/storage');
+const upload = require("../libs/storage");
 //Crea usuario
 //Api/usuarios
 router.post("/", usuarioControllers.crearUsuarios);
 
-router.get(
-  "/:idUsuario",
-  usuarioControllers.mostarUsuarios
-);
+router.get("/:idUsuario", usuarioControllers.mostarUsuarios);
 
 router.post("/validacion/rut-email", usuarioControllers.validacionEmailRut);
 
-router.put(
-  "/:iduser",
-  usuarioControllers.putUsuario
-);
+router.put("/:iduser", usuarioControllers.putUsuario);
 
 router.put(
   "/actualizar-password/:iduser",
@@ -34,6 +28,7 @@ router.put(
   upload.single("imageURL"),
   usuarioControllers.actualizarCV
 );
-router.get("/total/usuarios", usuarioControllers.totalUsers)
+router.get("/total/usuarios", usuarioControllers.totalUsers);
+router.get("/totaldia/usuarios", usuarioControllers.totalUsersDay);
 
 module.exports = router;

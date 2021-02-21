@@ -4,6 +4,7 @@ import {
   AGREGAR_AVISO_EXITO,
   SHOW_ALERT_EMP,
   COMENZAR_DESCARGA_AVISO,
+  DESCARGA_AVISO_EXITO_INIT,
   DESCARGA_AVISO_ERROR,
   DESCARGA_AVISO_EXITO,
   OBTENER_AVISO_ELIMINAR,
@@ -65,10 +66,13 @@ export function obtenerAvisoAction({ _id, skip }) {
     dispatch(descargaAviso());
     try {
       const respuesta = await clientAxios.get(`/api/avisos/${_id}/${skip}`);
-      for (let i = 0; i < respuesta.data.length; i++) {
-        dispatch(descargaExito(respuesta.data[i]));
+      if (skip === 0) {
+        dispatch(descargaExitoInit(respuesta.data));
+      } else {
+        for (let i = 0; i < respuesta.data.length; i++) {
+          dispatch(descargaExito(respuesta.data[i]));
+        }
       }
-      
     } catch (error) {
       console.log(error);
       dispatch(descargaError());
@@ -79,12 +83,17 @@ export function obtenerAvisoAction({ _id, skip }) {
 const descargaAviso = () => ({
   type: COMENZAR_DESCARGA_AVISO,
 });
-
+// const detenerCarga = () => ({
+//   type: DETENER_CARGA_OF,
+// });
 const descargaExito = (data) => ({
   type: DESCARGA_AVISO_EXITO,
   payload: data,
 });
-
+const descargaExitoInit = (data) => ({
+  type: DESCARGA_AVISO_EXITO_INIT,
+  payload: data,
+});
 const descargaError = () => ({
   type: DESCARGA_AVISO_ERROR,
 });

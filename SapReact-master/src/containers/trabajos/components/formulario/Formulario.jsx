@@ -202,13 +202,7 @@ const Formulario = (props) => {
         inidate,
         findate: fechaTermino,
       })
-    ).then((res) =>
-      res === true
-        ? dispatch(
-            editarUsuarioAction({ _id: usuario._id, industria })
-          ).then((res) => (res === true ? setOpenModal(false) : null))
-        : null
-    );
+    ).then((res) => (res === true ? setOpenModal(false) : null));
   };
 
   const changeInit = (value) => {

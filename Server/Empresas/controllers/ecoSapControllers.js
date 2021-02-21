@@ -56,6 +56,8 @@ const createQuery = (data) => {
     region,
     anosExpMin,
     anosExpMax,
+    pretencionMax,
+    pretencionMin,
   } = data;
   let query;
 
@@ -79,9 +81,18 @@ const createQuery = (data) => {
   } else if (anosExpMax) {
     query.anosZap = { $lte: anosExpMax };
   }
+  if (pretencionMin && pretencionMax) {
+    query.pretencion = { $gte: pretencionMin, $lte: pretencionMax };
+  } else if (anosExpMin) {
+    query.pretencion = { $gte: pretencionMin };
+  } else if (pretencionMax) {
+    query.pretencion = { $lte: pretencionMax };
+  }
+
   if (region) query.region = region;
   if (comuna) query.comuna = comuna;
-  if (industria) query.industria = industria;
+  if (industria) query.industria = { $elemMatch: { industria: industria } };
   //2021-01-21T22:42:30.000Z
   return query;
 };
+

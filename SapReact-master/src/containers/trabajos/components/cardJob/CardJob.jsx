@@ -21,15 +21,11 @@ const CardJob = (props) => {
     setIdEliminar,
     setOpenModalEditar,
     setDataEditar,
-    dataJobUser,
-    setDataJobUser,
+ 
   } = props;
   const [_switch, setSwitch] = useState(false);
   const initDelete = () => {
-    let industrias = dataJobUser.filter((item) =>
-      item === data.actempresa ? null : item
-    );
-    setDataJobUser(industrias);
+
     setIdEliminar(data._id);
     setOpenModalEliminar(true);
   };

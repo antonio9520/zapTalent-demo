@@ -160,8 +160,8 @@ const EcoSap = () => {
         _switch={_switch}
         setSwitch={setSwitch}
         dataFiltro={avisos}
-        open={openModalDrawer}
         setOpen={setOpenModalDrawer}
+        open={openModalDrawer}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { withStyles, Tabs, Tab } from "@material-ui/core";
 import { SearchBar } from "../../../../componentsEmp";
@@ -44,14 +44,29 @@ const Header = ({
   setSkip,
   obtenerOfertas,
   query,
+  setQuery,
 }) => {
+  const [search, setSearch] = useState("");
   const handleChange = (event, newValue) => {
     setindexTab(newValue);
     setSkip(0);
-    console.log(query);
     query.skip = 0;
     if (newValue !== 1) {
       obtenerOfertas(query, newValue);
+    }
+  };
+  console.log(search);
+  const handleClick = () => {
+    query.search = search;
+    setSkip(0);
+    setQuery(query);
+    console.log(query);
+    obtenerOfertas(query, 0);
+    console.log("handle click");
+  };
+  const _handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleClick();
     }
   };
   return (
@@ -61,7 +76,7 @@ const Header = ({
       </div>
       <div className="right-header-avisos-emp">
         <div style={{ width: "350px", marginRight: "50px" }}>
-          <SearchBar />
+          <SearchBar onChange={setSearch} onClick={handleClick} onKeyDown={_handleKeyDown}/>
         </div>
         <AntTabs
           value={indexTab}

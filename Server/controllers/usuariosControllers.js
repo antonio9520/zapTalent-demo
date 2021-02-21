@@ -348,3 +348,33 @@ exports.totalUsers = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.totalUsersDay = async (req, res) => {
+  let inicio = new Date();
+  let termino = new Date();
+
+  query = {
+    registro: {
+      $gte: new Date(
+        `${inicio.getFullYear()}-${String(inicio.getMonth() + 1).padStart(
+          2,
+          "0"
+        )}-${String(inicio.getDate()).padStart(2, "0")}T00:00:00.000Z`
+      ),
+      $lte: new Date(
+        `${termino.getFullYear()}-${String(termino.getMonth() + 1).padStart(
+          2,
+          "0"
+        )}-${String(termino.getDate()).padStart(2, "0")}T23:59:59.999Z`
+      ),
+    },
+  };
+
+  try {
+    const totalusers = await Usuario.find(query).countDocuments();
+
+    return res.status(200).json(totalusers);
+  } catch (error) {
+    console.log(error);
+  }
+};

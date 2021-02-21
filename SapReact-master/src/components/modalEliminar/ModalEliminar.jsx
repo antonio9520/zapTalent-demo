@@ -33,8 +33,6 @@ const CustomModal = (props) => {
     idEliminar,
     setIdEliminar,
     dataAdnUser,
-    dataJobUser,
-    dataEstudioUser,
   } = props;
 
   const deleteCancel = () => {
@@ -46,16 +44,7 @@ const CustomModal = (props) => {
     setOpenModalEliminar(false);
 
     if (trabajo) {
-      dispatch(eliminarTrabajoAction(idEliminar)).then((res) =>
-        res === true
-          ? dispatch(
-              editarUsuarioAction({
-                _id: usuario._id,
-                industria: dataJobUser,
-              })
-            )
-          : null
-      );
+      dispatch(eliminarTrabajoAction(idEliminar));
     }
     if (estudio) {
       dispatch(eliminarEstudioAction(idEliminar));
