@@ -51,6 +51,7 @@ const EcoSap = () => {
       setLoading(true);
     }
     let _id = usuario._id;
+   
     try {
       const respuesta = await clientAxios.put(
         `/api/postulacion/postulados/${_id}/${skip}`,
@@ -78,7 +79,7 @@ const EcoSap = () => {
       setSkip(usuarios.length);
     }
   };
-  console.log(usuarios);
+ 
 
   useEffect(() => {
     if (value === 0) {
@@ -111,7 +112,8 @@ const EcoSap = () => {
             _switch={_switch}
             setSwitch={setSwitch}
             setQuery={setQuery}
-            setOpen={setOpenModalDrawer}
+            setOpen={setOpenModalDrawer} 
+            query={query}
           />
         </div>
         <div className="space-top-eco-sap-emp"></div>

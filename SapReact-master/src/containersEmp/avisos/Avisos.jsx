@@ -26,19 +26,32 @@ const Avisos = () => {
   const [openModalCopy, setOpenModalCopy] = useState(false);
   const [dataCopy, setDataCopy] = useState(null);
   const [openModalRep, setOpenModalRep] = useState(false);
+  const [index, setIndex] = useState(0);
   const [skip, setSkip] = useState(0);
+  const [query, setQuery] = useState({});
+  const [_switch, setSwitch] = useState(false);
 
-  useEffect(() => {
-    const cargarAvisos = () =>
-      dispatch(obtenerAvisoAction({ _id: usuario._id, skip }));
-    if (usuario) {
-      if (avisos.length === 0) {
-        cargarAvisos();
-      }
+  const cargarAvisos = async () => {
+    switch (index) {
+      case 0:
+        query._id = usuario._id;
+        dispatch(obtenerAvisoAction({ skip, query }));
+        break;
+      case 1:
+        query.activo = true;
+        query._id = usuario._id;
+        dispatch(obtenerAvisoAction({ skip, query }));
+
+        break;
+      case 2:
+        query.caducado = true;
+        query._id = usuario._id;
+        dispatch(obtenerAvisoAction({ skip, query }));
+        break;
+      default:
+        break;
     }
-
-    // eslint-disable-next-line 
-  }, [usuario, skip]);
+  };
 
   const handleScroll = (e) => {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
@@ -47,11 +60,28 @@ const Avisos = () => {
       setSkip(avisos.length);
     }
   };
+  useEffect(() => {
+    console.log("useEFFECT");
+    if (usuario) {
+      cargarAvisos();
+    }
+
+    // eslint-disable-next-line
+  }, [usuario, skip, _switch, index]);
   return (
     <>
       <div className="cont-avisos-emp" onScroll={handleScroll}>
         <div className="cont-header-avisos-emp">
-          <Header setOpenModal={setOpenModal} />
+          <Header
+            setOpenModal={setOpenModal}
+            setIndex={setIndex}
+            index={index}
+            setQuery={setQuery}
+            _switch={_switch}
+            setSkip={setSkip}
+            setSwitch={setSwitch}
+            query={query}
+          />
         </div>
 
         <div className="cont-cards-avisos-emp">

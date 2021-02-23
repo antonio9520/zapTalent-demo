@@ -31,7 +31,12 @@ const Home = () => {
   const [cardT2, setCardT2] = useState("");
   const [screenw, setScreenW] = useState(window.innerWidth);
   const [_switch, setSwitch] = useState(false);
+  const [_switch2, setSwitch2] = useState(false);
+  const [empSugeridos, setEmpSugeridos] = useState([]);
   const [skip, setSkip] = useState(0);
+  const [totalEmpSugeridos, setTotalEmpSugeridos] = useState(null);
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState({});
   // const adns = [];
   // const trabajos = [];
 
@@ -61,10 +66,6 @@ const Home = () => {
     }
     //eslint-disable-next-line
   }, [usuario]);
-
-  useEffect(() => {
-    dispatch(filtrarOferLaboralesAction({ skip }));
-  }, [usuario, skip]);
 
   const cargarCounters = async () => {
     try {
@@ -107,6 +108,32 @@ const Home = () => {
       dispatch(obtenerAdnAction(usuario._id));
     }
   };
+  const empleosSugeridos = async () => {
+    query.skip = skip;
+    if (usuario.modulos) query.modulos = usuario.modulos;
+    if (usuario.industria) query.industria = usuario.industria;
+    query.consultor = usuario.consultor;
+    try {
+      const result = await clientAxios.put(
+        `/api/ofertasLaborales/empleosSugeridos`,
+        query
+      );
+      setEmpSugeridos(result.data);
+      const resultCount = await clientAxios.put(
+        `/api/ofertasLaborales/total/empleosSugeridos`,
+        query
+      );
+      setTotalEmpSugeridos(resultCount.data);
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(query)
+  };
+  useEffect(() => {
+    if (usuario) {
+      empleosSugeridos();
+    }
+  }, [usuario, skip, _switch2]);
   return (
     <div style={{ width: "100%", maxWidth: "1500px" }}>
       <ModalAviso
@@ -191,7 +218,11 @@ const Home = () => {
               xl={3}
               className="items-cards-home"
             >
-              <CardA degradado titulo="N° de empleos sugeridos" />
+              <CardA
+                degradado
+                titulo="N° de empleos sugeridos"
+                value={totalEmpSugeridos}
+              />
             </Grid>
             <Grid
               item
@@ -239,6 +270,13 @@ const Home = () => {
             setSkip={setSkip}
             setOpenModal={setOpenModal}
             setDataOL={setDataOL}
+            data={empSugeridos}
+            search={search}
+            setSearch={setSearch}
+            setSwitch2={setSwitch2}
+            _switch2={_switch2}
+            query={query}
+            setQuery={setQuery}
           />
         </Grid>
         <Grid

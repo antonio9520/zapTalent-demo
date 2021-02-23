@@ -56,7 +56,9 @@ const Card = ({ data, setOpenModal, setDataUser }) => {
         </p>
         <p className="p2">{profesion ? profesion.name : null}</p>
         <div className="anos-exp-eco-sap-card">
-          <p>{anosZap} años de experiencia</p>
+          <p>
+            {anosZap === "1" ? anosZap + " año" : anosZap + " años"} de experiencia
+          </p>
         </div>
       </div>
       <div>

@@ -3,17 +3,37 @@ import "./Table.css";
 import { SearchBar, CardJob } from "../";
 import { useSelector } from "react-redux";
 
-const Table = ({ setSkip, setOpenModal, setDataOL }) => {
-  const ofertasLaborales = useSelector(
-    (state) => state.ofertasLaborales.ofertasLaborales
-  );
-
+const Table = ({
+  setSkip,
+  setOpenModal,
+  setDataOL,
+  data,
+  search,
+  setSearch,
+  query,
+  setQuery,
+  setSwitch2,
+  _switch2,
+}) => {
   const handleScroll = (e) => {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
     const alto = scrollHeight - 150;
     if (offsetHeight + scrollTop > alto) {
       console.log("scroll");
-      setSkip(ofertasLaborales.length);
+      setSkip(data.length);
+    }
+  };
+  const handleClick = () => {
+    query.search = search;
+    setSkip(0);
+    setQuery(query);
+    // obtenerOfertas(query, 0);
+    setSwitch2(!_switch2);
+    console.log("switch")
+  };
+  const _handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleClick();
     }
   };
   return (
@@ -23,11 +43,16 @@ const Table = ({ setSkip, setOpenModal, setDataOL }) => {
           <p>Ofertas de empleo que te podrían interesar</p>
         </div>
         <div className="cont-search-table-home">
-          <SearchBar />
+          <SearchBar
+            onChange={setSearch}
+            onClick={handleClick}
+            onKeyDown={_handleKeyDown}
+            value={search}
+          />
         </div>
       </div>
       <div className="cont-center-table-home" onScroll={handleScroll}>
-        {ofertasLaborales.map((item) => (
+        {data.map((item) => (
           <div key={item._id} className="cont-card-job-table">
             <CardJob
               data={item}

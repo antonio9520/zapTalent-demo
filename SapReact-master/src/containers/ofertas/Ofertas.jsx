@@ -21,6 +21,7 @@ const Ofertas = () => {
   const [open, setOpen] = useState(false);
   const [skip, setSkip] = useState(0);
   const [indexTab, setindexTab] = useState(0);
+  const [search, setSearch] = useState("");
   // let query = {};
   const [query, setQuery] = useState({});
 
@@ -58,6 +59,7 @@ const Ofertas = () => {
     } else if (index === 1) {
       // console.log("index: 1");
     } else if (index === 0) {
+      
       querie.skip = 0;
       querie.estado = "Activo";
       querie.activo = true;
@@ -70,13 +72,10 @@ const Ofertas = () => {
       // console.log("index: 2");
     } else if (index === 2) {
       setCargando(true); // console.log("index: 3");
-      await dispatch(
-        filtrarOferLaboralesAction({
-          skip: 0,
-          estado: "Proceso Finalizado",
-          caducado: true,
-        })
-      );
+      querie.skip = 0;
+      querie.estado = "Proceso Finalizado";
+      querie.caducado = true;
+      await dispatch(filtrarOferLaboralesAction(querie));
       setTimeout(() => {
         setCargando(false);
       }, 500);
@@ -100,6 +99,7 @@ const Ofertas = () => {
       );
     }
   };
+
   useEffect(() => {
     if (skip > 0) {
       obtenerOfertasMore(query, indexTab, skip);
@@ -122,6 +122,8 @@ const Ofertas = () => {
             obtenerOfertas={obtenerOfertas}
             query={query}
             setQuery={setQuery}
+            search={search}
+            setSearch={setSearch}
           />
         </div>
 

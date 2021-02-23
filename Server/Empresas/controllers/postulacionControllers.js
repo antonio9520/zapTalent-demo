@@ -106,6 +106,7 @@ exports.usuarioPostulados = async (req, res) => {
     region,
     anosExpMin,
     anosExpMax,
+    search,
   } = req.body;
 
   let query = {};
@@ -135,6 +136,7 @@ exports.usuarioPostulados = async (req, res) => {
       region,
       anosExpMin,
       anosExpMax,
+      search,
     });
 
     const data = await dataUsuarios(postulaciones, query2);
@@ -190,6 +192,7 @@ const createQuery = (data) => {
     region,
     anosExpMin,
     anosExpMax,
+    search,
   } = data;
   let query;
 
@@ -201,6 +204,13 @@ const createQuery = (data) => {
     query = { carreras: { $elemMatch: { carrera: carrera } } };
   } else {
     query = {};
+  }
+  if (search) {
+    query.$text = {
+      $search: search,
+      $caseSensitive: false,
+      $diacriticSensitive: false,
+    };
   }
   if (sexo) query.sexo = sexo;
   if (tipoConsultor) query.consultor = tipoConsultor;

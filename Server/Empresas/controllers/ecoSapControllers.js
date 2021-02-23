@@ -58,6 +58,7 @@ const createQuery = (data) => {
     anosExpMax,
     pretencionMax,
     pretencionMin,
+    search,
   } = data;
   let query;
 
@@ -69,6 +70,13 @@ const createQuery = (data) => {
     query = { carreras: { $elemMatch: { carrera: carrera } } };
   } else {
     query = {};
+  }
+  if (search) {
+    query.$text = {
+      $search: search,
+      $caseSensitive: false,
+      $diacriticSensitive: false,
+    };
   }
   if (sexo) query.sexo = sexo;
   if (tipoConsultor) query.consultor = tipoConsultor;
@@ -83,7 +91,7 @@ const createQuery = (data) => {
   }
   if (pretencionMin && pretencionMax) {
     query.pretencion = { $gte: pretencionMin, $lte: pretencionMax };
-  } else if (anosExpMin) {
+  } else if (pretencionMin) {
     query.pretencion = { $gte: pretencionMin };
   } else if (pretencionMax) {
     query.pretencion = { $lte: pretencionMax };
@@ -95,4 +103,3 @@ const createQuery = (data) => {
   //2021-01-21T22:42:30.000Z
   return query;
 };
-

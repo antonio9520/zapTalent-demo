@@ -58,7 +58,7 @@ const createQuery = (data) => {
     caducado,
     search,
   } = data;
-  let query;  
+  let query;
 
   // $or: [ { qty: { $lt: 30 } }, { item: /^p/ } ]
   // console.log(new Date());
@@ -121,4 +121,65 @@ const createQuery = (data) => {
   // if (estado) query.estado = estado;
   //2021-01-21T22:42:30.000Z
   return query;
+};
+
+exports.empleosSugeridos = async (req, res) => {
+  const { skip, modulos, industria, submodulos, search } = req.body;
+
+  let query = [];
+  let querysearch = {};
+  let industrias = [];
+  if (search) {
+    querysearch.$text = {
+      $search: search,
+      $caseSensitive: false,
+      $diacriticSensitive: false,
+    };
+  }
+  if (industria) {
+    industria.map((item) => {
+      industrias.push(item.industria);
+    });
+
+    query.push({ area: { $in: industrias } });
+  }
+  if (modulos)
+    query.push({ modulos: { $in: modulos }, submodulos: { $in: submodulos } });
+
+  try {
+    const avisos = await Avisos.find(
+      { $and: [{ $or: query }, querysearch] },
+      undefined,
+      {
+        skip: parseInt(skip),
+        limit: 5,
+      }
+    ).sort({ creacion: -1 });
+
+    res.json(avisos);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.totalEmpleosSugeridos = async (req, res) => {
+  const { modulos, industria, submodulos } = req.body;
+  let query = [];
+  let industrias = [];
+  if (industria) {
+    industria.map((item) => {
+      industrias.push(item.industria);
+    });
+    query.push({ area: { $in: industrias } });
+  }
+  if (modulos)
+    query.push({ modulos: { $in: modulos }, submodulos: { $in: submodulos } });
+
+  try {
+    const totalavisos = await Avisos.find({ $or: query }).countDocuments();
+
+    res.json(totalavisos);
+  } catch (error) {
+    console.log(error);
+  }
 };

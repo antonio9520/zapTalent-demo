@@ -45,17 +45,20 @@ const Header = ({
   obtenerOfertas,
   query,
   setQuery,
+  search,
+  setSearch,
 }) => {
-  const [search, setSearch] = useState("");
   const handleChange = (event, newValue) => {
     setindexTab(newValue);
+    setQuery({});
+    setSearch("");
     setSkip(0);
     query.skip = 0;
     if (newValue !== 1) {
       obtenerOfertas(query, newValue);
     }
   };
-  console.log(search);
+
   const handleClick = () => {
     query.search = search;
     setSkip(0);
@@ -76,7 +79,12 @@ const Header = ({
       </div>
       <div className="right-header-avisos-emp">
         <div style={{ width: "350px", marginRight: "50px" }}>
-          <SearchBar onChange={setSearch} onClick={handleClick} onKeyDown={_handleKeyDown}/>
+          <SearchBar
+            onChange={setSearch}
+            onClick={handleClick}
+            onKeyDown={_handleKeyDown}
+            value={search}
+          />
         </div>
         <AntTabs
           value={indexTab}

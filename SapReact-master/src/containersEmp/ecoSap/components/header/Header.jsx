@@ -46,7 +46,9 @@ const Header = ({
   setSwitch,
   setQuery,
   setOpen,
+  query,
 }) => {
+  const [search, setSearch] = useState("");
   // console.log("%cVerde", "color: green; font-size: 28px");
   const handleChange = (event, newValue) => {
     setUsuarios([]);
@@ -54,6 +56,20 @@ const Header = ({
     setSkip(0);
     setSwitch(!_switch);
     setValue(newValue);
+  };
+  const handleClick = () => {
+    query.search = search;
+    setSkip(0);
+    setQuery(query);
+    console.log(query);
+    setSwitch(!_switch);
+    // obtenerOfertas(query, 0);
+    console.log("handle click");
+  };
+  const _handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleClick();
+    }
   };
   return (
     <div className="cont-header-eco-sap-emp">
@@ -66,7 +82,11 @@ const Header = ({
           justifyContent: "space-between",
         }}
       >
-        <SearchBar />
+        <SearchBar
+          onChange={setSearch}
+          onClick={handleClick}
+          onKeyDown={_handleKeyDown}
+        />
         <AntTabs value={value} onChange={handleChange} aria-label="ant example">
           <AntTab label="Todos" />
           <AntTab label="Postulantes" />

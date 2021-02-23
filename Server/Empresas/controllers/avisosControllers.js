@@ -14,12 +14,16 @@ exports.crearAviso = async (req, res) => {
 
 exports.mostrarAvisos = async (req, res) => {
   const skip = req.params.skip;
-
+  const query = req.body;
+  console.log(query);
   try {
-    const avisos = await Avisos.find({ idusuario: req.params.id }, undefined, {
+    const querie = await createQuery(query);
+    console.log(querie);
+    const avisos = await Avisos.find({ $and: [querie] }, undefined, {
       skip: parseInt(skip),
       limit: 5,
     });
+    console.log(avisos);
     const dataAvisos = await datapostulaciones(avisos);
     res.json(dataAvisos);
   } catch (err) {
@@ -27,6 +31,29 @@ exports.mostrarAvisos = async (req, res) => {
   }
 };
 
+/**create query */
+const createQuery = (data) => {
+  const { _id, activo, caducado, search } = data;
+  let query = {};
+  if (_id) query.idusuario = _id;
+  if (activo) {
+    query.$or = [{ estado: "Activo", fechaTermino: { $gte: new Date() } }];
+    // query.fechaTermino = { $gte: new Date() };
+  }
+  if (caducado) {
+    // query.$or = [{ estado: "Proceso Finalizado", fechaTermino: { $lte: new Date() } }];
+    query.fechaTermino = { $lte: new Date() };
+    // query.fechaTermino = { $lte: new Date() };
+  }
+  if (search) {
+    query.$text = {
+      $search: search,
+      $caseSensitive: false,
+      $diacriticSensitive: false,
+    };
+  }
+  return query;
+};
 const datapostulaciones = async (avisos) => {
   for (let i = 0; i < avisos.length; i++) {
     const postulaciones = await Postulacion.find({
@@ -120,4 +147,3 @@ exports.putAviso = async (req, res) => {
     res.status(500).json({ msg: "Hubo un error" });
   }
 };
-

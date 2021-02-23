@@ -110,7 +110,9 @@ const Card = ({
           <div className="sub-right-avisos-emp">
             <div>
               <p className="p1">Inscritos</p>
-              <p className="p2">{data.postulaciones}</p>
+              <p className="p2">
+                {data.postulaciones ? data.postulaciones : 0}
+              </p>
             </div>
             <div>
               <p className="p1">No leídos</p>

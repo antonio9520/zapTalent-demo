@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { withStyles, Tabs, Tab } from "@material-ui/core";
 import { SearchBar } from "../../../../componentsEmp";
@@ -37,11 +37,32 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Header = ({ setOpenModal }) => {
-  const [value, setValue] = React.useState(0);
-
+const Header = ({
+  setOpenModal,
+  index,
+  setIndex,
+  _switch,
+  setSwitch,
+  query,
+  setSkip,
+  setQuery,
+}) => {
+  const [search, setSearch] = useState("");
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setQuery({});
+    setSearch("");
+    setIndex(newValue);
+  };
+  const handleClick = () => {
+    query.search = search;
+    setSkip(0);
+    setQuery(query);
+    setSwitch(!_switch);
+  };
+  const _handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleClick();
+    }
   };
   return (
     <div className="header-avisos-emp">
@@ -50,9 +71,14 @@ const Header = ({ setOpenModal }) => {
       </div>
       <div className="right-header-avisos-emp">
         <div style={{ width: "350px", marginRight: "50px" }}>
-          <SearchBar />
+          <SearchBar
+            onChange={setSearch}
+            onClick={handleClick}
+            value={search}
+            onKeyDown={_handleKeyDown}
+          />
         </div>
-        <AntTabs value={value} onChange={handleChange} aria-label="ant example">
+        <AntTabs value={index} onChange={handleChange} aria-label="ant example">
           <AntTab label="Todos" />
           <AntTab label="Activos" />
           <AntTab label="Caducados" />

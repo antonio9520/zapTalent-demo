@@ -61,11 +61,14 @@ const agregarAvisoError = () => ({
 });
 
 //OBTENER
-export function obtenerAvisoAction({ _id, skip }) {
+export function obtenerAvisoAction({ skip, query }) {
   return async (dispatch) => {
     dispatch(descargaAviso());
     try {
-      const respuesta = await clientAxios.get(`/api/avisos/${_id}/${skip}`);
+      const respuesta = await clientAxios.put(
+        `/api/avisos/filter/${skip}`,
+        query
+      );
       if (skip === 0) {
         dispatch(descargaExitoInit(respuesta.data));
       } else {

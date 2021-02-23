@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Layout = (props) => {
   const dispatch = useDispatch();
   const _alert = useSelector((state) => state.trabajo.alert);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleClose = () => {
     dispatch(hiddenAlertAction());
