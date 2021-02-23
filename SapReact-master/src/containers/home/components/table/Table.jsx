@@ -1,7 +1,9 @@
 import React from "react";
 import "./Table.css";
 import { SearchBar, CardJob } from "../";
-import { useSelector } from "react-redux";
+import { Button } from "../../../../components";
+import Loader from "react-loader-spinner";
+import { useHistory } from "react-router-dom";
 
 const Table = ({
   setSkip,
@@ -14,7 +16,9 @@ const Table = ({
   setQuery,
   setSwitch2,
   _switch2,
+  loading,
 }) => {
+  const history = useHistory();
   const handleScroll = (e) => {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
     const alto = scrollHeight - 150;
@@ -27,14 +31,16 @@ const Table = ({
     query.search = search;
     setSkip(0);
     setQuery(query);
-    // obtenerOfertas(query, 0);
     setSwitch2(!_switch2);
-    console.log("switch")
   };
   const _handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleClick();
     }
+  };
+
+  const irAOfertas = () => {
+    history.push("/ofertas-laborales");
   };
   return (
     <div className="cont-table">
@@ -52,15 +58,43 @@ const Table = ({
         </div>
       </div>
       <div className="cont-center-table-home" onScroll={handleScroll}>
-        {data.map((item) => (
-          <div key={item._id} className="cont-card-job-table">
-            <CardJob
-              data={item}
-              setOpenModal={setOpenModal}
-              setDataOL={setDataOL}
+        {loading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Loader
+              type="Oval"
+              color="#00BFFF"
+              height={60}
+              width={60}
+              visible={loading}
+              //  timeout={3000} //3 secs
             />
           </div>
-        ))}
+        ) : data.length === 0 ? (
+          <div className="cont-not-sug-employees">
+            <p>No tienes empleos sugeridos</p>
+            <Button variant="contained" color="primary" onClick={irAOfertas}>
+              Ir a ofertas laborales
+            </Button>
+          </div>
+        ) : (
+          data.map((item) => (
+            <div key={item._id} className="cont-card-job-table">
+              <CardJob
+                data={item}
+                setOpenModal={setOpenModal}
+                setDataOL={setDataOL}
+              />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

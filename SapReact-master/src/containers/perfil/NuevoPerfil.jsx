@@ -32,17 +32,12 @@ import { ModalEditar as ModalEditarTrabajo } from "../../containers/trabajos/com
 import { ModalEditar as ModalEditarCert } from "../../containers/certificados/components";
 import { ModalEditar as ModalEditarEstudio } from "../../containers/estudios/components";
 import { ModalEditar as ModalEditarAdn } from "../../containers/adnSap/components";
-/**Resize */
-import { useContainerDimensions } from "../../hooks/useResize";
-const useStyles = makeStyles((theme) => ({
-  itemRightsubCont: {
-    height: "100%",
-  },
-}));
+/**Porcentaje perfil*/
+import { porcentajePerfil } from "../../assets/porcentajePerfil";
+
 const Perfil = () => {
   const componentRef = useRef();
 
-  const { width, height } = useContainerDimensions(componentRef);
   const dispatch = useDispatch();
   /* MODALES EDITAR* */
   const [openEditarTrabajo, setOpenEditarTrabajo] = useState(false);
@@ -69,6 +64,7 @@ const Perfil = () => {
   const [_switch, setSwitch] = useState(false);
   const [active, setActive] = useState("one");
   const [activeStep, setActiveStep] = useState(0);
+  const [porcentaje, setPorcentaje] = useState(0);
 
   /*DATOS REDUX**/
   const usuario = useSelector((state) => state.auth.usuario);
@@ -89,28 +85,24 @@ const Perfil = () => {
       }
     }
   }, [usuario]);
-
-  useEffect(() => {
+  const cargarData = async () => {
     if (estudios.length === 0) {
-      if (usuario) {
-        const cargarEstudios = () =>
-          dispatch(obtenerEstudiosAction(usuario._id));
-        cargarEstudios();
-      }
+      await dispatch(obtenerEstudiosAction(usuario._id));
     }
-    // eslint-disable-next-line
-  }, [usuario]);
-  useEffect(() => {
     if (certificados.length === 0) {
-      if (usuario) {
-        const cargarCertificados = () =>
-          dispatch(obtenerCertificadosAction(usuario._id));
-        cargarCertificados();
-      }
+      await dispatch(obtenerCertificadosAction(usuario._id));
     }
-    // eslint-disable-next-line
-  }, [usuario]);
-
+    if (adns.length === 0) {
+      await dispatch(obtenerAdnAction(usuario._id));
+    }
+    if (trabajos.length === 0) {
+      await dispatch(obtenerTrabajosAction(usuario._id));
+    }
+    if (postulaciones.length === 0) {
+      await dispatch(obtenerPostulacionesAction(usuario._id));
+    }
+    cargarPorcentaje();
+  };
   useEffect(() => {
     if (adns.length === 0) {
       if (!_switch) {
@@ -119,25 +111,11 @@ const Perfil = () => {
         }
       }
     }
-  }, [usuario, _switch]);
+  }, [_switch]);
 
   useEffect(() => {
-    if (trabajos.length === 0) {
-      if (usuario) {
-        const cargarTrabajos = () =>
-          dispatch(obtenerTrabajosAction(usuario._id));
-        cargarTrabajos();
-      }
-    }
-
-    //eslint-disable-next-line
-  }, [usuario]);
-
-  useEffect(() => {
-    if (postulaciones.length === 0) {
-      if (usuario) {
-        dispatch(obtenerPostulacionesAction(usuario._id));
-      }
+    if (usuario) {
+      cargarData();
     }
   }, [usuario]);
 
@@ -156,6 +134,25 @@ const Perfil = () => {
     if (usuario) {
       dispatch(obtenerAdnAction(usuario._id));
     }
+  };
+  const cargarPorcentaje = () => {
+    let confirmaremail = usuario.confirmar === 0 ? true : false;
+    let cv = usuario.cvURL ? true : false;
+    let modulos = usuario.modulos.length > 0 ? true : false;
+    let trab = trabajos.length > 0 ? true : false;
+    let cert = certificados.length > 0 ? true : false;
+    let est = estudios.length > 0 ? true : false;
+    console.log(confirmaremail);
+    const result = porcentajePerfil(
+      confirmaremail,
+      cv,
+      modulos,
+      trab,
+      cert,
+      est
+    );
+
+    setPorcentaje(result);
   };
   return (
     <div className="cont-new-perfil">
@@ -332,8 +329,8 @@ const Perfil = () => {
               setOpenModalEditar={setOpenEditarTrabajo}
               setDataEditar={setDataTrabajos}
             />
+          ) : (
             // <p>jhakd</p>
-          ) : ( 
             <CardInitPerfil
               type={cardSexo}
               imgFour
@@ -374,6 +371,7 @@ const Perfil = () => {
           setActiveStep={setActiveStep}
           habilidades={usuario ? usuario.habilidades : null}
           setOpenModalHab={setOpenModalHab}
+          porcentaje={porcentaje}
         />
       </div>
     </div>

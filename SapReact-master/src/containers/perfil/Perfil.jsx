@@ -24,7 +24,7 @@ import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
 import { ModalEditar } from "../adnSap/components";
 import { Tooltip } from "../../components";
-import { useContainerDimensions } from "../../hooks/useResize";
+import { porcentajePerfil } from "../../assets/porcentajePerfil";
 
 const useStyles = makeStyles((theme) => ({
   itemRightsubCont: {
@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Perfil = () => {
- 
   const dispatch = useDispatch();
   const classes = useStyles();
   const [openModalEditar, setOpenModalEditar] = useState(false);
@@ -52,6 +51,7 @@ const Perfil = () => {
   const [_switch, setSwitch] = useState(false);
   const [active, setActive] = useState("one");
   const [activeStep, setActiveStep] = useState(0);
+  const [porcentaje, setPorcentaje] = useState(0);
   const [openModalRRSS, setOpenModalRRSS] = useState({
     open: false,
     type: "Instagram",
@@ -72,12 +72,17 @@ const Perfil = () => {
 
   useEffect(() => {
     if (usuario) {
-      const cargarEstudios = () => dispatch(obtenerEstudiosAction(usuario._id));
-      cargarEstudios();
+      cargarData();
     }
 
     // eslint-disable-next-line
   }, [usuario]);
+
+  const cargarData = async () => {
+    await dispatch(obtenerEstudiosAction(usuario._id));
+    await dispatch(obtenerAdnAction(usuario._id));
+    await dispatch(obtenerTrabajosAction(usuario._id));
+  };
 
   useEffect(() => {
     if (!_switch) {
@@ -85,7 +90,7 @@ const Perfil = () => {
         dispatch(obtenerAdnAction(usuario._id));
       }
     }
-  }, [usuario, _switch]);
+  }, [_switch]);
 
   useEffect(() => {
     if (usuario) {

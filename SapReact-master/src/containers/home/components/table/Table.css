@@ -47,6 +47,21 @@
   align-items: center;
 }
 
+.cont-not-sug-employees{
+  /* background-color: blueviolet; */
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.cont-not-sug-employees p{
+ color: var(--gray-text);
+ font-size: 20px;
+ font-weight: 200;
+}
+
 /* MEDIA QUERIES */
 @media only screen and (min-width: 1279px) and (max-width: 1619px) {
 }

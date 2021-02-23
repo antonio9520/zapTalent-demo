@@ -32,6 +32,7 @@ const CardPerfil = ({
   habilidades,
   setOpenModalHab,
   empresas,
+  porcentaje,
 }) => {
   const dispatch = useDispatch();
   let usuario;
@@ -83,7 +84,7 @@ const CardPerfil = ({
       <div className="item-1">
         <div>
           <Settings className="icon-header-perfil-new" />{" "}
-          <p>Perfil completado en 80%</p>
+          <p>Perfil completado en {porcentaje}%</p>
         </div>
       </div>
       <div className="item-2">

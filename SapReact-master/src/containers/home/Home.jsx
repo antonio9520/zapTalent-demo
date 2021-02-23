@@ -4,20 +4,23 @@ import { Grid } from "@material-ui/core";
 import { HeaderHome, CardPerfil, Table, ModalAviso } from "./components";
 import { CardA, CardB } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
-import { CardJob } from "../perfil/components";
 import { ModalEditar } from "../adnSap/components";
 import { CardAdnNew, CardJobNew } from "../perfil/components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
+import { obtenerCertificadosAction } from "../../redux/actions/certificadoAction";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
-import { filtrarOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
 import { ModalEditar as ModalEditarTrabajo } from "../../containers/trabajos/components";
+import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import clientAxios from "../../config/axios";
+import { porcentajePerfil } from "../../assets/porcentajePerfil";
 
 const Home = () => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.auth.usuario);
   const adns = useSelector((state) => state.adn.adns);
   const trabajos = useSelector((state) => state.trabajo.trabajos);
+  const certificados = useSelector((state) => state.certificado.certificados);
+  const estudios = useSelector((state) => state.estudio.estudios);
   const [openModalEditar, setOpenModalEditar] = useState(false);
   const [openEditarTrabajo, setOpenEditarTrabajo] = useState(false);
   const [dataTrabajos, setDataTrabajos] = useState(null);
@@ -29,7 +32,6 @@ const Home = () => {
   const [dataEditar, setDataEditar] = useState(null);
   const [cardT1, setCardT1] = useState("");
   const [cardT2, setCardT2] = useState("");
-  const [screenw, setScreenW] = useState(window.innerWidth);
   const [_switch, setSwitch] = useState(false);
   const [_switch2, setSwitch2] = useState(false);
   const [empSugeridos, setEmpSugeridos] = useState([]);
@@ -37,6 +39,9 @@ const Home = () => {
   const [totalEmpSugeridos, setTotalEmpSugeridos] = useState(null);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [porcentaje, setPorcentaje] = useState(0);
+
   // const adns = [];
   // const trabajos = [];
 
@@ -45,24 +50,16 @@ const Home = () => {
   if (usuario) {
     nombreuser = usuario.nombres.split(" ")[0];
   }
-
-  window.addEventListener("resize", function (event) {
-    if (window.innerWidth > 1280 && window.innerWidth < 1920) {
-      setScreenW(window.innerWidth);
-      console.log(screenw);
-    }
-  });
+  const cargarData = async () => {
+    await dispatch(obtenerTrabajosAction(usuario._id));
+    await dispatch(obtenerAdnAction(usuario._id));
+    await dispatch(obtenerCertificadosAction(usuario._id));
+    await dispatch(obtenerEstudiosAction(usuario._id));
+    cargarPorcentaje();
+  };
   useEffect(() => {
     if (usuario) {
-      dispatch(obtenerAdnAction(usuario._id));
-    }
-    //eslint-disable-next-line
-  }, [usuario]);
-
-  useEffect(() => {
-    if (usuario) {
-      const cargarTrabajos = () => dispatch(obtenerTrabajosAction(usuario._id));
-      cargarTrabajos();
+      cargarData();
     }
     //eslint-disable-next-line
   }, [usuario]);
@@ -103,12 +100,33 @@ const Home = () => {
       cargarCounters();
     }
   }, [usuario]);
+
+  const cargarPorcentaje = () => {
+    let confirmaremail = usuario.activo === 0 ? true : false;
+    let cv = usuario.cvURL ? true : false;
+    let modulos = usuario.modulos.length > 0 ? true : false;
+    let trab = trabajos.length > 0 ? true : false;
+    let cert = certificados.length > 0 ? true : false;
+    let est = estudios.length > 0 ? true : false;
+  
+    const result = porcentajePerfil(
+      confirmaremail,
+      cv,
+      modulos,
+      trab,
+      cert,
+      est
+    );
+
+    setPorcentaje(result);
+  };
   const evitarBug = () => {
     if (usuario) {
       dispatch(obtenerAdnAction(usuario._id));
     }
   };
   const empleosSugeridos = async () => {
+    setLoading(true);
     query.skip = skip;
     if (usuario.modulos) query.modulos = usuario.modulos;
     if (usuario.industria) query.industria = usuario.industria;
@@ -127,7 +145,9 @@ const Home = () => {
     } catch (error) {
       console.log(error);
     }
-    console.log(query)
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
   useEffect(() => {
     if (usuario) {
@@ -180,6 +200,7 @@ const Home = () => {
             imageURL={
               usuario ? (usuario.imageURL ? usuario.imageURL : null) : null
             }
+            porcentaje={porcentaje}
             nombre={nombreuser}
             titulo="Ya tienes tu perfil en ZAPTalent."
             subtitle="Sabías qué si completas tu perfil, tienes muchas más posibilidades
@@ -277,6 +298,7 @@ const Home = () => {
             _switch2={_switch2}
             query={query}
             setQuery={setQuery}
+            loading={loading}
           />
         </Grid>
         <Grid

@@ -36,6 +36,7 @@
   flex-direction: column;
   justify-content: center;
   z-index: 1;
+  position: relative;
 }
 
 .cont-center-card-home p:nth-child(1) {

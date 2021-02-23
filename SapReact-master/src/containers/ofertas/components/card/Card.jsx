@@ -59,7 +59,7 @@ const Card = ({ data }) => {
     eliminado,
     idaviso,
   } = data;
-
+  console.log(data);
   const [active, setActive] = useState(0);
   const [postulado, setPostulado] = useState(false);
   const [id_post, setIdPost] = useState(null);
