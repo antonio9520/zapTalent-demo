@@ -41,8 +41,11 @@ const createQuery = (data) => {
     // query.fechaTermino = { $gte: new Date() };
   }
   if (caducado) {
-    // query.$or = [{ estado: "Proceso Finalizado", fechaTermino: { $lte: new Date() } }];
-    query.fechaTermino = { $lte: new Date() };
+    query.$or = [
+      { estado: "Proceso Finalizado" },
+      { fechaTermino: { $lte: new Date() } },
+    ];
+
     // query.fechaTermino = { $lte: new Date() };
   }
   if (search) {

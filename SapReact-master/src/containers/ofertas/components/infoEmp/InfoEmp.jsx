@@ -1,22 +1,14 @@
 import React, { forwardRef, useState, useEffect } from "react";
-import "./InfoUser.css";
+import "./InfoEmp.css";
 import { withStyles, Tabs, Tab, IconButton } from "@material-ui/core";
 import userimage from "../../../../resources/images/SAPTalent/icon-new-user.svg";
-import {
-  AdnSap,
-  Certificados,
-  DatosPersonales,
-  Estudios,
-  Trabajos,
-} from "./containers";
+import Reseña from "./containers/reseña/Reseña";
+import Direccion from "./containers/direccion/Direccion";
+import Contacto from "./containers/contacto/Contacto";
 import { Close } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  obtenerUserInfoAction,
-  resetDataUserInfoAction,
-} from "../../../../redux/actions/actions-emp/infoUserAction";
-import { changeLeidoPostulanteAction } from "../../../../redux/actions/actions-emp/postuladosAction";
+import clienteAxios from "../../../../config/axios";
 import Loader from "react-loader-spinner";
 
 const AntTabs = withStyles({
@@ -33,7 +25,7 @@ const AntTabs = withStyles({
 const AntTab = withStyles((theme) => ({
   root: {
     textTransform: "none",
-    minWidth: 50,
+    minWidth: 100,
     minHeight: 30,
     padding: "5px",
     fontWeight: theme.typography.fontWeightRegular,
@@ -54,31 +46,37 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const InfoUser = forwardRef((props, ref) => {
-  const { data, closeModal } = props;
+const InfoEmp = forwardRef((props, ref) => {
+  const { closeModal, idEmp } = props;
   const dispatch = useDispatch();
-  const usuario = useSelector((state) => state.userInfo.usuario);
-  const loading = useSelector((state) => state.userInfo.loading);
+  const [loading, setLoading] = useState(true);
 
   const [value, setValue] = useState(0);
-
+  const [data, setData] = useState({});
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   useEffect(() => {
-    dispatch(resetDataUserInfoAction("b"));
-    dispatch(obtenerUserInfoAction(data));
-  }, []);
-  useEffect(() => {
-    if (usuario) {
-      if (usuario.leido === false) {
-        dispatch(changeLeidoPostulanteAction(usuario.id_post));
-      }
+    if (idEmp) {
+      obtenerDatos();
     }
-  }, [usuario]);
-  console.log(usuario);
+  }, [idEmp]);
+
+  const obtenerDatos = async () => {
+    setLoading(true);
+    try {
+      const result = await clienteAxios.get(`/api/usuarioEmpresa/${idEmp}`);
+      setData(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
   return (
-    <div ref={ref} className="info-user-home-emp">
+    <div ref={ref} className="info-user-of-emp">
       {loading ? (
         <div className="loader-info-user-emp">
           <Loader
@@ -94,7 +92,7 @@ const InfoUser = forwardRef((props, ref) => {
         <>
           <div className="top">
             <div>
-              {usuario.imageURL ? (
+              {/* {usuario.imageURL ? (
                 <img src={usuario.imageURL} alt="userimage" />
               ) : (
                 <img
@@ -102,30 +100,24 @@ const InfoUser = forwardRef((props, ref) => {
                   src={userimage}
                   alt="userimage"
                 />
-              )}
+              )} */}
+              <img
+                style={{ width: "120px", height: "120px" }}
+                src={userimage}
+                alt="userimage"
+              />
             </div>
             <div className="cont-p">
-              <p className="p1">
-                {usuario.nombres} {usuario.apellidos}
-              </p>
-              <p className="p2">
-                {usuario.profesion ? usuario.profesion.name : null}
-              </p>
-              <div className="exp-adn">
+              <p className="p1">{data.razonSocial ? data.razonSocial : null}</p>
+              <p className="p2">{data.giro ? data.giro : null}</p>
+              {/* <div className="exp-adn">
                 <p>Experiencia {usuario.anosZap} años</p>
-              </div>
-              <p className="p3">
-                {usuario.titulo}{" "}
-                {usuario.idaviso ? (
-                  <span style={{ textTransform: "uppercase" }}>
-                    #{usuario.idaviso.slice(18)}
-                  </span>
-                ) : null}
-              </p>
+              </div> */}
+              <p className="p3">{data.rut ? data.rut : null}</p>
             </div>
             <Tooltip title="Cerrar" placement="top">
               <IconButton
-                className="btn-close-info-user-emp"
+                className="btn-close-info-of-emp"
                 onClick={() => closeModal()}
               >
                 <Close style={{ width: "15px" }} />
@@ -139,24 +131,18 @@ const InfoUser = forwardRef((props, ref) => {
                 onChange={handleChange}
                 aria-label="ant example"
               >
-                <AntTab label="Datos personales" />
-                <AntTab style={{ marginLeft: "20px" }} label="Estudios" />
-                <AntTab style={{ marginLeft: "20px" }} label="Trabajos" />
-                <AntTab style={{ marginLeft: "20px" }} label="Certificados" />
-                <AntTab style={{ marginLeft: "20px" }} label="ADN SAP" />
+                <AntTab label="Reseña" />
+                <AntTab style={{ marginLeft: "20px" }} label="Dirección" />
+                <AntTab style={{ marginLeft: "20px" }} label="Contacto" />
               </AntTabs>
             </div>
 
             {value === 0 ? (
-              <DatosPersonales data={usuario} />
+              <Reseña data={data.resena} />
             ) : value === 1 ? (
-              <Estudios />
+              <Direccion data={data.direcciones} />
             ) : value === 2 ? (
-              <Trabajos />
-            ) : value === 3 ? (
-              <Certificados />
-            ) : value === 4 ? (
-              <AdnSap />
+              <Contacto data={data.telefono} />
             ) : null}
           </div>
         </>
@@ -165,4 +151,4 @@ const InfoUser = forwardRef((props, ref) => {
   );
 });
 
-export default InfoUser;
+export default InfoEmp;

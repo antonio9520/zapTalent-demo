@@ -6,7 +6,7 @@ const usuarioAdminControllers = require("../controllers/usuarioEmpresaController
 
 //login usuario
 //api/auth
-
+router.get("/:id", usuarioAdminControllers.mostrarEmpresasID);
 router.post("/", usuarioAdminControllers.creaUserEmp);
 
 router.put(

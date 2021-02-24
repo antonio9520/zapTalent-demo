@@ -17,7 +17,9 @@ exports.postulacionesCount = async (req, res) => {
 //OBTENER COUNT AVISOS
 exports.avisosCount = async (req, res) => {
   try {
-    const result = await Avisos.find({}).countDocuments();
+    const result = await Avisos.find({
+      $and: [{ estado: "Activo" }, { fechaTermino: { $gte: new Date() } }],
+    }).countDocuments();
     res.json(result);
   } catch (error) {
     console.log(error);

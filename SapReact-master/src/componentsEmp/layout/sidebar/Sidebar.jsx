@@ -84,7 +84,7 @@ const Sidebar = (props) => {
                 {!open ? (
                   <>
                     <p style={{ color: "white", marginTop: "10px" }}>
-                      {usuario ? usuario.nameuser : null}
+                      {usuario ? usuario.razonSocial : null}
                     </p>
                   </>
                 ) : null}

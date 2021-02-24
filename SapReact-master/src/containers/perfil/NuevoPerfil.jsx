@@ -101,8 +101,14 @@ const Perfil = () => {
     if (postulaciones.length === 0) {
       await dispatch(obtenerPostulacionesAction(usuario._id));
     }
-    cargarPorcentaje();
   };
+
+  useEffect(() => {
+    if (usuario) {
+      cargarPorcentaje();
+    }
+  }, [trabajos, certificados, estudios]);
+
   useEffect(() => {
     if (adns.length === 0) {
       if (!_switch) {
@@ -136,13 +142,13 @@ const Perfil = () => {
     }
   };
   const cargarPorcentaje = () => {
-    let confirmaremail = usuario.confirmar === 0 ? true : false;
+    let confirmaremail = usuario.activo === 0 ? true : false;
     let cv = usuario.cvURL ? true : false;
     let modulos = usuario.modulos.length > 0 ? true : false;
     let trab = trabajos.length > 0 ? true : false;
     let cert = certificados.length > 0 ? true : false;
     let est = estudios.length > 0 ? true : false;
-    console.log(confirmaremail);
+    
     const result = porcentajePerfil(
       confirmaremail,
       cv,

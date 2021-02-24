@@ -151,3 +151,19 @@ exports.creaUserEmp = async (req, res) => {
       return res.status(500).json({ msg: "Error en el servidor" });
     }
   };
+
+
+  /**Informacion de empresa por id */
+  exports.mostrarEmpresasID = async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    try {
+      const empresa = await Usuario.findById(id);
+  
+      res.json(empresa);
+    } catch (error) {
+      console.log(error);
+      res.status(404).json({ msg: "error en el servidor " + error });
+    }
+  };
+  

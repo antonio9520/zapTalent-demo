@@ -21,7 +21,7 @@ exports.mostrarAvisos = async (req, res) => {
 exports.filtrarAvisos = async (req, res) => {
   const { skip } = req.body;
   const query = await createQuery(req.body);
-  console.log(query);
+
   // console.log(query);
   try {
     const avisos = await Avisos.find(query, undefined, {
@@ -29,7 +29,7 @@ exports.filtrarAvisos = async (req, res) => {
       limit: 5,
     }).sort({ creacion: -1 });
     // console.log(avisos);
-    // console.log(avisos);
+    // console.log(avisos);  
     res.json(avisos);
   } catch (error) {
     console.log(error);
@@ -69,11 +69,11 @@ const createQuery = (data) => {
     query = {};
   }
   if (activo) {
-    query.$or = [{ estado: estado, fechaTermino: { $gte: new Date() } }];
+    query.$and = [{ estado: estado }, { fechaTermino: { $gte: new Date() } }];
     // query.fechaTermino = { $gte: new Date() };
   }
   if (caducado) {
-    query.fechaTermino = { $lte: new Date() };
+    query.$or = [{ estado: estado }, { fechaTermino: { $lte: new Date() } }];
     // query.fechaTermino = { $lte: new Date() };
   }
   if (search) {

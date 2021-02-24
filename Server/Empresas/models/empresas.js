@@ -3,7 +3,7 @@ const { appConfig } = require("../../config/config");
 
 
 const empresaSchema = mongoose.Schema({
-    razon_social: {
+    razonSocial: {
         type: String,
         trim: true,
     },
@@ -15,15 +15,15 @@ const empresaSchema = mongoose.Schema({
         type: String,
         trim: true,
     },
-    fecini: {
+    fechaInicio: {
         type: Date,
         default: Date()
     },
-    fecterm: {
+    fechaTermino: {
         type: Date,
         default: Date(),
     },
-    resena_empresa: {
+    resena: {
         type: String,
         trim: true,
     },

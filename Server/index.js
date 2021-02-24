@@ -70,7 +70,7 @@ server.use("/api/usuarioEmpresa", require("./Empresas/routes/usuarioEmpresa"));
 //Avisos routes
 server.use("/api/avisos", require("./Empresas/routes/avisos"));
 //EcoSap routes
-server.use("/api/ecoSap", require("./Empresas/routes/ecoSap"));
+server.use("/api/ecoSap", require("./Empresas/routes/ecoSap")); 
 //empresas datos
 server.use("/api/empresas", require("./Empresas/routes/empresas"));
 //postulacion routes

@@ -62,9 +62,11 @@ const CardPerfil = (props) => {
             {porcentaje === 100 ? "Tu perfil esta completado al 100%" : titulo}
           </p>
           <p style={{ color: "white" }}>{porcentaje === 100 ? "" : subtitle}</p>
-          <div className={classes.root}>
-            <BorderLinearProgress variant="determinate" value={porcentaje} />
-          </div>
+          {porcentaje ? (
+            <div className={classes.root}>
+              <BorderLinearProgress variant="determinate" value={porcentaje} />
+            </div>
+          ) : null}
         </div>
         <div className="cont-btn-complete-perfil-home">
           <Link to={to} className="link">

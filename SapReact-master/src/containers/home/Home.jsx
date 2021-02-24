@@ -51,11 +51,18 @@ const Home = () => {
     nombreuser = usuario.nombres.split(" ")[0];
   }
   const cargarData = async () => {
-    await dispatch(obtenerTrabajosAction(usuario._id));
-    await dispatch(obtenerAdnAction(usuario._id));
-    await dispatch(obtenerCertificadosAction(usuario._id));
-    await dispatch(obtenerEstudiosAction(usuario._id));
-    cargarPorcentaje();
+    if (estudios.length === 0) {
+      await dispatch(obtenerEstudiosAction(usuario._id));
+    }
+    if (certificados.length === 0) {
+      await dispatch(obtenerCertificadosAction(usuario._id));
+    }
+    if (adns.length === 0) {
+      await dispatch(obtenerAdnAction(usuario._id));
+    }
+    if (trabajos.length === 0) {
+      await dispatch(obtenerTrabajosAction(usuario._id));
+    }
   };
   useEffect(() => {
     if (usuario) {
@@ -87,7 +94,12 @@ const Home = () => {
       console.log(error);
     }
   };
-
+  useEffect(() => {
+    if (usuario) {
+      cargarPorcentaje();
+    }
+  }, [trabajos, certificados, estudios]);
+  
   useEffect(() => {
     if (usuario) {
       if (usuario.sexo === "Masculino") {
@@ -108,7 +120,7 @@ const Home = () => {
     let trab = trabajos.length > 0 ? true : false;
     let cert = certificados.length > 0 ? true : false;
     let est = estudios.length > 0 ? true : false;
-  
+
     const result = porcentajePerfil(
       confirmaremail,
       cv,

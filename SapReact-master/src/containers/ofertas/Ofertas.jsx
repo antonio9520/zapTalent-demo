@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Ofertas.css";
-import { Card, Header, Filtros } from "./components";
+import { Card, Header, Filtros, Modal } from "./components";
 import { BusinessCenterOutlined } from "@material-ui/icons";
 import { filtrarOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
 import { obtenerPostulacionesAction } from "../../redux/actions/postAction";
@@ -19,6 +19,8 @@ const Ofertas = () => {
   const loadingPost = useSelector((state) => state.postulaciones.loading);
   const [cargando, setCargando] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [idEmp, setIdEmp] = useState(null);
   const [skip, setSkip] = useState(0);
   const [indexTab, setindexTab] = useState(0);
   const [search, setSearch] = useState("");
@@ -43,8 +45,6 @@ const Ofertas = () => {
     }
   };
   const obtenerOfertas = async (querie, index) => {
-    console.log(query);
-
     if (index === 3) {
       setCargando(true);
       // console.log(query);
@@ -59,7 +59,6 @@ const Ofertas = () => {
     } else if (index === 1) {
       // console.log("index: 1");
     } else if (index === 0) {
-      
       querie.skip = 0;
       querie.estado = "Activo";
       querie.activo = true;
@@ -82,15 +81,19 @@ const Ofertas = () => {
     }
   };
   const obtenerOfertasMore = (querie, index, skip) => {
-    console.log("obtener more");
-    console.log(querie);
     if (index === 3) {
       querie.skip = skip;
       dispatch(filtrarOferLaboralesAction(querie)).then(() => setOpen(false));
     } else if (index === 1) {
     } else if (index === 0) {
-      dispatch(filtrarOferLaboralesAction({ skip, query }));
+      querie.skip = skip;
+      querie.estado = "Activo";
+      querie.activo = true;
+      dispatch(filtrarOferLaboralesAction(querie));
     } else if (index === 2) {
+      querie.skip = 0;
+      querie.estado = "Proceso Finalizado";
+      querie.caducado = true;
       dispatch(
         filtrarOferLaboralesAction({
           skip,
@@ -109,6 +112,12 @@ const Ofertas = () => {
   return (
     <>
       <div className="ofertas-laborales">
+        <Modal
+          setOpen={setOpenModal}
+          open={openModal}
+          setIdEmp={setIdEmp}
+          idEmp={idEmp}
+        />
         <div className="titulo-page">
           <BusinessCenterOutlined className="icon-page-header-user" />
           <h1>Ofertas Laborales</h1>
@@ -133,10 +142,24 @@ const Ofertas = () => {
               <p>Cargando...</p>
             </div>
           ) : indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
-            ofertasLaborales.map((item) => <Card data={item} key={item._id} />)
+            ofertasLaborales.map((item) => (
+              <Card
+                data={item}
+                key={item._id}
+                setOpen={setOpenModal}
+                setIdEmp={setIdEmp}
+              />
+            ))
           ) : null}
           {indexTab === 1
-            ? postulaciones.map((item) => <Card data={item} key={item._id} />)
+            ? postulaciones.map((item) => (
+                <Card
+                  data={item}
+                  key={item._id}
+                  setOpen={setOpenModal}
+                  setIdEmp={setIdEmp}
+                />
+              ))
             : null}
 
           {(loading || loadingPost) && !cargando ? (

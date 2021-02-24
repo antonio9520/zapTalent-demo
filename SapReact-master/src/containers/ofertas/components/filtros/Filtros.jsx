@@ -79,13 +79,14 @@ const Filtros = ({
     if (_submodulo) {
       query.submodulos = _submodulo;
     }
-    query.estado = "Activo"
+    query.estado = "Activo";
     query.skip = 0;
     console.log(query);
     setindexTab(0);
     setSkip(0);
     setQuery(query);
     obtenerOfertas(query, 0);
+    setOpen(false);
   };
 
   const limpiarFiltros = () => {
@@ -112,6 +113,7 @@ const Filtros = ({
     //   setOpen(false)
     // );
     obtenerOfertas(query, 0);
+    setOpen(false);
   };
   useEffect(() => {
     setSubmodulos(null);
@@ -238,7 +240,7 @@ const Filtros = ({
           </div>
           <div className="item-2">
             <p>Industria</p>
-            <CustomSelect  
+            <CustomSelect
               placeholder="Selecciona"
               size="small"
               onChange={setArea}

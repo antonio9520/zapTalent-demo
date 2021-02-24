@@ -67,7 +67,7 @@ const CustomModal = (props) => {
     dispatch(
       agregarAvisoAction({
         idusuario: usuario._id,
-        nameuser: usuario.nameuser,
+        razonSocial: usuario.razonSocial,
         titulo,
         profesion,
         area,

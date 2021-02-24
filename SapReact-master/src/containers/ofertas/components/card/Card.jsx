@@ -13,6 +13,7 @@ import {
   EventSeat,
   Description,
   AccountTree,
+  Info,
 } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
@@ -24,7 +25,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
 
-const Card = ({ data }) => {
+const Card = ({ data, setOpen, setIdEmp }) => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.auth.usuario);
   const postulaciones = useSelector(
@@ -54,12 +55,12 @@ const Card = ({ data }) => {
     descripcion,
     estado,
     anosExp,
-    nameuser,
+    razonSocial,
     idusuario,
     eliminado,
     idaviso,
   } = data;
-  console.log(data);
+
   const [active, setActive] = useState(0);
   const [postulado, setPostulado] = useState(false);
   const [id_post, setIdPost] = useState(null);
@@ -179,7 +180,16 @@ const Card = ({ data }) => {
                 {titulo}
               </h1>
               <p>{profesion}</p>
-              <p>{nameuser}</p>
+              <Tooltip title="Ver información de empresa">
+                <p
+                  onClick={() => {
+                    setOpen(true);
+                    setIdEmp(idusuario);
+                  }}
+                >
+                  {razonSocial}
+                </p>
+              </Tooltip>
               <p>{area}</p>
               <div>
                 {anosExp ? (
@@ -414,7 +424,21 @@ const SubModulos = ({ data }) => {
   return (
     <>
       <Tooltip title={data.desc ? data.desc : ""}>
-        <div className={"modulo-activo-ol"} style={{ marginTop: "3px" }}>
+        <div
+          className={"modulo-activo-ol"}
+          style={{ position: "relative", marginTop: "3px" }}
+        >
+          <Tooltip title={data.nivel} placement="left">
+            <div
+              style={{
+                position: "absolute",
+                right: 0,
+                top: 0,
+                width: "100%",
+                height: "100%",
+              }}
+            ></div>
+          </Tooltip>
           <p className={data.submodulo.length > 6 ? "name-submod-large" : null}>
             {data.submodulo}
           </p>

@@ -51,11 +51,13 @@
 .top-card-ofertas-laborales .item-2 p:nth-child(2) {
   margin: 0;
   /* margin-top: 10px; */
+  
   color: var(--gray-text);
 }
 .top-card-ofertas-laborales .item-2 p:nth-child(3) {
   margin: 0;
   margin-top: 10px;
+  cursor: pointer;
   color: var(--blue-primary);
 }
 .top-card-ofertas-laborales .item-2 p:nth-child(4) {
@@ -308,8 +310,6 @@
   height: 200px;
   display: flex;
 }
-
-
 
 .cont-aviso-eliminado-postulacion .item-2 {
   /* background-color: blue; */

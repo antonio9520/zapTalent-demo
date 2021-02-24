@@ -34,6 +34,7 @@ const Home = () => {
   const [dataUser, setDataUser] = useState(null);
   const [dataFiltro, setDataFiltro] = useState([]);
   const [query, setQuery] = useState({ leido: false });
+  
 
   useEffect(() => {
     if (usuario) {
