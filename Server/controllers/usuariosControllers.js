@@ -14,14 +14,12 @@ exports.crearUsuarios = async (req, res) => {
   try {
     // //Revisar el usuario registrado sea unico
     let usuario = await Usuario.findOne({ email });
-
     // console.log(req.body);
     if (usuario) {
       return res
         .status(400)
         .json({ msg: "El email ya se encuentra registrado" });
     }
-
     //Crear nuevo usuario
     usuario = new Usuario(req.body);
 
@@ -65,7 +63,7 @@ exports.crearUsuarios = async (req, res) => {
     //Enviar email
     await enviarEmail.enviar({
       userconfi,
-      subject: "Confirma tu Cuenta de ZapTalent",
+      subject: "Confirma tu cuenta de ZapTalent",
       confirmarUrl,
       archivo: "emailconfirm",
     });
@@ -281,32 +279,29 @@ exports.actualizarCV = async (req, res) => {
 exports.confirmarCuenta = async (req, res) => {
   console.log(req.params.correo);
   const email = req.params.correo;
-  const usuario = Usuario.findOne({
-    where: {
-      email: req.params.correo,
-    },
-  });
-  let usuarios = await Usuario.findOne({ email });
+
+  let usuario = await Usuario.findOne({ email });
 
   if (!usuario) {
     res.status(404).send("No valido");
-    res.redirect("https://zaptalent.cl/login-register");
+    res.redirect("https://www.zaptalent.cl/login");
+    return;
   } //crear objeto usuario
   const userconfi = {
     email,
   };
-  const name = usuarios.nombres;
-  const apellidos = usuarios.apellidos;
-  const rut = usuarios.rut;
-  const emails = usuarios.email;
-  const phone = usuarios.phone;
-  const ecivil = usuarios.ecivil;
-  const nacion = usuarios.nacion;
-  const direccion = usuarios.direccion;
+  const name = usuario.nombres;
+  const apellidos = usuario.apellidos;
+  const rut = usuario.rut;
+  const emails = usuario.email;
+  const phone = usuario.phone;
+  const ecivil = usuario.ecivil;
+  const nacion = usuario.nacion;
+  const direccion = usuario.direccion;
   //Enviar email
   await enviarEmail.enviar({
     userconfi,
-    subject: "Felicidades se te acaba de confirmar tus datos son ",
+    subject: "Felicidades! hemos activado tu cuenta correctamente. Tus datos son: ",
     name,
     apellidos,
     rut,
@@ -323,8 +318,8 @@ exports.confirmarCuenta = async (req, res) => {
   await usuarios.save();
   //si el usuario no existe
   // Opens the URL in the default browser.
-  await start("https://zaptalent.cl/login-register");
-  await open("https://zaptalent.cl/login-register");
+  await start("https://www.zaptalent.cl/login");
+  await open("https://www.zaptalent.cl/login");
 };
 
 exports.validacionEmailRut = async (req, res) => {

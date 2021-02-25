@@ -142,7 +142,7 @@ const InfoEmp = forwardRef((props, ref) => {
             ) : value === 1 ? (
               <Direccion data={data.direcciones} />
             ) : value === 2 ? (
-              <Contacto data={data.telefono} />
+              <Contacto data={data.telefonos} />
             ) : null}
           </div>
         </>

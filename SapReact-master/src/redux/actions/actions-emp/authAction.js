@@ -42,7 +42,7 @@ export function usuarioAuthEmpAction() {
     try {
       const respuesta = await clientAxios.get("/api/authEmpresa");
       //   console.log(respuesta.data.usuario);
-      dispatch(usuarioAuth(respuesta.data.usuario));
+      dispatch(usuarioAuth(respuesta.data));
     } catch (error) {
       console.log(error);
       dispatch(obtenerAuthError());

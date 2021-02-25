@@ -13,7 +13,7 @@ exports.enviarToken = async (req, res) => {
     const email = req.params.emails;
     //Si no existe el usuario
     if (!useri) {
-        return res.status(404).json({ msg: "El usuario no encontrado " });
+        return res.status(404).json({ msg: "Usuario no encontrado " });
     }
     //Usuario existe 
 
@@ -22,7 +22,7 @@ exports.enviarToken = async (req, res) => {
 
     await useri.save();
     //Url de reset
-    const resetUrl = `https://zaptalent.cl/restablecer/${useri.token}`;
+    const resetUrl = `https://www.zaptalent.cl/restablecer/${useri.token}`;
     //crear objeto usuario
     const userconfi = {
        email
@@ -31,7 +31,7 @@ exports.enviarToken = async (req, res) => {
     //enviar el correo con el token
     await enviarEmail.enviar({
         userconfi,
-        subject: "Restablece Tu Contraseña En ZapTalent",
+        subject: "Restablece tu contraseña en ZapTalent.",
         resetUrl,
         archivo: "resspass"
     })

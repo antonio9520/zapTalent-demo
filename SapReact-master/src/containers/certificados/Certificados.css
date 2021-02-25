@@ -3,7 +3,7 @@
   /* min-height: 100vh; */
   /* background-color: aquamarine; */
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   flex-wrap: wrap;
   padding: 40px 40px 20px 0;
 }

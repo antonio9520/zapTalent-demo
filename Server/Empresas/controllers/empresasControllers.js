@@ -4,7 +4,7 @@ exports.CrearEmpresa = async (req, res) => {
   try {
     const empresa = new Empresas(req.body);
     await empresa.save();
-    res.status(200).json({ msg: " Empresa Guardada Correctamente " + empresa });
+    res.status(200).send(empresa);
   } catch (error) {
     console.log(error);
     res.status(404).json({ msg: "error en el servidor " + error });
@@ -33,7 +33,9 @@ exports.putEmpresas = async (req, res) => {
     fechaTermino,
     resena,
     direcciones,
-    telefono,
+    telefonos,
+    tipoPlan,
+
   } = req.body;
 
   try {
@@ -45,8 +47,9 @@ exports.putEmpresas = async (req, res) => {
       if (fechaTermino) empresa.fechaTermino = fechaTermino;
       if (resena) empresa.resena = resena;
       if (direcciones) empresa.direcciones = direcciones;
-      if (telefono) empresa.telefono = telefono;
-
+      if (telefonos) empresa.telefonos = telefonos;
+      if (tipoPlan) empresa.tipoPlan = tipoPlan;
+     
       if (err) return res.status(400).json({ msg: "Empresa no encontrada" });
       empresa.save(function (err) {
         if (err) return res.status(500).json({ msg: "error al actualizar" });
@@ -74,4 +77,3 @@ exports.deleteEmp = async (req, res) => {
     res.status(500).send({ msg: "Error en el servidor." });
   }
 };
-

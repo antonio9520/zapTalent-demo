@@ -105,7 +105,7 @@ const Table = ({
       <div className="top">
         <div className="top-top-table-home-emp">
           <p>Tus postulantes</p>
-          <SearchBar />
+          <SearchBar /> 
         </div>
         <div className="top-bottom-table-emp">
           <AntTabs

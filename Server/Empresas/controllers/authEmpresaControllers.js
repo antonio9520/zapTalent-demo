@@ -1,4 +1,5 @@
 const UsuarioEmpresa = require("../models/usuarioEmpresa");
+const Empresa = require("../models/empresas");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -51,9 +52,38 @@ exports.usuarioAutenticado = async (req, res) => {
     const usuario = await UsuarioEmpresa.findById(req.usuario.id).select(
       "-password"
     );
-    res.json({ usuario });
+    if (!usuario) {
+      return res.status(404).json({ msg: "Usuario no encontrado" });
+    }
+    const data = await dataEmp(usuario);
+    res.json(data);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Hubo un error" });
+  }
+};
+
+const dataEmp = async (data) => {
+  let datos = {};
+  try {
+    const empresa = await Empresa.findById(data.idemp);
+    datos._id = data._id;
+    datos.email = data.email;
+    datos.idemp = data.idemp;
+    datos.tipoPerfil = data.tipoPerfil;
+    datos.razonSocial = empresa.razonSocial;
+    datos.rut = empresa.rut;
+    datos.giro = empresa.giro;
+    datos.direcciones = empresa.direcciones;
+    datos.telefonos = empresa.telefonos;
+    datos.resena = empresa.resena;
+    datos.fechaInicio = empresa.fechaInicio;
+    datos.fechaTermino = empresa.fechaTermino;
+    datos.tipoPlan = empresa.tipoPlan;
+    datos.logoURL = empresa.logoURL;
+
+    return datos;
+  } catch (error) {
+    console.log(error);
   }
 };

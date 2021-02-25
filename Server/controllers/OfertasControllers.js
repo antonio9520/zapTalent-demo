@@ -29,7 +29,7 @@ exports.filtrarAvisos = async (req, res) => {
       limit: 5,
     }).sort({ creacion: -1 });
     // console.log(avisos);
-    // console.log(avisos);  
+    // console.log(avisos);
     res.json(avisos);
   } catch (error) {
     console.log(error);
@@ -136,6 +136,8 @@ exports.empleosSugeridos = async (req, res) => {
       $diacriticSensitive: false,
     };
   }
+  querysearch.estado = "Activo";
+
   if (industria) {
     industria.map((item) => {
       industrias.push(item.industria);

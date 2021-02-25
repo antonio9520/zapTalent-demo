@@ -142,7 +142,7 @@ const Perfil = () => {
     }
   };
   const cargarPorcentaje = () => {
-    let confirmaremail = usuario.activo === 0 ? true : false;
+    let confirmaremail = usuario.activo === 1 ? true : false;
     let cv = usuario.cvURL ? true : false;
     let modulos = usuario.modulos.length > 0 ? true : false;
     let trab = trabajos.length > 0 ? true : false;

@@ -40,7 +40,11 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
   const nombreuser = nombres.split(" ");
   const apellidosuser = apellidos.split(" ");
   const nombrecompleto =
-    nombreuser[0] + " " + apellidosuser[0] + " " + apellidosuser[1];
+    nombreuser[0] +
+    " " +
+    apellidosuser[0] +
+    " " +
+    (apellidosuser[1] ? apellidosuser[1] : "");
 
   const verUsuario = () => {
     setDataUser(data);
