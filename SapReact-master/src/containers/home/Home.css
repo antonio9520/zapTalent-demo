@@ -1,20 +1,21 @@
 .conteiner-home {
   /* background-color: brown; */
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   padding-top: 75px;
   padding-left: 10px;
   padding-bottom: 10px;
-  /* min-height: 850px; */
+  min-height: 850px;
 }
 .cont-home-big {
   /* min-height: 130vh; */
   padding-bottom: 30px;
   min-height: 135vh;
+ 
 }
 .cont-header-home {
   /* background-color: cadetblue; */
-  height: 65px;
+  height: 10%;
   padding: 5px;
 }
 
@@ -25,13 +26,14 @@
 }
 
 .cont-cards-home {
-  height: 130px;
+  height: 20%;
   /* background-color: cornflowerblue; */
 }
 
 .cont-table-home-jobs {
   /* height: 100%; */
   /* height: 500px; */
+  height: 50%;
   /* background-color: darkblue; */
   padding: 5px;
 }
@@ -39,7 +41,8 @@
 .cont-card-left-home {
   padding: 5px;
   /* height: 500px; */
-  min-height: 400px;
+  /* min-height: 400px; */
+  height: 50%;
   /* background-color: coral; */
 }
 .cont-card-left-home .cont-card-adn-new-home {
@@ -50,7 +53,7 @@
 }
 .cont-card-right-home {
   padding: 5px;
-  min-height: 400px;
+  /* min-height: 400px; */
   /* height: 56%; */
   /* padding-bottom: 30px; */
   /* background-color: darkgoldenrod; */

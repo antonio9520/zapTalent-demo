@@ -9,7 +9,8 @@
   padding-top: 75px;
   padding-left: 10px;
   height: 100vh;
-  max-width: 1500px;
+  padding-right: 10px;
+  /* max-width: 1500px; */
 }
 .cont-header-home-emp {
   padding: 5px;

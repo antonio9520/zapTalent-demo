@@ -38,6 +38,7 @@ function App() {
                 // "/auth",
                 "/home",
                 "/ofertas-laborales",
+                "/postulaciones/:indice",
                 "/estudios",
                 "/certificaciones",
                 "/sap-adn",

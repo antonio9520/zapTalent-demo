@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./RegistroC.css";
 import logo from "../../../../resources/img/ZAPTalent-Logotipo-Vertical-Original.svg";
 import {
@@ -6,28 +6,66 @@ import {
   MenuItem,
   IconButton,
   LinearProgress,
+  TextField,
+  withStyles,
 } from "@material-ui/core";
 import { CustomSelect, OutInput } from "../../../../components";
 import { Close } from "@material-ui/icons";
 import { useSelector } from "react-redux";
+import NumberFormat from "react-number-format";
+
+const CssTextField = withStyles({
+  root: {
+    backgroundColor: "#f3f8fe",
+    maxHeight: "35px ",
+    "& label": {
+      fontSize: "12px",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      maxHeight: "35px",
+      fontSize: "12px",
+    },
+    "& .MuiFormHelperText-root": {
+      backgroundColor: "#fff3f2",
+      border: "1px solid#FEB0A9",
+      fontSize: "10px",
+      width: "100%",
+      marginLeft: 0,
+      borderBottomLeftRadius: "5px",
+      borderBottomRightRadius: "5px",
+      height: "20px",
+      paddingLeft: "15px",
+      marginTop: "-1px",
+    },
+  },
+})(TextField);
+
 const RegistroC = (props) => {
   const {
     setView,
     consultor,
     anosExp,
     anosZap,
+    pretencion,
     setAnosExp,
     setConsultor,
     setAnosZap,
+    setPretencion,
     registrarUsuario,
     handleClose,
   } = props;
   const [errorconsultor, setErrorConsultor] = useState(false);
   const [errorexplaboral, setErrorExpLaboral] = useState(false);
   const [errorexpzap, setErroExpZap] = useState(false);
+  const [errorpretencion, setErrorPretencion] = useState(false);
   const [anosExpMsg, setAnosExpMsg] = useState("");
   const [anosZapMsg, setAnosZapMsg] = useState("");
+  const [pretencionMsg, setPretencionMsg] = useState("");
   const cargando = useSelector((state) => state.auth.cargando);
+  const ref = useRef();
   // const cargando = true;
   const nextView = () => {
     if (consultor === "") {
@@ -53,8 +91,21 @@ const RegistroC = (props) => {
       setAnosZapMsg("Ingrese un numero valido");
       return;
     }
+
+    if (pretencion.trim() === "") {
+      setErrorPretencion(true);
+      setPretencionMsg("Pretencion de renta no puede estar vacio");
+      return;  
+    } else if (pretencion < 0) {
+      setErrorPretencion(true);
+      setPretencionMsg("Ingrese un numero valido");
+      return;
+    }
+
     registrarUsuario();
   };
+
+
   return (
     <>
       <div className="cont-reg-c">
@@ -124,6 +175,28 @@ const RegistroC = (props) => {
                 name="expzap"
               ></OutInput>
             </div>
+            <div className="center-3">
+    
+              <CssTextField
+                fullWidth
+                variant="outlined"
+                size="small"
+                error={errorpretencion}
+                label="Pretencion de renta"
+                helperText={pretencionMsg}
+                value={pretencion}
+                // onChange={handleChange}
+                onChange={(e) => {
+                  setErrorPretencion(false);
+                  setPretencion(e.target.value);
+                }}
+                name="numberformat"
+                id="formatted-numberformat-input-b"
+                InputProps={{
+                  inputComponent: NumberFormatCustom,
+                }}
+              />
+            </div>
           </div>
           <div className="bottom-reg-c">
             <ListItem
@@ -152,3 +225,26 @@ const RegistroC = (props) => {
 };
 
 export default RegistroC;
+
+function NumberFormatCustom(props) {
+  const { inputRef, onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={inputRef}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      // onChange={(e) => onChange(e.target.value)}
+      thousandSeparator
+      isNumericString
+      prefix="$ "
+    />
+  );
+}

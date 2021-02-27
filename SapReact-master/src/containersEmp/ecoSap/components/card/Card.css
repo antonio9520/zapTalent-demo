@@ -11,7 +11,8 @@
   flex-direction: column;
   align-items: center;
   margin-right: 5px;
-  max-height: 330px;
+  height: 340px;
+  /* max-height: 330px; */
   /* margin-left: 10px; */
 }
 

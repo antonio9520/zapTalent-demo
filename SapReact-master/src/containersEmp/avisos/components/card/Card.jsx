@@ -22,6 +22,9 @@ const Card = ({
   setOpenModalCopy,
   setDataCopy,
   setOpenModalRep,
+  disabledNewAviso,
+  tipoPlan,
+  totalavisos,
 }) => {
   const inicio = new Date(data.fechaInicio);
   const termino = new Date(data.fechaTermino);
@@ -116,7 +119,7 @@ const Card = ({
             </div>
             <div>
               <p className="p1">No leídos</p>
-              <p className="p2">0</p>
+              <p className="p2">{data.noLeido ? data.noLeido : 0}</p>
             </div>
           </div>
         </div>
@@ -138,10 +141,16 @@ const Card = ({
             </IconButton>
           </Tooltip>
 
-          <Tooltip title="Duplicar">
+          <Tooltip
+            title={`Duplicar. Restantes: ${
+              tipoPlan.totalAvisos === 0
+                ? "Ilimitado"
+                : tipoPlan.totalAvisos - totalavisos
+            }`}
+          >
             <IconButton
               className="btns-cards-avisos-emp"
-              onClick={comenzarCopiar}
+              onClick={() => (disabledNewAviso ? null : comenzarCopiar())}
             >
               <FileCopy />
             </IconButton>

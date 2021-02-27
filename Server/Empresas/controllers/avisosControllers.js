@@ -18,12 +18,12 @@ exports.mostrarAvisos = async (req, res) => {
   console.log(query);
   try {
     const querie = await createQuery(query);
-    console.log(querie);
-    const avisos = await Avisos.find({ $and: [querie] }, undefined, {
+    // console.log(querie);
+    const avisos = await Avisos.find(querie, undefined, {
       skip: parseInt(skip),
       limit: 5,
     });
-    console.log(avisos);
+    // console.log(avisos);
     const dataAvisos = await datapostulaciones(avisos);
     res.json(dataAvisos);
   } catch (err) {
@@ -64,6 +64,13 @@ const datapostulaciones = async (avisos) => {
     }).countDocuments();
     avisos[i].postulaciones = postulaciones;
   }
+  for (let i = 0; i < avisos.length; i++) {
+    const post = await Postulacion.find({
+      idaviso: avisos[i]._id,
+      leido: false,
+    }).countDocuments();
+    avisos[i].noLeido = post;
+  }
   return avisos;
 };
 
@@ -71,14 +78,18 @@ exports.deleteAvisos = async (req, res) => {
   const id = req.params.id;
 
   try {
-    await Avisos.findById(id, (err, aviso) => {
-      if (err) res.status(402).json({ msg: "Error al borrar aviso" });
-      aviso.remove((err) => {
-        if (err) res.status(402).json({ msg: "Error al borrar aviso" });
-        res.status(200).json({ msg: "aviso Eliminado Correctamente" });
-      });
-    });
+    const aviso = await Avisos.findById(id);
+    console.log(aviso);
+    await aviso.remove();
+
+    await Postulacion.update(
+      { idaviso: aviso._id },
+      { $set: { eliminado: true, leido: true } },
+      { multi: true }
+    );
+    res.status(200).json({ msg: "aviso Eliminado Correctamente" });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ msg: "Hubo un error" });
   }
 };

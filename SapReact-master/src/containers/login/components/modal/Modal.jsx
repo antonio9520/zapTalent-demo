@@ -52,6 +52,7 @@ const CustomModal = (props) => {
   const [consultor, setConsultor] = useState("");
   const [anosExp, setAnosExp] = useState("");
   const [anosZap, setAnosZap] = useState("");
+  const [pretencion, setPretencion] = useState("");
 
   const handleClose = () => {
     setOpenModal(false);
@@ -99,6 +100,7 @@ const CustomModal = (props) => {
         consultor,
         anosExp,
         anosZap,
+        pretencion,
       })
     ).then((res) => {
       console.log(res);
@@ -173,9 +175,11 @@ const CustomModal = (props) => {
             consultor={consultor}
             anosExp={anosExp}
             anosZap={anosZap}
+            pretencion={pretencion}
             setConsultor={setConsultor}
             setAnosExp={setAnosExp}
             setAnosZap={setAnosZap}
+            setPretencion={setPretencion}
             registrarUsuario={registrarUsuario}
             handleClose={handleClose}
           />

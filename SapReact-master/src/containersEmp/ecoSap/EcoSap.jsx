@@ -5,6 +5,7 @@ import { Modal } from "../home/components";
 import clientAxios from "../../config/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
+import { setearTipoPlan } from "../../assets/setTipoPlan";
 
 const EcoSap = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const EcoSap = () => {
   const usuario = useSelector((state) => state.authEmp.usuario);
   const [query, setQuery] = useState({});
   const [_switch, setSwitch] = useState(false);
+  const [tipoPlan, setTipoPlan] = useState({});
 
   const cargarUsuarios = async () => {
     if (skip === 0) {
@@ -51,7 +53,7 @@ const EcoSap = () => {
       setLoading(true);
     }
     let _id = usuario._id;
-   
+
     try {
       const respuesta = await clientAxios.put(
         `/api/postulacion/postulados/${_id}/${skip}`,
@@ -79,22 +81,27 @@ const EcoSap = () => {
       setSkip(usuarios.length);
     }
   };
- 
 
   useEffect(() => {
-    if (value === 0) {
-      cargarUsuarios();
-    } else {
-      cargarPostulados();
-      if (avisos.length === 0) {
-        const cargarAvisos = () =>
-          dispatch(obtenerAvisoAction({ _id: usuario._id, skip: 0 }));
-        cargarAvisos();
+    if (usuario) {
+      if (value === 0) {
+        cargarUsuarios();
+      } else {
+        cargarPostulados();
+        if (avisos.length === 0) {
+          dispatch(
+            obtenerAvisoAction({ skip: 0, query: { _id: usuario._id } })
+          );
+        }
       }
-    }
-    setOpenModalDrawer(false);
-  }, [skip, value, _switch]);
 
+      setTipoPlan(setearTipoPlan(usuario.tipoPlan));
+    }
+
+    setOpenModalDrawer(false);
+  }, [skip, value, _switch, usuario]);
+
+  console.log(tipoPlan);
   return (
     <div className="eco-sap-empresas">
       <Modal
@@ -112,7 +119,7 @@ const EcoSap = () => {
             _switch={_switch}
             setSwitch={setSwitch}
             setQuery={setQuery}
-            setOpen={setOpenModalDrawer} 
+            setOpen={setOpenModalDrawer}
             query={query}
           />
         </div>
@@ -120,20 +127,43 @@ const EcoSap = () => {
       </div>
       <div className="bottom-eco-sap-emp">
         <div className="content-eco-sap" onScroll={handleScroll}>
-          {cargando ? (
-            <div className="div-cargando-avisos" style={{ height: "77vh" }}>
-              <p>Cargando...</p>
-            </div>
+          {value === 0 && tipoPlan.totalUsers ? (
+            cargando ? (
+              <div className="div-cargando-avisos" style={{ height: "77vh" }}>
+                <p>Cargando...</p>
+              </div>
+            ) : (
+              usuarios.map((item, index) => (
+                <Card
+                  key={index}
+                  data={item}
+                  setOpenModal={setOpenModal}
+                  setDataUser={setDataUser}
+                />
+              ))
+            )
+          ) : value === 1 && tipoPlan.userPost ? (
+            cargando ? (
+              <div className="div-cargando-avisos" style={{ height: "77vh" }}>
+                <p>Cargando...</p>
+              </div>
+            ) : (
+              usuarios.map((item, index) => (
+                <Card
+                  key={index}
+                  data={item}
+                  setOpenModal={setOpenModal}
+                  setDataUser={setDataUser}
+                />
+              ))
+            )
           ) : (
-            usuarios.map((item, index) => (
-              <Card
-                key={index}
-                data={item}
-                setOpenModal={setOpenModal}
-                setDataUser={setDataUser}
-              />
-            ))
+            <div className="act-plan-msg-eco">
+              <p>Plan no autorizado</p>
+              <p>Actualize su plan</p>
+            </div>
           )}
+
           {loading ? (
             <div className="div-cargando-avisos">
               <p>Cargando...</p>
@@ -141,16 +171,29 @@ const EcoSap = () => {
           ) : null}
         </div>
         <div className="filtros-eco-sap-emp">
-          <Filtro
-            value={value}
-            query={query}
-            setQuery={setQuery}
-            setSkip={setSkip}
-            skip={skip}
-            _switch={_switch}
-            setSwitch={setSwitch}
-            dataFiltro={avisos}
-          />
+          {value === 0 && tipoPlan.totalUsers ? (
+            <Filtro
+              value={value}
+              query={query}
+              setQuery={setQuery}
+              setSkip={setSkip}
+              skip={skip}
+              _switch={_switch}
+              setSwitch={setSwitch}
+              dataFiltro={avisos}
+            />
+          ) : value === 1 && tipoPlan.userPost ? (
+            <Filtro
+              value={value}
+              query={query}
+              setQuery={setQuery}
+              setSkip={setSkip}
+              skip={skip}
+              _switch={_switch}
+              setSwitch={setSwitch}
+              dataFiltro={avisos}
+            />
+          ) : null}
         </div>
       </div>
       <FiltroDrawer

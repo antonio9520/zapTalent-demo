@@ -17,7 +17,7 @@ const OutInput = (props) => {
   const {
     label,
     helpertext,
-    funcOnChange, 
+    funcOnChange,
     type,
     error,
     size,
@@ -48,7 +48,9 @@ const OutInput = (props) => {
         dispatch(resetPasswordAction());
       }
     }
-    funcOnChange(e.target.value);
+    if (funcOnChange) {
+      funcOnChange(e.target.value);
+    }
   };
   return (
     <div className={!error ? "contCustomInput" : "contCustomInputError"}>

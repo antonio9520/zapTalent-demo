@@ -31,7 +31,7 @@ const Perfil = (props) => {
     match: { params },
   } = props;
   const { id } = params;
-  console.log(id);
+
   const componentRef = useRef();
 
   const dispatch = useDispatch();

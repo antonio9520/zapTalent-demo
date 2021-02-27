@@ -6,7 +6,7 @@ const avisosSchema = mongoose.Schema({
     require: true,
     trim: true,
   },
-  nameuser: {
+  razonSocial: {
     type: String,
   },
   titulo: {
@@ -111,6 +111,7 @@ const avisosSchema = mongoose.Schema({
     type: String,
   },
   eliminado: {},
+  noLeido: {},
 });
 
 module.exports = mongoose.model("Avisos", avisosSchema);

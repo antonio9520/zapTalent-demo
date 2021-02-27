@@ -46,6 +46,9 @@ const Header = ({
   query,
   setSkip,
   setQuery,
+  disabledNewAviso,
+  tipoPlan,
+  totalavisos,
 }) => {
   const [search, setSearch] = useState("");
   const handleChange = (event, newValue) => {
@@ -83,8 +86,17 @@ const Header = ({
           <AntTab label="Activos" />
           <AntTab label="Caducados" />
         </AntTabs>
-        <Tooltip title="Nuevo Aviso">
-          <IconButton bg="primary" onClick={() => setOpenModal(true)}>
+        <Tooltip
+          title={`Nuevo Aviso. Restantes: ${
+            tipoPlan.totalAvisos === 0
+              ? "Ilimitado"
+              : tipoPlan.totalAvisos - totalavisos
+          }`}
+        >
+          <IconButton
+            bg="primary"
+            onClick={() => (disabledNewAviso ? null : setOpenModal(true))}
+          >
             <Add />
           </IconButton>
         </Tooltip>

@@ -17,6 +17,7 @@ import {
   SAP_ADN,
   TRABAJOS,
   PERFIL,
+  OFERTAS_POST,
 } from "./paths";
 
 const Routes = () => (
@@ -24,6 +25,7 @@ const Routes = () => (
     <Route path={ESTUDIOS} component={Estudios} />
     <Route path={HOME} component={Home} />
     <Route path={OFERTAS} component={Ofertas} />
+    <Route path={OFERTAS_POST} component={Ofertas} />
     <Route path={CERTIFICACIONES} component={Certificados} />
     <Route path={SAP_ADN} component={AdnSap} />
     <Route path={TRABAJOS} component={Trabajos} />

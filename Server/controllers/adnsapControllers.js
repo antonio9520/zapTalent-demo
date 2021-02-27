@@ -29,9 +29,9 @@ exports.crearAdnsap = async (req, res) => {
       const { filename } = req.file;
       await adnsap.setcertificadoURL(filename);
     }
-    console.log(adnsap);
+    // console.log(adnsap);
     await adnsap.save();
-    console.log("finish");
+    // console.log("finish");
     res.status(200).json(adnsap);
   } catch (err) {
     console.log(err);

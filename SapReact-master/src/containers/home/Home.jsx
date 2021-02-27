@@ -167,7 +167,7 @@ const Home = () => {
     }
   }, [usuario, skip, _switch2]);
   return (
-    <div style={{ width: "100%", maxWidth: "1500px" }}>
+    <div style={{ width: "100%" }}>
       <ModalAviso
         data={dataOL}
         setOpenModal={setOpenModal}

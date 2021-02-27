@@ -45,7 +45,7 @@ exports.obtenerPostulacionesEmp = async (req, res) => {
     });
 
     const data = await dataAvisos(postulaciones);
-    console.log(data);
+    // console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -60,10 +60,9 @@ const dataAvisos = async (data) => {
     let aviso = await Avisos.findById(data[i].idaviso);
     if (aviso) {
       aviso.id_post = data[i]._id;
-      aviso.eliminado = false;
+
       postulaciones.push(aviso);
     } else {
-      data[i].eliminado = true;
       postulaciones.push(data[i]);
     }
   }
@@ -140,7 +139,7 @@ exports.usuarioPostulados = async (req, res) => {
     });
 
     const data = await dataUsuarios(postulaciones, query2);
-    console.log(data);
+    // console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -156,7 +155,7 @@ const dataUsuarios = async (data, query) => {
     if (aviso) {
       query._id = data[i].iduser;
       // ObjectId ("568c28fffc4be30d44d0398e")
-      console.log(query);
+      // console.log(query);
       let usuario = await Usuario.findOne({
         $and: [query],
       });
@@ -259,7 +258,10 @@ exports.obtenerAvisosCount = async (req, res) => {
 exports.obtenerPostulantesCount = async (req, res) => {
   const idemp = req.params.id;
   try {
-    const total = await Postulacion.find({ idemp: idemp }).countDocuments();
+    const total = await Postulacion.find({
+      idemp: idemp,
+      eliminado: false,
+    }).countDocuments();
 
     return res.status(200).json(total);
   } catch (error) {

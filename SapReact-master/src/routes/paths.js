@@ -1,5 +1,6 @@
 export const HOME = "/home";
 export const OFERTAS = "/ofertas-laborales";
+export const OFERTAS_POST = "/postulaciones/:indice";
 export const ESTUDIOS = "/estudios";
 export const CERTIFICACIONES = "/certificaciones";
 export const SAP_ADN = "/sap-adn";

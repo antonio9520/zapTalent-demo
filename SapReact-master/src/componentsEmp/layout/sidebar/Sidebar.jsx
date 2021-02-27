@@ -14,6 +14,7 @@ const Sidebar = (props) => {
   const [active, setActive] = useState("home");
   // const [profesion, setProfesion] = useState(null);
   const usuario = useSelector((state) => state.authEmp.usuario);
+  const [tipoPlan, setTipoPlan] = useState("");
   const [image, setImage] = useState();
   // console.log(usuario);
 
@@ -26,8 +27,19 @@ const Sidebar = (props) => {
   // }, []);
 
   useEffect(() => {
-    setImage(usuario ? (usuario.logoURL ? usuario.logoURL : null) : null);
+    if (usuario) {
+      setImage(usuario ? (usuario.logoURL ? usuario.logoURL : null) : null);
+      setearTipoPlan();
+    }
   }, [usuario]);
+
+  const setearTipoPlan = () => {
+    if (usuario.tipoPerfil === "admin") {
+      setTipoPlan("Administrador");
+    } else if (usuario.tipoPerfil === "gest") {
+      setTipoPlan("Gestionador");
+    }
+  };
   return (
     <div
       style={{ paddingTop: "55px" }}
@@ -85,6 +97,10 @@ const Sidebar = (props) => {
                   <>
                     <p style={{ color: "white", marginTop: "10px" }}>
                       {usuario ? usuario.razonSocial : null}
+                    </p>
+                    <p style={{ color: "white" }}>
+                      {" "}
+                      {usuario ? tipoPlan : null}
                     </p>
                   </>
                 ) : null}

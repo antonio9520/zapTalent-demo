@@ -34,27 +34,26 @@ const Home = () => {
   const [dataUser, setDataUser] = useState(null);
   const [dataFiltro, setDataFiltro] = useState([]);
   const [query, setQuery] = useState({ leido: false });
-  
 
   useEffect(() => {
     if (usuario) {
       if (avisos.length === 0) {
-        const cargarAvisos = () =>
-          dispatch(obtenerAvisoAction({ _id: usuario._id, skip: 0 }));
-        cargarAvisos();
+        dispatch(
+          obtenerAvisoAction({ skip: 0, query: { _id: usuario.idemp } })
+        );
       }
 
-      dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
+      dispatch(obtenerPostuladosAction({ _id: usuario.idemp, skip: 0, query }));
 
       dispatch(obtenerTotalUsuariosAction());
 
-      dispatch(obtenerTotalAvisosAction(usuario._id));
+      dispatch(obtenerTotalAvisosAction(usuario.idemp));
 
-      dispatch(obtenerTotalPostulantesAction(usuario._id));
+      dispatch(obtenerTotalPostulantesAction(usuario.idemp));
 
-      dispatch(obtenerTotalPostNoLeidosAction(usuario._id));
+      dispatch(obtenerTotalPostNoLeidosAction(usuario.idemp));
 
-      dispatch(obtenerTotalUsuariosDiaAction(usuario._id));
+      dispatch(obtenerTotalUsuariosDiaAction());
     }
 
     // eslint-disable-next-line
@@ -62,9 +61,7 @@ const Home = () => {
 
   useEffect(() => {
     if (usuario) {
-      const cargarPostulados = () =>
-        dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
-      cargarPostulados();
+      dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
     }
 
     // eslint-disable-next-line
@@ -73,12 +70,11 @@ const Home = () => {
   // const trabajos = [];
   useEffect(() => {
     for (let i = 0; i < avisos.length; i++) {
-      console.log(avisos[i].titulo);
-      setDataFiltro([
-        ...dataFiltro,
-        { _id: avisos[i]._id, titulo: avisos[i].titulo },
-      ]);
-      // dataFiltro.push({ _id: avisos[i]._id, titulo: avisos[i].titulo });
+      // setDataFiltro([
+      //   ...dataFiltro,
+      //   { _id: avisos[i]._id, titulo: avisos[i].titulo },
+      // ]);
+      dataFiltro.push({ _id: avisos[i]._id, titulo: avisos[i].titulo });
     }
   }, [avisos]);
 

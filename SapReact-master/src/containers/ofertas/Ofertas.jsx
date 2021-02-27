@@ -6,7 +6,10 @@ import { filtrarOferLaboralesAction } from "../../redux/actions/ofertasLaborales
 import { obtenerPostulacionesAction } from "../../redux/actions/postAction";
 import { useSelector, useDispatch } from "react-redux";
 
-const Ofertas = () => {
+const Ofertas = (props) => {
+  const {
+    match: { params },
+  } = props;
   const dispatch = useDispatch();
   const ofertasLaborales = useSelector(
     (state) => state.ofertasLaborales.ofertasLaborales
@@ -14,6 +17,7 @@ const Ofertas = () => {
   const postulaciones = useSelector(
     (state) => state.postulaciones.postulaciones
   );
+
   const usuario = useSelector((state) => state.auth.usuario);
   const loading = useSelector((state) => state.ofertasLaborales.loading);
   const loadingPost = useSelector((state) => state.postulaciones.loading);
@@ -22,7 +26,9 @@ const Ofertas = () => {
   const [openModal, setOpenModal] = useState(false);
   const [idEmp, setIdEmp] = useState(null);
   const [skip, setSkip] = useState(0);
-  const [indexTab, setindexTab] = useState(0);
+  const [indexTab, setindexTab] = useState(
+    params.indice ? parseInt(params.indice) : 0
+  );
   const [search, setSearch] = useState("");
   // let query = {};
   const [query, setQuery] = useState({});

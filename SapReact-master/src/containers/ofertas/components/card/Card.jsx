@@ -10,7 +10,7 @@ import {
   Room,
   AccountCircle,
   QueryBuilder,
-  EventSeat,
+  EventSeat, 
   Description,
   AccountTree,
   Info,
@@ -57,6 +57,7 @@ const Card = ({ data, setOpen, setIdEmp }) => {
     anosExp,
     razonSocial,
     idusuario,
+    // idemp,
     eliminado,
     idaviso,
   } = data;
@@ -168,17 +169,19 @@ const Card = ({ data, setOpen, setIdEmp }) => {
               )}
             </div>
             <div className="item-2">
-              <h1
-                className={
-                  titulo
-                    ? titulo.length > 22
-                      ? "name-submod-large-card-ol"
+              <Tooltip title={titulo} placement="top">
+                <h1
+                  className={
+                    titulo
+                      ? titulo.length > 22
+                        ? "name-submod-large-card-ol"
+                        : null
                       : null
-                    : null
-                }
-              >
-                {titulo}
-              </h1>
+                  }
+                >
+                  {titulo}
+                </h1>
+              </Tooltip>
               <p>{profesion}</p>
               <Tooltip title="Ver información de empresa">
                 <p

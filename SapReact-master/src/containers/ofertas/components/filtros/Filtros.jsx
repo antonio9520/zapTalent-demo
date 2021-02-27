@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Filtros.css";
-import { Drawer, MenuItem } from "@material-ui/core";
+import { Drawer, MenuItem, TextField, withStyles } from "@material-ui/core";
 import { FilterList, HighlightOff } from "@material-ui/icons";
 import { CustomSelect, Button, OutInput } from "../../../../components";
 import { useDispatch } from "react-redux";
@@ -13,6 +13,38 @@ import DateFnsUtils from "@date-io/date-fns";
 import { regiones } from "../../../../assets/regiones";
 import { actEmpresa } from "../../../../assets/actEmpresa";
 import { modulos } from "../../../../assets/modulos";
+import NumberFormat from "react-number-format";
+
+const CssTextField = withStyles({
+  root: {
+    backgroundColor: "#f3f8fe",
+    maxHeight: "35px ",
+
+    "& label": {
+      fontSize: "12px",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      maxHeight: "35px",
+      fontSize: "12px",
+    },
+    "& .MuiFormHelperText-root": {
+      backgroundColor: "#fff3f2",
+      border: "1px solid#FEB0A9",
+      fontSize: "10px !important",
+      width: "100%",
+      color: "inherit !important",
+      marginLeft: 0,
+      borderBottomLeftRadius: "5px",
+      borderBottomRightRadius: "5px",
+      height: "20px",
+      paddingLeft: "15px",
+      marginTop: "-1px",
+    },
+  },
+})(TextField);
 
 const Filtros = ({
   open,
@@ -28,9 +60,12 @@ const Filtros = ({
   const [tipoConsultor, setTipoConsultor] = useState(null);
   const [anosExpMin, setAnosExpMin] = useState(null);
   const [anosExpMax, setAnosExpMax] = useState(null);
+  const [anosExpError, setAnosExpError] = useState(false);
   const [area, setArea] = useState(null);
   const [minimo, setMinimo] = useState(null);
   const [maximo, setMaximo] = useState(null);
+  const [errorminimo, setErrorMinimo] = useState(false);
+
   const [fechaini, setFechaIni] = useState(null);
   const [fechafin, setFechaFin] = useState(null);
   const [tipoContrato, setTipoContrato] = useState(null);
@@ -48,6 +83,15 @@ const Filtros = ({
   date2.setDate(date2.getDate() - 1);
 
   const filtrar = () => {
+    if (anosExpMin > anosExpMax) {
+      setAnosExpError(true);
+      return;
+    }
+
+    if (minimo > maximo) {
+      setErrorMinimo(true);
+      return;
+    }
     if (tipoConsultor) query.tipoConsultor = tipoConsultor;
 
     if (anosExpMin) query.anosExpMin = anosExpMin;
@@ -211,15 +255,15 @@ const Filtros = ({
               <div style={{ marginRight: "5px", flex: 1 }}>
                 <OutInput
                   label="Año mínimo"
-                  // helpertext={nombresmsg}
+                  helpertext="Rango invalido"
                   funcOnChange={setAnosExpMin}
                   // defaultValue={nombres}
                   value={anosExpMin}
                   name="anosExp"
                   size="small"
                   type="number"
-                  // error={errornombre}
-                  // funcionError={setErrorNombre}
+                  error={anosExpError}
+                  funcionError={setAnosExpError}
                 />
               </div>
               <div style={{ marginLeft: "5px", flex: 1 }}>
@@ -262,29 +306,43 @@ const Filtros = ({
             <p>Renta</p>
             <div className="item-doble-filtros-of">
               <div style={{ marginRight: "5px", flex: 1 }}>
-                <OutInput
-                  label="Renta Mínima"
-                  // helpertext={nombresmsg}
-                  funcOnChange={setMinimo}
-                  // defaultValue={nombres}
-                  name="minimo"
+                <CssTextField
+                  fullWidth
+                  variant="outlined"
                   size="small"
-                  type="number"
-                  // error={errornombre}
-                  // funcionError={setErrorNombre}
+                  error={errorminimo}
+                  label="Renta Mínima"
+                  // helperText="Rango invalido"
+                  value={minimo}
+                  onChange={(e) => {
+                    setErrorMinimo(false);
+                    setMinimo(e.target.value);
+                  }}
+                  name="rentaMinima"
+                  id="formatted-numberformat-input-d"
+                  InputProps={{
+                    inputComponent: NumberFormatCustom,
+                  }}
                 />
               </div>
               <div style={{ marginLeft: "5px", flex: 1 }}>
-                <OutInput
-                  label="Renta Máxima"
-                  // helpertext={nombresmsg}
-                  funcOnChange={setMaximo}
-                  // defaultValue={nombres}
-                  name="maximo"
+                <CssTextField
+                  fullWidth
+                  variant="outlined"
                   size="small"
-                  type="number"
-                  // error={errornombre}
-                  // funcionError={setErrorNombre}
+                  // error={errormaximo}
+                  label="Renta Máxima"
+                  // helperText={pretencionMsg}
+                  value={maximo}
+                  onChange={(e) => {
+                    // setErrorMaximo(false);
+                    setMaximo(e.target.value);
+                  }}
+                  name="rentaMaxima"
+                  id="formatted-numberformat-input-c"
+                  InputProps={{
+                    inputComponent: NumberFormatCustom,
+                  }}
                 />
               </div>
             </div>
@@ -488,3 +546,26 @@ const Filtros = ({
 };
 
 export default Filtros;
+
+function NumberFormatCustom(props) {
+  const { inputRef, onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={inputRef}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      // onChange={(e) => onChange(e.target.value)}
+      thousandSeparator
+      isNumericString
+      prefix="$ "
+    />
+  );
+}

@@ -49,6 +49,7 @@ const Card = ({ data, setOpenModal, setDataUser }) => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          minHeight: "130px",
         }}
       >
         <p className="p1">
@@ -57,12 +58,16 @@ const Card = ({ data, setOpenModal, setDataUser }) => {
         <p className="p2">{profesion ? profesion.name : null}</p>
         <div className="anos-exp-eco-sap-card">
           <p>
-            {anosZap === "1" ? anosZap + " año" : anosZap + " años"} de experiencia
+            {anosZap === "1" ? anosZap + " año" : anosZap + " años"} de
+            experiencia
           </p>
         </div>
       </div>
       <div>
-        <div className="swip-home-emp">
+        <div
+          className="swip-home-emp"
+          style={{ minHeight: "55px", width: "200px" }}
+        >
           <div className="top-swip-home-emp">
             <div className="left-swip-home-emp">
               <IconButton

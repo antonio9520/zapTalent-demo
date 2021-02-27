@@ -140,14 +140,16 @@ exports.actualizarPasswordEmp = async (req, res) => {
 /**Informacion de empresa por id */
 exports.mostrarEmpresasID = async (req, res) => {
   const { id } = req.params;
+  console.log(id);
   try {
-    const userEmpresa = await Usuario.findById(id);
+    const userEmpresa = await Empresa.findById(id);
+    console.log(userEmpresa);
     if (!userEmpresa) {
       return res.status(404).json({ msg: "Empresa no encontrada" });
     }
-    const empresa = await Empresa.findOne({ _id: userEmpresa.idemp });
-    
-    res.json(empresa);
+    // const empresa = await Empresa.findOne({ _id: userEmpresa.idemp });
+
+    res.json(userEmpresa);
   } catch (error) {
     console.log(error);
     res.status(404).json({ msg: "error en el servidor " + error });

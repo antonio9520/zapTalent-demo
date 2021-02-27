@@ -18,10 +18,11 @@ import {
 import SwipeableViews from "react-swipeable-views";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import NumberFormat from "react-number-format";
 
 const Card = ({ data }) => {
+  const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
 
@@ -45,6 +46,10 @@ const Card = ({ data }) => {
     }, 1000);
   }, []);
 
+  const irAPostulaciones = () => {
+    history.push(`/postulaciones/1`);
+  };
+
   return (
     <>
       <div className="card-adn-new-perfil">
@@ -53,13 +58,14 @@ const Card = ({ data }) => {
             <BusinessCenter className="header-icon-adn-new-perfil" />
             <p className="p-mi-adn-perfil">Tus Postulaciones</p>
 
-            <Link to="/ofertas-laborales">
-              <Tooltip title="Ver" placement="top">
-                <IconButton className="btn-view-new-perfil-post">
-                  <Visibility fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </Link>
+            <Tooltip title="Ver" placement="top">
+              <IconButton
+                className="btn-view-new-perfil-post"
+                onClick={irAPostulaciones}
+              >
+                <Visibility fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </div>
           {/* <div className="sub-swipeables-new-perfil"> */}
           <SwipeableViews index={activeStep}>

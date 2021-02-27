@@ -67,7 +67,7 @@ const CustomModal = (props) => {
     let submod = await dataSubmodulos();
     dispatch(
       agregarAvisoAction({
-        idusuario: usuario._id,
+        idusuario: usuario.idemp,
         razonSocial: usuario.razonSocial,
         logoURL: usuario.logoURL,
         titulo,
