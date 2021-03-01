@@ -1,0 +1,16 @@
+.cont-containers-infoAviso-of {
+  /* background-color: saddlebrown; */
+  height: 80%;
+}
+
+.cont-btn-post-infoAviso-of {
+  /* background-color: sandybrown; */
+  border-top: 1px solid #ededed;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+

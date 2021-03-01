@@ -88,9 +88,6 @@ h1 {
 body {
   padding: 0;
   margin: 0;
-  /* width: 100%;
-  max-width: 98vw; */
-  /* background-color: rgb(13, 85, 194); */
   background: var(--main-bg);
   height: 100%;
 }

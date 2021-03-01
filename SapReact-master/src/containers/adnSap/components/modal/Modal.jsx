@@ -87,14 +87,14 @@ const data = [
         name: "GL",
         obs:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-        nivel: "Avanzado",
+        nivel: "",
         desc: "Contabilidad general",
       },
       {
         name: "AP",
         obs:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        nivel: "Medio",
+        nivel: "",
         desc: "Cuentas por pagar",
       },
     ],

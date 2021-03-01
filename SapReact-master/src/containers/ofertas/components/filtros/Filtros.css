@@ -9,6 +9,7 @@
 .item-doble-filtros-of {
   display: flex;
   margin-top: 10px;
+  
 }
 .cont-filtros-ofertas-laborales .item-1 {
   border-bottom: 1px solid #e8e9f5;
@@ -43,4 +44,19 @@
 
 .btn-limpiar-filtros-of {
   color: white !important;
+}
+
+.cont-filtros-of-two {
+  /* background-color: red; */
+  max-height: 600px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 9;
+  justify-content: space-between;
+  padding-right: 15px;
+}
+
+.cont-filtros-of-two::-webkit-scrollbar-track {
+  margin-top: 40px;
 }

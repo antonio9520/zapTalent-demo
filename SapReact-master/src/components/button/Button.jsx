@@ -10,7 +10,7 @@ const CustomButton = (props) => {
         borderRadius: "3px",
         padding: "5px",
       },
-    },
+    }, 
   }));
 
   const classes = useStyles();

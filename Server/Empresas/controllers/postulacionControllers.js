@@ -91,6 +91,7 @@ exports.deletePostulacion = async (req, res) => {
 exports.usuarioPostulados = async (req, res) => {
   const idemp = req.params.id;
   const skip = req.params.skip;
+
   const {
     leido,
     _id,
@@ -154,11 +155,8 @@ const dataUsuarios = async (data, query) => {
     const aviso = await Avisos.findById(data[i].idaviso);
     if (aviso) {
       query._id = data[i].iduser;
-      // ObjectId ("568c28fffc4be30d44d0398e")
-      // console.log(query);
-      let usuario = await Usuario.findOne({
-        $and: [query],
-      });
+      console.log(query);
+      let usuario = await Usuario.findOne(query);
 
       if (usuario) {
         const adnsap = await Adnsap.find(

@@ -73,7 +73,7 @@ const Header = ({
     }
   };
   return (
-    <div className="header-avisos-emp">
+    <div className="header-avisos-emp" style={{ width: "inherit" }}>
       <div className="left-header-avisos-emp">
         <p>Mis Avisos</p>
       </div>

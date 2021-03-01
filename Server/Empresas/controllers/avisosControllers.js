@@ -15,7 +15,7 @@ exports.crearAviso = async (req, res) => {
 exports.mostrarAvisos = async (req, res) => {
   const skip = req.params.skip;
   const query = req.body;
-  console.log(query);
+
   try {
     const querie = await createQuery(query);
     // console.log(querie);
@@ -158,6 +158,19 @@ exports.putAviso = async (req, res) => {
       });
     });
   } catch (error) {
+    res.status(500).json({ msg: "Hubo un error" });
+  }
+};
+
+exports.mostrarAvisoId = async (req, res) => {
+  const id = req.params.id;
+  // throw n;
+  try {
+    const aviso = await Avisos.findById(id);
+    // console.log(avisos);
+
+    res.json(aviso);
+  } catch (err) {
     res.status(500).json({ msg: "Hubo un error" });
   }
 };

@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Ofertas.css";
-import { Card, Header, Filtros, Modal } from "./components";
+import {
+  Card,
+  Header,
+  FiltroDrawer,
+  Modal,
+  Filtro,
+  ModalAviso,
+} from "./components";
 import { BusinessCenterOutlined } from "@material-ui/icons";
 import { filtrarOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
 import { obtenerPostulacionesAction } from "../../redux/actions/postAction";
@@ -24,6 +31,8 @@ const Ofertas = (props) => {
   const [cargando, setCargando] = useState(false);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalAviso, setOpenModalAviso] = useState(false);
+  const [idAviso, setIdAviso] = useState(null);
   const [idEmp, setIdEmp] = useState(null);
   const [skip, setSkip] = useState(0);
   const [indexTab, setindexTab] = useState(
@@ -124,69 +133,97 @@ const Ofertas = (props) => {
           setIdEmp={setIdEmp}
           idEmp={idEmp}
         />
+        <ModalAviso
+          setOpen={setOpenModalAviso}
+          open={openModalAviso}
+          setIdAviso={setIdAviso}
+          idAviso={idAviso}
+          idEmp={idEmp}
+          setIdEmp={setIdEmp}
+        />
         <div className="titulo-page">
           <BusinessCenterOutlined className="icon-page-header-user" />
           <h1>Ofertas Laborales</h1>
         </div>
-        <div className="cont-header-of-laborales">
-          <Header
-            setOpen={setOpen}
-            indexTab={indexTab}
-            setindexTab={setindexTab}
-            setSkip={setSkip}
-            obtenerOfertas={obtenerOfertas}
-            query={query}
-            setQuery={setQuery}
-            search={search}
-            setSearch={setSearch}
-          />
+        <div className="cont-header-of-laborales-top">
+          <div className="cont-header-of-laborales">
+            <Header
+              setOpen={setOpen}
+              indexTab={indexTab}
+              setindexTab={setindexTab}
+              setSkip={setSkip}
+              obtenerOfertas={obtenerOfertas}
+              query={query}
+              setQuery={setQuery}
+              search={search}
+              setSearch={setSearch}
+            />
+          </div>
+          <div className="empty-header-of"></div>
         </div>
 
-        <div className="cont-card-of-laborales" onScroll={handleScroll}>
-          {cargando ? (
-            <div className="div-cargando-avisos">
-              <p>Cargando...</p>
-            </div>
-          ) : indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
-            ofertasLaborales.map((item) => (
-              <Card
-                data={item}
-                key={item._id}
-                setOpen={setOpenModal}
-                setIdEmp={setIdEmp}
-              />
-            ))
-          ) : null}
-          {indexTab === 1
-            ? postulaciones.map((item) => (
+        <div className="cont-cards-filtro-ofertas">
+          <div className="cont-card-of-laborales" onScroll={handleScroll}>
+            {cargando ? (
+              <div className="div-cargando-avisos">
+                <p>Cargando...</p>
+              </div>
+            ) : indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
+              ofertasLaborales.map((item) => (
                 <Card
                   data={item}
                   key={item._id}
                   setOpen={setOpenModal}
+                  setOpenModalAviso={setOpenModalAviso}
                   setIdEmp={setIdEmp}
+                  setIdAviso={setIdAviso}
                 />
               ))
-            : null}
+            ) : null}
+            {indexTab === 1
+              ? postulaciones.map((item) => (
+                  <Card
+                    data={item}
+                    key={item._id}
+                    setOpen={setOpenModal}
+                    setOpenModalAviso={setOpenModalAviso}
+                    setIdEmp={setIdEmp}
+                    setIdAviso={setIdAviso}
+                  />
+                ))
+              : null}
 
-          {(loading || loadingPost) && !cargando ? (
-            <div className="div-cargando-avisos">
-              <p>Cargando...</p>
-            </div>
-          ) : !cargando ? (
-            indexTab === 1 ? (
+            {(loading || loadingPost) && !cargando ? (
               <div className="div-cargando-avisos">
-                <p>No Tienes mas postulaciones</p>
+                <p>Cargando...</p>
               </div>
             ) : !cargando ? (
-              indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
+              indexTab === 1 ? (
                 <div className="div-cargando-avisos">
-                  <p>No quedan mas ofertas laborales</p>
+                  <p>No Tienes mas postulaciones</p>
                 </div>
+              ) : !cargando ? (
+                indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
+                  <div className="div-cargando-avisos">
+                    <p>No quedan mas ofertas laborales</p>
+                  </div>
+                ) : null
               ) : null
-            ) : null
-          ) : null}
+            ) : null}
+          </div>
+          <div className="cont-filtro-of-laborales">
+            <Filtro
+              open={open}
+              setOpen={setOpen}
+              query={query}
+              setindexTab={setindexTab}
+              obtenerOfertas={obtenerOfertas}
+              setQuery={setQuery}
+              setSkip={setSkip}
+            />
+          </div>
         </div>
-        <Filtros
+        <FiltroDrawer
           open={open}
           setOpen={setOpen}
           query={query}

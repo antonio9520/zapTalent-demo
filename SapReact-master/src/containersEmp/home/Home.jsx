@@ -53,15 +53,15 @@ const Home = () => {
 
       dispatch(obtenerTotalPostNoLeidosAction(usuario.idemp));
 
-      dispatch(obtenerTotalUsuariosDiaAction());
+      dispatch(obtenerTotalUsuariosDiaAction()); 
     }
 
     // eslint-disable-next-line
   }, [usuario]);
 
-  useEffect(() => {
+  useEffect(() => { 
     if (usuario) {
-      dispatch(obtenerPostuladosAction({ _id: usuario._id, skip: 0, query }));
+      dispatch(obtenerPostuladosAction({ _id: usuario.idemp, skip: 0, query }));
     }
 
     // eslint-disable-next-line

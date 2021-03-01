@@ -1,33 +1,76 @@
 .ofertas-laborales {
   padding-top: 75px;
   padding-left: 10px;
-  max-width: 1500px;
+  /* max-width: 1500px; */
   position: relative;
+  /* height: 100%; */
+}
+.cont-header-of-laborales-top {
+  /* background-color: red; */
+  display: flex;
+  padding-left: 10px;
+  justify-content: space-between;
 }
 
+.empty-header-of {
+  /* background-color: saddlebrown; */
+  width: 420px;
+  min-width: 340px;
+  height: 10px;
+}
 .cont-header-of-laborales {
-  padding-right: 30px;
+  /* padding-right: 30px; */
   margin-bottom: 10px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
+  width: 100%;
 }
 
 .cont-card-of-laborales {
-  /* padding: 10px 10px 0 0;
-  max-height: 80vh;
-  overflow: auto; */
-  /* display: flex;
-  flex-wrap: wrap; */
-  justify-content: space-around;
+  /* justify-content: space-around; */
   padding-bottom: 60px;
   max-height: 81vh;
   overflow: auto;
   padding-right: 20px;
   padding-left: 10px;
   overflow-x: visible;
+  /* background-color: cadetblue; */
+  width: 100%;
 }
 .icon-page-header-user {
   color: var(--blue-primary) !important;
   width: 30px !important;
   height: 30px !important;
   margin-top: 3px;
+}
+
+.cont-cards-filtro-ofertas {
+  /* background-color: blue; */
+  height: 81vh;
+  padding-right: 20px;
+  display: flex;
+}
+
+.cont-filtro-of-laborales {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+}
+
+@media only screen and (max-width: 1750px) {
+  .cont-filtro-of-laborales {
+    display: none;
+  }
+  .cont-header-of-laborales-top {
+  padding-right: 40px;
+  }
+  
+  .empty-header-of {
+   display: none;
+  }
+  .ofertas-laborales {
+  
+    max-width: 1500px;
+ 
+  
+  }
 }

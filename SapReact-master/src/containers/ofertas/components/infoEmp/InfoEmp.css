@@ -1,116 +1,114 @@
 .info-user-of-emp {
-    background-color: white;
-    border-radius: 5px;
-    width: 550px;
-    outline: none;
-    overflow: hidden;
-    position: relative;
+  background-color: white;
+  border-radius: 5px;
+  width: 550px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+}
+.loader-info-of-emp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 550px;
+}
+.info-user-of-emp p {
+  margin: 0;
+}
+.cont-btn-close-info-of-emp {
+}
+.btn-close-info-of-emp {
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+  background-color: white !important;
+  width: 30px !important;
+  height: 30px !important;
+  color: var(--blue-primary) !important;
+}
+/*top*/
+.info-user-of-emp .top {
+  height: 150px;
+  background-image: url("../../../../resources/empresas/ZAPTalent-Header-Empresas-Avisos.png");
+  background-size: cover;
+  background-position: 50%;
+  display: flex;
+  padding-left: 50px;
+  padding-top: 30px;
+
+  animation: 1s animationInit;
+}
+.info-user-of-emp .top div:nth-child(1) {
+  width: 76px;
+  height: 76px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-user-of-emp .top img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.info-user-of-emp .top .cont-p {
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+.info-user-of-emp .top .cont-p .p1 {
+  color: white;
+  font-size: 20px;
+  font-weight: 200;
+}
+.info-user-of-emp .top .cont-p .p2 {
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+  margin-top: 5px;
+}
+.info-user-of-emp .top .cont-p .p3 {
+  color: white;
+  font-size: 12px;
+  font-weight: 200;
+  margin-top: 5px;
+}
+.info-user-of-emp .top .cont-p .exp-adn {
+  background-color: #4ec0ef;
+  width: 130px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+.info-user-of-emp .top .cont-p .exp-adn p {
+  color: white;
+  font-size: 12px;
+  font-weight: 200;
+}
+/**bottom*/
+.info-user-of-emp .bottom {
+  height: 400px;
+  /* background-color: green; */
+  animation: 1s animationInit;
+}
+
+.info-user-of-emp .tab-menu-emp-user {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes animationInit {
+  0% {
+    opacity: 0;
   }
-  .loader-info-of-emp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 550px;
+  100% {
+    opacity: 1;
   }
-  .info-user-of-emp p {
-    margin: 0;
-  }
-  .cont-btn-close-info-of-emp {
-   
-  }
-  .btn-close-info-of-emp {
-    position: absolute !important;
-    top: 10px;
-    right: 10px;
-    background-color: white !important;
-    width: 30px !important;
-    height: 30px !important;
-    color: var(--blue-primary) !important;
-  }
-  /*top*/
-  .info-user-of-emp .top {
-    height: 150px;
-    background-image: url("../../../../resources/empresas/ZAPTalent-Background.png");
-    background-size: cover;
-    background-position: 50%;
-    display: flex;
-    padding-left: 50px;
-    padding-top: 30px;
-    
-    animation: 1s animationInit;
-  }
-  .info-user-of-emp .top div:nth-child(1) {
-    width: 76px;
-    height: 76px;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .info-user-of-emp .top img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-  }
-  .info-user-of-emp .top .cont-p {
-    /* background-color: aqua; */
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px;
-  }
-  .info-user-of-emp .top .cont-p .p1 {
-    color: white;
-    font-size: 20px;
-    font-weight: 200;
-  }
-  .info-user-of-emp .top .cont-p .p2 {
-    color: white;
-    font-size: 14px;
-    font-weight: 200;
-    margin-top: 5px;
-  }
-  .info-user-of-emp .top .cont-p .p3 {
-    color: white;
-    font-size: 12px;
-    font-weight: 200;
-    margin-top: 5px;
-  }
-  .info-user-of-emp .top .cont-p .exp-adn {
-    background-color: #4ec0ef;
-    width: 130px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    margin-top: 5px;
-  }
-  .info-user-of-emp .top .cont-p .exp-adn p {
-    color: white;
-    font-size: 12px;
-    font-weight: 200;
-  }
-  /**bottom*/
-  .info-user-of-emp .bottom {
-    height: 400px;
-    /* background-color: green; */
-    animation: 1s animationInit;
-  }
-  
-  .info-user-of-emp .tab-menu-emp-user {
-    /* background-color: aqua; */
-    display: flex;
-    justify-content: center;
-  }
-  
-  @keyframes animationInit {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
+}

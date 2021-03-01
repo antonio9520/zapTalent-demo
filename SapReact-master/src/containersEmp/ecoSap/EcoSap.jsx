@@ -52,7 +52,7 @@ const EcoSap = () => {
     } else {
       setLoading(true);
     }
-    let _id = usuario._id;
+    let _id = usuario.idemp;
 
     try {
       const respuesta = await clientAxios.put(
@@ -90,7 +90,7 @@ const EcoSap = () => {
         cargarPostulados();
         if (avisos.length === 0) {
           dispatch(
-            obtenerAvisoAction({ skip: 0, query: { _id: usuario._id } })
+            obtenerAvisoAction({ skip: 0, query: { _id: usuario.idemp } })
           );
         }
       }
@@ -101,7 +101,6 @@ const EcoSap = () => {
     setOpenModalDrawer(false);
   }, [skip, value, _switch, usuario]);
 
-  console.log(tipoPlan);
   return (
     <div className="eco-sap-empresas">
       <Modal

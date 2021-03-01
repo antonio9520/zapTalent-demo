@@ -10,10 +10,9 @@ import {
   Room,
   AccountCircle,
   QueryBuilder,
-  EventSeat, 
+  EventSeat,
   Description,
   AccountTree,
-  Info,
 } from "@material-ui/icons";
 import { Button } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
@@ -25,13 +24,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
 
-const Card = ({ data, setOpen, setIdEmp }) => {
+const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.auth.usuario);
   const postulaciones = useSelector(
     (state) => state.postulaciones.postulaciones
   );
-  const loading = useSelector((state) => state.postulaciones.loading);
+
   const {
     fechaInicio,
     fechaTermino,
@@ -64,7 +63,6 @@ const Card = ({ data, setOpen, setIdEmp }) => {
 
   const [active, setActive] = useState(0);
   const [postulado, setPostulado] = useState(false);
-  const [id_post, setIdPost] = useState(null);
   const [_switch, setSwitch] = useState(false);
 
   const MESES = [
@@ -126,12 +124,18 @@ const Card = ({ data, setOpen, setIdEmp }) => {
   };
 
   useEffect(() => {
-    postulaciones.map((item) => {
-      if (item._id === _id) {
-        setPostulado(true);
-        setIdPost(item.id_post);
-      }
-    });
+    // postulaciones.map((item) => {
+    //   if (item._id === _id) {
+    //     setPostulado(true);
+    //   }
+    // });
+    let result = postulaciones.filter((item) => item._id === _id);
+    console.log(result);
+    if (result[0]) {
+      setPostulado(true);
+    } else {
+      setPostulado(false);
+    }
   }, [postulaciones]);
 
   return (
@@ -169,8 +173,14 @@ const Card = ({ data, setOpen, setIdEmp }) => {
               )}
             </div>
             <div className="item-2">
-              <Tooltip title={titulo} placement="top">
+              <Tooltip title={`Ver Aviso: ${titulo}`} placement="top">
                 <h1
+                  onClick={() => {
+                    setIdAviso(data._id);
+                    setIdEmp(idusuario);
+                    setOpenModalAviso(true);
+                  }}
+                  style={{ cursor: "pointer" }}
                   className={
                     titulo
                       ? titulo.length > 22
@@ -348,7 +358,7 @@ const Card = ({ data, setOpen, setIdEmp }) => {
                   onClick={cancelarPostulacion}
                   disabled={_switch}
                 >
-                  <p>cancelar postulacion</p>
+                  <p>Cancelar Postulación</p>
                   {_switch ? (
                     <div className="loader-btn-postular">
                       <Loader

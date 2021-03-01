@@ -24,7 +24,7 @@ export function obtenerPostuladosAction({ _id, skip, query }) {
         `/api/postulacion/postulados/${_id}/${skip}`,
         query
       );
-      console.log(skip);
+      console.log(skip); 
       setTimeout(() => {
         if (skip === 0) {
           dispatch(descargaExitoPostInit(respuesta.data));

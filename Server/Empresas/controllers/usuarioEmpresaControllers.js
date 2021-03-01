@@ -142,13 +142,13 @@ exports.mostrarEmpresasID = async (req, res) => {
   const { id } = req.params;
   console.log(id);
   try {
+    // throw n;
     const userEmpresa = await Empresa.findById(id);
-    console.log(userEmpresa);
     if (!userEmpresa) {
       return res.status(404).json({ msg: "Empresa no encontrada" });
     }
-    // const empresa = await Empresa.findOne({ _id: userEmpresa.idemp });
 
+    // const empresa = await Empresa.findOne({ _id: userEmpresa.idemp });
     res.json(userEmpresa);
   } catch (error) {
     console.log(error);

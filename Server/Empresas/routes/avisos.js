@@ -13,6 +13,6 @@ router.put("/filter/:skip", avisosControllers.mostrarAvisos);
 
 router.delete("/:id", avisosControllers.deleteAvisos);
 // router.put("/", usuarioAdminControllers.putUserAdmin);
-
+router.get("/:id", avisosControllers.mostrarAvisoId);
 
 module.exports = router;

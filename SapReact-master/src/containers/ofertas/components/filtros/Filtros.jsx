@@ -163,385 +163,384 @@ const Filtros = ({
     setSubmodulos(null);
   }, [_modulo]);
   return (
-    <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-      <div className="cont-filtros-ofertas-laborales">
-        <div className="item-1">
-          <p>Filtros</p>
-        </div>
-        <div className="cont-filtros-of">
-          <div className="item-2">
-            <p>ADN-SAP</p>
-            <CustomSelect
-              placeholder="Tipo Consultor"
-              size="small"
-              onChange={setTipoConsultor}
-              value={tipoConsultor}
-              // error={errorconsultor}
-              // helpertext="Seleccione un tipo de consultor"
-              // funcionError={setErrorConsultor}
-              name="consultor"
-            >
-              <MenuItem className="custom-menu-item" value="Training">
-                Training
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Junior">
-                Junior
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Semi Senior">
-                Semi Senior
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Senior">
-                Senior
-              </MenuItem>
-            </CustomSelect>
-
-            <div className="item-doble-filtros-of">
-              <div style={{ marginRight: "5px", flex: 1 }}>
-                <CustomSelect
-                  placeholder="Modulo"
-                  size="small"
-                  onChange={setModulos}
-                  value={_modulo}
-                  // error={errorconsultor}
-                  // helpertext="Seleccione un tipo de consultor"
-                  // funcionError={setErrorConsultor}
-                  name="consultor"
-                >
-                  {modulos.map((item, index) => (
-                    <MenuItem
-                      key={index}
-                      className="custom-menu-item"
-                      value={item.modulo}
-                    >
-                      {item.modulo}
-                    </MenuItem>
-                  ))}
-                </CustomSelect>
-              </div>
-              <div style={{ marginLeft: "5px", flex: 1 }}>
-                <CustomSelect
-                  placeholder="SubModulo"
-                  size="small"
-                  onChange={setSubmodulos}
-                  value={_submodulo}
-                  // error={errorconsultor}
-                  // helpertext="Seleccione un tipo de consultor"
-                  // funcionError={setErrorConsultor}
-                  name="consultor"
-                >
-                  {submodulos ? (
-                    submodulos.submodulos.map((item, index) => (
-                      <MenuItem
-                        key={index}
-                        className="custom-menu-item"
-                        value={item.submodulo}
-                      >
-                        {item.submodulo}
-                      </MenuItem>
-                    ))
-                  ) : (
-                    <MenuItem className="custom-menu-item" value={null}>
-                      Seleccione un modulo
-                    </MenuItem>
-                  )}
-                </CustomSelect>
-              </div>
-            </div>
-          </div>
-          <div className="item-2">
-            <p>Años de experiencia SAP</p>
-
-            <div className="item-doble-filtros-of">
-              <div style={{ marginRight: "5px", flex: 1 }}>
-                <OutInput
-                  label="Año mínimo"
-                  helpertext="Rango invalido"
-                  funcOnChange={setAnosExpMin}
-                  // defaultValue={nombres}
-                  value={anosExpMin}
-                  name="anosExp"
-                  size="small"
-                  type="number"
-                  error={anosExpError}
-                  funcionError={setAnosExpError}
-                />
-              </div>
-              <div style={{ marginLeft: "5px", flex: 1 }}>
-                <OutInput
-                  label="Año Máximo"
-                  // helpertext={nombresmsg}
-                  funcOnChange={setAnosExpMax}
-                  // defaultValue={nombres}
-                  value={anosExpMax}
-                  name="anosExp"
-                  size="small"
-                  type="number"
-                  // error={errornombre}
-                  // funcionError={setErrorNombre}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="item-2">
-            <p>Industria</p>
-            <CustomSelect
-              placeholder="Selecciona"
-              size="small"
-              onChange={setArea}
-              value={area}
-              name="area"
-            >
-              {actEmpresa.map((item, index) => (
-                <MenuItem
-                  key={index}
-                  className="custom-menu-item"
-                  value={item.Seleccionar}
-                >
-                  {item.Seleccionar}
-                </MenuItem>
-              ))}
-            </CustomSelect>
-          </div>
-          <div className="item-2">
-            <p>Renta</p>
-            <div className="item-doble-filtros-of">
-              <div style={{ marginRight: "5px", flex: 1 }}>
-                <CssTextField
-                  fullWidth
-                  variant="outlined"
-                  size="small"
-                  error={errorminimo}
-                  label="Renta Mínima"
-                  // helperText="Rango invalido"
-                  value={minimo}
-                  onChange={(e) => {
-                    setErrorMinimo(false);
-                    setMinimo(e.target.value);
-                  }}
-                  name="rentaMinima"
-                  id="formatted-numberformat-input-d"
-                  InputProps={{
-                    inputComponent: NumberFormatCustom,
-                  }}
-                />
-              </div>
-              <div style={{ marginLeft: "5px", flex: 1 }}>
-                <CssTextField
-                  fullWidth
-                  variant="outlined"
-                  size="small"
-                  // error={errormaximo}
-                  label="Renta Máxima"
-                  // helperText={pretencionMsg}
-                  value={maximo}
-                  onChange={(e) => {
-                    // setErrorMaximo(false);
-                    setMaximo(e.target.value);
-                  }}
-                  name="rentaMaxima"
-                  id="formatted-numberformat-input-c"
-                  InputProps={{
-                    inputComponent: NumberFormatCustom,
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="item-2">
-            <p>Fecha Publicación</p>
-
-            <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
-              <div className="item-doble-filtros-of">
-                <div style={{ marginRight: "5px", flex: 1 }}>
-                  <KeyboardDatePicker
-                    // error={fechaInicioError}
-                    fullWidth
-                    size="small"
-                    label="Fecha mínima"
-                    minDate={new Date("2010-01-01")}
-                    maxDate={new Date("2030-01-01")}
-                    // helperText={
-                    //   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
-                    // }
-                    format="dd/MM/yyyy"
-                    value={fechaini}
-                    // maxDate={new Date()}
-                    onChange={(newValue) => {
-                      setFechaIni(newValue);
-                    }}
-                    InputProps={{
-                      className: "input-date-picker-inicio",
-                      readOnly: true,
-                    }}
-                    className="date-picker-inicio"
-                    InputLabelProps={{ className: "input-label-date-form" }}
-                  />
-                </div>
-                <div style={{ marginLeft: "5px", flex: 1 }}>
-                  <KeyboardDatePicker
-                    // error={fechaInicioError}
-                    fullWidth
-                    size="small"
-                    label="Fecha Máxima"
-                    minDate={new Date("2010-01-01")}
-                    maxDate={new Date("2030-01-01")}
-                    // helperText={
-                    //   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
-                    // }
-                    format="dd/MM/yyyy"
-                    value={fechafin}
-                    // maxDate={new Date()}
-                    onChange={(newValue) => {
-                      setFechaFin(newValue);
-                    }}
-                    InputProps={{
-                      className: "input-date-picker-inicio",
-                      readOnly: true,
-                    }}
-                    className="date-picker-inicio"
-                    InputLabelProps={{ className: "input-label-date-form" }}
-                  />
-                </div>
-              </div>
-            </MuiPickersUtilsProvider>
-          </div>
-          <div className="item-2">
-            <p>Tipo Contrato</p>
-            <CustomSelect
-              placeholder="Selecciona"
-              size="small"
-              onChange={setTipoContrato}
-              value={tipoContrato}
-              name="area"
-            >
-              <MenuItem className="custom-menu-item" value="Plazo fijo">
-                Plazo fijo
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Aprendizaje">
-                Aprendizaje
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="A trato">
-                A trato
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="De temporada">
-                De temporada
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Indefinido">
-                Indefinido
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Otro">
-                Otro
-              </MenuItem>
-            </CustomSelect>
-          </div>
-
-          <div className="item-2">
-            <p>Geografico</p>
-            <div className="item-doble-filtros-of">
-              <div style={{ marginRight: "5px", flex: 1 }}>
-                <CustomSelect
-                  placeholder="Región"
-                  size="small"
-                  onChange={setRegion}
-                  value={region}
-                  // error={errorconsultor}
-                  // helpertext="Seleccione un tipo de consultor"
-                  // funcionError={setErrorConsultor}
-                  name="region"
-                >
-                  {regiones.map((item, index) => (
-                    <MenuItem
-                      className="custom-menu-item"
-                      key={index}
-                      value={item.region}
-                    >
-                      {item.region}
-                    </MenuItem>
-                  ))}
-                </CustomSelect>
-              </div>
-              <div style={{ marginLeft: "5px", flex: 1 }}>
-                <CustomSelect
-                  placeholder="Comuna"
-                  size="small"
-                  onChange={setComuna}
-                  value={comuna}
-                  name="comuna"
-                >
-                  {comunas ? (
-                    comunas.comunas.map((item, index) => (
-                      <MenuItem
-                        className="custom-menu-item"
-                        key={index}
-                        value={item}
-                      >
-                        {item}
-                      </MenuItem>
-                    ))
-                  ) : (
-                    <MenuItem className="custom-menu-item" value="">
-                      Seleccione una región
-                    </MenuItem>
-                  )}
-                </CustomSelect>
-              </div>
-            </div>
-          </div>
-          <div className="item-2">
-            <p>Tipo Jornada</p>
-            <CustomSelect
-              placeholder="Selecciona"
-              size="small"
-              onChange={setTipoJornada}
-              value={tipoJornada}
-            >
-              <MenuItem className="custom-menu-item" value="60 horas semanales">
-                60 horas semanales
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="45 horas semanales">
-                45 horas semanales
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Bisemanal">
-                Bisemanal
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Part-time">
-                Part-time
-              </MenuItem>
-              <MenuItem
-                className="custom-menu-item"
-                value="Jornada extraordinaria"
-              >
-                Jornada extraordinaria
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Desde casa">
-                Desde casa
-              </MenuItem>
-              <MenuItem className="custom-menu-item" value="Teletrabajo">
-                Teletrabajo
-              </MenuItem>
-            </CustomSelect>
-          </div>
-          <div className="item-11">
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={limpiarFiltros}
-              endIcon={<HighlightOff style={{ color: "white" }} />}
-            >
-              <p style={{ margin: 0, color: "white" }}>Limpiar</p>
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={filtrar}
-              endIcon={<FilterList />}
-            >
-              <p style={{ margin: 0 }}>Filtrar</p>
-            </Button>
-          </div>
-        </div>
+    <div className="cont-filtros-ofertas-laborales">
+      <div className="item-1">
+        <p>Filtros</p>
       </div>
-    </Drawer>
+      <div className="cont-filtros-of-two">
+        <div className="item-2">
+          <p>ADN-SAP</p>
+          <CustomSelect
+            placeholder="Tipo Consultor"
+            size="small"
+            onChange={setTipoConsultor}
+            value={tipoConsultor}
+            // error={errorconsultor}
+            // helpertext="Seleccione un tipo de consultor"
+            // funcionError={setErrorConsultor}
+            name="consultor"
+          >
+            <MenuItem className="custom-menu-item" value="Training">
+              Training
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Junior">
+              Junior
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Semi Senior">
+              Semi Senior
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Senior">
+              Senior
+            </MenuItem>
+          </CustomSelect>
+
+          <div className="item-doble-filtros-of">
+            <div style={{ marginRight: "5px", flex: 1 }}>
+              <CustomSelect
+                placeholder="Modulo"
+                size="small"
+                onChange={setModulos}
+                value={_modulo}
+                // error={errorconsultor}
+                // helpertext="Seleccione un tipo de consultor"
+                // funcionError={setErrorConsultor}
+                name="consultor"
+              >
+                {modulos.map((item, index) => (
+                  <MenuItem
+                    key={index}
+                    className="custom-menu-item"
+                    value={item.modulo}
+                  >
+                    {item.modulo}
+                  </MenuItem>
+                ))}
+              </CustomSelect>
+            </div>
+            <div style={{ marginLeft: "5px", flex: 1 }}>
+              <CustomSelect
+                placeholder="SubModulo"
+                size="small"
+                onChange={setSubmodulos}
+                value={_submodulo}
+                // error={errorconsultor}
+                // helpertext="Seleccione un tipo de consultor"
+                // funcionError={setErrorConsultor}
+                name="consultor"
+              >
+                {submodulos ? (
+                  submodulos.submodulos.map((item, index) => (
+                    <MenuItem
+                      key={index}
+                      className="custom-menu-item"
+                      value={item.submodulo}
+                    >
+                      {item.submodulo}
+                    </MenuItem>
+                  ))
+                ) : (
+                  <MenuItem className="custom-menu-item" value={null}>
+                    Seleccione un modulo
+                  </MenuItem>
+                )}
+              </CustomSelect>
+            </div>
+          </div>
+        </div>
+        <div className="item-2">
+          <p>Años de experiencia SAP</p>
+
+          <div className="item-doble-filtros-of">
+            <div style={{ marginRight: "5px", flex: 1 }}>
+              <OutInput
+                label="Año mínimo"
+                helpertext="Rango invalido"
+                funcOnChange={setAnosExpMin}
+                // defaultValue={nombres}
+                value={anosExpMin}
+                name="anosExp"
+                size="small"
+                type="number"
+                error={anosExpError}
+                funcionError={setAnosExpError}
+              />
+            </div>
+            <div style={{ marginLeft: "5px", flex: 1 }}>
+              <OutInput
+                label="Año Máximo"
+                // helpertext={nombresmsg}
+                funcOnChange={setAnosExpMax}
+                // defaultValue={nombres}
+                value={anosExpMax}
+                name="anosExp"
+                size="small"
+                type="number"
+                // error={errornombre}
+                // funcionError={setErrorNombre}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="item-2">
+          <p>Industria</p>
+          <CustomSelect
+            placeholder="Selecciona"
+            size="small"
+            onChange={setArea}
+            value={area}
+            name="area"
+          >
+            {actEmpresa.map((item, index) => (
+              <MenuItem
+                key={index}
+                className="custom-menu-item"
+                value={item.Seleccionar}
+              >
+                {item.Seleccionar}
+              </MenuItem>
+            ))}
+          </CustomSelect>
+        </div>
+        <div className="item-2">
+          <p>Renta</p>
+          <div className="item-doble-filtros-of">
+            <div style={{ marginRight: "5px", flex: 1 }}>
+              <CssTextField
+                fullWidth
+                variant="outlined"
+                size="small"
+                error={errorminimo}
+                label="Renta Mínima"
+                // helperText="Rango invalido"
+                value={minimo}
+                onChange={(e) => {
+                  setErrorMinimo(false);
+                  setMinimo(e.target.value);
+                }}
+                name="rentaMinima"
+                id="formatted-numberformat-input-d"
+                InputProps={{
+                  inputComponent: NumberFormatCustom,
+                }}
+              />
+            </div>
+            <div style={{ marginLeft: "5px", flex: 1 }}>
+              <CssTextField
+                fullWidth
+                variant="outlined"
+                size="small"
+                // error={errormaximo}
+                label="Renta Máxima"
+                // helperText={pretencionMsg}
+                value={maximo}
+                onChange={(e) => {
+                  // setErrorMaximo(false);
+                  setMaximo(e.target.value);
+                }}
+                name="rentaMaxima"
+                id="formatted-numberformat-input-c"
+                InputProps={{
+                  inputComponent: NumberFormatCustom,
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="item-2">
+          <p>Fecha Publicación</p>
+
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
+            <div className="item-doble-filtros-of">
+              <div style={{ marginRight: "5px", flex: 1 }}>
+                <KeyboardDatePicker
+                  // error={fechaInicioError}
+                  fullWidth
+                  size="small"
+                  label="Fecha mínima"
+                  minDate={new Date("2010-01-01")}
+                  maxDate={new Date("2030-01-01")}
+                  // helperText={
+                  //   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
+                  // }
+                  format="dd/MM/yyyy"
+                  value={fechaini}
+                  // maxDate={new Date()}
+                  onChange={(newValue) => {
+                    setFechaIni(newValue);
+                  }}
+                  InputProps={{
+                    className: "input-date-picker-inicio",
+                    readOnly: true,
+                  }}
+                  className="date-picker-inicio"
+                  InputLabelProps={{ className: "input-label-date-form" }}
+                />
+              </div>
+              <div style={{ marginLeft: "5px", flex: 1 }}>
+                <KeyboardDatePicker
+                  // error={fechaInicioError}
+                  fullWidth
+                  size="small"
+                  label="Fecha Máxima"
+                  minDate={new Date("2010-01-01")}
+                  maxDate={new Date("2030-01-01")}
+                  // helperText={
+                  //   fechaInicioError ? "Fecha inicio no puede estar vacio" : null
+                  // }
+                  format="dd/MM/yyyy"
+                  value={fechafin}
+                  // maxDate={new Date()}
+                  onChange={(newValue) => {
+                    setFechaFin(newValue);
+                  }}
+                  InputProps={{
+                    className: "input-date-picker-inicio",
+                    readOnly: true,
+                  }}
+                  className="date-picker-inicio"
+                  InputLabelProps={{ className: "input-label-date-form" }}
+                />
+              </div>
+            </div>
+          </MuiPickersUtilsProvider>
+        </div>
+        <div className="item-2">
+          <p>Tipo Contrato</p>
+          <CustomSelect
+            placeholder="Selecciona"
+            size="small"
+            onChange={setTipoContrato}
+            value={tipoContrato}
+            name="area"
+          >
+            <MenuItem className="custom-menu-item" value="Plazo fijo">
+              Plazo fijo
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Aprendizaje">
+              Aprendizaje
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="A trato">
+              A trato
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="De temporada">
+              De temporada
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Indefinido">
+              Indefinido
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Otro">
+              Otro
+            </MenuItem>
+          </CustomSelect>
+        </div>
+
+        <div className="item-2">
+          <p>Geografico</p>
+          <div className="item-doble-filtros-of">
+            <div style={{ marginRight: "5px", flex: 1 }}>
+              <CustomSelect
+                placeholder="Región"
+                size="small"
+                onChange={setRegion}
+                value={region}
+                // error={errorconsultor}
+                // helpertext="Seleccione un tipo de consultor"
+                // funcionError={setErrorConsultor}
+                name="region"
+              >
+                {regiones.map((item, index) => (
+                  <MenuItem
+                    className="custom-menu-item"
+                    key={index}
+                    value={item.region}
+                  >
+                    {item.region}
+                  </MenuItem>
+                ))}
+              </CustomSelect>
+            </div>
+            <div style={{ marginLeft: "5px", flex: 1 }}>
+              <CustomSelect
+                placeholder="Comuna"
+                size="small"
+                onChange={setComuna}
+                value={comuna}
+                name="comuna"
+              >
+                {comunas ? (
+                  comunas.comunas.map((item, index) => (
+                    <MenuItem
+                      className="custom-menu-item"
+                      key={index}
+                      value={item}
+                    >
+                      {item}
+                    </MenuItem>
+                  ))
+                ) : (
+                  <MenuItem className="custom-menu-item" value="">
+                    Seleccione una región
+                  </MenuItem>
+                )}
+              </CustomSelect>
+            </div>
+          </div>
+        </div>
+        <div className="item-2">
+          <p>Tipo Jornada</p>
+          <CustomSelect
+            placeholder="Selecciona"
+            size="small"
+            onChange={setTipoJornada}
+            value={tipoJornada}
+          >
+            <MenuItem className="custom-menu-item" value="60 horas semanales">
+              60 horas semanales
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="45 horas semanales">
+              45 horas semanales
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Bisemanal">
+              Bisemanal
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Part-time">
+              Part-time
+            </MenuItem>
+            <MenuItem
+              className="custom-menu-item"
+              value="Jornada extraordinaria"
+            >
+              Jornada extraordinaria
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Desde casa">
+              Desde casa
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Teletrabajo">
+              Teletrabajo
+            </MenuItem>
+          </CustomSelect>
+        </div>
+      
+      </div>
+      <div className="item-11">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={limpiarFiltros}
+            endIcon={<HighlightOff style={{ color: "white" }} />}
+          >
+            <p style={{ margin: 0, color: "white" }}>Limpiar</p>
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={filtrar}
+            endIcon={<FilterList />}
+          >
+            <p style={{ margin: 0 }}>Filtrar</p>
+          </Button>
+        </div>
+    </div>
   );
 };
 

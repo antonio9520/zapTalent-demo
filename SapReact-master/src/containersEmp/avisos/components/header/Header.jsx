@@ -51,7 +51,7 @@ const Header = ({
   totalavisos,
 }) => {
   const [search, setSearch] = useState("");
-  const handleChange = (event, newValue) => {
+  const handleChange = (event, newValue) => { 
     setQuery({});
     setSearch("");
     setIndex(newValue);

@@ -274,7 +274,7 @@
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 .btn-cancelar-postular-ofertas-laborales {
-  background-color: var(--light-blue) !important;
+  background-color: #019371 !important;
   position: absolute !important;
   right: 10px;
   bottom: 6px;

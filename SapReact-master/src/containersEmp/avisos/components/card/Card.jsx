@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Card.css";
 import {
   EventAvailable,
@@ -10,8 +10,28 @@ import {
   Delete,
   ArrowDropDown,
 } from "@material-ui/icons";
-import { IconButton } from "@material-ui/core";
-import { Tooltip } from "../../../../components";
+import {
+  IconButton,
+  Dialog,
+  Button,
+  MenuItem,
+  makeStyles,
+  LinearProgress,
+} from "@material-ui/core";
+import { Tooltip, CustomSelectB } from "../../../../components";
+import { editarAvisoAction } from "../../../../redux/actions/actions-emp/avisosAction";
+import { useDispatch } from "react-redux";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
 
 const Card = ({
   data,
@@ -28,7 +48,8 @@ const Card = ({
 }) => {
   const inicio = new Date(data.fechaInicio);
   const termino = new Date(data.fechaTermino);
-
+  const [open, setOpen] = useState(false);
+  const [state, setEstado] = useState(data.estado);
   const MESES = [
     "Enero",
     "Febrero",
@@ -89,8 +110,14 @@ const Card = ({
               {termino.getFullYear()}
             </p>
           </div>
-          <p className="p1">{data.nameuser}</p>
-          <p className="p2">{data.titulo}</p>
+          <p className="p1">{data.razonSocial}</p>
+          <Tooltip title={data.titulo} placement="top">
+            <p className="p2">
+              {data.titulo.length > 27
+                ? data.titulo.substring(0, 27) + "..."
+                : data.titulo}
+            </p>
+          </Tooltip>
           <p className="p3">{data.profesion}</p>
           {data.anosExp ? (
             <div className="anos-exp-card-avisos-emp">
@@ -130,7 +157,7 @@ const Card = ({
           <div className="estado-card-avisos-emp">
             <p>{data.estado}</p>
           </div>
-          <IconButton>
+          <IconButton onClick={() => setOpen(true)}>
             <ArrowDropDown />
           </IconButton>
         </div>
@@ -170,8 +197,88 @@ const Card = ({
           </Tooltip>
         </div>
       </div>
+      <DialogEstate
+        setOpen={setOpen}
+        open={open}
+        setEstado={setEstado}
+        state={state}
+        id={data._id}
+      />
     </div>
   );
 };
 
 export default Card;
+
+const DialogEstate = ({ setOpen, open, setEstado, state, id }) => {
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const guardarAvisoEditado = async () => {
+    setLoading(true);
+    dispatch(
+      editarAvisoAction({
+        _id: id,
+        estado: state,
+      })
+    ).then((res) => (res === true ? setOpen(false) : null));
+    setLoading(false);
+  };
+  return (
+    <Dialog
+      // disableBackdropClick
+      disableEscapeKeyDown
+      open={open}
+      onClose={handleClose}
+    >
+      <div className="cont-change-estado-aviso-emp">
+        <p>Cambiar estado</p>
+
+        <div className="container-inputs-form-emp">
+          <CustomSelectB
+            label="Estado"
+            helpertext="no puede estar vacio"
+            // error={areaError}
+            value={state}
+            onChange={(e) => {
+              setEstado(e.target.value);
+            }}
+          >
+            <MenuItem className="custom-menu-item" value="Activo">
+              Activo
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Proceso Finalizado">
+              Proceso Finalizado
+            </MenuItem>
+            <MenuItem className="custom-menu-item" value="Cancelado">
+              Cancelado
+            </MenuItem>
+          </CustomSelectB>
+        </div>
+        <div className="cont-action-estado-aviso-emp">
+          <Button onClick={handleClose} variant="contained" color="primary">
+            Cancelar
+          </Button>
+          <Button
+            onClick={guardarAvisoEditado}
+            variant="contained"
+            color="primary"
+          >
+            Guardar
+          </Button>
+        </div>
+      </div>
+      {loading ? (
+        <>
+          <div className="overlay-loading"></div>
+          <div className="linear-progres-global">
+            <LinearProgress className="progres-editar-perfil" />
+          </div>
+        </>
+      ) : null}
+    </Dialog>
+  );
+};

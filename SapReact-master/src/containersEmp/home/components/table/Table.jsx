@@ -75,6 +75,7 @@ const Table = ({
 }) => {
   const [value, setValue] = useState(0);
   const [aviso, setAviso] = useState("");
+  const [search, setSearch] = useState("");
   const totalusers = useSelector((state) => state.postulados.totalusers);
   const loading = useSelector((state) => state.postulados.loading);
 
@@ -99,13 +100,29 @@ const Table = ({
   const setIdAviso = (id) => {
     setQuery({ ...query, _id: id });
   };
-
+  const handleClick = () => {
+    // query.search = search;
+    setQuery({ ...query, search });
+    // setSkip(0);
+    // setQuery(query);
+    // setSwitch(!_switch);
+  };
+  const _handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleClick();
+    }
+  };
   return (
     <div className="table-home-emp">
       <div className="top">
         <div className="top-top-table-home-emp">
           <p>Tus postulantes</p>
-          <SearchBar /> 
+          <SearchBar
+            onChange={setSearch}
+            onClick={handleClick}
+            value={search}
+            onKeyDown={_handleKeyDown}
+          />
         </div>
         <div className="top-bottom-table-emp">
           <AntTabs

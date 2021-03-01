@@ -6,8 +6,8 @@
   overflow: hidden;
   padding: 20px;
   margin-top: 10px;
-  min-width: 570px;
-  height: 270px;
+  min-width: 600px;
+  height: 290px;
 }
 .top-card-avisos-emp {
   display: flex;
@@ -152,4 +152,28 @@
 .left-bottom-avisos-emp {
   padding-right: 20px;
   /* background-color: cadetblue; */
+}
+
+.cont-change-estado-aviso-emp {
+  width: 400px;
+  height: 300px;
+  /* background-color: rosybrown; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 35px;
+}
+.cont-change-estado-aviso-emp p {
+  color: var(--blue-primary);
+  font-size: 20px;
+  margin: 0;
+}
+
+.cont-action-estado-aviso-emp{
+  /* background-color: rosybrown; */
+  width: 190px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 142px;
+  /* margin-bottom: 20px; */
 }

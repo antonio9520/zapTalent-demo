@@ -3,21 +3,15 @@ const Adnsap = require("../../models/adnsap");
 
 exports.obtenerUsuarios = async (req, res) => {
   const skip = req.params.skip;
-  console.log(skip);
+
   // console.log(req.body);
   try {
     const query = await createQuery(req.body);
     console.log(query);
-    const Usuarios = await Usuario.find(
-      {
-        $and: [query],
-      },
-      undefined,
-      {
-        skip: parseInt(skip),
-        limit: 15,
-      }
-    );
+    const Usuarios = await Usuario.find(query, undefined, {
+      skip: parseInt(skip),
+      limit: 15,
+    });
     const dataUsers = await dataUsuarios(Usuarios);
     console.log(dataUsers);
     res.json(dataUsers);
