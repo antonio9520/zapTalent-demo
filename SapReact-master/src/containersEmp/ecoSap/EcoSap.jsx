@@ -6,6 +6,7 @@ import clientAxios from "../../config/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 import { setearTipoPlan } from "../../assets/setTipoPlan";
+import { Dialog } from "../../componentsEmp";
 
 const EcoSap = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const EcoSap = () => {
   const avisos = useSelector((state) => state.aviso.avisos);
   const [skip, setSkip] = useState(0);
   const [openModal, setOpenModal] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [idUser, setIdUser] = useState(null);
   const [dataUser, setDataUser] = useState(null);
   const [openModalDrawer, setOpenModalDrawer] = useState(false);
   const [cargando, setCargando] = useState(false);
@@ -108,6 +111,12 @@ const EcoSap = () => {
         setOpenModal={setOpenModal}
         data={dataUser}
       />
+      <Dialog
+        open={open}
+        setOpen={setOpen}
+        setIdUser={setIdUser}
+        idUser={idUser}
+      />
       <div className="top-eco-sap-emp">
         <div className="header-eco-sap-emp">
           <Header
@@ -138,6 +147,8 @@ const EcoSap = () => {
                   data={item}
                   setOpenModal={setOpenModal}
                   setDataUser={setDataUser}
+                  setOpen={setOpen}
+                  setIdUser={setIdUser}
                 />
               ))
             )
@@ -153,6 +164,8 @@ const EcoSap = () => {
                   data={item}
                   setOpenModal={setOpenModal}
                   setDataUser={setDataUser}
+                  setOpen={setOpen}
+                  setIdUser={setIdUser}
                 />
               ))
             )

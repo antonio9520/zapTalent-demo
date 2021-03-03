@@ -11,7 +11,7 @@ import {
 } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
 
-const Card = ({ data, setOpenModal, setDataUser }) => {
+const Card = ({ data, setOpenModal, setDataUser, setOpen, setIdUser }) => {
   const { nombres, apellidos, imageURL, profesion, anosZap, adns } = data;
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
@@ -24,6 +24,11 @@ const Card = ({ data, setOpenModal, setDataUser }) => {
   const verUsuario = () => {
     setDataUser(data);
     setOpenModal(true);
+  };
+
+  const generarPdf = () => {
+    setIdUser(data._id);
+    setOpen(true);
   };
   return (
     <div className="card-eco-sap-emp">
@@ -112,9 +117,9 @@ const Card = ({ data, setOpenModal, setDataUser }) => {
           <Visibility />
         </IconButton>
         <IconButton
-          disabled
           className="btn-eco-sap-emp"
-          style={{ opacity: "0.5" }}
+          // style={{ opacity: "0.5" }}
+          onClick={generarPdf}
         >
           <GetApp style={{ color: "white" }} />
         </IconButton>

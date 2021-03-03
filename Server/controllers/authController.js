@@ -2,7 +2,7 @@ const Usuario = require("../models/usuario");
 const bcryptjs = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
-const fetch = require('node-fetch');
+
 
 
 exports.autenticarUsuario = async (req, res) => {

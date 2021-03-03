@@ -429,11 +429,13 @@ const Habilidades = ({ habilidades }) => {
   return (
     <div className="cont-habilidades-perfil-new">
       <div className="item-1-b">
-        {habilidades.map((item, index) => (
-          <div className="habilidad">
-            <p>{item.name}</p>
-          </div>
-        ))}
+        {habilidades
+          ? habilidades.map((item, index) => (
+              <div className="habilidad">
+                <p>{item.name}</p>
+              </div>
+            ))
+          : null}
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const upload = require("../libs/storage");
 //Api/usuarios
 router.post("/", usuarioControllers.crearUsuarios);
 
-router.get("/:idUsuario", usuarioControllers.mostarUsuarios);
+router.get("/:id", usuarioControllers.mostarUsuarios);
 
 router.post("/validacion/rut-email", usuarioControllers.validacionEmailRut);
 
@@ -30,5 +30,6 @@ router.put(
 );
 router.get("/total/usuarios", usuarioControllers.totalUsers);
 router.get("/totaldia/usuarios", usuarioControllers.totalUsersDay);
+// router.get("/usuarioId/:id", usuarioControllers.obtenerUsuarioId);
 
 module.exports = router;

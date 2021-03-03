@@ -7,13 +7,13 @@ exports.obtenerUsuarios = async (req, res) => {
   // console.log(req.body);
   try {
     const query = await createQuery(req.body);
-    console.log(query);
+    // console.log(query);
     const Usuarios = await Usuario.find(query, undefined, {
       skip: parseInt(skip),
       limit: 15,
     });
     const dataUsers = await dataUsuarios(Usuarios);
-    console.log(dataUsers);
+    // console.log(dataUsers);
     res.json(dataUsers);
   } catch (err) {
     res.status(500).json({ msg: "Hubo un error" });

@@ -74,14 +74,15 @@ exports.crearUsuarios = async (req, res) => {
 };
 
 exports.mostarUsuarios = async (req, res) => {
+  console.log(req.params.id);
   try {
-    const usuarios = await Usuario.findById(req.params.idUsuario);
+    const usuarios = await Usuario.findById(req.params.id);
 
     if (!usuarios) {
-      res.status(400).json({ msg: "Usuario no existe" });
+      res.status(404).json({ msg: "Usuario no existe" });
     }
 
-    res.json({ usuarios });
+    res.json(usuarios);
   } catch (error) {
     console.log(error);
   }
@@ -301,7 +302,8 @@ exports.confirmarCuenta = async (req, res) => {
   //Enviar email
   await enviarEmail.enviar({
     userconfi,
-    subject: "Felicidades! hemos activado tu cuenta correctamente. Tus datos son: ",
+    subject:
+      "Felicidades! hemos activado tu cuenta correctamente. Tus datos son: ",
     name,
     apellidos,
     rut,

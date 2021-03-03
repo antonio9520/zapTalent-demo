@@ -26,6 +26,7 @@
   border-radius: 3px;
   padding: 10px 15px;
   margin: 15px 0;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
 .estado-cert-perfil-new p {

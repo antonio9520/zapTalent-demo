@@ -1,0 +1,20 @@
+.dialog-pdfcv-eco-emp {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  /* background-color: cadetblue; */
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-pdfcv-eco-emp .item-1 {
+  /* background-color: brown; */
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+
