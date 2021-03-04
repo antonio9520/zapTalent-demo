@@ -9,11 +9,16 @@ import {
 import * as React from "react";
 import font from "../../resources/fonts/Roboto/Roboto-Bold.ttf";
 import font2 from "../../resources/fonts/Roboto/Roboto-Regular.ttf";
-import { Usuario } from "./partes";
+import font3 from "../../resources/fonts/Roboto/Roboto-Italic.ttf";
+import { Usuario, Estudios, Trabajos } from "./partes";
 
 Font.register({
   family: "Roboto",
-  fonts: [{ src: font2 }, { src: font, fontWeight: 600 }],
+  fonts: [
+    { src: font2 },
+    { src: font, fontWeight: 600 },
+    { src: font3, fontStyle: "italic" },
+  ],
 });
 
 const TestDocument = ({ data }) => {
@@ -21,8 +26,10 @@ const TestDocument = ({ data }) => {
   if (data.usuario) {
     return (
       <Document>
-        <Page size="A4">
+        <Page size="A4" >
           <Usuario data={data.usuario} />
+          {data.estudios[0] && <Estudios data={data.estudios} />}
+          {data.trabajos[0] && <Trabajos data={data.trabajos} />}
         </Page>
       </Document>
     );
@@ -39,6 +46,5 @@ const TestDocument = ({ data }) => {
 };
 
 export default TestDocument;
-
 
 export const styles = StyleSheet.create({});

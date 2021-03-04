@@ -108,7 +108,7 @@ export const styles = StyleSheet.create({
   },
   image2: {
     width: 90,
-    height: 30,
+    height: 25,
     marginRight: 40,
   },
   contImagen1: {
@@ -172,7 +172,12 @@ export const styles = StyleSheet.create({
     maxWidth: 100,
   },
 
-  textTitle: { fontSize: 8, marginLeft: 5, marginTop: 5 },
+  textTitle: {
+    fontSize: 8,
+    marginLeft: 5,
+    marginTop: 5,
+    color: "#2A1B4D",
+  },
 
   textValue: { fontSize: 6, color: "#43C0F6", marginLeft: 5, marginTop: 2 },
 });
