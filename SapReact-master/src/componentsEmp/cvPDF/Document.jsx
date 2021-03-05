@@ -10,7 +10,15 @@ import * as React from "react";
 import font from "../../resources/fonts/Roboto/Roboto-Bold.ttf";
 import font2 from "../../resources/fonts/Roboto/Roboto-Regular.ttf";
 import font3 from "../../resources/fonts/Roboto/Roboto-Italic.ttf";
-import { Usuario, Estudios, Trabajos } from "./partes";
+import {
+  Usuario,
+  Estudios,
+  Trabajos,
+  Adns,
+  Certificaciones,
+  Habilidades,
+  Footer,
+} from "./partes";
 
 Font.register({
   family: "Roboto",
@@ -26,10 +34,16 @@ const TestDocument = ({ data }) => {
   if (data.usuario) {
     return (
       <Document>
-        <Page size="A4" >
+        <Page size="A4" style={{ position: "relative" }}>
           <Usuario data={data.usuario} />
           {data.estudios[0] && <Estudios data={data.estudios} />}
           {data.trabajos[0] && <Trabajos data={data.trabajos} />}
+          {data.adns[0] && <Adns data={data.adns} />}
+          {data.certificados[0] && <Certificaciones data={data.certificados} />}
+          {data.usuario.habilidades[0] && (
+            <Habilidades data={data.usuario.habilidades} />
+          )}
+          <Footer />
         </Page>
       </Document>
     );
