@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PdfDocument = ({ title, document }) => {
+const PdfDocument = ({ title, document, handleClose }) => {
   const classes = useStyles();
   const [ready, setReady] = useState(false);
 
@@ -42,21 +42,27 @@ const PdfDocument = ({ title, document }) => {
           if (loading) {
             return (
               <div className="item-1">
-                <Button
-                  className={classes.button}
-                  variant="contained"
-                  color="primary"
-                >
-                  Generando curriculum
-                </Button>
+                <p>Generando curriculum ...</p>
               </div>
             );
           }
           if (!loading && url) {
             return (
-              <a href={url} download>
-                - Descargar '{title}' (PDF)
-              </a>
+              // <a href={url} download>
+              //   - Descargar '{title}' (PDF)
+              // </a>
+              <div className="item-1">
+                <Button
+                  className={classes.button}
+                  variant="contained"
+                  color="primary"
+                  href={url}
+                  download
+                  onClick={handleClose}
+                >
+                  Descargar
+                </Button>
+              </div>
             );
           }
           if (error) {

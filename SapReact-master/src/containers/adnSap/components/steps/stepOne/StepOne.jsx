@@ -19,7 +19,7 @@ const StepOne = (props) => {
   const [switch2, setSwitch2] = useState(false);
   const [_alert, setAlert] = useState(false);
   const [msg, setMsg] = useState("");
-  console.log(modulos);
+
   let modulosFiltrados = modulos;
 
   const handleNext = () => {

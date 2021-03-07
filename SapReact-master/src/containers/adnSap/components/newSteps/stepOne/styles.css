@@ -1,0 +1,60 @@
+.step-one-new-modal-adn {
+  outline: none;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 550px;
+  position: relative;
+  padding: 20px;
+}
+.step-one-new-modal-adn p {
+  margin: 0;
+}
+/**TOP*/
+.step-one-new-modal-adn .top {
+  /* background-color: cadetblue; */
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step-one-new-modal-adn .top .p1 {
+  color: var(--blue-primary);
+}
+.step-one-new-modal-adn .top .p2 {
+  color: var(--gray-text);
+  font-size: 14px;
+}
+/**CENTER*/
+.step-one-new-modal-adn .center {
+  max-height: 200px;
+  /* background-color: chocolate; */
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+.step-one-new-modal-adn .list-empty-modulos {
+  /* background-color: coral; */
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: var(--gray-text);
+}
+.step-one-new-modal-adn .center::-webkit-scrollbar-track {
+  margin-top: 10px;
+}
+/*BOTTOM*/
+.btns-steps-new-adn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 30px;
+  /* background-color: blueviolet; */
+  display: flex;
+  justify-content: space-between;
+}

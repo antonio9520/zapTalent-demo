@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Modulos.css";
+
 import SwipeableViews from "react-swipeable-views";
 import { useSelector } from "react-redux";
 import { Tooltip } from "../../../../../../components";
- 
+
 const Modulos = (props) => {
-  const { activeStep, modulos, setArrayModules, arrayModules } = props;
+  const { activeStep, modulos, setDataModulo, dataModulo } = props;
   let arrayModulos = [];
   const longitudPedazos = 3;
 
@@ -21,11 +22,11 @@ const Modulos = (props) => {
           {item.map((item, index) => (
             <ItemModulo
               key={index}
-              item={item}
-              arrayModules={arrayModules}
-              setArrayModules={setArrayModules}
+              data={item}
+              setDataModulo={setDataModulo}
+              dataModulo={dataModulo}
             />
-          ))} 
+          ))}
         </div>
       ))}
     </SwipeableViews>
@@ -34,43 +35,52 @@ const Modulos = (props) => {
 
 export default Modulos;
 
-const ItemModulo = ({ item, setArrayModules, arrayModules }) => {
+const ItemModulo = ({ data, setDataModulo, dataModulo }) => {
+  const { desc, modulo } = data;
   const [active, setActive] = useState(false);
   const usuario = useSelector((state) => state.auth.usuario);
+
   const handleClick = () => {
     setActive(!active);
     if (active) {
-      setArrayModules(arrayModules.filter((i) => i.name !== item.modulo));
+      setDataModulo(dataModulo.filter((i) => i.name !== modulo));
     } else {
-      setArrayModules([
-        ...arrayModules,
+      setDataModulo([
+        ...dataModulo,
         {
-          name: item.modulo,
-          desc: item.desc,
-          idcert: "",
-          obs: "",
+          name: modulo,
+          desc: desc,
+          idcert: null,
+          obs: null,
           submodulos: [],
           iduser: usuario._id,
         },
       ]);
+      setTimeout(() => {
+        funcionScroll();
+      }, 200);
     }
   };
-  useEffect(() => {
-    arrayModules.map((it) => {
-      if (it.name === item.modulo) {
-        setActive(true);
-      }
-    });
-  }, []);
+
+  const funcionScroll = () => {
+    let contenedor = document.getElementById("step-one-new-modal-adn-center");
+    contenedor.scrollTop = "9999";
+  };
+  console.log(dataModulo);
   return (
-    <Tooltip title={item.desc} aria-label="add">
+    <Tooltip title={desc} aria-label="add">
       <div
         className={
           active ? "sub-cont-SwipeableViews-active" : "sub-cont-SwipeableViews"
         }
-        onClick={() => handleClick()}
+        onClick={handleClick}
       >
-        <p style={{ color: "white" }}>{item.modulo}</p>
+        <p
+          style={{ color: "white" }}
+          className={modulo.length > 6 ? "name-submod-large" : null}
+        >
+          {modulo}
+        </p>
       </div>
     </Tooltip>
   );

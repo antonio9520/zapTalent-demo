@@ -5,5 +5,15 @@ import StepThree from "./steps/stepThree/StepThree";
 import StepFour from "./steps/stepFour/StepFour";
 import Card from "./card/Card";
 import ModalEditar from "./modaleditar/ModalEditar";
+import NewModal from "./newModal/Modal";
 
-export { Modal, StepOne, StepTwo, StepThree, StepFour, Card, ModalEditar };
+export {
+  Modal,
+  StepOne,
+  StepTwo,
+  StepThree,
+  StepFour,
+  Card,
+  ModalEditar,
+  NewModal,
+};

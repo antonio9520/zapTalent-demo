@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import "./AdnSap.css";
 import { CardInit, ModalEliminar } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
-import { Modal, Card, ModalEditar } from "./components";
+import { Modal, Card, ModalEditar, NewModal } from "./components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
 import { IconButton } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
@@ -15,7 +15,7 @@ const AdnSap = () => {
   const loading = useSelector((state) => state.adn.loading);
   const adns = useSelector((state) => state.adn.adns);
   const [cardT1, setCardT1] = useState("");
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(true);
   const [openModalEditar, setOpenModalEditar] = useState(false);
   const [idEliminar, setIdEliminar] = useState("");
   const [openModalEliminar, setOpenModalEliminar] = useState(false);
@@ -24,7 +24,7 @@ const AdnSap = () => {
     modulos: [],
     submodulos: [],
   });
-  const [hidden, setHidden] = useState(false);
+
   const [_switch, setSwitch] = useState(false);
 
   useEffect(() => {
@@ -57,6 +57,7 @@ const AdnSap = () => {
     }
   };
   // console.log(adns);
+  const modal = createRef();
   return (
     <>
       {loading ? (
@@ -86,18 +87,19 @@ const AdnSap = () => {
             texto1="Muéstranos tu ADN SAP"
             texto2="Como eres nuevo en ZAPTalent, queremos conocerte. Compartenos tu identidad SAP haciendo click en el botón, nosotros te ayudamos..."
           />
-          <Modal
+          {/* <Modal
             setOpenModal={setOpenModal}
             openModal={openModal}
             adns={adns}
-          />
+          /> */}
+          <NewModal setOpenModal={setOpenModal} openModal={openModal} />
         </div>
       ) : (
         <>
           <div className="cont-title-certificados">
             <h1>Mi ADN SAP</h1>
           </div>
-          <div className="cont-cards-adn">
+          <div className="cont-cards-adn" ref={modal}>
             <div className="cont-btn-add-adn">
               <IconButton
                 className="btn-add-adn"
@@ -136,7 +138,12 @@ const AdnSap = () => {
               setSwitch={setSwitch}
               evitarBug={evitarBug}
             />
-            <Modal
+            {/* <Modal
+              setOpenModal={setOpenModal}
+              openModal={openModal}
+              adns={adns}
+            /> */}
+            <NewModal
               setOpenModal={setOpenModal}
               openModal={openModal}
               adns={adns}

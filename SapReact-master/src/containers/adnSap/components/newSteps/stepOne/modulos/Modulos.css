@@ -1,0 +1,49 @@
+.cont-SwipeableViews {
+  display: flex;
+  height: 120px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+.sub-cont-SwipeableViews-active {
+  width: 80px;
+  height: 80px;
+  background: var(--degradado-blue);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin: 0 6px;
+  transition: 0.5s all ease-in-out;
+  transform: scale(1.1);
+  overflow: hidden;
+}
+.sub-cont-SwipeableViews {
+  width: 80px;
+  height: 80px;
+  background: var(--degradado-blue);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin: 0 6px;
+  overflow: hidden;
+  transition: 0.5s all ease-in-out;
+}
+
+.sub-cont-SwipeableViews p {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.sub-cont-SwipeableViews-active p {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+}
