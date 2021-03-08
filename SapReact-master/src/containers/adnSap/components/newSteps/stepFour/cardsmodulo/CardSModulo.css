@@ -1,0 +1,262 @@
+.card-s-modulo-adn {
+  background-color: #f8f8fb;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding-right: 70px;
+  position: relative;
+  transition: 0.5s all ease-in-out;
+}
+.card-s-modulo-adn-edit {
+  background-color: #414141;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding-right: 70px;
+  position: relative;
+  /* opacity: .3; */
+
+  transition: 0.5s all ease-in-out;
+}
+
+.card-s-modulo-adn-editmod {
+  background-color: #414141;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding-right: 70px;
+  position: relative;
+  /* opacity: .3; */
+  transition: 0.5s all ease-in-out;
+  opacity: 0.3;
+}
+.box-name-four-adn {
+  width: 50px;
+  height: 50px;
+  background: var(--degradado-blue);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+.box-name-four-adn-nivel {
+  width: 50px;
+  height: 50px;
+  background: var(--degradado-blue);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.3;
+}
+.box-name-four-adn p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.top-card-four-adn {
+  display: flex;
+  padding: 10px;
+  transition: 0.5s all ease-in-out;
+}
+
+.top-card-four-adn-edit {
+  display: flex;
+  padding: 10px;
+  opacity: 0.3;
+  transition: 0.5s all ease-in-out;
+}
+.p1-card-four-adn {
+  margin: 0;
+  font-size: 14px;
+  color: var(--blue-primary);
+  font-weight: 600;
+}
+.p1-card-four-adn-nivel {
+  margin: 0;
+  color: var(--blue-primary);
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+.rigth-top-four-adn {
+  margin-left: 10px;
+}
+
+.nivel-four-adn {
+  padding: 5px 10px;
+  background-color: #4bacef;
+  display: flex;
+  border-radius: 3px;
+  margin-top: 2px;
+  justify-content: center;
+  width: 90px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.nivel-four-adn p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.p3-card-four-adn {
+  color: #4bacef;
+  margin: 0;
+  margin-left: 10px;
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.5s all ease-in-out;
+}
+.p3-card-four-adn-edit {
+  color: #e7e7e7;
+  margin: 0;
+  margin-left: 10px;
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.5s all ease-in-out;
+}
+.p3-card-four-adn-nivel {
+  color: #4bacef;
+  margin: 0;
+  margin-left: 10px;
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.5s all ease-in-out;
+  opacity: 0.3;
+}
+.p4-card-four-adn {
+  margin: 0;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: var(--gray-text);
+  font-size: 12px;
+  padding-bottom: 10px;
+  font-style: italic;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: default;
+  width: 100%;
+  height: auto;
+  /* overflow: hidden; */
+  resize: none;
+  padding-bottom: 30px;
+  padding-right: 5px;
+  font-family: "Roboto";
+  transition: 0.5s all ease-in-out;
+}
+.p4-card-four-adn-edit {
+  margin: 0;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: var(--gray-text);
+  font-size: 12px;
+  padding-bottom: 10px;
+  font-style: italic;
+  background-color: white;
+  border: none;
+  outline: none;
+  /* cursor: default; */
+  width: 100%;
+  height: auto;
+  /* overflow: hidden; */
+  resize: none;
+  padding-bottom: 30px;
+  padding-right: 5px;
+  border-radius: 5px;
+  font-family: "Roboto";
+  transition: 0.5s all ease-in-out;
+}
+
+.p4-card-four-adn-nivel {
+  margin: 0;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: var(--gray-text);
+  font-size: 12px;
+  padding-bottom: 10px;
+  font-style: italic;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: default;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  resize: none;
+  padding-bottom: 30px;
+  padding-right: 5px;
+  transition: 0.5s all ease-in-out;
+  font-family: "Roboto";
+  opacity: 0.3;
+}
+
+.cont-btns-card-four {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-card-four-adn {
+  background-color: var(--blue-primary) !important;
+  margin-bottom: 5px !important;
+  color: var(--white) !important;
+  margin-right: 10px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2) !important;
+  height: 30px;
+  width: 30px;
+}
+
+.btn-card-four-adn-delete {
+  background-color: var(--error) !important;
+  margin-bottom: 5px !important;
+  color: var(--white) !important;
+  margin-right: 10px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2) !important;
+  height: 30px;
+  width: 30px;
+}
+
+.btn-card-four-adn-edit {
+  background-color: var(--green) !important;
+  margin-bottom: 5px !important;
+  color: var(--white) !important;
+  margin-right: 10px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2) !important;
+  height: 30px;
+  width: 30px;
+}
+
+/*NIVEL*/
+.select-nivel-four-adn {
+  width: 100px;
+  margin-left: 0px;
+  background-color: white;
+  opacity: 0;
+  transition: 0.5 all ease-in-out;
+}
+
+.select-nivel-four-adn-active {
+  width: 177px;
+  margin-left: 30px;
+  margin-bottom: -15px;
+  background-color: rgb(248, 248, 248);
+  opacity: 1;
+  padding: 0;
+
+  border-radius: 5px;
+  padding: 0 10px;
+  transition: 0.5 all ease-in-out;
+}

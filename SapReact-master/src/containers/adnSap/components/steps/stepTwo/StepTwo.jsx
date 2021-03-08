@@ -4,7 +4,7 @@ import { ListItem, IconButton, Snackbar, Tooltip } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import SubModulos from "./submodulos/SubModulos";
 import { Alert } from "@material-ui/lab";
-
+ 
 const StepTwo = (props) => {
   const { setStep, arrayModules, setArrayModules, closeModal } = props;
   const [active, setActive] = useState(arrayModules[0].name);
@@ -60,7 +60,7 @@ const StepTwo = (props) => {
             active={active}
             setErrorTwo={setErrorTwo}
             setSwitch2={setSwitch2}
-          />
+          /> 
         </div>
         <div className="cont-iconbtn-close-adn">
           <IconButton onClick={closeModal}>

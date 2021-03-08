@@ -66,12 +66,22 @@ const ItemModulo = ({ data, setDataModulo, dataModulo }) => {
     let contenedor = document.getElementById("step-one-new-modal-adn-center");
     contenedor.scrollTop = "9999";
   };
-  console.log(dataModulo);
+
+  useEffect(() => {
+    dataModulo.map((it) => {
+      if (it.name === modulo) {
+        setActive(true);
+      }
+    });
+  }, []);
+
   return (
-    <Tooltip title={desc} aria-label="add">
+    <Tooltip title={desc} placement="top">
       <div
         className={
-          active ? "sub-cont-SwipeableViews-active" : "sub-cont-SwipeableViews"
+          active
+            ? "sub-cont-SwipeableViews-active-two"
+            : "sub-cont-SwipeableViews-two"
         }
         onClick={handleClick}
       >

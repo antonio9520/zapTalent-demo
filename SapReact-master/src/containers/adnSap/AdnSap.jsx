@@ -15,7 +15,7 @@ const AdnSap = () => {
   const loading = useSelector((state) => state.adn.loading);
   const adns = useSelector((state) => state.adn.adns);
   const [cardT1, setCardT1] = useState("");
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const [openModalEditar, setOpenModalEditar] = useState(false);
   const [idEliminar, setIdEliminar] = useState("");
   const [openModalEliminar, setOpenModalEliminar] = useState(false);

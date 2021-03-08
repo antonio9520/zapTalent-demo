@@ -58,7 +58,7 @@ const Form = ({ data, setDataModulo, dataModulo }) => {
               className="input-label-custom-input"
               htmlFor="component-helper"
             >
-              Id Certificacion {name} (opcional)
+              Id Certificacion (opcional)
             </InputLabel>
             <Input
               id="component-helper"

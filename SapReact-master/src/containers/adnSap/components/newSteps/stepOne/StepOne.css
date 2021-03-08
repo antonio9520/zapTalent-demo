@@ -12,6 +12,13 @@
 .step-one-new-modal-adn p {
   margin: 0;
 }
+.linear-progres-global-adn {
+  /* background-color: brown; */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
 /**TOP*/
 .step-one-new-modal-adn .top {
   /* background-color: cadetblue; */

@@ -1,0 +1,75 @@
+.step-two-new-modal-adn {
+  outline: none;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 500px;
+  position: relative;
+  padding: 20px;
+}
+/*TOP*/
+.step-two-new-modal-adn .top {
+  display: flex;
+  /* background-color: brown; */
+  justify-content: center;
+  margin-top: 30px;
+  overflow: auto;
+  padding: 20px;
+  /* width: 100%; */
+  /* max-width: 200px; */
+}
+
+.step-two-new-modal-adn .mod-two-active-two {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  font-size: 14px;
+  background: var(--degradado-blue);
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: scale(1.1);
+  overflow: hidden;
+  transition: 0.5s all ease-in-out;
+}
+.step-two-new-modal-adn .mod-two-inactive-two {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  font-size: 14px;
+  background: var(--degradado-blue);
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  opacity: 0.5;
+  overflow: hidden;
+  transition: 0.5s all ease-in-out;
+}
+.mod-two-active-two.error-modulo {
+  border: 1px solid var(--error);
+}
+.mod-two-inactive-two.error-modulo {
+  border: 1px solid var(--error);
+}
+/*BOTTOM*/
+
+.step-two-new-modal-adn .bottom {
+  margin-top: 20px;
+}
+
+/*TYPO*/
+.step-two-new-modal-adn .p1 {
+  text-align: center;
+  color: var(--blue-primary);
+  margin-top: 20px;
+}

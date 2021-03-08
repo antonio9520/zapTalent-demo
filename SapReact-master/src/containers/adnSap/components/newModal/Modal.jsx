@@ -13,13 +13,13 @@ const CustomModal = (props) => {
   const classes = useStyles();
   const { setOpenModal, openModal } = props;
   const [step, setStep] = useState("one");
-  const [arrayModules, setArrayModules] = useState([]);
+  const [dataModulo, setDataModulo] = useState([]);
 
   const closeModal = () => {
     setOpenModal(false);
     setTimeout(() => {
       setStep("one");
-      setArrayModules([]);
+      setDataModulo([]);
     }, 300);
   };
 
@@ -40,13 +40,33 @@ const CustomModal = (props) => {
     >
       <Fade in={openModal}>
         {step === "one" ? (
-          <StepOne setStep={setStep} closeModal={closeModal} />
+          <StepOne
+            setStep={setStep}
+            closeModal={closeModal}
+            setDataModulo={setDataModulo}
+            dataModulo={dataModulo}
+          />
         ) : step === "two" ? (
-          <StepTwo setStep={setStep} closeModal={closeModal} />
+          <StepTwo
+            setStep={setStep}
+            closeModal={closeModal}
+            setDataModulo={setDataModulo}
+            dataModulo={dataModulo}
+          />
         ) : step === "three" ? (
-          <StepThree setStep={setStep} closeModal={closeModal} />
+          <StepThree
+            setStep={setStep}
+            closeModal={closeModal}
+            setDataModulo={setDataModulo}
+            dataModulo={dataModulo}
+          />
         ) : step === "four" ? (
-          <StepFour setStep={setStep} closeModal={closeModal} />
+          <StepFour
+            setStep={setStep}
+            closeModal={closeModal}
+            setDataModulo={setDataModulo}
+            dataModulo={dataModulo}
+          />
         ) : null}
       </Fade>
     </Modal>

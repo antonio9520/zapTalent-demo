@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./StepFour.css";
+// import "./StepFour.css";
 import { ListItem, IconButton, LinearProgress } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import {

@@ -1,0 +1,172 @@
+.cont-four-adn-editar {
+  background-color: #414141;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 600px;
+  outline: none;
+  transition: 0.5s all ease-in-out;
+}
+.cont-four-adn-formeditar {
+  background-color: var(--white);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 600px;
+  outline: none;
+  transition: 0.5s all ease-in-out;
+}
+.linear-progres-adnsap {
+  /* background-color: chocolate; */
+  /* z-index: 99; */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.sub-cont-four-adn {
+  /* background-color: chartreuse; */
+  position: relative;
+  /* padding: 20px; */
+  margin-top: 30px;
+}
+.cont-top-adn-four {
+  display: flex;
+  width: 100%;
+  /* margin-top: 40px; */
+}
+.content-center-adn-four {
+  flex: 5;
+  width: 200px;
+  height: 80px;
+}
+
+.cont-SwipeableViews-four {
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+.p-id-modulos {
+  color: var(--blue-primary);
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 2px 0;
+  text-align: center;
+}
+
+.cont-cards-s-modulos-four {
+  max-height: 220px;
+  margin-bottom: 100px;
+  width: 100%;
+  /* height: 100%; */
+  margin-top: 20px;
+
+  padding: 0 10px;
+  overflow: auto;
+  position: relative;
+  /* background-color: lightgreen; */
+}
+.cont-cards-s-modulos-four::-webkit-scrollbar-track {
+  margin-top: 10px;
+}
+.pobs-title {
+  color: #4bacef;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pobs-desc {
+  color: var(--gray-text);
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.p-name-modulos {
+  color: var(--blue-primary);
+  margin: 0;
+  font-size: 22px;
+  font-weight: 200;
+  max-width: 250px;
+  margin-top: 5px;
+  text-align: center;
+  /* background-color: chartreuse; */
+}
+.cont-btn-adn-four {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  padding: 20px 30px 30px 30px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--white);
+  transition: 0.5s all ease-in-out !important;
+}
+.cont-btn-adn-four-edit {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  padding: 20px 30px 30px 20px;
+  bottom: 0;
+  left: 0;
+  background-color: #414141;
+  transition: 0.5s all ease-in-out !important;
+}
+
+/*modulos*/
+.sub-cont-four-adn .mod-two-active-two {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  font-size: 14px;
+  background: var(--degradado-blue);
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: scale(1.1);
+  overflow: hidden;
+  transition: 0.5s all ease-in-out;
+}
+.sub-cont-four-adn .mod-two-inactive-two {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  font-size: 14px;
+  background: var(--degradado-blue);
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  opacity: 0.5;
+  overflow: hidden;
+  transition: 0.5s all ease-in-out;
+}
+/*Editar*/

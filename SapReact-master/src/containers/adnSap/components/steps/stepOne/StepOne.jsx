@@ -96,7 +96,7 @@ const StepOne = (props) => {
           {arrayModules.length > 0
             ? arrayModules.map((item, index) => (
                 <Form
-                  key={index}
+                  key={index} 
                   item={item}
                   arrayModules={arrayModules}
                   setArrayModules={setArrayModules}

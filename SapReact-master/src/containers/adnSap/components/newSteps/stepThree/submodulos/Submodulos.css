@@ -1,0 +1,88 @@
+.cont-loading-adn-nivel {
+  /* background-color: royalblue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  padding-bottom: 50px;
+}
+
+.stepper-one-adn-two {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  /* background-color: lawngreen; */
+}
+
+.step-one-top-adn-two {
+  display: flex;
+  /* flex: 5; */
+  /* background-color: lightcoral; */
+  /* height: 40px; */
+}
+
+.cont-SwipeableViews-two {
+  display: flex;
+  /* background-color: lightgreen; */
+  padding: 10px 30px;
+  justify-content: space-between;
+}
+
+.cont-nivel-adn-three-two {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+.cont-nivel-adn-three-two .p1 {
+  color: var(--blue-primary);
+  text-align: center;
+  margin: 20px 0;
+}
+
+/*NIVEL*/
+.sub-nivel-adn-two {
+  width: 70px;
+  height: 70px;
+  margin-left: 10px;
+  
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.2);
+  transition: 0.5s all ease-in-out;
+}
+
+.sub-nivel-adn-two p {
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+}
+.sub-nivel-adn-active-two {
+  width: 70px;
+  height: 70px;
+  margin-left: 10px;
+  
+  border-radius: 5px;
+  /* border: 4px solid #555454; */
+  transform: scale(1.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid #c0d2ee;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.5s all ease-in-out;
+}
+
+.sub-nivel-adn-active-two p {
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+  /* font-weight: 600; */
+}

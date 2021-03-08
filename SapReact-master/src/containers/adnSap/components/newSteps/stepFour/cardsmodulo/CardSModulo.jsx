@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "./CardSModulo.css";
+import "./CardSModulo.css";
 import { IconButton, MenuItem } from "@material-ui/core";
 import { Delete, Edit, Check, Close } from "@material-ui/icons";
 import { Tooltip } from "../../../../../../components";
@@ -150,6 +150,7 @@ const CardSModulo = ({
                   textAlign: "center",
                   color: "white",
                 }}
+                className={data.name.length > 3 ? "name-submod-large" : null}
               >
                 {data.name}
               </p>
@@ -157,9 +158,15 @@ const CardSModulo = ({
           </Tooltip>
         </div>
         <div className="rigth-top-four-adn">
-          <p className={nivel ? "p1-card-four-adn-nivel" : "p1-card-four-adn"}>
-            {data.desc}
-          </p>
+          <Tooltip title={data.desc} placement="top">
+            <p
+              className={nivel ? "p1-card-four-adn-nivel" : "p1-card-four-adn"}
+            >
+              {data.desc.length > 30
+                ? data.desc.substring(0, 30) + "..."
+                : data.desc}
+            </p>
+          </Tooltip>
           <div style={{ display: "flex", alignItems: "center" }}>
             <div className="nivel-four-adn">
               <p className="p2-card-four-adn" style={{ color: "white" }}>

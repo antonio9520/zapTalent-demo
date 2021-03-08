@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding: 0 5px;
 }
-.sub-cont-SwipeableViews-active {
+.sub-cont-SwipeableViews-active-two {
   width: 80px;
   height: 80px;
   background: var(--degradado-blue);
@@ -13,14 +13,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   margin: 0 6px;
   transition: 0.5s all ease-in-out;
   transform: scale(1.1);
   overflow: hidden;
 }
-.sub-cont-SwipeableViews {
+.sub-cont-SwipeableViews-two {
   width: 80px;
   height: 80px;
   background: var(--degradado-blue);
@@ -29,7 +29,7 @@
   justify-content: center;
   align-items: center;
   opacity: 0.5;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px  5px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   margin: 0 6px;
   overflow: hidden;

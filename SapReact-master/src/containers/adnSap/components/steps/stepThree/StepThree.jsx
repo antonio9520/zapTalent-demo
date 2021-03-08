@@ -11,7 +11,7 @@ const StepThree = (props) => {
   const [active, setActive] = useState(arrayModules[0].name);
   const [errorThree, setErrorThree] = useState([]);
   const [switch2, setSwitch2] = useState(false);
-  const [_alert, setAlert] = useState(false);
+  const [_alert, setAlert] = useState(false); 
   const [msg, setMsg] = useState("");
 
   const validation = () => {
@@ -47,7 +47,7 @@ const StepThree = (props) => {
               key={index}
               data={item}
               active={active}
-              setActive={setActive}
+              setActive={setActive} 
             />
           ))}
         </div>
