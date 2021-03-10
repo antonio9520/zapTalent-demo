@@ -7,7 +7,16 @@
   display: flex;
   /* z-index: 9; */
 }
-
+.cont-image-foto-perfil-home {
+  width: 130px;
+  height: 130px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
+}
 .overlay-perfil-home::after {
   content: "";
   position: absolute;

@@ -44,6 +44,7 @@ const CustomModal = (props) => {
   const [rpassword, setRpassword] = useState("");
   const [sexo, setSexo] = useState("");
   const [inputRut, setInputRut] = useState(true);
+  const [fechaNacimiento, setFechaNacimiento] = useState(null);
   //reg-b
   const [region, setRegion] = useState("");
   const [comuna, setComuna] = useState("");
@@ -65,6 +66,7 @@ const CustomModal = (props) => {
     setEmail("");
     setEcivil("");
     setNacion("");
+    setFechaNacimiento(null);
     setPassword("");
     setRpassword("");
     setRegion("");
@@ -100,6 +102,7 @@ const CustomModal = (props) => {
         consultor,
         anosExp,
         anosZap,
+        fechaNacimiento,
         pretencion,
       })
     ).then((res) => {
@@ -157,6 +160,8 @@ const CustomModal = (props) => {
             setNacion={setNacion}
             setSexo={setSexo}
             handleClose={handleClose}
+            fechaNacimiento={fechaNacimiento}
+            setFechaNacimiento={setFechaNacimiento}
           />
         ) : view === "B" ? (
           <RegistroB

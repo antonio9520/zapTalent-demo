@@ -23,9 +23,11 @@ const Privada = ({ ...props }) => {
           !auth && !loading ? (
             <Redirect to="/login" />
           ) : (
-            <Layout>
-              <Routes {...props} />
-            </Layout>
+            <>
+              <Layout>
+                <Routes {...props} />
+              </Layout>
+            </>
           )
         }
       />

@@ -6,6 +6,7 @@ import {
   Room,
   PhoneIphone,
   Description,
+  Event,
 } from "@material-ui/icons";
 import { Tooltip } from "../../../../../components";
 
@@ -76,7 +77,7 @@ const Menu = ({ active, setActive, setActiveStep, loading }) => {
           />
         </ListItem>
       </Tooltip>
-      <Tooltip title="Editar teléfono" placement="top">
+      <Tooltip title="Editar teléfono y fecha de nacimiento" placement="top">
         <ListItem
           button
           disabled={loading}
@@ -90,9 +91,18 @@ const Menu = ({ active, setActive, setActiveStep, loading }) => {
           <PhoneIphone
             className={
               active === "four"
-                ? "icon-item-menu-ed-per-active"
+                ? "icon-item-menu-ed-per-active-two"
                 : "icon-item-menu-ed-per"
             }
+            style={{ marginBottom: 20, marginLeft: 5 }}
+          />
+          <Event
+            className={
+              active === "four"
+                ? "icon-item-menu-ed-per-active-two"
+                : "icon-item-menu-ed-per"
+            }
+            style={{ marginTop: 20, marginRight: 5 }}
           />
         </ListItem>
       </Tooltip>

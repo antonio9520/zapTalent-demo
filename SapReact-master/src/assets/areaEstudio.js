@@ -1,4 +1,5 @@
 export const areaEstudio = [
+  "Otro",
   "Abogacía / Derecho / Leyes",
   "Acuaría",
   "Acuicultura",

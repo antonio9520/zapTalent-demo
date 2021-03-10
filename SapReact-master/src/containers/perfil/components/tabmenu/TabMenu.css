@@ -7,7 +7,6 @@
   padding: 60px 20px;
   position: relative;
   overflow: hidden;
-  
 }
 
 .cont-items-menu-ed-per {
@@ -48,6 +47,23 @@
   color: #ffffff;
   width: 40px !important;
   height: 40px !important;
+  transition: 0.5s ease-in-out !important;
+}
+
+/*DOS ICONOS*/
+
+.icon-item-menu-ed-per {
+  color: #e2e2e2;
+  width: 30px !important;
+  height: 30px !important;
+  transition: 0.5s ease-in-out !important;
+}
+
+.icon-item-menu-ed-per-active-two {
+  color: #ffffff;
+  width: 35px !important;
+  height: 35px !important;
+
   transition: 0.5s ease-in-out !important;
 }
 

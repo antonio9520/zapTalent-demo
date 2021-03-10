@@ -13,6 +13,8 @@ router.post("/validacion/rut-email", usuarioControllers.validacionEmailRut);
 
 router.put("/:iduser", usuarioControllers.putUsuario);
 
+router.put("/enviarEmail/activacion", usuarioControllers.enviarEmailActivacion);
+
 router.put(
   "/actualizar-password/:iduser",
   usuarioControllers.actualizarPassword

@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import "./RegistroA2.css";
-import { OutInput, CustomSelect } from "../../../../components";
+import { CustomSelect } from "../../../../components";
 import logo from "../../../../resources/img/ZAPTalent-Logotipo-Vertical-Original.svg";
 import { ListItem, MenuItem, IconButton } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import { naciones } from "../../../../assets/nacionalidades";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import esLocale from "date-fns/locale/es";
+import DateFnsUtils from "@date-io/date-fns";
 
 const RegistroA2 = (props) => {
   const {
@@ -13,6 +19,8 @@ const RegistroA2 = (props) => {
     sexo,
     setEcivil,
     setNacion,
+    fechaNacimiento,
+    setFechaNacimiento,
     setSexo,
     setView,
     handleClose,
@@ -20,6 +28,7 @@ const RegistroA2 = (props) => {
   const [errornacion, setErrorNacion] = useState(false);
   const [errorcivil, setErrorCivil] = useState(false);
   const [errorsexo, setErrorSexo] = useState(false);
+  const [errorFecha, setErrorFecha] = useState(false);
 
   //Validacion
   const validacion = () => {
@@ -38,6 +47,11 @@ const RegistroA2 = (props) => {
       setErrorNacion(true);
       return;
     }
+    if (fechaNacimiento === null) {
+      setErrorFecha(true);
+      return;
+    }
+
     setView("B");
   };
   return (
@@ -121,6 +135,41 @@ const RegistroA2 = (props) => {
               </MenuItem>
             ))}
           </CustomSelect>
+        </div>
+        <div className="center-2">
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
+            <KeyboardDatePicker
+              error={errorFecha}
+              inputVariant="outlined"
+              fullWidth
+              size="small"
+              label="Fecha de nacimiento"
+              // minDate={new Date("2010-01-01")}
+              maxDate={new Date()}
+              helperText={
+                errorFecha ? "Fecha de nacimiento no puede estar vacio" : null
+              }
+              openTo="year"
+              format="dd/MM/yyyy"
+              value={fechaNacimiento}
+              // maxDate={new Date()}
+              onChange={(newValue) => {
+                setErrorFecha(false);
+                setFechaNacimiento(newValue);
+              }}
+              style={{ backgroundColor: "#F3F8FE" }}
+              InputProps={{
+                className: "input-date-picker-inicio",
+                readOnly: true,
+                style: { paddingRight: 0 },
+              }}
+              className="date-picker-inicio"
+              InputLabelProps={{ className: "input-label-date-form" }}
+              FormHelperTextProps={{
+                className: "helper-text-fecha-nacimiento",
+              }}
+            />
+          </MuiPickersUtilsProvider>
         </div>
       </div>
       <div className="bottom-reg-a2">

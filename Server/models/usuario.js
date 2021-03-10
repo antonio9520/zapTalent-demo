@@ -22,6 +22,9 @@ const UsuariosSchema = mongoose.Schema({
     type: String,
     trim: true,
   },
+  fechaNacimiento: {
+    type: Date,
+  },
   email: {
     type: String,
     trim: true,

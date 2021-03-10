@@ -84,7 +84,7 @@ const Location = ({ usuario, loading }) => {
             disabled={editar}
           />
         </div>
-        <div className="item-edit-perfil">
+        <div className="item-edit-perfil" style={{ marginTop: 10 }}>
           <Room className="icon-form-edit-perfil" />
           <CustomSelectB
             label="Región"
@@ -107,7 +107,7 @@ const Location = ({ usuario, loading }) => {
             ))}
           </CustomSelectB>
         </div>
-        <div className="item-edit-perfil">
+        <div className="item-edit-perfil" style={{ marginTop: 10 }}>
           <Room className="icon-form-edit-perfil" />
           <CustomSelectB
             label="Comuna"

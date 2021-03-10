@@ -114,8 +114,8 @@ body {
   max-width: 400px !important;
   overflow: auto !important;
 }
-.linear-progres-global {
-}
+
+
 /**
 components:
 -boton completar
@@ -124,7 +124,6 @@ colors:
 
 */
 /*menu item*/
-
 
 .custom-menu-item::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -151,7 +150,6 @@ colors:
 .custom-menu-item::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: #dbeefc;
-  
 }
 /*P*/
 p::-webkit-scrollbar {
@@ -208,7 +206,6 @@ div::-webkit-scrollbar-thumb {
 div::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: #dbeefc;
-  
 }
 
 /*TEXTAREA*/

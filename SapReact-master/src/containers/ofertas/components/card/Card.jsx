@@ -419,7 +419,7 @@ const Modulos = ({ data, num, setActive, active }) => {
   }, [active]);
   return (
     <>
-      <Tooltip title={data.desc ? data.desc : ""}>
+      <Tooltip title={data.desc ? data.desc : ""} placement="top">
         <div
           className={activeM ? "modulo-activo-ol" : "modulo-inactivo-ol"}
           onClick={handleClick}
@@ -436,22 +436,11 @@ const Modulos = ({ data, num, setActive, active }) => {
 const SubModulos = ({ data }) => {
   return (
     <>
-      <Tooltip title={data.desc ? data.desc : ""}>
+      <Tooltip title={data.desc ? data.desc : ""} placement="top">
         <div
           className={"modulo-activo-ol"}
           style={{ position: "relative", marginTop: "3px" }}
         >
-          <Tooltip title={data.nivel} placement="left">
-            <div
-              style={{
-                position: "absolute",
-                right: 0,
-                top: 0,
-                width: "100%",
-                height: "100%",
-              }}
-            ></div>
-          </Tooltip>
           <p className={data.submodulo.length > 6 ? "name-submod-large" : null}>
             {data.submodulo}
           </p>

@@ -7,6 +7,7 @@ import {
   Modal,
   Filtro,
   ModalAviso,
+  ReEmail,
 } from "./components";
 import { BusinessCenterOutlined } from "@material-ui/icons";
 import { filtrarOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
@@ -125,94 +126,107 @@ const Ofertas = (props) => {
   }, [skip]);
 
   return (
-    <>
-      <div className="ofertas-laborales">
-        <Modal
-          setOpen={setOpenModal}
-          open={openModal}
-          setIdEmp={setIdEmp}
-          idEmp={idEmp}
-        />
-        <ModalAviso
-          setOpen={setOpenModalAviso}
-          open={openModalAviso}
-          setIdAviso={setIdAviso}
-          idAviso={idAviso}
-          idEmp={idEmp}
-          setIdEmp={setIdEmp}
-        />
-        <div className="titulo-page">
-          <BusinessCenterOutlined className="icon-page-header-user" />
-          <h1>Ofertas Laborales</h1>
-        </div>
-        <div className="cont-header-of-laborales-top">
-          <div className="cont-header-of-laborales">
-            <Header
-              setOpen={setOpen}
-              indexTab={indexTab}
-              setindexTab={setindexTab}
-              setSkip={setSkip}
-              obtenerOfertas={obtenerOfertas}
-              query={query}
-              setQuery={setQuery}
-              search={search}
-              setSearch={setSearch}
+    <div className="ofertas-laborales">
+      {usuario ? (
+        usuario.activo === 1 ? (
+          <>
+            <Modal
+              setOpen={setOpenModal}
+              open={openModal}
+              setIdEmp={setIdEmp}
+              idEmp={idEmp}
             />
-          </div>
-          <div className="empty-header-of"></div>
-        </div>
-
-        <div className="cont-cards-filtro-ofertas">
-          <div className="cont-card-of-laborales" onScroll={handleScroll}>
-            {cargando ? (
-              <div className="div-cargando-avisos">
-                <p>Cargando...</p>
-              </div>
-            ) : indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
-              ofertasLaborales.map((item) => (
-                <Card
-                  data={item}
-                  key={item._id}
-                  setOpen={setOpenModal}
-                  setOpenModalAviso={setOpenModalAviso}
-                  setIdEmp={setIdEmp}
-                  setIdAviso={setIdAviso}
+            <ModalAviso
+              setOpen={setOpenModalAviso}
+              open={openModalAviso}
+              setIdAviso={setIdAviso}
+              idAviso={idAviso}
+              idEmp={idEmp}
+              setIdEmp={setIdEmp}
+            />
+            <div className="titulo-page">
+              <BusinessCenterOutlined className="icon-page-header-user" />
+              <h1>Ofertas Laborales</h1>
+            </div>
+            <div className="cont-header-of-laborales-top">
+              <div className="cont-header-of-laborales">
+                <Header
+                  setOpen={setOpen}
+                  indexTab={indexTab}
+                  setindexTab={setindexTab}
+                  setSkip={setSkip}
+                  obtenerOfertas={obtenerOfertas}
+                  query={query}
+                  setQuery={setQuery}
+                  search={search}
+                  setSearch={setSearch}
                 />
-              ))
-            ) : null}
-            {indexTab === 1
-              ? postulaciones.map((item) => (
-                  <Card
-                    data={item}
-                    key={item._id}
-                    setOpen={setOpenModal}
-                    setOpenModalAviso={setOpenModalAviso}
-                    setIdEmp={setIdEmp}
-                    setIdAviso={setIdAviso}
-                  />
-                ))
-              : null}
-
-            {(loading || loadingPost) && !cargando ? (
-              <div className="div-cargando-avisos">
-                <p>Cargando...</p>
               </div>
-            ) : !cargando ? (
-              indexTab === 1 ? (
-                <div className="div-cargando-avisos">
-                  <p>No Tienes mas postulaciones</p>
-                </div>
-              ) : !cargando ? (
-                indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
+              <div className="empty-header-of"></div>
+            </div>
+
+            <div className="cont-cards-filtro-ofertas">
+              <div className="cont-card-of-laborales" onScroll={handleScroll}>
+                {cargando ? (
                   <div className="div-cargando-avisos">
-                    <p>No quedan mas ofertas laborales</p>
+                    <p>Cargando...</p>
                   </div>
-                ) : null
-              ) : null
-            ) : null}
-          </div>
-          <div className="cont-filtro-of-laborales">
-            <Filtro
+                ) : indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
+                  ofertasLaborales.map((item) => (
+                    <Card
+                      data={item}
+                      key={item._id}
+                      setOpen={setOpenModal}
+                      setOpenModalAviso={setOpenModalAviso}
+                      setIdEmp={setIdEmp}
+                      setIdAviso={setIdAviso}
+                    />
+                  ))
+                ) : null}
+                {indexTab === 1
+                  ? postulaciones.map((item) => (
+                      <Card
+                        data={item}
+                        key={item._id}
+                        setOpen={setOpenModal}
+                        setOpenModalAviso={setOpenModalAviso}
+                        setIdEmp={setIdEmp}
+                        setIdAviso={setIdAviso}
+                      />
+                    ))
+                  : null}
+
+                {(loading || loadingPost) && !cargando ? (
+                  <div className="div-cargando-avisos">
+                    <p>Cargando...</p>
+                  </div>
+                ) : !cargando ? (
+                  indexTab === 1 ? (
+                    <div className="div-cargando-avisos">
+                      <p>No Tienes mas postulaciones</p>
+                    </div>
+                  ) : !cargando ? (
+                    indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
+                      <div className="div-cargando-avisos">
+                        <p>No quedan mas ofertas laborales</p>
+                      </div>
+                    ) : null
+                  ) : null
+                ) : null}
+              </div>
+              <div className="cont-filtro-of-laborales">
+                <Filtro
+                  open={open}
+                  setOpen={setOpen}
+                  query={query}
+                  setindexTab={setindexTab}
+                  obtenerOfertas={obtenerOfertas}
+                  setQuery={setQuery}
+                  setSkip={setSkip}
+                />
+              </div>
+            </div>
+            <FiltroDrawer
               open={open}
               setOpen={setOpen}
               query={query}
@@ -221,19 +235,12 @@ const Ofertas = (props) => {
               setQuery={setQuery}
               setSkip={setSkip}
             />
-          </div>
-        </div>
-        <FiltroDrawer
-          open={open}
-          setOpen={setOpen}
-          query={query}
-          setindexTab={setindexTab}
-          obtenerOfertas={obtenerOfertas}
-          setQuery={setQuery}
-          setSkip={setSkip}
-        />
-      </div>
-    </>
+          </>
+        ) : (
+          <ReEmail email={usuario.email} />
+        )
+      ) : null}
+    </div>
   );
 };
 

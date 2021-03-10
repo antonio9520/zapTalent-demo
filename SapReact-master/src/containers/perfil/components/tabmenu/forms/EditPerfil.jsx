@@ -31,6 +31,9 @@ const EditPerfil = ({ usuario, loading }) => {
   const [pretencion, setPretencion] = useState(
     usuario ? usuario.pretencion : null
   );
+  const [consultor, setConsultor] = useState(
+    usuario ? usuario.consultor : null
+  );
   const [_id] = useState(usuario ? usuario._id : null);
   const [rutmsg, setRutMsg] = useState("");
   const [rutError, setRutError] = useState(false);
@@ -42,10 +45,8 @@ const EditPerfil = ({ usuario, loading }) => {
   const [nombresmsg, setNombresMsg] = useState("");
   const [apellidosmsg, setApellidosMsg] = useState("");
   const [errorpretencion, setErrorPretencion] = useState(false);
-  const [nacionmsg, setNacionMsg] = useState("");
-  const [consultor, setConsultor] = useState(
-    usuario ? usuario.consultor : null
-  );
+  // const [nacionmsg, setNacionMsg] = useState("");
+
   const formatRut2 = () => {
     document.getElementById("input-rut-ed").value = rut;
   };
@@ -102,16 +103,12 @@ const EditPerfil = ({ usuario, loading }) => {
       setEmailMsg("El formato de email es erroneo");
       return;
     }
-    //validacion nacionalidad
-    if (nacion.trim() === "") {
-      setErrorNacion(true);
-      setNacionMsg("Nación no puede estar vacio");
-      return;
-    } else if (pattern3.test(nacion.trim()) === false) {
-      setErrorNacion(true);
-      setNacionMsg("Nación no puede contener numeros");
-      return;
-    }
+    // //validacion nacionalidad
+    // if (nacion.trim() === "") {
+    //   setErrorNacion(true);
+    //   setNacionMsg("Nación no puede estar vacio");
+    //   return;
+    // }
     if (parseInt(pretencion) < 1) {
       setErrorPretencion(true);
       return;
@@ -146,6 +143,7 @@ const EditPerfil = ({ usuario, loading }) => {
     setEmail(usuario ? usuario.email : null);
     setEcivil(usuario ? usuario.ecivil : null);
     setNacion(usuario ? usuario.nacion : null);
+    setConsultor(usuario ? usuario.consultor : null);
     setRutError(false);
     setErrorNacion(false);
     setErrorNombre(false);
@@ -179,25 +177,41 @@ const EditPerfil = ({ usuario, loading }) => {
             <div className="tipo-consultor-edit-perfil">
               <div
                 className={consultor === "Training" ? "tc-active" : null}
-                onClick={() => setConsultor("Training")}
+                onClick={() => (editar ? null : setConsultor("Training"))}
+                style={{
+                  opacity: editar ? "0.5" : null,
+                  cursor: editar ? "inherit" : "pointer",
+                }}
               >
                 <p>Training</p>
               </div>
               <div
                 className={consultor === "Junior" ? "tc-active" : null}
-                onClick={() => setConsultor("Junior")}
+                onClick={() => (editar ? null : setConsultor("Junior"))}
+                style={{
+                  opacity: editar ? "0.5" : null,
+                  cursor: editar ? "inherit" : "pointer",
+                }}
               >
                 <p>Junior</p>
               </div>
               <div
                 className={consultor === "Semi Senior" ? "tc-active" : null}
-                onClick={() => setConsultor("Semi Senior")}
+                onClick={() => (editar ? null : setConsultor("Semi Senior"))}
+                style={{
+                  opacity: editar ? "0.5" : null,
+                  cursor: editar ? "inherit" : "pointer",
+                }}
               >
                 <p>Semi Senior</p>
               </div>
               <div
                 className={consultor === "Senior" ? "tc-active" : null}
-                onClick={() => setConsultor("Senior")}
+                onClick={() => (editar ? null : setConsultor("Senior"))}
+                style={{
+                  opacity: editar ? "0.5" : null,
+                  cursor: editar ? "inherit" : "pointer",
+                }}
               >
                 <p>Senior</p>
               </div>

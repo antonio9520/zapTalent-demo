@@ -41,17 +41,19 @@ const CardPerfil = (props) => {
         <div className="overlay-perfil-home"></div>
         <div className="cont-img-card-perfil-home">
           {imageURL ? (
-            <img
-              style={{
-                borderRadius: "50%",
-                height: "120px",
-                width: "120px",
-                marginTop: "30px",
-                marginBottom: "30px",
-              }}
-              src={imageURL}
-              alt="user-logo"
-            />
+            <div className="cont-image-foto-perfil-home">
+              <img
+                style={{
+                  borderRadius: "50%",
+                  height: "120px",
+                  width: "120px",
+                  marginTop: "30px",
+                  marginBottom: "30px",
+                }}
+                src={imageURL}
+                alt="user-logo"
+              />
+            </div>
           ) : (
             <img src={userlogo} alt="user-logo" />
           )}

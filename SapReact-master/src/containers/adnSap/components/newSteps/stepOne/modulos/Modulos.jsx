@@ -50,8 +50,8 @@ const ItemModulo = ({ data, setDataModulo, dataModulo }) => {
         {
           name: modulo,
           desc: desc,
-          idcert: null,
-          obs: null,
+          idcert: "",
+          obs: "",
           submodulos: [],
           iduser: usuario._id,
         },

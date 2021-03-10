@@ -20,7 +20,7 @@ const CssTextField = withStyles({
     backgroundColor: "#f3f8fe",
     maxHeight: "35px ",
 
-    "& label": {
+    "& label": { 
       fontSize: "12px",
     },
     "& .MuiInput-underline:after": {
@@ -49,7 +49,6 @@ const CssTextField = withStyles({
 const Filtros = ({
   open,
   setOpen,
-
   setindexTab,
   obtenerOfertas,
   setQuery,

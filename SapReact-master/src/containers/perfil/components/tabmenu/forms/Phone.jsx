@@ -7,16 +7,26 @@ import {
   FormHelperText,
   Input,
 } from "@material-ui/core";
-import { Edit, PhoneIphone } from "@material-ui/icons";
+import { Edit, PhoneIphone, Event } from "@material-ui/icons";
 import InputMask from "react-input-mask";
 import { useDispatch } from "react-redux";
 import { editarUsuarioAction } from "../../../../../redux/actions/authAction";
 import { Tooltip } from "../../../../../components";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import esLocale from "date-fns/locale/es";
+import DateFnsUtils from "@date-io/date-fns";
 
 const Phone = ({ usuario, loading }) => {
   const dispatch = useDispatch();
   const [editar, setEditar] = useState(true);
   const [phone, setPhone] = useState(usuario ? usuario.phone : null);
+  const [fechaNacimiento, setFechaNacimiento] = useState(
+    usuario ? (usuario.fechaNacimiento ? usuario.fechaNacimiento : null) : null
+  );
+  console.log(usuario ? usuario.fechaNacimiento : null);
   const [errorphone, setErrorPhone] = useState(false);
   const [phonemsg, setPhoneMsg] = useState("");
   const [_id] = useState(usuario ? usuario._id : null);
@@ -32,7 +42,7 @@ const Phone = ({ usuario, loading }) => {
       setPhoneMsg("Ingrese un numero de telefono valido");
       return;
     }
-    dispatch(editarUsuarioAction({ _id, phone }));
+    dispatch(editarUsuarioAction({ _id, phone, fechaNacimiento }));
     setEditar(true);
   };
 
@@ -44,7 +54,7 @@ const Phone = ({ usuario, loading }) => {
   return (
     <div style={{ position: "relative", height: "500px" }}>
       <div className="top-edit-perfil-2">
-        <p>Editar teléfono</p>
+        <p>Editar teléfono y fecha de nacimiento</p>
         <Tooltip title="Editar">
           <IconButton
             className={
@@ -92,6 +102,41 @@ const Phone = ({ usuario, loading }) => {
               </FormHelperText>
             ) : null}
           </FormControl>
+        </div>
+        <div className="item-edit-perfil" style={{ marginTop: 10 }}>
+          <Event className="icon-form-edit-perfil" />
+
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
+            <KeyboardDatePicker
+              // error={errorFecha}
+              disabled={editar}
+              fullWidth
+              size="small"
+              label="Fecha de nacimiento"
+              // minDate={new Date("2010-01-01")}
+              maxDate={new Date()}
+              // helperText={
+              //   errorFecha ? "Fecha de nacimiento no puede estar vacio" : null
+              // }
+              openTo="year"
+              format="dd/MM/yyyy"
+              value={fechaNacimiento}
+              // maxDate={new Date()}
+              onChange={(newValue) => {
+                setFechaNacimiento(newValue);
+              }}
+              InputProps={{
+                className: "input-date-picker-inicio",
+                readOnly: true,
+                style: { paddingRight: 0 },
+              }}
+              className="date-picker-inicio"
+              InputLabelProps={{ className: "input-label-date-form" }}
+              FormHelperTextProps={{
+                className: "helper-text-fecha-nacimiento",
+              }}
+            />
+          </MuiPickersUtilsProvider>
         </div>
       </div>
       <div className="cont-btn-edit-perfil">

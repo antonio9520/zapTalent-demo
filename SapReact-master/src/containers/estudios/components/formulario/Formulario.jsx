@@ -8,7 +8,6 @@ import {
   InputAdornment,
   MenuItem,
   LinearProgress,
-  Menu,
 } from "@material-ui/core";
 import { Close, CloudUpload } from "@material-ui/icons";
 import {
@@ -22,7 +21,6 @@ import { paises } from "../../../../assets/paises";
 import { agregarEstudioAction } from "../../../../redux/actions/estudioAction";
 import { estudios_data } from "../../../../assets/estudios";
 import { areaEstudio } from "../../../../assets/areaEstudio";
-import { editarUsuarioAction } from "../../../../redux/actions/authAction";
 
 const Formulario = (props) => {
   const { setOpenModal } = props;
@@ -247,17 +245,17 @@ const Formulario = (props) => {
             error={tipoestudioError}
             helpertext="Tipo de estudio no puede estar vacio"
           >
-            <MenuItem className="custom-menu-item" value="Secundario">
-              Secundario
+            <MenuItem className="custom-menu-item" value="Enseñanza Media">
+              Enseñanza Media
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Terciario">
-              Terciario
+            <MenuItem
+              className="custom-menu-item"
+              value="Técnico/Universitario"
+            >
+              Tecnico/Universitario
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Universitario">
-              Universitario
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Postgrado">
-              Postgrado
+            <MenuItem className="custom-menu-item" value="PostGrado">
+              PostGrado
             </MenuItem>
             <MenuItem className="custom-menu-item" value="Master">
               Master
@@ -272,7 +270,7 @@ const Formulario = (props) => {
         </div>
         <div className="campo-form-estudio">
           <CustomSelectB
-            label="Universidad, Instituto"
+            label="Universidad/Instituto/Colegio"
             onChange={(e) => {
               setInstitucionError(false);
               setInstitucion(e.target.value);

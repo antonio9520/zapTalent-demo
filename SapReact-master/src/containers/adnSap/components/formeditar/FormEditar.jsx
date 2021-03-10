@@ -11,7 +11,7 @@ import { Close, Edit, Check, Add, CloudUpload } from "@material-ui/icons";
 import CardSModulo from "./cardsmodulo/CardSModulo";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
-import { Tooltip } from "../../../../components";
+import { Tooltip, Button } from "../../../../components";
 import { editarAdnAction } from "../../../../redux/actions/adnAction";
 import { editarUsuarioAction } from "../../../../redux/actions/authAction";
 
@@ -107,179 +107,167 @@ const FormEditar = forwardRef((props, ref) => {
           : "cont-four-adn-formeditar-edit"
       }
     >
-      <div className="sub-form-editar-adn">
-        <div
-          className="cont-top-adn-four-edit"
-          style={{ opacity: editMod || editSubMod ? "0.3" : null }}
-        >
-          <Modulos data={dataEditar} />
-        </div>
-        <div
-          style={{
-            opacity: editObs || editSubMod ? ".5" : "",
-            transition: "0.5s all ease-in-out",
-          }}
-        >
-          <IdModulo
-            data={dataEditar}
-            editId={editId}
-            idmod={idmod}
-            setIdMod={setIdMod}
-          />
-        </div>
-        <div
-          style={{
-            width: "100%",
-            opacity: editId || editSubMod ? "0.3" : null,
-          }}
-        >
-          {obs || editObs ? (
-            <>
-              <p className="pobs-title">Observación</p>
-              <textarea
-                className={
-                  editObs
-                    ? "text-area-edit-obs-mod-ac"
-                    : "text-area-edit-obs-mod"
-                }
-                value={obs}
-                defaultValue={obs}
-                readOnly={!editMod}
-                onChange={(e) => setObs(e.target.value)}
-              />
-            </>
-          ) : null}
-        </div>
-        {editMod ? null : (
-          <div className="cont-btn-añadir-submod">
-            <div style={{ margin: "5px 10px", width: "300px" }}>
-              <input
-                type="file"
-                id={`upload-file-edit-module`}
-                onChange={(e) => fileChange(e)}
-                style={{ display: "none" }}
-                name="adnURL"
-                accept="application/pdf, image/png, .jpeg, .jpg, image/gif, .doc, .docx"
-              />
-              <TextField
-                fullWidth
-                size="small"
-                id="input-with-icon-textfield"
-                label="Cargar archivo (opcional)"
-                value={file ? (file.name ? file.name : file) : null}
-                defaultValue="Selecciona un archivo"
-                InputLabelProps={{
-                  className: "input-file-estudios",
-                }}
-                InputProps={{
-                  readOnly: true,
-                  className: "input-file-estudios",
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <Tooltip title="Subir archivo">
-                        <IconButton>
-                          <label
-                            htmlFor={`upload-file-edit-module`}
-                            style={{ cursor: "pointer" }}
-                          >
-                            <CloudUpload className="icon-file-estudios" />
-                          </label>
-                        </IconButton>
-                      </Tooltip>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </div>
-          </div>
-        )}
-        <div className="cont-cards-s-modulos-four-edit">
-          {loading ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "200px",
+      <div
+        className="cont-top-adn-four-edit"
+        style={{ opacity: editMod || editSubMod ? "0.3" : null }}
+      >
+        <Modulos data={dataEditar} />
+      </div>
+      <div
+        style={{
+          opacity: editObs || editSubMod ? ".5" : "",
+          transition: "0.5s all ease-in-out",
+        }}
+      >
+        <IdModulo
+          data={dataEditar}
+          editId={editId}
+          idmod={idmod}
+          setIdMod={setIdMod}
+        />
+      </div>
+      <div
+        style={{
+          width: "100%",
+          opacity: editId || editSubMod ? "0.3" : null,
+        }}
+      >
+        {obs || editObs ? (
+          <>
+            <p className="pobs-title">Observación</p>
+            <textarea
+              className={
+                editObs ? "text-area-edit-obs-mod-ac" : "text-area-edit-obs-mod"
+              }
+              value={obs}
+              defaultValue={obs}
+              readOnly={!editMod}
+              onChange={(e) => setObs(e.target.value)}
+            />
+          </>
+        ) : null}
+      </div>
+      {editMod ? null : (
+        <div className="cont-btn-añadir-submod">
+          <div style={{ margin: "5px 10px", width: "300px" }}>
+            <input
+              type="file"
+              id={`upload-file-edit-module`}
+              onChange={(e) => fileChange(e)}
+              style={{ display: "none" }}
+              name="adnURL"
+              accept="application/pdf, image/png, .jpeg, .jpg, image/gif, .doc, .docx"
+            />
+            <TextField
+              fullWidth
+              size="small"
+              id="input-with-icon-textfield"
+              label="Cargar archivo (opcional)"
+              value={file ? (file.name ? file.name : file) : null}
+              defaultValue="Selecciona un archivo"
+              InputLabelProps={{
+                className: "input-file-estudios",
               }}
-            >
-              <Loader
-                type="Oval"
-                color="#00BFFF"
-                height={100}
-                width={100}
-                visible={loading}
-                //  timeout={3000} //3 secs
-              />
-            </div>
-          ) : (
-            submodulos.map((item, index) => (
-              <CardSModulo
-                name={item.name}
-                setLoading={setLoading}
-                data={item}
-                key={index}
-                editMod={editMod}
-                deleteModulo={deleteModulo}
-                setEditSubMod={setEditSubMod}
-                editSubMod={editSubMod}
-                setSubmodulos={setSubmodulos}
-                submodulos={submodulos}
-                dataEditar={dataEditar}
-                setSubmodulosUser={setSubmodulosUser}
-                submodulosuser={submodulosuser}
-              />
-            ))
-          )}
-        </div>
-        {editMod ? null : (
-          <div
-            className="cont-btn-añadir-submod"
-            style={{
-              marginBottom: "37px",
-              justifyContent: "flex-end",
-              marginTop: "10px",
-              paddingRight: "15px",
-            }}
-          >
-            <Tooltip title="Añadir Submodulo">
-              <IconButton
-                className="btn-add-submod-editar-adn"
-                disabled={editSubMod}
-                style={{ opacity: editSubMod ? "0.3" : null }}
-                onClick={() => setView("one")}
-              >
-                <Add />
-              </IconButton>
-            </Tooltip>
+              InputProps={{
+                readOnly: true,
+                className: "input-file-estudios",
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Tooltip title="Subir archivo">
+                      <IconButton>
+                        <label
+                          htmlFor={`upload-file-edit-module`}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <CloudUpload className="icon-file-estudios" />
+                        </label>
+                      </IconButton>
+                    </Tooltip>
+                  </InputAdornment>
+                ),
+              }}
+            />
           </div>
-        )}
-        <div className="cont-btn-adn-formedit" style={{ padding: "0 10px" }}>
-          <ListItem
-            button
-            className={`btn-adnzap-modal `}
-            onClick={() => cancelarEditar()}
-            disabled={editMod || editSubMod}
-            style={{
-              opacity: editMod || editSubMod ? "0.2" : "",
-              color: "white",
-            }}
-          >
-            <p>Cancelar</p>
-          </ListItem>
-          <ListItem
-            button
-            disabled={editMod || editSubMod}
-            className={`btn-adnzap-modal `}
-            onClick={handleClick}
-            style={{
-              opacity: editMod || editSubMod ? "0.2" : "",
-              color: "white",
-            }}
-          >
-            <p>Guardar ADN</p>
-          </ListItem>
         </div>
+      )}
+      <div className="cont-cards-s-modulos-four-edit">
+        {loading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "200px",
+            }}
+          >
+            <Loader
+              type="Oval"
+              color="#00BFFF"
+              height={100}
+              width={100}
+              visible={loading}
+              //  timeout={3000} //3 secs
+            />
+          </div>
+        ) : (
+          submodulos.map((item, index) => (
+            <CardSModulo
+              name={item.name}
+              setLoading={setLoading}
+              data={item}
+              key={index}
+              editMod={editMod}
+              deleteModulo={deleteModulo}
+              setEditSubMod={setEditSubMod}
+              editSubMod={editSubMod}
+              setSubmodulos={setSubmodulos}
+              submodulos={submodulos}
+              dataEditar={dataEditar}
+              setSubmodulosUser={setSubmodulosUser}
+              submodulosuser={submodulosuser}
+            />
+          ))
+        )}
+      </div>
+      {editMod ? null : (
+        <div className="cont-btn-añadir-submod-two">
+          <Tooltip title="Añadir Submodulo">
+            <IconButton
+              className="btn-add-submod-editar-adn"
+              disabled={editSubMod}
+              style={{ opacity: editSubMod ? "0.3" : null }}
+              onClick={() => setView("one")}
+            >
+              <Add />
+            </IconButton>
+          </Tooltip>
+        </div>
+      )}
+      <div className="cont-btn-adn-formedit" style={{ padding: "0 20px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => cancelarEditar()}
+          disabled={editMod || editSubMod}
+          style={{
+            opacity: editMod || editSubMod ? "0.2" : "",
+            color: "white",
+          }}
+        >
+          Cancelar
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={editMod || editSubMod}
+          onClick={handleClick}
+          style={{
+            opacity: editMod || editSubMod ? "0.2" : "",
+            color: "white",
+          }}
+        >
+          Guardar ADN
+        </Button>
       </div>
 
       <div className="cont-iconbtn-close-adn">

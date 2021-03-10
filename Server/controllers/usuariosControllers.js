@@ -3,9 +3,6 @@ const bcryptjs = require("bcryptjs");
 const fs = require("fs").promises;
 const jwt = require("jsonwebtoken");
 const enviarEmail = require("../handlers/email");
-const juice = require("juice");
-const open = require("open");
-const start = require("open");
 
 exports.crearUsuarios = async (req, res) => {
   //extraer email y pass
@@ -73,8 +70,31 @@ exports.crearUsuarios = async (req, res) => {
   }
 };
 
+exports.enviarEmailActivacion = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const confirmarUrl = `http://${req.headers.host}/api/confirmar/${email}`;
+
+    //crear objeto usuario
+    const userconfi = {
+      email,
+    };
+    //Enviar email
+    await enviarEmail.enviar({
+      userconfi,
+      subject: "Confirma tu cuenta de ZapTalent",
+      confirmarUrl,
+      archivo: "emailconfirm",
+    });
+
+    res.json({ enviado: true });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("hubo un error");
+  }
+};
+
 exports.mostarUsuarios = async (req, res) => {
-  console.log(req.params.id);
   try {
     const usuarios = await Usuario.findById(req.params.id);
 
@@ -116,6 +136,7 @@ exports.putUsuario = async (req, res) => {
     industria,
     carreras,
     dateActCV,
+    fechaNacimiento,
   } = req.body;
 
   try {
@@ -151,6 +172,7 @@ exports.putUsuario = async (req, res) => {
       if (industria) usuario.industria = industria;
       if (carreras) usuario.carreras = carreras;
       if (dateActCV) usuario.dateActCV = dateActCV;
+      if (fechaNacimiento) usuario.fechaNacimiento = fechaNacimiento;
       usuario.save(function (err) {
         if (err)
           return res.status(500).json({ msg: "error al actualizar datos" });
@@ -278,7 +300,6 @@ exports.actualizarCV = async (req, res) => {
 };
 
 exports.confirmarCuenta = async (req, res) => {
-  console.log(req.params.correo);
   const email = req.params.correo;
 
   let usuario = await Usuario.findOne({ email });
@@ -299,6 +320,10 @@ exports.confirmarCuenta = async (req, res) => {
   const ecivil = usuario.ecivil;
   const nacion = usuario.nacion;
   const direccion = usuario.direccion;
+
+  usuario.activo = 1;
+
+  await usuario.save();
   //Enviar email
   await enviarEmail.enviar({
     userconfi,
@@ -315,13 +340,10 @@ exports.confirmarCuenta = async (req, res) => {
     archivo: "infouser",
   });
 
-  usuarios.activo = 1;
-
-  await usuarios.save();
   //si el usuario no existe
   // Opens the URL in the default browser.
-  await start("https://www.zaptalent.cl/login");
-  await open("https://www.zaptalent.cl/login");
+  res.writeHead(301, { Location: "https://www.zaptalent.cl/login" });
+  res.end();
 };
 
 exports.validacionEmailRut = async (req, res) => {

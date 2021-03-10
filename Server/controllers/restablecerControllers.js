@@ -27,7 +27,7 @@ exports.enviarToken = async (req, res) => {
     const userconfi = {
        email
      };
-    console.log(resetUrl);
+   
     //enviar el correo con el token
     await enviarEmail.enviar({
         userconfi,

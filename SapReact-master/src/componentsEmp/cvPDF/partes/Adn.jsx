@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from "@react-pdf/renderer";
 
 const Adns = ({ data }) => {
   return (
-    <View style={styles.contEstudios} >
+    <View style={styles.contEstudios} break>
       <View style={styles.contEstudiosTop}>
         <Text style={styles.title}>ADN SAP</Text>
       </View>
@@ -30,7 +30,7 @@ const Adn = ({ data, num }) => {
       ) : (
         <View style={styles.plantilla}></View>
       )}
-      {obs && <Text style={styles.p4}>{obs}</Text>}
+      {obs && obs !== "" && <Text style={styles.p4}>{obs}</Text>}
       {submodulos.map((item, index) => (
         <Submodulo key={index} data={item} />
       ))}
