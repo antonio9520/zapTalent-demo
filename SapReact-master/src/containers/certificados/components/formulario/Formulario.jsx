@@ -39,7 +39,7 @@ const Formulario = (props) => {
   const [errorCert, setErrorCert] = useState(false);
   const [errorUniver, setErrorUniver] = useState(false);
   const [errorPais, setErrorPais] = useState(false);
-  const [errorObs, setErrorObs] = useState(false);
+
   const [errorFecha, setErrorFecha] = useState(false);
 
   //file
@@ -63,10 +63,7 @@ const Formulario = (props) => {
       setErrorPais(true);
       return;
     }
-    if (obs.trim() === "") {
-      setErrorObs(true);
-      return;
-    }
+
     if (fecha === null) {
       setErrorFecha(true);
       return;
@@ -243,16 +240,13 @@ const Formulario = (props) => {
         </div>
         <div className="item-center-cert">
           <TextField
-            error={errorObs}
+        
             fullWidth
             id="standard-multiline-static"
             label="Observaciones"
             multiline
             rows={2}
             onChange={(e) => {
-              if (errorObs) {
-                setErrorObs(false);
-              }
               setObs(e.target.value);
             }}
             InputLabelProps={{ className: "multiline-form-estudios" }}

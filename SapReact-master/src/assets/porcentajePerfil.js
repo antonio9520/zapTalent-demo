@@ -1,6 +1,6 @@
 export const porcentajePerfil = (
   confirmarEmail,
-  subirCV,
+  subirCV, 
   adnsap,
   trabajos,
   certificado,

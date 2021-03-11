@@ -88,6 +88,47 @@
   max-width: 200px;
   z-index: 1;
 }
+.cont-linear-determinate {
+  position: relative;
+  width: 70%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cont-linear-determinate p {
+  color: white;
+}
+.sub-cont-linear-determinate {
+  width: 90%;
+  /* margin-top: 20px; */
+  /* display: flex; */
+}
+/* .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+} */
+
+.tooltiptext {
+  visibility: hidden;
+  background-color: white;
+  color: var(--gray-text);
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  font-family: "Roboto";
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+}
+
+.cont-linear-determinate:hover .tooltiptext {
+  visibility: visible;
+}
 /* MEDIA QUERIES */
 @media only screen and (min-width: 1279px) and (max-width: 1619px) {
 }

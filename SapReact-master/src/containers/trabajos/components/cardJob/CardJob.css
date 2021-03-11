@@ -1,35 +1,38 @@
 .cont-card-job-b {
   background-color: var(--white);
   min-height: 200px;
-  height: 30%;
-  width: 100%;
-  margin: 5px;
-  max-width: 450px;
-  min-width: 300px;
+  height: 330px;
+  overflow: hidden;
+  margin: 10px;
+  margin-top: 20px;
+  width: 400px;
   border-radius: 5px;
-  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
   display: flex;
-  padding: 20px 20px 50px 20px;
+  padding: 20px 20px 60px 20px;
   position: relative;
   flex-direction: column;
   align-items: center;
+  /* transition: 1s all ease-in-out; */
 }
-.cont-card-job-b-actual {
-  background: var(--degradado-blue);
+.cont-card-job-b-extended {
+  background-color: var(--white);
   min-height: 200px;
   height: 30%;
-  width: 100%;
-  margin: 5px;
-  max-width: 450px;
-  min-width: 300px;
+  overflow: hidden;
+  margin: 10px;
+  margin-top: 20px;
+  width: 400px;
   border-radius: 5px;
-  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
   display: flex;
-  padding: 20px 20px 50px 20px;
+  padding: 20px 20px 60px 20px;
   position: relative;
   flex-direction: column;
   align-items: center;
+  /* transition: 1s all ease-in-out; */
 }
+
 .cont-card-job-b p {
   margin: 0;
 }
@@ -94,9 +97,9 @@
 .p2-job-b {
   color: var(--blue-primary);
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 200;
-  max-width: 250px;
+  max-width: 300px;
   margin-top: 5px !important;
   text-align: center;
 }
@@ -124,24 +127,27 @@
   padding-top: 5px;
   font-weight: 500;
   margin: 0;
+  /* backgrou6d-color:lawngreen; */
+  height: 30px;
   letter-spacing: 0.5px;
   color: var(--blue-primary);
 }
 
 .cont-icon-btns-job-b {
   position: absolute;
-  right: 30px;
-  bottom: 15px;
-  /* background-color: sienna; */
-  width: 85px;
+  bottom: 0;
+  padding: 20px;
+  background-color: white;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .icon-btn-job-b {
   background-color: var(--light-blue) !important;
   color: var(--white) !important;
   padding: 7px !important;
+  margin-right: 10px !important;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -149,6 +155,7 @@
   background-color: var(--light-blue) !important;
   color: var(--white) !important;
   padding: 7px !important;
+
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -170,12 +177,12 @@
 }
 .item-1-job-b div {
   background-color: #f5f5f5;
-  padding: 10px;
+  padding: 2px 10px;
   border-radius: 5px;
 }
 .item-2-job-b div {
   background-color: #f5f5f5;
-  padding: 10px;
+  padding: 2px 10px;
   border-radius: 5px;
 }
 
@@ -194,7 +201,7 @@
   font-size: 12px;
   color: var(--gray-text);
   font-style: italic;
-  max-height: 80px;
+  max-height: 60px;
   overflow: auto;
   padding-right: 10px;
 }
@@ -203,7 +210,7 @@
   font-size: 12px;
   padding-left: 5px;
   font-weight: 500;
-  margin-bottom: 0;
+
 }
 .icon-ref-card-job {
   color: #cbcbcf;
@@ -213,7 +220,7 @@
 .item-1-job-b-2 div {
   display: flex;
   align-items: center;
-  margin-top: 5px;
+ 
 }
 
 .item-1-job-b-2 {

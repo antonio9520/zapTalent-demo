@@ -56,7 +56,7 @@ const CardEstudio = (props) => {
         <img src={iconEstudio} alt="icon-estudio" />
       </div>
       <p className="p1-card-estudio">{data.tipoestudio}</p>
-      <Tooltip title={data.carrera}>
+      <Tooltip title={data.carrera} placement="top">
         <p className="p2-card-estudio">
           {data.carrera.length > 40
             ? data.carrera.substring(0, 37) + "..."

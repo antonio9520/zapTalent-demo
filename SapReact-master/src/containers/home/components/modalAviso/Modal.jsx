@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
-import { Card } from "../../../ofertas/components";
+import { ModalAviso } from "../../../ofertas/components";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 const CustomModal = (props) => {
   const classes = useStyles();
 
-  const { setOpenModal, openModal,  data } = props;
+  const { setOpenModal, openModal, data } = props;
 
   return (
     <Modal
@@ -29,7 +29,7 @@ const CustomModal = (props) => {
       }}
     >
       <Fade in={openModal}>
-        <Card data={data} />
+        <ModalAviso data={data} />
       </Fade>
     </Modal>
   );

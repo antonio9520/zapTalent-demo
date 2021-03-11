@@ -137,7 +137,11 @@ const Trabajo = ({ data }) => {
         </div> */}
         <div className="sub-right-job-b-perfil">
           <Link className="link" to="/trabajos">
-            <p className="p2-job-b-perfil">{data.nomempresa}</p>
+            <p className="p2-job-b-perfil">
+              {data.nomempresa.length > 35
+                ? data.nomempresa.substring(0, 35) + "..."
+                : data.nomempresa}
+            </p>
           </Link>
           <p className="p3-job-b-perfil">{data.cargo}</p>
           <p className="p4-job-b-perfil">{data.actempresa}</p>

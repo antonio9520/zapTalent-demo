@@ -67,7 +67,13 @@ const Card = (props) => {
       <div className="cont-img-cert">
         <img src={logocert} alt="logo-cert" />
       </div>
-      <p className="p1-cert">{data.certificacion}</p>
+      <Tooltip title={data.certificacion} placement="top">
+        <p className="p1-cert">
+          {data.certificacion.length > 45
+            ? data.certificacion.substring(0, 45) + "..."
+            : data.certificacion}
+        </p>
+      </Tooltip>
       <p className="p2-cert">{data.universidad}</p>
       <p className="p3-cert">
         {data ? MESES[f.getMonth()] + ", " + data.fecha.substring(0, 4) : null}

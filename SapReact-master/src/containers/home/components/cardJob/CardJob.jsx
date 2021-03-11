@@ -4,11 +4,19 @@ import NumberFormat from "react-number-format";
 import icontrabajo from "../../../../resources/images/SapMitrabajos/icon-enterprise.svg";
 import { Tooltip } from "../../../../components";
 
-const CardJob = ({ data, setOpenModal, setDataOL }) => {
+const CardJob = ({
+  data,
+  setOpenModal,
+  setDataOL,
+  setIdEmp,
+  setOpenModalAviso,
+  setIdAviso,
+}) => {
   // console.log(data);
   const verAviso = () => {
-    setDataOL(data);
-    setOpenModal(true);
+    setIdAviso(data._id);
+    setIdEmp(data.idusuario);
+    setOpenModalAviso(true);
   };
   const fechaInicio = new Date(data.creacion).getTime();
   const fechaFin = new Date().getTime();

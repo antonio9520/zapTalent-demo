@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Grid } from "@material-ui/core";
-import { HeaderHome, CardPerfil, Table, ModalAviso } from "./components";
+import { HeaderHome, CardPerfil, Table } from "./components";
 import { CardA, CardB } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { ModalEditar } from "../adnSap/components";
@@ -13,6 +13,7 @@ import { ModalEditar as ModalEditarTrabajo } from "../../containers/trabajos/com
 import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import clientAxios from "../../config/axios";
 import { porcentajePerfil } from "../../assets/porcentajePerfil";
+import { ModalAviso } from "../ofertas/components";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,11 @@ const Home = () => {
   const [query, setQuery] = useState({});
   const [loading, setLoading] = useState(true);
   const [porcentaje, setPorcentaje] = useState(0);
+
+  /**modal aviso */
+  const [openModalAviso, setOpenModalAviso] = useState(false);
+  const [idAviso, setIdAviso] = useState(null);
+  const [idEmp, setIdEmp] = useState(null);
 
   // const adns = [];
   // const trabajos = [];
@@ -99,7 +105,7 @@ const Home = () => {
       cargarPorcentaje();
     }
   }, [trabajos, certificados, estudios]);
-  
+
   useEffect(() => {
     if (usuario) {
       if (usuario.sexo === "Masculino") {
@@ -138,7 +144,10 @@ const Home = () => {
     }
   };
   const empleosSugeridos = async () => {
-    setLoading(true);
+    if (skip === 0) {
+      setLoading(true);
+    }
+
     query.skip = skip;
     if (usuario.modulos) query.modulos = usuario.modulos;
     if (usuario.industria) query.industria = usuario.industria;
@@ -148,7 +157,14 @@ const Home = () => {
         `/api/ofertasLaborales/empleosSugeridos`,
         query
       );
-      setEmpSugeridos(result.data);
+      if (skip === 0) {
+        setEmpSugeridos(result.data);
+      } else {
+        for (let i = 0; i < result.data.length; i++) {
+          empSugeridos.push(result.data[i]);
+        }
+      }
+
       const resultCount = await clientAxios.put(
         `/api/ofertasLaborales/total/empleosSugeridos`,
         query
@@ -169,9 +185,12 @@ const Home = () => {
   return (
     <div style={{ width: "100%" }}>
       <ModalAviso
-        data={dataOL}
-        setOpenModal={setOpenModal}
-        openModal={openModal}
+        setOpen={setOpenModalAviso}
+        open={openModalAviso}
+        setIdAviso={setIdAviso}
+        idAviso={idAviso}
+        idEmp={idEmp}
+        setIdEmp={setIdEmp}
       />
       <ModalEditarTrabajo
         setOpenModalEditar={setOpenEditarTrabajo}
@@ -311,6 +330,9 @@ const Home = () => {
             query={query}
             setQuery={setQuery}
             loading={loading}
+            setOpenModalAviso={setOpenModalAviso}
+            setIdEmp={setIdEmp}
+            setIdAviso={setIdAviso}
           />
         </Grid>
         <Grid

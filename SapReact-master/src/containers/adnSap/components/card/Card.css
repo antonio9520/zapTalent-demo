@@ -1,20 +1,25 @@
 .cont-card-adn {
   box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
-  width: 450px;
-  margin: 5px;
+  width: 400px;
+  margin: 10px;
+  margin-top: 20px;
+
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-  height: 30%;
+  padding: 20px;
+  position: relative;
   background-color: var(--white);
 }
-
+.plantilla-card-adn {
+  width: 100%;
+  height: 95px;
+}
 .cont-mod-adn {
   background: var(--degradado-blue);
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -40,20 +45,31 @@
 .p1-card-adn {
   color: var(--blue-primary);
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   margin: 2px 0;
 }
-
+.cont-cards-mod-submod {
+  overflow: auto;
+  width: 100%;
+  /* background-color: burlywood; */
+  max-height: 200px;
+  min-height: 200px;
+  margin-bottom: 60px;
+}
+.cont-cards-mod-submod::-webkit-scrollbar-track {
+  margin-top: 10px;
+}
 .cont-adn-submod {
   display: flex;
   flex-direction: column;
   background-color: #f8f8fb;
-  margin: 0 10px 10px 10px;
+
   border-radius: 5px;
+  margin: 10px 10px 10px 0;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
   padding-bottom: 10px;
-  width: 410px;
+  /* width: 100%; */
 }
 
 .top-adn-submod {
@@ -90,7 +106,7 @@
 .p1-card-adn-desc {
   color: var(--blue-primary);
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 200;
   max-width: 250px;
   margin-top: 10px;
@@ -102,6 +118,7 @@
   display: inline-flex;
   border-radius: 3px;
   margin-top: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
 }
 
 .cont-nivel-adn-submodulo p {
@@ -126,20 +143,15 @@
   max-height: 50px;
   overflow: auto;
 }
-.cont-cards-mod-submod {
-  overflow: auto;
-  max-height: 390px;
-  margin-right: 10px;
-  margin-top: 10px;
-  padding-top: 5px;
-}
 
 .cont-btns-card-adn {
   width: 100%;
-  position: relative;
-  padding: 25px 15px;
+  position: absolute;
+  padding: 20px;
   display: flex;
+  bottom: 0;
   justify-content: space-between;
+  /* background-color: blueviolet; */
 }
 
 .one {
@@ -171,6 +183,8 @@
   margin: 0;
   font-style: italic;
   margin-bottom: 20px;
+  max-height: 40px;
+  overflow: auto;
 }
 
 /* MEDIA QUERIES */

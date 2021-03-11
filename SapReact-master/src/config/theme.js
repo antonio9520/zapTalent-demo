@@ -8,8 +8,22 @@ export const theme = createMuiTheme({
     },
     secondary: {
       // This is green.A700 as hex.
-      main: "#4bacef", 
+      main: "#4bacef",
     },
+    error: {
+      light: "#EC4134",
+      main: "#EC4134",
+      dark: "#EC4134",
+    },
+    // status: {
+    //   danger: "#EC4134",
+    // },
+    // success: {
+    //   main: "#00B526",
+    // },
+    // error: {
+    //   main: "#EC4134",
+    // },
   },
   typography: {
     button: {

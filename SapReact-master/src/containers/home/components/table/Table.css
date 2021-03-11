@@ -23,7 +23,9 @@
   max-height: 350px;
   /* padding-bottom: 100px; */
 }
-
+.cont-center-table-home::-webkit-scrollbar-track {
+ margin-top: 15px;
+}
 .cont-card-job-table {
   padding: 5px;
 }

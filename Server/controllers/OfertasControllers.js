@@ -125,7 +125,7 @@ const createQuery = (data) => {
 
 exports.empleosSugeridos = async (req, res) => {
   const { skip, modulos, industria, submodulos, search } = req.body;
-
+  console.log(skip);
   let query = [];
   let querysearch = {};
   let industrias = [];

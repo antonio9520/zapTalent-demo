@@ -395,6 +395,21 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
               )}
             </div>
           </div>
+          <Tooltip title={`Estado: ${estado}`} placement="top">
+            <div
+              className="indicador-estado-oferta-laboral"
+              style={{
+                backgroundColor:
+                  estado === "Activo"
+                    ? "#00B526"
+                    : estado === "Proceso Finalizado"
+                    ? "#EC4134"
+                    : estado === "Cancelado"
+                    ? "#EC4134"
+                    : null,
+              }}
+            ></div>
+          </Tooltip>
         </div>
       )}
     </>

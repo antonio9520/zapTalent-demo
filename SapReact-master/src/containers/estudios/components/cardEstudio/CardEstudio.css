@@ -1,23 +1,18 @@
 .cont-card-estudio {
   background-color: var(--white);
   border-radius: 5px;
-  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
   position: relative;
-  width: 100%;
-  max-width: 400px;
-  min-width: 300px;
   margin: 5px;
   margin-left: 30px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  height: 30%;
-  /* height: 100px; */
-  min-height: 200px;
   overflow: hidden;
   padding: 20px 20px 30px 20px;
   align-items: center;
-  min-height: 400px;
+  height: 500px;
+  width: 400px;
+  box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 .cont-img-card-estudio {
@@ -70,7 +65,7 @@
 .p2-card-estudio {
   color: var(--blue-primary);
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 200;
   max-width: 300px;
   text-align: center;
@@ -164,7 +159,7 @@
   margin: 0;
   font-size: 12px;
   color: var(--gray-text);
-  max-height: 100px;
+  max-height: 60px;
   overflow: auto;
   font-style: italic;
   padding-right: 10px;
@@ -176,7 +171,7 @@
   padding: 10px;
   border-radius: 5px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   width: 100%;
 }
 
@@ -188,10 +183,12 @@
 
 .cont-btns-card-est-b2 {
   /* background-color: lightcoral; */
-  position: relative;
+  position: absolute;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  bottom: 20px;
+  padding: 0 20px;
 }
 /* MEDIA QUERIES */
 @media only screen and (min-width: 960px) and (max-width: 1500px) {

@@ -56,10 +56,15 @@
   border-radius: 5px;
   box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
 }
-
+.cont-btn-filtrar-of-user {
+  display: none;
+}
 @media only screen and (max-width: 1750px) {
   .cont-filtro-of-laborales {
     display: none;
+  }
+  .cont-btn-filtrar-of-user {
+    display: inherit;
   }
   .cont-header-of-laborales-top {
     padding-right: 40px;

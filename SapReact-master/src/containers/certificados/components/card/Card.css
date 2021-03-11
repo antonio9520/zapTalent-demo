@@ -1,12 +1,12 @@
 .cont-card-cert {
   box-shadow: 5px 10px 40px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  padding: 30px;
+  padding: 20px;
   position: relative;
-  margin: 10px 0 0 10px;
-  height: 30%;
-  min-width: 350px;
-  max-width: 350px;
+  margin: 20px 0 0 10px;
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 410px;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -33,14 +33,16 @@
 
 .cont-btns-card-cert-b2 {
   /* background-color: rgb(17, 34, 87) !important; */
-  position: relative;
+  position: absolute;
   width: 100%;
+  bottom: 20px;
+  padding: 0 20px;
   height: 38px;
 }
 .cont-icon-btns-cert-b {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 20px;
   width: 85px;
   display: flex;
   justify-content: space-between;
@@ -82,10 +84,10 @@
 .p1-cert {
   color: var(--blue-primary);
   margin: 0;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 200;
-  max-width: 250px;
-  margin-top: 5px;
+  max-width: 300px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -112,7 +114,11 @@
   margin-top: 15px;
   margin-bottom: 60px;
   font-size: 12px;
+  font-style: italic;
   text-align: center;
+  max-height: 80px;
+  overflow: auto;
+  padding: 0 20px;
 }
 
 .etiqueta-nuevo {
@@ -135,6 +141,5 @@
   .cont-card-cert {
     width: 100%;
     min-width: inherit;
-
   }
 }

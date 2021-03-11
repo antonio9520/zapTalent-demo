@@ -96,11 +96,13 @@ const Header = ({
           <AntTab label="Caducados" />
           <AntTab label="Todos" />
         </AntTabs>
-        <Tooltip title="Filtrar">
-          <IconButton bg="primary" onClick={() => setOpen(true)}>
-            <FilterList />
-          </IconButton>
-        </Tooltip>
+        <div className="cont-btn-filtrar-of-user">
+          <Tooltip title="Filtrar">
+            <IconButton bg="primary" onClick={() => setOpen(true)}>
+              <FilterList />
+            </IconButton>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );

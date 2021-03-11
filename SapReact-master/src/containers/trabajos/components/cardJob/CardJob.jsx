@@ -9,6 +9,8 @@ import {
   PhoneAndroid,
   AccountCircle,
   Close,
+  KeyboardArrowDown,
+  KeyboardArrowUp,
 } from "@material-ui/icons";
 import { IconButton } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
@@ -21,11 +23,12 @@ const CardJob = (props) => {
     setIdEliminar,
     setOpenModalEditar,
     setDataEditar,
- 
   } = props;
   const [_switch, setSwitch] = useState(false);
-  const initDelete = () => {
+  const [view, setView] = useState(false);
+  const [btnView, setBtnView] = useState(false);
 
+  const initDelete = () => {
     setIdEliminar(data._id);
     setOpenModalEliminar(true);
   };
@@ -41,10 +44,27 @@ const CardJob = (props) => {
     if (fechaTermino > ano.toString()) {
       setSwitch(true);
     }
-  }, []);
+    showBtn();
+  }, [data]);
+
+  const showBtn = () => {
+    if (
+      data.personacargo ||
+      data.manejopresupuesto ||
+      data.expzap ||
+      data.refnombre ||
+      data.email ||
+      data.refphone ||
+      data.refrelacion ||
+      data.reflogros
+    ) {
+      setBtnView(true);
+    }
+  };
+
   return (
     <div
-      className={"cont-card-job-b"}
+      className={view ? "cont-card-job-b-extended" : "cont-card-job-b"}
       style={{
         background: _switch
           ? "linear-gradient(90deg,rgba(21, 134, 234, 1) 0%, rgba(46, 74, 199, 1) 100%"
@@ -55,9 +75,13 @@ const CardJob = (props) => {
         <img src={icontrabajo} alt="icon-trabajo" />
       </div>
       <div className="sub-right-job-b">
-        <p className="p2-job-b" style={{ color: _switch ? "white" : null }}>
-          {data.nomempresa}
-        </p>
+        <Tooltip title={data.nomempresa} placement="top">
+          <p className="p2-job-b" style={{ color: _switch ? "white" : null }}>
+            {data.nomempresa.length > 45
+              ? data.nomempresa.substring(0, 45) + "..."
+              : data.nomempresa}
+          </p>
+        </Tooltip>
         <p className="p3-job-b" style={{ color: _switch ? "white" : null }}>
           {data.cargo}
         </p>
@@ -265,7 +289,27 @@ const CardJob = (props) => {
         ) : null}
       </div>
 
-      <div className="cont-icon-btns-job-b">
+      <div
+        className="cont-icon-btns-job-b"
+        style={{
+          background: _switch
+            ? "linear-gradient(90deg,rgba(21, 134, 234, 1) 0%, rgba(46, 74, 199, 1) 100%"
+            : null,
+        }}
+      >
+        {btnView ? (
+          <Tooltip title="Ver mas">
+            <IconButton
+              size="small"
+              className="icon-btn-job-b"
+              onClick={() => setView(!view)}
+            >
+              {view ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            
+            </IconButton>
+          </Tooltip>
+        ) : null}
+
         <Tooltip title="Eliminar">
           <IconButton
             size="small"

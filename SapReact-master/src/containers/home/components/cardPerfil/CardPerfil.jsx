@@ -8,6 +8,7 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { Tooltip } from "../../../../components";
 
 const useStyles = makeStyles({
   root: {
@@ -15,6 +16,8 @@ const useStyles = makeStyles({
     position: "absolute",
     bottom: 20,
     left: 0,
+    // display: "flex",
+    // flexDirection: "row",
   },
 });
 const BorderLinearProgress = withStyles((theme) => ({
@@ -34,7 +37,7 @@ const BorderLinearProgress = withStyles((theme) => ({
 const CardPerfil = (props) => {
   const classes = useStyles();
   const { nombre, titulo, subtitle, textBtn, to, imageURL, porcentaje } = props;
-  console.log(porcentaje);
+
   return (
     <>
       <div className="container-perfilhome">
@@ -65,8 +68,27 @@ const CardPerfil = (props) => {
           </p>
           <p style={{ color: "white" }}>{porcentaje === 100 ? "" : subtitle}</p>
           {porcentaje ? (
-            <div className={classes.root}>
-              <BorderLinearProgress variant="determinate" value={porcentaje} />
+            <div className="cont-linear-determinate">
+              <div className="sub-cont-linear-determinate">
+                <BorderLinearProgress
+                  variant="determinate"
+                  value={porcentaje}
+                />
+              </div>
+              <p>{porcentaje + "%"}</p>
+              <span className="tooltiptext">
+                ADN-SAP: 35%
+                <br />
+                Experiencia Laboral: 15%
+                <br />
+                Certificados: 15%
+                <br />
+                Estudios: 15%
+                <br />
+                Subir CV: 9%
+                <br />
+                Activar Cuenta: 11%
+              </span>
             </div>
           ) : null}
         </div>

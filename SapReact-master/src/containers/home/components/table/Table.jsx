@@ -17,6 +17,9 @@ const Table = ({
   setSwitch2,
   _switch2,
   loading,
+  setIdEmp,
+  setOpenModalAviso,
+  setIdAviso,
 }) => {
   const history = useHistory();
   const handleScroll = (e) => {
@@ -91,6 +94,9 @@ const Table = ({
                 data={item}
                 setOpenModal={setOpenModal}
                 setDataOL={setDataOL}
+                setOpenModalAviso={setOpenModalAviso}
+                setIdEmp={setIdEmp}
+                setIdAviso={setIdAviso}
               />
             </div>
           ))

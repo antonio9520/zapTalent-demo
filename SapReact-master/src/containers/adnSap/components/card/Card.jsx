@@ -90,7 +90,9 @@ const Card = ({
             <p className="p4-card-adn">Observación</p>
             <p className="p5-card-adn">{data.obs}</p>
           </>
-        ) : null}
+        ) : (
+          <div className="plantilla-card-adn"></div>
+        )}
         <div className="cont-cards-mod-submod">
           {data.submodulos
             ? data.submodulos.map((item, index) => (
