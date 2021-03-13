@@ -166,7 +166,7 @@ p::-webkit-scrollbar-button:increment,
 }
 
 p::-webkit-scrollbar:horizontal {
-  height: 10px;
+  height: 7px;
 }
 
 p::-webkit-scrollbar-thumb {

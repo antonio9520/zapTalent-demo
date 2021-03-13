@@ -12,6 +12,7 @@ import {
   AVISO_EDITADO_ERROR,
   COMENZAR_EDICION_AVISO,
   DESCARGA_AVISO_EXITO_INIT,
+  DETENER_CARGA_AVISO,
 } from "../../types/typesEmp";
 
 const initialState = {
@@ -44,6 +45,12 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         avisos: action.payload,
+      };
+    case DETENER_CARGA_AVISO:
+      return {
+        ...state,
+        loading: false,
+        error: null,
       };
     case DESCARGA_AVISO_EXITO:
       return {

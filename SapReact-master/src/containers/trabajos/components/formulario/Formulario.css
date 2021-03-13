@@ -1,11 +1,14 @@
 .cont-form-trabajo {
   width: 500px;
-  height: 750px;
+  height: 100%;
+  max-height: 750px;
+
   background-color: var(--white);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: auto;
 }
 .top-form-trabajo {
   display: flex;
@@ -79,6 +82,7 @@
 .bottom-form-trabajo {
   flex: 1;
   /* background-color: sienna; */
+  min-height: 80px;
   display: flex;
   justify-content: flex-end;
   align-items: center;

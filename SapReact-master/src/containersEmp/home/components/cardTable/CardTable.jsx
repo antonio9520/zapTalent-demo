@@ -10,6 +10,7 @@ import {
   LocationOn,
   Mail,
   PhoneIphone,
+  BusinessCenter,
 } from "@material-ui/icons";
 import SwipeableViews from "react-swipeable-views";
 import { Tooltip } from "../../../../components";
@@ -26,7 +27,10 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
     region,
     phone,
     adns,
+    titulo,
+    idaviso,
   } = data;
+  console.log(data);
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -52,81 +56,103 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
   };
   return (
     <div className="card-table-home-emp">
-      <div className="item-1">
-        <Tooltip title="Ver postulante">
-          <div className="cont-imagen" onClick={verUsuario}>
-            <img src={imageURL ? imageURL : imguser} alt="userimage" />
+      <div className="sub-card-table-home-emp">
+        <div className="item-1">
+          <Tooltip title="Ver postulante">
+            <div className="cont-imagen" onClick={verUsuario}>
+              <img src={imageURL ? imageURL : imguser} alt="userimage" />
+            </div>
+          </Tooltip>
+        </div>
+        <div className="item-2">
+          <Tooltip title="Ver postulante">
+            <p className="p1" onClick={verUsuario}>
+              {nombrecompleto}
+            </p>
+          </Tooltip>
+          <p className="p2">{profesion ? profesion.name : null}</p>
+          <div
+            className={`tipo-cons-home-post-emp ${
+              consultor === "Senior" ? "consultor-senior-table-home-emp" : null
+            }`}
+          >
+            <p>Consultor {consultor}</p>
           </div>
-        </Tooltip>
-      </div>
-      <div className="item-2">
-        <Tooltip title="Ver postulante">
-          <p className="p1" onClick={verUsuario}>
-            {nombrecompleto}
-          </p>
-        </Tooltip>
-        <p className="p2">{profesion ? profesion.name : null}</p>
-        <div
-          className={`tipo-cons-home-post-emp ${
-            consultor === "Senior" ? "consultor-senior-table-home-emp" : null
-          }`}
-        >
-          <p>Consultor {consultor}</p>
+        </div>
+        <div className="item-4">
+          <div>
+            <AccountTree className="icon-user-home-emp" /> <p>{anosZap} Años</p>
+          </div>
+          <div>
+            <LocationOn className="icon-user-home-emp" />
+            <p>
+              {comuna}, {region}
+            </p>
+          </div>
+          <div>
+            <PhoneIphone className="icon-user-home-emp" /> <p>{phone}</p>
+          </div>
+        </div>
+        <div className="item-3">
+          <p className="p1">Modulos</p>
+          <div className="swip-home-emp">
+            <div className="top-swip-home-emp">
+              <div className="left-swip-home-emp">
+                <IconButton
+                  className="btn-swip-home-emp"
+                  onClick={handleBack}
+                  disabled={activeStep === 0}
+                >
+                  <ArrowBackIos className="icon-swip-home-emp" />
+                </IconButton>
+              </div>
+              <div className="center-swip-home-emp">
+                {adns.length === 0 ? (
+                  <div className="no-posee-card-table-home-emp">
+                    <p>No posee</p>
+                  </div>
+                ) : (
+                  <Modulos activeStep={activeStep} data={adns} />
+                )}
+              </div>
+              <div className="right-swip-home-emp">
+                <IconButton
+                  className="btn-swip-home-emp"
+                  onClick={handleNext}
+                  disabled={activeStep === Math.ceil(lenghtArray / 3) - 1}
+                >
+                  <ArrowForwardIos className="icon-swip-home-emp" />
+                </IconButton>
+              </div>
+            </div>
+            <div className="stepper-user-home-emp">
+              <MobileStepperCustom
+                activeStep={activeStep}
+                lenghtArray={lenghtArray}
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div className="item-4">
-        <div>
-          <AccountTree className="icon-user-home-emp" /> <p>{anosZap} Años</p>
-        </div>
-        <div>
-          <LocationOn className="icon-user-home-emp" />
+      <div className="sub-card-table-home-emp-bottom">
+        <BusinessCenter className="icono-aviso-card-table" />
+        {titulo.length > 30 ? (
           <p>
-            {comuna}, {region}
+            {titulo.substring(0, 30) + "..."}
+            {" #"}
+            <span style={{ textTransform: "uppercase" }}>
+              {idaviso.slice(18)}
+            </span>
           </p>
-        </div>
-        <div>
-          <PhoneIphone className="icon-user-home-emp" /> <p>{phone}</p>
-        </div>
-      </div>
-      <div className="item-3">
-        <p className="p1">Modulos</p>
-        <div className="swip-home-emp">
-          <div className="top-swip-home-emp">
-            <div className="left-swip-home-emp">
-              <IconButton
-                className="btn-swip-home-emp"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-              >
-                <ArrowBackIos className="icon-swip-home-emp" />
-              </IconButton>
-            </div>
-            <div className="center-swip-home-emp">
-              {adns.length === 0 ? (
-                <div className="no-posee-card-table-home-emp">
-                  <p>No posee</p>
-                </div>
-              ) : (
-                <Modulos activeStep={activeStep} data={adns} />
-              )}
-            </div>
-            <div className="right-swip-home-emp">
-              <IconButton
-                className="btn-swip-home-emp"
-                onClick={handleNext}
-                disabled={activeStep === Math.ceil(lenghtArray / 3) - 1}
-              >
-                <ArrowForwardIos className="icon-swip-home-emp" />
-              </IconButton>
-            </div>
-          </div>
-          <div className="stepper-user-home-emp">
-            <MobileStepperCustom
-              activeStep={activeStep}
-              lenghtArray={lenghtArray}
-            />
-          </div>
-        </div>
+        ) : (
+          <p>
+            {titulo}
+            {" #"}
+            <span style={{ textTransform: "uppercase" }}>
+              {idaviso.slice(18)}
+            </span>
+          </p>
+        )}
       </div>
     </div>
   );

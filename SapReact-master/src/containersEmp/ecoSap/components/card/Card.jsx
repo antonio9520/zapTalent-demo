@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from "react";
 import "./Card.css";
-import imguser from "../../../../resources/images/SAPTalent/icon-new-user.svg";
+import imguser from "../../../../resources/ZAPTalent-Icon-Empty.svg";
 import { IconButton, MobileStepper } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import {
@@ -34,18 +34,22 @@ const Card = ({ data, setOpenModal, setDataUser, setOpen, setIdUser }) => {
     <div className="card-eco-sap-emp">
       <div className="foto-card-eco-sap-emp">
         {imageURL ? (
-          <img src={imageURL} alt="userimage" />
+          <div>
+            <img src={imageURL} alt="userimage" />
+          </div>
         ) : (
-          <img
-            style={{
-              width: "130px",
-              height: "130px",
-              marginBottom: "-25px",
-              marginTop: "-25px",
-            }}
-            src={imguser}
-            alt="userimage"
-          />
+          <div>
+            <img
+              style={{
+                width: "84px",
+                height: "84px",
+                marginBottom: "-25px",
+                marginTop: "-25px",
+              }}
+              src={imguser}
+              alt="userimage"
+            />
+          </div>
         )}
       </div>
       <div

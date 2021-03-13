@@ -220,14 +220,16 @@ const CustomModal = (props) => {
 
 export default CustomModal;
 
-const data = [
+let data = [
   {
     id: "d_G_kgXeK",
     modulo: "BI",
+    obs: "otra obs",
     submodulos: [
       {
         submodulo: "BI",
         nivel: "Avanzado",
+        obs: "una obs",
       },
     ],
   },

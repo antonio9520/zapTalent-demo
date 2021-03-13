@@ -57,6 +57,7 @@ function App() {
                 "/empresas/avisos",
                 "/empresas/publicar-aviso",
                 "/empresas/perfil/:id",
+                "/empresas/postulantes/:index",
               ]}
             />
             <Route exact path="/login-empresas" component={LoginEmp} />

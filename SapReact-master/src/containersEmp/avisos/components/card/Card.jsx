@@ -21,6 +21,7 @@ import {
 import { Tooltip, CustomSelectB } from "../../../../components";
 import { editarAvisoAction } from "../../../../redux/actions/actions-emp/avisosAction";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -46,6 +47,7 @@ const Card = ({
   tipoPlan,
   totalavisos,
 }) => {
+  const history = useHistory();
   const inicio = new Date(data.fechaInicio);
   const termino = new Date(data.fechaTermino);
   const [open, setOpen] = useState(false);
@@ -137,18 +139,25 @@ const Card = ({
           </div>
         </div>
         <div className="right-card-avisos-emp">
-          <div className="sub-right-avisos-emp">
-            <div>
-              <p className="p1">Inscritos</p>
-              <p className="p2">
-                {data.postulaciones ? data.postulaciones : 0}
-              </p>
+          {/* <Link to="/empresas/eco-sap/postulantes/1"> */}
+          <Tooltip title="Ver postulantes" placement="top">
+            <div
+              className="sub-right-avisos-emp"
+              onClick={() => history.push("/empresas/postulantes/1")}
+            >
+              <div>
+                <p className="p1">Inscritos</p>
+                <p className="p2">
+                  {data.postulaciones ? data.postulaciones : 0}
+                </p>
+              </div>
+              <div>
+                <p className="p1">No leídos</p>
+                <p className="p2">{data.noLeido ? data.noLeido : 0}</p>
+              </div>
             </div>
-            <div>
-              <p className="p1">No leídos</p>
-              <p className="p2">{data.noLeido ? data.noLeido : 0}</p>
-            </div>
-          </div>
+          </Tooltip>
+          {/* </Link> */}
         </div>
       </div>
       <div className="bottom-card-avisos-emp">

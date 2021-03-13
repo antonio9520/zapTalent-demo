@@ -7,6 +7,28 @@
   border-radius: 5px;
   min-height: 100px;
   display: flex;
+  flex-direction: column;
+}
+
+.sub-card-table-home-emp {
+  display: flex;
+}
+.sub-card-table-home-emp-bottom {
+  border-top: 1px solid rgb(230, 230, 230);
+  padding: 10px 0 10px 23px;
+  display: flex;
+  align-items: flex-end;
+}
+.sub-card-table-home-emp-bottom .icono-aviso-card-table {
+  color: var(--gray-text);
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+.sub-card-table-home-emp-bottom p {
+  color: var(--gray-text);
+  font-style: italic;
+  font-size: 14px;
 }
 .no-posee-card-table-home-emp {
   display: flex;

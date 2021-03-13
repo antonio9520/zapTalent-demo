@@ -15,7 +15,7 @@ const StepTwo = forwardRef((props, ref) => {
     setAdns,
     anosExpSap,
     setAnosExpZap,
-  } = props; 
+  } = props;
 
   const [loading, setLoading] = useState(false);
   const [errores, setErrores] = useState([]);
@@ -28,7 +28,7 @@ const StepTwo = forwardRef((props, ref) => {
 
     setAdns([
       ...adns,
-      { id: shortid.generate(), modulo: "", submodulos: [], desc: "" },
+      { id: shortid.generate(), modulo: "", obs: "", submodulos: [], desc: "" },
     ]);
     setTimeout(() => {
       container.scrollTop = "12000";
@@ -80,6 +80,7 @@ const StepTwo = forwardRef((props, ref) => {
       });
     });
   };
+  console.log(adns);
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">

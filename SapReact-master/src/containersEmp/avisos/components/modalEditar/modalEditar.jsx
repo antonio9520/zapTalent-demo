@@ -16,8 +16,7 @@ const CustomModal = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { setOpenModalEditar, openModalEditar, data, setDataEditar } = props;
- 
-  
+
   const cargando = useSelector((state) => state.aviso.cargando);
   const [step, setStep] = useState("one");
   //step one

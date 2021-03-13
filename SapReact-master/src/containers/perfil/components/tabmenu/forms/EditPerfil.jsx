@@ -9,6 +9,7 @@ import {
   Group,
   Flag,
   MonetizationOn,
+  Event,
 } from "@material-ui/icons";
 import { CustomInput, CustomSelectB, Tooltip } from "../../../../../components";
 import { editarUsuarioAction } from "../../../../../redux/actions/authAction";
@@ -16,6 +17,12 @@ import { useDispatch } from "react-redux";
 import { formatRut, RutFormat, validateRut } from "@fdograph/rut-utilities";
 import validator from "validator";
 import { naciones } from "../../../../../assets/nacionalidades";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import esLocale from "date-fns/locale/es";
+import DateFnsUtils from "@date-io/date-fns";
 
 const EditPerfil = ({ usuario, loading }) => {
   const dispatch = useDispatch();
@@ -30,6 +37,9 @@ const EditPerfil = ({ usuario, loading }) => {
   const [nacion, setNacion] = useState(usuario ? usuario.nacion : null);
   const [pretencion, setPretencion] = useState(
     usuario ? usuario.pretencion : null
+  );
+  const [fechaNacimiento, setFechaNacimiento] = useState(
+    usuario ? (usuario.fechaNacimiento ? usuario.fechaNacimiento : null) : null
   );
   const [consultor, setConsultor] = useState(
     usuario ? usuario.consultor : null
@@ -124,6 +134,7 @@ const EditPerfil = ({ usuario, loading }) => {
         nacion,
         consultor,
         pretencion,
+        fechaNacimiento,
       })
     );
     setEditar(true);
@@ -347,6 +358,41 @@ const EditPerfil = ({ usuario, loading }) => {
               name="pretencionrenta"
               disabled={editar}
             />
+          </div>
+          <div className="item-edit-perfil">
+            <Event className="icon-form-edit-perfil" />
+
+            <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
+              <KeyboardDatePicker
+                // error={errorFecha}
+                disabled={editar}
+                fullWidth
+                size="small"
+                label="Fecha de nacimiento"
+                // minDate={new Date("2010-01-01")}
+                maxDate={new Date()}
+                // helperText={
+                //   errorFecha ? "Fecha de nacimiento no puede estar vacio" : null
+                // }
+                openTo="year"
+                format="dd/MM/yyyy"
+                value={fechaNacimiento}
+                // maxDate={new Date()}
+                onChange={(newValue) => {
+                  setFechaNacimiento(newValue);
+                }}
+                InputProps={{
+                  className: "input-date-picker-inicio",
+                  readOnly: true,
+                  style: { paddingRight: 0 },
+                }}
+                className="date-picker-inicio"
+                InputLabelProps={{ className: "input-label-date-form" }}
+                FormHelperTextProps={{
+                  className: "helper-text-fecha-nacimiento",
+                }}
+              />
+            </MuiPickersUtilsProvider>
           </div>
         </div>
         <div className="cont-btn-edit-perfil">

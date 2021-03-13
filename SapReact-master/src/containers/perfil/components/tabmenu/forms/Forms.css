@@ -32,6 +32,11 @@
 
 .form-edit-perfil {
   padding: 20px 30px 0 30px;
+  max-height: 400px;
+  overflow: auto;
+}
+.form-edit-perfil::-webkit-scrollbar-track {
+  margin-top: 40px;
 }
 .item-edit-perfil {
   display: flex;

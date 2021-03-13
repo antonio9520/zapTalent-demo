@@ -37,12 +37,14 @@ const Avisos = () => {
   const [totalavisos, setTotalAvisos] = useState(0);
 
   const cargarAvisos = async () => {
+    
     switch (index) {
       case 0:
         query._id = usuario.idemp;
         dispatch(obtenerAvisoAction({ skip, query }));
         break;
       case 1:
+       
         query.activo = true;
         query._id = usuario.idemp;
         dispatch(obtenerAvisoAction({ skip, query }));
@@ -76,11 +78,12 @@ const Avisos = () => {
   }, [usuario, skip, _switch, index]);
 
   useEffect(() => {
-    if (tipoPlan.totalAvisos) {
+    if (tipoPlan.totalAvisos || tipoPlan.totalAvisos === 0) {
       if (tipoPlan.totalAvisos === 0) {
         setDisabledNewAviso(false);
         return;
       }
+
       if (tipoPlan.totalAvisos - avisos.length < 1) {
         setDisabledNewAviso(true);
       } else {
@@ -89,6 +92,7 @@ const Avisos = () => {
       setTotalAvisos(avisos.length);
     }
   }, [tipoPlan, avisos]);
+
   return (
     <>
       <div className="cont-avisos-emp" onScroll={handleScroll}>

@@ -36,13 +36,17 @@ const StepFour = forwardRef((props, ref) => {
   const [errorRenta, setErrorRenta] = useState(false);
   const [errorDescripcion, setErrorDescripcion] = useState(false);
   const [_switch, setSwitch] = useState(false);
+  const [convenir, setConvenir] = useState(false);
   const [errores, setErrores] = useState([]);
   const [errores2, setErrores2] = useState([]);
 
   const validacion = async () => {
-    if (renta < 1) {
-      setErrorRenta(true);
+    if (!convenir) {
+      if (renta < 1) {
+        setErrorRenta(true);
+      }
     }
+
     if (descripcion === "") {
       setErrorDescripcion(true);
     }
@@ -83,7 +87,11 @@ const StepFour = forwardRef((props, ref) => {
       container.scrollTop = "1000";
     }, 100);
   };
-
+  useEffect(() => {
+    if (renta === 0) {
+      setConvenir(true);
+    }
+  }, []);
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">
@@ -95,6 +103,7 @@ const StepFour = forwardRef((props, ref) => {
               <TextField
                 fullWidth
                 placeholder="$ 000.000"
+                disabled={convenir}
                 value={renta}
                 onChange={(e) => {
                   setErrorRenta(false);
@@ -111,6 +120,19 @@ const StepFour = forwardRef((props, ref) => {
                 }}
                 helperText={errorRenta ? "Introduzca un numero valido" : null}
               />
+              <div className="cont-a-convenir-actual">
+                <input
+                  type="checkbox"
+                  name="recordarme"
+                  id=""
+                  checked={convenir}
+                  onChange={() => {
+                    setConvenir(!convenir);
+                    setRenta(0);
+                  }}
+                />
+                <label>A convenir.</label>
+              </div>
             </div>
           </div>
           <div
@@ -291,6 +313,10 @@ function NumberFormatCustom(props) {
       thousandSeparator
       isNumericString
       prefix="$"
+      isAllowed={(values) => {
+        const { floatValue } = values;
+        return floatValue >= 0 && floatValue <= 1000000000;
+      }}
     />
   );
 }

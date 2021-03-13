@@ -13,6 +13,7 @@ import {
   COMENZAR_EDICION_AVISO,
   AVISO_EDITADO_ERROR,
   AVISO_EDITADO_EXITO,
+  DETENER_CARGA_AVISO,
 } from "../../types/typesEmp";
 
 import clientAxios from "../../../config/axios";
@@ -63,17 +64,22 @@ const agregarAvisoError = () => ({
 //OBTENER
 export function obtenerAvisoAction({ skip, query }) {
   return async (dispatch) => {
+    console.log("funcion obtener avisos");
     dispatch(descargaAviso());
     try {
       const respuesta = await clientAxios.put(
         `/api/avisos/filter/${skip}`,
         query
       );
-      if (skip === 0) {
-        dispatch(descargaExitoInit(respuesta.data));
+      if (respuesta.data.length === 0 && skip !== 0) {
+        dispatch(detenerCargaAviso());
       } else {
-        for (let i = 0; i < respuesta.data.length; i++) {
-          dispatch(descargaExito(respuesta.data[i]));
+        if (skip === 0) {
+          dispatch(descargaExitoInit(respuesta.data));
+        } else {
+          for (let i = 0; i < respuesta.data.length; i++) {
+            dispatch(descargaExito(respuesta.data[i]));
+          }
         }
       }
     } catch (error) {
@@ -86,9 +92,9 @@ export function obtenerAvisoAction({ skip, query }) {
 const descargaAviso = () => ({
   type: COMENZAR_DESCARGA_AVISO,
 });
-// const detenerCarga = () => ({
-//   type: DETENER_CARGA_OF,
-// });
+const detenerCargaAviso = () => ({
+  type: DETENER_CARGA_AVISO,
+});
 const descargaExito = (data) => ({
   type: DESCARGA_AVISO_EXITO,
   payload: data,

@@ -155,7 +155,11 @@ const CardJob = (props) => {
               <div style={{ backgroundColor: _switch ? "#187ce2" : null }}>
                 <p
                   className="p7-job-b"
-                  style={{ color: _switch ? "white" : null }}
+                  style={{
+                    color: _switch ? "white" : null,
+                    maxWidth: "150px",
+                    overflow: "auto",
+                  }}
                 >
                   <NumberFormat
                     value={data.personacargo}
@@ -171,14 +175,20 @@ const CardJob = (props) => {
             <div className="item-2-job-b">
               <p
                 className="p6-job-b"
-                style={{ color: _switch ? "white" : null }}
+                style={{
+                  color: _switch ? "white" : null,
+                }}
               >
                 Manejo de presupuesto Anual
               </p>
               <div style={{ backgroundColor: _switch ? "#187ce2" : null }}>
                 <p
                   className="p7-job-b"
-                  style={{ color: _switch ? "white" : null }}
+                  style={{
+                    color: _switch ? "white" : null,
+                    maxWidth: "150px",
+                    overflow: "auto",
+                  }}
                 >
                   <NumberFormat
                     value={data.manejopresupuesto}
@@ -305,7 +315,6 @@ const CardJob = (props) => {
               onClick={() => setView(!view)}
             >
               {view ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-            
             </IconButton>
           </Tooltip>
         ) : null}

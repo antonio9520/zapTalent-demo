@@ -6,7 +6,7 @@ import {
   Room,
   PhoneIphone,
   Description,
-  Event,
+
 } from "@material-ui/icons";
 import { Tooltip } from "../../../../../components";
 
@@ -91,19 +91,13 @@ const Menu = ({ active, setActive, setActiveStep, loading }) => {
           <PhoneIphone
             className={
               active === "four"
-                ? "icon-item-menu-ed-per-active-two"
+                ? "icon-item-menu-ed-per-active"
                 : "icon-item-menu-ed-per"
             }
-            style={{ marginBottom: 20, marginLeft: 5 }}
+           
           />
-          <Event
-            className={
-              active === "four"
-                ? "icon-item-menu-ed-per-active-two"
-                : "icon-item-menu-ed-per"
-            }
-            style={{ marginTop: 20, marginRight: 5 }}
-          />
+         
+        
         </ListItem>
       </Tooltip>
       <Tooltip title="Subir CV." placement="top">

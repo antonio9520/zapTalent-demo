@@ -1,11 +1,37 @@
 import React, { useState, useEffect } from "react";
 import "./AdnForm.css";
-import { CustomSelectB, Tooltip } from "../../../../../../components";
-import { IconButton, MenuItem, MobileStepper, Button } from "@material-ui/core";
+import {
+  CustomSelectB,
+  Tooltip,
+  CustomInput,
+} from "../../../../../../components";
+import {
+  IconButton,
+  MenuItem,
+  MobileStepper,
+  Button,
+  makeStyles,
+} from "@material-ui/core";
 import Loader from "react-loader-spinner";
-import { ArrowBackIos, ArrowForwardIos, Close, Info } from "@material-ui/icons";
+import {
+  ArrowBackIos,
+  ArrowForwardIos,
+  Close,
+  Delete,
+} from "@material-ui/icons";
 import { modulos } from "../../../../../../assets/modulos";
 import SwipeableViews from "react-swipeable-views";
+
+const useStyles = makeStyles({
+  btnDelete: {
+    backgroundColor: "red",
+    color: "white",
+    boxShadow: "1px 1px 5px 1px rgba(0,0,0,0.2)",
+    "&:hover": {
+      backgroundColor: "#ED4033",
+    },
+  },
+});
 
 const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -18,6 +44,11 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
   const [_switch_nivel, setSwitchNivel] = useState(false);
   const [dataNivel, setDataNivel] = useState("");
   const [errorNivel, setErrorNivel] = useState(false);
+  /**NUEVO */
+  const [obsModulo, setObsModulo] = useState(data.obs);
+  const [subModActive, setSubModActive] = useState(null);
+  const [refreshNivel, setRefreshNivel] = useState(false);
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -42,6 +73,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
     }
   };
 
+  /**AÑADIR MODULO */
   const addModulo = (e) => {
     setModulo(e);
     setSwitch(!_swith);
@@ -52,18 +84,39 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
       }
     });
   };
-
+  /**AÑADIR OBS MODULO */
+  const addObsModulo = (e) => {
+    adns.map((item) => {
+      if (item.id === data.id) {
+        item.obs = e;
+      }
+    });
+  };
+  /**AÑADIR OBS SUB-MODULO */
+  const addObsSubModulo = (idModulo, submodulo, e) => {
+    adns.map((item) =>
+      item.id === idModulo
+        ? item.submodulos.map((i) =>
+            i.submodulo === submodulo ? (i.obs = e) : null
+          )
+        : null
+    );
+    console.log(adns);
+  };
+  // console.log(adns);
+  /**AÑADIR NIVEL SUBMODULO */
   const addNivel = (data) => {
     setSwitchNivel(true);
     setDataNivel(data);
   };
 
+  /**RECARGAR  CUANDO SE AGREGA UN MODULO*/
   useEffect(() => {
     setLoading(true);
     setActiveStep(0);
     setTimeout(() => {
       setLoading(false);
-    }, 200);
+    }, 400);
   }, [modulo]);
 
   useEffect(() => {
@@ -81,38 +134,83 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
     setInitDefault(false);
   }, [errores2]);
 
-  const saveNivel = (id) => {
-    adns.map((it) => {
+  /**SAVE NIVEL OVERLAY */
+  const saveNivel = async (id) => {
+    await adns.map((it) => {
       if (it.id === id) {
         it.submodulos.push({
           submodulo: dataNivel.name,
           nivel: nivel,
           desc: dataNivel.desc,
+          obs: "",
         });
       }
     });
+
     setSwitchNivel(false);
     setLoading(true);
     setActiveStep(0);
     setNivel(null);
+    setSubModActive(dataNivel.name);
     setTimeout(() => {
       setLoading(false);
     }, 200);
   };
+  /**SAVE NIVEL FORM */
+  const saveNivelForm = async (idModulo, submodulo, e) => {
+    await setRefreshNivel(true);
+    adns.map((item) =>
+      item.id === idModulo
+        ? item.submodulos.map((i) =>
+            i.submodulo === submodulo ? (i.nivel = e) : null
+          )
+        : null
+    );
+    console.log(adns);
+    setTimeout(() => {
+      setRefreshNivel(false);
+    }, 400);
+    // adns.map((item) => {
+    //   console.log(item);
+    // });
+  };
+
   const recargar = () => {
     setLoading(true);
     setActiveStep(0);
+    if (adns) {
+      adns.map((item) =>
+        item.id === data.id
+          ? item.submodulos[0]
+            ? setSubModActive(item.submodulos[0].submodulo)
+            : null
+          : null
+      );
+    }
     setTimeout(() => {
+      setRefreshNivel(false);
       setLoading(false);
     }, 200);
   };
+
   // console.log(data);
   useEffect(() => {
     setCargando(true);
     setTimeout(() => {
       setCargando(false);
-    }, 200);
+    }, 400);
   }, [_swith]);
+  useEffect(() => {
+    if (adns) {
+      adns.map((item) =>
+        item.id === data.id
+          ? item.submodulos[0]
+            ? setSubModActive(item.submodulos[0].submodulo)
+            : null
+          : null
+      );
+    }
+  }, []);
   return (
     <div
       className="adn-form-avisos-emp"
@@ -155,7 +253,23 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
               })}
         </CustomSelectB>
       </div>
-      <>
+      <div className="container-inputs-form-emp">
+        <CustomInput
+          label="Observaciones (opcional)"
+          helpertext="no puede estar vacio"
+          // error={profesionError}
+          value={obsModulo}
+          onChange={(e) => {
+            setObsModulo(e.target.value);
+            addObsModulo(e.target.value);
+          }}
+        />
+      </div>
+      {data.modulo !== "" ? (
+        <p className="p1-seleccion-submodulo">Seleccione sub-módulo</p>
+      ) : null}
+
+      <div>
         {loading ? (
           <div className="cont-loading-adn-emp">
             <Loader
@@ -170,7 +284,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
         ) : (
           <div className="stepper-submod-form-emp">
             {data.modulo === "" ? (
-              <p className="p2">Selecciona un modulo</p>
+              <p className="p2">Selecciona un módulo</p>
             ) : (
               <>
                 <div className="step-one-top-adn">
@@ -185,18 +299,21 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
                   <div className="content-center-adn">
                     <SwipeableViews index={activeStep}>
                       {arraySubModulos.map((item, index) => (
-                        <div key={index} className="cont-SwipeableViews-emp">
+                        <div
+                          key={index}
+                          className="cont-SwipeableViews-emp"
+                          style={{ height: 70, alignItems: "center" }}
+                        >
                           {item.map((item, index) => (
                             <Submodulos
                               key={index}
                               data={item}
-                              setAdns={setAdns}
                               adns={adns}
                               id={data.id}
                               addNivel={addNivel}
                               _switch_nivel={_switch_nivel}
-                              setSwitchNivel={setSwitchNivel}
-                              recargar={recargar}
+                              setSubModActive={setSubModActive}
+                              subModActive={subModActive}
                             />
                           ))}
                         </div>
@@ -212,7 +329,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
                     </IconButton>
                   </div>
                 </div>
-                <div className="cont-mobile-adn">
+                <div className="contenedor-mobile-stepper">
                   <MobileStepper
                     variant="dots"
                     steps={arraySubModulos.length}
@@ -225,7 +342,39 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
             )}
           </div>
         )}
-      </>
+      </div>
+      {!refreshNivel ? (
+        subModActive ? (
+          adns.map((item, index) =>
+            item.id === data.id
+              ? item.submodulos.map((i, index) =>
+                  i.submodulo === subModActive ? (
+                    <DetalleSubmodulo
+                      data={i}
+                      saveNivelForm={saveNivelForm}
+                      id={item.id}
+                      addObsSubModulo={addObsSubModulo}
+                      adns={adns}
+                      recargar={recargar}
+                      setRefreshNivel={setRefreshNivel}
+                    />
+                  ) : null
+                )
+              : null
+          )
+        ) : null
+      ) : (
+        <div className="cont-loading-adn-emp-submod">
+          <Loader
+            type="Oval"
+            color="#00BFFF"
+            height={35}
+            width={35}
+            visible={refreshNivel}
+            //  timeout={3000} //3 secs
+          />
+        </div>
+      )}
       <div style={{ position: "absolute", right: "5px", top: "5px" }}>
         <IconButton size="small" onClick={deleteModulo}>
           <Close className="icon-close" />
@@ -300,34 +449,34 @@ export default AdnForm;
 const Submodulos = ({
   data,
   id,
-  setAdns,
   adns,
   addNivel,
   _switch_nivel,
-  setSwitchNivel,
-  recargar,
+  setSubModActive,
+  subModActive,
 }) => {
   const [active, setActive] = useState(false);
   const [nivel, setNivel] = useState(null);
   const handleClick = () => {
     if (active) {
-      adns.map((it) => {
-        if (it.id === id) {
-          setActive(false);
-          const filtro = it.submodulos.filter(
-            (i) => i.submodulo !== data.submodulo
-          );
-          it.submodulos = [];
-          filtro.map((item) => {
-            it.submodulos.push(item);
-          });
-        }
-      });
-      recargar();
+      // adns.map((it) => {
+      //   if (it.id === id) {
+      //     setActive(false);
+      //     const filtro = it.submodulos.filter(
+      //       (i) => i.submodulo !== data.submodulo
+      //     );
+      //     it.submodulos = [];
+      //     filtro.map((item) => {
+      //       it.submodulos.push(item);
+      //     });
+      //   }
+      // });
+      // recargar();
+      setSubModActive(data.submodulo);
     } else {
       addNivel({ name: data.submodulo, id: id, desc: data.desc });
     }
-    console.log(adns);
+    // console.log(adns);
   };
 
   //VALOR POR DEFAULT
@@ -346,13 +495,17 @@ const Submodulos = ({
     });
   }, [_switch_nivel]);
   // console.log(adns);
-  console.log(data);
+
   return (
     <Tooltip title={data.desc}>
       <>
         <div
           className={
-            active ? "cont-submod-avisos-emp" : "cont-submod-avisos-emp-inact"
+            active
+              ? `cont-submod-avisos-emp ${
+                  subModActive === data.submodulo ? "activo" : null
+                }`
+              : "cont-submod-avisos-emp-inact"
           }
           onClick={handleClick}
         >
@@ -363,13 +516,90 @@ const Submodulos = ({
           >
             {data.submodulo}
           </p>
-          {nivel ? (
-            <Tooltip title={nivel} placement="top">
-              <Info className="cont-info-add-form-adn" />
-            </Tooltip>
-          ) : null}
         </div>
       </>
     </Tooltip>
+  );
+};
+
+const DetalleSubmodulo = ({
+  data,
+  saveNivelForm,
+  id,
+  addObsSubModulo,
+  adns,
+  recargar,
+  setRefreshNivel,
+}) => {
+  const classes = useStyles();
+  const [obsSubmodulo, setObsSubmodulo] = useState(data.obs);
+
+  const handleDelete = () => {
+    setRefreshNivel(true);
+    adns.map((it) => {
+      if (it.id === id) {
+        // setActive(false);
+        const filtro = it.submodulos.filter(
+          (i) => i.submodulo !== data.submodulo
+        );
+        it.submodulos = [];
+        filtro.map((item) => {
+          it.submodulos.push(item);
+        });
+      }
+    });
+    recargar();
+  };
+
+  return (
+    <>
+      <div className="container-inputs-form-emp">
+        <CustomSelectB
+          label={`Nivel Sub-Módulo ${data.submodulo}`}
+          helpertext="Seleccione un nivel"
+          // error={errorNivel}
+          value={data.nivel}
+          onChange={(e) => {
+            saveNivelForm(id, data.submodulo, e.target.value);
+          }}
+        >
+          <MenuItem className="custom-menu-item" value="No Maneja">
+            No Maneja
+          </MenuItem>
+          <MenuItem className="custom-menu-item" value="Básico">
+            Básico
+          </MenuItem>
+          <MenuItem className="custom-menu-item" value="Medio">
+            Medio
+          </MenuItem>
+          <MenuItem className="custom-menu-item" value="Avanzado">
+            Avanzado
+          </MenuItem>
+        </CustomSelectB>
+      </div>
+
+      <div className="container-inputs-form-emp">
+        <CustomInput
+          label="Observaciones (opcional)"
+          helpertext="no puede estar vacio"
+          // error={profesionError}
+
+          value={obsSubmodulo}
+          onChange={(e) => {
+            setObsSubmodulo(e.target.value);
+            addObsSubModulo(id, data.submodulo, e.target.value);
+          }}
+        />
+      </div>
+      <div className="cont-btn-delete-submodulo-aviso-emp">
+        <IconButton
+          size="small"
+          className={classes.btnDelete}
+          onClick={handleDelete}
+        >
+          <Delete fontSize="small" />
+        </IconButton>
+      </div>
+    </>
   );
 };

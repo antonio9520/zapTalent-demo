@@ -142,7 +142,7 @@
   background-color: var(--blue-dark) !important;
   justify-content: center !important;
   max-width: 110px !important;
-
+  color: white !important;
   max-height: 45px !important;
   height: 45px;
   border-radius: 5px !important;

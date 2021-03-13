@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="228" height="228" viewBox="0 0 228 228">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.682" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4da2d0"/>
+      <stop offset="0.001" stop-color="#fff"/>
+      <stop offset="0.301" stop-color="#adb2b4"/>
+      <stop offset="1" stop-color="#555"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.501" y1="-1.634" x2="0.496" y2="-0.74" xlink:href="#linear-gradient"/>
+    <clipPath id="clip-ZAPTalent-Icon-Empty">
+      <rect width="228" height="228"/>
+    </clipPath>
+  </defs>
+  <g id="ZAPTalent-Icon-Empty" clip-path="url(#clip-ZAPTalent-Icon-Empty)">
+    <g id="Grupo_2355" data-name="Grupo 2355" transform="translate(-9090.066 4760.933)">
+      <circle id="Elipse_23" data-name="Elipse 23" cx="107.759" cy="107.759" r="107.759" transform="translate(9096.003 -4754.61)" fill="url(#radial-gradient)"/>
+      <path id="Intersección_2" data-name="Intersección 2" d="M69.926,132.972a52.452,52.452,0,0,0-20.309,4.159C20.9,126.4,0,93.494,0,54.568A103.661,103.661,0,0,1,5.324,21.5a107.79,107.79,0,0,1,129.2,0,103.646,103.646,0,0,1,5.324,33.064c0,38.927-20.9,71.83-49.617,82.563A52.443,52.443,0,0,0,69.926,132.972Z" transform="translate(9133.835 -4754.61)" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1" opacity="0.4" fill="url(#linear-gradient)"/>
+      <path id="Intersección_1" data-name="Intersección 1" d="M3.526,61.014Q1.738,59.694,0,58.454c3.283-11.2,9.154-24.677,14.794-32.279C26.418,10.509,43.439,0,62.4,0c19.825,0,37.524,11.482,49.157,28.336,5.048,7.311,10.031,19.9,12.87,30.3a107.256,107.256,0,0,1-62.2,19.756A107.268,107.268,0,0,1,3.526,61.014Z" transform="translate(9141.557 -4617.479)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+      <path id="Trazado_216" data-name="Trazado 216" d="M712.827,238.593a102.569,102.569,0,0,0-7.45-38.778,107.8,107.8,0,0,0-124.949,0,102.609,102.609,0,0,0-7.45,38.778c0,38.927,20.9,71.83,49.617,82.563a51.664,51.664,0,0,1,40.615,0C691.926,310.423,712.827,277.521,712.827,238.593Z" transform="translate(8560.859 -4934.476)" opacity="0.2" fill="url(#linear-gradient-2)"/>
+      <circle id="Elipse_24" data-name="Elipse 24" cx="38.945" cy="38.945" r="38.945" transform="translate(9164.818 -4685.795)" fill="#fff"/>
+      <path id="Intersección_3" data-name="Intersección 3" d="M3.526,61.014Q1.738,59.694,0,58.454c3.283-11.2,9.154-24.677,14.794-32.279C26.418,10.509,43.439,0,62.4,0c19.825,0,37.524,11.482,49.157,28.336,5.048,7.311,10.031,19.9,12.87,30.3a107.256,107.256,0,0,1-62.2,19.756A107.268,107.268,0,0,1,3.526,61.014Z" transform="translate(9141.557 -4616.479)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

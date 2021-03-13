@@ -81,6 +81,8 @@
 .sub-right-avisos-emp {
   display: flex;
   width: 100%;
+  /* background-color: royalblue; */
+  cursor: pointer;
 }
 
 .sub-right-avisos-emp div:nth-child(1) {
@@ -169,7 +171,7 @@
   margin: 0;
 }
 
-.cont-action-estado-aviso-emp{
+.cont-action-estado-aviso-emp {
   /* background-color: rosybrown; */
   width: 190px;
   display: flex;

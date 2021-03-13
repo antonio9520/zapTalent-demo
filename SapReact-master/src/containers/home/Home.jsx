@@ -150,6 +150,7 @@ const Home = () => {
 
     query.skip = skip;
     if (usuario.modulos) query.modulos = usuario.modulos;
+    if (usuario.submodulos) query.submodulos = usuario.submodulos;
     if (usuario.industria) query.industria = usuario.industria;
     query.consultor = usuario.consultor;
     try {

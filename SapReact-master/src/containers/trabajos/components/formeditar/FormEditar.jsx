@@ -438,18 +438,25 @@ const Formulario = (props) => {
         </div>
         <div className="item-form-trabajo">
           <div className="left-date-trabajo">
-            <CustomInput
+            <TextField
+              fullWidth
               label="Personas a cargo (opcional)"
               onChange={(e) => {
                 setPerCargoError(false);
                 setPersonaCargo(e.target.value);
               }}
-              name="persona-cargo"
-              type="number"
+              id="formatted-numberformat-input-2"
+              InputProps={{
+                inputComponent: NumberFormatCustom2,
+                className: "multiline-form-estudios ",
+              }}
               defaultValue={personacargo}
               value={personacargo}
               error={perCargoError}
-              helpertext="Introdusca un numero valido"
+              InputLabelProps={{
+                className: "multiline-form-estudios manpre-form-trabajos",
+              }}
+              helperText={perCargoError ? "Introduzca un numero valido" : null}
             />
           </div>
           <div className="right-date-trabajo">
@@ -472,19 +479,6 @@ const Formulario = (props) => {
               }}
               helperText={manPreError ? "Introdusca un numero valido" : null}
             />
-            {/* <CustomInput
-              label="Manejo de presupuesto (opcional)"
-              onChange={(e) => {
-                setManPressError(false);
-                setManejoPresupuesto(e.target.value);
-              }}
-              name="manejo-presupuesto"
-              type="number"
-              defaultValue={manejopresupuesto}
-              error={manPreError}
-              value={manejopresupuesto}
-              helpertext="Introdusca un numero valido"
-            /> */}
           </div>
         </div>
         <div className="item-form-trabajo">
@@ -639,9 +633,38 @@ function NumberFormatCustom(props) {
           },
         });
       }}
+      isAllowed={(values) => {
+        const { floatValue } = values;
+        return floatValue >= 0 && floatValue <= 1000000000;
+      }}
       thousandSeparator
       isNumericString
       prefix="$"
+    />
+  );
+}
+
+function NumberFormatCustom2(props) {
+  const { inputRef, onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={inputRef}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      isAllowed={(values) => {
+        const { floatValue } = values;
+        return floatValue >= 0 && floatValue <= 1000000000;
+      }}
+      thousandSeparator
+      isNumericString
     />
   );
 }

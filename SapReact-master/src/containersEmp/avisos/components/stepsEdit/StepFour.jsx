@@ -41,11 +41,15 @@ const StepFour = forwardRef((props, ref) => {
   const [_switch, setSwitch] = useState(false);
   const [errores, setErrores] = useState([]);
   const [errores2, setErrores2] = useState([]);
+  const [convenir, setConvenir] = useState(false);
 
   const validacion = async () => {
-    if (renta < 1) {
-      setErrorRenta(true);
+    if (!convenir) {
+      if (renta < 1) {
+        setErrorRenta(true);
+      }
     }
+
     if (descripcion === "") {
       setErrorDescripcion(true);
     }
@@ -85,6 +89,11 @@ const StepFour = forwardRef((props, ref) => {
     }
   }, [_switch]);
 
+  useEffect(() => {
+    if (renta === 0) {
+      setConvenir(true);
+    }
+  }, []);
   return (
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">
@@ -97,6 +106,7 @@ const StepFour = forwardRef((props, ref) => {
                 fullWidth
                 placeholder="$ 000.000"
                 value={renta}
+                disabled={convenir}
                 onChange={(e) => {
                   setErrorRenta(false);
                   setRenta(e.target.value);
@@ -112,9 +122,25 @@ const StepFour = forwardRef((props, ref) => {
                 }}
                 helperText={errorRenta ? "Introduzca un numero valido" : null}
               />
+              <div className="cont-a-convenir-actual">
+                <input
+                  type="checkbox"
+                  name="recordarme"
+                  id=""
+                  checked={convenir}
+                  onChange={() => {
+                    setConvenir(!convenir);
+                    setRenta(0);
+                  }}
+                />
+                <label>A convenir.</label>
+              </div>
             </div>
           </div>
-          <div  className="cont-beneficios-avisos-emp" style={{ flex: 1, paddingLeft: "10px" }}>
+          <div
+            className="cont-beneficios-avisos-emp"
+            style={{ flex: 1, paddingLeft: "10px" }}
+          >
             <p className="p1">Beneficios</p>
             <div className="sub-beneficios-avisos-emp">
               <div
@@ -275,6 +301,10 @@ function NumberFormatCustom(props) {
             value: values.value,
           },
         });
+      }}
+      isAllowed={(values) => {
+        const { floatValue } = values;
+        return floatValue >= 0 && floatValue <= 1000000000;
       }}
       thousandSeparator
       isNumericString

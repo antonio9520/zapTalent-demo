@@ -244,17 +244,17 @@ const Formulario = (props) => {
             error={tipoestudioError}
             helpertext="Tipo de estudio no puede estar vacio"
           >
-            <MenuItem className="custom-menu-item" value="Secundario">
-              Secundario
+            <MenuItem className="custom-menu-item" value="Enseñanza Media">
+              Enseñanza Media
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Terciario">
-              Terciario
+            <MenuItem
+              className="custom-menu-item"
+              value="Técnico/Universitario"
+            >
+              Tecnico/Universitario
             </MenuItem>
-            <MenuItem className="custom-menu-item" value="Universitario">
-              Universitario
-            </MenuItem>
-            <MenuItem className="custom-menu-item" value="Postgrado">
-              Postgrado
+            <MenuItem className="custom-menu-item" value="PostGrado">
+              PostGrado
             </MenuItem>
             <MenuItem className="custom-menu-item" value="Master">
               Master

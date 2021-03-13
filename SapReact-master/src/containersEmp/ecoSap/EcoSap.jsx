@@ -8,9 +8,13 @@ import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction
 import { setearTipoPlan } from "../../assets/setTipoPlan";
 import { Dialog } from "../../componentsEmp";
 
-const EcoSap = () => {
+const EcoSap = (props) => {
+  const {
+    match: { params },
+  } = props;
   const dispatch = useDispatch();
-  const [value, setValue] = useState(0);
+  console.log(params);
+  const [value, setValue] = useState(params.index ? parseInt(params.index) : 0);
   const [usuarios, setUsuarios] = useState([]);
   const avisos = useSelector((state) => state.aviso.avisos);
   const [skip, setSkip] = useState(0);

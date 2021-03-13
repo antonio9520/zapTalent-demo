@@ -77,11 +77,12 @@ const createQuery = (data) => {
     // query.fechaTermino = { $lte: new Date() };
   }
   if (search) {
-    query.$text = {
-      $search: search,
-      $caseSensitive: false,
-      $diacriticSensitive: false,
-    };
+    // query.$text = {
+    //   $search: search,
+    //   $caseSensitive: false,
+    //   $diacriticSensitive: false,
+    // };
+    query.titulo = { $regex: `${search}`, $options: "i" };
   }
   if (tipoConsultor) query.tipoConsultor = tipoConsultor;
 
@@ -125,16 +126,17 @@ const createQuery = (data) => {
 
 exports.empleosSugeridos = async (req, res) => {
   const { skip, modulos, industria, submodulos, search } = req.body;
-  console.log(skip);
+
   let query = [];
   let querysearch = {};
   let industrias = [];
   if (search) {
-    querysearch.$text = {
-      $search: search,
-      $caseSensitive: false,
-      $diacriticSensitive: false,
-    };
+    // querysearch.$text = {
+    //   $search: search,
+    //   $caseSensitive: false,
+    //   $diacriticSensitive: false,
+    // };
+    querysearch.titulo = { $regex: `${search}`, $options: "i" };
   }
   querysearch.estado = "Activo";
 
@@ -145,8 +147,9 @@ exports.empleosSugeridos = async (req, res) => {
 
     query.push({ area: { $in: industrias } });
   }
-  if (modulos)
+  if (modulos && submodulos) {
     query.push({ modulos: { $in: modulos }, submodulos: { $in: submodulos } });
+  }
 
   try {
     const avisos = await Avisos.find(
@@ -158,6 +161,7 @@ exports.empleosSugeridos = async (req, res) => {
       }
     ).sort({ creacion: -1 });
 
+    console.log(avisos);
     res.json(avisos);
   } catch (error) {
     console.log(error);

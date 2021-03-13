@@ -3,7 +3,7 @@
   background-color: white;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  padding: 20px 10px;
+  padding: 30px;
   margin-top: 10px;
   position: relative;
 }
@@ -23,7 +23,17 @@
   animation: 0.5s overlay-visible forwards;
   /* animation: 0.5s overlay-visible-moss; */
 }
-
+.container-inputs-form-emp {
+}
+.p1-seleccion-submodulo {
+  text-align: center;
+  color: var(--blue-primary);
+}
+.contenedor-mobile-stepper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .overlay-card-adn-emp p {
   color: var(--blue-primary);
   margin: 0;
@@ -47,12 +57,13 @@
 }
 .stepper-submod-form-emp {
   /* background-color: lightcoral; */
-  margin-top: 30px;
+  margin-top: 10px;
+  padding: 0 35px;
 }
 .cont-submod-avisos-emp {
   background: var(--degradado-blue);
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,15 +73,18 @@
   position: relative;
   transition: 0.5s all ease-in-out;
 }
-
+.cont-submod-avisos-emp.activo {
+  border: 2px solid #96daf8;
+  transform: scale(1.2);
+}
 .cont-submod-avisos-emp p {
   margin: 0;
 }
 .cont-submod-avisos-emp-inact {
   margin: 0;
   background: var(--degradado-blue);
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,12 +130,25 @@
   align-items: flex-end;
   height: 70px;
 }
-
+.cont-loading-adn-emp-submod {
+  /* background-color: royalblue; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 116px;
+}
 .cont-info-add-form-adn {
   position: absolute;
-  top:2px;
+  top: 2px;
   right: 2px;
   width: 15px !important;
   height: 15px !important;
   color: white;
+}
+
+.cont-btn-delete-submodulo-aviso-emp {
+  /* background-color: cadetblue; */
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
 }

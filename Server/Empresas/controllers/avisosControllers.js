@@ -18,11 +18,13 @@ exports.mostrarAvisos = async (req, res) => {
 
   try {
     const querie = await createQuery(query);
-    // console.log(querie);
+    console.log(querie);
+    console.log("algo");
+    //{titulo: { '$regex': '(\s+node|^node)', '$options': 'i' }}
     const avisos = await Avisos.find(querie, undefined, {
       skip: parseInt(skip),
       limit: 5,
-    });
+    }).sort({ creacion: -1 });
     // console.log(avisos);
     const dataAvisos = await datapostulaciones(avisos);
     res.json(dataAvisos);
@@ -35,26 +37,40 @@ exports.mostrarAvisos = async (req, res) => {
 const createQuery = (data) => {
   const { _id, activo, caducado, search } = data;
   let query = {};
+  if (activo || caducado || search) {
+    query.$or = [];
+  }
   if (_id) query.idusuario = _id;
   if (activo) {
-    query.$or = [{ estado: "Activo", fechaTermino: { $gte: new Date() } }];
+    query.$or.push({ estado: "Activo" });
+    query.$or.push({ fechaTermino: { $gte: new Date() } });
     // query.fechaTermino = { $gte: new Date() };
   }
   if (caducado) {
-    query.$or = [
-      { estado: "Proceso Finalizado" },
-      { fechaTermino: { $lte: new Date() } },
-    ];
+    query.$or.push({ estado: "Proceso Finalizado" });
+    query.$or.push({ fechaTermino: { $lte: new Date() } });
 
     // query.fechaTermino = { $lte: new Date() };
   }
   if (search) {
-    query.$text = {
-      $search: search,
-      $caseSensitive: false,
-      $diacriticSensitive: false,
-    };
+    // query.$or = [];
+    // query.$or.push({
+    //   $text: {
+    //     $search: search,
+    //     $caseSensitive: false,
+    //     $diacriticSensitive: false,
+    //   },
+    // });
+    // query.$text = {
+    //   $search: search,
+    //   $caseSensitive: false,
+    //   $diacriticSensitive: false,
+    // };
+
+    query.$or.push({ titulo: { $regex: `${search}`, $options: "i" } });
+    // query.titulo = { $regex: `(^${search})`, $options: "i" };
   }
+  console.log(query);
   return query;
 };
 const datapostulaciones = async (avisos) => {

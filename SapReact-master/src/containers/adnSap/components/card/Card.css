@@ -3,13 +3,13 @@
   width: 400px;
   margin: 10px;
   margin-top: 20px;
-
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   position: relative;
+  overflow: hidden;
   background-color: var(--white);
 }
 .plantilla-card-adn {
@@ -46,6 +46,10 @@
   color: var(--blue-primary);
   margin: 0;
   font-size: 12px;
+  max-height: 40px;
+
+  max-width: 380px;
+  overflow: auto;
   font-weight: 500;
   margin: 2px 0;
 }
@@ -172,6 +176,7 @@
   font-weight: 500;
   margin: 0;
   margin-top: 20px;
+
   margin-bottom: 10px;
 }
 
@@ -184,6 +189,8 @@
   font-style: italic;
   margin-bottom: 20px;
   max-height: 40px;
+
+  max-width: 380px;
   overflow: auto;
 }
 
