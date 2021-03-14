@@ -23,7 +23,7 @@ exports.mostrarAvisos = async (req, res) => {
     //{titulo: { '$regex': '(\s+node|^node)', '$options': 'i' }}
     const avisos = await Avisos.find(querie, undefined, {
       skip: parseInt(skip),
-      limit: 5,
+      limit: 6,
     }).sort({ creacion: -1 });
     // console.log(avisos);
     const dataAvisos = await datapostulaciones(avisos);

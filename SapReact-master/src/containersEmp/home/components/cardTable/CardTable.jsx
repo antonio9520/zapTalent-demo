@@ -11,6 +11,7 @@ import {
   Mail,
   PhoneIphone,
   BusinessCenter,
+  VisibilityOff,
 } from "@material-ui/icons";
 import SwipeableViews from "react-swipeable-views";
 import { Tooltip } from "../../../../components";
@@ -29,6 +30,7 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
     adns,
     titulo,
     idaviso,
+    leido,
   } = data;
   console.log(data);
   const [activeStep, setActiveStep] = useState(0);
@@ -154,6 +156,13 @@ const CardTable = ({ data, setOpenModal, setDataUser }) => {
           </p>
         )}
       </div>
+      {!leido ? (
+        <Tooltip title="No leido" placement="top">
+          <div className="cont-estado-no-leido">
+            <VisibilityOff className="icon-view-no-leido" />
+          </div>
+        </Tooltip>
+      ) : null}
     </div>
   );
 };

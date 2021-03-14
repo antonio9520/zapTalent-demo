@@ -33,7 +33,7 @@ const Layout = (props) => {
           >
             <Alert severity={_alert.type}>{_alert.msg}</Alert>
           </Snackbar>
-        </div>
+        </div> 
 
         <div className="splash-screen-responsivo">
           <img src={image} alt="logo" />

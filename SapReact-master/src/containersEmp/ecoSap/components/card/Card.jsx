@@ -8,11 +8,20 @@ import {
   GetApp,
   ArrowBackIos,
   ArrowForwardIos,
+  VisibilityOff,
 } from "@material-ui/icons";
 import { Tooltip } from "../../../../components";
 
 const Card = ({ data, setOpenModal, setDataUser, setOpen, setIdUser }) => {
-  const { nombres, apellidos, imageURL, profesion, anosZap, adns } = data;
+  const {
+    nombres,
+    apellidos,
+    imageURL,
+    profesion,
+    anosZap,
+    adns,
+    leido,
+  } = data;
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -117,17 +126,30 @@ const Card = ({ data, setOpenModal, setDataUser, setOpen, setIdUser }) => {
         </div>
       </div>
       <div className="bottom-card-eco-sap-emp">
-        <IconButton className="btn-eco-sap-emp" onClick={verUsuario}>
-          <Visibility />
-        </IconButton>
-        <IconButton
-          className="btn-eco-sap-emp"
-          // style={{ opacity: "0.5" }}
-          onClick={generarPdf}
-        >
-          <GetApp style={{ color: "white" }} />
-        </IconButton>
+        <Tooltip title="Ver usuario" placement="top">
+          <IconButton className="btn-eco-sap-emp" onClick={verUsuario}>
+            <Visibility />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Descargar Curriculum Vitae" placement="top">
+          <IconButton
+            className="btn-eco-sap-emp"
+            // style={{ opacity: "0.5" }}
+            onClick={generarPdf}
+          >
+            <GetApp style={{ color: "white" }} />
+          </IconButton>
+        </Tooltip>
       </div>
+      {leido !== undefined ? (
+        !leido ? (
+          <Tooltip title="No leido" placement="top">
+            <div className="cont-estado-no-leido">
+              <VisibilityOff className="icon-view-no-leido" />
+            </div>
+          </Tooltip>
+        ) : null
+      ) : null}
     </div>
   );
 };

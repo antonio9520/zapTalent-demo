@@ -29,7 +29,7 @@
   flex: 6;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   min-height: 83vh;
   max-height: 83vh;
   overflow: auto;

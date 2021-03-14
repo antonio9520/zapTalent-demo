@@ -8,11 +8,11 @@ import iconUser from "../../../resources/iconPDF/ZAPTalent-Icono-PDF-7.png";
 
 const Trabajos = ({ data }) => {
   return (
-    <View style={styles.contEstudios}>
+    <View style={styles.contEstudios} break>
       <View style={styles.contEstudiosTop}>
         <Text style={styles.title}>Trabajos</Text>
       </View>
-      <View style={styles.contEstudiosBottom}>
+      <View style={styles.contEstudiosBottom} wrap={false}>
         {data[0] &&
           data.map((item, index) => <Trabajo key={index} data={item} />)}
       </View>
@@ -59,7 +59,7 @@ const Trabajo = ({ data }) => {
   }
 
   return (
-    <View style={styles.contTrabajo} wrap={false}>
+    <View style={styles.contTrabajo}>
       <Text style={styles.p1}>{nomempresa}</Text>
       <Text style={styles.p2}>{cargo}</Text>
       <Text style={styles.p3}>{actempresa}</Text>
@@ -73,25 +73,25 @@ const Trabajo = ({ data }) => {
       </View>
       <Text style={styles.p5}>{inicio + "-" + fechaTermino}</Text>
       {referencia && <Text style={styles.p6}>Referencia</Text>}
-      {refnombre && (
+      {refnombre !== null && refnombre !== "" && (
         <View style={styles.contRef}>
           <Image style={styles.image1} src={iconUser} />
           <Text style={styles.pRef}>{refnombre}</Text>
         </View>
       )}
-      {refrelacion && (
+      {refrelacion !== null && refrelacion !== "" && (
         <View style={styles.contRef}>
           <Image style={styles.image1} src={iconUser} />
           <Text style={styles.pRef}>{refrelacion}</Text>
         </View>
       )}
-      {email && (
+      {email &&  (
         <View style={styles.contRef}>
           <Image style={styles.image1} src={iconEmail} />
           <Text style={styles.pRef}>{email}</Text>
         </View>
       )}
-      {refphone !== "" && (
+      {refphone !== ""  && (
         <View style={styles.contRef}>
           <Image style={styles.image1} src={iconPhone} />
           <Text style={styles.pRef}>{refphone}</Text>

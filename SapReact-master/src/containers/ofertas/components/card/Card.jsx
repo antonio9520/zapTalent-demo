@@ -55,6 +55,7 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
     estado,
     anosExp,
     razonSocial,
+    logoURL,
     idusuario,
     // idemp,
     eliminado,
@@ -81,6 +82,7 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
   ];
   const inicio = new Date(fechaInicio);
   const termino = new Date(fechaTermino);
+  const now = new Date();
   const contratacion = new Date(fechaContratacion);
 
   const postular = () => {
@@ -395,12 +397,19 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
               )}
             </div>
           </div>
-          <Tooltip title={`Estado: ${estado}`} placement="top">
+          <Tooltip
+            title={`Estado: ${
+              termino < now ? "Exede la fecha de termino" : estado
+            }`}
+            placement="top"
+          >
             <div
               className="indicador-estado-oferta-laboral"
               style={{
                 backgroundColor:
-                  estado === "Activo"
+                  termino < now
+                    ? "#EC4134"
+                    : estado === "Activo"
                     ? "#00B526"
                     : estado === "Proceso Finalizado"
                     ? "#EC4134"

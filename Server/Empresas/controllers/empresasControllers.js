@@ -1,8 +1,25 @@
 const Empresas = require("../models/empresas");
+const upload = require("../../libs/storageempresalogo");
+const fs = require("fs").promises;
+
+exports.SubirArchivo = (req, res, next) => {
+    upload(req, res, function (error) {
+      if (error) {
+        res.json({ msg: error });
+      }
+      return next();
+    });
+  };
 
 exports.CrearEmpresa = async (req, res) => {
   try {
     const empresa = new Empresas(req.body);
+    //subida de archivo
+    if (req.file) {
+        console.log(req.file);
+        const { filename } = req.file;
+        empresa.setcertificado(filename);
+      }
     await empresa.save();
     res.status(200).send(empresa);
   } catch (error) {

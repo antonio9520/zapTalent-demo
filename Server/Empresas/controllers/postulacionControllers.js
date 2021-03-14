@@ -2,6 +2,7 @@ const Postulacion = require("../models/postulacion");
 const Avisos = require("../models/avisos");
 const Usuario = require("../../models/usuario");
 const Adnsap = require("../../models/adnsap");
+const enviarEmail = require("../../handlers/email");
 
 exports.crearPostulacion = async (req, res) => {
   try {
@@ -12,6 +13,36 @@ exports.crearPostulacion = async (req, res) => {
     const data = await Avisos.findById(id);
     data.id_post = post._id;
     res.status(200).json(data);
+    
+    const idusesr = postulacion.iduser;
+    const datauser = await Usuario.findById(idusesr);
+    const email = datauser.email;
+     //email
+     const userconfi= {
+      email
+      } 
+  
+      const titulo = data.titulo;
+      const salario = data.renta;
+      const fecini = data.fechaInicio;
+      const fecfin = data.fechaTermino;
+      const tconsultor = data.tipoConsultor;
+  
+  
+      console.log("llega aqui 1?");
+    //envio email cuenta creada
+    await enviarEmail.enviar({
+            userconfi,
+            subject: "Felicidades te Acabas Postular a una nueva oferta laboral en ZAPTalent!",
+            titulo,
+            salario,
+            fecini,
+            fecfin,
+            tconsultor,
+            archivo: "infoPostu"
+          });
+  console.log("se envio?");
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Postulacion Cancelada Error en el servidor" });

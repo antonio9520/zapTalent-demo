@@ -22,7 +22,7 @@ exports.filtrarAvisos = async (req, res) => {
   const { skip } = req.body;
   const query = await createQuery(req.body);
 
-  // console.log(query);
+  console.log(query);
   try {
     const avisos = await Avisos.find(query, undefined, {
       skip: parseInt(skip),

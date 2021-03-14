@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from "@react-pdf/renderer";
 
 const Certificaciones = ({ data }) => {
   return (
-    <View style={styles.contEstudios}>
+    <View style={styles.contEstudios} break>
       <View style={styles.contEstudiosTop}>
         <Text style={styles.title}>Certificaciones</Text>
       </View>
@@ -19,7 +19,14 @@ export default Certificaciones;
 
 const Certificacion = ({ data }) => {
   console.log(data);
-  const { certificacion, fecha, estado, obs, universidad } = data;
+  const {
+    certificacion,
+    fecha,
+    estado,
+    obs,
+    universidad,
+    certificadoURL,
+  } = data;
   const MESES = [
     "Enero",
     "Febrero",
@@ -48,6 +55,9 @@ const Certificacion = ({ data }) => {
           <Text style={styles.p5}>{estado}</Text>
         </View>
       </View>
+      {certificadoURL ? (
+        <Text style={styles.link}>{certificadoURL}</Text>
+      ) : null}
     </View>
   );
 };
@@ -61,6 +71,8 @@ export const styles = StyleSheet.create({
     paddingBottom: 20,
     backgroundColor: "#FAFAFA",
   },
+  link: { fontSize: 5, color: "#6C6A8D", marginTop: 2, marginLeft: 2 },
+
   contEstudiosTop: {},
   title: {
     color: "#187ce2",

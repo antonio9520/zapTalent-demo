@@ -19,6 +19,7 @@ const port = process.env.PORT || 4000;
 //Login Face
 server.use(passport.initialize());
 // import de rutas Usuario
+server.use("/public/empresas", express.static(`${__dirname}/storage/empresas`));
 server.use("/public", express.static(`${__dirname}/storage/usuario`));
 server.use("/public/cv", express.static(`${__dirname}/storage/cv`));
 server.use("/public/estudios", express.static(`${__dirname}/storage/estudios`));

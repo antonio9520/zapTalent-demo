@@ -82,6 +82,7 @@ exports.creaUserEmp = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    res.status(500).json({ msg: "Error en Servidor" });
   }
 };
 

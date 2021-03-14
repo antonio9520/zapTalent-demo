@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "@react-pdf/renderer";
+import image1 from "../../../resources/ZAPTalent-PDF-Header.png";
 
 const Estudios = ({ data }) => {
   return (
@@ -59,6 +60,7 @@ const Estudio = ({ data }) => {
           <Text style={styles.obs}>{observacion}</Text>
         </View>
       ) : null}
+      {estudioURL ? <Text style={styles.link}>{estudioURL}</Text> : null}
     </View>
   );
 };
@@ -70,6 +72,12 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 80,
     fontFamily: "Roboto",
     paddingBottom: 20,
+  },
+  userLogo: {
+    width: "50px",
+    height: "50px",
+    borderRadius: 50,
+    marginLeft: 40,
   },
   contEstudiosTop: {},
   title: {
@@ -84,6 +92,7 @@ export const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   /**ESTUDIO */
+  link: { fontSize: 5, color: "#6C6A8D", marginTop: 2, marginLeft: 2 },
   contEstudio: {
     width: "50%",
     // backgroundColor: "green",

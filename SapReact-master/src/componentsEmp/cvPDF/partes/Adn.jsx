@@ -20,10 +20,10 @@ const Adns = ({ data }) => {
 export default Adns;
 
 const Adn = ({ data, num }) => {
-  const { name, idcert, submodulos, obs } = data;
+  const { name, idcert, submodulos, obs, adnURL } = data;
   const backColor = setPatronNumber(num);
   return (
-    <View style={!backColor ? styles.contAdn : styles.contAdn2}>
+    <View style={!backColor ? styles.contAdn : styles.contAdn2} wrap={false}>
       <Text style={styles.p1}>{name}</Text>
       {idcert !== "" ? (
         <Text style={styles.p2}>{idcert}</Text>
@@ -31,6 +31,7 @@ const Adn = ({ data, num }) => {
         <View style={styles.plantilla}></View>
       )}
       {obs && obs !== "" && <Text style={styles.p4}>{obs}</Text>}
+      {adnURL ? <Text style={styles.link}>{adnURL}</Text> : null}
       {submodulos.map((item, index) => (
         <Submodulo key={index} data={item} />
       ))}
@@ -62,6 +63,8 @@ export const styles = StyleSheet.create({
     fontFamily: "Roboto",
     paddingBottom: 20,
   },
+  link: { fontSize: 5, color: "#6C6A8D", marginTop: 2, marginLeft: 2 },
+
   contEstudiosTop: {},
   title: {
     color: "#187ce2",
@@ -76,10 +79,10 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   /**ADN */
-  contAdn: { width: "50%", paddingHorizontal: 5, paddingVertical: 5 },
+  contAdn: { width: "100%", paddingHorizontal: 5, paddingVertical: 5 },
   contAdn2: {
     backgroundColor: "#ECF7FE",
-    width: "50%",
+    width: "100%",
     paddingHorizontal: 5,
     paddingVertical: 5,
   },

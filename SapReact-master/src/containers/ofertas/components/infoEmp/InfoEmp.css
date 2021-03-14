@@ -104,6 +104,14 @@
   justify-content: center;
 }
 
+.info-user-of-emp .cont-logo{
+  min-width: 100px !important;
+  height: 100px !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  
+
+}
 @keyframes animationInit {
   0% {
     opacity: 0;

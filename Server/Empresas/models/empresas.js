@@ -45,4 +45,11 @@ const empresaSchema = mongoose.Schema({
 
 });
 
+empresaSchema.methods.setcertificado = function setcertificado(filename) {
+    const { host, port } = appConfig;
+    console.log(filename);
+    console.log("entra a la funcion");
+    this.logoURL = `https://zaptalent.azurewebsites.net/public/empresas/${filename}`;
+  };
+
 module.exports = mongoose.model("empresa", empresaSchema);

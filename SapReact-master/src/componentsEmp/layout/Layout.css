@@ -24,6 +24,31 @@
     height: 100%;
   }
   
+  .splash-screen-responsivo-emp {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background: var(--degradado-empresas);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .splash-screen-responsivo-emp img {
+    width: 130px;
+    height: 130px;
+  }
+  .splash-screen-responsivo-emp p {
+    color: white;
+    margin: 0;
+  }
+  .splash-screen-responsivo-emp p:nth-child(2) {
+   font-size: 22px;
+   margin-top: 20px;
+  }
   @media (max-width: 959px) {
     .contenedor-main {
       margin: 0;
@@ -31,19 +56,24 @@
       /* background-color: lawngreen; */
      
     }
+    .splash-screen-responsivo-emp {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+      overflow: hidden;
+      background-color: cadetblue;
+    }
     .contenedor-main-mini {
       margin: 0;
       /* background: inherit; */
       /* background-color: rgb(252, 101, 0); */
     
     }
-    /* .contenedor-main {
-      background: var(--white);
-    }
-  
-    .contenedor-main-mini {
-      background: var(--white);
-    } */
+
   }
   
   .li-active.icon-sidebar {

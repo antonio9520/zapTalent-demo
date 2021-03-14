@@ -61,40 +61,46 @@ const Ofertas = (props) => {
     }
   };
   const obtenerOfertas = async (querie, index) => {
-    if (index === 3) {
-      setCargando(true);
-      // console.log(query);
-      await dispatch(filtrarOferLaboralesAction(querie)).then(() =>
-        setOpen(false)
-      );
-      setTimeout(() => {
-        setCargando(false);
-      }, 500);
-
-      // console.log("index: 0");
-    } else if (index === 1) {
-      // console.log("index: 1");
-    } else if (index === 0) {
-      querie.skip = 0;
-      querie.estado = "Activo";
-      querie.activo = true;
-
-      setCargando(true);
-      await dispatch(filtrarOferLaboralesAction(querie));
-      setTimeout(() => {
-        setCargando(false);
-      }, 500);
-      // console.log("index: 2");
-    } else if (index === 2) {
-      setCargando(true); // console.log("index: 3");
-      querie.skip = 0;
-      querie.estado = "Proceso Finalizado";
-      querie.caducado = true;
-      await dispatch(filtrarOferLaboralesAction(querie));
-      setTimeout(() => {
-        setCargando(false);
-      }, 500);
+    switch (index) {
+      case 0:
+        querie.skip = 0;
+        querie.estado = "Activo";
+        querie.activo = true;
+        querie.caducado = false;
+        setCargando(true);
+        await dispatch(filtrarOferLaboralesAction(querie));
+        setTimeout(() => {
+          setCargando(false);
+        }, 500);
+        break;
+      case 1:
+        break;
+      case 2:
+        setCargando(true);
+        querie.skip = 0;
+        querie.estado = "Proceso Finalizado";
+        querie.caducado = true;
+        querie.activo = false;
+        await dispatch(filtrarOferLaboralesAction(querie));
+        setTimeout(() => {
+          setCargando(false);
+        }, 500);
+        break;
+      case 3:
+        querie.caducado = false;
+        querie.activo = false;
+        setCargando(true);
+        await dispatch(filtrarOferLaboralesAction(querie)).then(() =>
+          setOpen(false)
+        );
+        setTimeout(() => {
+          setCargando(false);
+        }, 500);
+        break;
+      default:
+        break;
     }
+   
   };
   const obtenerOfertasMore = (querie, index, skip) => {
     if (index === 3) {
@@ -105,17 +111,14 @@ const Ofertas = (props) => {
       querie.skip = skip;
       querie.estado = "Activo";
       querie.activo = true;
+      querie.caducado = false;
       dispatch(filtrarOferLaboralesAction(querie));
     } else if (index === 2) {
-      querie.skip = 0;
+      querie.skip = skip;
       querie.estado = "Proceso Finalizado";
       querie.caducado = true;
-      dispatch(
-        filtrarOferLaboralesAction({
-          skip,
-          estado: "Proceso Finalizado",
-        })
-      );
+      querie.activo = false;
+      dispatch(filtrarOferLaboralesAction(querie));
     }
   };
 

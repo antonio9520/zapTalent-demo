@@ -18,6 +18,7 @@ const CustomModal = (props) => {
   const { setOpenModalEditar, openModalEditar, data, setDataEditar } = props;
 
   const cargando = useSelector((state) => state.aviso.cargando);
+  const usuario = useSelector((state) => state.authEmp.usuario);
   const [step, setStep] = useState("one");
   //step one
   const [titulo, setTitulo] = useState("");
@@ -68,6 +69,7 @@ const CustomModal = (props) => {
       editarAvisoAction({
         _id: data._id,
         // idusuario: usuario._id,
+        logoURL: usuario.logoURL,
         titulo,
         profesion,
         area,

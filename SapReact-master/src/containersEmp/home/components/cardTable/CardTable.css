@@ -7,9 +7,27 @@
   border-radius: 5px;
   min-height: 100px;
   display: flex;
+  position: relative;
   flex-direction: column;
 }
-
+.card-table-home-emp .cont-estado-no-leido{
+  width: 15px;
+  height: 15px;
+  background-color: rgb(253, 224, 60);
+  position: absolute;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 5px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+}
+.card-table-home-emp .cont-estado-no-leido .icon-view-no-leido{
+  width: 13px;
+  height: 13px;
+  color: white;
+}
 .sub-card-table-home-emp {
   display: flex;
 }

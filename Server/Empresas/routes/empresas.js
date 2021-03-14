@@ -6,7 +6,7 @@ const empresasControl = require("../controllers/empresasControllers");
 //login usuario
 //api/auth
 
-router.post("/", empresasControl.CrearEmpresa);
+router.post("/", empresasControl.SubirArchivo, empresasControl.CrearEmpresa);
 
 router.get("/", empresasControl.mostrarEmpresas);
 
