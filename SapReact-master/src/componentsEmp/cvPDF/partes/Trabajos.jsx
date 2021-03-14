@@ -85,13 +85,13 @@ const Trabajo = ({ data }) => {
           <Text style={styles.pRef}>{refrelacion}</Text>
         </View>
       )}
-      {email &&  (
+      {email && (
         <View style={styles.contRef}>
           <Image style={styles.image1} src={iconEmail} />
           <Text style={styles.pRef}>{email}</Text>
         </View>
       )}
-      {refphone !== ""  && (
+      {refphone !== "" && (
         <View style={styles.contRef}>
           <Image style={styles.image1} src={iconPhone} />
           <Text style={styles.pRef}>{refphone}</Text>
@@ -133,6 +133,7 @@ export const styles = StyleSheet.create({
     fontFamily: "Roboto",
     backgroundColor: "#FAFAFA",
     paddingVertical: 20,
+    marginTop: -20,
   },
   contEstudiosTop: {},
   title: {

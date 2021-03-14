@@ -14,7 +14,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { Tooltip } from "../../../../../../components";
 
-const DatosPersonales = ({ data }) => {
+const DatosPersonales = ({ data, generarCV }) => {
   const history = useHistory();
   const {
     rut,
@@ -57,11 +57,7 @@ const DatosPersonales = ({ data }) => {
           </IconButton>
         </Tooltip>
         <Tooltip title="Descargar CV.">
-          <IconButton
-            className="btn-info-user-emp"
-            disabled={true}
-            style={{ opacity: "0.7" }}
-          >
+          <IconButton className="btn-info-user-emp" onClick={() => generarCV()}>
             <GetApp />
           </IconButton>
         </Tooltip>

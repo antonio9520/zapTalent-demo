@@ -27,14 +27,14 @@ const Header = (props) => {
         </button>
       </div>
       <div className="header-right">
-        <button className="btn-header-right">
+        {/* <button className="btn-header-right">
           <div className="icon-bars">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
           </div>
-        </button>
+        </button> */}
         {/* <div className="cont-logo-user">
           <>
             {usuario.imageURL ? (
@@ -53,7 +53,7 @@ const Header = (props) => {
           </>
         </div> */}
 
-        <div className="cont-icon">
+        {/* <div className="cont-icon">
           <Badge badgeContent={3} color="error">
             <NotificationsNone className="icon-mail" />
           </Badge>
@@ -62,7 +62,7 @@ const Header = (props) => {
           <Badge badgeContent={4} color="secondary">
             <MailOutline className="icon-mail" />
           </Badge>
-        </div>
+        </div> */}
       </div>
     </div>
   );

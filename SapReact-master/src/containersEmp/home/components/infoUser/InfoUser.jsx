@@ -55,7 +55,7 @@ const AntTab = withStyles((theme) => ({
 }))((props) => <Tab disableRipple {...props} />);
 
 const InfoUser = forwardRef((props, ref) => {
-  const { data, closeModal } = props;
+  const { data, closeModal, setIdUser, setOpen } = props;
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.userInfo.usuario);
   const loading = useSelector((state) => state.userInfo.loading);
@@ -65,10 +65,12 @@ const InfoUser = forwardRef((props, ref) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   useEffect(() => {
     dispatch(resetDataUserInfoAction("b"));
     dispatch(obtenerUserInfoAction(data));
   }, []);
+
   useEffect(() => {
     if (usuario) {
       if (usuario.leido === false) {
@@ -76,7 +78,12 @@ const InfoUser = forwardRef((props, ref) => {
       }
     }
   }, [usuario]);
-  console.log(usuario);
+
+  const generarCV = () => {
+    setIdUser(usuario._id);
+    setOpen(true);
+    // closeModal();
+  };
   return (
     <div ref={ref} className="info-user-home-emp">
       {loading ? (
@@ -148,7 +155,7 @@ const InfoUser = forwardRef((props, ref) => {
             </div>
 
             {value === 0 ? (
-              <DatosPersonales data={usuario} />
+              <DatosPersonales data={usuario} generarCV={generarCV} />
             ) : value === 1 ? (
               <Estudios />
             ) : value === 2 ? (

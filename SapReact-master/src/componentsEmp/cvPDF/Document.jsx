@@ -34,7 +34,11 @@ const TestDocument = ({ data }) => {
   if (data.usuario) {
     return (
       <Document>
-        <Page size="A4" autoHeight  style={{ position: "relative" }}>
+        <Page
+          size="A4"
+          autoHeight
+          style={{ position: "relative", paddingTop: 20 }}
+        >
           <Usuario data={data.usuario} />
           {data.estudios[0] && <Estudios data={data.estudios} />}
           {data.trabajos[0] && <Trabajos data={data.trabajos} />}

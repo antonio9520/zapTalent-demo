@@ -70,8 +70,9 @@ export const styles = StyleSheet.create({
     fontFamily: "Roboto",
     paddingBottom: 20,
     backgroundColor: "#FAFAFA",
+    marginTop: -20,
   },
-  link: { fontSize: 5, color: "#6C6A8D", marginTop: 2, marginLeft: 2 },
+  link: { fontSize: 5, color: "#6C6A8D", marginTop: 4, marginLeft: 2 },
 
   contEstudiosTop: {},
   title: {

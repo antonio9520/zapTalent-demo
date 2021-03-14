@@ -32,7 +32,9 @@ exports.crearTrabajo = async (req, res) => {
 //OBTENER
 exports.mostrarTrabajo = async (req, res) => {
   try {
-    const trabajos = await Trabajo.find({ idusuario: req.params.idusuario });
+    const trabajos = await Trabajo.find({
+      idusuario: req.params.idusuario,
+    }).sort({ findate: -1 });
     res.json(trabajos);
   } catch (error) {
     console.log(error);

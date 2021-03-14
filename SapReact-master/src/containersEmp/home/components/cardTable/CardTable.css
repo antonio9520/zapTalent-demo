@@ -13,7 +13,7 @@
 .card-table-home-emp .cont-estado-no-leido{
   width: 15px;
   height: 15px;
-  background-color: rgb(253, 224, 60);
+  background-color: var(--light-blue);
   position: absolute;
   right: 5px;
   display: flex;

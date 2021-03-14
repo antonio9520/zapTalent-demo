@@ -6,7 +6,7 @@ import clientAxios from "../../config/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 import { setearTipoPlan } from "../../assets/setTipoPlan";
-import { Dialog } from "../../componentsEmp";
+import { DialogCVPDF } from "../../componentsEmp";
 
 const EcoSap = (props) => {
   const {
@@ -114,8 +114,10 @@ const EcoSap = (props) => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         data={dataUser}
+        setIdUser={setIdUser}
+        setOpen={setOpen}
       />
-      <Dialog
+      <DialogCVPDF
         open={open}
         setOpen={setOpen}
         setIdUser={setIdUser}

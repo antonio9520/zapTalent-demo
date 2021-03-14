@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 const CustomModal = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { setOpenModal, openModal, data } = props;
+  const { setOpenModal, openModal, data, setIdUser, setOpen } = props;
 
   // console.log(usuario);
   const closeModal = () => {
@@ -43,6 +43,8 @@ const CustomModal = (props) => {
           setOpenModal={setOpenModal}
           data={data}
           closeModal={closeModal}
+          setIdUser={setIdUser}
+          setOpen={setOpen}
         />
       </Fade>
     </Modal>

@@ -50,7 +50,9 @@ exports.crearEstudios = async (req, res) => {
 //OBTENER
 exports.mostrarEstudio = async (req, res) => {
   try {
-    const estudios = await Estudio.find({ idusuario: req.params.idusuario });
+    const estudios = await Estudio.find({
+      idusuario: req.params.idusuario,
+    }).sort({ diafin: -1 });
     res.json(estudios);
   } catch (error) {
     console.log(error);

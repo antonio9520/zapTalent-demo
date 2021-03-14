@@ -35,7 +35,7 @@ exports.mostrarCertificacion = async (req, res) => {
   try {
     const certificado = await Certificacion.find({
       idusuario: req.params.idusuario,
-    });
+    }).sort({ fecha: -1 });
     res.json(certificado);
   } catch (error) {
     console.log(error);
@@ -90,10 +90,10 @@ exports.putCertificacion = async (req, res) => {
       if (estado) certifi.estado = estado;
       if (obs) certifi.obs = obs;
       if (certificado) certifi.certificado = certificado;
-       
+
       if (err)
         return res.status(404).json({ msg: "Certificado no encontrado" });
-        certifi.save(function (err) {
+      certifi.save(function (err) {
         if (err) return res.status(500).json({ msg: "Error al actualizar." });
         res.status(200).send(certifi);
       });

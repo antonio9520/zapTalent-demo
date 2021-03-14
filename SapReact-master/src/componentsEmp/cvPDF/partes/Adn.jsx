@@ -32,9 +32,11 @@ const Adn = ({ data, num }) => {
       )}
       {obs && obs !== "" && <Text style={styles.p4}>{obs}</Text>}
       {adnURL ? <Text style={styles.link}>{adnURL}</Text> : null}
-      {submodulos.map((item, index) => (
-        <Submodulo key={index} data={item} />
-      ))}
+      <View style={styles.contSubmodulo}>
+        {submodulos.map((item, index) => (
+          <Submodulo key={index} data={item} />
+        ))}
+      </View>
     </View>
   );
 };
@@ -62,8 +64,9 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 80,
     fontFamily: "Roboto",
     paddingBottom: 20,
+    marginTop: -20,
   },
-  link: { fontSize: 5, color: "#6C6A8D", marginTop: 2, marginLeft: 2 },
+  link: { fontSize: 5, color: "#6C6A8D", marginTop: 4, marginLeft: 2 },
 
   contEstudiosTop: {},
   title: {
@@ -79,12 +82,12 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   /**ADN */
-  contAdn: { width: "100%", paddingHorizontal: 5, paddingVertical: 5 },
+  contAdn: { width: "100%", paddingHorizontal: 10, paddingVertical: 10 },
   contAdn2: {
     backgroundColor: "#ECF7FE",
     width: "100%",
-    paddingHorizontal: 5,
-    paddingVertical: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
   },
   p1: { fontWeight: 600, color: "#2462D5", fontSize: 12 },
   p2: { color: "#8F8E97", fontSize: 10, marginTop: 5 },
@@ -101,42 +104,21 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
   },
-  submodulo: {},
+  contSubmodulo: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+  },
+  submodulo: { width: "50%", paddingTop: 10, paddingRight: 10 },
   p4: { color: "#8F8E97", fontSize: 7, marginTop: 5 },
   p5: { fontSize: 8, color: "white" },
 });
 
 const setPatronNumber = (num) => {
-  if (num === 0) return false;
-  if (num === 1) return true;
-  if (num === 2) return true;
-  if (num === 3) return false;
-  if (num === 4) return false;
-  if (num === 5) return true;
-  if (num === 6) return true;
-  if (num === 7) return false;
-  if (num === 8) return false;
-  if (num === 9) return true;
-  if (num === 10) return true;
-  if (num === 11) return false;
-  if (num === 12) return false;
-  if (num === 13) return true;
-  if (num === 14) return true;
-  if (num === 15) return false;
-  if (num === 16) return false;
-  if (num === 17) return true;
-  if (num === 18) return true;
-  if (num === 19) return false;
-  if (num === 20) return false;
-  if (num === 21) return true;
-  if (num === 22) return true;
-  if (num === 23) return false;
-  if (num === 24) return false;
-  if (num === 25) return true;
-  if (num === 26) return true;
-  if (num === 27) return false;
-  if (num === 28) return false;
-  if (num === 29) return true;
-  if (num === 30) return true;
-  return true;
+  if (num % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
 };

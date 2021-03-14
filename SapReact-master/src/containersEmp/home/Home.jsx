@@ -14,6 +14,7 @@ import {
   obtenerTotalPostulantesAction,
   obtenerTotalUsuariosDiaAction,
 } from "../../redux/actions/actions-emp/postuladosAction";
+import { DialogCVPDF } from "../../componentsEmp";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,9 @@ const Home = () => {
     (state) => state.postulados.totalUsuariosDias
   );
   const [openModal, setOpenModal] = useState(false);
+  const [open, setOpen] = useState(false);
   const [dataUser, setDataUser] = useState(null);
+  const [idUser, setIdUser] = useState(null);
   const [dataFiltro, setDataFiltro] = useState([]);
   const [query, setQuery] = useState({ leido: false });
 
@@ -53,13 +56,13 @@ const Home = () => {
 
       dispatch(obtenerTotalPostNoLeidosAction(usuario.idemp));
 
-      dispatch(obtenerTotalUsuariosDiaAction()); 
+      dispatch(obtenerTotalUsuariosDiaAction());
     }
 
     // eslint-disable-next-line
   }, [usuario]);
 
-  useEffect(() => { 
+  useEffect(() => {
     if (usuario) {
       dispatch(obtenerPostuladosAction({ _id: usuario.idemp, skip: 0, query }));
     }
@@ -84,6 +87,14 @@ const Home = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         data={dataUser}
+        setIdUser={setIdUser}
+        setOpen={setOpen}
+      />
+      <DialogCVPDF
+        open={open}
+        setOpen={setOpen}
+        setIdUser={setIdUser}
+        idUser={idUser}
       />
       <Grid
         item

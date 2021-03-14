@@ -51,6 +51,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 80,
     fontFamily: "Roboto",
     paddingBottom: 20,
+   
   },
   contEstudiosTop: {},
   title: {

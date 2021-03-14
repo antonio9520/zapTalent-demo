@@ -99,6 +99,7 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "#FAFAFA",
     height: "250px",
+    marginTop: -20,
   },
   image1: {
     position: "absolute",
