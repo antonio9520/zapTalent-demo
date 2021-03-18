@@ -123,6 +123,7 @@ const Home = () => {
           subtitle="Crea tu primer aviso aquí."
           textBtn="Publicar Aviso"
           to="/empresas/avisos"
+          empresas
         />
       </Grid>
       <Grid

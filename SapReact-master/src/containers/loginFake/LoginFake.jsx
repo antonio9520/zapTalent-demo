@@ -5,8 +5,7 @@ const LoginFake = () => {
   return (
     <div className="conteiner-login">
       <img src={logo} alt="logo" className={"logo-login-fake"} />
-      <h1 className="h1-loginfake">Proximamente Online</h1>
-      <h1 className="h1-loginfake">En Construcción</h1>
+      <h1 className="h1-loginfake">Redireccionando</h1>
     </div>
   );
 };

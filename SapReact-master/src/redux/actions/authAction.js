@@ -30,8 +30,10 @@ const showAlert = (data) => ({
 
 //CERRAR SESION
 export function cerrarSesionAction() {
-  return (dispatch) => {
-    dispatch(cerrarSesion());
+  return async (dispatch) => {
+    await dispatch(cerrarSesion());
+
+    window.location.href = "https://info.zaptalent.cl/";
   };
 }
 
@@ -43,6 +45,8 @@ const cerrarSesion = () => ({
 export function usuarioAuthAction() {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
+    console.log(token);
+
     if (token) {
       tokenAuth(token);
     }

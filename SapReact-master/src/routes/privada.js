@@ -12,6 +12,7 @@ const Privada = ({ ...props }) => {
   // const auth = false;
   useEffect(() => {
     dispatch(usuarioAuthAction());
+    document.title = "ZAPTalent - Usuarios";
     // eslint-disable-next-line
   }, []);
 

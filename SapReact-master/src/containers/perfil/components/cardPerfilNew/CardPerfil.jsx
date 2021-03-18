@@ -17,7 +17,7 @@ import {
 } from "@material-ui/icons";
 import { IconButton, Button } from "@material-ui/core";
 import { Tooltip } from "../../../../components";
-import imgUser from "../../../../resources/images/SAPTalent/icon-new-user.svg";
+import imgUser from "../../../../resources/ZAPTalent-Icon-Empty.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { subirImagenAction } from "../../../../redux/actions/authAction";
 import Footer from "./footer/Footer";
@@ -98,11 +98,13 @@ const CardPerfil = ({
               ></img>
             </div>
           ) : (
-            <img
-              src={imgUser}
-              className="user-img-perfil-new"
-              alt="user-imge"
-            />
+            <div className="cont-img-perfil-perfil-new">
+              <img
+                src={imgUser}
+                className="user-img-perfil-new"
+                alt="user-imge"
+              />
+            </div>
           )}
 
           {!empresas ? (
@@ -286,16 +288,31 @@ const DatosPersonales = ({ usuario }) => {
             <Fingerprint className="icon-perfil-new" />
           </div>
         </div>
-        <div className="sub-item-pefil-left-2">
-          <div className="sub-item-pefil-right-top">
-            <p className="p1-perfil-b">Rut</p>
-          </div>
-          <div className="sub-item-pefil-right-bottom">
-            <p className="p2-perfil-b">
-              {usuario ? usuario.rut : "Indefinido"}
-            </p>
-          </div>
-        </div>
+        {usuario ? (
+          usuario.passport !== "" ? (
+            <div className="sub-item-pefil-left-2">
+              <div className="sub-item-pefil-right-top">
+                <p className="p1-perfil-b">Pasaporte</p>
+              </div>
+              <div className="sub-item-pefil-right-bottom">
+                <p className="p2-perfil-b">
+                  {usuario ? usuario.passport : "Indefinido"}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="sub-item-pefil-left-2">
+              <div className="sub-item-pefil-right-top">
+                <p className="p1-perfil-b">Rut</p>
+              </div>
+              <div className="sub-item-pefil-right-bottom">
+                <p className="p2-perfil-b">
+                  {usuario ? usuario.rut : "Indefinido"}
+                </p>
+              </div>
+            </div>
+          )
+        ) : null}
       </div>
       <div className="item-card-perfil-b">
         <div className="sub-item-pefil-left">

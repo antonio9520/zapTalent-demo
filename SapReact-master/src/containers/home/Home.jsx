@@ -14,7 +14,7 @@ import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import clientAxios from "../../config/axios";
 import { porcentajePerfil } from "../../assets/porcentajePerfil";
 import { ModalAviso } from "../ofertas/components";
-
+ 
 const Home = () => {
   const dispatch = useDispatch();
   const usuario = useSelector((state) => state.auth.usuario);

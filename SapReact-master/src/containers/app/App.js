@@ -6,7 +6,10 @@ import { Route, Switch } from "react-router-dom";
 import { COVER, LOGIN_FAKE, EMPRESAS, RESTABLECER } from "../../routes/paths";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { LoginEmp } from "../../containersEmp";
+import { LoginAdmin } from "../../containersAdmin";
 import PrivadaEmp from "../../routes/empresas/privadaEmp";
+import PrivadaAdmin from "../../routes/admin/privadaAdmin";
+
 import { Login, Cover, LoginFake, Empresas } from "../";
 import Privada from "../../routes/privada";
 import { Provider } from "react-redux";
@@ -17,6 +20,7 @@ import { theme } from "../../config/theme";
 function App() {
   const token = localStorage.getItem("token");
 
+  
   if (token) {
     tokenAuth(token);
   }
@@ -61,6 +65,15 @@ function App() {
               ]}
             />
             <Route exact path="/login-empresas" component={LoginEmp} />
+            {/**ADMIN**/}
+            <PrivadaAdmin
+              exact
+              path={[
+                // "/auth-emp",
+                "/admin/home",
+              ]}
+            />
+            <Route exact path="/login-admin" component={LoginAdmin} />
           </Switch>
         </Router>
       </ThemeProvider>

@@ -304,7 +304,13 @@ const Login = (props) => {
               </div>
               <p className="link-terminos-condiciones">
                 Al ingresar estás aceptando los
-                <a href="">Terminos y Condiciones </a>de uso.
+                <a
+                  href="https://info.zaptalent.cl/terminos-de-usos-y-condiciones/"
+                  target="_blank"
+                >
+                  Terminos y Condiciones{" "}
+                </a>
+                de uso.
               </p>
             </div>
             <div>

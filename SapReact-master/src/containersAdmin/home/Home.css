@@ -1,0 +1,32 @@
+.container-home-admin {
+  padding-top: 75px;
+  padding-left: 15px;
+  height: 100vh;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-home-admin .top {
+  flex: 1;
+}
+
+.container-home-admin .center {
+  flex: 2;
+  min-height: 140px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px 0 10px 0;
+}
+.container-home-admin .center .item {
+  flex: 1;
+  padding: 0 5px 0 5px;
+  max-width: 400px;
+  /* min-width: 300px; */
+  min-height: 100px;
+}
+.container-home-admin .bottom {
+  flex: 10;
+  padding-bottom: 10px;
+}

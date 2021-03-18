@@ -12,7 +12,7 @@ const Privada = ({ ...props }) => {
 
   useEffect(() => {
     dispatch(usuarioAuthEmpAction());
-    console.log("privada");
+    document.title = 'ZAPTalent - Empresas'
     // eslint-disable-next-line
   }, []);
 

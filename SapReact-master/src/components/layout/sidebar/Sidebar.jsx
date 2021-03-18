@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
 import userlogo from "../../../resources/images/SAPTalent/icon-new-user.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { List, ListItem } from "@material-ui/core";
 import { Tooltip } from "../../";
 import {
@@ -19,6 +19,7 @@ import logo from "../../../resources/images/SAPTalent/ZAPTalent-Logotipo-horizon
 
 const Sidebar = (props) => {
   const { open } = props;
+  const history = useHistory();
   const dispatch = useDispatch();
   const [active, setActive] = useState("home");
   // const [profesion, setProfesion] = useState(null);
@@ -27,7 +28,9 @@ const Sidebar = (props) => {
   // console.log(usuario);
 
   const cerrarSesion = () => {
-    dispatch(cerrarSesionAction());
+    // dispatch(cerrarSesionAction()).then(() => history.push("/login"));
+    dispatch(cerrarSesionAction())
+
   };
 
   // useEffect(() => {
@@ -212,7 +215,7 @@ const Sidebar = (props) => {
             onClick={() => cerrarSesion()}
             className={"btn-cerrar-sesion"}
           >
-            <Link to="" className="link link-sidebar">
+            <Link to="/" className="link link-sidebar">
               <ExitToApp className="exitapp-sidebar" />
               <p className={open ? "txt-sidebar-mini" : "txt-sidebar6"}>
                 Cerrar sesión

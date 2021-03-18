@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from "react";
-import "../../containers/login/Login.css";
-import "./Login.css";
-import logo from "../../resources/empresas/ZAPTalent-Empresa-Logotipo-1.png";
-import { OutInput } from "../../componentsEmp";
-import { ListItem } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import Loader from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
+import logo from "../../resources/empresas/ZAPTalent-Empresa-Logotipo-1.png";
+import {
+  iniciarSesionAdminAction,
+  usuarioAuthActionAdmin,
+  resetEmailActionAdmin,
+  resetPasswordActionAdmin,
+  hiddenAlertAction,
+} from "../../redux/actions/actions-admin/authAction";
+import { OutInput } from "../../componentsEmp";
+import { Link } from "react-router-dom";
+import { ListItem } from "@material-ui/core";
 import { Snackbar } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-import {
-  usuarioAuthEmpAction,
-  iniciarSesionEmpAction,
-  resetEmailEmpAction,
-  resetPasswordEmpAction,
-  hiddenAlertAction,
-} from "../../redux/actions/actions-emp/authAction";
+import Loader from "react-loader-spinner";
 
 const Login = (props) => {
   const dispatch = useDispatch();
-  const [hidden, setHidden] = useState(false);
   const [emailA, setEmail] = useState("");
-  // const [emailRec, setEmailRec] = useState("");
+  const [hidden, setHidden] = useState(false);
   const [password, setPassword] = useState("");
-  const loading = useSelector((state) => state.authEmp.loading);
   const [cargando, setCargando] = useState(false);
-  const autenticado = useSelector((state) => state.authEmp.autenticado);
-  const _alert = useSelector((state) => state.authEmp.alert);
+  const _alert = useSelector((state) => state.authAdmin.alert);
+  const loading = useSelector((state) => state.authAdmin.loading);
+  const autenticado = useSelector((state) => state.authAdmin.autenticado);
   //error
-  const erroremail = useSelector((state) => state.authEmp.erroremail);
-  const errorpassword = useSelector((state) => state.authEmp.errorpassword);
+  const erroremail = useSelector((state) => state.authAdmin.erroremail);
+  const errorpassword = useSelector((state) => state.authAdmin.errorpassword);
 
   const autenticar = () => {
     // Validar
@@ -37,28 +34,26 @@ const Login = (props) => {
       console.log("los campos son obligatorios");
     }
     const email = emailA.toLocaleLowerCase();
-
-    dispatch(iniciarSesionEmpAction({ email, password }));
+    dispatch(iniciarSesionAdminAction({ email, password }));
   };
-
+  const handleClose = () => {
+    dispatch(hiddenAlertAction());
+  };
   const _handleKeyDown = (e) => {
     if (e.key === "Enter") {
       autenticar();
     }
   };
-  const handleClose = () => {
-    dispatch(hiddenAlertAction());
-  };
-  useEffect(() => {
-    dispatch(usuarioAuthEmpAction());
-    // eslint-disable-next-line
-  }, []);
   useEffect(() => {
     if (autenticado) {
-      props.history.push("/empresas/home");
+      props.history.push("/admin/home");
     }
     // eslint-disable-next-line
   }, [autenticado]);
+  useEffect(() => {
+    dispatch(usuarioAuthActionAdmin());
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className="conteiner-login-emp">
       <div
@@ -96,7 +91,7 @@ const Login = (props) => {
                 helpertext="Usuario erróneo, intente nuevamente"
                 onChange={(e) => {
                   if (erroremail) {
-                    dispatch(resetEmailEmpAction());
+                    dispatch(resetEmailActionAdmin());
                   }
                   setEmail(e.target.value);
                 }}
@@ -113,7 +108,7 @@ const Login = (props) => {
                 helpertext="Password incorrecto"
                 onChange={(e) => {
                   if (errorpassword) {
-                    dispatch(resetPasswordEmpAction());
+                    dispatch(resetPasswordActionAdmin());
                   }
                   setPassword(e.target.value);
                 }}
@@ -178,7 +173,7 @@ const Login = (props) => {
             </p>
           </div>
         </div>
- 
+
         {/* <div className="cont-right-item"> */}
         <div className="right-card-login-emp">
           <h1>Encuentra a los mejores profesionales SAP de Chile.</h1>

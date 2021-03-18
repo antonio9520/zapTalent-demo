@@ -20,7 +20,7 @@ export default function CustomInput(props) {
       </InputLabel>
       <Input
         {...props}
-        id="component-helper"
+      
         className="input-custom-input"
         aria-describedby="component-helper-text"
       />

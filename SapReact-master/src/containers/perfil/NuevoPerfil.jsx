@@ -180,6 +180,7 @@ const Perfil = () => {
         setActiveStep={setActiveStep}
         habilidades={usuario ? usuario.habilidades : null}
         setOpenModalHab={setOpenModalHab}
+        porcentaje={porcentaje}
       />
       <ModalProfesion
         setOpenModalProfesion={setOpenModalProfesion}
@@ -365,7 +366,7 @@ const Perfil = () => {
               txtBtn="Comenzar"
               link="/certificaciones"
             />
-          )}
+          )} 
         </div>
       </div>
       <div className="right-new-perfil">

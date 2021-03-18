@@ -12,6 +12,7 @@ const DrawerPerfil = ({
   setActiveStep,
   habilidades,
   setOpenModalHab,
+  porcentaje,
 }) => {
   return (
     <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
@@ -23,6 +24,7 @@ const DrawerPerfil = ({
         setActiveStep={setActiveStep}
         habilidades={habilidades}
         setOpenModalHab={setOpenModalHab}
+        porcentaje={porcentaje}
       />
     </Drawer>
   );

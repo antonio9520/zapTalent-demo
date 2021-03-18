@@ -36,7 +36,16 @@ const BorderLinearProgress = withStyles((theme) => ({
 }))(LinearProgress);
 const CardPerfil = (props) => {
   const classes = useStyles();
-  const { nombre, titulo, subtitle, textBtn, to, imageURL, porcentaje } = props;
+  const {
+    nombre,
+    titulo,
+    subtitle,
+    textBtn,
+    to,
+    imageURL,
+    porcentaje,
+    empresas,
+  } = props;
 
   return (
     <>
@@ -67,31 +76,36 @@ const CardPerfil = (props) => {
             {porcentaje === 100 ? "Tu perfil esta completado al 100%" : titulo}
           </p>
           <p style={{ color: "white" }}>{porcentaje === 100 ? "" : subtitle}</p>
-          {porcentaje ? (
-            <div className="cont-linear-determinate">
-              <div className="sub-cont-linear-determinate">
-                <BorderLinearProgress
-                  variant="determinate"
-                  value={porcentaje}
-                />
+          {!empresas ? (
+            porcentaje !== null ? (
+              <div className="cont-linear-determinate">
+                <div className="sub-cont-linear-determinate">
+                  <BorderLinearProgress
+                    variant="determinate"
+                    value={porcentaje}
+                  />
+                </div>
+                <p>{porcentaje + "%"}</p>
+                <span className="tooltiptext">
+                  ADN-SAP: 35%
+                  <br />
+                  Experiencia Laboral: 15%
+                  <br />
+                  Certificados: 15%
+                  <br />
+                  Estudios: 15%
+                  <br />
+                  Subir CV: 9%
+                  <br />
+                  Activar Cuenta: 11%
+                </span>
               </div>
-              <p>{porcentaje + "%"}</p>
-              <span className="tooltiptext">
-                ADN-SAP: 35%
-                <br />
-                Experiencia Laboral: 15%
-                <br />
-                Certificados: 15%
-                <br />
-                Estudios: 15%
-                <br />
-                Subir CV: 9%
-                <br />
-                Activar Cuenta: 11%
-              </span>
-            </div>
-          ) : null}
+            ) : null
+          ) : (
+            <div style={{ width: "60%", height: "10px" }}></div>
+          )}
         </div>
+
         <div className="cont-btn-complete-perfil-home">
           <Link to={to} className="link">
             <ListItem button className="btn-comenzar-perfil-home">

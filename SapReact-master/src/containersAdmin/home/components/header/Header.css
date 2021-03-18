@@ -1,0 +1,16 @@
+.header-home-admin {
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 0 10px;
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+}
+
+.header-home-admin p {
+  margin: 0;
+  color: var(--blue-primary);
+  font-size: 20px;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Forms.css";
 import { IconButton, ListItem, MenuItem } from "@material-ui/core";
 import {
@@ -32,6 +32,7 @@ const EditPerfil = ({ usuario, loading }) => {
     usuario ? usuario.apellidos : null
   );
   const [rut, setRut] = useState(usuario ? usuario.rut : null);
+  const [passport, setPassport] = useState(usuario ? usuario.passport : null);
   const [email, setEmail] = useState(usuario ? usuario.email : null);
   const [ecivil, setEcivil] = useState(usuario ? usuario.ecivil : null);
   const [nacion, setNacion] = useState(usuario ? usuario.nacion : null);
@@ -47,6 +48,7 @@ const EditPerfil = ({ usuario, loading }) => {
   const [_id] = useState(usuario ? usuario._id : null);
   const [rutmsg, setRutMsg] = useState("");
   const [rutError, setRutError] = useState(false);
+  const [passportError, setPassportError] = useState(false);
   const [nacionerror, setErrorNacion] = useState(false);
   const [errornombre, setErrorNombre] = useState(false);
   const [errorapellido, setErrorApellido] = useState(false);
@@ -56,9 +58,14 @@ const EditPerfil = ({ usuario, loading }) => {
   const [apellidosmsg, setApellidosMsg] = useState("");
   const [errorpretencion, setErrorPretencion] = useState(false);
   // const [nacionmsg, setNacionMsg] = useState("");
+  const [rutPassport, setRutPassport] = useState(false);
 
   const formatRut2 = () => {
-    document.getElementById("input-rut-ed").value = rut;
+    try {
+      document.getElementById("input-rut-ed-two").value = rut;
+    } catch (error) {
+      console.log(error);
+    }
   };
   const pattern = new RegExp(
     /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g
@@ -71,16 +78,22 @@ const EditPerfil = ({ usuario, loading }) => {
   );
   const handleClick = () => {
     //validacion rut
-
-    const rutvalidado = validateRut(rut);
-    if (rut.trim() === "") {
-      setRutMsg("Rut no puede estar vacio");
-      setRutError(true);
-      return;
-    } else if (rutvalidado === false) {
-      setRutMsg("El rut no es valido");
-      setRutError(true);
-      return;
+    if (rutPassport) {
+      if (passport.trim() === "") {
+        setPassportError(true);
+        return;
+      }
+    } else {
+      const rutvalidado = validateRut(rut.toLocaleLowerCase());
+      if (rut.trim() === "") {
+        setRutMsg("Rut no puede estar vacio");
+        setRutError(true);
+        return;
+      } else if (rutvalidado === false) {
+        setRutMsg("El rut no es valido");
+        setRutError(true);
+        return;
+      }
     }
     //validacion nombre
     if (nombres.trim() === "") {
@@ -113,30 +126,43 @@ const EditPerfil = ({ usuario, loading }) => {
       setEmailMsg("El formato de email es erroneo");
       return;
     }
-    // //validacion nacionalidad
-    // if (nacion.trim() === "") {
-    //   setErrorNacion(true);
-    //   setNacionMsg("Nación no puede estar vacio");
-    //   return;
-    // }
+
     if (parseInt(pretencion) < 1) {
       setErrorPretencion(true);
       return;
     }
-    dispatch(
-      editarUsuarioAction({
-        _id,
-        rut,
-        nombres,
-        apellidos,
-        email,
-        ecivil,
-        nacion,
-        consultor,
-        pretencion,
-        fechaNacimiento,
-      })
-    );
+    if (rutPassport) {
+      dispatch(
+        editarUsuarioAction({
+          _id,
+          passport,
+          nombres,
+          apellidos,
+          email,
+          ecivil,
+          nacion,
+          consultor,
+          pretencion,
+          fechaNacimiento,
+        })
+      );
+    } else {
+      dispatch(
+        editarUsuarioAction({
+          _id,
+          rut,
+          nombres,
+          apellidos,
+          email,
+          ecivil,
+          nacion,
+          consultor,
+          pretencion,
+          fechaNacimiento,
+        })
+      );
+    }
+
     setEditar(true);
   };
 
@@ -151,6 +177,7 @@ const EditPerfil = ({ usuario, loading }) => {
     setNombres(usuario ? usuario.nombres : null);
     setApellidos(usuario ? usuario.apellidos : null);
     setRut(usuario ? usuario.rut : null);
+    setPassport(usuario ? usuario.passport : null);
     setEmail(usuario ? usuario.email : null);
     setEcivil(usuario ? usuario.ecivil : null);
     setNacion(usuario ? usuario.nacion : null);
@@ -160,8 +187,17 @@ const EditPerfil = ({ usuario, loading }) => {
     setErrorNombre(false);
     setErrorApellido(false);
     setErrorEmail(false);
+    setPassportError(false);
   };
-
+  useEffect(() => {
+    if (usuario) {
+      if (usuario.passport !== "") {
+        setRutPassport(true);
+      } else {
+        setRutPassport(false);
+      }
+    }
+  }, [usuario]);
   return (
     <>
       <div style={{ position: "relative", height: "500px" }}>
@@ -260,21 +296,40 @@ const EditPerfil = ({ usuario, loading }) => {
               disabled={editar}
             />
           </div>
-          <div className="item-edit-perfil">
-            <Fingerprint className="icon-form-edit-perfil" />
-            <CustomInput
-              label="Rut"
-              defaultValue={rut}
-              value={rut}
-              onChange={changeRut}
-              onBlur={formatRut2}
-              id="input-rut-ed"
-              error={rutError}
-              helpertext={rutmsg}
-              name="names"
-              disabled={editar}
-            />
-          </div>
+          {rutPassport ? (
+            <div className="item-edit-perfil">
+              <Fingerprint className="icon-form-edit-perfil" />
+              <CustomInput
+                label="Pasaporte"
+                defaultValue={passport}
+                value={passport}
+                onChange={(e) => {
+                  setPassportError(false);
+                  setPassport(e.target.value);
+                }}
+                error={passportError}
+                helpertext={"Pasaporte no puede estar vacio"}
+                name="passport"
+                disabled={editar}
+              />
+            </div>
+          ) : (
+            <div className="item-edit-perfil">
+              <Fingerprint className="icon-form-edit-perfil" />
+              <CustomInput
+                label="Rut"
+                defaultValue={rut}
+                // value={rut}
+                onChange={changeRut}
+                onBlur={formatRut2}
+                id="input-rut-ed-two"
+                error={rutError}
+                helpertext={rutmsg}
+                name="names"
+                disabled={editar}
+              />
+            </div>
+          )}
           <div className="item-edit-perfil">
             <MailOutline className="icon-form-edit-perfil" />
             <CustomInput

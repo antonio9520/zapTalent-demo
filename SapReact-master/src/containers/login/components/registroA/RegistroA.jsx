@@ -71,9 +71,10 @@ const RegistroA = (props) => {
   //Validacion
   const validacion = async () => {
     //validacion rut
-    console.log(apellidos);
+    console.log(rut.toLocaleLowerCase());
+
     if (inputRut === true) {
-      const rutvalidado = validateRut(rut);
+      const rutvalidado = validateRut(rut.toLocaleLowerCase());
       if (rut.trim() === "") {
         setRutMsg("Rut no puede estar vacio");
         setRutError(true);
@@ -93,6 +94,7 @@ const RegistroA = (props) => {
         // return;
       }
     }
+
     //validacion nombre
     if (nombres.trim() === "") {
       setErrorNombre(true);
