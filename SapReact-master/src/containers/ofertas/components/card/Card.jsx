@@ -311,7 +311,7 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
             </div>
             <div className="item-6">
               <div>
-                <p>{descripcion}</p>
+                <textarea readOnly>{descripcion}</textarea>
               </div>
             </div>
           </div>
@@ -346,13 +346,18 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
             </div>
             <div className="item-3">
               <p>
-                Salario: ${" "}
-                <NumberFormat
-                  value={renta}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  // prefix={"$"}
-                />
+                Salario:
+                {renta === 0
+                  ? " A convenir"
+                  : "$ " +
+                    (
+                      <NumberFormat
+                        value={renta}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        // prefix={"$"}
+                      />
+                    )}
               </p>
               {postulado ? (
                 <Button

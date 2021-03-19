@@ -8,6 +8,6 @@ export const TRABAJOS = "/trabajos";
 export const LOGIN = "/login-register";
 export const PERFIL = "/perfil";
 export const COVER = "/inicio";
-export const LOGIN_FAKE = "/";
+export const LOGIN_FAKE = "/redirect";
 export const EMPRESAS = "/empresas"
 export const RESTABLECER = "/restablecer/:token"

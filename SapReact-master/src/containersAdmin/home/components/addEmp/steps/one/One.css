@@ -1,0 +1,68 @@
+.one-add-emp-admin {
+  background-color: white;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 5px;
+  position: relative;
+}
+
+/*TOP*/
+.one-add-emp-admin .top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.one-add-emp-admin .img-add-emp-admin {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* background-color: royalblue; */
+}
+.one-add-emp-admin .top .p1 {
+  color: var(--blue-primary);
+  font-size: 20px;
+  margin-top: 40px;
+}
+.one-add-emp-admin .btn-upload-logo-admin {
+  position: absolute !important;
+  background-color: var(--blue-primary) !important;
+  color: white !important;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  bottom: -10px;
+  left: 60px;
+  padding: 0 !important;
+}
+.one-add-emp-admin .cont-img-add-new-emp {
+  background-color: white;
+  width: 94px;
+  height: 94px;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.one-add-emp-admin .cont-img-add-new-emp .img-one-add-emp {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+}
+/*CENTER*/
+.one-add-emp-admin .center {
+  /* background-color: saddlebrown; */
+  margin: 40px;
+}
+.one-add-emp-admin .item-dates {
+  display: flex;
+  margin-top: 5px;
+}
+.one-add-emp-admin .item {
+  margin-top: 5px;
+}
+/*BOTTOM*/
+.one-add-emp-admin .bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px 40px 40px;
+}

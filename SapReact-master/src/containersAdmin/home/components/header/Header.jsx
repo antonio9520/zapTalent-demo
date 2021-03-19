@@ -12,12 +12,12 @@ const useStyles = makeStyles({
     },
   },
 });
-const Header = () => {
+const Header = ({ setOpen }) => {
   const classes = useStyles();
   return (
     <div className="header-home-admin">
       <p>Dashboard SCL Consultores</p>
-      <IconButton className={classes.root}>
+      <IconButton className={classes.root} onClick={() => setOpen(true)}>
         <Add />
       </IconButton>
     </div>

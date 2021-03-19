@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
-import { Header, Table } from "./components";
+import { Header, Table, Modal } from "./components";
 import { CardA } from "../../components";
 
 const Home = () => {
+  const [openAddEmp, setOpenAddEmp] = useState(true);
   return (
     <div className="container-home-admin">
+      <Modal setOpen={setOpenAddEmp} open={openAddEmp} />
       <div className="top">
-        <Header />
+        <Header setOpen={setOpenAddEmp} />
       </div>
       <div className="center">
         <div className="item">

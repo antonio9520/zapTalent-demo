@@ -12,12 +12,16 @@ const Renta = ({ data }) => {
           <Item
             title="Renta ofrecida"
             value={
-              <NumberFormat
-                value={renta}
-                displayType={"text"}
-                thousandSeparator={true}
-                prefix={"$ "}
-              />
+              renta === 0 ? (
+                "A convenir"
+              ) : (
+                <NumberFormat
+                  value={renta}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$ "}
+                />
+              )
             }
             icon={<LocalAtm />}
           />

@@ -160,20 +160,20 @@ const InfoEmp = forwardRef((props, ref) => {
         <>
           <div className="top">
             <div>
-              {/* {usuario.imageURL ? (
-                <img src={usuario.imageURL} alt="userimage" />
+              {data2.logoURL ? (
+                <img src={data2.logoURL} alt="userimage" />
               ) : (
                 <img
                   style={{ width: "120px", height: "120px" }}
                   src={userimage}
                   alt="userimage"
                 />
-              )} */}
-              <img
+              )}
+              {/* <img
                 style={{ width: "120px", height: "120px" }}
                 src={userimage}
                 alt="userimage"
-              />
+              /> */}
             </div>
             <div className="cont-p">
               <p className="p1">

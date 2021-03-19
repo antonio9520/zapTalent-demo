@@ -1,5 +1,6 @@
 .item-table-home-admin {
   /* background-color: seagreen; */
+
   height: 70px;
   border-top: 1px solid var(--blue-primary);
   display: flex;
@@ -49,7 +50,6 @@
   flex-direction: column;
   justify-content: center;
   min-width: 80px;
- 
 }
 .item-table-home-admin .item-3 p:nth-child(1) {
   color: var(--blue-primary);

@@ -33,7 +33,7 @@ export function cerrarSesionAction() {
   return async (dispatch) => {
     await dispatch(cerrarSesion());
 
-    window.location.href = "https://info.zaptalent.cl/";
+  
   };
 }
 

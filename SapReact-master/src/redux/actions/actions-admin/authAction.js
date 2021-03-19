@@ -31,8 +31,6 @@ const hiddenAlert = () => ({
 export function cerrarSesionActionAdmin() {
   return async (dispatch) => {
     await dispatch(cerrarSesionAdmin());
-
-    window.location.href = "https://info.zaptalent.cl/";
   };
 }
 

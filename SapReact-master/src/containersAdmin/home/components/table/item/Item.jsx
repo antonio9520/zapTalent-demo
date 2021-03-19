@@ -9,9 +9,13 @@ const useStyles = makeStyles({
     backgroundColor: "#187ce2",
     color: "white",
     boxShadow: "1px 1px 5px 1px rgba(0,0,0,0.2)",
+    transition: "0.5s all ease-in-out",
     "&:hover": {
       backgroundColor: "#105296",
+      transition: "0.5s all ease-in-out",
+      transform: "scale(1.1)",
     },
+
   },
 });
 const Item = () => {
@@ -66,7 +70,7 @@ const Item = () => {
       </div>
       <div className="item-9">
         <IconButton className={classes.iconButton}>
-          <PersonAdd fontSize="small" />
+          <PersonAdd fontSize="small" className={classes.icon} />
         </IconButton>
         <IconButton className={classes.iconButton}>
           <Edit fontSize="small" />

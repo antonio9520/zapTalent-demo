@@ -161,7 +161,7 @@ const Sidebar = (props) => {
             onClick={() => cerrarSesion()}
             className={"btn-cerrar-sesion"}
           >
-            <Link to="" className="link link-sidebar">
+            <Link to="/redirect" className="link link-sidebar">
               <ExitToApp className="exitapp-sidebar" />
               <p className={open ? "txt-sidebar-mini" : "txt-sidebar6"}>
                 Cerrar sesión

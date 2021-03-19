@@ -89,7 +89,7 @@ const Aviso = ({ data, data2 }) => {
         </p>
       </div>
       <div className="item-4">
-        <p>{descripcion}</p>
+        <textarea readOnly>{descripcion}</textarea>
       </div>
     </div>
   );
