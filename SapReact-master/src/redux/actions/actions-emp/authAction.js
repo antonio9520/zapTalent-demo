@@ -35,9 +35,8 @@ const hiddenAlert = () => ({
 export function usuarioAuthEmpAction() {
   return async (dispatch) => {
     const token = localStorage.getItem("tokenEmp");
-    if (token) {
-      tokenAuth(token);
-    }
+
+    tokenAuth(token);
 
     try {
       const respuesta = await clientAxios.get("/api/authEmpresa");

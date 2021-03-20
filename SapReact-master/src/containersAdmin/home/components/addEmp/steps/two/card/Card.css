@@ -1,0 +1,15 @@
+.direccion-add-emp-admin {
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  position: relative;
+  border-radius: 3px;
+}
+
+.direccion-add-emp-admin .item {
+  display: flex;
+  align-items: flex-end;
+  padding-top: 5px;
+}

@@ -1,12 +1,68 @@
 .three-add-emp-admin {
   background-color: white;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   border-radius: 5px;
   position: relative;
 }
+
+/*TOP*/
+.three-add-emp-admin .p1 {
+  color: var(--blue-primary);
+  text-align: center;
+  margin-top: 40px;
+  font-size: 20px;
+}
+.three-add-emp-admin .p2 {
+  color: var(--blue-primary);
+  margin: 40px;
+  margin-bottom: 0;
+}
+/*CENTER*/
+.three-add-emp-admin .center {
+  padding: 10px 40px;
+  height: 200px;
+  max-height: 300px;
+  overflow: auto;
+  margin-right: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-right: 5px;
+  scroll-behavior: smooth;
+}
+.three-add-emp-admin .center .loading-add-empresa-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 170px;
+}
+.three-add-emp-admin .center::-webkit-scrollbar-track {
+  margin-top: 10px;
+}
+.three-add-emp-admin .center .telefono-add-emp-admin {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+.three-add-emp-admin .center .item-add-telefono {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+.three-add-emp-admin .center .item-add-telefono p {
+  color: var(--gray-text);
+  font-size: 14px;
+  margin-left: 10px;
+}
+.input-mask-phon-emp-admin {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: -5px;
+}
+/*BOTTOM*/
 .three-add-emp-admin .bottom {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px 20px 20px;
+  padding: 0 40px 40px 40px;
 }

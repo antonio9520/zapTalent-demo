@@ -44,9 +44,7 @@ export function usuarioAuthActionAdmin() {
     const token = localStorage.getItem("tokenAdmin");
     console.log(token);
 
-    if (token) {
-      tokenAuth(token);
-    }
+    tokenAuth(token);
 
     try {
       const respuesta = await clientAxios.get("/api/authAdmin");

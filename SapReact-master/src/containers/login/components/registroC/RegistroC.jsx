@@ -95,7 +95,7 @@ const RegistroC = (props) => {
     if (pretencion.trim() === "") {
       setErrorPretencion(true);
       setPretencionMsg("Pretencion de renta no puede estar vacio");
-      return;  
+      return;
     } else if (pretencion < 0) {
       setErrorPretencion(true);
       setPretencionMsg("Ingrese un numero valido");
@@ -104,7 +104,6 @@ const RegistroC = (props) => {
 
     registrarUsuario();
   };
-
 
   return (
     <>
@@ -176,13 +175,12 @@ const RegistroC = (props) => {
               ></OutInput>
             </div>
             <div className="center-3">
-    
               <CssTextField
                 fullWidth
                 variant="outlined"
                 size="small"
                 error={errorpretencion}
-                label="Pretencion de renta"
+                label="Pretensión de renta"
                 helperText={pretencionMsg}
                 value={pretencion}
                 // onChange={handleChange}

@@ -32,8 +32,6 @@ const showAlert = (data) => ({
 export function cerrarSesionAction() {
   return async (dispatch) => {
     await dispatch(cerrarSesion());
-
-  
   };
 }
 
@@ -45,11 +43,8 @@ const cerrarSesion = () => ({
 export function usuarioAuthAction() {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    console.log(token);
 
-    if (token) {
-      tokenAuth(token);
-    }
+    tokenAuth(token);
 
     try {
       const respuesta = await clientAxios.get("/api/auth");

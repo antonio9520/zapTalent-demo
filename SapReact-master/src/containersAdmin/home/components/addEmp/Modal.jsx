@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
 import { One, Two, Three, Four, Five } from "./steps";
-import shortid from "shortid";
+
 import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +16,7 @@ const CustomModal = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { setOpen, open } = props;
-  const [step, setStep] = useState("one");
+  const [step, setStep] = useState("four");
   //STEP ONE
   const [image, setImage] = useState({
     preimage: null,
@@ -30,7 +30,12 @@ const CustomModal = (props) => {
   const [fechaInicio, setFechaInicio] = useState(null);
   const [fechaTermino, setFechaTermino] = useState(null);
   const [resena, setResena] = useState("");
-
+  //STEP TWO
+  const [direcciones, setDirecciones] = useState([]);
+  //STEP THREE
+  const [telefonos, setTelefonos] = useState([]);
+  //STEP FOUR
+  const [perfiles, setPerfiles] = useState([]);
   //guardar aviso
   const guardarEmpresa = async () => {
     const logoURL = file;
@@ -39,7 +44,7 @@ const CustomModal = (props) => {
   // console.log(usuario);
   const closeModal = () => {
     setOpen(false);
-    
+
     setTimeout(() => {
       setStep("one");
     }, 300);
@@ -84,14 +89,26 @@ const CustomModal = (props) => {
               setFile={setFile}
             />
           ) : step === "two" ? (
-            <Two setStep={setStep} closeModal={closeModal} />
+            <Two
+              setStep={setStep}
+              closeModal={closeModal}
+              direcciones={direcciones}
+              setDirecciones={setDirecciones}
+            />
           ) : step === "three" ? (
-            <Three setStep={setStep} closeModal={closeModal} />
+            <Three
+              setStep={setStep}
+              closeModal={closeModal}
+              telefonos={telefonos}
+              setTelefonos={setTelefonos}
+            />
           ) : step === "four" ? (
             <Four
               setStep={setStep}
               closeModal={closeModal}
               guardarEmpresa={guardarEmpresa}
+              perfiles={perfiles}
+              setPerfiles={setPerfiles}
             />
           ) : step === "five" ? (
             <Five setStep={setStep} closeModal={closeModal} />

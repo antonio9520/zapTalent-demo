@@ -1,12 +1,52 @@
 .four-add-emp-admin {
   background-color: white;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   border-radius: 5px;
   position: relative;
 }
+
+/*TOP*/
+.four-add-emp-admin .p1 {
+  color: var(--blue-primary);
+  text-align: center;
+  margin-top: 40px;
+  font-size: 20px;
+}
+
+/*CENTER*/
+.four-add-emp-admin .center {
+  margin: 40px;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding-left: 20px;
+  max-height: 400px;
+  overflow: auto;
+  padding-right: 5px;
+  scroll-behavior: smooth;
+}
+.four-add-emp-admin .center .loading-add-empresa-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+.four-add-emp-admin .center::-webkit-scrollbar-track {
+  margin-top: 10px;
+}
+.four-add-emp-admin .item-add-perfil {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.four-add-emp-admin .item-add-perfil p {
+  color: var(--gray-text);
+  font-size: 14px;
+  margin-left: 10px;
+}
+/*BOTTOM*/
 .four-add-emp-admin .bottom {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px 20px 20px;
+  padding: 0 40px 40px 40px;
 }

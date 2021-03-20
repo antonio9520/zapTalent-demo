@@ -67,7 +67,7 @@ const Phone = ({ usuario, loading }) => {
           <PhoneIphone className="icon-form-edit-perfil" />
 
           <FormControl
-            fullWidth
+            fullWidth 
             size="small"
             error={errorphone}
             disabled={editar}

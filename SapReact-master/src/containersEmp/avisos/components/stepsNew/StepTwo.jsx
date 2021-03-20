@@ -101,7 +101,7 @@ const StepTwo = forwardRef((props, ref) => {
         </div>
         <div
           className="cont-adns-form-avisos-emp"
-          id="cont-adns-form-avisos-emp"
+          id="cont-adns-form-avisos-emp" 
         >
           {adns.map((item, index) => (
             <AdnForm
