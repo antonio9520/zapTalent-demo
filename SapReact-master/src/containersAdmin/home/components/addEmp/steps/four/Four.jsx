@@ -9,6 +9,8 @@ import { Close, Add } from "@material-ui/icons";
 import shortid from "shortid";
 import Perfil from "./perfil/Perfil";
 import Loader from "react-loader-spinner";
+import validator from "validator";
+import { formatRut, RutFormat, validateRut } from "@fdograph/rut-utilities";
 
 const useStyles = makeStyles({
   addButton: {
@@ -33,9 +35,20 @@ const Four = forwardRef(
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
     const [cargando, setCargando] = useState(false);
+    const [initDefault, setInitDefault] = useState(true);
+    const [_switch, setSwitch] = useState(false);
+    const [errores, setErrores] = useState([]);
+    const [errores2, setErrores2] = useState([]);
+
     const validacion = () => {
       setLoading(true);
-      guardarEmpresa();
+      setErrores([]);
+      mapearDatos();
+      setTimeout(() => {
+        nextStep();
+        setLoading(false);
+      }, 500);
+      console.log(perfiles);
     };
     const addPerfil = () => {
       const container = document.getElementById("cont-perfil-add-emp-admin");
@@ -64,12 +77,59 @@ const Four = forwardRef(
         setCargando(false);
       }, 1000);
     };
-
+    const nextStep = async () => {
+      if (errores.length === 0) {
+        guardarEmpresa();
+      }
+    };
     useEffect(() => {
       if (perfiles.length === 0) {
         addPerfil();
       }
     }, []);
+    const mapearDatos = () => {
+      perfiles.map((item) => {
+        let rutvalidado = validateRut(item.rut.toLocaleLowerCase());
+        const emailv = validator.isEmail(item.email);
+        if (item.tipoPlan === "") {
+          errores.push(item.id);
+        } else if (item.rut.trim() === "") {
+          errores.push(item.id);
+        } else if (rutvalidado === false) {
+          errores.push(item.id);
+        } else if (item.nombres === "") {
+          errores.push(item.id);
+        } else if (item.apellidos === "") {
+          errores.push(item.id);
+        } else if (item.email.trim() === "") {
+          errores.push(item.id);
+        } else if (emailv === false) {
+          errores.push(item.id);
+        } else if (item.password.trim() === "") {
+          errores.push(item.id);
+        } else if (item.password.lenth < 6) {
+          errores.push(item.id);
+        } else if (item.fechaInicio === null) {
+          errores.push(item.id);
+        } else if (item.fechaTermino === null) {
+          errores.push(item.id);
+        } else if (
+          Date.parse(item.fechaInicio) > Date.parse(item.fechaTermino)
+        ) {
+          errores.push(item.id);
+        }
+      });
+      setErrores2(errores);
+    };
+    useEffect(() => {
+      if (initDefault === false) {
+        if (errores.length > 0) {
+          return;
+        } else {
+          guardarEmpresa();
+        }
+      }
+    }, [_switch]);
     return (
       <div className="four-add-emp-admin" ref={ref}>
         <p className="p1">Perfiles de usuario</p>
@@ -94,6 +154,7 @@ const Four = forwardRef(
                   perfiles={perfiles}
                   setPerfiles={setPerfiles}
                   recargar={recargar}
+                  errores2={errores2}
                 />
               ))}
               <div className="item-add-perfil">

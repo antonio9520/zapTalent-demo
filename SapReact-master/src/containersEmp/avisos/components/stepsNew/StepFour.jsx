@@ -30,7 +30,7 @@ const StepFour = forwardRef((props, ref) => {
     setEstado,
     guardarAviso,
     cargando,
-  } = props;
+  } = props;  
 
   const [initDefault, setInitDefault] = useState(true);
   const [errorRenta, setErrorRenta] = useState(false);

@@ -143,7 +143,7 @@ const Card = ({
           label={`Comuna ${num}`}
           helpertext="no puede estar vacio"
           //   error={tipoPlanError}
-          value={comuna}
+          value={comunaA}
           onChange={(e) => {
             // setTipoPlanError(false);
             changeComuna(e);

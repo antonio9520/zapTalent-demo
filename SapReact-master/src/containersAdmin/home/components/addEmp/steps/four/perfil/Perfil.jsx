@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Perfil.css";
 import {
   Button,
@@ -7,13 +7,15 @@ import {
   CustomSelectB,
 } from "../../../../../../../components";
 import { MenuItem, IconButton, makeStyles } from "@material-ui/core";
-import { Close } from "@material-ui/icons";
+import { Close, VpnKey } from "@material-ui/icons";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
+import { formatRut, RutFormat, validateRut } from "@fdograph/rut-utilities";
+import shortid from "shortid";
 
 const useStyles = makeStyles({
   iconButton: {
@@ -27,9 +29,45 @@ const useStyles = makeStyles({
   },
 });
 
-const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
-  const { id } = data;
+const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
+  const {
+    id,
+    tipoPlan,
+    rut,
+    nombres,
+    apellidos,
+    email,
+    password,
+    fechaInicio,
+    fechaTermino,
+  } = data;
   const classes = useStyles();
+  const [tipoPlanA, setTipoPlan] = useState(tipoPlan);
+  const [rutA, setRut] = useState(rut);
+  const [nombresA, setNombres] = useState(nombres);
+  const [apellidosA, setApellidos] = useState(apellidos);
+  const [emailA, setEmail] = useState(email);
+  const [passwordA, setPassword] = useState(password);
+  const [fechaInicioA, setFechaInicio] = useState(fechaInicio);
+  const [fechaTerminoA, setFechaTermino] = useState(fechaTermino);
+  const [initDefault, setInitDefault] = useState(true);
+  const [error, setError] = useState(false);
+
+  const formatRut2 = () => {
+    try {
+      document.getElementById(
+        `input-rut-empresa-usuario-admin-${id}`
+      ).value = rutA;
+      perfiles.map((item) => {
+        if (item.id === id) {
+          item.rut = rutA;
+        }
+      });
+      console.log(perfiles);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleDelete = async () => {
     if (perfiles.length === 1) {
@@ -39,18 +77,56 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
       recargar();
     }
   };
+  const generateKey = () => {
+    let key = shortid();
+    perfiles.map((item) => {
+      if (item.id === id) {
+        item.password = key;
+      }
+    });
+    setPassword(key);
+  };
+
+  useEffect(() => {
+    if (initDefault === false) {
+      if (errores2.length > 0) {
+        const valor = errores2.filter((item) => item === data.id);
+
+        if (valor.length > 0) {
+          setError(true);
+          document.getElementById(id).scrollIntoView();
+        } else {
+          setError(false);
+        }
+      }
+    }
+    setInitDefault(false);
+  }, [errores2]);
   return (
-    <div className="perfil-add-emp-admin">
+    <div
+      className="perfil-add-emp-admin"
+      id={id}
+      style={{
+        border: error ? "1px solid #f44336" : null,
+        backgroundColor: error ? "#f4433605" : null,
+      }}
+    >
       <div className="item">
         <CustomSelectB
           label="Tipo de perfil"
           helpertext="no puede estar vacio"
           //   error={tipoPlanError}
-          //   value={tipoPlan}
-          //   onChange={(e) => {
-          //     setTipoPlanError(false);
-          //     setTipoPlan(e.target.value);
-          //   }}
+          value={tipoPlanA}
+          defaultValue={tipoPlanA}
+          onChange={(e) => {
+            // setTipoPlanError(false);
+            perfiles.map((item) => {
+              if (item.id === id) {
+                item.tipoPlan = e.target.value;
+              }
+            });
+            setTipoPlan(e.target.value);
+          }}
         >
           <MenuItem className="custom-menu-item" value="admin">
             Administrador
@@ -67,11 +143,18 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
             helpertext="Introduzca un nuemero valido"
             //   error={giroError}
             type="text"
-            //   value={giro}
-            //   onChange={(e) => {
-            //     setGiroError(false);
-            //     setGiro(e.target.value);
-            //   }}
+            value={nombresA}
+            defaultValue={nombresA}
+            onChange={(e) => {
+              // setTipoPlanError(false);
+              perfiles.map((item) => {
+                if (item.id === id) {
+                  item.nombres = e.target.value;
+                }
+              });
+              console.log(perfiles);
+              setNombres(e.target.value);
+            }}
           />
         </div>
         <div style={{ paddingLeft: 5 }}>
@@ -80,11 +163,17 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
             helpertext="Introduzca un nuemero valido"
             //   error={giroError}
             type="text"
-            //   value={giro}
-            //   onChange={(e) => {
-            //     setGiroError(false);
-            //     setGiro(e.target.value);
-            //   }}
+            value={apellidosA}
+            defaultValue={apellidosA}
+            onChange={(e) => {
+              // setTipoPlanError(false);
+              perfiles.map((item) => {
+                if (item.id === id) {
+                  item.apellidos = e.target.value;
+                }
+              });
+              setApellidos(e.target.value);
+            }}
           />
         </div>
       </div>
@@ -92,13 +181,17 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
         <div style={{ paddingRight: 5 }}>
           <CustomInput
             label="Rut"
-            id="input-rut-empresa-admin"
+            id={`input-rut-empresa-usuario-admin-${id}`}
             // error={rutError}
             // helpertext={rutmsg}
             type="text"
             // value={rut}
-            // onChange={changeRut}
-            // onBlur={formatRut2}
+            defaultValue={rut}
+            onChange={(e) => {
+              // setTipoPlanError(false);
+              setRut(formatRut(e.target.value, RutFormat.DOTS_DASH));
+            }}
+            onBlur={formatRut2}
           />
         </div>
         <div style={{ paddingLeft: 5 }}>
@@ -107,11 +200,17 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
             helpertext="Introduzca un nuemero valido"
             //   error={giroError}
             type="text"
-            //   value={giro}
-            //   onChange={(e) => {
-            //     setGiroError(false);
-            //     setGiro(e.target.value);
-            //   }}
+            value={emailA}
+            defaultValue={emailA}
+            onChange={(e) => {
+              // setTipoPlanError(false);
+              perfiles.map((item) => {
+                if (item.id === id) {
+                  item.email = e.target.value;
+                }
+              });
+              setEmail(e.target.value);
+            }}
           />
         </div>
       </div>
@@ -122,11 +221,24 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
           helpertext="Introduzca un nuemero valido"
           //   error={giroError}
           type="text"
-          //   value={giro}
-          //   onChange={(e) => {
-          //     setGiroError(false);
-          //     setGiro(e.target.value);
-          //   }}
+          value={passwordA}
+          defaultValue={passwordA}
+          onChange={(e) => {
+            // setTipoPlanError(false);
+            perfiles.map((item) => {
+              if (item.id === id) {
+                item.password = e.target.value;
+              }
+            });
+            setPassword(e.target.value);
+          }}
+          endAdornment={
+            <Tooltip title="Generar contraseña aleatoria" placement="top">
+              <IconButton size="small" onClick={generateKey}>
+                <VpnKey fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          }
         />
       </div>
       <div className="item-doble">
@@ -143,12 +255,17 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
               //     inicioError ? "Fecha inicio no puede estar vacio" : null
               //   }
               format="dd/MM/yyyy"
-              //   value={fechaInicio}
+              value={fechaInicioA}
               // maxDate={new Date()}
-              //   onChange={(newValue) => {
-              //     setInicioError(false);
-              //     setFechaInicio(newValue);
-              //   }}
+              onChange={(newValue) => {
+                // setInicioError(false);
+                perfiles.map((item) => {
+                  if (item.id === id) {
+                    item.fechaInicio = newValue;
+                  }
+                });
+                setFechaInicio(newValue);
+              }}
               InputProps={{
                 className: "input-date-picker-inicio",
                 readOnly: true,
@@ -165,14 +282,19 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data }) => {
               label="Término"
               format="dd/MM/yyyy"
               //   helperText={terminoError ? fechaMsg : null}
-              //   value={fechaTermino}
+              value={fechaTerminoA}
               minDate={new Date()}
               maxDate={new Date("2030-01-01")}
               // maxDate={new Date()}
-              //   onChange={(newValue) => {
-              //     setTerminoError(false);
-              //     setFechaTermino(newValue);
-              //   }}
+              onChange={(newValue) => {
+                // setInicioError(false);
+                perfiles.map((item) => {
+                  if (item.id === id) {
+                    item.fechaTermino = newValue;
+                  }
+                });
+                setFechaTermino(newValue);
+              }}
               InputProps={{
                 className: "input-date-picker-inicio",
                 readOnly: true,

@@ -5,6 +5,18 @@ const usuarioEmpresaSchema = moongose.Schema({
     type: String,
     trim: true,
   },
+  nombres: {
+    type: String,
+    trim: true,
+  },
+  apellidos: {
+    type: String,
+    trim: true,
+  },
+  rut: {
+    type: String,
+    trim: true,
+  },
   email: {
     type: String,
     trim: true,

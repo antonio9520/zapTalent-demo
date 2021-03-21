@@ -3,23 +3,23 @@ const upload = require("../../libs/storageempresalogo");
 const fs = require("fs").promises;
 
 exports.SubirArchivo = (req, res, next) => {
-    upload(req, res, function (error) {
-      if (error) {
-        res.json({ msg: error });
-      }
-      return next();
-    });
-  };
+  upload(req, res, function (error) {
+    if (error) {
+      res.json({ msg: error });
+    }
+    return next();
+  });
+};
 
 exports.CrearEmpresa = async (req, res) => {
   try {
     const empresa = new Empresas(req.body);
     //subida de archivo
     if (req.file) {
-        console.log(req.file);
-        const { filename } = req.file;
-        empresa.setcertificado(filename);
-      }
+      console.log(req.file);
+      const { filename } = req.file;
+      empresa.setcertificado(filename);
+    }
     await empresa.save();
     res.status(200).send(empresa);
   } catch (error) {
@@ -52,7 +52,6 @@ exports.putEmpresas = async (req, res) => {
     direcciones,
     telefonos,
     tipoPlan,
-
   } = req.body;
 
   try {
@@ -66,7 +65,7 @@ exports.putEmpresas = async (req, res) => {
       if (direcciones) empresa.direcciones = direcciones;
       if (telefonos) empresa.telefonos = telefonos;
       if (tipoPlan) empresa.tipoPlan = tipoPlan;
-     
+
       if (err) return res.status(400).json({ msg: "Empresa no encontrada" });
       empresa.save(function (err) {
         if (err) return res.status(500).json({ msg: "error al actualizar" });

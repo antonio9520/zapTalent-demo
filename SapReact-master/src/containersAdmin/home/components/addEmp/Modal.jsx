@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
 import { One, Two, Three, Four, Five } from "./steps";
-
+import { agregarEmpresaAction } from "../../../../redux/actions/actions-admin/empresasAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +39,21 @@ const CustomModal = (props) => {
   //guardar aviso
   const guardarEmpresa = async () => {
     const logoURL = file;
+    await dispatch(
+      agregarEmpresaAction({
+        logoURL,
+        tipoPlan,
+        razonSocial,
+        rut,
+        giro,
+        fechaInicio,
+        fechaTermino,
+        resena,
+        direcciones,
+        telefonos,
+        perfiles,
+      })
+    );
     console.log("guardando empresa");
   };
   // console.log(usuario);
