@@ -10,7 +10,8 @@ import shortid from "shortid";
 import Perfil from "./perfil/Perfil";
 import Loader from "react-loader-spinner";
 import validator from "validator";
-import { formatRut, RutFormat, validateRut } from "@fdograph/rut-utilities";
+import { validateRut } from "@fdograph/rut-utilities";
+import clientAxios from "../../../../../../config/axios";
 
 const useStyles = makeStyles({
   addButton: {
@@ -31,22 +32,33 @@ const useStyles = makeStyles({
 });
 
 const Four = forwardRef(
-  ({ setStep, closeModal, guardarEmpresa, perfiles, setPerfiles }, ref) => {
+  (
+    {
+      setStep,
+      closeModal,
+      guardarEmpresa,
+      perfiles,
+      setPerfiles,
+      loading,
+      setLoading,
+      numSave,
+    },
+    ref
+  ) => {
     const classes = useStyles();
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [cargando, setCargando] = useState(false);
-    const [initDefault, setInitDefault] = useState(true);
-    const [_switch, setSwitch] = useState(false);
+    // const [initDefault, setInitDefault] = useState(true);
+    // const [_switch, setSwitch] = useState(false);
     const [errores, setErrores] = useState([]);
     const [errores2, setErrores2] = useState([]);
 
-    const validacion = () => {
+    const validacion = async () => {
       setLoading(true);
       setErrores([]);
-      mapearDatos();
+      await mapearDatos();
       setTimeout(() => {
         nextStep();
-        setLoading(false);
       }, 500);
       console.log(perfiles);
     };
@@ -56,7 +68,7 @@ const Four = forwardRef(
         ...perfiles,
         {
           id: shortid(),
-          tipoPlan: "",
+          tipoPerfil: "",
           rut: "",
           nombres: "",
           apellidos: "",
@@ -79,7 +91,10 @@ const Four = forwardRef(
     };
     const nextStep = async () => {
       if (errores.length === 0) {
+        console.log("guardando empresas");
         guardarEmpresa();
+      } else {
+        setLoading(false);
       }
     };
     useEffect(() => {
@@ -87,9 +102,15 @@ const Four = forwardRef(
         addPerfil();
       }
     }, []);
-    const mapearDatos = () => {
-      perfiles.map((item) => {
+    const mapearDatos = async () => {
+      perfiles.map(async (item) => {
         let rutvalidado = validateRut(item.rut.toLocaleLowerCase());
+        const _email = await clientAxios.put(
+          "/api/usuarioEmpresa/validar/email",
+          {
+            email: item.email.toLocaleLowerCase(),
+          }
+        );
         const emailv = validator.isEmail(item.email);
         if (item.tipoPlan === "") {
           errores.push(item.id);
@@ -105,6 +126,8 @@ const Four = forwardRef(
           errores.push(item.id);
         } else if (emailv === false) {
           errores.push(item.id);
+        } else if (_email.data._email === true) {
+          errores.push(item.id);
         } else if (item.password.trim() === "") {
           errores.push(item.id);
         } else if (item.password.lenth < 6) {
@@ -119,17 +142,11 @@ const Four = forwardRef(
           errores.push(item.id);
         }
       });
-      setErrores2(errores);
+      await setTimeout(() => {
+        setErrores2(errores);
+      }, 500);
     };
-    useEffect(() => {
-      if (initDefault === false) {
-        if (errores.length > 0) {
-          return;
-        } else {
-          guardarEmpresa();
-        }
-      }
-    }, [_switch]);
+
     return (
       <div className="four-add-emp-admin" ref={ref}>
         <p className="p1">Perfiles de usuario</p>
@@ -184,7 +201,17 @@ const Four = forwardRef(
         </div>
         {loading ? (
           <>
-            <div className="overlay-loading"></div>
+            <div className="overlay-loading">
+              {numSave === 0 ? (
+                <p className="guardando-empresa-admin-progress">
+                  Guardando Empresa
+                </p>
+              ) : (
+                <p className="guardando-empresa-admin-progress">
+                  Guardando Perfil {numSave}/{perfiles.length}
+                </p>
+              )}
+            </div>
             <div className="linear-progres-global">
               <LinearProgress className="progres-editar-perfil" />
             </div>
@@ -196,6 +223,7 @@ const Four = forwardRef(
             size="small"
             customcolor="close"
             onClick={closeModal}
+            disabled={loading}
           >
             <Close className="icon-close" />
           </CustomIconButton>

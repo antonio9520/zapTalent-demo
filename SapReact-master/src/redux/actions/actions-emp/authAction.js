@@ -40,7 +40,7 @@ export function usuarioAuthEmpAction() {
 
     try {
       const respuesta = await clientAxios.get("/api/authEmpresa");
-      //   console.log(respuesta.data.usuario);
+      console.log(respuesta.data);
       dispatch(usuarioAuth(respuesta.data));
     } catch (error) {
       console.log(error);

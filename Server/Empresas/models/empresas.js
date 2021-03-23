@@ -24,32 +24,21 @@ const empresaSchema = mongoose.Schema({
     type: String,
     trim: true,
   },
-  direcciones: [
-    {
-      direccion: String,
-      comuna: String,
-      region: String,
-    },
-  ],
-  telefonos: [
-    {
-      numero: String,
-    },
-  ],
+  direcciones: [],
+  telefonos: [],
   logoURL: {
     type: String,
   },
   tipoPlan: {
     type: String,
   },
-
 });
 
 empresaSchema.methods.setcertificado = function setcertificado(filename) {
-    const { host, port } = appConfig;
-    console.log(filename);
-    console.log("entra a la funcion");
-    this.logoURL = `https://zaptalent.azurewebsites.net/public/empresas/${filename}`;
-  };
+  const { host, port } = appConfig;
+  console.log(filename);
+  console.log("entra a la funcion");
+  this.logoURL = `https://zaptalent.azurewebsites.net/public/empresas/${filename}`;
+};
 
 module.exports = mongoose.model("empresa", empresaSchema);

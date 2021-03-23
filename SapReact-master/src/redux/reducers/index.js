@@ -14,6 +14,8 @@ import postuladosReducers from "./reducers-emp/postuladosReducer";
 import userInfoReducer from "./reducers-emp/infoUserReducer";
 //ADMIN
 import authAdminReducer from "./reducers-admin/authReducer";
+import empresaReducer from "./reducers-admin/empresasReducer";
+
 export default combineReducers({
   auth: authReducer,
   trabajo: trabajoReducer,
@@ -28,4 +30,5 @@ export default combineReducers({
   postulados: postuladosReducers,
   userInfo: userInfoReducer,
   authAdmin: authAdminReducer,
+  empresas: empresaReducer,
 });

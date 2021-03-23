@@ -226,7 +226,7 @@ const Telefono = ({ data, setTelefonos, telefonos, recargar, errores2 }) => {
           }
           name="textmask"
           id={id}
-          inputComponent={InputMaskCustom}
+          // inputComponent={InputMaskCustom}
         />
         {errorphone ? (
           <FormHelperText className="helper-text-custom-input">

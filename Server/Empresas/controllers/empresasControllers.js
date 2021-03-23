@@ -12,8 +12,11 @@ exports.SubirArchivo = (req, res, next) => {
 };
 
 exports.CrearEmpresa = async (req, res) => {
+  const Empresa = req.body;
   try {
-    const empresa = new Empresas(req.body);
+    Empresa.direcciones = JSON.parse(Empresa.direcciones);
+    Empresa.telefonos = JSON.parse(Empresa.telefonos);
+    const empresa = new Empresas(Empresa);
     //subida de archivo
     if (req.file) {
       console.log(req.file);
@@ -91,5 +94,30 @@ exports.deleteEmp = async (req, res) => {
     });
   } catch (error) {
     res.status(500).send({ msg: "Error en el servidor." });
+  }
+};
+
+//VALIDACION EMPRESA UNICA
+exports.validarEmpresaUnica = async (req, res) => {
+  const { rut } = req.body;
+  try {
+    let rutValidado = await Empresas.findOne({ rut });
+    //subida de archivo
+    let _rut = Boolean(rutValidado);
+    res.status(200).json({ _rut });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ msg: "error en el servidor " + error });
+  }
+};
+
+//TOTAL EMPRESAS
+exports.totalEmpresas = async (req, res) => {
+  try {
+    const totalempresas = await Empresas.find({}).countDocuments();
+    console.log(totalempresas);
+    res.status(200).json({ total: totalempresas });
+  } catch (error) {
+    console.log(error);
   }
 };

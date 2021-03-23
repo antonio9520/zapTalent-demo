@@ -4,7 +4,7 @@ import Header from "./header/Header";
 import Item from "./item/Item";
 import { useContainerDimensions } from "../../../../hooks/useResize";
 
-const Table = () => {
+const Table = ({ empresas, totalEmpresas }) => {
   const refContentTable = useRef();
   const { height } = useContainerDimensions(refContentTable);
   return (
@@ -14,14 +14,14 @@ const Table = () => {
       </div>
       <div className="table-center" ref={refContentTable}>
         <div className="sub-item" style={{ maxHeight: height }}>
-          {data.map((item, index) => (
-            <Item key={index} />
+          {empresas.map((item, index) => (
+            <Item key={index} data={item} />
           ))}
         </div>
       </div>
       <div className="table-bottom">
         <div>
-          <p>136 Cuentas Empresas</p>
+          <p>{totalEmpresas} Cuentas Empresas</p>
         </div>
       </div>
     </div>
@@ -29,26 +29,3 @@ const Table = () => {
 };
 
 export default Table;
-
-const data = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-];

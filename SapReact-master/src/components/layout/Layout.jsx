@@ -32,7 +32,7 @@ const Layout = (props) => {
             autoHideDuration={5000}
           >
             <Alert severity={_alert.type}>{_alert.msg}</Alert>
-          </Snackbar>
+          </Snackbar> 
         </div> 
 
         <div className="splash-screen-responsivo">

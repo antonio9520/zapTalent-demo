@@ -12,7 +12,7 @@ const Sidebar = (props) => {
   const dispatch = useDispatch();
   const [active, setActive] = useState("home");
   // const [profesion, setProfesion] = useState(null);
-  const usuario = useSelector((state) => state.authEmp.usuario);
+  const usuario = useSelector((state) => state.authAdmin.usuario);
   const [tipoPlan, setTipoPlan] = useState("");
   const [image, setImage] = useState();
   // console.log(usuario);
@@ -95,11 +95,11 @@ const Sidebar = (props) => {
                 {!open ? (
                   <>
                     <p style={{ color: "white", marginTop: "10px" }}>
-                      {usuario ? usuario.razonSocial : null}
+                      {usuario ? usuario.name : null}
                     </p>
                     <p style={{ color: "white" }}>
                       {" "}
-                      {usuario ? tipoPlan : null}
+                      {usuario ? "Administrador Master" : null}
                     </p>
                   </>
                 ) : null}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Item.css";
 import { IconButton, makeStyles } from "@material-ui/core";
 import { ArrowDropDown, PersonAdd, Edit, Delete } from "@material-ui/icons";
@@ -15,10 +15,26 @@ const useStyles = makeStyles({
       transition: "0.5s all ease-in-out",
       transform: "scale(1.1)",
     },
-
   },
 });
-const Item = () => {
+const Item = ({ data }) => {
+  const {
+    razonSocial,
+    rut,
+    giro,
+    tipoPlan,
+    direcciones,
+    telefonos,
+    fechaInicio,
+    fechaTermino,
+  } = data;
+  const _fechaTermino = new Date(fechaTermino);
+  try {
+    console.log(JSON.parse(telefonos));
+  } catch (error) {
+    console.log(error);
+  }
+
   const classes = useStyles();
   return (
     <div className="item-table-home-admin">
@@ -37,37 +53,55 @@ const Item = () => {
           </div>
         </div>
         <div style={{ padding: "0 10px 0 10px" }}>
-          <p className="p1">Agrosuper</p>
-          <p className="p2">
-            Producción, distribución y comercialización de alimentos
-          </p>
+          <p className="p1">{razonSocial}</p>
+          <p className="p2">{giro}</p>
         </div>
       </div>
       <div className="item-3">
         <p>Plan</p>
-        <p>Premium</p>
+        <p>
+          {tipoPlan === "1"
+            ? "Estandar"
+            : tipoPlan === "2"
+            ? "Estandar 5+"
+            : tipoPlan === "3"
+            ? "Estandar 5+ Plus"
+            : tipoPlan === "4"
+            ? "Avanzado"
+            : tipoPlan === "5"
+            ? "Avanzado Plus"
+            : null}
+        </p>
       </div>
       <div className="item-4">
         <p>Ingreso</p>
-        <p>11/08/2020</p>
+        <p>
+          {fechaTermino
+            ? _fechaTermino.getDate() +
+              "/" +
+              _fechaTermino.getMonth() +
+              "/" +
+              _fechaTermino.getFullYear()
+            : null}
+        </p>
       </div>
       <div className="item-5">
         <p>Fono</p>
-        <p>72 2 356800</p>
+        <p>{telefonos[0].telefono}</p>
       </div>
       <div className="item-6">
-        <p>Email</p>
-        <p>info@agrosuper.cl</p>
+        <p>Rut</p>
+        <p>{rut}</p>
       </div>
       <div className="item-7">
         <p>Localizado</p>
-        <p>rancagua, Región del Libretador Bernardo O´Higgins</p>
+        <p>{direcciones[0].comuna + ", " + direcciones[0].region}</p>
       </div>
-      <div className="item-8">
+      {/* <div className="item-8">
         <p>Admin</p>
         <p>Mario Cáceres</p>
         <p>info@agrosuper.cl</p>
-      </div>
+      </div> */}
       <div className="item-9">
         <IconButton className={classes.iconButton}>
           <PersonAdd fontSize="small" className={classes.icon} />

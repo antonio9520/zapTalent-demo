@@ -55,6 +55,7 @@ exports.usuarioAutenticado = async (req, res) => {
     if (!usuario) {
       return res.status(404).json({ msg: "Usuario no encontrado" });
     }
+    console.log(usuario);
     const data = await dataEmp(usuario);
     res.json(data);
   } catch (error) {
@@ -65,6 +66,8 @@ exports.usuarioAutenticado = async (req, res) => {
 
 const dataEmp = async (data) => {
   let datos = {};
+
+  // console.log(data.idemp);
   try {
     const empresa = await Empresa.findById(data.idemp);
     datos._id = data._id;

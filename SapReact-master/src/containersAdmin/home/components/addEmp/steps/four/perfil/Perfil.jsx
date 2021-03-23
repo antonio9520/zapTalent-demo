@@ -16,6 +16,8 @@ import esLocale from "date-fns/locale/es";
 import DateFnsUtils from "@date-io/date-fns";
 import { formatRut, RutFormat, validateRut } from "@fdograph/rut-utilities";
 import shortid from "shortid";
+import clientAxios from "../../../../../../../config/axios";
+import validator from "validator";
 
 const useStyles = makeStyles({
   iconButton: {
@@ -32,7 +34,7 @@ const useStyles = makeStyles({
 const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
   const {
     id,
-    tipoPlan,
+    tipoPerfil,
     rut,
     nombres,
     apellidos,
@@ -42,7 +44,7 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
     fechaTermino,
   } = data;
   const classes = useStyles();
-  const [tipoPlanA, setTipoPlan] = useState(tipoPlan);
+  const [tipoPlanA, setTipoPlan] = useState(tipoPerfil);
   const [rutA, setRut] = useState(rut);
   const [nombresA, setNombres] = useState(nombres);
   const [apellidosA, setApellidos] = useState(apellidos);
@@ -52,6 +54,20 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
   const [fechaTerminoA, setFechaTermino] = useState(fechaTermino);
   const [initDefault, setInitDefault] = useState(true);
   const [error, setError] = useState(false);
+
+  //ERRORES
+  const [tipoPerfilError, setTipoPerfilError] = useState(false);
+  const [rutError, setRutError] = useState(false);
+  const [nombresError, setNombresError] = useState(false);
+  const [apellidosError, setApellidosError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [fechaInicioError, setFechaInicioError] = useState(false);
+  const [fechaTerminoError, setFechaTerminoError] = useState(false);
+  const [emailmsg, setEmailMsg] = useState("");
+  const [fechaMsg, setFechaMsg] = useState("");
+  const [rutMsg, setRutMsg] = useState("");
+  const [passMsg, setPassMsg] = useState("");
 
   const formatRut2 = () => {
     try {
@@ -86,22 +102,73 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
     });
     setPassword(key);
   };
-
+  const validarErrores = async () => {
+    let rutvalidado = validateRut(rutA.toLocaleLowerCase());
+    const _email = await clientAxios.put("/api/usuarioEmpresa/validar/email", {
+      email: emailA.toLocaleLowerCase(),
+    });
+    const emailv = validator.isEmail(emailA);
+    if (tipoPlanA === "") {
+      setTipoPerfilError(true);
+    }
+    if (rutA.trim() === "") {
+      setRutMsg("No puede estar vacio");
+      setRutError(true);
+    } else if (rutvalidado === false) {
+      setRutMsg("Ingrese un rut valido");
+      setRutError(true);
+    }
+    if (nombresA === "") {
+      setNombresError(true);
+    }
+    if (apellidosA === "") {
+      setApellidosError(true);
+    }
+    if (emailA.trim() === "") {
+      setEmailMsg("No puede estar vacio");
+      setEmailError(true);
+    } else if (emailv === false) {
+      setEmailMsg("El formato es invalido");
+      setEmailError(true);
+    } else if (_email.data._email === true) {
+      setEmailMsg("El email ya se encuentra registrado");
+      setEmailError(true);
+    }
+    if (passwordA.trim() === "") {
+      setPassMsg("No puede estar vacio");
+      setPasswordError(true);
+    } else if (passwordA.lenth < 6) {
+      setPassMsg("Debe contener almenos 6 caracteres");
+      setPasswordError(true);
+    }
+    if (fechaInicioA === null) {
+      setFechaInicioError(true);
+    } else if (fechaTermino === null) {
+      setFechaMsg("No puede estar vacio");
+      setFechaTerminoError(true);
+    } else if (Date.parse(fechaInicioA) > Date.parse(fechaTerminoA)) {
+      setFechaMsg("Fecha termino no puede ser mayor a Fecha inicio");
+      setFechaTerminoError(true);
+    }
+  };
   useEffect(() => {
     if (initDefault === false) {
       if (errores2.length > 0) {
+        console.log(errores2);
         const valor = errores2.filter((item) => item === data.id);
-
         if (valor.length > 0) {
           setError(true);
           document.getElementById(id).scrollIntoView();
+          validarErrores();
         } else {
           setError(false);
         }
       }
     }
     setInitDefault(false);
+    console.log(errores2);
   }, [errores2]);
+
   return (
     <div
       className="perfil-add-emp-admin"
@@ -114,15 +181,15 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
       <div className="item">
         <CustomSelectB
           label="Tipo de perfil"
-          helpertext="no puede estar vacio"
-          //   error={tipoPlanError}
+          helpertext="No puede estar vacio"
+          error={tipoPerfilError}
           value={tipoPlanA}
           defaultValue={tipoPlanA}
           onChange={(e) => {
-            // setTipoPlanError(false);
+            setTipoPerfilError(false);
             perfiles.map((item) => {
               if (item.id === id) {
-                item.tipoPlan = e.target.value;
+                item.tipoPerfil = e.target.value;
               }
             });
             setTipoPlan(e.target.value);
@@ -140,13 +207,13 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
         <div style={{ paddingRight: 5 }}>
           <CustomInput
             label="Nombre"
-            helpertext="Introduzca un nuemero valido"
-            //   error={giroError}
+            helpertext="No puede estar vacio"
+            error={nombresError}
             type="text"
             value={nombresA}
             defaultValue={nombresA}
             onChange={(e) => {
-              // setTipoPlanError(false);
+              setNombresError(false);
               perfiles.map((item) => {
                 if (item.id === id) {
                   item.nombres = e.target.value;
@@ -160,13 +227,13 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
         <div style={{ paddingLeft: 5 }}>
           <CustomInput
             label="Apellidos"
-            helpertext="Introduzca un nuemero valido"
-            //   error={giroError}
+            helpertext="No puede estar vacio"
+            error={apellidosError}
             type="text"
             value={apellidosA}
             defaultValue={apellidosA}
             onChange={(e) => {
-              // setTipoPlanError(false);
+              setApellidosError(false);
               perfiles.map((item) => {
                 if (item.id === id) {
                   item.apellidos = e.target.value;
@@ -182,13 +249,13 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
           <CustomInput
             label="Rut"
             id={`input-rut-empresa-usuario-admin-${id}`}
-            // error={rutError}
-            // helpertext={rutmsg}
+            error={rutError}
+            helpertext={rutMsg}
             type="text"
             // value={rut}
             defaultValue={rut}
             onChange={(e) => {
-              // setTipoPlanError(false);
+              setRutError(false);
               setRut(formatRut(e.target.value, RutFormat.DOTS_DASH));
             }}
             onBlur={formatRut2}
@@ -197,13 +264,13 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
         <div style={{ paddingLeft: 5 }}>
           <CustomInput
             label="Email"
-            helpertext="Introduzca un nuemero valido"
-            //   error={giroError}
+            helpertext={emailmsg}
+            error={emailError}
             type="text"
             value={emailA}
             defaultValue={emailA}
             onChange={(e) => {
-              // setTipoPlanError(false);
+              setEmailError(false);
               perfiles.map((item) => {
                 if (item.id === id) {
                   item.email = e.target.value;
@@ -218,13 +285,13 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
       <div className="item">
         <CustomInput
           label="Contraseña provisoria"
-          helpertext="Introduzca un nuemero valido"
-          //   error={giroError}
+          helpertext={passMsg}
+          error={passwordError}
           type="text"
           value={passwordA}
           defaultValue={passwordA}
           onChange={(e) => {
-            // setTipoPlanError(false);
+            setPasswordError(false);
             perfiles.map((item) => {
               if (item.id === id) {
                 item.password = e.target.value;
@@ -245,20 +312,20 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
           <div className="date-left-estudio">
             <KeyboardDatePicker
-              //   error={inicioError}
+              error={fechaInicioError}
               fullWidth
               size="small"
               label="Inicio"
               minDate={new Date()}
               maxDate={new Date("2030-01-01")}
-              //   helperText={
-              //     inicioError ? "Fecha inicio no puede estar vacio" : null
-              //   }
+              helperText={
+                fechaInicioError ? "Fecha inicio no puede estar vacio" : null
+              }
               format="dd/MM/yyyy"
               value={fechaInicioA}
               // maxDate={new Date()}
               onChange={(newValue) => {
-                // setInicioError(false);
+                setFechaInicioError(false);
                 perfiles.map((item) => {
                   if (item.id === id) {
                     item.fechaInicio = newValue;
@@ -276,18 +343,18 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
           </div>
           <div className="date-right-estudio">
             <KeyboardDatePicker
-              //   error={terminoError}
+              error={fechaTerminoError}
               size="small"
               fullWidth
               label="Término"
               format="dd/MM/yyyy"
-              //   helperText={terminoError ? fechaMsg : null}
+              helperText={fechaTerminoError ? fechaMsg : null}
               value={fechaTerminoA}
               minDate={new Date()}
               maxDate={new Date("2030-01-01")}
               // maxDate={new Date()}
               onChange={(newValue) => {
-                // setInicioError(false);
+                setFechaTerminoError(false);
                 perfiles.map((item) => {
                   if (item.id === id) {
                     item.fechaTermino = newValue;

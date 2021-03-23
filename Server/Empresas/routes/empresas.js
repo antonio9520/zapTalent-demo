@@ -8,10 +8,13 @@ const empresasControl = require("../controllers/empresasControllers");
 
 router.post("/", empresasControl.SubirArchivo, empresasControl.CrearEmpresa);
 
-router.get("/", empresasControl.mostrarEmpresas);
-
+router.put("/obtener/empresas/:skip", empresasControl.mostrarEmpresas);
 
 router.put("/:idempresa", empresasControl.putEmpresas);
+
+router.put("/validar/rut", empresasControl.validarEmpresaUnica);
+
+router.get("/total/empresas", empresasControl.totalEmpresas);
 
 router.delete("/:idempresa", empresasControl.deleteEmp);
 

@@ -346,6 +346,7 @@ exports.confirmarCuenta = async (req, res) => {
   res.end();
 };
 
+//VALIDAR EMAIL/RUT UNICOS
 exports.validacionEmailRut = async (req, res) => {
   const { email, rut } = req.body;
   try {

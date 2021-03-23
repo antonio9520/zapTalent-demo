@@ -7,19 +7,21 @@ const enviarEmail = require("../../handlers/email");
 
 exports.creaUserEmp = async (req, res) => {
   //Extracion de email y pass
-  const { email, password, idemp } = req.body;
+  const { idemp, perfil } = req.body;
+  const { email, password } = perfil;
 
   try {
     //revisar si el usuario registrado es unico
     let usuario = await Usuario.findOne({ email });
-    let empresa = await Empresa.findOne({ _id: idemp });
+    let empresa = await Empresa.findById(idemp);
 
     if (usuario) {
       return res.status(400).json({ msg: "el email ya se encuentra en uso" });
     }
-
+    perfil.idemp = idemp;
     //Creacio nnuevo usuario
-    usuario = new Usuario(req.body);
+
+    usuario = new Usuario(perfil);
 
     //email
     const userconfi = {
@@ -34,7 +36,7 @@ exports.creaUserEmp = async (req, res) => {
     const direcciones = empresa.direcciones[0].direccion;
     const comuna = empresa.direcciones[0].comuna;
     const region = empresa.direcciones[0].region;
-    const telefono = empresa.telefonos[0].numero;
+    const telefono = empresa.telefonos[0].telefono;
     const resena = empresa.resena;
 
     //envio email cuenta creada
@@ -151,6 +153,20 @@ exports.mostrarEmpresasID = async (req, res) => {
 
     // const empresa = await Empresa.findOne({ _id: userEmpresa.idemp });
     res.json(userEmpresa);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ msg: "error en el servidor " + error });
+  }
+};
+
+//VALIDACION EMPRESA UNICA
+exports.validarPerfilUnico = async (req, res) => {
+  const { email } = req.body;
+  try {
+    let emailValidado = await Usuario.findOne({ email });
+    //subida de archivo
+    let _email = Boolean(emailValidado);
+    res.status(200).json({ _email });
   } catch (error) {
     console.log(error);
     res.status(404).json({ msg: "error en el servidor " + error });

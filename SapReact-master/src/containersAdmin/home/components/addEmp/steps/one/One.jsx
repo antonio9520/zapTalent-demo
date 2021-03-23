@@ -23,6 +23,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import { Publish, Close } from "@material-ui/icons";
 import imgUser from "../../../../../../resources/ZAPTalent-Icon-Empty.svg";
 import { formatRut, RutFormat, validateRut } from "@fdograph/rut-utilities";
+import clientAxios from "../../../../../../config/axios";
 
 const useStyles = makeStyles({
   iconButton: {
@@ -101,8 +102,10 @@ const One = forwardRef(
       }
     };
     //VALIDACION
-    const validacion = () => {
+    const validacion = async () => {
       setLoading(true);
+      const _rut = await clientAxios.put("/api/empresas/validar/rut", { rut });
+
       if (razonSocial.trim() === "") {
         setRazonSocialError(true);
       }
@@ -113,6 +116,9 @@ const One = forwardRef(
         setRutError(true);
       } else if (rutvalidado === false) {
         setRutMsg("El rut no es valido");
+        setRutError(true);
+      } else if (_rut.data._rut === true) {
+        setRutMsg("El rut ya se encuentra registrado");
         setRutError(true);
       }
       if (giro.trim() === "") {

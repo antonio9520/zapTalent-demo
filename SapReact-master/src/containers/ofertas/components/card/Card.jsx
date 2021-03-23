@@ -225,7 +225,7 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
               </Tooltip>
 
               <Tooltip title="Tipo de Jornada">
-                <div>
+                <div> 
                   <QueryBuilder className="icon-card-ofertas-laborales" />
                   <p>{jornadaLaboral}</p>
                 </div>
