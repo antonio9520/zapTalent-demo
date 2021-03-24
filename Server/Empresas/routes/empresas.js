@@ -10,7 +10,11 @@ router.post("/", empresasControl.SubirArchivo, empresasControl.CrearEmpresa);
 
 router.put("/obtener/empresas/:skip", empresasControl.mostrarEmpresas);
 
-router.put("/:idempresa", empresasControl.putEmpresas);
+router.put(
+  "/:idempresa",
+  empresasControl.SubirArchivo,
+  empresasControl.putEmpresas
+);
 
 router.put("/validar/rut", empresasControl.validarEmpresaUnica);
 

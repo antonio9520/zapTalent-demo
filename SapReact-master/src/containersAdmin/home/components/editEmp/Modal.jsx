@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
-import { One, Two, Three, Four, Five } from "./steps";
-import { agregarEmpresaAction } from "../../../../redux/actions/actions-admin/empresasAction";
+import { One, Two, Three } from "./steps";
+import { editarEmpresaAction } from "../../../../redux/actions/actions-admin/empresasAction";
 import { useDispatch } from "react-redux";
-import clientAxios from "../../../../config/axios";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -16,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
 const CustomModal = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { setOpen, open, setOpenAlert } = props;
+  const { setOpen, open, setOpenAlert, setDataEditar, dataEditar } = props;
+
+  console.log(dataEditar);
+
   const [step, setStep] = useState("one");
   //STEP ONE
   const [image, setImage] = useState({
@@ -35,49 +37,34 @@ const CustomModal = (props) => {
   const [direcciones, setDirecciones] = useState([]);
   //STEP THREE
   const [telefonos, setTelefonos] = useState([]);
-  //STEP FOUR
-  const [perfiles, setPerfiles] = useState(dataPerfil);
   //guardar aviso
   const [loading, setLoading] = useState(false);
-  const [numSave, setNumSave] = useState(0);
+
   const guardarEmpresa = async () => {
     setLoading(true);
-    const logoURL = file;
-    try {
-      const idemp = await dispatch(
-        agregarEmpresaAction({
-          logoURL,
-          tipoPlan,
-          razonSocial,
-          rut,
-          giro,
-          fechaInicio,
-          fechaTermino,
-          resena,
-          direcciones,
-          telefonos,
-        })
-      );
-      console.log(idemp);
-      if (idemp) {
-        for (let i = 0; i < perfiles.length; i++) {
-          setNumSave(i + 1);
-          perfiles[i].email = perfiles[i].email.toLocaleLowerCase();
-          await clientAxios.post("/api/usuarioEmpresa", {
-            perfil: perfiles[i],
-            idemp,
-          });
-        }
-      }
-      setTimeout(() => {
-        setLoading(false);
-        setStep("five");
-      }, 1000);
-    } catch (error) {
-      console.log(error);
-      setOpenAlert();
-      closeModal();
+    let logoURL;
+
+    if (file) {
+      logoURL = file;
     }
+
+    await dispatch(
+      editarEmpresaAction({
+        _id: dataEditar._id,
+        logoURL,
+        tipoPlan,
+        razonSocial,
+        rut,
+        giro,
+        fechaInicio,
+        fechaTermino,
+        resena,
+        direcciones,
+        telefonos,
+      })
+    ).then((res) => (res ? closeModal() : null));
+
+    setLoading(false);
   };
 
   const closeModal = () => {
@@ -96,13 +83,31 @@ const CustomModal = (props) => {
     setResena("");
     setDirecciones([]);
     setTelefonos([]);
-    setPerfiles([]);
     setLoading(false);
-    setNumSave(0);
+    setDataEditar(null);
     setTimeout(() => {
       setStep("one");
     }, 300);
   };
+  useEffect(() => {
+    if (dataEditar) {
+      setRazonSocial(dataEditar.razonSocial);
+      setTipoPlan(dataEditar.tipoPlan);
+      setRut(dataEditar.rut);
+      setGiro(dataEditar.giro);
+      setFechaInicio(dataEditar.fechaInicio);
+      setFechaTermino(dataEditar.fechaTermino);
+      setResena(dataEditar.resena);
+      setDirecciones(dataEditar.direcciones);
+      setTelefonos(dataEditar.telefonos);
+      if (dataEditar.logoURL) {
+        setImage({
+          preimage: dataEditar.logoURL,
+          name: "",
+        });
+      }
+    }
+  }, [dataEditar]);
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -156,20 +161,10 @@ const CustomModal = (props) => {
               closeModal={closeModal}
               telefonos={telefonos}
               setTelefonos={setTelefonos}
-            />
-          ) : step === "four" ? (
-            <Four
-              setStep={setStep}
-              closeModal={closeModal}
               guardarEmpresa={guardarEmpresa}
-              perfiles={perfiles}
-              setPerfiles={setPerfiles}
               loading={loading}
               setLoading={setLoading}
-              numSave={numSave}
             />
-          ) : step === "five" ? (
-            <Five closeModal={closeModal} />
           ) : null}
         </>
       </Fade>
@@ -178,28 +173,3 @@ const CustomModal = (props) => {
 };
 
 export default CustomModal;
-
-let dataPerfil = [
-  {
-    id: "cbfCfz6hV",
-    tipoPerfil: "admin",
-    rut: "18.822.161-0",
-    nombres: "nombre",
-    apellidos: "apellidos",
-    email: "Antonio.vidal95@hotmail.com",
-    password: "aeh4tx09R",
-    fechaInicio: "2021-03-21T22:59:28.388Z",
-    fechaTermino: "2021-03-31T22:59:00.000Z",
-  },
-  {
-    id: "TjtiCiOlR",
-    tipoPerfil: "admin",
-    rut: "12.529.998-9",
-    nombres: "Abraham",
-    apellidos: "vidal",
-    email: "abrvc95@gmail.com",
-    password: "ipTO7YHvK",
-    fechaInicio: "2021-03-21T23:00:23.133Z",
-    fechaTermino: "2021-04-24T00:00:00.000Z",
-  },
-];

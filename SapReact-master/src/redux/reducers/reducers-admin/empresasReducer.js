@@ -8,6 +8,9 @@ import {
   DESCARGA_EMPRESA_EXITO_INIT,
   DESCARGA_EMPRESA_ERROR,
   DETENER_CARGA_EMPRESA,
+  EMPRESA_EDITADO_ERROR,
+  EMPRESA_EDITADO_EXITO,
+  COMENZAR_EDICION_EMPRESA,
 } from "../../types/typesAdmin";
 
 const initialState = {
@@ -18,6 +21,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case COMENZAR_EDICION_EMPRESA:
     case COMENZAR_DESCARGA_EMPRESA:
       return {
         ...state,
@@ -32,6 +36,7 @@ export default function (state = initialState, action) {
       };
     case DESCARGA_EMPRESA_ERROR:
     case AGREGAR_EMPRESA_ERROR:
+    case EMPRESA_EDITADO_ERROR:
       return {
         ...state,
         loading: false,
@@ -62,6 +67,16 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         empresas: [...state.empresas, action.payload],
+      };
+    case EMPRESA_EDITADO_EXITO:
+      return {
+        ...state,
+        loading: false,
+        empresas: state.empresas.map((empresa) =>
+          empresa._id === action.payload._id
+            ? (empresa = action.payload)
+            : empresa
+        ),
       };
     default:
       return state;

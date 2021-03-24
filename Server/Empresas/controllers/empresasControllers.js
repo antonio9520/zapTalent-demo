@@ -45,7 +45,7 @@ exports.mostrarEmpresas = async (req, res) => {
 exports.putEmpresas = async (req, res) => {
   const idempresa = req.params.idempresa;
 
-  const {
+  let {
     razonSocial,
     rut,
     giro,
@@ -58,6 +58,9 @@ exports.putEmpresas = async (req, res) => {
   } = req.body;
 
   try {
+    console.log(razonSocial);
+    direcciones = JSON.parse(direcciones);
+    telefonos = JSON.parse(telefonos);
     await Empresas.findById(idempresa, function (err, empresa) {
       if (razonSocial) empresa.razonSocial = razonSocial;
       if (rut) empresa.rut = rut;
@@ -68,7 +71,11 @@ exports.putEmpresas = async (req, res) => {
       if (direcciones) empresa.direcciones = direcciones;
       if (telefonos) empresa.telefonos = telefonos;
       if (tipoPlan) empresa.tipoPlan = tipoPlan;
-
+      if (req.file) {
+        console.log(req.file);
+        const { filename } = req.file;
+        empresa.setcertificado(filename);
+      }
       if (err) return res.status(400).json({ msg: "Empresa no encontrada" });
       empresa.save(function (err) {
         if (err) return res.status(500).json({ msg: "error al actualizar" });

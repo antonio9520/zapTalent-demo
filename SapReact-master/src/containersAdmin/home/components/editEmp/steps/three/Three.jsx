@@ -1,14 +1,15 @@
 import React, { forwardRef, useState, useEffect } from "react";
-import "./Three.css";
+
 import {
-  CustomInput,
   Button,
+  CustomInput,
   IconButton as CustomIconButton,
 } from "../../../../../../components";
 import {
   LinearProgress,
   FormControl,
   Input,
+  InputLabel,
   FormHelperText,
   IconButton,
   makeStyles,
@@ -37,9 +38,19 @@ const useStyles = makeStyles({
 });
 
 const Three = forwardRef(
-  ({ setStep, closeModal, telefonos, setTelefonos }, ref) => {
+  (
+    {
+      setStep,
+      closeModal,
+      telefonos,
+      setTelefonos,
+      guardarEmpresa,
+      loading,
+      setLoading,
+    },
+    ref
+  ) => {
     const classes = useStyles();
-    const [loading, setLoading] = useState(false);
     const [cargando, setCargando] = useState(false);
     const [errores, setErrores] = useState([]);
     const [errores2, setErrores2] = useState([]);
@@ -62,7 +73,11 @@ const Three = forwardRef(
     };
 
     const addTelefono = () => {
+      const container = document.getElementById("cont-telefonos-add-emp-admin");
       setTelefonos([...telefonos, { id: shortid(), telefono: "" }]);
+      setTimeout(() => {
+        container.scrollTop = "12000";
+      }, 100);
     };
 
     const mapearDatos = () => {
@@ -73,9 +88,9 @@ const Three = forwardRef(
       });
       setErrores2(errores);
     };
-    const nextStep = async () => {
+    const nextStep = () => {
       if (errores.length === 0) {
-        setStep("four");
+        guardarEmpresa();
       }
     };
     useEffect(() => {
@@ -85,9 +100,9 @@ const Three = forwardRef(
     }, []);
     return (
       <div className="three-add-emp-admin" ref={ref}>
-        <p className="p1">Registro de empresa</p>
+        <p className="p1">Editar Empresa</p>
         <p className="p2">Teléfono(s)</p>
-        <div className="center">
+        <div className="center" id="cont-telefonos-add-emp-admin">
           {cargando ? (
             <div className="loading-add-empresa-admin">
               <Loader
@@ -109,7 +124,7 @@ const Three = forwardRef(
                   telefonos={telefonos}
                   recargar={recargar}
                   errores2={errores2}
-                  num={index}
+                  num={index + 1}
                 />
               ))}
               <div className="item-add-telefono">
@@ -215,7 +230,12 @@ const Telefono = ({
     <div className="telefono-add-emp-admin" id={id}>
       <PhoneIphone fontSize="small" className={classes.icon} />
       {/* <FormControl fullWidth size="small" error={errorphone}>
-    
+        <InputLabel
+          // className="input-label-custom-input"
+          htmlFor={id}
+        >
+          Telefono
+        </InputLabel>
         <Input
           // value={phone}
           defaultValue={phone}
@@ -238,7 +258,6 @@ const Telefono = ({
           </FormHelperText>
         ) : null}
       </FormControl> */}
-
       <CustomInput
         label={`Teléfono ${num}`}
         helpertext={phonemsg}

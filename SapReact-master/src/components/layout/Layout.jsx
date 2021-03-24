@@ -18,7 +18,7 @@ const Layout = (props) => {
     dispatch(hiddenAlertAction());
   };
 
-  return (
+  return ( 
     <>
       <div style={{ position: "relative" }}>
         <Menu />

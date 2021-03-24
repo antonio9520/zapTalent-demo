@@ -163,7 +163,7 @@ export function editarAvisoAction(data) {
       showAlert({ show: true, msg: error.response.data.msg, type: "error" });
     }
   };
-}
+} 
 
 const comenzarEditar = () => ({
   type: COMENZAR_EDICION_AVISO,

@@ -1,0 +1,17 @@
+.resena-view-emp-admin {
+  /* background-color: royalblue; */
+  height: 100%;
+  padding: 40px;
+}
+
+.resena-view-emp-admin textarea {
+  width: 100%;
+  height: 85%;
+  resize: none;
+  border: none;
+  outline: none;
+  color: var(--gray-text);
+  font-style: italic;
+  text-align: center;
+  padding-right: 5px;
+}

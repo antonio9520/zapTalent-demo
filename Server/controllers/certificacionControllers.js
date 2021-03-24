@@ -46,6 +46,7 @@ exports.mostrarCertificacion = async (req, res) => {
 //ACTUALIZAR
 exports.putCertificacion = async (req, res) => {
   const idcertificacion = req.params.idcertificacion;
+  console.log(req.body);
   const {
     certificacion,
     universidad,

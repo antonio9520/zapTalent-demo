@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Item.css";
+import { Tooltip } from "../../../../../components";
 import { IconButton, makeStyles } from "@material-ui/core";
-import { ArrowDropDown, PersonAdd, Edit, Delete } from "@material-ui/icons";
+import { PersonAdd, Edit, Delete, EventAvailable } from "@material-ui/icons";
 import logouser from "../../../../../resources/ZAPTalent-Icon-Empty.svg";
 
 const useStyles = makeStyles({
@@ -17,7 +18,13 @@ const useStyles = makeStyles({
     },
   },
 });
-const Item = ({ data }) => {
+const Item = ({
+  data,
+  setOpenEditEmp,
+  setDataEditar,
+  setOpenViewEmp,
+  setDataView,
+}) => {
   const {
     razonSocial,
     rut,
@@ -27,30 +34,44 @@ const Item = ({ data }) => {
     telefonos,
     fechaInicio,
     fechaTermino,
+    logoURL,
   } = data;
-  const _fechaTermino = new Date(fechaTermino);
-  try {
-    console.log(JSON.parse(telefonos));
-  } catch (error) {
-    console.log(error);
-  }
+  const _fechaInicio = new Date(fechaInicio);
 
   const classes = useStyles();
+
+  const editarEmpresa = () => {
+    setDataEditar(data);
+    setOpenEditEmp(true);
+  };
+
+  const verEmpresa = () => {
+    setOpenViewEmp(true);
+    setDataView(data);
+  };
   return (
     <div className="item-table-home-admin">
       <div className="item-1">
         <div>
           <p>Activo</p>
         </div>
-        <IconButton>
-          <ArrowDropDown />
-        </IconButton>
+        <Tooltip title="Editar la fecha de termino" placement="top">
+          <IconButton>
+            <EventAvailable />
+          </IconButton>
+        </Tooltip>
       </div>
       <div className="item-2">
         <div>
-          <div>
-            <img className="img-logo" src={logouser} alt="logo" />
-          </div>
+          <Tooltip title="Ver empresa" placement="top">
+            <div className="border-logo-item-emp" onClick={verEmpresa}>
+              {logoURL ? (
+                <img className="img-logo" src={logoURL} alt="logo" />
+              ) : (
+                <img className="img-logo" src={logouser} alt="logo" />
+              )}
+            </div>
+          </Tooltip>
         </div>
         <div style={{ padding: "0 10px 0 10px" }}>
           <p className="p1">{razonSocial}</p>
@@ -77,11 +98,11 @@ const Item = ({ data }) => {
         <p>Ingreso</p>
         <p>
           {fechaTermino
-            ? _fechaTermino.getDate() +
+            ? _fechaInicio.getDate() +
               "/" +
-              _fechaTermino.getMonth() +
+              _fechaInicio.getMonth() +
               "/" +
-              _fechaTermino.getFullYear()
+              _fechaInicio.getFullYear()
             : null}
         </p>
       </div>
@@ -106,7 +127,7 @@ const Item = ({ data }) => {
         <IconButton className={classes.iconButton}>
           <PersonAdd fontSize="small" className={classes.icon} />
         </IconButton>
-        <IconButton className={classes.iconButton}>
+        <IconButton className={classes.iconButton} onClick={editarEmpresa}>
           <Edit fontSize="small" />
         </IconButton>
         <IconButton className={classes.iconButton}>
