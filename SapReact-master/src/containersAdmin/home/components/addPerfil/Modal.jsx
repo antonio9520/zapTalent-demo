@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Fade, Backdrop, makeStyles } from "@material-ui/core";
-import { ViewEmp } from "./views";
+import Formulario from "./formulario/Formulario";
 import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,29 +14,20 @@ const useStyles = makeStyles((theme) => ({
 const CustomModal = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const {
-    open,
-    setOpen,
-    data,
-    setDataView,
-    setDataEditPerfil,
-    setOpenEditPerfil,
-    refreshPerfiles,
-  } = props;
+  const { setOpen, open, idemp } = props;
+  console.log(idemp);
 
-  // console.log(usuario);
   const closeModal = () => {
     setOpen(false);
-    setTimeout(() => {
-      setDataView(null);
-    }, 300);
   };
+
   return (
     <Modal
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       className={classes.modal}
       open={open}
+      disableBackdropClick
       // open={true}
       onClose={() => closeModal()}
       closeAfterTransition
@@ -46,14 +37,7 @@ const CustomModal = (props) => {
       }}
     >
       <Fade in={open}>
-        <ViewEmp
-          setOpen={setOpen}
-          data={data}
-          closeModal={closeModal}
-          setDataEditPerfil={setDataEditPerfil}
-          setOpenEditPerfil={setOpenEditPerfil}
-          refreshPerfiles={refreshPerfiles}
-        />
+        <Formulario closeModal={closeModal} idemp={idemp} />
       </Fade>
     </Modal>
   );

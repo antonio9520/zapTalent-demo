@@ -75,7 +75,7 @@ const CustomModal = (props) => {
       }, 1000);
     } catch (error) {
       console.log(error);
-      setOpenAlert();
+      setOpenAlert(true);
       closeModal();
     }
   };

@@ -11,6 +11,8 @@ const Table = ({
   setDataEditar,
   setOpenViewEmp,
   setDataView,
+  setDataAddPerfil,
+  setOpenAddPerfil,
 }) => {
   const refContentTable = useRef();
   const { height } = useContainerDimensions(refContentTable);
@@ -29,6 +31,8 @@ const Table = ({
               setDataEditar={setDataEditar}
               setOpenViewEmp={setOpenViewEmp}
               setDataView={setDataView}
+              setOpenAddPerfil={setOpenAddPerfil}
+              setDataAddPerfil={setDataAddPerfil}
             />
           ))}
         </div>

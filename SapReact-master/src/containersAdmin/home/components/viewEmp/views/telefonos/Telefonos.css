@@ -1,0 +1,16 @@
+.telefonos-view-emp-admin {
+  height: 100%;
+  padding: 40px;
+}
+
+.telefonos-view-emp-admin .row {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  max-height: 250px;
+}
+
+.telefonos-view-emp-admin .row .column {
+  width: 50%;
+  margin-top: 10px;
+}

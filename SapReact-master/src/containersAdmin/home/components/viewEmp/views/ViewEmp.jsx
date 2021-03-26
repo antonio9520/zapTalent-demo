@@ -43,92 +43,102 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const ViewEmp = forwardRef(({ data, closeModal }, ref) => {
-  const { razonSocial, giro, rut, logoURL } = data;
-  const dispatch = useDispatch();
-  const usuario = useSelector((state) => state.userInfo.usuario);
-  const loading = useSelector((state) => state.userInfo.loading);
+const ViewEmp = forwardRef(
+  (
+    { data, closeModal, setDataEditPerfil, setOpenEditPerfil, refreshPerfiles },
+    ref
+  ) => {
+    const { razonSocial, giro, rut, logoURL } = data;
+    const dispatch = useDispatch();
+    const usuario = useSelector((state) => state.userInfo.usuario);
+    const loading = useSelector((state) => state.userInfo.loading);
 
-  const [value, setValue] = useState(0);
+    const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
 
-  return (
-    <div ref={ref} className="info-user-home-emp">
-      {loading ? (
-        <div className="loader-info-user-emp">
-          <Loader
-            type="Oval"
-            color="#00BFFF"
-            height={100}
-            width={100}
-            visible={loading}
-            //  timeout={3000} //3 secs
-          />
-        </div>
-      ) : (
-        <>
-          <div className="top">
-            <div>
-              {logoURL ? (
-                <img src={logoURL} alt="userimage" />
-              ) : (
-                <img
-                  style={{ width: "120px", height: "120px" }}
-                  src={userimage}
-                  alt="userimage"
+    return (
+      <div ref={ref} className="info-user-home-emp">
+        {loading ? (
+          <div className="loader-info-user-emp">
+            <Loader
+              type="Oval"
+              color="#00BFFF"
+              height={100}
+              width={100}
+              visible={loading}
+              //  timeout={3000} //3 secs
+            />
+          </div>
+        ) : (
+          <>
+            <div className="top">
+              <div>
+                {logoURL ? (
+                  <img src={logoURL} alt="userimage" />
+                ) : (
+                  <img
+                    style={{ width: "120px", height: "120px" }}
+                    src={userimage}
+                    alt="userimage"
+                  />
+                )}
+              </div>
+              <div className="cont-p">
+                <p className="p1" style={{ marginTop: 10 }}>
+                  {razonSocial}
+                </p>
+                <p className="p2">{giro}</p>
+                <p className="p2">{rut}</p>
+              </div>
+              <Tooltip title="Cerrar" placement="top">
+                <IconButton
+                  className="btn-close-info-user-emp"
+                  onClick={() => closeModal()}
+                >
+                  <Close style={{ width: "15px" }} />
+                </IconButton>
+              </Tooltip>
+            </div>
+            <div className="bottom">
+              <div className="tab-menu-emp-user">
+                <AntTabs
+                  value={value}
+                  onChange={handleChange}
+                  aria-label="ant example"
+                >
+                  <AntTab label="Reseña" />
+                  <AntTab style={{ marginLeft: "20px" }} label="Datos" />
+                  <AntTab style={{ marginLeft: "20px" }} label="Direcciones" />
+                  <AntTab style={{ marginLeft: "20px" }} label="Telefonos" />
+                  <AntTab style={{ marginLeft: "20px" }} label="Perfiles" />
+                </AntTabs>
+              </div>
+
+              {value === 0 ? (
+                <Resena data={data} />
+              ) : value === 1 ? (
+                <Datos data={data} />
+              ) : value === 2 ? (
+                <Direcciones data={data} />
+              ) : value === 3 ? (
+                <Telefonos data={data} />
+              ) : value === 4 ? (
+                <Perfiles
+                  idemp={data._id}
+                  setDataEditPerfil={setDataEditPerfil}
+                  setOpenEditPerfil={setOpenEditPerfil}
+                  refreshPerfiles={refreshPerfiles}
                 />
-              )}
+              ) : null}
             </div>
-            <div className="cont-p">
-              <p className="p1" style={{ marginTop: 10 }}>
-                {razonSocial}
-              </p>
-              <p className="p2">{giro}</p>
-              <p className="p2">{rut}</p>
-            </div>
-            <Tooltip title="Cerrar" placement="top">
-              <IconButton
-                className="btn-close-info-user-emp"
-                onClick={() => closeModal()}
-              >
-                <Close style={{ width: "15px" }} />
-              </IconButton>
-            </Tooltip>
-          </div>
-          <div className="bottom">
-            <div className="tab-menu-emp-user">
-              <AntTabs
-                value={value}
-                onChange={handleChange}
-                aria-label="ant example"
-              >
-                <AntTab label="Reseña" />
-                <AntTab style={{ marginLeft: "20px" }} label="Datos" />
-                <AntTab style={{ marginLeft: "20px" }} label="Direcciones" />
-                <AntTab style={{ marginLeft: "20px" }} label="Telefonos" />
-                <AntTab style={{ marginLeft: "20px" }} label="Perfiles" />
-              </AntTabs>
-            </div>
-
-            {value === 0 ? (
-              <Resena data={data} />
-            ) : value === 1 ? (
-              <Datos data={data} />
-            ) : value === 2 ? (
-              <Direcciones data={data} />
-            ) : value === 3 ? (
-              <Telefonos data={data} />
-            ) : value === 4 ? (
-              <Perfiles data={data} />
-            ) : null}
-          </div>
-        </>
-      )}
-    </div>
-  );
-});
+          </>
+        )}
+      </div>
+    );
+  }
+);
 
 export default ViewEmp;

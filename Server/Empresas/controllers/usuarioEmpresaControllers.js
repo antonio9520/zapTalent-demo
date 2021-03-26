@@ -89,29 +89,33 @@ exports.creaUserEmp = async (req, res) => {
 };
 
 exports.putUsuarioEmp = async (req, res) => {
-  const { email, fechaInicio, fechaTermino, tipoPerfil } = req.body;
+  const {
+    email,
+    fechaInicio,
+    fechaTermino,
+    tipoPerfil,
+    nombres,
+    apellidos,
+    rut,
+  } = req.body;
+
+  const idperfil = req.params.idperfil;
 
   try {
-    const iduserEmp = req.params.iduserEmp;
+    const perfil = await Usuario.findById(idperfil);
+    if (!perfil) {
+      return res.status(404).json({ msg: "Usuario no encontrado" });
+    }
+    if (tipoPerfil) perfil.tipoPerfil = tipoPerfil;
+    if (email) perfil.email = email;
+    if (fechaInicio) perfil.fechaInicio = fechaInicio;
+    if (fechaTermino) perfil.fechaTermino = fechaTermino;
+    if (nombres) perfil.nombres = nombres;
+    if (apellidos) perfil.apellidos = apellidos;
+    if (rut) perfil.rut = rut;
 
-    await Usuario.findById(iduserEmp, function (err, usuario) {
-      if (err) {
-        console.log(err);
-        return res.status(404).json({ msg: "Usuario no encontrado" });
-      }
-      if (tipoPerfil) usuario.tipoPerfil = tipoPerfil;
-      if (email) usuario.email = email;
-      if (fechaInicio) usuario.fechaInicio = fechaInicio;
-      if (fechaTermino) usuario.fechaTermino = fechaTermino;
-      // if (password) usuario.password = bcryptjs.hashSync(password, bcryptjs.genSaltSync(15));
-
-      usuario.save(function (err) {
-        if (err)
-          return res.status(500).json({ msg: "error al actualizar datos" });
-        res.status(200).send(usuario);
-      });
-      // }
-    });
+    await perfil.save();
+    return res.status(200).send(perfil);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Error en Servidor" });
@@ -167,6 +171,18 @@ exports.validarPerfilUnico = async (req, res) => {
     //subida de archivo
     let _email = Boolean(emailValidado);
     res.status(200).json({ _email });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ msg: "error en el servidor " + error });
+  }
+};
+
+//OBTENER PERFILES DE EMPRESAS
+exports.obtenerPerfiles = async (req, res) => {
+  const idemp = req.params.idemp;
+  try {
+    const perfiles = await Usuario.find({ idemp: idemp });
+    res.status(200).json(perfiles);
   } catch (error) {
     console.log(error);
     res.status(404).json({ msg: "error en el servidor " + error });

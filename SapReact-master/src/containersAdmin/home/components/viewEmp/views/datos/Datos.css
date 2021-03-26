@@ -1,0 +1,17 @@
+.datos-view-emp-admin {
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.datos-view-emp-admin .row {
+  display: flex;
+  /* border: 1px solid red; */
+  margin-top: 10px;
+}
+
+.datos-view-emp-admin .row .column {
+  /* border: 1px solid green; */
+  flex: 1;
+}

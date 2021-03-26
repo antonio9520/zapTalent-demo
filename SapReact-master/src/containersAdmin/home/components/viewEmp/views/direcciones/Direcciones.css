@@ -1,0 +1,4 @@
+.datos-view-emp-admin .cont-direcciones-emp {
+  overflow: auto;
+  max-height: 250px;
+}

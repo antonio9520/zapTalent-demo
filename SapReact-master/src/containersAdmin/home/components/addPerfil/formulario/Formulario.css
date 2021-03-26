@@ -1,0 +1,30 @@
+.form-add-perfil-emp-admin {
+  background-color: white;
+  outline: none;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.form-add-perfil-emp-admin .item-doble {
+  display: flex;
+  margin-top: 5px;
+}
+
+.form-add-perfil-emp-admin .item {
+  display: flex;
+  margin-top: 5px;
+}
+
+.form-add-perfil-emp-admin .p1 {
+  text-align: center;
+  color: var(--blue-primary);
+  font-size: 18px;
+}
+
+.form-add-perfil-emp-admin .bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}

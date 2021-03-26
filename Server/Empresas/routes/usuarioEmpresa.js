@@ -8,13 +8,15 @@ const usuarioAdminControllers = require("../controllers/usuarioEmpresaController
 router.get("/:id", usuarioAdminControllers.mostrarEmpresasID);
 router.post("/", usuarioAdminControllers.creaUserEmp);
 
-router.put("/:iduserEmp", usuarioAdminControllers.putUsuarioEmp);
+router.put("/:idperfil", usuarioAdminControllers.putUsuarioEmp);
 
 router.put(
   "/actualizar-password/:iduserEmp",
   usuarioAdminControllers.actualizarPasswordEmp
 );
 router.put("/validar/email", usuarioAdminControllers.validarPerfilUnico);
+
+router.get("/obtener/perfiles/:idemp", usuarioAdminControllers.obtenerPerfiles);
 // router.put("/", usuarioAdminControllers.putUserAdmin);
 
 module.exports = router;

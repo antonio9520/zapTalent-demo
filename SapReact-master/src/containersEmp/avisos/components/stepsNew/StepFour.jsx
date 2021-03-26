@@ -50,7 +50,7 @@ const StepFour = forwardRef((props, ref) => {
     if (descripcion === "") {
       setErrorDescripcion(true);
     }
-    setErrores([]);
+    setErrores([]); 
     await mapearDatos();
     setInitDefault(false);
     setTimeout(() => {

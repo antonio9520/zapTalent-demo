@@ -34,7 +34,6 @@ exports.CrearEmpresa = async (req, res) => {
 exports.mostrarEmpresas = async (req, res) => {
   try {
     const empresas = await Empresas.find();
-
     res.json(empresas);
   } catch (error) {
     console.log(error);

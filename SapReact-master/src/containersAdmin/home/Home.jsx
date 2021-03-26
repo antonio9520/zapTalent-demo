@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import { Header, Table, Modal, ModalEditar, ModalView } from "./components";
+import {
+  Header,
+  Table,
+  Modal,
+  ModalEditar,
+  ModalView,
+  ModalAddPerfil,
+  ModalEditPerfil,
+} from "./components";
 import { CardA } from "../../components";
 import { Snackbar } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
@@ -18,6 +26,13 @@ const Home = () => {
   //VIEW
   const [openViewEmp, setOpenViewEmp] = useState(false);
   const [dataView, setDataView] = useState(null);
+  //ADD PERFIL
+  const [openAddPerfil, setOpenAddPerfil] = useState(false);
+  const [dataAddPerfil, setDataAddPerfil] = useState(null);
+  //EDIT PERFIL
+  const [openEditPerfil, setOpenEditPerfil] = useState(false);
+  const [dataEditPerfil, setDataEditPerfil] = useState(null);
+  const [refreshPerfiles, setRefreshPerfiles] = useState(false);
 
   const [openAlert, setOpenAlert] = useState(false);
   const [totalEmpresas, setTotalEmpresas] = useState(0);
@@ -58,6 +73,21 @@ const Home = () => {
         setOpen={setOpenViewEmp}
         data={dataView}
         setDataView={setDataView}
+        setDataEditPerfil={setDataEditPerfil}
+        setOpenEditPerfil={setOpenEditPerfil}
+        refreshPerfiles={refreshPerfiles}
+      />
+      <ModalAddPerfil
+        open={openAddPerfil}
+        setOpen={setOpenAddPerfil}
+        idemp={dataAddPerfil}
+      />
+      <ModalEditPerfil
+        open={openEditPerfil}
+        setOpen={setOpenEditPerfil}
+        data={dataEditPerfil}
+        refreshPerfiles={refreshPerfiles}
+        setRefreshPerfiles={setRefreshPerfiles}
       />
       <div className="top">
         <Header setOpen={setOpenAddEmp} />
@@ -84,6 +114,8 @@ const Home = () => {
           setDataEditar={setDataEditar}
           setOpenViewEmp={setOpenViewEmp}
           setDataView={setDataView}
+          setOpenAddPerfil={setOpenAddPerfil}
+          setDataAddPerfil={setDataAddPerfil}
         />
       </div>
       <Snackbar open={openAlert} onClose={handleClose} autoHideDuration={5000}>

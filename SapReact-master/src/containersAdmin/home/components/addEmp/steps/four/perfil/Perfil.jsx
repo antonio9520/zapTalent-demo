@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Perfil.css";
 import {
-  Button,
   Tooltip,
   CustomInput,
   CustomSelectB,
@@ -151,6 +150,7 @@ const Perfil = ({ perfiles, setPerfiles, recargar, data, errores2 }) => {
       setFechaTerminoError(true);
     }
   };
+  
   useEffect(() => {
     if (initDefault === false) {
       if (errores2.length > 0) {

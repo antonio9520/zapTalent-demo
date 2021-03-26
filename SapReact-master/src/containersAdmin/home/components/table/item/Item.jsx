@@ -24,6 +24,8 @@ const Item = ({
   setDataEditar,
   setOpenViewEmp,
   setDataView,
+  setOpenAddPerfil,
+  setDataAddPerfil,
 }) => {
   const {
     razonSocial,
@@ -35,6 +37,7 @@ const Item = ({
     fechaInicio,
     fechaTermino,
     logoURL,
+    _id,
   } = data;
   const _fechaInicio = new Date(fechaInicio);
 
@@ -48,6 +51,11 @@ const Item = ({
   const verEmpresa = () => {
     setOpenViewEmp(true);
     setDataView(data);
+  };
+
+  const agregarPerfil = () => {
+    setDataAddPerfil(_id);
+    setOpenAddPerfil(true);
   };
   return (
     <div className="item-table-home-admin">
@@ -97,7 +105,7 @@ const Item = ({
       <div className="item-4">
         <p>Ingreso</p>
         <p>
-          {fechaTermino
+          {fechaInicio
             ? _fechaInicio.getDate() +
               "/" +
               _fechaInicio.getMonth() +
@@ -124,15 +132,21 @@ const Item = ({
         <p>info@agrosuper.cl</p>
       </div> */}
       <div className="item-9">
-        <IconButton className={classes.iconButton}>
-          <PersonAdd fontSize="small" className={classes.icon} />
-        </IconButton>
-        <IconButton className={classes.iconButton} onClick={editarEmpresa}>
-          <Edit fontSize="small" />
-        </IconButton>
-        <IconButton className={classes.iconButton}>
-          <Delete fontSize="small" />
-        </IconButton>
+        <Tooltip title="Agregar perfil" placement="top">
+          <IconButton className={classes.iconButton} onClick={agregarPerfil}>
+            <PersonAdd fontSize="small" className={classes.icon} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Editar empresa" placement="top">
+          <IconButton className={classes.iconButton} onClick={editarEmpresa}>
+            <Edit fontSize="small" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Eliminar empresa" placement="top">
+          <IconButton className={classes.iconButton}>
+            <Delete fontSize="small" />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );
