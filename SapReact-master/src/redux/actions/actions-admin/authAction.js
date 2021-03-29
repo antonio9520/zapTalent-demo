@@ -51,7 +51,7 @@ export function usuarioAuthActionAdmin() {
       console.log(respuesta.data.usuario);
       dispatch(usuarioAuthAdmin(respuesta.data.usuario));
     } catch (error) {
-      console.log(error.response.msg);
+      // console.log(error.response.msg);
       dispatch(obtenerAuthAdminError());
     }
   };

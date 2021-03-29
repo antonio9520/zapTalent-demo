@@ -9,7 +9,7 @@ import {
   ModalAddPerfil,
   ModalEditPerfil,
 } from "./components";
-import { CardA } from "../../components";
+import { CardA, ModalEliminar } from "../../components";
 import { Snackbar } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { obtenerEmpresasAction } from "../../redux/actions/actions-admin/empresasAction";
@@ -18,6 +18,7 @@ import clientAxios from "../../config/axios";
 
 const Home = () => {
   const dispatch = useDispatch();
+
   //ADD
   const [openAddEmp, setOpenAddEmp] = useState(false);
   //EDIT
@@ -33,6 +34,11 @@ const Home = () => {
   const [openEditPerfil, setOpenEditPerfil] = useState(false);
   const [dataEditPerfil, setDataEditPerfil] = useState(null);
   const [refreshPerfiles, setRefreshPerfiles] = useState(false);
+  //ELIMINAR EMPRESA
+  const [idEliminar, setIdEliminar] = useState("");
+  const [openModalEliminar, setOpenModalEliminar] = useState(false);
+  //ELIMINAR PERFIL
+  const [openModalEliminarPerfil, setOpenModalEliminarPerfil] = useState(false);
 
   const [openAlert, setOpenAlert] = useState(false);
   const [totalEmpresas, setTotalEmpresas] = useState(0);
@@ -55,6 +61,9 @@ const Home = () => {
       setTotalEmpresas(respuesta.data.total);
     }
   };
+  const refreshPerfil = () => {
+    setRefreshPerfiles(!refreshPerfiles);
+  };
   return (
     <div className="container-home-admin">
       <Modal
@@ -68,6 +77,21 @@ const Home = () => {
         setDataEditar={setDataEditar}
         dataEditar={dataEditar}
       />
+      <ModalEliminar
+        empresa
+        openModalEliminar={openModalEliminar}
+        setOpenModalEliminar={setOpenModalEliminar}
+        idEliminar={idEliminar}
+        setIdEliminar={setIdEliminar}
+      />
+      <ModalEliminar
+        perfil
+        openModalEliminar={openModalEliminarPerfil}
+        setOpenModalEliminar={setOpenModalEliminarPerfil}
+        idEliminar={idEliminar}
+        setIdEliminar={setIdEliminar}
+        refreshPerfil={refreshPerfil}
+      />
       <ModalView
         open={openViewEmp}
         setOpen={setOpenViewEmp}
@@ -76,6 +100,9 @@ const Home = () => {
         setDataEditPerfil={setDataEditPerfil}
         setOpenEditPerfil={setOpenEditPerfil}
         refreshPerfiles={refreshPerfiles}
+        setIdEliminar={setIdEliminar}
+        setOpenModalEliminar={setOpenModalEliminar}
+        setOpenModalEliminarPerfil={setOpenModalEliminarPerfil}
       />
       <ModalAddPerfil
         open={openAddPerfil}
@@ -116,6 +143,8 @@ const Home = () => {
           setDataView={setDataView}
           setOpenAddPerfil={setOpenAddPerfil}
           setDataAddPerfil={setDataAddPerfil}
+          setIdEliminar={setIdEliminar}
+          setOpenModalEliminar={setOpenModalEliminar}
         />
       </div>
       <Snackbar open={openAlert} onClose={handleClose} autoHideDuration={5000}>

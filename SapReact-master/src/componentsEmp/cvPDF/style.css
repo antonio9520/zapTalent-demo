@@ -28,3 +28,9 @@
 .error-pdf-cvusuario {
   
 }
+
+.react-pdf__Page__canvas {
+    margin: 0 auto;
+    width: 80% !important;
+    height: 100% !important;
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Avisos.css";
 import {
   Header,
-  Card,
+  Card, 
   Modal,
   ModalEditar,
   ModalCopy,

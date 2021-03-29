@@ -12,7 +12,7 @@ const Trabajos = ({ data }) => {
       <View style={styles.contEstudiosTop}>
         <Text style={styles.title}>Trabajos</Text>
       </View>
-      <View style={styles.contEstudiosBottom} wrap={false}>
+      <View style={styles.contEstudiosBottom}>
         {data[0] &&
           data.map((item, index) => <Trabajo key={index} data={item} />)}
       </View>
@@ -59,7 +59,7 @@ const Trabajo = ({ data }) => {
   }
 
   return (
-    <View style={styles.contTrabajo}>
+    <View style={styles.contTrabajo} wrap={false}>
       <Text style={styles.p1}>{nomempresa}</Text>
       <Text style={styles.p2}>{cargo}</Text>
       <Text style={styles.p3}>{actempresa}</Text>

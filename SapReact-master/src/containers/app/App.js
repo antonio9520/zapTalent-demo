@@ -20,7 +20,6 @@ import { theme } from "../../config/theme";
 function App() {
   const token = localStorage.getItem("token");
 
-  
   if (token) {
     tokenAuth(token);
   }
@@ -61,7 +60,7 @@ function App() {
                 "/empresas/avisos",
                 "/empresas/publicar-aviso",
                 "/empresas/perfil/:id",
-                "/empresas/postulantes/:index",
+                "/empresas/postulantes/:index/:idaviso",
               ]}
             />
             <Route exact path="/login-empresas" component={LoginEmp} />

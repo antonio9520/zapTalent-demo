@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Filtro.css";
 import { CustomSelect, Button, OutInput } from "../../../../components";
 import { MenuItem } from "@material-ui/core";
@@ -17,6 +17,7 @@ const Filtro = ({
   _switch,
   setSwitch,
   dataFiltro,
+  idaviso,
 }) => {
   const [anuncio, setAnuncio] = useState(null);
   const [tipoConsultor, setTipoConsultor] = useState(null);
@@ -37,6 +38,7 @@ const Filtro = ({
   const submodulos = modulos.find((item) => item.modulo === _modulo);
 
   const filtrar = () => {
+
     if (tipoConsultor) query.tipoConsultor = tipoConsultor;
     if (_modulo) query.modulo = _modulo;
     if (_submodulo) query.submodulo = _submodulo;
@@ -81,6 +83,7 @@ const Filtro = ({
   const setIdAviso = (id) => {
     setQuery({ ...query, _id: id });
   };
+
   return (
     <div className="cont-filtro-eco-sap-emp">
       <div className="title-filtros-eco-sap">

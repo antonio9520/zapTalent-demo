@@ -156,8 +156,8 @@ const Four = forwardRef(
               <Loader
                 type="Oval"
                 color="#00BFFF"
-                height={35}
-                width={35}
+                height={50}
+                width={50}
                 visible={cargando}
                 //  timeout={3000} //3 secs
               />

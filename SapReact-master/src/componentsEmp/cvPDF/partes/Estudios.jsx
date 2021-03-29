@@ -4,7 +4,7 @@ import image1 from "../../../resources/ZAPTalent-PDF-Header.png";
 
 const Estudios = ({ data }) => {
   return (
-    <View style={styles.contEstudios}>
+    <View style={styles.contEstudios} >
       <View style={styles.contEstudiosTop}>
         <Text style={styles.title}>Estudios</Text>
       </View>

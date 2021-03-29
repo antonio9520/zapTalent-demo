@@ -197,7 +197,6 @@ const Modulos = ({ data, activeStep }) => {
 
 const MobileStepperCustom = forwardRef((props, ref) => {
   const { activeStep, lenghtArray } = props;
-  console.log(Math.round(lenghtArray / 3));
 
   return (
     <MobileStepper

@@ -22,6 +22,8 @@ const CustomModal = (props) => {
     setDataEditPerfil,
     setOpenEditPerfil,
     refreshPerfiles,
+    setIdEliminar,
+    setOpenModalEliminarPerfil,
   } = props;
 
   // console.log(usuario);
@@ -53,6 +55,8 @@ const CustomModal = (props) => {
           setDataEditPerfil={setDataEditPerfil}
           setOpenEditPerfil={setOpenEditPerfil}
           refreshPerfiles={refreshPerfiles}
+          setIdEliminar={setIdEliminar}
+          setOpenModalEliminar={setOpenModalEliminarPerfil}
         />
       </Fade>
     </Modal>

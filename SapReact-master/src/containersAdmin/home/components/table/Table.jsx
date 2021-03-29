@@ -13,6 +13,8 @@ const Table = ({
   setDataView,
   setDataAddPerfil,
   setOpenAddPerfil,
+  setIdEliminar,
+  setOpenModalEliminar,
 }) => {
   const refContentTable = useRef();
   const { height } = useContainerDimensions(refContentTable);
@@ -33,6 +35,8 @@ const Table = ({
               setDataView={setDataView}
               setOpenAddPerfil={setOpenAddPerfil}
               setDataAddPerfil={setDataAddPerfil}
+              setIdEliminar={setIdEliminar}
+              setOpenModalEliminar={setOpenModalEliminar}
             />
           ))}
         </div>

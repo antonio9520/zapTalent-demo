@@ -13,7 +13,7 @@ const EcoSap = (props) => {
     match: { params },
   } = props;
   const dispatch = useDispatch();
-  console.log(params);
+
   const [value, setValue] = useState(params.index ? parseInt(params.index) : 0);
   const [usuarios, setUsuarios] = useState([]);
   const avisos = useSelector((state) => state.aviso.avisos);
@@ -29,6 +29,7 @@ const EcoSap = (props) => {
   const [query, setQuery] = useState({});
   const [_switch, setSwitch] = useState(false);
   const [tipoPlan, setTipoPlan] = useState({});
+  const [idavisos, setIdAviso] = useState(true);
 
   const cargarUsuarios = async () => {
     if (skip === 0) {
@@ -36,7 +37,7 @@ const EcoSap = (props) => {
     } else {
       setLoading(true);
     }
-    console.log(query);
+
     try {
       const respuesta = await clientAxios.put(`/api/ecoSap/${skip}`, query);
       if (skip === 0) {
@@ -53,19 +54,27 @@ const EcoSap = (props) => {
     setLoading(false);
   };
 
-  const cargarPostulados = async () => {
+  const cargarPostulados = async (idaviso) => {
     if (skip === 0) {
       setCargando(true);
     } else {
       setLoading(true);
     }
-    let _id = usuario.idemp;
+    if (idavisos) {
+      if (idaviso) {
+        query._id = idaviso;
+        setIdAviso(false);
+      }
+    }
 
+    let _id = usuario.idemp;
+    console.log(`skip: ${skip}`);
     try {
       const respuesta = await clientAxios.put(
         `/api/postulacion/postulados/${_id}/${skip}`,
         query
       );
+      console.log(respuesta.data);
       if (skip === 0) {
         setUsuarios(respuesta.data);
       } else {
@@ -84,7 +93,6 @@ const EcoSap = (props) => {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
     const alto = scrollHeight - 150;
     if (offsetHeight + scrollTop > alto) {
-      console.log("scroll");
       setSkip(usuarios.length);
     }
   };
@@ -94,7 +102,12 @@ const EcoSap = (props) => {
       if (value === 0) {
         cargarUsuarios();
       } else {
-        cargarPostulados();
+        if (params.idaviso) {
+          cargarPostulados(params.idaviso);
+        } else {
+          cargarPostulados();
+        }
+
         if (avisos.length === 0) {
           dispatch(
             obtenerAvisoAction({ skip: 0, query: { _id: usuario.idemp } })
@@ -106,7 +119,7 @@ const EcoSap = (props) => {
     }
 
     setOpenModalDrawer(false);
-  }, [skip, value, _switch, usuario]);
+  }, [skip, value, _switch, usuario, params.idaviso]);
 
   return (
     <div className="eco-sap-empresas">

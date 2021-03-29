@@ -52,6 +52,7 @@ const Card = ({
   const termino = new Date(data.fechaTermino);
   const [open, setOpen] = useState(false);
   const [state, setEstado] = useState(data.estado);
+  
   const MESES = [
     "Enero",
     "Febrero",
@@ -143,7 +144,9 @@ const Card = ({
           <Tooltip title="Ver postulantes" placement="top">
             <div
               className="sub-right-avisos-emp"
-              onClick={() => history.push("/empresas/postulantes/1")}
+              onClick={() =>
+                history.push(`/empresas/postulantes/1/${data._id}`)
+              }
             >
               <div>
                 <p className="p1">Inscritos</p>

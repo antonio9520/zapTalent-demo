@@ -46,6 +46,8 @@ const Perfiles = ({
   setDataEditPerfil,
   setOpenEditPerfil,
   refreshPerfiles,
+  setIdEliminar,
+  setOpenModalEliminar,
 }) => {
   const [data, setData] = useState([]);
   const [loading, setloading] = useState(true);
@@ -68,6 +70,7 @@ const Perfiles = ({
   useEffect(() => {
     obtenerDatos();
   }, [refreshPerfiles]);
+
   return (
     <div className="perfiles-view-emp-admin">
       {loading ? (
@@ -89,6 +92,9 @@ const Perfiles = ({
               data={item}
               setDataEditPerfil={setDataEditPerfil}
               setOpenEditPerfil={setOpenEditPerfil}
+              setIdEliminar={setIdEliminar}
+              setOpenModalEliminar={setOpenModalEliminar}
+              totalPerfiles={data.length}
             />
           ))}
         </div>
@@ -99,7 +105,14 @@ const Perfiles = ({
 
 export default Perfiles;
 
-const Perfil = ({ data, setDataEditPerfil, setOpenEditPerfil }) => {
+const Perfil = ({
+  data,
+  setDataEditPerfil,
+  setOpenEditPerfil,
+  setIdEliminar,
+  setOpenModalEliminar,
+  totalPerfiles,
+}) => {
   const classes = useStyles();
   const {
     tipoPerfil,
@@ -118,7 +131,12 @@ const Perfil = ({ data, setDataEditPerfil, setOpenEditPerfil }) => {
     setDataEditPerfil(data);
     setOpenEditPerfil(true);
   };
-
+  const initDelete = () => {
+    if (totalPerfiles > 1) {
+      setIdEliminar(data._id);
+      setOpenModalEliminar(true);
+    }
+  };
   return (
     <div className="perfil-view-emp-admin">
       <div className="row-1">
@@ -199,7 +217,7 @@ const Perfil = ({ data, setDataEditPerfil, setOpenEditPerfil }) => {
             </IconButton>
           </Tooltip>
           <Tooltip title="Eliminar">
-            <IconButton className={classes.actionBtns}>
+            <IconButton className={classes.actionBtns} onClick={initDelete}>
               <Delete />
             </IconButton>
           </Tooltip>

@@ -1,11 +1,10 @@
 .card-table-home-emp {
   width: 100%;
-  background-color: rosybrown;
   margin-top: 10px;
   background-color: var(--white);
   box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-  min-height: 100px;
+  min-height: 137px;
   display: flex;
   position: relative;
   flex-direction: column;

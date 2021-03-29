@@ -213,11 +213,15 @@
   border-radius: 3px;
   color: var(--gray-text);
   height: 100px;
+  overflow: hidden;
 }
 
 .right-aviso-home-emp .item3 p {
   font-size: 12px;
   font-style: italic;
+  max-height: 70px;
+  padding-right: 5px;
+  overflow: auto;
 }
 
 .right-aviso-home-emp .item4 p:nth-child(1) {

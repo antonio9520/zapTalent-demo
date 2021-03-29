@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from "@react-pdf/renderer";
 
 const Habilidades = ({ data }) => {
   return (
-    <View style={styles.contEstudios}>
+    <View style={styles.contEstudios} break>
       <View style={styles.contEstudiosTop}>
         <Text style={styles.title}>Habilidades</Text>
       </View>

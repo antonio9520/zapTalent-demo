@@ -109,7 +109,7 @@ const Three = forwardRef(
                   telefonos={telefonos}
                   recargar={recargar}
                   errores2={errores2}
-                  num={index}
+                  num={index + 1}
                 />
               ))}
               <div className="item-add-telefono">

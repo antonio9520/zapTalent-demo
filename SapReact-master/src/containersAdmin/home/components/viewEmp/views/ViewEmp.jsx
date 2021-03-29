@@ -45,12 +45,19 @@ const AntTab = withStyles((theme) => ({
 
 const ViewEmp = forwardRef(
   (
-    { data, closeModal, setDataEditPerfil, setOpenEditPerfil, refreshPerfiles },
+    {
+      data,
+      closeModal,
+      setDataEditPerfil,
+      setOpenEditPerfil,
+      refreshPerfiles,
+      setIdEliminar,
+      setOpenModalEliminar,
+    },
     ref
   ) => {
     const { razonSocial, giro, rut, logoURL } = data;
-    const dispatch = useDispatch();
-    const usuario = useSelector((state) => state.userInfo.usuario);
+
     const loading = useSelector((state) => state.userInfo.loading);
 
     const [value, setValue] = useState(0);
@@ -131,6 +138,8 @@ const ViewEmp = forwardRef(
                   setDataEditPerfil={setDataEditPerfil}
                   setOpenEditPerfil={setOpenEditPerfil}
                   refreshPerfiles={refreshPerfiles}
+                  setIdEliminar={setIdEliminar}
+                  setOpenModalEliminar={setOpenModalEliminar}
                 />
               ) : null}
             </div>

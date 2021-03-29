@@ -26,6 +26,8 @@ const Item = ({
   setDataView,
   setOpenAddPerfil,
   setDataAddPerfil,
+  setIdEliminar,
+  setOpenModalEliminar,
 }) => {
   const {
     razonSocial,
@@ -52,7 +54,10 @@ const Item = ({
     setOpenViewEmp(true);
     setDataView(data);
   };
-
+  const initDelete = () => {
+    setIdEliminar(data._id);
+    setOpenModalEliminar(true);
+  };
   const agregarPerfil = () => {
     setDataAddPerfil(_id);
     setOpenAddPerfil(true);
@@ -143,7 +148,7 @@ const Item = ({
           </IconButton>
         </Tooltip>
         <Tooltip title="Eliminar empresa" placement="top">
-          <IconButton className={classes.iconButton}>
+          <IconButton className={classes.iconButton} onClick={initDelete}>
             <Delete fontSize="small" />
           </IconButton>
         </Tooltip>

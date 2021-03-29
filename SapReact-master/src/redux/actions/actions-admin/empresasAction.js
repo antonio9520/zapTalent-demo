@@ -11,6 +11,9 @@ import {
   EMPRESA_EDITADO_ERROR,
   EMPRESA_EDITADO_EXITO,
   COMENZAR_EDICION_EMPRESA,
+  OBTENER_EMPRESA_ELIMINAR,
+  EMPRESA_ELIMINADO_ERROR,
+  EMPRESA_ELIMINADO_EXITO,
 } from "../../types/typesAdmin";
 
 import clientAxios from "../../../config/axios";
@@ -110,7 +113,7 @@ export function agregarEmpresaAction(data) {
       dispatch(
         showAlert({
           show: true,
-          msg: "Aviso publicado correctamente.",
+          msg: "Empresa guardada correctamente.",
           type: "success",
         })
       );
@@ -180,4 +183,37 @@ const descargaExitoInitEmpresa = (data) => ({
 });
 const descargaErrorEmpresa = () => ({
   type: DESCARGA_EMPRESA_ERROR,
+});
+
+//ELIMINAR
+export function eliminarEmpresaAction(id) {
+  return async (dispatch) => {
+    dispatch(obtenerEliminarEmpresa(id));
+    try {
+      await clientAxios.delete(`/api/empresas/${id}`);
+      dispatch(eliminarEmpresaExito());
+      dispatch(
+        showAlert({ show: true, msg: "Empresa eliminada.", type: "success" })
+      );
+    } catch (error) {
+      console.log(error);
+      dispatch(eliminarEmpresaError());
+      dispatch(
+        showAlert({ show: true, msg: error.response.data.msg, type: "error" })
+      );
+    }
+  };
+}
+
+const obtenerEliminarEmpresa = (id) => ({
+  type: OBTENER_EMPRESA_ELIMINAR,
+  payload: id,
+});
+
+const eliminarEmpresaExito = () => ({
+  type: EMPRESA_ELIMINADO_EXITO,
+});
+
+const eliminarEmpresaError = () => ({
+  type: EMPRESA_ELIMINADO_ERROR,
 });

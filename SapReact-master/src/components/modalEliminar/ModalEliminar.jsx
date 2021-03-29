@@ -10,6 +10,8 @@ import { eliminarCertificadoAction } from "../../redux/actions/certificadoAction
 import { eliminarAdnAction } from "../../redux/actions/adnAction";
 import { eliminarAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 import { editarUsuarioAction } from "../../redux/actions/authAction";
+import { eliminarEmpresaAction } from "../../redux/actions/actions-admin/empresasAction";
+import clientAxios from "../../config/axios";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -30,9 +32,12 @@ const CustomModal = (props) => {
     certificado,
     adnsap,
     aviso,
+    empresa,
+    perfil,
     idEliminar,
     setIdEliminar,
     dataAdnUser,
+    refreshPerfil,
   } = props;
 
   const deleteCancel = () => {
@@ -40,7 +45,7 @@ const CustomModal = (props) => {
     setOpenModalEliminar(false);
   };
 
-  const deleteTrabajo = () => {
+  const deleteTrabajo = async () => {
     setOpenModalEliminar(false);
 
     if (trabajo) {
@@ -67,6 +72,19 @@ const CustomModal = (props) => {
     }
     if (aviso) {
       dispatch(eliminarAvisoAction(idEliminar));
+    }
+    if (empresa) {
+      dispatch(eliminarEmpresaAction(idEliminar));
+    }
+    if (perfil) {
+      console.log(idEliminar);
+      // /api/usuarioEmpresa
+      try {
+        await clientAxios.delete(`/api/usuarioEmpresa/${idEliminar}`);
+        refreshPerfil();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   const DeleteComponent = () => {
