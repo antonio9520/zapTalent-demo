@@ -42,6 +42,7 @@ const Certificacion = ({ data }) => {
     "Diciembre",
   ];
   const fechaCert = new Date(fecha);
+  console.log(obs);
   return (
     <View style={styles.contCert} wrap={false}>
       <Text style={styles.p1}>{certificacion}</Text>
@@ -49,7 +50,7 @@ const Certificacion = ({ data }) => {
       <Text style={styles.p3}>
         {MESES[fechaCert.getMonth()]}, {fechaCert.getFullYear()}
       </Text>
-      {obs && <Text style={styles.p4}>{obs}</Text>}
+      {obs && obs !== "" ? <Text style={styles.p4}>{obs}</Text> : null}
       <View style={styles.contEstado}>
         <View style={styles.estado}>
           <Text style={styles.p5}>{estado}</Text>

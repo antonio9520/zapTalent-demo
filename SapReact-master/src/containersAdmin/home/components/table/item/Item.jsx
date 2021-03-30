@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Item.css";
 import { Tooltip } from "../../../../../components";
 import { IconButton, makeStyles } from "@material-ui/core";
@@ -28,6 +28,7 @@ const Item = ({
   setDataAddPerfil,
   setIdEliminar,
   setOpenModalEliminar,
+  setOpenModalRep,
 }) => {
   const {
     razonSocial,
@@ -41,8 +42,21 @@ const Item = ({
     logoURL,
     _id,
   } = data;
-  const _fechaInicio = new Date(fechaInicio);
+  const [estado, setEstado] = useState(null);
+  const [color, setColor] = useState("#187ce2");
 
+  const _fechaInicio = new Date(fechaInicio);
+  const _fechaTermino = new Date(fechaTermino);
+  const _fechaTermino_ = new Date(fechaTermino);
+
+  const now = new Date();
+
+  const sevenDays = sumarDias(_fechaTermino_, -7);
+
+  function sumarDias(fecha, dias) {
+    fecha.setDate(fecha.getDate() + dias);
+    return fecha;
+  }
   const classes = useStyles();
 
   const editarEmpresa = () => {
@@ -62,14 +76,37 @@ const Item = ({
     setDataAddPerfil(_id);
     setOpenAddPerfil(true);
   };
+
+  const republicar = () => {
+    setDataEditar(data);
+    setOpenModalRep(true);
+  };
+
+  const setearEstado = () => {
+    if (now <= _fechaTermino && now >= sevenDays) {
+      setEstado("Activo");
+      setColor("#F7B217");
+    } else if (_fechaTermino >= now) {
+      setEstado("Activo");
+      setColor("#187ce2");
+    } else if (_fechaTermino <= now) {
+      setEstado("Caducado");
+      setColor("#f44336");
+    }
+  };
+  useEffect(() => {
+    if (fechaTermino) {
+      setearEstado();
+    }
+  }, [fechaTermino]);
   return (
     <div className="item-table-home-admin">
       <div className="item-1">
-        <div>
-          <p>Activo</p>
+        <div style={{ backgroundColor: color }}>
+          <p>{estado}</p>
         </div>
         <Tooltip title="Editar la fecha de termino" placement="top">
-          <IconButton>
+          <IconButton onClick={republicar}>
             <EventAvailable />
           </IconButton>
         </Tooltip>
@@ -113,9 +150,21 @@ const Item = ({
           {fechaInicio
             ? _fechaInicio.getDate() +
               "/" +
-              _fechaInicio.getMonth() +
+              (_fechaInicio.getMonth() + 1) +
               "/" +
               _fechaInicio.getFullYear()
+            : null}
+        </p>
+      </div>
+      <div className="item-4">
+        <p>Término</p>
+        <p>
+          {fechaTermino
+            ? _fechaTermino.getDate() +
+              "/" +
+              (_fechaTermino.getMonth() + 1) +
+              "/" +
+              _fechaTermino.getFullYear()
             : null}
         </p>
       </div>
@@ -123,10 +172,10 @@ const Item = ({
         <p>Fono</p>
         <p>{telefonos[0].telefono}</p>
       </div>
-      <div className="item-6">
+      {/* <div className="item-6">
         <p>Rut</p>
         <p>{rut}</p>
-      </div>
+      </div> */}
       <div className="item-7">
         <p>Localizado</p>
         <p>{direcciones[0].comuna + ", " + direcciones[0].region}</p>

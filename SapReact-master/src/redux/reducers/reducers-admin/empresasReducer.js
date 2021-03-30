@@ -66,7 +66,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: false,
-        empresas: [...state.empresas, action.payload],
+        empresas: [action.payload, ...state.empresas],
       };
     case DESCARGA_EMPRESA_EXITO_INIT:
       return {

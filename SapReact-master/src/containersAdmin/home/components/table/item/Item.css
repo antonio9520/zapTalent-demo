@@ -164,7 +164,7 @@
 /*item-9*/
 .item-table-home-admin .item-9 {
   flex: 1;
-
+  max-width: 150px;
   min-width: 140px;
   display: flex;
   align-items: center;

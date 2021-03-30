@@ -104,7 +104,7 @@ const One = forwardRef(
     //VALIDACION
     const validacion = async () => {
       setLoading(true);
-      // const _rut = await clientAxios.put("/api/empresas/validar/rut", { rut });
+      const _rut = await clientAxios.put("/api/empresas/validar/rut", { rut });
 
       if (razonSocial.trim() === "") {
         setRazonSocialError(true);
@@ -118,10 +118,10 @@ const One = forwardRef(
         setRutMsg("El rut no es valido");
         setRutError(true);
       } 
-      // else if (_rut.data._rut === true) {
-      //   setRutMsg("El rut ya se encuentra registrado");
-      //   setRutError(true);
-      // }
+      else if (_rut.data._rut === true) {
+        setRutMsg("El rut ya se encuentra registrado");
+        setRutError(true);
+      }
       if (giro.trim() === "") {
         setGiroError(true);
       }

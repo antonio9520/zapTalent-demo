@@ -38,16 +38,24 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-const Header = () => {
-  const [value, setValue] = useState(0);
+const Header = ({
+  value,
+  setValue,
+  setQuery,
+  _switch,
+  setSkip,
+  setSwitch,
+  query,
+}) => {
   const [search, setSearch] = useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const handleClick = () => {
-    // setQuery({ ...query, search });
-    console.log("handleclick");
+    setQuery({ ...query, search });
+    setSkip(0);
+    setSwitch(!_switch);
   };
   const _handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -61,7 +69,6 @@ const Header = () => {
         <AntTabs value={value} onChange={handleChange} aria-label="ant example">
           <AntTab label="Activos" />
           <AntTab style={{ marginLeft: "20px" }} label="Caducados" />
-          <AntTab style={{ marginLeft: "20px" }} label="Cercanos a caducar" />
         </AntTabs>
         <div className="cont-search">
           <SearchBar

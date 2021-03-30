@@ -4,6 +4,7 @@
   height: 100vh;
   padding-right: 15px;
   display: flex;
+  max-width: 1500px;
   flex-direction: column;
 }
 

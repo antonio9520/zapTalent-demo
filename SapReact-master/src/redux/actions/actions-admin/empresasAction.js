@@ -149,17 +149,19 @@ export function obtenerEmpresasAction({ skip, query }) {
         `/api/empresas/obtener/empresas/${skip}`,
         query
       );
-      if (respuesta.data.length === 0 && skip !== 0) {
-        dispatch(detenerCargaEmpresa());
-      } else {
-        if (skip === 0) {
-          dispatch(descargaExitoInitEmpresa(respuesta.data));
+      setTimeout(() => {
+        if (respuesta.data.length === 0 && skip !== 0) {
+          dispatch(detenerCargaEmpresa());
         } else {
-          for (let i = 0; i < respuesta.data.length; i++) {
-            dispatch(descargaExitoEmpresa(respuesta.data[i]));
+          if (skip === 0) {
+            dispatch(descargaExitoInitEmpresa(respuesta.data));
+          } else {
+            for (let i = 0; i < respuesta.data.length; i++) {
+              dispatch(descargaExitoEmpresa(respuesta.data[i]));
+            }
           }
         }
-      }
+      }, 500);
     } catch (error) {
       console.log(error);
       dispatch(descargaErrorEmpresa());

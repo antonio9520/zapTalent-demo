@@ -8,6 +8,7 @@ import {
   ModalView,
   ModalAddPerfil,
   ModalEditPerfil,
+  ModalEditDate,
 } from "./components";
 import { CardA, ModalEliminar } from "../../components";
 import { Snackbar } from "@material-ui/core";
@@ -39,24 +40,50 @@ const Home = () => {
   const [openModalEliminar, setOpenModalEliminar] = useState(false);
   //ELIMINAR PERFIL
   const [openModalEliminarPerfil, setOpenModalEliminarPerfil] = useState(false);
-
+  //FILTROS
+  const [skip, setSkip] = useState(0);
+  const [query, setQuery] = useState({ state: "activo" });
+  const [value, setValue] = useState(0);
+  const [_switch, setSwitch] = useState(false);
+  //EDITAR FECHA TERMINO
+  const [openModalRep, setOpenModalRep] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [totalEmpresas, setTotalEmpresas] = useState(0);
   const empresas = useSelector((state) => state.empresas.empresas);
+  const loading = useSelector((state) => state.empresas.loading);
+
+  const handleScroll = (e) => {
+    const { offsetHeight, scrollTop, scrollHeight } = e.target;
+
+    if (offsetHeight + scrollTop === scrollHeight) {
+      setSkip(empresas.length);
+    }
+  };
 
   const handleClose = () => {
     setOpenAlert(false);
   };
+
   useEffect(() => {
-    if (empresas.length === 0) {
-      dispatch(obtenerEmpresasAction({ skip: 0, query: {} }));
-    }
+    dispatch(obtenerEmpresasAction({ skip: skip, query }));
+
     obtenerTotalEmpresas();
-  }, []);
+  }, [skip, _switch]);
+
+  useEffect(() => {
+    if (value === 0) {
+      setSkip(0);
+      setQuery({ state: "activo" });
+    } else if (value === 1) {
+      setSkip(0);
+      setQuery({ state: "caducado" });
+    }
+    setSwitch(!_switch);
+  }, [value]);
 
   const obtenerTotalEmpresas = async () => {
     const respuesta = await clientAxios.get("/api/empresas/total/empresas");
-    console.log(respuesta);
+
     if (respuesta.data.total) {
       setTotalEmpresas(respuesta.data.total);
     }
@@ -116,6 +143,12 @@ const Home = () => {
         refreshPerfiles={refreshPerfiles}
         setRefreshPerfiles={setRefreshPerfiles}
       />
+      <ModalEditDate
+        openModalRep={openModalRep}
+        setOpenModalRep={setOpenModalRep}
+        data={dataEditar}
+        setDataEditar={setDataEditar}
+      />
       <div className="top">
         <Header setOpen={setOpenAddEmp} />
       </div>
@@ -145,6 +178,16 @@ const Home = () => {
           setDataAddPerfil={setDataAddPerfil}
           setIdEliminar={setIdEliminar}
           setOpenModalEliminar={setOpenModalEliminar}
+          handleScroll={handleScroll}
+          loading={loading}
+          value={value}
+          setValue={setValue}
+          setQuery={setQuery}
+          _switch={_switch}
+          setSkip={setSkip}
+          setSwitch={setSwitch}
+          query={query}
+          setOpenModalRep={setOpenModalRep}
         />
       </div>
       <Snackbar open={openAlert} onClose={handleClose} autoHideDuration={5000}>

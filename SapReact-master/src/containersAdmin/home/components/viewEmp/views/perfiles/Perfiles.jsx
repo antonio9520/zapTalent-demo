@@ -126,6 +126,7 @@ const Perfil = ({
   const [estado, setEstado] = useState(true);
   const _fechaInicio = new Date(fechaInicio);
   const _fechaTermino = new Date(fechaTermino);
+  const now = new Date();
 
   const editarPerfil = () => {
     setDataEditPerfil(data);
@@ -137,6 +138,16 @@ const Perfil = ({
       setOpenModalEliminar(true);
     }
   };
+  const setearEstado = () => {
+    if (_fechaTermino >= now) {
+      setEstado(true);
+    } else {
+      setEstado(false);
+    }
+  };
+  useEffect(() => {
+    setearEstado();
+  }, [fechaTermino]);
   return (
     <div className="perfil-view-emp-admin">
       <div className="row-1">
@@ -163,7 +174,7 @@ const Perfil = ({
                 fechaInicio
                   ? _fechaInicio.getDate() +
                     "/" +
-                    _fechaInicio.getMonth() +
+                    (_fechaInicio.getMonth() + 1) +
                     "/" +
                     _fechaInicio.getFullYear()
                   : null
@@ -178,12 +189,12 @@ const Perfil = ({
           </div>
           <div>
             <Item
-              title="Fecha termino"
+              title="Fecha término"
               value={
                 fechaTermino
                   ? _fechaTermino.getDate() +
                     "/" +
-                    _fechaTermino.getMonth() +
+                    (_fechaTermino.getMonth() + 1) +
                     "/" +
                     _fechaTermino.getFullYear()
                   : null
@@ -196,19 +207,19 @@ const Perfil = ({
       <div className="row-3">
         <div className="left">
           {estado ? (
-            <div className="activo">
+            <div className="activo" style={{ backgroundColor: "#187ce2" }}>
               <p>Activo</p>
             </div>
           ) : (
-            <div className="caducado">
+            <div className="caducado" style={{ backgroundColor: "#f44336" }}>
               <p>Caducado</p>
             </div>
           )}
-          <Tooltip title="Cambiar fecha de termino" placement="top">
+          {/* <Tooltip title="Cambiar fecha de término" placement="top">
             <IconButton className={classes.dateBtn}>
               <Event />
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
         </div>
         <div className="right">
           <Tooltip title="Editar" placement="top">

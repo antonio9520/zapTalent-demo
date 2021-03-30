@@ -5,6 +5,7 @@ import ModalEditar from "./editEmp/Modal";
 import ModalView from "./viewEmp/Modal";
 import ModalAddPerfil from "./addPerfil/Modal";
 import ModalEditPerfil from "./editPerfil/Modal";
+import ModalEditDate from "./editDate/Modal";
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   ModalView,
   ModalAddPerfil,
   ModalEditPerfil,
+  ModalEditDate,
 };

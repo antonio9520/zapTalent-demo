@@ -100,7 +100,7 @@ const Avisos = () => {
           <Header
             setOpenModal={setOpenModal}
             setIndex={setIndex}
-            index={index}
+            index={index} 
             setQuery={setQuery}
             _switch={_switch}
             setSkip={setSkip}

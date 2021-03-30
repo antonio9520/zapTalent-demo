@@ -31,7 +31,7 @@ const CustomModal = (props) => {
     setOpen(false);
     setTimeout(() => {
       setDataView(null);
-    }, 300);
+    }, 500);
   };
   return (
     <Modal
