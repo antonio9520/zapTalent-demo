@@ -188,3 +188,17 @@ exports.obtenerPerfiles = async (req, res) => {
     res.status(404).json({ msg: "error en el servidor " + error });
   }
 };
+
+//ELIMINAR PERFIL
+exports.deletePerfil = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const usuario = await Usuario.findById(id);
+    usuario.remove();
+    res.status(200).send({ msg: "Empresa eliminada exitosamente." });
+    res.end();
+  } catch (error) {
+    res.status(500).send({ msg: "Error en el servidor." });
+    res.end();
+  }
+};

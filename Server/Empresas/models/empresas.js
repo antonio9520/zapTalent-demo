@@ -32,6 +32,10 @@ const empresaSchema = mongoose.Schema({
   tipoPlan: {
     type: String,
   },
+  creacion: {
+    type: Date,
+    default: Date(),
+  },
 });
 
 empresaSchema.methods.setcertificado = function setcertificado(filename) {

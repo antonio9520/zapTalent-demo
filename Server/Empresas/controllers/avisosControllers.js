@@ -18,14 +18,12 @@ exports.mostrarAvisos = async (req, res) => {
 
   try {
     const querie = await createQuery(query);
-    console.log(querie);
-    console.log("algo");
-    //{titulo: { '$regex': '(\s+node|^node)', '$options': 'i' }}
+
     const avisos = await Avisos.find(querie, undefined, {
       skip: parseInt(skip),
       limit: 6,
     }).sort({ creacion: -1 });
-    // console.log(avisos);
+
     const dataAvisos = await datapostulaciones(avisos);
     res.json(dataAvisos);
   } catch (err) {

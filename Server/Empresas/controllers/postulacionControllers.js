@@ -13,36 +13,33 @@ exports.crearPostulacion = async (req, res) => {
     const data = await Avisos.findById(id);
     data.id_post = post._id;
     res.status(200).json(data);
-    
+
     const idusesr = postulacion.iduser;
     const datauser = await Usuario.findById(idusesr);
     const email = datauser.email;
-     //email
-     const userconfi= {
-      email
-      } 
-  
-      const titulo = data.titulo;
-      const salario = data.renta;
-      const fecini = data.fechaInicio;
-      const fecfin = data.fechaTermino;
-      const tconsultor = data.tipoConsultor;
-  
-  
-      console.log("llega aqui 1?");
+    //email
+    const userconfi = {
+      email,
+    };
+
+    const titulo = data.titulo;
+    const salario = data.renta;
+    const fecini = data.fechaInicio;
+    const fecfin = data.fechaTermino;
+    const tconsultor = data.tipoConsultor;
+
     //envio email cuenta creada
     await enviarEmail.enviar({
-            userconfi,
-            subject: "Felicidades te Acabas Postular a una nueva oferta laboral en ZAPTalent!",
-            titulo,
-            salario,
-            fecini,
-            fecfin,
-            tconsultor,
-            archivo: "infoPostu"
-          });
-  console.log("se envio?");
-    
+      userconfi,
+      subject:
+        "Felicidades te Acabas Postular a una nueva oferta laboral en ZAPTalent!",
+      titulo,
+      salario,
+      fecini,
+      fecfin,
+      tconsultor,
+      archivo: "infoPostu",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "Postulacion Cancelada Error en el servidor" });
@@ -152,9 +149,13 @@ exports.usuarioPostulados = async (req, res) => {
   }
 
   try {
-    const postulaciones = await Postulacion.find({
-      $and: [query],
-    });
+    const postulaciones = await Postulacion.find(
+      {
+        $and: [query],
+      },
+      undefined,
+      { skip: parseInt(skip), limit: 12 }
+    );
     const query2 = await createQuery({
       tipoConsultor,
       modulo,
@@ -186,7 +187,7 @@ const dataUsuarios = async (data, query) => {
     const aviso = await Avisos.findById(data[i].idaviso);
     if (aviso) {
       query._id = data[i].iduser;
-      console.log(query);
+
       let usuario = await Usuario.findOne(query);
 
       if (usuario) {

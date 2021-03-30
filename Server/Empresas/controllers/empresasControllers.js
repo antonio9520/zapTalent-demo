@@ -1,4 +1,5 @@
 const Empresas = require("../models/empresas");
+const Usuario = require("../models/usuarioEmpresa");
 const upload = require("../../libs/storageempresalogo");
 const fs = require("fs").promises;
 
@@ -13,6 +14,7 @@ exports.SubirArchivo = (req, res, next) => {
 
 exports.CrearEmpresa = async (req, res) => {
   const Empresa = req.body;
+  console.log(Empresa.fechaTermino);
   try {
     Empresa.direcciones = JSON.parse(Empresa.direcciones);
     Empresa.telefonos = JSON.parse(Empresa.telefonos);
@@ -32,15 +34,47 @@ exports.CrearEmpresa = async (req, res) => {
 };
 
 exports.mostrarEmpresas = async (req, res) => {
+  const skip = req.params.skip;
+  const query = req.body;
+
   try {
-    const empresas = await Empresas.find();
+    const _query = await createQuery(query);
+
+    const empresas = await Empresas.find(_query, undefined, {
+      skip: parseInt(skip),
+      limit: 10,
+    }).sort({ fechaTermino: 1 });
+
     res.json(empresas);
+    res.end();
   } catch (error) {
     console.log(error);
     res.status(404).json({ msg: "error en el servidor " + error });
   }
 };
 
+const createQuery = (data) => {
+  const { state, search } = data;
+  let query = {};
+  query.$and = [];
+  const now = new Date();
+  switch (state) {
+    case "activo":
+      query.$and.push({ fechaTermino: { $gte: new Date() } });
+      break;
+    case "caducado":
+      query.$and.push({ fechaTermino: { $lte: new Date() } });
+      break;
+    default:
+      break;
+  }
+
+  if (search) {
+    query.$and.push({ razonSocial: { $regex: `${search}`, $options: "i" } });
+  }
+
+  return query;
+};
 exports.putEmpresas = async (req, res) => {
   const idempresa = req.params.idempresa;
 
@@ -57,30 +91,29 @@ exports.putEmpresas = async (req, res) => {
   } = req.body;
 
   try {
-    console.log(razonSocial);
-    direcciones = JSON.parse(direcciones);
-    telefonos = JSON.parse(telefonos);
-    await Empresas.findById(idempresa, function (err, empresa) {
-      if (razonSocial) empresa.razonSocial = razonSocial;
-      if (rut) empresa.rut = rut;
-      if (giro) empresa.giro = giro;
-      if (fechaInicio) empresa.fechaInicio = fechaInicio;
-      if (fechaTermino) empresa.fechaTermino = fechaTermino;
-      if (resena) empresa.resena = resena;
-      if (direcciones) empresa.direcciones = direcciones;
-      if (telefonos) empresa.telefonos = telefonos;
-      if (tipoPlan) empresa.tipoPlan = tipoPlan;
-      if (req.file) {
-        console.log(req.file);
-        const { filename } = req.file;
-        empresa.setcertificado(filename);
-      }
-      if (err) return res.status(400).json({ msg: "Empresa no encontrada" });
-      empresa.save(function (err) {
-        if (err) return res.status(500).json({ msg: "error al actualizar" });
-        res.status(200).send(empresa);
-      });
-    });
+    if (direcciones !== "undefined") direcciones = JSON.parse(direcciones);
+
+    if (telefonos !== "undefined") telefonos = JSON.parse(telefonos);
+
+    const empresa = await Empresas.findById(idempresa);
+
+    if (razonSocial !== "undefined") empresa.razonSocial = razonSocial;
+    if (rut !== "undefined") empresa.rut = rut;
+    if (giro !== "undefined") empresa.giro = giro;
+    if (fechaInicio !== "undefined") empresa.fechaInicio = fechaInicio;
+    if (fechaTermino !== "undefined") empresa.fechaTermino = fechaTermino;
+    if (resena !== "undefined") empresa.resena = resena;
+    if (direcciones !== "undefined") empresa.direcciones = direcciones;
+    if (telefonos !== "undefined") empresa.telefonos = telefonos;
+    if (tipoPlan !== "undefined") empresa.tipoPlan = tipoPlan;
+    if (req.file) {
+      const { filename } = req.file;
+      empresa.setcertificado(filename);
+    }
+
+    await empresa.save();
+    res.status(200).send(empresa);
+    res.end();
   } catch (error) {
     console.log(error);
     res.status(404).json({ msg: "error en el servidor " + error });
@@ -89,17 +122,16 @@ exports.putEmpresas = async (req, res) => {
 
 //ELIMINAR
 exports.deleteEmp = async (req, res) => {
-  const idempresa = req.params.idempresa;
+  const idemp = req.params.idemp;
   try {
-    await Empresas.findById(idempresa, (err, empresa) => {
-      if (err) res.status(402).json({ msg: `Error al borrar la empresa ` });
-      empresa.remove((err) => {
-        if (err) res.status(402).send({ msg: "Error al borrar empresa" });
-        res.status(200).send({ msg: "Empresa eliminada exitosamente." });
-      });
-    });
+    await Usuario.deleteMany({ idemp: idemp });
+    const empresa = await Empresas.findById(idemp);
+    empresa.remove();
+    res.status(200).send({ msg: "Empresa eliminada exitosamente." });
+    res.end();
   } catch (error) {
     res.status(500).send({ msg: "Error en el servidor." });
+    res.end();
   }
 };
 

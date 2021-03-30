@@ -18,5 +18,6 @@ router.put("/validar/email", usuarioAdminControllers.validarPerfilUnico);
 
 router.get("/obtener/perfiles/:idemp", usuarioAdminControllers.obtenerPerfiles);
 // router.put("/", usuarioAdminControllers.putUserAdmin);
+router.delete("/:id", usuarioAdminControllers.deletePerfil);
 
 module.exports = router;
