@@ -20,6 +20,8 @@ router.put("/validar/rut", empresasControl.validarEmpresaUnica);
 
 router.get("/total/empresas", empresasControl.totalEmpresas);
 
+router.get("/total/morosos", empresasControl.totalMorosos);
+
 router.delete("/:idemp", empresasControl.deleteEmp);
 
 // router.put("/", usuarioAdminControllers.putUserAdmin);

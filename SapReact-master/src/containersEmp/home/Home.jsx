@@ -11,7 +11,7 @@ import {
   obtenerTotalUsuariosAction,
   obtenerTotalAvisosAction,
   obtenerTotalPostNoLeidosAction,
-  obtenerTotalPostulantesAction,
+  obtenerTotalPostulantesAction, 
   obtenerTotalUsuariosDiaAction,
 } from "../../redux/actions/actions-emp/postuladosAction";
 import { DialogCVPDF } from "../../componentsEmp";

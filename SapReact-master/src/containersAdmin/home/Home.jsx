@@ -14,6 +14,7 @@ import { CardA, ModalEliminar } from "../../components";
 import { Snackbar } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { obtenerEmpresasAction } from "../../redux/actions/actions-admin/empresasAction";
+import { obtenerTotalUsuariosAction } from "../../redux/actions/actions-emp/postuladosAction";
 import { useDispatch, useSelector } from "react-redux";
 import clientAxios from "../../config/axios";
 
@@ -48,10 +49,14 @@ const Home = () => {
   //EDITAR FECHA TERMINO
   const [openModalRep, setOpenModalRep] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
+
   const [totalEmpresas, setTotalEmpresas] = useState(0);
+  const [totalMorosos, setTotalMorosos] = useState(0);
+  const [totalAvisos, setTotalAvisos] = useState(0);
+
   const empresas = useSelector((state) => state.empresas.empresas);
   const loading = useSelector((state) => state.empresas.loading);
-
+  const totalusers = useSelector((state) => state.postulados.totalusers);
   const handleScroll = (e) => {
     const { offsetHeight, scrollTop, scrollHeight } = e.target;
 
@@ -66,9 +71,27 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(obtenerEmpresasAction({ skip: skip, query }));
-
-    obtenerTotalEmpresas();
+    dispatch(obtenerTotalUsuariosAction());
+    obtenerTotales();
   }, [skip, _switch]);
+
+  const obtenerTotales = async () => {
+    try {
+      //MOROSOS
+      const morosos = await clientAxios.get("/api/empresas/total/morosos");
+      setTotalMorosos(morosos.data.total);
+      //TOTAL EMPRESAS
+      const _totalEmpresas = await clientAxios.get(
+        "/api/empresas/total/empresas"
+      );
+      setTotalEmpresas(_totalEmpresas.data.total);
+      //TOTAL AVISOS
+      const totalAvisos = await clientAxios.get("/api/avisos/total/avisos");
+      setTotalAvisos(totalAvisos.data.total);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (value === 0) {
@@ -81,13 +104,6 @@ const Home = () => {
     setSwitch(!_switch);
   }, [value]);
 
-  const obtenerTotalEmpresas = async () => {
-    const respuesta = await clientAxios.get("/api/empresas/total/empresas");
-
-    if (respuesta.data.total) {
-      setTotalEmpresas(respuesta.data.total);
-    }
-  };
   const refreshPerfil = () => {
     setRefreshPerfiles(!refreshPerfiles);
   };
@@ -157,13 +173,13 @@ const Home = () => {
           <CardA white titulo="Total Clientes" value={totalEmpresas} />
         </div>
         <div className="item">
-          <CardA white titulo="Usuarios creados" value={200} />
+          <CardA white titulo="Usuarios creados" value={totalusers} />
         </div>
         <div className="item">
-          <CardA degradado titulo="Clientes morosos" value={300} />
+          <CardA degradado titulo="Clientes morosos" value={totalMorosos} />
         </div>
         <div className="item">
-          <CardA degradado titulo="Total de Anuncios" value={400} />
+          <CardA degradado titulo="Total de Anuncios" value={totalAvisos} />
         </div>
       </div>
       <div className="bottom">

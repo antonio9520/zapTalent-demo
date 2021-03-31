@@ -153,8 +153,21 @@ exports.validarEmpresaUnica = async (req, res) => {
 exports.totalEmpresas = async (req, res) => {
   try {
     const totalempresas = await Empresas.find({}).countDocuments();
-    console.log(totalempresas);
+
     res.status(200).json({ total: totalempresas });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//TOTAL MOROSOS
+exports.totalMorosos = async (req, res) => {
+  try {
+    const totalmorosos = await Empresas.find({
+      fechaTermino: { $lte: new Date() },
+    }).countDocuments();
+
+    res.status(200).json({ total: totalmorosos });
   } catch (error) {
     console.log(error);
   }

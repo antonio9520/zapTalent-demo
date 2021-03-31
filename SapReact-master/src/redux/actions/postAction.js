@@ -36,7 +36,10 @@ export function crearPostulacionAction(data) {
     } catch (error) {
       console.log(error);
       dispatch(crearPostulacionError());
-      showAlert({ show: true, msg: error.response.data.msg, type: "error" });
+      console.log("dslfmslñfmalñmlñsfmasñlmfsdf");
+      dispatch(
+        showAlert({ show: true, msg: "Ocurrio un error", type: "error" })
+      );
     }
   };
 }
@@ -62,7 +65,7 @@ export function obtenerPostulacionesAction(id) {
       const respuesta = await clientAxios.put(`/api/postulacion/${id}`);
       dispatch(obtenerExito(respuesta.data));
     } catch (error) {
-      console.log(error); 
+      console.log(error);
       dispatch(obtenerError());
     }
   };

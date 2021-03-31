@@ -225,7 +225,7 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
               </Tooltip>
 
               <Tooltip title="Tipo de Jornada">
-                <div> 
+                <div>
                   <QueryBuilder className="icon-card-ofertas-laborales" />
                   <p>{jornadaLaboral}</p>
                 </div>
@@ -347,17 +347,16 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
             <div className="item-3">
               <p>
                 Salario:
-                {renta === 0
-                  ? " A convenir"
-                  : "$ " +
-                    (
-                      <NumberFormat
-                        value={renta}
-                        displayType={"text"}
-                        thousandSeparator={true}
-                        // prefix={"$"}
-                      />
-                    )}
+                {renta === 0 ? (
+                  " A convenir"
+                ) : (
+                  <NumberFormat
+                    value={renta}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={" $"}
+                  />
+                )}
               </p>
               {postulado ? (
                 <Button

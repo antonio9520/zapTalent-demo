@@ -79,10 +79,15 @@ const Login = (props) => {
         className={!hidden ? "logo-login" : "hidden-login"}
       />
       <div className={!hidden ? "card-login" : "card-login-hidden"}>
-        <div className="cont-left-item">
+        <div
+          className="cont-left-item"
+          style={{
+            paddingTop: "80px",
+            paddingBottom: "80px",
+          }}
+        >
           <div className="cont-top-login">
             <p>Accede a tu cuenta </p>
-            <p>ZAPTalent</p>
           </div>
           <div className="cont-input-login-emp">
             <div className="input-login-form-2">
@@ -134,56 +139,34 @@ const Login = (props) => {
               >
                 <p style={{ color: "white" }}>Ingresar</p>
               </ListItem>
-              <Link className="link" to="/empresas">
-                <ListItem button className="btn-cancelar-login-emp">
-                  <p
-                    style={{
-                      width: "150px",
-                      textAlign: "center",
-                      color: "white",
-                    }}
-                  >
-                    Cancelar
-                  </p>
-                </ListItem>
-              </Link>
-            </div>
-            <p className="link-terminos-condiciones">
-              Al ingresar estás aceptando los
-              <a
-                href="https://info.zaptalent.cl/terminos-de-usos-y-condiciones/"
-                target="_blank"
+
+              <ListItem
+                button
+                className="btn-cancelar-login-emp"
+                onClick={() =>
+                  (window.location.href = "https://info.zaptalent.cl/")
+                }
               >
-                Terminos y Condiciones{" "}
-              </a>
-              de uso.
-            </p>
-          </div>
-          <div>
-            <p>¿Olvidaste tu contraseña?</p>
-            <ListItem
-              button
-              className="btn-recuperar-login-emp"
-              // onClick={() => setrecuperar("recuperar")}
-            >
-              <p>Recuperar</p>
-            </ListItem>
-            <p>
-              ¿Qué aun no tienes cuenta? <a href="#">Comienza acá</a>
-            </p>
+                <p
+                  style={{
+                    width: "150px",
+                    textAlign: "center",
+                    color: "white",
+                  }}
+                >
+                  Cancelar
+                </p>
+              </ListItem>
+            </div>
+            {/* <div style={{ width: 200, height: 500 }}></div> */}
           </div>
         </div>
 
-        {/* <div className="cont-right-item"> */}
         <div className="right-card-login-emp">
-          <h1>Encuentra a los mejores profesionales SAP de Chile.</h1>
-          <p style={{ color: "white" }}>
-            Así de fácil es poder acceder y ser parte de la red de profesionales
-            SAP más grande de Chile.
-          </p>
+          <h1>Plataforma Administradora</h1>
         </div>
       </div>
-      {/* </div> */}
+
       <Snackbar
         open={_alert.show}
         onClose={handleClose}
@@ -191,13 +174,6 @@ const Login = (props) => {
       >
         <Alert severity={_alert.type}>{_alert.msg}</Alert>
       </Snackbar>
-      {/* <Snackbar
-        open={showAlert}
-        onClose={() => setShowAlert(false)}
-        autoHideDuration={5000}
-      >
-        <Alert severity={alertType}>{errormsg}</Alert>
-      </Snackbar> */}
     </div>
   );
 };

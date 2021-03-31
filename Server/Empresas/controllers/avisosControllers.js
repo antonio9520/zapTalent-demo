@@ -178,12 +178,21 @@ exports.putAviso = async (req, res) => {
 
 exports.mostrarAvisoId = async (req, res) => {
   const id = req.params.id;
-  // throw n;
+
   try {
     const aviso = await Avisos.findById(id);
-    // console.log(avisos);
 
     res.json(aviso);
+  } catch (err) {
+    res.status(500).json({ msg: "Hubo un error" });
+  }
+};
+
+exports.totalAvisos = async (req, res) => {
+  try {
+    const avisos = await Avisos.find().countDocuments();
+
+    res.json({ total: avisos });
   } catch (err) {
     res.status(500).json({ msg: "Hubo un error" });
   }

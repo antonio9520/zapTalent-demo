@@ -288,19 +288,24 @@ const Login = (props) => {
                 >
                   <p style={{ color: "white" }}>Ingresar</p>
                 </ListItem>
-                <Link className="link" to="/inicio">
-                  <ListItem button className="btn-cancelar-login">
-                    <p
-                      style={{
-                        width: "150px",
-                        textAlign: "center",
-                        color: "white",
-                      }}
-                    >
-                      Cancelar
-                    </p>
-                  </ListItem>
-                </Link>
+
+                <ListItem
+                  button
+                  className="btn-cancelar-login"
+                  onClick={() =>
+                    (window.location.href = "https://info.zaptalent.cl/")
+                  }
+                >
+                  <p
+                    style={{
+                      width: "150px",
+                      textAlign: "center",
+                      color: "white",
+                    }}
+                  >
+                    Cancelar
+                  </p>
+                </ListItem>
               </div>
               <p className="link-terminos-condiciones">
                 Al ingresar estás aceptando los

@@ -5,7 +5,18 @@ const Adnsap = require("../../models/adnsap");
 const enviarEmail = require("../../handlers/email");
 
 exports.crearPostulacion = async (req, res) => {
+  const { idaviso, iduser } = req.body;
+  console.log(idaviso, iduser);
   try {
+    //evitar postulaciones duplicadas
+    const _postulacion = await Postulacion.findOne({
+      $and: [{ idaviso: idaviso }, { iduser: iduser }],
+    });
+    console.log(_postulacion);
+    if (_postulacion) {
+      throw new Error("Postulacion ya existe");
+    }
+
     const postulacion = new Postulacion(req.body);
     const post = await postulacion.save();
 
@@ -32,7 +43,7 @@ exports.crearPostulacion = async (req, res) => {
     await enviarEmail.enviar({
       userconfi,
       subject:
-        "Felicidades te Acabas Postular a una nueva oferta laboral en ZAPTalent!",
+        "Felicidades te acabas de postular a una nueva oferta laboral en ZAPTalent!",
       titulo,
       salario,
       fecini,
