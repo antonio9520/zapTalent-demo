@@ -3,6 +3,7 @@
   width: 100%;
   height: 60px;
   border-radius: 5px;
+  min-width: 750px;
   box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
   display: flex;
   cursor: pointer;
@@ -42,7 +43,6 @@
   justify-content: center;
   padding: 5px;
   flex-direction: column;
-
 }
 .sub-div-cardjob-2 p:nth-child(1) {
   font-size: 13px;
@@ -72,11 +72,17 @@
   /* background-color: rgb(11, 141, 80); */
   flex: 1.4;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 5px;
 }
-.sub-div-cardjob-4 p {
+.sub-div-cardjob-4 p:nth-child(1) {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-text);
+}
+.sub-div-cardjob-4 p:nth-child(2) {
   font-size: 11px;
   color: var(--gray-text);
 }
@@ -84,11 +90,17 @@
   /* background-color: rgb(225, 65, 118); */
   flex: 0.7;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 5px;
 }
-.sub-div-cardjob-5 p {
+.sub-div-cardjob-5 p:nth-child(1) {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-text);
+}
+.sub-div-cardjob-5 p:nth-child(2) {
   font-size: 11px;
   color: var(--gray-text);
 }
@@ -96,11 +108,17 @@
   /* background-color: rgb(70, 13, 13); */
   flex: 1.4;
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   padding: 5px;
 }
-.sub-div-cardjob-6 p {
+.sub-div-cardjob-6 p:nth-child(1) {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-text);
+}
+.sub-div-cardjob-6 p:nth-child(2) {
   font-size: 11px;
   color: var(--gray-text);
 }
@@ -108,12 +126,45 @@
   /* background-color: rgb(32, 121, 87); */
   flex: 0.7;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 3px;
 }
-.sub-div-cardjob-7 p {
-  font-size: 11px;
+.sub-div-cardjob-7 p:nth-child(1) {
+  font-size: 12px;
   font-weight: 600;
   color: var(--gray-text);
+}
+.sub-div-cardjob-7 p:nth-child(2) {
+  font-size: 11px;
+  color: var(--gray-text);
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+}
+
+@media only screen and (max-width: 500px) {
+}
+
+.cont-card-job-mini {
+  background-color: var(--white);
+  width: 100%;
+  height: fit-content;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 10px;
+}
+.cont-card-job-mini p {
+  margin: 0;
 }

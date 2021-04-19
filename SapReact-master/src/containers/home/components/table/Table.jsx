@@ -88,18 +88,21 @@ const Table = ({
             </Button>
           </div>
         ) : (
-          data.map((item) => (
-            <div key={item._id} className="cont-card-job-table">
-              <CardJob
-                data={item}
-                setOpenModal={setOpenModal}
-                setDataOL={setDataOL}
-                setOpenModalAviso={setOpenModalAviso}
-                setIdEmp={setIdEmp}
-                setIdAviso={setIdAviso}
-              />
-            </div>
-          ))
+          <div className="cont-card-job-table">
+            {data.map((item) => (
+              <>
+                <CardJob
+                  key={item._id}
+                  data={item}
+                  setOpenModal={setOpenModal}
+                  setDataOL={setDataOL}
+                  setOpenModalAviso={setOpenModalAviso}
+                  setIdEmp={setIdEmp}
+                  setIdAviso={setIdAviso}
+                />
+              </>
+            ))}
+          </div>
         )}
       </div>
     </div>
