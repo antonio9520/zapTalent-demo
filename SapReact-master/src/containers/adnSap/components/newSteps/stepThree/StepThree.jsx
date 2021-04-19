@@ -62,7 +62,7 @@ const StepThree = forwardRef(
     const handleClose = () => {
       setAlert(false);
     };
-
+ 
     return (
       <div ref={ref} className="step-three-new-modal-adn">
         <Tooltip title="Cerrar" placement="top">

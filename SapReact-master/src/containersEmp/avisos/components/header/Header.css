@@ -22,12 +22,88 @@
 .right-header-avisos-emp {
   /* background-color: chocolate; */
   display: flex;
-
   align-items: center;
+}
+.right-header-avisos-emp .search-ofertas {
+  width: 350px;
+  margin-right: 50px;
 }
 
 .right-header-avisos-emp p {
   margin: 0;
 }
 
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
 
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .left-header-avisos-emp {
+    display: none;
+  }
+
+  .header-avisos-emp {
+    /* width: 100%; */
+  }
+  .right-header-avisos-emp {
+    display: flex;
+    /* background-color: brown; */
+    flex: 1;
+    justify-content: space-between;
+  }
+  .right-header-avisos-emp .search-ofertas {
+    flex: 1;
+    max-width: 200px;
+    margin-right: 20px;
+    /* background-color: brown; */
+  }
+}
+@media only screen and (min-width: 1px) and (max-width: 735px) {
+  .header-avisos-emp {
+    background-color: cadetblue;
+    height: 100px;
+    display: none;
+  }
+  .right-header-avisos-emp {
+    display: flex;
+    flex-direction: column;
+    background-color: brown;
+    flex: 1;
+    justify-content: space-between;
+  }
+  /* .right-header-avisos-emp .search-ofertas {
+    flex: 1;
+    max-width: 200px;
+    margin-right: 20px;
+    
+  } */
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .header-avisos-emp {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+    display: none;
+  }
+  .right-header-avisos-emp {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right-header-avisos-emp .search-ofertas {
+    width: 100%;
+    margin-right: inherit;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

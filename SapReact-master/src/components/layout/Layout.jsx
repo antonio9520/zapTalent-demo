@@ -35,11 +35,11 @@ const Layout = (props) => {
           </Snackbar> 
         </div> 
 
-        <div className="splash-screen-responsivo">
+        {/* <div className="splash-screen-responsivo">
           <img src={image} alt="logo" />
           <p>Pagina responsiva en construcción</p>
           <p>Utilice un dispositivo de mayor resolución</p>
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -28,7 +28,7 @@ const Formulario = (props) => {
   const usuario = useSelector((state) => state.auth.usuario);
   const loading = useSelector((state) => state.estudio.cargando);
   const [file, setFile] = useState(null);
-
+  
   //data
   const [idusuario] = useState(usuario ? usuario._id : null);
   const [tipoestudio, setTipoEstudio] = useState(null);

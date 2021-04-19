@@ -551,11 +551,60 @@
 /* Smartphones in landscape mode */
 
 @media only screen and (min-width: 600px) and (max-width: 959px) {
+  .cont-new-perfil {
+    padding-bottom: 60px;
+  }
+  .left-new-perfil {
+    margin-right: 0;
+  }
+  .left-new-perfil .item-1 {
+  }
+
+  .right-new-perfil {
+    display: none;
+  }
+  .btn-open-drawer-perfil {
+    position: absolute !important;
+    display: inherit !important;
+    right: 0;
+    top: 40px;
+    z-index: 99;
+    background-color: var(--blue-primary) !important;
+    color: white !important;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* Smartphones in portrait mode  */
 
 @media only screen and (max-width: 599px) {
+  .cont-new-perfil {
+    padding-bottom: 60px;
+  }
+  .right-new-perfil {
+    display: none;
+  }
+  .left-new-perfil {
+    margin-right: 0;
+  }
+  .btn-open-drawer-perfil {
+    position: absolute !important;
+    display: inherit !important;
+    right: 0;
+    top: 40px;
+    z-index: 99;
+    background-color: var(--blue-primary) !important;
+    color: white !important;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+  }
+  .titulo-page {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+  }
+  .left-new-perfil .item-1 {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 500px) {

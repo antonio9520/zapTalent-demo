@@ -142,9 +142,10 @@
   font-weight: 500;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 599px) {
   .cont-card-cert {
-    width: 100%;
+    width: 94%;
     min-width: inherit;
+    margin: 20px 0 0 0;
   }
 }

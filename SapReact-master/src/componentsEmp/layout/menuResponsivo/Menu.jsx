@@ -10,6 +10,7 @@ import {
   Description,
   Business,
   AccountTree,
+  RecentActors,
   Menu as MenuIcon,
   AccountCircle,
   Close,
@@ -17,15 +18,15 @@ import {
 import userlogo from "../../../resources/images/SAPTalent/icon-new-user.svg";
 import { Tooltip } from "../../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { cerrarSesionAction } from "../../../redux/actions/authAction";
 
+import { cerrarSesionEmpAction } from "../../../redux/actions/actions-emp/authAction";
 const Menu = () => {
   const dispatch = useDispatch();
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
   const usuario = useSelector((state) => state.auth.usuario);
   const cerrarSesion = () => {
-    dispatch(cerrarSesionAction());
+    dispatch(cerrarSesionEmpAction());
   };
   let nombreuser;
   let apellidouser;
@@ -39,67 +40,8 @@ const Menu = () => {
   return (
     <>
       <div className="cont-menu-resp">
-        <Tooltip title="Perfil">
-          <Link to="/perfil" className={`link`}>
-            <ListItem
-              button
-              className={
-                active === "perfil"
-                  ? "btn-resp-menu-active hidsm"
-                  : "btn-resp-menu hidsm"
-              }
-              onClick={() => setActive("perfil")}
-            >
-              <AccountCircle />
-            </ListItem>
-          </Link>
-        </Tooltip>
-
         <Tooltip title="Home">
-          <Link to="/home" className={`link`}>
-            <ListItem
-              button
-              className={
-                active === "home"
-                  ? "btn-resp-menu-active hidsm"
-                  : "btn-resp-menu hidsm"
-              }
-              onClick={() => setActive("home")}
-            >
-              <Home />
-            </ListItem>
-          </Link>
-        </Tooltip>
-        <Tooltip title="Ofertas laborales">
-          <Link to="/ofertas-laborales" className="link">
-            <ListItem
-              button
-              className={
-                active === "ofertas" ? "btn-resp-menu-active" : "btn-resp-menu"
-              }
-              onClick={() => setActive("ofertas")}
-            >
-              <BusinessCenter />
-            </ListItem>
-          </Link>
-        </Tooltip>
-        <Tooltip title="Estudios">
-          <Link to="/estudios" className="link">
-            <ListItem
-              button
-              className={
-                active === "estudios"
-                  ? "btn-resp-menu-active "
-                  : "btn-resp-menu "
-              }
-              onClick={() => setActive("estudios")}
-            >
-              <School />
-            </ListItem>
-          </Link>
-        </Tooltip>
-        <Tooltip title="Certificados">
-          <Link to="/certificaciones" className="link">
+          <Link to="/empresas/home" className="link">
             <ListItem
               button
               className={
@@ -109,12 +51,12 @@ const Menu = () => {
               }
               onClick={() => setActive("certificados")}
             >
-              <Description />
+              <Home />
             </ListItem>
           </Link>
         </Tooltip>
-        <Tooltip title="Adn ZAP">
-          <Link to="/sap-adn" className="link">
+        <Tooltip title="Ecosistema SAP">
+          <Link to="/empresas/eco-sap" className="link">
             <ListItem
               button
               className={
@@ -126,18 +68,18 @@ const Menu = () => {
             </ListItem>
           </Link>
         </Tooltip>
-        <Tooltip title="Trabajos">
-          <Link to="/trabajos" className="link">
+        <Tooltip title="Mis Avisos">
+          <Link to="/empresas/avisos" className="link">
             <ListItem
               button
               className={
                 active === "trabajos"
-                  ? "btn-resp-menu-active hidsm"
-                  : "btn-resp-menu hidsm"
+                  ? "btn-resp-menu-active "
+                  : "btn-resp-menu "
               }
               onClick={() => setActive("trabajos")}
             >
-              <Business />
+              <RecentActors />
             </ListItem>
           </Link>
         </Tooltip>
@@ -154,9 +96,9 @@ const Menu = () => {
           <ListItem
             button
             className="btn-open-menu-resp"
-            onClick={() => setOpen(true)}
+            onClick={() => cerrarSesion()}
           >
-            <MenuIcon />
+            <ExitToApp />
           </ListItem>
         </Tooltip>
       </div>

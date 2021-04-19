@@ -25,6 +25,7 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const loading = useSelector((state) => state.authEmp.loading);
   const [cargando, setCargando] = useState(false);
+  const [recordarme, setRecordarme] = useState(false);
   const autenticado = useSelector((state) => state.authEmp.autenticado);
   const _alert = useSelector((state) => state.authEmp.alert);
   //error
@@ -37,7 +38,10 @@ const Login = (props) => {
       console.log("los campos son obligatorios");
     }
     const email = emailA.toLocaleLowerCase();
-
+    if (recordarme) {
+      localStorage.setItem("email_zap_emp", email);
+      localStorage.setItem("password_zap_emp", password);
+    }
     dispatch(iniciarSesionEmpAction({ email, password }));
   };
 
@@ -51,14 +55,37 @@ const Login = (props) => {
   };
   useEffect(() => {
     dispatch(usuarioAuthEmpAction());
+    obtenerEmailPassLocalStorage();
     // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (autenticado) {
       props.history.push("/empresas/home");
     }
+
     // eslint-disable-next-line
   }, [autenticado]);
+
+  const obtenerEmailPassLocalStorage = () => {
+    const _email = localStorage.getItem("email_zap_emp");
+    const _password = localStorage.getItem("password_zap_emp");
+
+    if (_email && _password) {
+      setRecordarme(true);
+      setEmail(_email);
+      setPassword(_password);
+    }
+  };
+  const cambiarRecordarme = () => {
+    if (recordarme) {
+      setRecordarme(false);
+      localStorage.removeItem("email_zap_emp");
+      localStorage.removeItem("password_zap_emp");
+    } else {
+      setRecordarme(true);
+    }
+  };
+
   return (
     <div className="conteiner-login-emp">
       <div
@@ -103,6 +130,7 @@ const Login = (props) => {
                 error={erroremail}
                 size="medium"
                 name="email"
+                value={emailA}
                 logininput
                 onKeyDown={_handleKeyDown}
               />
@@ -119,6 +147,7 @@ const Login = (props) => {
                 }}
                 type="password"
                 error={errorpassword}
+                value={password}
                 size="medium"
                 name="password"
                 logininput
@@ -128,7 +157,14 @@ const Login = (props) => {
           </div>
           <div className="cont-btns-login">
             <label>
-              <input type="checkbox" name="recordarme" id="" />
+              <input
+                type="checkbox"
+                name="recordarme"
+                id=""
+                defaultChecked={recordarme}
+                checked={recordarme}
+                onChange={() => cambiarRecordarme()}
+              />
               Recordarme
             </label>
             <div className="cont-btn-ing-can-login">

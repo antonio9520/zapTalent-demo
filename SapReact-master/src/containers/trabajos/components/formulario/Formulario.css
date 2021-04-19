@@ -119,9 +119,6 @@
 /* Smartphones in portrait mode  */
 
 @media only screen and (max-width: 599px) {
-}
-
-@media only screen and (max-width: 500px) {
   .cont-form-trabajo {
     width: 96%;
     overflow: auto;
@@ -139,7 +136,10 @@
     min-height: 70px;
   }
   .bottom-form-trabajo {
-    min-height: 100px;
+    min-height: 50px;
+    margin-top: 40px;
+    padding-right: 10px;
+    align-items: flex-start;
   }
   .item-form-trabajo {
     flex-direction: column;
@@ -152,10 +152,20 @@
     padding-left: 0;
     flex: 1;
   }
+  .right-date-trabajo-manpre {
+    padding-left: 0;
+  }
   .formcontrol-phone-trabajos {
     /* background-color: rosybrown; */
     height: 40px;
-
     padding-bottom: 0px !important;
+  }
+  .item-form-trabajo-sub {
+    margin-top: 20px;
+  }
+  .cont-trabajo-actual {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-top: 5px;
   }
 }

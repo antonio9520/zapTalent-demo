@@ -167,3 +167,29 @@
   text-align: center;
   font-size: 12px;
 }
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-submod-infoAviso-of .mod-submod-infoAviso-of div {
+    transform: scale(0.8);
+  }
+  .modulo-big-infoAviso-of {
+    transform: scale(0.8);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

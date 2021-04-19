@@ -13,13 +13,6 @@
   position: absolute;
   right: 10px;
   top: -2px;
-
-  /* overflow: auto; */
-  /* width: 100%; */
-  /* width: 300px;
-  background-color: seagreen; */
-  /* position: relative !important; */
-  /* background-color: aquamarine; */
 }
 
 .speed-dial-action {
@@ -86,4 +79,39 @@
 
 .icon-red-social-rrss-perfil-new {
   color: var(--blue-primary) !important;
+}
+.administrar-redes-sociales-btn {
+  position: relative;
+
+  width: 72px;
+  height: 50px;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .administrar-redes-sociales-btn {
+    position: relative;
+    width: 50px;
+    /* background-color: lawngreen; */
+  }
+  .speed-dial-footer-perfil {
+    position: absolute;
+    right: 2px;
+    top: -2px;
+
+    /* background-color: rgb(129, 116, 189); */
+  }
 }

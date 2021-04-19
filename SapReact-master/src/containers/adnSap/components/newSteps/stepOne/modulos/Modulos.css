@@ -29,7 +29,7 @@
   justify-content: center;
   align-items: center;
   opacity: 0.5;
-  box-shadow: 1px  5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   margin: 0 6px;
   overflow: hidden;
@@ -46,4 +46,29 @@
   margin: 0;
   font-size: 16px;
   text-align: center;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .sub-cont-SwipeableViews-active-two {
+    width: 60px;
+    height: 60px;
+  }
+  .sub-cont-SwipeableViews-two {
+    width: 60px;
+    height: 60px;
+  }
 }

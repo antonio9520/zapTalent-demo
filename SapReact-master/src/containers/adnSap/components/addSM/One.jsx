@@ -67,13 +67,7 @@ const One = (props) => {
       <div className="cont-one-adn-edit">
         <div className="stepper-one-adn" style={{ alignItems: "center" }}>
           <h1>Seleccione el o los submodulos</h1>
-          <div
-            className="step-one-top-adn"
-            style={{
-              maxWidth: "500px",
-              minWidth: "500px",
-            }}
-          >
+          <div className="step-one-top-adn addsm">
             <div className="btn-left-adn">
               <IconButton onClick={handleBack} disabled={activeStep === 0}>
                 <ArrowBackIos />
@@ -208,7 +202,7 @@ const SubMod = ({
           }
           onClick={() => handleClick()}
         >
-          <p  style={{ color: "white" }}>{item.submodulo}</p>
+          <p style={{ color: "white" }}>{item.submodulo}</p>
         </div>
       </Tooltip>
     </>

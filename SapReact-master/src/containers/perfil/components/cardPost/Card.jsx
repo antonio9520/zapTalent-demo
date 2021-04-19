@@ -25,7 +25,7 @@ const Card = ({ data }) => {
   const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
-
+  console.log(data);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -143,11 +143,20 @@ const Postulacion = ({ data }) => {
     anosExp,
     nameuser,
     eliminado,
+    idaviso,
   } = data;
   return (
     <>
       {eliminado ? (
-        <p>Eliminado</p>
+        <div className="aviso-eliminado-card-perfil">
+          <p>Aviso eliminado</p>
+          <p>{titulo}</p>
+          <p>
+            <span style={{ textTransform: "uppercase" }}>
+              #{idaviso.slice(18)}
+            </span>
+          </p>
+        </div>
       ) : (
         <div className="sub-swipeables-new-perfil">
           <p className="p2-post-b-perfil">{titulo}</p>

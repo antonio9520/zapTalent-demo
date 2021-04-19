@@ -6,7 +6,6 @@
   /* height: 100%; */
 }
 .cont-header-of-laborales-top {
-  /* background-color: red; */
   display: flex;
   padding-left: 10px;
   justify-content: space-between;
@@ -19,9 +18,7 @@
   height: 10px;
 }
 .cont-header-of-laborales {
-  /* padding-right: 30px; */
   margin-bottom: 10px;
-  /* padding-left: 10px; */
   width: 100%;
 }
 
@@ -59,6 +56,7 @@
 .cont-btn-filtrar-of-user {
   display: none;
 }
+
 @media only screen and (max-width: 1750px) {
   .cont-filtro-of-laborales {
     display: none;
@@ -66,14 +64,81 @@
   .cont-btn-filtrar-of-user {
     display: inherit;
   }
-  .cont-header-of-laborales-top {
+  /* .cont-header-of-laborales-top {
     padding-right: 40px;
-  }
-
+  } */
   .empty-header-of {
     display: none;
   }
   .ofertas-laborales {
     max-width: 1500px;
   }
+  .cont-header-of-laborales {
+    margin-right: 20px;
+  }
+  .cont-cards-filtro-ofertas {
+    padding-right: 10px;
+  }
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+  .cont-card-of-laborales {
+    max-height: 77vh;
+  }
+  .cont-cards-filtro-ofertas {
+    height: 77vh;
+  }
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .cont-header-of-laborales {
+    margin-right: 20px;
+  }
+  .cont-header-of-laborales-top {
+  
+  }
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .ofertas-laborales {
+    padding-top: 75px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+  }
+  .cont-cards-filtro-ofertas {
+    padding-right: 0px;
+    display: flex;
+  }
+  .cont-header-of-laborales-top {
+    padding-left: 5px;
+    padding-right: 0px;
+    margin-right: 10px;
+   
+  }
+  .cont-card-of-laborales {
+    padding-right: 5px;
+    margin-right: 0px;
+    padding-left: 5px;
+    /* background-color: rosybrown; */
+  }
+  .cont-card-of-laborales::-webkit-scrollbar-track {
+    margin-bottom: 100px;
+    margin-top: 10px;
+  }
+  .cont-header-of-laborales {
+    margin-bottom: 10px;
+    margin-right: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
 }

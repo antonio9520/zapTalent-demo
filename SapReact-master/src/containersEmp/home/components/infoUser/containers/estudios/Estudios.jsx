@@ -132,6 +132,7 @@ const Card = ({ data }) => {
   const anoinicio = inicio.getFullYear();
   const termino = new Date(diafin);
   const anotermino = termino.getFullYear();
+  console.log(observacion);
   return (
     <div className="card-info-estudios-home-emp">
       <p className="p1">{tipoestudio}</p>
@@ -157,10 +158,12 @@ const Card = ({ data }) => {
           <p>Certificado</p>
         </div>
       </div>
+      {observacion !== "" ? (
+        <div className="cont-desc">
+          <p>{observacion}</p>
+        </div>
+      ) : null}
 
-      <div className="cont-desc">
-        <p>{observacion}</p>
-      </div>
       <div className="promedio-emp-home-est">
         <p>{promedio}</p>
         <p>Promedio</p>

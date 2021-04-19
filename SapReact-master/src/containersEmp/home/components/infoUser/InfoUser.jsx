@@ -1,6 +1,6 @@
 import React, { forwardRef, useState, useEffect } from "react";
 import "./InfoUser.css";
-import { withStyles, Tabs, Tab, IconButton } from "@material-ui/core";
+import { withStyles, Tabs, Tab, IconButton, Hidden } from "@material-ui/core";
 import userimage from "../../../../resources/images/SAPTalent/icon-new-user.svg";
 import {
   AdnSap,
@@ -19,7 +19,7 @@ import {
 import { changeLeidoPostulanteAction } from "../../../../redux/actions/actions-emp/postuladosAction";
 import Loader from "react-loader-spinner";
 
-const AntTabs = withStyles({
+const AntTabs = withStyles((theme) => ({
   root: {
     marginTop: "8px",
   },
@@ -28,7 +28,13 @@ const AntTabs = withStyles({
     height: "4px",
     top: "35px",
   },
-})(Tabs);
+  [theme.breakpoints.down("xs")]: {
+    root: {
+      marginTop: "0px",
+      maxWidth: "320px",
+    },
+  },
+}))(Tabs);
 
 const AntTab = withStyles((theme) => ({
   root: {
@@ -49,6 +55,10 @@ const AntTab = withStyles((theme) => ({
     },
     "&:focus": {
       color: "#40a9ff",
+    },
+    [theme.breakpoints.down("xs")]: {
+      minWidth: 50,
+      fontSize: "10px",
     },
   },
   selected: {},
@@ -141,17 +151,58 @@ const InfoUser = forwardRef((props, ref) => {
           </div>
           <div className="bottom">
             <div className="tab-menu-emp-user">
-              <AntTabs
-                value={value}
-                onChange={handleChange}
-                aria-label="ant example"
-              >
-                <AntTab label="Datos personales" />
-                <AntTab style={{ marginLeft: "20px" }} label="Estudios" />
-                <AntTab style={{ marginLeft: "20px" }} label="Trabajos" />
-                <AntTab style={{ marginLeft: "20px" }} label="Certificados" />
-                <AntTab style={{ marginLeft: "20px" }} label="ADN SAP" />
-              </AntTabs>
+              <Hidden xsDown>
+                <AntTabs
+                  value={value}
+                  onChange={handleChange}
+                  aria-label="ant example"
+                >
+                  <AntTab label="Datos personales" />
+                  <AntTab style={{ marginLeft: "20px" }} label="Estudios" />
+                  <AntTab style={{ marginLeft: "20px" }} label="Trabajos" />
+                  <AntTab style={{ marginLeft: "20px" }} label="Certificados" />
+                  <AntTab style={{ marginLeft: "20px" }} label="ADN SAP" />
+                </AntTabs>
+              </Hidden>
+              <Hidden smUp>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <AntTabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="ant example"
+                  >
+                    <AntTab label="Datos personales" value={0} />
+                    <AntTab
+                      style={{ marginLeft: "20px" }}
+                      label="Estudios"
+                      value={1}
+                    />
+                  </AntTabs>
+                  <AntTabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="ant example"
+                  >
+                    <AntTab label="Trabajos" value={2} />
+                    <AntTab
+                      style={{ marginLeft: "20px" }}
+                      label="Certificados"
+                      value={3}
+                    />
+                    <AntTab
+                      style={{ marginLeft: "20px" }}
+                      label="ADN SAP"
+                      value={4}
+                    />
+                  </AntTabs>
+                </div>
+              </Hidden>
             </div>
 
             {value === 0 ? (

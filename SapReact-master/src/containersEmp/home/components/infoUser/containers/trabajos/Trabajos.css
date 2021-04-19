@@ -16,7 +16,6 @@
   display: flex;
   /* background-color: burlywood; */
   /* overflow: hidden; */
-  
 }
 .card-info-trabajos-home-emp .left-b {
   flex: 1;
@@ -129,4 +128,155 @@
 .cont-trabajos-home-emp .bottom-b {
   display: flex;
   justify-content: center;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-trabajos-home-emp {
+    /* background-color: green; */
+    width: 100%;
+    height: 100%;
+  }
+  /*top*/
+  .cont-trabajos-home-emp .top-b {
+    height: 260px;
+    /* background-color: blueviolet; */
+    padding-right: 10px;
+  }
+  .card-info-trabajos-home-emp {
+    width: 100%;
+    height: 270px;
+    padding: 0px 10px;
+    display: flex;
+    /* background-color: burlywood; */
+    /* overflow: hidden; */
+  }
+  .card-info-trabajos-home-emp .left-b {
+    flex: 1;
+    /* background-color: rosybrown; */
+  }
+  .card-info-trabajos-home-emp .left-b .p1 {
+    color: var(--gray-text);
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .card-info-trabajos-home-emp .left-b .p2 {
+    color: var(--gray-text);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+  .card-info-trabajos-home-emp .left-b .p3 {
+    color: var(--gray-text);
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .card-info-trabajos-home-emp .left-b .p5 {
+    color: var(--gray-text);
+    font-size: 11px;
+    margin-top: 5px;
+  }
+  .card-info-trabajos-home-emp .left-b .p6 {
+    color: var(--light-blue);
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .card-info-trabajos-home-emp .left-b .datos-icon-left {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  .card-info-trabajos-home-emp .left-b .datos-icon-left p {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-left: 5px;
+  }
+  .card-info-trabajos-home-emp .left-b .datos-icon-right p {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-left: 5px;
+  }
+  .card-info-trabajos-home-emp .left-b .datos-icon-right {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  .card-info-trabajos-home-emp .icon-card-trab-home-emp {
+    color: var(--blue-primary);
+    width: 20px;
+  }
+  .card-info-trabajos-home-emp .cont-datos-ref {
+    display: flex;
+    align-items: center;
+    height: 40px;
+  }
+  .card-info-trabajos-home-emp .cont-datos-ref p {
+    color: var(--blue-primary);
+    font-size: 11px;
+    margin-left: 5px;
+  }
+  /*right*/
+  .card-info-trabajos-home-emp .right-b {
+    flex: 1;
+  }
+  .card-info-trabajos-home-emp .right-b .p1 {
+    font-size: 12px;
+    color: var(--light-blue);
+    font-weight: 500;
+    margin-top: 25px;
+  }
+  .card-info-trabajos-home-emp .right-b .p2 {
+    font-size: 12px;
+    color: var(--light-blue);
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  .card-info-trabajos-home-emp .right-b .p3 {
+    font-size: 12px;
+    color: var(--light-blue);
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  .card-info-trabajos-home-emp .right-b .p4 {
+    font-size: 11px;
+    margin-top: 5px;
+    color: var(--gray-text);
+  }
+  .card-info-trabajos-home-emp .right-b .p5 {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-top: 5px;
+  }
+  .card-info-trabajos-home-emp .right-b .p6 {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-top: 5px;
+    max-height: 100px;
+    padding-right: 5px;
+    overflow: auto;
+  }
+  /*bottom*/
+  .cont-trabajos-home-emp .bottom-b {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 500px) {
 }

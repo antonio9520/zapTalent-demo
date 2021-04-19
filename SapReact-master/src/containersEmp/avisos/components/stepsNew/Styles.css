@@ -16,6 +16,10 @@
   margin-top: 20px;
 }
 
+.cont-btns-form-emp.stepThree {
+  margin-top: 100px;
+}
+
 .form-nuevo-aviso-emp h1 {
   font-weight: 200;
   color: var(--gray-text);
@@ -79,6 +83,10 @@
   align-items: center;
   margin-top: 20px;
 }
+.container-nuevo-aviso-emp .cont-three-direccion-form-two {
+  display: flex;
+  margin-top: 40px;
+}
 .add-mod-form-avisos-adn-emp p {
   margin: 0;
   margin-left: 20px;
@@ -104,6 +112,21 @@
 }
 
 /*Three*/
+.container-nuevo-aviso-emp .cont-three-direccion-form {
+  display: flex;
+}
+.container-nuevo-aviso-emp .cont-item-select {
+  flex: 1;
+  padding-left: 10px;
+}
+.container-nuevo-aviso-emp .cont-item-left {
+  flex: 1;
+  padding-right: 5px;
+}
+.container-nuevo-aviso-emp .cont-item-right {
+  flex: 1;
+  padding-left: 5px;
+}
 .btn-yes-no-active {
   background-color: var(--blue-primary);
   color: white;
@@ -170,4 +193,225 @@
 }
 .cont-a-convenir-actual input {
   margin: 0 5px 5px 0;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .container-nuevo-aviso-emp {
+    background-color: var(--white);
+    width: 96%;
+    max-width: 600px;
+    border-radius: 5px;
+    position: relative;
+  }
+  /*One*/
+  .form-nuevo-aviso-emp {
+    padding: 10px 10px;
+    padding-top: 30px;
+  }
+  .cont-btns-form-emp {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .cont-btns-form-emp.stepThree {
+    margin-top: 20px;
+  }
+  .form-nuevo-aviso-emp h1 {
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  .cont-icon-close-formulario {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  .icon-close {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .campo-date-form-avisos-emp {
+    display: flex;
+  }
+
+  .div-tipo-consultor {
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-left: 15px;
+    cursor: pointer;
+    height: 25px;
+    box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+    transition: 0.5s all ease-in-out;
+  }
+  .div-tipo-consultor-active {
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-left: 15px;
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
+    transition: 0.5s all ease-in-out;
+  }
+
+  .div-tipo-consultor p {
+    margin: 0;
+    font-size: 10px;
+  }
+  .div-tipo-consultor-active p {
+    margin: 0;
+    font-size: 10px;
+  }
+
+  .cont-tipo-consultor-form-emp {
+    color: var(--gray-text);
+    margin-top: 30px;
+    margin-bottom: 100px;
+  }
+
+  /**two*/
+  .container-nuevo-aviso-emp .cont-three-direccion-form {
+    display: flex;
+    flex-direction: column;
+    /* background-color: khaki; */
+  }
+
+  .add-mod-form-avisos-adn-emp {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .add-mod-form-avisos-adn-emp p {
+    margin: 0;
+    margin-left: 20px;
+    font-size: 14px;
+    color: var(--gray-text);
+  }
+
+  .cont-adns-form-avisos-emp {
+    /* background-color: lightcoral; */
+    max-height: 280px;
+    overflow: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 0 5px 5px 5px;
+    scroll-behavior: smooth;
+  }
+
+  .form-nuevo-aviso-emp .p1 {
+    margin: 0;
+    color: var(--blue-primary);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /*Three*/
+  .container-nuevo-aviso-emp .cont-three-direccion-form-two {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    /* background-color: lawngreen; */
+  }
+  .container-nuevo-aviso-emp .cont-item-select {
+    flex: 1;
+    padding-left: 0px;
+    padding-right: 10px;
+  }
+  .container-nuevo-aviso-emp .cont-item-left {
+    flex: 1;
+    padding-right: 0px;
+  }
+  .container-nuevo-aviso-emp .cont-item-right {
+    flex: 1;
+    padding-top: 5px;
+    padding-left: 0px;
+  }
+  .btn-yes-no-active {
+    background-color: var(--blue-primary);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 30px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+  }
+
+  .btn-yes-no {
+    background-color: var(--white);
+    color: var(--blue-primary);
+    border: 1px solid var(--blue-primary);
+    border-radius: 3px;
+    padding: 5px 30px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+  }
+
+  /*four*/
+  .cont-beneficios-avisos-emp {
+    position: relative;
+  }
+  .cont-add-beneficio-avisos-emp {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    /* background-color: lightcoral; */
+  }
+  .sub-beneficios-avisos-emp {
+    position: absolute;
+    top: 18px;
+    /* background-color: lightgreen; */
+    width: 100%;
+  }
+  .cont-inputs-beneficio-aviso-emp {
+    max-height: 50px;
+    overflow: auto;
+    padding-right: 10px;
+    scroll-behavior: smooth;
+  }
+
+  .cont-add-beneficio-avisos-emp p {
+    margin: 0;
+    margin-left: 10px;
+    color: var(--gray-text);
+    font-size: 14px;
+  }
+
+  .cont-a-convenir-actual {
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    margin-top: 5px;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+  }
+  .cont-a-convenir-actual label {
+    font-size: 12px;
+    color: var(--gray-text);
+    margin: 0 0 3px 0;
+  }
+  .cont-a-convenir-actual input {
+    margin: 0 5px 5px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
 }

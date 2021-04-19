@@ -33,6 +33,7 @@
   justify-content: space-between;
   flex: 1;
   align-items: flex-end;
+  min-height: 60px;
 }
 .cont-filtros-of {
   /* background-color: red; */

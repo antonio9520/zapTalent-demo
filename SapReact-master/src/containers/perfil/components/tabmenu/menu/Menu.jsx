@@ -11,10 +11,12 @@ import {
 import { Tooltip } from "../../../../../components";
 
 const Menu = ({ active, setActive, setActiveStep, loading }) => {
+ 
   const handleClick = (item) => {
     setActiveStep(item.step);
     setActive(item.name);
   };
+  
   return (
     <>
       <Tooltip title="Editar perfil" placement="top">

@@ -1,5 +1,6 @@
 .cont-modal-eliminar {
   width: 550px;
+  max-width: 96%;
   height: 300px;
   border-radius: 5px;
   background-color: var(--white);

@@ -181,3 +181,41 @@
     display: none;
   }
 }
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1300px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .container-header .header-left {
+    display: none;
+  }
+  .container-header-open .header-left {
+    display: none;
+  }
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .container-header .header-left {
+    display: none;
+  }
+  .container-header-open .header-left {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container-header .header-left {
+    display: none;
+  }
+  .container-header-open .header-left {
+    display: none;
+  }
+}

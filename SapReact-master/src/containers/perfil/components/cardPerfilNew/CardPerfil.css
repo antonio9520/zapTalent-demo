@@ -63,7 +63,6 @@
 .user-img-perfil-new {
   width: 110px;
   height: 110px;
- 
 }
 
 .cont-img-perfil-perfil-new {
@@ -74,7 +73,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 .user-img-perfil-perfil-new {
   width: 110px;
@@ -153,7 +151,7 @@
   margin-right: 10px;
 }
 .new-card-perfil .item-3::-webkit-scrollbar-track {
- margin-top: 30px;
+  margin-top: 30px;
 }
 .cont-img-perfil-new {
   background-color: var(--blue-primary);
@@ -529,11 +527,53 @@
 /* Smartphones in landscape mode */
 
 @media only screen and (min-width: 600px) and (max-width: 959px) {
+  .new-card-perfil {
+    width: 350px;
+  }
 }
 
 /* Smartphones in portrait mode  */
 
 @media only screen and (max-width: 599px) {
+  .new-card-perfil {
+    width: 310px;
+  }
+  .user-img-perfil-new {
+    width: 90px;
+    height: 90px;
+  }
+
+  .cont-img-perfil-perfil-new {
+    width: 100px;
+    height: 100px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .user-img-perfil-perfil-new {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+  }
+
+  .new-card-perfil .item-2 .btn-perfil-new {
+    padding: 0 20px;
+  }
+  .btn-cv-perfil-new {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .new-card-perfil .item-5 {
+    padding: 0 10px;
+  }
+  .rrss-perfil-new {
+    width: 100%;
+    height: 50px;
+   
+  }
 }
 
 @media only screen and (max-width: 500px) {

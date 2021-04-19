@@ -28,7 +28,7 @@ const Stepthree = forwardRef((props, ref) => {
     closeModal,
     jornadaLaboral,
     setJornadaLaboral,
-    tipoContrato, 
+    tipoContrato,
     setTipoContrato,
     cantidadVacantes,
     setCantidadVacantes,
@@ -119,7 +119,7 @@ const Stepthree = forwardRef((props, ref) => {
     <div className="container-nuevo-aviso-emp" ref={ref}>
       <div className="form-nuevo-aviso-emp">
         <h1>Detalles del Empleo</h1>
-        <div style={{ display: "flex", marginBottom: "40px" }}>
+        <div style={{ display: "flex", marginBottom: "30px" }}>
           <div style={{ flex: 1, paddingRight: "10px" }}>
             <div className="container-inputs-form-emp">
               <CustomSelectB
@@ -128,7 +128,7 @@ const Stepthree = forwardRef((props, ref) => {
                 error={errorJLaboral}
                 value={jornadaLaboral}
                 onChange={(e) => {
-                  setErrorJLaboral(false); 
+                  setErrorJLaboral(false);
                   setJornadaLaboral(e.target.value);
                 }}
               >
@@ -282,7 +282,7 @@ const Stepthree = forwardRef((props, ref) => {
           </div>
         </div>
         <p className="p1">Lugar de Trabajo</p>
-        <div style={{ display: "flex" }}>
+        <div className="cont-three-direccion-form">
           <div style={{ flex: 1, paddingRight: "10px" }}>
             <div className="container-inputs-form-emp">
               <CustomSelectB
@@ -327,9 +327,9 @@ const Stepthree = forwardRef((props, ref) => {
                   </MenuItem>
                 )}
               </CustomSelectB>
-            </div> 
+            </div>
           </div>
-          <div style={{ flex: 1, paddingLeft: "10px" }}>
+          <div className="cont-item-select">
             <div className="container-inputs-form-emp">
               <CustomSelectB
                 label="Región"
@@ -354,8 +354,8 @@ const Stepthree = forwardRef((props, ref) => {
             </div>
           </div>
         </div>
-        <div style={{ display: "flex", marginTop: "40px" }}>
-          <div style={{ flex: 1, paddingRight: "5px" }}>
+        <div className="cont-three-direccion-form-two">
+          <div className="cont-item-left">
             <p className="p1">Disponibilidad para Viajar</p>
             <div style={{ display: "flex", marginTop: "20px" }}>
               <button
@@ -374,7 +374,7 @@ const Stepthree = forwardRef((props, ref) => {
               </button>
             </div>
           </div>
-          <div style={{ flex: 1, paddingLeft: "5px" }}>
+          <div className="cont-item-right">
             <p className="p1">Disponibilidad cambio de Residencia</p>
             <div style={{ display: "flex", marginTop: "20px" }}>
               <button
@@ -394,7 +394,7 @@ const Stepthree = forwardRef((props, ref) => {
             </div>
           </div>
         </div>
-        <div className="cont-btns-form-emp" style={{ marginTop: "100px" }}>
+        <div className="cont-btns-form-emp stepThree">
           <Button
             variant="contained"
             color="primary"

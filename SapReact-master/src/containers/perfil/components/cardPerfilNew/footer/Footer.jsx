@@ -118,14 +118,7 @@ const Footer = ({
             : null
           : null}
       </div>
-      <div
-        style={{
-          position: "relative",
-          // backgroundColor: "red",
-          width: "72px",
-          height: "50px",
-        }}
-      >
+      <div className="administrar-redes-sociales-btn">
         <Tooltip title="Administrar redes sociales">
           <SpeedDial
             ariaLabel="SpeedDial example"

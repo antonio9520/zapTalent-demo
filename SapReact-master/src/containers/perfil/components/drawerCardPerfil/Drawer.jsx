@@ -13,19 +13,34 @@ const DrawerPerfil = ({
   habilidades,
   setOpenModalHab,
   porcentaje,
+  empresa,
 }) => {
   return (
     <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-      <CardPerfilNew
-        openModalRRSS={openModalRRSS}
-        setOpenModalRRSS={setOpenModalRRSS}
-        setOpenModal={setOpenModal}
-        setActive={setActive}
-        setActiveStep={setActiveStep}
-        habilidades={habilidades}
-        setOpenModalHab={setOpenModalHab}
-        porcentaje={porcentaje}
-      />
+      {empresa ? (
+        <CardPerfilNew
+          empresas
+          openModalRRSS={openModalRRSS}
+          setOpenModalRRSS={setOpenModalRRSS}
+          setOpenModal={setOpenModal}
+          setActive={setActive}
+          setActiveStep={setActiveStep}
+          habilidades={habilidades}
+          setOpenModalHab={setOpenModalHab}
+          porcentaje={porcentaje}
+        />
+      ) : (
+        <CardPerfilNew
+          openModalRRSS={openModalRRSS}
+          setOpenModalRRSS={setOpenModalRRSS}
+          setOpenModal={setOpenModal}
+          setActive={setActive}
+          setActiveStep={setActiveStep}
+          habilidades={habilidades}
+          setOpenModalHab={setOpenModalHab}
+          porcentaje={porcentaje}
+        />
+      )}
     </Drawer>
   );
 };

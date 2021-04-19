@@ -170,6 +170,7 @@ const Perfil = (props) => {
         </IconButton>
       </Tooltip>
       <Drawer
+        empresa
         open={openDrawer}
         setOpen={setOpenDrawer}
         openModalRRSS={openModalRRSS}

@@ -3,7 +3,7 @@ import "./Trabajos.css";
 import { CardInit, ModalEliminar } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, CardJob, ModalEditar } from "./components";
-import { Fab } from "@material-ui/core";
+import { Fab, IconButton, Hidden } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import { obtenerTrabajosAction } from "../../redux/actions/trabajoAction";
 import Loader from "react-loader-spinner";
@@ -69,7 +69,7 @@ const Trabajos = () => {
           />
         </div>
       ) : trabajos.length === 0 ? (
-        <div style={{ paddingTop: "75px", height: "100vh" }}>
+        <div className="cont-card-init-estudios">
           <CardInit
             setOpenModal={setOpenModal}
             type={cardT1}
@@ -82,14 +82,24 @@ const Trabajos = () => {
         <>
           <div className="cont-title-certificados">
             <h1>Mis Trabajos</h1>
+            <Hidden mdUp>
+              <IconButton
+                className="icon-btn-add-trabajos"
+                onClick={() => setOpenModal(true)}
+              >
+                <Add />
+              </IconButton>
+            </Hidden>
           </div>
           <div className="conteiner-cards-job">
-            <Fab
-              className="icon-btn-add-trabajos"
-              onClick={() => setOpenModal(true)}
-            >
-              <Add />
-            </Fab>
+            <Hidden smDown>
+              <IconButton
+                className="icon-btn-add-trabajos "
+                onClick={() => setOpenModal(true)}
+              >
+                <Add />
+              </IconButton>
+            </Hidden>
             {datasort.map((item, index) => (
               <CardJob
                 key={index}
@@ -98,7 +108,6 @@ const Trabajos = () => {
                 setOpenModalEliminar={setOpenModalEliminar}
                 setOpenModalEditar={setOpenModalEditar}
                 setDataEditar={setDataEditar}
-              
               />
             ))}
             <ModalEditar
@@ -114,7 +123,6 @@ const Trabajos = () => {
               setOpenModalEliminar={setOpenModalEliminar}
               idEliminar={idEliminar}
               setIdEliminar={setIdEliminar}
-             
             />
           </div>
         </>

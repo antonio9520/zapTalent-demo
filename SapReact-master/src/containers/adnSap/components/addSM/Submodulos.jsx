@@ -237,7 +237,7 @@ const Nivel = ({ activeSM, setErrorThree, arraySubMod }) => {
             <div
               className={
                 active === "No Maneja"
-                  ? "sub-nivel-adn-active"
+                  ? "sub-nivel-adn-active" 
                   : "sub-nivel-adn"
               }
               onClick={() => setActive("No Maneja")}

@@ -1,0 +1,54 @@
+.header-mini-ofertas-laborales {
+  background-color: white;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.header-mini-ofertas-laborales .top {
+  color: var(--blue-primary);
+  padding: 10px;
+}
+.header-mini-ofertas-laborales .center .search-ofertas-mini {
+  padding-right: 10px;
+  width: 100%;
+}
+.header-mini-ofertas-laborales .top p {
+  margin: 0;
+}
+
+.header-mini-ofertas-laborales .center {
+  color: var(--blue-primary);
+  padding: 10px 10px 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-mini-ofertas-laborales .collapsable-close {
+  padding: 0 10px;
+  display: flex;
+  overflow: auto;
+  margin: 0 10px;
+}
+.header-mini-ofertas-laborales .collapsable-close::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.header-mini-ofertas-laborales .collapsable-close::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.header-mini-ofertas-laborales .contenedor-scroll {
+  padding: 0 10px;
+}
+
+@media (max-width: 735px) {
+  .header-mini-ofertas-laborales {
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    display: inherit;
+  }
+}

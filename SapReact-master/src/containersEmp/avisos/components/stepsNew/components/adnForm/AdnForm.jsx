@@ -11,6 +11,7 @@ import {
   MobileStepper,
   Button,
   makeStyles,
+  Hidden,
 } from "@material-ui/core";
 import Loader from "react-loader-spinner";
 import {
@@ -57,7 +58,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   let arraySubModulos = [];
-  const longitudPedazos = 5;
+  const longitudPedazos = 4;
   if (data.modulo !== "") {
     let submodulos = modulos.find((item) => item.modulo === data.modulo);
 
@@ -296,7 +297,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
                       <ArrowBackIos />
                     </IconButton>
                   </div>
-                  <div className="content-center-adn">
+                  <div className="content-center-adn-emp">
                     <SwipeableViews index={activeStep}>
                       {arraySubModulos.map((item, index) => (
                         <div
@@ -383,7 +384,7 @@ const AdnForm = ({ setAdns, adns, data, errores2, _swith, setSwitch }) => {
       {_switch_nivel ? (
         <div className="overlay-card-adn-emp">
           <p>Selecciona un nivel para {dataNivel.name}</p>
-          <div style={{ width: "300px", marginBottom: "20px" }}>
+          <div style={{ width: "270px", marginBottom: "20px" }}>
             <CustomSelectB
               label="Nivel"
               helpertext="Seleccione un nivel"

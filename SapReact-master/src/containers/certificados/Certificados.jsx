@@ -3,7 +3,7 @@ import "./Certificados.css";
 import { CardInit, Spinner, ModalEliminar } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { obtenerCertificadosAction } from "../../redux/actions/certificadoAction";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Hidden } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import { Card, Modal, ModalEditar } from "./components";
 import Loader from "react-loader-spinner";
@@ -69,7 +69,7 @@ const Certificados = () => {
           />
         </div>
       ) : certificados.length === 0 ? (
-        <div style={{ paddingTop: "75px", height: "100vh" }}>
+        <div className="cont-card-init-estudios">
           <CardInit
             setOpenModal={setOpenModal}
             type={cardT1}
@@ -82,14 +82,24 @@ const Certificados = () => {
         <>
           <div className="cont-title-certificados">
             <h1>Mis Certificaciones</h1>
+            <Hidden mdUp>
+              <IconButton
+                className="icon-btn-add-trabajos"
+                onClick={() => setOpenModal(true)}
+              >
+                <Add />
+              </IconButton>
+            </Hidden>
           </div>
           <div class="conteiner-cards-certificados">
-            <IconButton
-              className="icon-btn-add-trabajos"
-              onClick={() => setOpenModal(true)}
-            >
-              <Add />
-            </IconButton>
+            <Hidden smDown>
+              <IconButton
+                className="icon-btn-add-trabajos "
+                onClick={() => setOpenModal(true)}
+              >
+                <Add />
+              </IconButton>
+            </Hidden>
             {datasort.map((item, index) => (
               <Card
                 key={index}

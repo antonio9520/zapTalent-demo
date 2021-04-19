@@ -97,7 +97,7 @@ export function agregarTrabajoAction(data) {
           msg: "Trabajo agregado correctamente.",
           type: "success",
         })
-      );
+      ); 
       return true;
     } catch (error) {
       console.log(error);

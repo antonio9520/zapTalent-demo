@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../resources/empresas/ZAPTalent-Empresa-Logotipo-1.png";
+import logo from "../../resources/admin/ZAPTalent-Admin-Logotipo.png";
 import {
   iniciarSesionAdminAction,
   usuarioAuthActionAdmin,

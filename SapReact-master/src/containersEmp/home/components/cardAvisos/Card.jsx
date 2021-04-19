@@ -98,7 +98,7 @@ const Anuncio = ({ data, height }) => {
     jornadaLaboral,
     tipoContrato,
     anosExpSap,
-    cantidadVacantes,
+    cantidadVacantes, 
     region,
     ciudad,
     dispResidencia,
@@ -272,13 +272,16 @@ const Anuncio = ({ data, height }) => {
         <div className="item4">
           <p>Renta Ofrecida</p>
           <p>
-            ${" "}
-            <NumberFormat
-              value={renta}
-              displayType={"text"}
-              thousandSeparator={true}
-              // prefix={"$"}
-            />
+            {renta === 0 ? (
+              " A convenir"
+            ) : (
+              <NumberFormat
+                value={renta}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={" $"}
+              />
+            )}
           </p>
         </div>
       </div>
@@ -319,7 +322,6 @@ const Modulos = ({ data, setActive, active, num }) => {
 };
 
 const Submodulos = ({ data }) => {
-  
   return (
     <div className="submod-aviso-home-emp">
       <p>{data.submodulo}</p>

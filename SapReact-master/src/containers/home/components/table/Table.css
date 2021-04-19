@@ -2,7 +2,7 @@
   background-color: var(--white);
   height: 100%;
   border-radius: 5px;
-  box-shadow: 1px 5px 40px  rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -24,7 +24,7 @@
   /* padding-bottom: 100px; */
 }
 .cont-center-table-home::-webkit-scrollbar-track {
- margin-top: 15px;
+  margin-top: 15px;
 }
 .cont-card-job-table {
   padding: 5px;
@@ -49,7 +49,7 @@
   align-items: center;
 }
 
-.cont-not-sug-employees{
+.cont-not-sug-employees {
   /* background-color: blueviolet; */
   display: flex;
   height: 100%;
@@ -58,10 +58,10 @@
   align-items: center;
   flex-direction: column;
 }
-.cont-not-sug-employees p{
- color: var(--gray-text);
- font-size: 20px;
- font-weight: 200;
+.cont-not-sug-employees p {
+  color: var(--gray-text);
+  font-size: 20px;
+  font-weight: 200;
 }
 
 /* MEDIA QUERIES */
@@ -103,6 +103,9 @@
     padding: 5px;
     /* background-color: lightcoral; */
     min-width: 600px;
+  }
+  .cont-top-table-home {
+    flex-direction: column;
   }
 }
 

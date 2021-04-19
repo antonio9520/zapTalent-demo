@@ -60,3 +60,85 @@
   display: flex;
   justify-content: center;
 }
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-certificados-home-emp {
+    /* background-color: green; */
+    width: 100%;
+    height: 100%;
+  }
+  /*top*/
+  .cont-certificados-home-emp .top-b {
+    /* background-color: rgb(159, 189, 50); */
+    height: 260px;
+  }
+  .card-info-certificados-home-emp {
+    /* background-color: blueviolet; */
+    width: 100%;
+    height: 270px;
+    padding: 0px 10px;
+    padding-top: 30px;
+  }
+
+  .card-info-certificados-home-emp .header-cert-home-emp {
+    display: flex;
+    justify-content: space-between;
+  }
+  .card-info-certificados-home-emp .header-cert-home-emp .p1 {
+    font-size: 20px;
+    color: #3a65af;
+  }
+  .card-info-certificados-home-emp .p2 {
+    font-size: 12px;
+    color: #3a65af;
+    margin-top: 5px;
+  }
+  .card-info-certificados-home-emp .p3 {
+    font-size: 11px;
+    color: var(--light-blue);
+    margin-top: 5px;
+  }
+  .card-info-certificados-home-emp .p4 {
+    font-size: 11px;
+    color: var(--gray-text);
+    margin-top: 20px;
+    overflow: auto;
+    max-height: 100px;
+    padding-right: 5px;
+  }
+
+  .card-info-certificados-home-emp .header-cert-home-emp div {
+    background-color: #58a9de;
+    color: white;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 80px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+  /*bottom*/
+  .cont-certificados-home-emp .bottom-b {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

@@ -5,15 +5,19 @@ import { SearchBar } from "../../../../componentsEmp";
 import { FilterList } from "@material-ui/icons";
 import { Tooltip, IconButton } from "../../../../components";
 
-const AntTabs = withStyles({
+const AntTabs = withStyles((theme) => ({
   root: {
     marginTop: "8px",
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      flexWrap: "wrap",
+    },
   },
   indicator: {
     backgroundColor: "#197EE6",
     height: "5px",
   },
-})(Tabs);
+}))(Tabs);
 const AntTab = withStyles((theme) => ({
   root: {
     textTransform: "none",
@@ -32,6 +36,10 @@ const AntTab = withStyles((theme) => ({
     },
     "&:focus": {
       color: "#40a9ff",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginRight: theme.spacing(1),
+      fontSize: "12px",
     },
   },
   selected: {},
@@ -63,14 +71,12 @@ const Header = ({
     query.search = search;
     setSkip(0);
     setQuery(query);
-    console.log(query);
     obtenerOfertas(query, 0);
-    console.log("handle click");
   };
   const _handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleClick();
-    }
+    } 
   };
   return (
     <div className="header-avisos-emp" style={{ width: "inherit" }}>
@@ -78,7 +84,7 @@ const Header = ({
         <p>Mis Avisos</p>
       </div>
       <div className="right-header-avisos-emp">
-        <div style={{ width: "350px", marginRight: "50px" }}>
+        <div className="search-ofertas">
           <SearchBar
             onChange={setSearch}
             onClick={handleClick}
@@ -86,6 +92,7 @@ const Header = ({
             value={search}
           />
         </div>
+
         <AntTabs
           value={indexTab}
           onChange={handleChange}
@@ -96,6 +103,7 @@ const Header = ({
           <AntTab label="Caducados" />
           <AntTab label="Todos" />
         </AntTabs>
+
         <div className="cont-btn-filtrar-of-user">
           <Tooltip title="Filtrar">
             <IconButton bg="primary" onClick={() => setOpen(true)}>

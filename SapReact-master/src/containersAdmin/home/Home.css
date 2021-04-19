@@ -17,6 +17,7 @@
   min-height: 140px;
   display: flex;
   flex-wrap: wrap;
+  /* background-color: brown; */
   justify-content: space-between;
   padding: 10px 0 10px 0;
 }

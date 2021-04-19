@@ -169,7 +169,7 @@ const Home = () => {
         <Header setOpen={setOpenAddEmp} />
       </div>
       <div className="center">
-        <div className="item">
+        <div className="item" style={{ paddingLeft: 0 }}>
           <CardA white titulo="Total Clientes" value={totalEmpresas} />
         </div>
         <div className="item">
@@ -178,7 +178,7 @@ const Home = () => {
         <div className="item">
           <CardA degradado titulo="Clientes morosos" value={totalMorosos} />
         </div>
-        <div className="item">
+        <div className="item" style={{ paddingRight: 0 }}>
           <CardA degradado titulo="Total de Anuncios" value={totalAvisos} />
         </div>
       </div>

@@ -9,7 +9,7 @@ import {
 } from "../../../../components";
 import {
   LinearProgress,
-  TextField,
+  TextField, 
   MenuItem,
   IconButton,
   InputAdornment,
@@ -262,14 +262,14 @@ const StepFour = forwardRef((props, ref) => {
         </div>
       </div>
       <div className="cont-icon-close-formulario">
-        <IconButton
+        <IconButtonCustom
           bg="close"
           size="small"
           customcolor="close"
           onClick={closeModal}
         >
           <Close className="icon-close" />
-        </IconButton>
+        </IconButtonCustom>
       </div>
       {cargando ? (
         <>

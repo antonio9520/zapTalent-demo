@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 exports.autenticarUsuario = async (req, res) => {
   //extrarer  email y pass
   const { email, password } = req.body;
-  console.log(email);
+
   try {
     let usuario = await Usuario.findOne({ email });
     if (!usuario) {

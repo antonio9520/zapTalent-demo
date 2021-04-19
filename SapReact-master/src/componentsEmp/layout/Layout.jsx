@@ -9,7 +9,6 @@ import { hiddenAlertAction } from "../../redux/actions/actions-emp/authAction";
 import { useDispatch, useSelector } from "react-redux";
 import image from "../../resources/images/SAPTalent/Logotipo-SAPTalent-blanco.svg";
 
-
 const Layout = (props) => {
   const dispatch = useDispatch();
   const _alert = useSelector((state) => state.authEmp.alert);
@@ -36,11 +35,11 @@ const Layout = (props) => {
           </Snackbar>
         </div>
 
-        <div className="splash-screen-responsivo-emp">
+        {/* <div className="splash-screen-responsivo-emp">
           <img src={image} alt="logo" />
           <p>Pagina responsiva en construcción</p>
           <p>Utilice un dispositivo de mayor resolución</p>
-        </div>
+        </div> */}
       </div>
     </>
   );

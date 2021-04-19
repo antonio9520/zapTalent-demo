@@ -152,3 +152,175 @@
   display: flex;
   justify-content: flex-end;
 }
+.content-center-adn-emp {
+  width: 200px;
+}
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .adn-form-avisos-emp {
+    /* background-color: lightgoldenrodyellow; */
+    background-color: white;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    position: relative;
+  }
+  .overlay-card-adn-emp {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px 10px;
+    animation: 0.5s overlay-visible forwards;
+    /* animation: 0.5s overlay-visible-moss; */
+  }
+  .container-inputs-form-emp {
+  }
+  .p1-seleccion-submodulo {
+    text-align: center;
+    color: var(--blue-primary);
+  }
+  .contenedor-mobile-stepper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .overlay-card-adn-emp p {
+    color: var(--blue-primary);
+    margin: 0;
+    margin-top: 10px;
+  }
+
+  .btn-overlay-card-adn-emp {
+    background-color: var(--blue-primary) !important;
+    color: white !important;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    padding: 5px 20px !important;
+  }
+  .stepper-submod-form-emp {
+    margin-top: 10px;
+    padding: 0 0px;
+    margin-left: -10px;
+    /* background-color: khaki; */
+  }
+  .cont-submod-avisos-emp {
+    background: var(--degradado-blue);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s all ease-in-out;
+  }
+  .cont-submod-avisos-emp.activo {
+    border: 2px solid #96daf8;
+    transform: scale(1.2);
+  }
+  .cont-submod-avisos-emp p {
+    margin: 0;
+  }
+  .cont-submod-avisos-emp-inact {
+    margin: 0;
+    background: var(--degradado-blue);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 60px;
+    position: relative;
+  }
+  .cont-submod-avisos-emp-inact p {
+    margin: 0;
+    white-space: nowrap;
+  }
+  .cont-SwipeableViews-emp {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .name-submod-large-aviso-emp {
+    /* Starting position */
+    -moz-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    /* Apply animation to this element */
+    -moz-animation: scroll-left 5s linear infinite;
+    -webkit-animation: scroll-left 5s linear infinite;
+    animation: scroll-left 5s linear infinite;
+  }
+
+  .stepper-submod-form-emp .p2 {
+    text-align: center;
+    color: var(--gray-text);
+  }
+
+  .cont-loading-adn-emp {
+    /* background-color: royalblue; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 70px;
+  }
+  .cont-loading-adn-emp-submod {
+    /* background-color: royalblue; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 116px;
+  }
+  .cont-info-add-form-adn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 15px !important;
+    height: 15px !important;
+    color: white;
+  }
+
+  .cont-btn-delete-submodulo-aviso-emp {
+    /* background-color: cadetblue; */
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .content-center-adn-emp {
+    width: 180px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

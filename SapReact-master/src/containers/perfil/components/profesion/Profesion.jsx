@@ -43,7 +43,7 @@ const Profesion = ({ setOpenModalProfesion }) => {
         </IconButton>
       </Tooltip>
       <h1>Agregar Profesión</h1>
-      <div style={{ display: "flex" }}>
+      <div className="cont-cont-estudios-profesion">
         <div className="cont-estudios-profesion">
           {estudios.map((item, index) => (
             <div className="sub-cardest-profesion">

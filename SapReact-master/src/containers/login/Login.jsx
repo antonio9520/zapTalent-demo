@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import axios from "axios";
-
+ 
 const Login = (props) => {
   const {
     match: { params },
@@ -48,7 +48,7 @@ const Login = (props) => {
   const errorpassword = useSelector((state) => state.auth.errorpassword);
   const loading = useSelector((state) => state.auth.loading);
   const [cargando, setCargando] = useState(false);
-
+  const [recordarme, setRecordarme] = useState(false);
   //error reestablecer contraseña msg
   const [errormsg, setErrorMsg] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -66,7 +66,11 @@ const Login = (props) => {
       console.log("los campos son obligatorios");
     }
     const email = emailA.toLocaleLowerCase();
-
+    if (recordarme) {
+   
+      localStorage.setItem("email_zap", email);
+      localStorage.setItem("password_zap", password);
+    }
     dispatch(iniciarSesionAction({ email, password }));
   };
 
@@ -204,9 +208,31 @@ const Login = (props) => {
   }, [token]);
   useEffect(() => {
     dispatch(usuarioAuthAction());
-
+    obtenerEmailPassLocalStorage();
     // eslint-disable-next-line
   }, []);
+
+  const obtenerEmailPassLocalStorage = () => {
+    const _email = localStorage.getItem("email_zap");
+    const _password = localStorage.getItem("password_zap");
+
+    if (_email && _password) {
+      setRecordarme(true);
+      setEmail(_email);
+      setPassword(_password);
+    }
+  }; 
+
+  const cambiarRecordarme = () => {
+    if (recordarme) {
+      setRecordarme(false);
+      localStorage.removeItem("email_zap");
+      localStorage.removeItem("password_zap");
+    } else {
+      setRecordarme(true);
+    }
+  };
+
   return (
     <div className="conteiner-login">
       <div
@@ -257,6 +283,7 @@ const Login = (props) => {
                   error={erroremail}
                   size="medium"
                   name="email"
+                  value={emailA}
                   logininput
                   onKeyDown={_handleKeyDown}
                 />
@@ -267,6 +294,7 @@ const Login = (props) => {
                   helpertext="Password incorrecto"
                   funcOnChange={setPassword}
                   type="password"
+                  value={password}
                   error={errorpassword}
                   size="medium"
                   name="password"
@@ -277,7 +305,14 @@ const Login = (props) => {
             </div>
             <div className="cont-btns-login">
               <label>
-                <input type="checkbox" name="recordarme" id="" />
+                <input
+                  type="checkbox"
+                  name="recordarme"
+                  id=""
+                  defaultChecked={recordarme}
+                  checked={recordarme}
+                  onChange={() => cambiarRecordarme()}
+                />
                 Recordarme
               </label>
               <div className="cont-btn-ing-can-login">

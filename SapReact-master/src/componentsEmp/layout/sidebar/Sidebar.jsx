@@ -108,7 +108,7 @@ const Sidebar = (props) => {
             </Tooltip>
           </ListItem>
 
-          <ListItem
+          <ListItem 
             button
             onClick={() => setActive("home")}
             className={

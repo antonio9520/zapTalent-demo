@@ -2,7 +2,10 @@
   /* background-color: saddlebrown; */
   height: 80%;
 }
-
+.containers-infoAviso-of {
+  height: 100%;
+  padding: 0 40px;
+}
 .cont-btn-post-infoAviso-of {
   /* background-color: sandybrown; */
   border-top: 1px solid #ededed;
@@ -13,4 +16,28 @@
   align-items: center;
 }
 
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
 
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .containers-infoAviso-of {
+    height: 100%;
+    padding: 0 10px;
+  }
+
+
+}
+
+@media only screen and (max-width: 500px) {
+}

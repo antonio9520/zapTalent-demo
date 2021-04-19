@@ -5,5 +5,15 @@ import Modal from "./modal/Modal";
 import ModalEditar from "./modalEditar/modalEditar";
 import ModalCopy from "./modalCopy/modalCopy";
 import ModalRep from "./modalRep/ModalRep";
+import HeaderMini from "./headerMini/HeaderMini";
 
-export { Header, Pagination, Card, Modal, ModalEditar, ModalCopy, ModalRep };
+export {
+  Header,
+  HeaderMini,
+  Pagination,
+  Card,
+  Modal,
+  ModalEditar,
+  ModalCopy,
+  ModalRep,
+};

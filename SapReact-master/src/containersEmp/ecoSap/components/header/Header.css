@@ -20,6 +20,12 @@
   display: none;
   margin-right: 20px;
 }
+.cont-header-eco-sap-emp .rigth-header-ecosap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
 
 @media (max-width: 1500px) {
   .space-top-eco-sap-emp {
@@ -31,5 +37,46 @@
   .cont-header-eco-sap-emp .cont-btn-filter {
     /* background-color: blue; */
     display: inherit;
+  }
+}
+
+/*MINI*/
+.cont-header-eco-sap-emp-mini {
+  background-color: var(--white);
+  box-shadow: 1px 5px 40px rgba(0, 0, 0, 0.15);
+  height: 120px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.title-header-eco-sap-emp-mini {
+  color: var(--blue-primary);
+  font-size: 20px;
+}
+
+.cont-header-eco-sap-emp-mini .rigth-header-ecosap-mini {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.cont-header-eco-sap-emp-mini .bottom-header-ecosap-mini {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .title-header-eco-sap-emp-mini {
+    display: none;
   }
 }

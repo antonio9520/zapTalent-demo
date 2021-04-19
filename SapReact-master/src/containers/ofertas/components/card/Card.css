@@ -2,7 +2,7 @@
   background-color: var(--white);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
-  min-width: 1150px;
+  min-width: 1250px;
   border: 1px solid #ced1e9;
   border-radius: 5px;
   position: relative;
@@ -353,4 +353,159 @@
 .cont-aviso-eliminado-postulacion .item-2 p:nth-child(3) {
   color: var(--gray-text);
   font-size: 14px;
+}
+
+/*CARD XS*/
+.card-ofertas-laborales-xs {
+  background-color: var(--white);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+}
+/*TOP*/
+.card-ofertas-laborales-xs .top {
+  display: flex;
+  /* background-color: lightcoral; */
+  margin-top: 20px;
+}
+.card-ofertas-laborales-xs .top .left div {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
+}
+.card-ofertas-laborales-xs .top .left img {
+  border-radius: 50%;
+}
+.card-ofertas-laborales-xs .top .rigth h1 {
+  margin: 0;
+  color: var(--blue-primary);
+  font-size: 22px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.card-ofertas-laborales-xs .top .rigth {
+  position: relative;
+  overflow: hidden;
+  /* background-color: rosybrown; */
+  margin: 0 10px;
+}
+.card-ofertas-laborales-xs .top .rigth p:nth-child(2) {
+  margin: 0;
+  /* margin-top: 10px; */
+  color: var(--gray-text);
+}
+.card-ofertas-laborales-xs .top .rigth p:nth-child(3) {
+  margin: 0;
+  margin-top: 10px;
+  cursor: pointer;
+  color: var(--blue-primary);
+}
+.card-ofertas-laborales-xs .top .rigth p:nth-child(4) {
+  margin: 0;
+  font-size: 14px;
+  color: var(--blue-primary);
+}
+
+.card-ofertas-laborales-xs .top .rigth div {
+  background-color: #39cbba;
+  display: inline-block;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
+}
+.card-ofertas-laborales-xs .top .rigth div p {
+  margin: 5px 10px;
+  font-size: 12px;
+  color: white;
+}
+/*CENTER*/
+.card-ofertas-laborales-xs .center {
+  /* background-color: rosybrown; */
+  padding: 10px;
+}
+.card-ofertas-laborales-xs .center h5 {
+  color: var(--blue-primary);
+  margin: 0;
+}
+.modulos-card-ofertas-laborales {
+  display: flex;
+  margin-top: 20px;
+  /* background-color: royalblue; */
+  max-width: 170px;
+  overflow: auto;
+  padding-bottom: 5px;
+}
+
+/*BOTTOM*/
+.card-ofertas-laborales-xs .bottom {
+  /* background-color: rosybrown; */
+  margin: 0 10px;
+}
+.card-ofertas-laborales-xs .bottom .item-1 {
+  display: flex;
+  font-size: 12px;
+  color: var(--gray-text);
+}
+.card-ofertas-laborales-xs .bottom .item-1 p {
+  margin-left: 10px;
+}
+.card-ofertas-laborales-xs .bottom .item-1 .left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.card-ofertas-laborales-xs .bottom .item-1 .rigth {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.card-ofertas-laborales-xs .bottom .item-2 {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  font-size: 12px;
+  padding: 0;
+  color: var(--gray-text);
+}
+.card-ofertas-laborales-xs .bottom .item-2 p {
+  margin: 0;
+}
+.card-ofertas-laborales-xs .bottom .item-3 {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: var(--blue-primary);
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 599px) {
+  .cont-aviso-eliminado-postulacion {
+    position: relative;
+    background-color: var(--white);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 10px;
+    min-width: inherit;
+    border: 1px solid #ced1e9;
+    border-radius: 5px;
+    height: 200px;
+    display: flex;
+  }
+
+  .cont-aviso-eliminado-postulacion .item-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
+    justify-content: inherit;
+    padding: 20px;
+  }
 }

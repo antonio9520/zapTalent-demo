@@ -179,3 +179,91 @@
   margin-left: 142px;
   /* margin-bottom: 20px; */
 }
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .card-avisos-empresas {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    min-width: inherit;
+    height: fit-content;
+  }
+  .top-card-avisos-emp {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .icon-calendar-avisos-emp {
+    color: var(--blue-primary) !important;
+  }
+
+  .left-card-avisos-emp .p1 {
+    font-size: 16px;
+  }
+  .left-card-avisos-emp .p2 {
+    font-size: 22px;
+  }
+  .left-card-avisos-emp .p3 {
+    font-size: 14px;
+  }
+
+  .right-card-avisos-emp {
+    display: flex;
+    /* background-color: burlywood; */
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .sub-right-avisos-emp {
+    display: flex;
+    width: 100%;
+    /* background-color: royalblue; */
+    cursor: pointer;
+  }
+
+  .bottom-card-avisos-emp {
+    /* background-color: cadetblue; */
+    border-top: 1px solid #ced1e9;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .cont-change-estado-aviso-emp {
+    width: 320px;
+    height: 300px;
+    /* background-color: rosybrown; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 20px;
+  }
+  .cont-action-estado-aviso-emp {
+    /* background-color: rosybrown; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: inherit;
+    /* margin-bottom: 20px; */
+  }
+}
+
+@media only screen and (max-width: 500px) {
+}

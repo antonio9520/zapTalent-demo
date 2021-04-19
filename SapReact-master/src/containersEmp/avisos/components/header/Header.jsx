@@ -69,12 +69,12 @@ const Header = ({
     }
   };
   return (
-    <div className="header-avisos-emp">
+    <div className="header-avisos-emp" style={{ width: "inherit" }}>
       <div className="left-header-avisos-emp">
         <p>Mis Avisos</p>
       </div>
       <div className="right-header-avisos-emp">
-        <div style={{ width: "350px", marginRight: "50px" }}>
+        <div className="search-ofertas">
           <SearchBar
             onChange={setSearch}
             onClick={handleClick}
@@ -87,7 +87,7 @@ const Header = ({
           <AntTab label="Activos" />
           <AntTab label="Caducados" />
         </AntTabs>
-        <Tooltip
+        <Tooltip 
           title={`Nuevo Aviso. Restantes: ${
             tipoPlan.totalAvisos === 0
               ? "Ilimitado"

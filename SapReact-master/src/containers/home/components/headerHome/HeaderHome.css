@@ -37,21 +37,10 @@
 
 @media only screen and (max-width: 599px) {
   .cont-header-home-b {
-    flex-direction: column;
-    /* background-color: lawngreen; */
+    height: 40px;
   }
-
   .cont-left-header-home {
-   /* background-color: lawngreen; */
     padding-left: 10px;
-  }
-  
-  .cont-right-header-home {
-  
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-   
   }
 }
 

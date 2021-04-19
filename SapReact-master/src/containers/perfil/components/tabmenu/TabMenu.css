@@ -52,21 +52,6 @@
 
 /*DOS ICONOS*/
 
-.icon-item-menu-ed-per {
-  color: #e2e2e2;
-  width: 30px !important;
-  height: 30px !important;
-  transition: 0.5s ease-in-out !important;
-}
-
-.icon-item-menu-ed-per-active-two {
-  color: #ffffff;
-  width: 35px !important;
-  height: 35px !important;
-
-  transition: 0.5s ease-in-out !important;
-}
-
 .close-modal-edit-perfil {
   position: absolute !important;
   right: 0px;
@@ -106,44 +91,43 @@
 /* Smartphones in landscape mode */
 
 @media only screen and (min-width: 600px) and (max-width: 959px) {
-  .cont-edit-perfil {
-    height: 98%;
-    overflow: auto;
-    max-height: 640px;
-    padding: 30px 20px;
-  }
 }
 
 /* Smartphones in portrait mode  */
 
 @media only screen and (max-width: 599px) {
   .cont-edit-perfil {
-    height: 98%;
-    overflow: auto;
-    max-height: 640px;
+    max-height: 98%;
+    padding: 5px;
+    padding-top: 30px;
   }
-}
-
-@media only screen and (max-width: 500px) {
-  .cont-edit-perfil {
-    background-color: var(--white);
-    width: 98%;
-    height: 98%;
-    overflow: auto;
-    height: 640px;
-    padding: 40px 0px;
-  }
-
   .cont-items-menu-ed-per {
     display: flex;
     justify-content: space-between;
-    padding: 10px 25px;
+    padding: 5px 20px;
     margin: 0 15px;
     overflow: auto;
-
-    /* background-color: lightcoral; */
+  }
+  .item-menu-edit-perfil {
+    height: 45px !important;
+    width: 45px !important;
+  }
+  .item-menu-edit-perfil-active {
+    height: 45px !important;
+    width: 45px !important;
+  }
+  .icon-item-menu-ed-per {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .icon-item-menu-ed-per-active {
+    width: 30px !important;
+    height: 30px !important;
   }
 
+}
+
+@media only screen and (max-width: 500px) {
   .item-menu-edit-perfil {
     margin-left: 5px !important;
   }

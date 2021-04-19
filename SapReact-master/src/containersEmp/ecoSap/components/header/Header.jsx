@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Header.css";
 import { SearchBar } from "../../../../componentsEmp";
-import { withStyles, Tabs, Tab } from "@material-ui/core";
+import { withStyles, Tabs, Tab, Hidden } from "@material-ui/core";
 import { Tooltip, IconButton } from "../../../../components";
 import { FilterList } from "@material-ui/icons";
 
@@ -72,34 +72,64 @@ const Header = ({
     }
   };
   return (
-    <div className="cont-header-eco-sap-emp">
-      <p className="title-header-eco-sap-emp">Ecosistema SAP</p>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          width: "750px",
-          justifyContent: "space-between",
-        }}
-      >
-        <SearchBar
-          onChange={setSearch}
-          onClick={handleClick}
-          onKeyDown={_handleKeyDown}
-        />
-        <AntTabs value={value} onChange={handleChange} aria-label="ant example">
-          <AntTab label="Todos" />
-          <AntTab label="Postulantes" />
-        </AntTabs>
-        <div className="cont-btn-filter">
-          <Tooltip title="Filtrar">
-            <IconButton bg="primary" onClick={() => setOpen(true)}>
-              <FilterList />
-            </IconButton>
-          </Tooltip>
+    <>
+      <Hidden smDown>
+        <div className="cont-header-eco-sap-emp">
+          <p className="title-header-eco-sap-emp">Ecosistema SAP</p>
+          <div className="rigth-header-ecosap">
+            <SearchBar
+              onChange={setSearch}
+              onClick={handleClick}
+              onKeyDown={_handleKeyDown}
+            />
+            <AntTabs
+              value={value}
+              onChange={handleChange}
+              aria-label="ant example"
+            >
+              <AntTab label="Todos" />
+              <AntTab label="Postulantes" />
+            </AntTabs>
+            <div className="cont-btn-filter">
+              <Tooltip title="Filtrar">
+                <IconButton bg="primary" onClick={() => setOpen(true)}>
+                  <FilterList />
+                </IconButton>
+              </Tooltip>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </Hidden>
+      <Hidden mdUp>
+        <div className="cont-header-eco-sap-emp-mini">
+          <div className="rigth-header-ecosap-mini">
+            <p className="title-header-eco-sap-emp-mini">Ecosistema SAP</p>
+            <SearchBar
+              onChange={setSearch}
+              onClick={handleClick}
+              onKeyDown={_handleKeyDown}
+            />
+          </div>
+          <div className="bottom-header-ecosap-mini">
+            <AntTabs
+              value={value}
+              onChange={handleChange}
+              aria-label="ant example"
+            >
+              <AntTab label="Todos" />
+              <AntTab label="Postulantes" />
+            </AntTabs>
+            <div className="cont-btn-filter">
+              <Tooltip title="Filtrar">
+                <IconButton bg="primary" onClick={() => setOpen(true)}>
+                  <FilterList />
+                </IconButton>
+              </Tooltip>
+            </div>
+          </div>
+        </div>
+      </Hidden>
+    </>
   );
 };
 

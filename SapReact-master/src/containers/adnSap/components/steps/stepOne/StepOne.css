@@ -6,7 +6,6 @@
   min-width: 400px;
   min-height: 400px;
   max-height: 850px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +48,7 @@
   flex-direction: column;
 }
 .step-one-top-adn {
-  display: flex;
+  display: flex; 
   flex: 5;
 }
 .cont-mobile-adn {
@@ -167,6 +166,7 @@
     flex-direction: column;
     align-items: inherit;
     /* padding: 20px 40px; */
+    /* background-color: brown; */
   }
   .sub-cont-one-adn {
     /* background-color:brown;  */

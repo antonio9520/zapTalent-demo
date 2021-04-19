@@ -35,7 +35,7 @@ const CardPerfil = ({
   porcentaje,
 }) => {
   const dispatch = useDispatch();
-  let usuario;
+  let usuario; 
   const usuarioA = useSelector((state) => state.auth.usuario);
   const usuarioB = useSelector((state) => state.userInfo.usuario);
   if (empresas) {

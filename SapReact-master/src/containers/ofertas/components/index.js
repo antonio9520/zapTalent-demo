@@ -5,5 +5,15 @@ import Filtro from "./filtros/Filtros";
 import Modal from "./modal/Modal";
 import ModalAviso from "./modalInfoAviso/modal";
 import ReEmail from "./reEmail/ReEmail";
+import HeaderMini from "./headerMini/HeaderMini";
 
-export { Header, Card, FiltroDrawer, Filtro, Modal, ModalAviso, ReEmail };
+export {
+  Header,
+  Card,
+  FiltroDrawer,
+  Filtro,
+  Modal,
+  ModalAviso,
+  ReEmail,
+  HeaderMini,
+};

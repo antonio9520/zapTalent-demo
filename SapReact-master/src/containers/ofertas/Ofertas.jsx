@@ -8,8 +8,10 @@ import {
   Filtro,
   ModalAviso,
   ReEmail,
+  HeaderMini,
 } from "./components";
 import { BusinessCenterOutlined } from "@material-ui/icons";
+import { Hidden } from "@material-ui/core";
 import { filtrarOferLaboralesAction } from "../../redux/actions/ofertasLaboralesAction";
 import { obtenerPostulacionesAction } from "../../redux/actions/postAction";
 import { useSelector, useDispatch } from "react-redux";
@@ -100,7 +102,6 @@ const Ofertas = (props) => {
       default:
         break;
     }
-   
   };
   const obtenerOfertasMore = (querie, index, skip) => {
     if (index === 3) {
@@ -154,6 +155,18 @@ const Ofertas = (props) => {
             <div className="cont-header-of-laborales-top">
               <div className="cont-header-of-laborales">
                 <Header
+                  setOpen={setOpen}
+                  indexTab={indexTab}
+                  setindexTab={setindexTab}
+                  setSkip={setSkip}
+                  obtenerOfertas={obtenerOfertas}
+                  query={query}
+                  setQuery={setQuery}
+                  search={search}
+                  setSearch={setSearch}
+                />
+
+                <HeaderMini
                   setOpen={setOpen}
                   indexTab={indexTab}
                   setindexTab={setindexTab}

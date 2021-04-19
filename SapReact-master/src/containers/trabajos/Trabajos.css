@@ -26,14 +26,10 @@
 @media only screen and (min-width: 600px) and (max-width: 959px) {
   .conteiner-cards-job {
     width: 100%;
-    /* min-height: 100vh; */
-    padding-top: 40px;
-    /* background-color: aquamarine; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-right: 0;
-    padding-bottom: 80px;
+    padding: 60px 0px 80px 0px;
   }
 }
 
@@ -42,33 +38,9 @@
 @media only screen and (max-width: 599px) {
   .conteiner-cards-job {
     width: 100%;
-    /* min-height: 100vh; */
-    padding-top: 40px;
-    /* background-color: aquamarine; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-right: 0;
-    padding-bottom: 80px;
-  }
-  .conteiner-cards-job {
-    /* background-color: salmon; */
+    padding: 60px 0px 80px 0px;
   }
 }
-
-@media only screen and (max-width: 500px) {
-  .conteiner-cards-job {
-    width: 100%;
-    /* min-height: 100vh; */
-    padding-top: 40px;
-    /* background-color: aquamarine; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding-right: 5px;
-    padding-left: 5px;
-    padding-bottom: 80px;
-  }
-}
-
-/*416*/

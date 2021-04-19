@@ -50,6 +50,10 @@ const AntTab = withStyles((theme) => ({
     "&:focus": {
       color: "#40a9ff",
     },
+    [theme.breakpoints.down("sm")]: {
+      minWidth: 60,
+      fontSize: "10px",
+    },
   },
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
@@ -210,12 +214,7 @@ const InfoEmp = forwardRef((props, ref) => {
                 />
               </AntTabs>
             </div>
-            <div
-              style={{
-                height: "100%",
-                padding: "0 40px",
-              }}
-            >
+            <div className="containers-infoAviso-of">
               <div className="cont-containers-infoAviso-of">
                 {value === 0 ? (
                   <Aviso data={data} data2={data2} />

@@ -28,12 +28,11 @@
   padding: 0 80px;
 }
 
-.sub-cont-three-adn-edit{
+.sub-cont-three-adn-edit {
   /* background-color: aquamarine; */
-  
 }
 
-.cont-btn-adn-one-edit{
+.cont-btn-adn-one-edit {
   /* background-color: blue; */
   display: flex;
   justify-content: space-between;
@@ -42,11 +41,77 @@
   /* margin-bottom: 40px; */
 }
 
-.cont-three-adn-edit{
+.cont-three-adn-edit {
   background-color: var(--white);
   position: relative;
   width: 98%;
   max-width: 500px;
   border-radius: 5px;
   padding: 10px 20px 30px 20px;
+}
+.step-one-top-adn.addsm {
+  max-width: 500px;
+  min-width: 500px;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  /*ONE*/
+  .cont-one-adn-edit {
+    background-color: var(--white);
+    width: 95%;
+    max-width: 700px;
+    height: 350px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .sub-cont-SwipeableViews-active {
+    width: 60px;
+    height: 60px;
+  }
+  .sub-cont-SwipeableViews {
+    width: 60px;
+    height: 60px;
+  }
+
+  .content-center-adn {
+    width: 230px;
+    flex: 5;
+  }
+  .step-one-top-adn.addsm {
+    display: flex;
+    flex: 5;
+    max-width: 500px;
+    min-width: inherit;
+  }
+  .cont-btns-one-adn-edit {
+    padding: 0 10px;
+  }
+  /*TWO*/
+  .sub-nivel-adn-active {
+    width: 60px;
+    height: 60px;
+    transform: scale(1.1);
+  }
+  .sub-nivel-adn {
+    width: 60px;
+    height: 60px;
+  }
 }

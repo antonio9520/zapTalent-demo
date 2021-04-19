@@ -83,7 +83,7 @@
   margin: 0;
   margin-left: 30px;
   margin-bottom: 15px;
- width: 200px;
+  width: 200px;
 }
 .p2-card-init-estudios {
   font-size: 14px;
@@ -115,4 +115,49 @@
 .btn-cardinit-estudios p {
   margin: 0;
   font-size: 14px;
+}
+
+/* MEDIA QUERIES */
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .cont-card-init {
+    overflow: auto;
+    padding: 40px 0 70px 0;
+  }
+
+  .card-init-estudios {
+    height: 600px;
+    width: 95%;
+    /* flex-direction: column; */
+  }
+  .left-card-init-estudios {
+    /* border-top-right-radius: inherit; */
+    /* border-bottom-left-radius: 50%; */
+    border-bottom-right-radius: 50%;
+  }
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-card-init {
+    overflow: auto;
+    padding: 40px 0 70px 0;
+  }
+
+  .card-init-estudios {
+    height: 800px;
+    width: 95%;
+    flex-direction: column;
+  }
+  .left-card-init-estudios {
+    border-top-right-radius: inherit;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
 }

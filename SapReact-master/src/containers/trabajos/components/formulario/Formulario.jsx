@@ -429,7 +429,7 @@ const Formulario = (props) => {
               helperText={perCargoError ? "Introduzca un numero valido" : null}
             />
           </div>
-          <div className="right-date-trabajo-manpre">
+          <div className="right-date-trabajo-manpre"> 
             <TextField
               fullWidth
               label="Manejo de presupuesto (opcional)"

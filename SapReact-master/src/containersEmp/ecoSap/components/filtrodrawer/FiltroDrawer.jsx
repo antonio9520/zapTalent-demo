@@ -22,7 +22,12 @@ const FiltroDrawer = ({
   open,
 }) => {
   return (
-    <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+    <Drawer
+      anchor="right"
+      open={open}
+      onClose={() => setOpen(false)}
+      
+    >
       <Filtro
         value={value}
         query={query}

@@ -9,12 +9,10 @@
   max-height: 250px;
   overflow: auto;
   padding-right: 10px;
+  text-align: center;
 }
 .cont-direccion-info-emp {
   padding: 20px 40px;
-  /* max-height: 250px; */
-  /* overflow: auto; */
-  /* background-color: blue; */
 }
 .sub-cont-direccion-info-emp {
   max-height: 250px;
@@ -49,4 +47,30 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-direccion-info-emp {
+    padding: 20px 10px;
+  }
+  .reseña-info-emp{
+    padding: 20px 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
 }

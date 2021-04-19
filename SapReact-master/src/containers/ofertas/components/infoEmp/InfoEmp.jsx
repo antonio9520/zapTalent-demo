@@ -95,7 +95,7 @@ const InfoEmp = forwardRef((props, ref) => {
               {data.logoURL ? (
                 <div className="cont-logo">
                   <img
-                    style={{ width: "90px", height: "90px" }}
+                    style={{ width: "80px", height: "80px" }}
                     src={data.logoURL}
                     alt="userimage"
                   />

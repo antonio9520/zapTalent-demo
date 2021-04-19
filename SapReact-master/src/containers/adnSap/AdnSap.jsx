@@ -4,7 +4,7 @@ import { CardInit, ModalEliminar } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Card, ModalEditar, NewModal } from "./components";
 import { obtenerAdnAction } from "../../redux/actions/adnAction";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Hidden } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Loader from "react-loader-spinner";
 
@@ -80,7 +80,7 @@ const AdnSap = () => {
           />
         </div>
       ) : adns.length === 0 ? (
-        <div style={{ paddingTop: "75px", height: "100vh" }}>
+        <div className="cont-card-init-estudios">
           <CardInit
             setOpenModal={setOpenModal}
             type={cardT1}
@@ -98,15 +98,25 @@ const AdnSap = () => {
         <>
           <div className="cont-title-certificados">
             <h1>Mi ADN SAP</h1>
-          </div>
-          <div className="cont-cards-adn" ref={modal}>
-            <div className="cont-btn-add-adn">
+            <Hidden mdUp>
               <IconButton
-                className="btn-add-adn"
+                className="icon-btn-add-trabajos"
                 onClick={() => setOpenModal(true)}
               >
                 <Add />
               </IconButton>
+            </Hidden>
+          </div>
+          <div className="cont-cards-adn" ref={modal}>
+            <div className="cont-btn-add-adn">
+              <Hidden smDown>
+                <IconButton
+                  className="icon-btn-add-trabajos "
+                  onClick={() => setOpenModal(true)}
+                >
+                  <Add />
+                </IconButton>
+              </Hidden>
             </div>
             {adns.map((item, index) => (
               <Card

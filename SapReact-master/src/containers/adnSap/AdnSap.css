@@ -30,9 +30,8 @@
 
 @media only screen and (min-width: 600px) and (max-width: 959px) {
   .cont-cards-adn {
-    padding-right: 0;
     justify-content: space-evenly;
-    padding-bottom: 80px;
+    padding: 60px 0px 80px 0px;
   }
   .cont-btn-add-adn {
     position: absolute;
@@ -45,9 +44,8 @@
 
 @media only screen and (max-width: 599px) {
   .cont-cards-adn {
-    padding-right: 0;
     justify-content: space-evenly;
-    padding-bottom: 80px;
+    padding: 60px 0px 80px 0px;
   }
   .cont-btn-add-adn {
     position: absolute;
@@ -56,5 +54,3 @@
   }
 }
 
-@media only screen and (max-width: 500px) {
-}

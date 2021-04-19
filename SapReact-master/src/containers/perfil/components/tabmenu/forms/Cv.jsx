@@ -57,7 +57,7 @@ const Cv = ({ loading }) => {
           </IconButton>
         </Tooltip>
       </div>
-      <div className="form-edit-perfil">
+      <div className="form-edit-perfil" style={{ overflow: "hidden" }}>
         <div className="item-edit-perfil">
           <Description className="icon-form-edit-perfil" />
           <input

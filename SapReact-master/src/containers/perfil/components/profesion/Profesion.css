@@ -67,7 +67,7 @@
   bottom: 0;
   width: 100%;
   padding-left: 10px;
-} 
+}
 
 .overlay-loading {
   position: absolute;
@@ -77,4 +77,53 @@
   top: 0;
   left: 0;
   border-radius: 5px;
+}
+.cont-cont-estudios-profesion {
+  display: flex;
+}
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1279px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .cont-profesion {
+    background-color: var(--white);
+    padding: 30px 10px;
+    max-height: 550px;
+    width: 96%;
+  }
+  .cont-cont-estudios-profesion {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+  }
+  .cont-estudios-profesion {
+    flex-direction: row;
+    padding: 0px;
+    padding-top: 5px;
+    /* background-color: brown; */
+    flex: 1;
+    margin-top: 20px;
+  }
+  .cont-right-profesion {
+    /* background-color: brown; */
+    flex: 0.8;
+    justify-content: flex-start;
+    padding-top: 25px;
+ 
+
+  }
+}
+
+@media only screen and (max-width: 433px) {
 }

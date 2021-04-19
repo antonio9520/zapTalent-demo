@@ -3,7 +3,7 @@ import "./Estudios.css";
 import { Modal, CardEstudio, ModalEditar } from "./components";
 import { CardInit, Spinner, ModalEliminar } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Hidden } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import { obtenerEstudiosAction } from "../../redux/actions/estudioAction";
 import Loader from "react-loader-spinner";
@@ -70,7 +70,7 @@ const Estudios = () => {
           />
         </div>
       ) : estudios.length === 0 ? (
-        <div style={{ paddingTop: "75px", height: "100vh" }}>
+        <div className="cont-card-init-estudios">
           <CardInit
             setOpenModal={setOpenModal}
             type={cardT1}
@@ -80,18 +80,28 @@ const Estudios = () => {
           />
           <Modal setOpenModal={setOpenModal} openModal={openModal} />
         </div>
-      ) : (
+      ) : (  
         <>
           <div className="cont-title-certificados">
             <h1>Mis Estudios</h1>
+            <Hidden mdUp>
+              <IconButton
+                className="icon-btn-add-trabajos"
+                onClick={() => setOpenModal(true)}
+              >
+                <Add />
+              </IconButton>
+            </Hidden>
           </div>
           <div className="conteiner-cards-estudio">
-            <IconButton
-              className="icon-btn-add-trabajos"
-              onClick={() => setOpenModal(true)}
-            >
-              <Add />
-            </IconButton>
+            <Hidden smDown>
+              <IconButton
+                className="icon-btn-add-trabajos "
+                onClick={() => setOpenModal(true)}
+              >
+                <Add />
+              </IconButton>
+            </Hidden>
             {datasort.map((item, index) => (
               <CardEstudio
                 key={index}

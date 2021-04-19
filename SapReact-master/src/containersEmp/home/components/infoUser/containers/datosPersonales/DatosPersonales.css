@@ -56,3 +56,47 @@
   height: 40px;
   margin-left: 5px !important;
 }
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 1280px) and (max-width: 1619px) {
+}
+
+@media only screen and (min-width: 960px) and (max-width: 1279px) {
+}
+
+/* Smartphones in landscape mode */
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+}
+
+/* Smartphones in portrait mode  */
+
+@media only screen and (max-width: 599px) {
+  .datosPersonales-emp {
+    /* background-color: yellow; */
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    overflow: auto;
+  }
+
+  /*top*/
+  .datosPersonales-emp .top-b {
+    height: 260px;
+    /* background-color: rebeccapurple; */
+    display: flex;
+    padding: 0px 10px;
+    overflow: auto;
+    min-width: 400px;
+  }
+
+  .item-datos-pers-emp-home .left-dp {
+    /* background-color: royalblue; */
+    padding: 0 10px;
+  }
+
+  /*bottom*/
+}
+
+@media only screen and (max-width: 500px) {
+}

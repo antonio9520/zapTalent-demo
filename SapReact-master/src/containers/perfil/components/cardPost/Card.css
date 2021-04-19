@@ -112,3 +112,21 @@
   font-weight: 400;
   margin: 0;
 }
+
+.aviso-eliminado-card-perfil {
+}
+
+.aviso-eliminado-card-perfil p:nth-child(1) {
+  color: white;
+  font-size: 18px;
+}
+
+.aviso-eliminado-card-perfil p:nth-child(2) {
+  color: white;
+  margin: 0;
+}
+
+.aviso-eliminado-card-perfil p:nth-child(3) {
+  color: white;
+  margin: 0;
+}

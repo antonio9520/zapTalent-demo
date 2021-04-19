@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Avisos.css";
 import {
   Header,
-  Card, 
+  Card,
   Modal,
   ModalEditar,
   ModalCopy,
   ModalRep,
+  HeaderMini,
 } from "./components";
 import { obtenerAvisoAction } from "../../redux/actions/actions-emp/avisosAction";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "react-loader-spinner";
 import { ModalEliminar } from "../../components";
 import { setearTipoPlan } from "../../assets/setTipoPlan";
 import { obtenerTotalAvisosAction } from "../../redux/actions/actions-emp/postuladosAction";
@@ -37,14 +37,12 @@ const Avisos = () => {
   const [totalavisos, setTotalAvisos] = useState(0);
 
   const cargarAvisos = async () => {
-    
     switch (index) {
       case 0:
         query._id = usuario.idemp;
         dispatch(obtenerAvisoAction({ skip, query }));
         break;
       case 1:
-       
         query.activo = true;
         query._id = usuario.idemp;
         dispatch(obtenerAvisoAction({ skip, query }));
@@ -100,7 +98,21 @@ const Avisos = () => {
           <Header
             setOpenModal={setOpenModal}
             setIndex={setIndex}
-            index={index} 
+            index={index}
+            setQuery={setQuery}
+            _switch={_switch}
+            setSkip={setSkip}
+            setSwitch={setSwitch}
+            query={query}
+            disabledNewAviso={disabledNewAviso}
+            tipoPlan={tipoPlan}
+            totalavisos={totalavisos}
+          />
+
+          <HeaderMini
+            setOpenModal={setOpenModal}
+            setIndex={setIndex}
+            index={index}
             setQuery={setQuery}
             _switch={_switch}
             setSkip={setSkip}
