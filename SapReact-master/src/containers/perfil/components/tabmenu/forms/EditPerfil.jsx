@@ -398,7 +398,7 @@ const EditPerfil = ({ usuario, loading }) => {
           <div className="item-edit-perfil">
             <MonetizationOn className="icon-form-edit-perfil" />
             <CustomInput
-              label="Pretención de renta"
+              label="Pretensión de renta"
               defaultValue={pretencion}
               value={pretencion}
               type="number"

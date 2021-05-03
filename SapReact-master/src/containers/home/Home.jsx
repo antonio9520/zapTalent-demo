@@ -304,7 +304,7 @@ const Home = () => {
               <CardA
                 image
                 white
-                titulo="Dias desde la ultima act. de tu CV"
+                titulo="Días desde la última act. de tu CV"
                 value={ultimaActCV}
               />
             </Grid>

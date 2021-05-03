@@ -219,12 +219,12 @@ const Ofertas = (props) => {
                 ) : !cargando ? (
                   indexTab === 1 ? (
                     <div className="div-cargando-avisos">
-                      <p>No Tienes mas postulaciones</p>
+                      <p>No Tienes más postulaciones</p>
                     </div>
                   ) : !cargando ? (
                     indexTab === 0 || indexTab === 2 || indexTab === 3 ? (
                       <div className="div-cargando-avisos">
-                        <p>No quedan mas ofertas laborales</p>
+                        <p>No quedan más ofertas laborales</p>
                       </div>
                     ) : null
                   ) : null

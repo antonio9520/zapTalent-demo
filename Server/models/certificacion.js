@@ -16,7 +16,7 @@ const certificacionSchema = mongoose.Schema({
     type: String,
     require: true,
     trim: true,
-  },  
+  },
   fecha: {
     type: Date,
     default: Date(),
@@ -42,8 +42,8 @@ const certificacionSchema = mongoose.Schema({
 });
 
 certificacionSchema.methods.setcertificado = function setcertificado(filename) {
-  const {host, port} = appConfig;
-  console.log("funcion certificado")
+  const { host, port } = appConfig;
+  console.log("funcion certificado");
   this.certificadoURL = `https://zaptalent.azurewebsites.net/public/certificados/${filename}`;
 };
 

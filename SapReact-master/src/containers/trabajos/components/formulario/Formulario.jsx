@@ -305,7 +305,7 @@ const Formulario = (props) => {
         </div>
         <div className="item-form-trabajo">
           <CustomSelectB
-            label="Sub-Area"
+            label="Sub-Área"
             onChange={(e) => {
               setSubAreaError(false);
               setSubArea(e.target.value);

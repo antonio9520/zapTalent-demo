@@ -21,7 +21,7 @@ exports.crearCertificacion = async (req, res) => {
     if (req.file) {
       const { filename } = req.file;
       certificado.setcertificado(filename);
-    }
+    } 
     await certificado.save();
     res.json(certificado);
   } catch (error) {

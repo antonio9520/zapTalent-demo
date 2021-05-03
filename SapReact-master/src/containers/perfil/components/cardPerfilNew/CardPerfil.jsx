@@ -339,7 +339,7 @@ const DatosPersonales = ({ usuario }) => {
         </div>
         <div className="sub-item-pefil-left-2">
           <div className="sub-item-pefil-right-top">
-            <p className="p1-perfil-b">Numero móvil</p>
+            <p className="p1-perfil-b">Número móvil</p>
           </div>
           <div className="sub-item-pefil-right-bottom">
             <p className="p2-perfil-b">
@@ -392,7 +392,7 @@ const DatosPersonales = ({ usuario }) => {
             </div>
             <div className="sub-item-pefil-left-2">
               <div className="sub-item-pefil-right-top">
-                <p className="p1-perfil-b">Pretención de renta</p>
+                <p className="p1-perfil-b">Pretensión de renta</p>
               </div>
               <div className="sub-item-pefil-right-bottom">
                 <p className="p2-perfil-b">

@@ -293,7 +293,7 @@ const Formulario = (props) => {
         </div>
         <div className="campo-form-estudio">
           <CustomSelectB
-            label="Carrera/Titulo"
+            label="Carrera/Título"
             onChange={(e) => {
               setCarreraError(false);
               setCarrera(e.target.value);

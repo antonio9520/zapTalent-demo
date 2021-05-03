@@ -157,7 +157,7 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
             className="btn-cancelar-postular-ofertas-laborales"
             onClick={eliminarPostulacion}
           >
-            <p>cancelar postulacion</p>
+            <p>cancelar postulación</p>
           </Button>
         </div>
       ) : (
@@ -289,7 +289,7 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
                   </Tooltip>
                 </div>
                 <div className="item-5">
-                  <h5>Módulos y submodulos</h5>
+                  <h5>Módulos y Submódulos</h5>
                   <div className="modulos-card-ofertas-laborales">
                     {adns
                       ? adns.map((item, index) => (

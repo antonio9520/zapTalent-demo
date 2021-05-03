@@ -198,7 +198,7 @@ const Filtros = ({
             <div className="item-doble-filtros-of">
               <div style={{ marginRight: "5px", flex: 1 }}>
                 <CustomSelect
-                  placeholder="Modulo"
+                  placeholder="Módulo"
                   size="small"
                   onChange={setModulos}
                   value={_modulo}
@@ -220,7 +220,7 @@ const Filtros = ({
               </div>
               <div style={{ marginLeft: "5px", flex: 1 }}>
                 <CustomSelect
-                  placeholder="SubModulo"
+                  placeholder="SubMódulo"
                   size="small"
                   onChange={setSubmodulos}
                   value={_submodulo}
@@ -436,7 +436,7 @@ const Filtros = ({
           </div>
 
           <div className="item-2">
-            <p>Geografico</p>
+            <p>Geográfico</p>
             <div className="item-doble-filtros-of">
               <div style={{ marginRight: "5px", flex: 1 }}>
                 <CustomSelect

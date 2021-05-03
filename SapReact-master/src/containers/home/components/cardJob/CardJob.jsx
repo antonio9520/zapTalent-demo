@@ -62,7 +62,7 @@ const CardJob = ({
           <div className="sub-div-cardjob-5">
             <p>Publicado</p>
             <p>
-              Hace {dias} {dias === 1 ? "dia" : "dias"}
+              Hace {dias} {dias === 1 ? "día" : "días"}
             </p>
           </div>
           <div className="sub-div-cardjob-6">
