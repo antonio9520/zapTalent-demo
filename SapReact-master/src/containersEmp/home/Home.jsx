@@ -82,153 +82,169 @@ const Home = () => {
   }, [avisos]);
 
   return (
-    <Grid container className="sub-conteiner-home-emp">
-      <Modal
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        data={dataUser}
-        setIdUser={setIdUser}
-        setOpen={setOpen}
-      />
-      <DialogCVPDF
-        open={open}
-        setOpen={setOpen}
-        setIdUser={setIdUser}
-        idUser={idUser}
-      />
-      <Grid
-        item
-        className="cont-header-home-emp"
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        xl={12}
-      >
-        <HeaderHome />
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        xl={12}
-        className="cont-card-perfil-home-emp"
-      >
-        <CardPerfil
-          // nombre={nombreuser}
-          imageURL={usuario ? (usuario.logoURL ? usuario.logoURL : null) : null}
-          titulo="Comienza a reclutar a los mejores talentos SAP de Chile."
-          subtitle="Crea tu primer aviso aquí."
-          textBtn="Publicar Aviso"
-          to="/empresas/avisos"
-          empresas
-        />
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        xl={12}
-        className="cont-cards-home-emp"
-      >
-        <Grid container className="sub-cont-cards-home">
+    <>
+      {new Date(usuario?.fechaTerminoEmp) < new Date() ? (
+        <div className="contenedor-cuenta-caducada">
+          <p>Su plan ha caducado</p>
+          <p>Contáctese con ZAPTalent para restablecer el servicio</p>
+        </div>
+      ) : new Date(usuario?.fechaTermino) < new Date() ? (
+        <div className="contenedor-cuenta-caducada">
+          <p>Su cuenta de usuario ha caducado</p>
+          <p>Contáctese con su administrador ZAPTalent para restablecer su perfil</p>
+        </div>
+      ) : (
+        <Grid container className="sub-conteiner-home-emp">
+          <Modal
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+            data={dataUser}
+            setIdUser={setIdUser}
+            setOpen={setOpen}
+          />
+          <DialogCVPDF
+            open={open}
+            setOpen={setOpen}
+            setIdUser={setIdUser}
+            idUser={idUser}
+          />
+          <Grid
+            item
+            className="cont-header-home-emp"
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+          >
+            <HeaderHome />
+          </Grid>
           <Grid
             item
             xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            xl={3}
-            className="items-cards-home"
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+            className="cont-card-perfil-home-emp"
           >
-            <CardA
-              image
-              white
-              titulo="Nuevos usuarios hoy"
-              value={totalUsuariosDias}
+            <CardPerfil
+              // nombre={nombreuser}
+              imageURL={
+                usuario ? (usuario.logoURL ? usuario.logoURL : null) : null
+              }
+              titulo="Comienza a reclutar a los mejores talentos SAP de Chile."
+              subtitle="Crea tu primer aviso aquí."
+              textBtn="Publicar Aviso"
+              to="/empresas/avisos"
+              empresas
             />
           </Grid>
           <Grid
             item
             xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            xl={3}
-            className="items-cards-home"
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+            className="cont-cards-home-emp"
           >
-            <CardA white titulo="Mis avisos" value={totalavisos} />
+            <Grid container className="sub-cont-cards-home">
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                xl={3}
+                className="items-cards-home"
+              >
+                <CardA
+                  image
+                  white
+                  titulo="Nuevos usuarios hoy"
+                  value={totalUsuariosDias}
+                />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                xl={3}
+                className="items-cards-home"
+              >
+                <CardA white titulo="Mis avisos" value={totalavisos} />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                xl={3}
+                className="items-cards-home"
+              >
+                <CardA
+                  degradado
+                  titulo="N° de postulantes"
+                  value={totalpostulantes}
+                />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                xl={3}
+                className="items-cards-home"
+              >
+                <CardA
+                  degradado
+                  titulo="Postulaciones no leidas"
+                  value={postulantesnoleidos}
+                />
+              </Grid>
+            </Grid>
           </Grid>
           <Grid
             item
             xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            xl={3}
-            className="items-cards-home"
+            sm={12}
+            md={12}
+            lg={6}
+            xl={6}
+            className="cont-table-home-emp"
           >
-            <CardA
-              degradado
-              titulo="N° de postulantes"
-              value={totalpostulantes}
+            <Table
+              postulados={postulados}
+              dataFiltro={dataFiltro}
+              setQuery={setQuery}
+              query={query}
+              setDataUser={setDataUser}
+              setOpenModal={setOpenModal}
             />
           </Grid>
           <Grid
             item
             xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            xl={3}
-            className="items-cards-home"
+            sm={12}
+            md={12}
+            lg={6}
+            xl={6}
+            className={`cont-card-left-home-emp `}
           >
-            <CardA
-              degradado
-              titulo="Postulaciones no leidas"
-              value={postulantesnoleidos}
-            />
+            {avisos.length === 0 ? (
+              <CardAvisosEmpty />
+            ) : (
+              <CardAvisos data={avisos} />
+            )}
           </Grid>
         </Grid>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={6}
-        xl={6}
-        className="cont-table-home-emp"
-      >
-        <Table
-          postulados={postulados}
-          dataFiltro={dataFiltro}
-          setQuery={setQuery}
-          query={query}
-          setDataUser={setDataUser}
-          setOpenModal={setOpenModal}
-        />
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={6}
-        xl={6}
-        className={`cont-card-left-home-emp `}
-      >
-        {avisos.length === 0 ? (
-          <CardAvisosEmpty />
-        ) : (
-          <CardAvisos data={avisos} />
-        )}
-      </Grid>
-    </Grid>
+      )}
+    </>
   );
 };
 

@@ -253,9 +253,20 @@ const InfoEmp = forwardRef((props, ref) => {
                   <Button
                     className={classes.button}
                     color="primary"
+                    style={{
+                      opacity:
+                        data?.estado !== "Activo" ||
+                        new Date(data?.termino) < new Date()
+                          ? 0.5
+                          : null,
+                    }}
                     variant="contained"
                     onClick={postular}
-                    disabled={_switch}
+                    disabled={
+                      _switch ||
+                      data?.estado !== "Activo" ||
+                      new Date(data?.termino) < new Date()
+                    }
                   >
                     Postular
                     {_switch ? (

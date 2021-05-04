@@ -182,7 +182,9 @@ exports.totalEmpleosSugeridos = async (req, res) => {
     query.push({ modulos: { $in: modulos }, submodulos: { $in: submodulos } });
 
   try {
-    const totalavisos = await Avisos.find({ $or: query }).countDocuments();
+    const totalavisos = await Avisos.find({
+      $and: [{ $or: query }, { estado: "Activo" }],
+    }).countDocuments();
 
     res.json(totalavisos);
   } catch (error) {

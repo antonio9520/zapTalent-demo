@@ -31,7 +31,29 @@
   padding-bottom: 10px;
   height: 52%;
 }
+.contenedor-cuenta-caducada {
+  padding-top: 75px;
+  padding-left: 10px;
+  height: 100vh;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.contenedor-cuenta-caducada p:nth-child(1) {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--blue-primary);
+  text-align: center;
+  margin-bottom: 0;
+}
+.contenedor-cuenta-caducada p:nth-child(2) {
+  font-size: 16px;
 
+  color: var(--gray-text);
+  text-align: center;
+}
 /* MEDIA QUERIES */
 @media only screen and (min-width: 1280px) and (max-width: 1619px) {
 }

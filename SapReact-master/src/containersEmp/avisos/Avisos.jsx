@@ -93,93 +93,105 @@ const Avisos = () => {
 
   return (
     <>
-      <div className="cont-avisos-emp" onScroll={handleScroll}>
-        <div className="cont-header-avisos-emp">
-          <Header
-            setOpenModal={setOpenModal}
-            setIndex={setIndex}
-            index={index}
-            setQuery={setQuery}
-            _switch={_switch}
-            setSkip={setSkip}
-            setSwitch={setSwitch}
-            query={query}
-            disabledNewAviso={disabledNewAviso}
-            tipoPlan={tipoPlan}
-            totalavisos={totalavisos}
-          />
+      {new Date(usuario?.fechaTerminoEmp) < new Date() ? (
+        <div className="contenedor-cuenta-caducada">
+          <p>Su plan ha caducado</p>
+          <p>Contáctese con ZAPTalent para restablecer el servicio</p>
+        </div>
+      ) : new Date(usuario?.fechaTermino) < new Date() ? (
+        <div className="contenedor-cuenta-caducada">
+          <p>Su cuenta de usuario ha caducado</p>
+          <p>Contáctese con su administrador ZAPTalent para restablecer su perfil</p>
+        </div>
+      ) : (
+        <div className="cont-avisos-emp" onScroll={handleScroll}>
+          <div className="cont-header-avisos-emp">
+            <Header
+              setOpenModal={setOpenModal}
+              setIndex={setIndex}
+              index={index}
+              setQuery={setQuery}
+              _switch={_switch}
+              setSkip={setSkip}
+              setSwitch={setSwitch}
+              query={query}
+              disabledNewAviso={disabledNewAviso}
+              tipoPlan={tipoPlan}
+              totalavisos={totalavisos}
+            />
 
-          <HeaderMini
-            setOpenModal={setOpenModal}
-            setIndex={setIndex}
-            index={index}
-            setQuery={setQuery}
-            _switch={_switch}
-            setSkip={setSkip}
-            setSwitch={setSwitch}
-            query={query}
-            disabledNewAviso={disabledNewAviso}
-            tipoPlan={tipoPlan}
-            totalavisos={totalavisos}
+            <HeaderMini
+              setOpenModal={setOpenModal}
+              setIndex={setIndex}
+              index={index}
+              setQuery={setQuery}
+              _switch={_switch}
+              setSkip={setSkip}
+              setSwitch={setSwitch}
+              query={query}
+              disabledNewAviso={disabledNewAviso}
+              tipoPlan={tipoPlan}
+              totalavisos={totalavisos}
+            />
+          </div>
+
+          <div className="cont-cards-avisos-emp">
+            {!loading && avisos.length === 0 ? (
+              <div className="no-avisos-msg-emp">
+                <p>No tienes avisos</p>
+              </div>
+            ) : (
+              avisos.map((item, index) => (
+                <Card
+                  data={item}
+                  key={index}
+                  setIdEliminar={setIdEliminar}
+                  setOpenModalEliminar={setOpenModalEliminar}
+                  setOpenModalEditar={setOpenModalEditar}
+                  setDataEditar={setDataEditar}
+                  setOpenModalCopy={setOpenModalCopy}
+                  setDataCopy={setDataCopy}
+                  setOpenModalRep={setOpenModalRep}
+                  disabledNewAviso={disabledNewAviso}
+                  tipoPlan={tipoPlan}
+                  totalavisos={totalavisos}
+                />
+              ))
+            )}
+            {loading ? (
+              <div className="div-cargando-avisos">
+                <p>Cargando...</p>
+              </div>
+            ) : null}
+          </div>
+          <Modal setOpenModal={setOpenModal} openModal={openModal} />
+          <ModalEliminar
+            aviso
+            openModalEliminar={openModalEliminar}
+            setOpenModalEliminar={setOpenModalEliminar}
+            idEliminar={idEliminar}
+            setIdEliminar={setIdEliminar}
+          />
+          <ModalEditar
+            setOpenModalEditar={setOpenModalEditar}
+            openModalEditar={openModalEditar}
+            setDataEditar={setDataEditar}
+            data={dataEditar}
+          />
+          <ModalCopy
+            setOpenModalCopy={setOpenModalCopy}
+            openModalCopy={openModalCopy}
+            setDataCopy={setDataCopy}
+            data={dataCopy}
+          />
+          <ModalRep
+            openModalRep={openModalRep}
+            setOpenModalRep={setOpenModalRep}
+            data={dataEditar}
+            setDataEditar={setDataEditar}
           />
         </div>
-
-        <div className="cont-cards-avisos-emp">
-          {!loading && avisos.length === 0 ? (
-            <div className="no-avisos-msg-emp">
-              <p>No tienes avisos</p>
-            </div>
-          ) : (
-            avisos.map((item, index) => (
-              <Card
-                data={item}
-                key={index}
-                setIdEliminar={setIdEliminar}
-                setOpenModalEliminar={setOpenModalEliminar}
-                setOpenModalEditar={setOpenModalEditar}
-                setDataEditar={setDataEditar}
-                setOpenModalCopy={setOpenModalCopy}
-                setDataCopy={setDataCopy}
-                setOpenModalRep={setOpenModalRep}
-                disabledNewAviso={disabledNewAviso}
-                tipoPlan={tipoPlan}
-                totalavisos={totalavisos}
-              />
-            ))
-          )}
-          {loading ? (
-            <div className="div-cargando-avisos">
-              <p>Cargando...</p>
-            </div>
-          ) : null}
-        </div>
-        <Modal setOpenModal={setOpenModal} openModal={openModal} />
-        <ModalEliminar
-          aviso
-          openModalEliminar={openModalEliminar}
-          setOpenModalEliminar={setOpenModalEliminar}
-          idEliminar={idEliminar}
-          setIdEliminar={setIdEliminar}
-        />
-        <ModalEditar
-          setOpenModalEditar={setOpenModalEditar}
-          openModalEditar={openModalEditar}
-          setDataEditar={setDataEditar}
-          data={dataEditar}
-        />
-        <ModalCopy
-          setOpenModalCopy={setOpenModalCopy}
-          openModalCopy={openModalCopy}
-          setDataCopy={setDataCopy}
-          data={dataCopy}
-        />
-        <ModalRep
-          openModalRep={openModalRep}
-          setOpenModalRep={setOpenModalRep}
-          data={dataEditar}
-          setDataEditar={setDataEditar}
-        />
-      </div>
+      )}
     </>
   );
 };

@@ -122,125 +122,146 @@ const EcoSap = (props) => {
   }, [skip, value, _switch, usuario, params.idaviso]);
 
   return (
-    <div className="eco-sap-empresas">
-      <Modal
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        data={dataUser}
-        setIdUser={setIdUser}
-        setOpen={setOpen}
-      />
-      <DialogCVPDF
-        open={open}
-        setOpen={setOpen}
-        setIdUser={setIdUser}
-        idUser={idUser}
-      />
-      <div className="top-eco-sap-emp">
-        <div className="header-eco-sap-emp">
-          <Header
+    <>
+      {new Date(usuario?.fechaTerminoEmp) < new Date() ? (
+        <div className="contenedor-cuenta-caducada">
+          <p>Su plan ha caducado</p>
+          <p>Contáctese con ZAPTalent para restablecer el servicio</p>
+        </div>
+      ) : new Date(usuario?.fechaTermino) < new Date() ? (
+        <div className="contenedor-cuenta-caducada">
+          <p>Su cuenta de usuario ha caducado</p>
+          <p>
+            Contáctese con su administrador ZAPTalent para restablecer su perfil
+          </p>
+        </div>
+      ) : (
+        <div className="eco-sap-empresas">
+          <Modal
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+            data={dataUser}
+            setIdUser={setIdUser}
+            setOpen={setOpen}
+          />
+          <DialogCVPDF
+            open={open}
+            setOpen={setOpen}
+            setIdUser={setIdUser}
+            idUser={idUser}
+          />
+          <div className="top-eco-sap-emp">
+            <div className="header-eco-sap-emp">
+              <Header
+                value={value}
+                setValue={setValue}
+                setSkip={setSkip}
+                setUsuarios={setUsuarios}
+                _switch={_switch}
+                setSwitch={setSwitch}
+                setQuery={setQuery}
+                setOpen={setOpenModalDrawer}
+                query={query}
+              />
+            </div>
+            <div className="space-top-eco-sap-emp"></div>
+          </div>
+          <div className="bottom-eco-sap-emp">
+            <div className="content-eco-sap" onScroll={handleScroll}>
+              {value === 0 && tipoPlan.totalUsers ? (
+                cargando ? (
+                  <div
+                    className="div-cargando-avisos"
+                    style={{ height: "77vh" }}
+                  >
+                    <p>Cargando...</p>
+                  </div>
+                ) : (
+                  usuarios.map((item, index) => (
+                    <Card
+                      key={index}
+                      data={item}
+                      setOpenModal={setOpenModal}
+                      setDataUser={setDataUser}
+                      setOpen={setOpen}
+                      setIdUser={setIdUser}
+                    />
+                  ))
+                )
+              ) : value === 1 && tipoPlan.userPost ? (
+                cargando ? (
+                  <div
+                    className="div-cargando-avisos"
+                    style={{ height: "77vh" }}
+                  >
+                    <p>Cargando...</p>
+                  </div>
+                ) : (
+                  usuarios.map((item, index) => (
+                    <Card
+                      key={index}
+                      data={item}
+                      setOpenModal={setOpenModal}
+                      setDataUser={setDataUser}
+                      setOpen={setOpen}
+                      setIdUser={setIdUser}
+                    />
+                  ))
+                )
+              ) : (
+                <div className="act-plan-msg-eco">
+                  <p>Plan no autorizado</p>
+                  <p>Actualize su plan</p>
+                </div>
+              )}
+
+              {loading ? (
+                <div className="div-cargando-avisos">
+                  <p>Cargando...</p>
+                </div>
+              ) : null}
+            </div>
+            <div className="filtros-eco-sap-emp">
+              {value === 0 && tipoPlan.totalUsers ? (
+                <Filtro
+                  value={value}
+                  query={query}
+                  setQuery={setQuery}
+                  setSkip={setSkip}
+                  skip={skip}
+                  _switch={_switch}
+                  setSwitch={setSwitch}
+                  dataFiltro={avisos}
+                />
+              ) : value === 1 && tipoPlan.userPost ? (
+                <Filtro
+                  value={value}
+                  query={query}
+                  setQuery={setQuery}
+                  setSkip={setSkip}
+                  skip={skip}
+                  _switch={_switch}
+                  setSwitch={setSwitch}
+                  dataFiltro={avisos}
+                />
+              ) : null}
+            </div>
+          </div>
+          <FiltroDrawer
             value={value}
-            setValue={setValue}
+            query={query}
+            setQuery={setQuery}
             setSkip={setSkip}
-            setUsuarios={setUsuarios}
+            skip={skip}
             _switch={_switch}
             setSwitch={setSwitch}
-            setQuery={setQuery}
+            dataFiltro={avisos}
             setOpen={setOpenModalDrawer}
-            query={query}
+            open={openModalDrawer}
           />
-          
         </div>
-        <div className="space-top-eco-sap-emp"></div>
-      </div>
-      <div className="bottom-eco-sap-emp">
-        <div className="content-eco-sap" onScroll={handleScroll}>
-          {value === 0 && tipoPlan.totalUsers ? (
-            cargando ? (
-              <div className="div-cargando-avisos" style={{ height: "77vh" }}>
-                <p>Cargando...</p>
-              </div>
-            ) : (
-              usuarios.map((item, index) => (
-                <Card
-                  key={index}
-                  data={item}
-                  setOpenModal={setOpenModal}
-                  setDataUser={setDataUser}
-                  setOpen={setOpen}
-                  setIdUser={setIdUser}
-                />
-              ))
-            )
-          ) : value === 1 && tipoPlan.userPost ? (
-            cargando ? (
-              <div className="div-cargando-avisos" style={{ height: "77vh" }}>
-                <p>Cargando...</p>
-              </div>
-            ) : (
-              usuarios.map((item, index) => (
-                <Card
-                  key={index}
-                  data={item}
-                  setOpenModal={setOpenModal}
-                  setDataUser={setDataUser}
-                  setOpen={setOpen}
-                  setIdUser={setIdUser}
-                />
-              ))
-            )
-          ) : (
-            <div className="act-plan-msg-eco">
-              <p>Plan no autorizado</p>
-              <p>Actualize su plan</p>
-            </div>
-          )}
-
-          {loading ? (
-            <div className="div-cargando-avisos">
-              <p>Cargando...</p>
-            </div>
-          ) : null}
-        </div>
-        <div className="filtros-eco-sap-emp">
-          {value === 0 && tipoPlan.totalUsers ? (
-            <Filtro
-              value={value}
-              query={query}
-              setQuery={setQuery}
-              setSkip={setSkip}
-              skip={skip}
-              _switch={_switch}
-              setSwitch={setSwitch}
-              dataFiltro={avisos}
-            />
-          ) : value === 1 && tipoPlan.userPost ? (
-            <Filtro
-              value={value}
-              query={query}
-              setQuery={setQuery}
-              setSkip={setSkip}
-              skip={skip}
-              _switch={_switch}
-              setSwitch={setSwitch}
-              dataFiltro={avisos}
-            />
-          ) : null}
-        </div>
-      </div>
-      <FiltroDrawer
-        value={value}
-        query={query}
-        setQuery={setQuery}
-        setSkip={setSkip}
-        skip={skip}
-        _switch={_switch}
-        setSwitch={setSwitch}
-        dataFiltro={avisos}
-        setOpen={setOpenModalDrawer}
-        open={openModalDrawer}
-      />
-    </div>
+      )}
+    </>
   );
 };
 

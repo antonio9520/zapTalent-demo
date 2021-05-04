@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Card.css";
 import {
   EventAvailable,
@@ -50,9 +50,12 @@ const Card = ({
   const history = useHistory();
   const inicio = new Date(data.fechaInicio);
   const termino = new Date(data.fechaTermino);
+  const now = new Date();
   const [open, setOpen] = useState(false);
   const [state, setEstado] = useState(data.estado);
-  
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+
   const MESES = [
     "Enero",
     "Febrero",
@@ -93,7 +96,41 @@ const Card = ({
       setOpenModalRep(true);
     }, 200);
   };
+  const guardarAvisoEditado = async (id) => {
+    setLoading(true);
+    dispatch(
+      editarAvisoAction({
+        _id: id,
+        estado: state,
+      })
+    ).then((res) => (res === true ? setOpen(false) : null));
+    setLoading(false);
+  };
 
+  useEffect(() => {
+    if (data?.estado && data?.fechaTermino) {
+      if (termino < now && data.estado === "Activo") {
+        setLoading(true);
+        dispatch(
+          editarAvisoAction({
+            _id: data._id,
+            estado: "Proceso Finalizado",
+          })
+        ).then((res) => (res === true ? setOpen(false) : null));
+        setLoading(false);
+      } 
+      // else if (termino > now && data.estado === "Activo") {
+      //   setLoading(true);
+      //   dispatch(
+      //     editarAvisoAction({
+      //       _id: data._id,
+      //       estado: "Activo",
+      //     })
+      //   ).then((res) => (res === true ? setOpen(false) : null));
+      //   setLoading(false);
+      // }
+    }
+  }, [data?.estado]);
   return (
     <div className="card-avisos-empresas">
       <div className="top-card-avisos-emp">
@@ -215,6 +252,8 @@ const Card = ({
         setEstado={setEstado}
         state={state}
         id={data._id}
+        guardarAvisoEditado={guardarAvisoEditado}
+        loading={loading}
       />
     </div>
   );
@@ -222,23 +261,19 @@ const Card = ({
 
 export default Card;
 
-const DialogEstate = ({ setOpen, open, setEstado, state, id }) => {
-  const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
-
+const DialogEstate = ({
+  setOpen,
+  open,
+  setEstado,
+  state,
+  id,
+  guardarAvisoEditado,
+  loading,
+}) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const guardarAvisoEditado = async () => {
-    setLoading(true);
-    dispatch(
-      editarAvisoAction({
-        _id: id,
-        estado: state,
-      })
-    ).then((res) => (res === true ? setOpen(false) : null));
-    setLoading(false);
-  };
+
   return (
     <Dialog
       // disableBackdropClick
@@ -275,7 +310,7 @@ const DialogEstate = ({ setOpen, open, setEstado, state, id }) => {
             Cancelar
           </Button>
           <Button
-            onClick={guardarAvisoEditado}
+            onClick={() => guardarAvisoEditado(id)}
             variant="contained"
             color="primary"
           >

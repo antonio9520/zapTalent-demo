@@ -383,8 +383,12 @@ const Card = ({ data, setOpen, setIdEmp, setOpenModalAviso, setIdAviso }) => {
                   ) : (
                     <Button
                       className="btn-postular-ofertas-laborales"
+                      style={{
+                        opacity:
+                          estado !== "Activo" || termino < now ? 0.5 : null,
+                      }}
                       onClick={postular}
-                      disabled={_switch}
+                      disabled={_switch || estado !== "Activo" || termino < now}
                     >
                       <p>Postular</p>
                       {_switch ? (

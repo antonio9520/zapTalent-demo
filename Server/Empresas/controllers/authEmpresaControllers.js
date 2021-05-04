@@ -74,14 +74,15 @@ const dataEmp = async (data) => {
     datos.email = data.email;
     datos.idemp = data.idemp;
     datos.tipoPerfil = data.tipoPerfil;
+    datos.fechaTermino = data.fechaTermino;
     datos.razonSocial = empresa.razonSocial;
     datos.rut = empresa.rut;
     datos.giro = empresa.giro;
     datos.direcciones = empresa.direcciones;
     datos.telefonos = empresa.telefonos;
     datos.resena = empresa.resena;
-    datos.fechaInicio = empresa.fechaInicio;
-    datos.fechaTermino = empresa.fechaTermino;
+    datos.fechaInicioEmp = empresa.fechaInicio;
+    datos.fechaTerminoEmp = empresa.fechaTermino;
     datos.tipoPlan = empresa.tipoPlan;
     datos.logoURL = empresa.logoURL;
 
