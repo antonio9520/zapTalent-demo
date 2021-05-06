@@ -386,7 +386,7 @@ exports.totalUsersDay = async (req, res) => {
           2,
           "0"
         )}-${String(termino.getDate()).padStart(2, "0")}T23:59:59.999Z`
-      ),
+      ), 
     },
   };
 

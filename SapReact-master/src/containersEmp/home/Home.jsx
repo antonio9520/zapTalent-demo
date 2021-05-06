@@ -66,17 +66,11 @@ const Home = () => {
     if (usuario) {
       dispatch(obtenerPostuladosAction({ _id: usuario.idemp, skip: 0, query }));
     }
-
     // eslint-disable-next-line
   }, [query]);
-  // const adns = [];
-  // const trabajos = [];
+
   useEffect(() => {
     for (let i = 0; i < avisos.length; i++) {
-      // setDataFiltro([
-      //   ...dataFiltro,
-      //   { _id: avisos[i]._id, titulo: avisos[i].titulo },
-      // ]);
       dataFiltro.push({ _id: avisos[i]._id, titulo: avisos[i].titulo });
     }
   }, [avisos]);

@@ -1,6 +1,4 @@
 import React from "react";
-import "../../Login.css";
-import { OutInput } from "../../../../components";
 import { Link } from "react-router-dom";
 import { ListItem } from "@material-ui/core";
 
@@ -32,7 +30,7 @@ const EmailEnviado = (props) => {
       >
         que restablezcas tu contraseña (Revisa tu bandeja de Spam).
       </p>
-      <Link className="link" to="/login">
+      <Link className="link" to="/login-empresas">
         <ListItem
           button
           className="btn-cancelar-login"

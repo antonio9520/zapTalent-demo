@@ -35,6 +35,9 @@ const usuarioEmpresaSchema = moongose.Schema({
     type: String,
     trim: true,
   },
+  token: {
+    type: String,
+  },
 });
 
 module.exports = moongose.model("usuarioEmpresa", usuarioEmpresaSchema);

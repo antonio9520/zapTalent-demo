@@ -1,7 +1,7 @@
 const Usuario = require("../models/usuarioEmpresa");
 const Empresa = require("../models/empresas");
 const bcryptjs = require("bcryptjs");
-const fs = require("fs").promises;
+const crypto = require("crypto");
 const jwtf = require("jsonwebtoken");
 const enviarEmail = require("../../handlers/email");
 
@@ -12,17 +12,19 @@ exports.creaUserEmp = async (req, res) => {
 
   try {
     //revisar si el usuario registrado es unico
-    let usuario = await Usuario.findOne({ email });
+    let user = await Usuario.findOne({ email });
     let empresa = await Empresa.findById(idemp);
 
-    if (usuario) {
+    if (user) {
       return res.status(400).json({ msg: "el email ya se encuentra en uso" });
     }
+
     perfil.idemp = idemp;
     //Creacio nnuevo usuario
 
     usuario = new Usuario(perfil);
-
+    usuario.token = crypto.randomBytes(20).toString("hex");
+    usuario.expiracion = Date.now() + 3600000;
     //email
     const userconfi = {
       email,
@@ -38,7 +40,7 @@ exports.creaUserEmp = async (req, res) => {
     const region = empresa.direcciones[0].region;
     const telefono = empresa.telefonos[0].telefono;
     const resena = empresa.resena;
-
+    const resetUrl = `https://www.zaptalent.cl/restablecerEmp/${usuario.token}`;
     //envio email cuenta creada
     await enviarEmail.enviar({
       userconfi,
@@ -52,6 +54,7 @@ exports.creaUserEmp = async (req, res) => {
       region,
       comuna,
       resena,
+      resetUrl,
       archivo: "infoEmpresa",
     });
 

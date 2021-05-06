@@ -4,6 +4,7 @@ import { One, Two, Three, Four, Five } from "./steps";
 import { agregarEmpresaAction } from "../../../../redux/actions/actions-admin/empresasAction";
 import { useDispatch } from "react-redux";
 import clientAxios from "../../../../config/axios";
+import clienteAxios from "../../../../config/axios";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -36,7 +37,7 @@ const CustomModal = (props) => {
   //STEP THREE
   const [telefonos, setTelefonos] = useState([]);
   //STEP FOUR
-  const [perfiles, setPerfiles] = useState(dataPerfil);
+  const [perfiles, setPerfiles] = useState([]);
   //guardar aviso
   const [loading, setLoading] = useState(false);
   const [numSave, setNumSave] = useState(0);

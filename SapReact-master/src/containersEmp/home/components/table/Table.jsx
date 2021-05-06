@@ -14,6 +14,7 @@ import {
 import CardTable from "../cardTable/CardTable";
 import { useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
+
 const useStyles = makeStyles({
   root: {},
   select: {
@@ -101,11 +102,7 @@ const Table = ({
     setQuery({ ...query, _id: id });
   };
   const handleClick = () => {
-    // query.search = search;
     setQuery({ ...query, search });
-    // setSkip(0);
-    // setQuery(query);
-    // setSwitch(!_switch);
   };
   const _handleKeyDown = (e) => {
     if (e.key === "Enter") {

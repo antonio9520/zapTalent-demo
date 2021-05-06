@@ -14,7 +14,6 @@ import {
 import { hiddenAlertAction } from "../../redux/actions/trabajoAction";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
-import { Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import axios from "axios";
@@ -282,7 +281,7 @@ const Login = (props) => {
                   funcOnChange={setEmail}
                   error={erroremail}
                   size="medium"
-                  name="email"
+                  name="email"  
                   value={emailA}
                   logininput
                   onKeyDown={_handleKeyDown}

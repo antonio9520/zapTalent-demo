@@ -71,12 +71,15 @@ server.use("/api/usuarioEmpresa", require("./Empresas/routes/usuarioEmpresa"));
 //Avisos routes
 server.use("/api/avisos", require("./Empresas/routes/avisos"));
 //EcoSap routes
-server.use("/api/ecoSap", require("./Empresas/routes/ecoSap")); 
+server.use("/api/ecoSap", require("./Empresas/routes/ecoSap"));
 //empresas datos
 server.use("/api/empresas", require("./Empresas/routes/empresas"));
 //postulacion routes
 server.use("/api/postulacion", require("./Empresas/routes/postulacionR"));
-
+//Importar ruta para restablecer contrasena
+server.use("/api/restablecerEmp", require("./Empresas/routes/restablecer"));
+//import actualizar contrase;a
+server.use("/api/actualizarpassEmp", require("./Empresas/routes/cambiarpass"));
 //-----------------------------------
 //Fin Rutas Empresas
 //-----------------------------------

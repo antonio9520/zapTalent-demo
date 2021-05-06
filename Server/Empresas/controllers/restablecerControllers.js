@@ -1,9 +1,10 @@
-const User = require("../models/usuario");
+const User = require("../models/usuarioEmpresa");
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
-const enviarEmail = require("../handlers/email");
+const enviarEmail = require("../../handlers/email");
 
 exports.enviarToken = async (req, res) => {
+
   try {
     //Verificar que el usuario exista
     const useri = await User.findOne({ email: req.params.emails });
@@ -19,7 +20,8 @@ exports.enviarToken = async (req, res) => {
 
     await useri.save();
     //Url de reset
-    const resetUrl = `https://www.zaptalent.cl/restablecer/${useri.token}`;
+    // const resetUrl = `https://www.zaptalent.cl/restablecer/${useri.token}`;
+    const resetUrl = `https://www.zaptalent.cl/restablecerEmp/${useri.token}`;
     //crear objeto usuario
     const userconfi = {
       email,
@@ -28,7 +30,7 @@ exports.enviarToken = async (req, res) => {
     //enviar el correo con el token
     await enviarEmail.enviar({
       userconfi,
-      subject: "Restablece tu contraseña en ZapTalent.",
+      subject: "Restablece tu contraseña en ZapTalent Empresas.",
       resetUrl,
       archivo: "resspass",
     });
@@ -57,6 +59,7 @@ exports.resetPassword = async (req, res) => {
 };
 
 exports.actualizarPassword = async (req, res) => {
+    console.log()
   try {
     const useri = await User.findOne({
       token: req.params.token,

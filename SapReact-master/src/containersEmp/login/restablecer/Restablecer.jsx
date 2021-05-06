@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import "../../Login.css";
-import { OutInput } from "../../../../components";
+import React, { useState } from "react";
+import { OutInput } from "../../../components";
 import { Link } from "react-router-dom";
 import { ListItem } from "@material-ui/core";
 import axios from "axios";
@@ -51,7 +50,8 @@ const Restablecer = (props) => {
     setCargando(true);
     axios({
       method: "POST",
-      url: `https://zaptalent.azurewebsites.net/api/actualizarpass/${token}`,
+      url: `https://zaptalent.azurewebsites.net/api/actualizarpassEmp/${token}`,
+      // url: `http://localhost:4000/api/actualizarpassEmp/${token}`,
       data: { password: pass },
     })
       .then(() => {
@@ -115,7 +115,7 @@ const Restablecer = (props) => {
           <ListItem button className="btn-ingresar-login" onClick={validar}>
             <p style={{ color: "white" }}>Restablecer</p>
           </ListItem>
-          <Link className="link" to="/login">
+          <Link className="link" to="/login-empresas">
             <ListItem
               button
               className="btn-cancelar-login"

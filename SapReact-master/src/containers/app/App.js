@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route, Switch } from "react-router-dom";
 import { COVER, LOGIN_FAKE, EMPRESAS, RESTABLECER } from "../../routes/paths";
+import { RESTABLECER_EMP } from "../../routes/empresas/paths";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { LoginEmp } from "../../containersEmp";
 import { LoginAdmin } from "../../containersAdmin";
@@ -64,6 +65,7 @@ function App() {
               ]}
             />
             <Route exact path="/login-empresas" component={LoginEmp} />
+            <Route exact path={RESTABLECER_EMP} component={LoginEmp} />
             {/**ADMIN**/}
             <PrivadaAdmin
               exact
