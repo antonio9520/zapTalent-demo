@@ -13,9 +13,9 @@ exports.obtenerUsuarios = async (req, res) => {
       limit: 15,
     });
     const dataUsers = await dataUsuarios(Usuarios);
-    // console.log(dataUsers);
     res.json(dataUsers);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ msg: "Hubo un error" });
   }
 };

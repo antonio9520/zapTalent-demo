@@ -74,8 +74,12 @@ const Aviso = ({ data, data2 }) => {
         </div>
         <div>
           <p>
-            {anosExpSap === 1 ? `${anosExpSap} año ` : `${anosExpSap} años `}de
-            experiencia
+            {!anosExpSap
+              ? "Sin experiancia laboral"
+              : anosExpSap === 1
+              ? `${anosExpSap} año de experiencia`
+              : `${anosExpSap} años de experiencia`}
+           
           </p>
         </div>
       </div>
